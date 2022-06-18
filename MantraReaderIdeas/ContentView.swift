@@ -12,7 +12,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Mantra.reads, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Mantra.reads, ascending: false)],
         animation: .default)
     private var mantras: FetchedResults<Mantra>
     
@@ -23,7 +23,7 @@ struct ContentView: View {
                     NavigationLink {
                         DetailsView(mantra)
                     } label: {
-                        Text("\(mantra.reads)")
+                        Text("Reads: \(mantra.reads)")
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -47,7 +47,7 @@ struct ContentView: View {
     private func addItem() {
         withAnimation {
             let newMantra = Mantra(context: viewContext)
-            newMantra.reads = Int16.random(in: 0...1000)
+            newMantra.reads = Int32.random(in: 0...1000)
             
             do {
                 try viewContext.save()
@@ -74,6 +74,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

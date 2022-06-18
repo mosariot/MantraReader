@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21223.11" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Mantra" representedClassName="Mantra" syncable="YES" codeGenerationType="class">
-        <attribute name="goal" attributeType="Integer 16" defaultValueString="1000" usesScalarValueType="YES"/>
-        <attribute name="reads" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="goal" attributeType="Integer 32" defaultValueString="1000" usesScalarValueType="YES"/>
+        <attribute name="reads" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
         <element name="Mantra" positionX="-63" positionY="-18" width="128" height="59"/>

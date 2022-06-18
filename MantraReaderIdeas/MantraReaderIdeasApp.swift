@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct MantraReaderIdeasApp: App {
     let persistenceController = PersistenceController.shared
-
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

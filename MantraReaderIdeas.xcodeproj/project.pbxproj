@@ -10,12 +10,12 @@
 		9F3D116A285CF6F3009A07D0 /* MantraReaderIdeasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D1169285CF6F3009A07D0 /* MantraReaderIdeasApp.swift */; };
 		9F3D116C285CF6F3009A07D0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D116B285CF6F3009A07D0 /* Persistence.swift */; };
 		9F3D116F285CF6F3009A07D0 /* MantraReaderIdeas.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D116D285CF6F3009A07D0 /* MantraReaderIdeas.xcdatamodeld */; };
-		9F3D1171285CF6F3009A07D0 /* ContentViewCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D1170285CF6F3009A07D0 /* ContentViewCoreData.swift */; };
+		9F3D1171285CF6F3009A07D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D1170285CF6F3009A07D0 /* ContentView.swift */; };
 		9F3D1173285CF6F4009A07D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F3D1172285CF6F4009A07D0 /* Assets.xcassets */; };
 		9F3D1177285CF6F4009A07D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F3D1176285CF6F4009A07D0 /* Preview Assets.xcassets */; };
 		9F3D117E285CF770009A07D0 /* NumericTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D117D285CF770009A07D0 /* NumericTextField.swift */; };
 		9F3D1180285CF797009A07D0 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D117F285CF797009A07D0 /* CircularProgressView.swift */; };
-		9F3D1182285CF7B1009A07D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D1181285CF7B1009A07D0 /* ContentView.swift */; };
+		9F3D1182285CF7B1009A07D0 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D1181285CF7B1009A07D0 /* DetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,13 +23,13 @@
 		9F3D1169285CF6F3009A07D0 /* MantraReaderIdeasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraReaderIdeasApp.swift; sourceTree = "<group>"; };
 		9F3D116B285CF6F3009A07D0 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		9F3D116E285CF6F3009A07D0 /* MantraReaderIdeas.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MantraReaderIdeas.xcdatamodel; sourceTree = "<group>"; };
-		9F3D1170285CF6F3009A07D0 /* ContentViewCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewCoreData.swift; sourceTree = "<group>"; };
+		9F3D1170285CF6F3009A07D0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9F3D1172285CF6F4009A07D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F3D1174285CF6F4009A07D0 /* MantraReaderIdeas.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MantraReaderIdeas.entitlements; sourceTree = "<group>"; };
 		9F3D1176285CF6F4009A07D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9F3D117D285CF770009A07D0 /* NumericTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericTextField.swift; sourceTree = "<group>"; };
 		9F3D117F285CF797009A07D0 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
-		9F3D1181285CF7B1009A07D0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9F3D1181285CF7B1009A07D0 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,8 +64,8 @@
 			children = (
 				9F3D1172285CF6F4009A07D0 /* Assets.xcassets */,
 				9F3D117F285CF797009A07D0 /* CircularProgressView.swift */,
-				9F3D1181285CF7B1009A07D0 /* ContentView.swift */,
-				9F3D1170285CF6F3009A07D0 /* ContentViewCoreData.swift */,
+				9F3D1170285CF6F3009A07D0 /* ContentView.swift */,
+				9F3D1181285CF7B1009A07D0 /* DetailsView.swift */,
 				9F3D1174285CF6F4009A07D0 /* MantraReaderIdeas.entitlements */,
 				9F3D116D285CF6F3009A07D0 /* MantraReaderIdeas.xcdatamodeld */,
 				9F3D1169285CF6F3009A07D0 /* MantraReaderIdeasApp.swift */,
@@ -157,8 +157,8 @@
 				9F3D116A285CF6F3009A07D0 /* MantraReaderIdeasApp.swift in Sources */,
 				9F3D116F285CF6F3009A07D0 /* MantraReaderIdeas.xcdatamodeld in Sources */,
 				9F3D117E285CF770009A07D0 /* NumericTextField.swift in Sources */,
-				9F3D1171285CF6F3009A07D0 /* ContentViewCoreData.swift in Sources */,
-				9F3D1182285CF7B1009A07D0 /* ContentView.swift in Sources */,
+				9F3D1171285CF6F3009A07D0 /* ContentView.swift in Sources */,
+				9F3D1182285CF7B1009A07D0 /* DetailsView.swift in Sources */,
 				9F3D1180285CF797009A07D0 /* CircularProgressView.swift in Sources */,
 				9F3D116C285CF6F3009A07D0 /* Persistence.swift in Sources */,
 			);

@@ -6,73 +6,74 @@
 //
 
 import SwiftUI
-import Combine
+import CoreData
 
 struct ContentView: View {
-    @State private var displayedReadings: Double = 0
-    @State private var actualReadings: Double = 0
-    @State private var actualReadingsString: String = ""
-    @State private var deltaReadings: Double = 0
-    @State private var actualGoal: Double = 1000
-    @State private var actualGoalString: String = ""
-    @State private var elapsedTime: Double = 0
-    @State private var timerReadings = Timer.publish(every: 0.01, on: .main, in: .common)
-    @State private var timerSubscription: Cancellable?
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Mantra.reads, ascending: true)],
+        animation: .default)
+    private var mantras: FetchedResults<Mantra>
     
     var body: some View {
-        VStack {
-            Spacer()
-            
-            NumericTextField("Enter New Readings", text: $actualReadingsString)
-
-                .frame(width: 200)
-                .padding(.horizontal)
-            Button("Change") {
-                actualReadings =  Double(actualReadingsString) ?? 0
+        NavigationView {
+            List {
+                ForEach(mantras) { mantra in
+                    NavigationLink {
+                        DetailsView(mantra)
+                    } label: {
+                        Text("\(mantra.reads)")
+                    }
+                }
+                .onDelete(perform: deleteItems)
             }
-            .buttonStyle(.borderedProminent)
-            .padding()
-            .onChange(of: actualReadings, perform: { newValue in
-                deltaReadings = newValue - displayedReadings
-                elapsedTime = 0
-                timerReadings = Timer.publish(every: 0.01, on: .main, in: .common)
-                timerSubscription = timerReadings.connect()
-            })
-            .onReceive(timerReadings) { _ in
-                if elapsedTime < 1.00 {
-                    displayedReadings += Double(deltaReadings) / 100.0
-                    elapsedTime += 0.01
-                } else {
-                    displayedReadings = actualReadings
-                    actualReadingsString = ""
-                    timerSubscription?.cancel()
+            .toolbar {
+#if os(iOS)
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
+#endif
+                ToolbarItem {
+                    Button(action: addItem) {
+                        Label("Add Item", systemImage: "plus")
+                    }
                 }
             }
+            Text("Select an item")
+        }
+    }
+    
+    private func addItem() {
+        withAnimation {
+            let newMantra = Mantra(context: viewContext)
+            newMantra.reads = Int16.random(in: 0...1000)
             
-            CircularProgressView(
-                progress: actualReadings / actualGoal,
-                displayedNumber: displayedReadings
-            )
-            .frame(width: 200, height: 200)
-            .padding()
-            
-            NumericTextField("Enter New Goal", text: $actualGoalString)
-                .frame(width: 200)
-                .padding()
-            
-            Button("Change") {
-                actualGoal = Double(actualGoalString) ?? 0
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
-            .buttonStyle(.borderedProminent)
-            .padding(.horizontal)
+        }
+    }
+    
+    private func deleteItems(offsets: IndexSet) {
+        withAnimation {
+            offsets.map { mantras[$0] }.forEach(viewContext.delete)
             
-            Spacer()
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

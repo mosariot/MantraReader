@@ -1,3 +1,3 @@
-# Mantra Reader Ideas
+# Mantra Reader
 
-SwiftUI Universal App Ideas for Mantra Reader
+SwiftUI Universal App version of Mantra Reader

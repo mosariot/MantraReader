@@ -1,5 +1,5 @@
 //
-//  DetailsView.swift
+//  ReadingsView.swift
 //  MantraReaderIdeas
 //
 //  Created by Александр Воробьев on 17.06.2022.
@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 import CoreData
 
-struct DetailsView: View {
+struct ReadingsView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var mantra: Mantra
@@ -92,7 +92,8 @@ struct DetailsView: View {
 }
 
 struct DetailsView_Previews: PreviewProvider {
-    @Environment(\.managedObjectContext) static private var viewContext
+    @Environment(\.managedObjectContext)
+    static private var viewContext
     
     static private var newMantra: Mantra {
         let m = Mantra(context: viewContext)
@@ -101,6 +102,6 @@ struct DetailsView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        DetailsView(newMantra)
+        ReadingsView(newMantra)
     }
 }

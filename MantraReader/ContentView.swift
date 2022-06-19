@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  MantraReaderIdeas
+//  MantraReader
 //
-//  Created by Александр Воробьев on 17.06.2022.
+//  Created by Александр Воробьев on 19.06.2022.
 //
 
 import SwiftUI
@@ -21,7 +21,7 @@ struct ContentView: View {
             List {
                 ForEach(mantras) { mantra in
                     NavigationLink {
-                        DetailsView(mantra)
+                        ReadingsView(mantra)
                     } label: {
                         Text("Reads: \(mantra.reads)")
                     }
@@ -40,7 +40,8 @@ struct ContentView: View {
                     }
                 }
             }
-            Text("Select an item")
+            Text("Select a mantra")
+                .foregroundColor(.gray)
         }
     }
     
@@ -48,28 +49,26 @@ struct ContentView: View {
         withAnimation {
             let newMantra = Mantra(context: viewContext)
             newMantra.reads = Int32.random(in: 0...1000)
-            
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            saveContext()
         }
     }
     
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { mantras[$0] }.forEach(viewContext.delete)
-            
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            saveContext()
         }
     }
+    
+    func saveContext() {
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+    }
+
 }
 
 struct ContentView_Previews: PreviewProvider {

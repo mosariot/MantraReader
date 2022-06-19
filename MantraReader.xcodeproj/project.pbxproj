@@ -7,33 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9F3D116A285CF6F3009A07D0 /* MantraReaderIdeasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D1169285CF6F3009A07D0 /* MantraReaderIdeasApp.swift */; };
-		9F3D116C285CF6F3009A07D0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D116B285CF6F3009A07D0 /* Persistence.swift */; };
-		9F3D116F285CF6F3009A07D0 /* MantraReaderIdeas.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D116D285CF6F3009A07D0 /* MantraReaderIdeas.xcdatamodeld */; };
-		9F3D1171285CF6F3009A07D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D1170285CF6F3009A07D0 /* ContentView.swift */; };
-		9F3D1173285CF6F4009A07D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F3D1172285CF6F4009A07D0 /* Assets.xcassets */; };
-		9F3D1177285CF6F4009A07D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F3D1176285CF6F4009A07D0 /* Preview Assets.xcassets */; };
-		9F3D117E285CF770009A07D0 /* NumericTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D117D285CF770009A07D0 /* NumericTextField.swift */; };
-		9F3D1180285CF797009A07D0 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D117F285CF797009A07D0 /* CircularProgressView.swift */; };
-		9F3D1182285CF7B1009A07D0 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D1181285CF7B1009A07D0 /* DetailsView.swift */; };
+		9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */; };
+		9FBEE99A285F682C0070BA06 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE999285F682C0070BA06 /* Persistence.swift */; };
+		9FBEE99D285F682C0070BA06 /* MantraReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE99B285F682C0070BA06 /* MantraReader.xcdatamodeld */; };
+		9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE99E285F682C0070BA06 /* ContentView.swift */; };
+		9FBEE9A1285F682D0070BA06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEE9A0285F682D0070BA06 /* Assets.xcassets */; };
+		9FBEE9A5285F682D0070BA06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEE9A4285F682D0070BA06 /* Preview Assets.xcassets */; };
+		9FBEE9AE285F68CE0070BA06 /* ReadingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE9AB285F68CE0070BA06 /* ReadingsView.swift */; };
+		9FBEE9AF285F68CE0070BA06 /* NumericTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE9AC285F68CE0070BA06 /* NumericTextField.swift */; };
+		9FBEE9B0285F68CE0070BA06 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9F3D1166285CF6F3009A07D0 /* MantraReaderIdeas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MantraReaderIdeas.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F3D1169285CF6F3009A07D0 /* MantraReaderIdeasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraReaderIdeasApp.swift; sourceTree = "<group>"; };
-		9F3D116B285CF6F3009A07D0 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		9F3D116E285CF6F3009A07D0 /* MantraReaderIdeas.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MantraReaderIdeas.xcdatamodel; sourceTree = "<group>"; };
-		9F3D1170285CF6F3009A07D0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		9F3D1172285CF6F4009A07D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9F3D1174285CF6F4009A07D0 /* MantraReaderIdeas.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MantraReaderIdeas.entitlements; sourceTree = "<group>"; };
-		9F3D1176285CF6F4009A07D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		9F3D117D285CF770009A07D0 /* NumericTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericTextField.swift; sourceTree = "<group>"; };
-		9F3D117F285CF797009A07D0 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
-		9F3D1181285CF7B1009A07D0 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		9FBEE994285F682C0070BA06 /* MantraReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MantraReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraReaderApp.swift; sourceTree = "<group>"; };
+		9FBEE999285F682C0070BA06 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		9FBEE99C285F682C0070BA06 /* MantraReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MantraReader.xcdatamodel; sourceTree = "<group>"; };
+		9FBEE99E285F682C0070BA06 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9FBEE9A0285F682D0070BA06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9FBEE9A2285F682D0070BA06 /* MantraReader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MantraReader.entitlements; sourceTree = "<group>"; };
+		9FBEE9A4285F682D0070BA06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9FBEE9AB285F68CE0070BA06 /* ReadingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingsView.swift; sourceTree = "<group>"; };
+		9FBEE9AC285F68CE0070BA06 /* NumericTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericTextField.swift; sourceTree = "<group>"; };
+		9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9F3D1163285CF6F3009A07D0 /* Frameworks */ = {
+		9FBEE991285F682C0070BA06 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -43,43 +43,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9F3D115D285CF6F3009A07D0 = {
+		9FBEE98B285F682C0070BA06 = {
 			isa = PBXGroup;
 			children = (
-				9F3D1168285CF6F3009A07D0 /* MantraReaderIdeas */,
-				9F3D1167285CF6F3009A07D0 /* Products */,
+				9FBEE996285F682C0070BA06 /* MantraReader */,
+				9FBEE995285F682C0070BA06 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9F3D1167285CF6F3009A07D0 /* Products */ = {
+		9FBEE995285F682C0070BA06 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9F3D1166285CF6F3009A07D0 /* MantraReaderIdeas.app */,
+				9FBEE994285F682C0070BA06 /* MantraReader.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9F3D1168285CF6F3009A07D0 /* MantraReaderIdeas */ = {
+		9FBEE996285F682C0070BA06 /* MantraReader */ = {
 			isa = PBXGroup;
 			children = (
-				9F3D1172285CF6F4009A07D0 /* Assets.xcassets */,
-				9F3D117F285CF797009A07D0 /* CircularProgressView.swift */,
-				9F3D1170285CF6F3009A07D0 /* ContentView.swift */,
-				9F3D1181285CF7B1009A07D0 /* DetailsView.swift */,
-				9F3D1174285CF6F4009A07D0 /* MantraReaderIdeas.entitlements */,
-				9F3D116D285CF6F3009A07D0 /* MantraReaderIdeas.xcdatamodeld */,
-				9F3D1169285CF6F3009A07D0 /* MantraReaderIdeasApp.swift */,
-				9F3D117D285CF770009A07D0 /* NumericTextField.swift */,
-				9F3D116B285CF6F3009A07D0 /* Persistence.swift */,
-				9F3D1175285CF6F4009A07D0 /* Preview Content */,
+				9FBEE9A2285F682D0070BA06 /* MantraReader.entitlements */,
+				9FBEE99B285F682C0070BA06 /* MantraReader.xcdatamodeld */,
+				9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */,
+				9FBEE999285F682C0070BA06 /* Persistence.swift */,
+				9FBEE99E285F682C0070BA06 /* ContentView.swift */,
+				9FBEE9AB285F68CE0070BA06 /* ReadingsView.swift */,
+				9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */,
+				9FBEE9AC285F68CE0070BA06 /* NumericTextField.swift */,
+				9FBEE9A0285F682D0070BA06 /* Assets.xcassets */,
+				9FBEE9A3285F682D0070BA06 /* Preview Content */,
 			);
-			path = MantraReaderIdeas;
+			path = MantraReader;
 			sourceTree = "<group>";
 		};
-		9F3D1175285CF6F4009A07D0 /* Preview Content */ = {
+		9FBEE9A3285F682D0070BA06 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				9F3D1176285CF6F4009A07D0 /* Preview Assets.xcassets */,
+				9FBEE9A4285F682D0070BA06 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -87,39 +87,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9F3D1165285CF6F3009A07D0 /* MantraReaderIdeas */ = {
+		9FBEE993285F682C0070BA06 /* MantraReader */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9F3D117A285CF6F4009A07D0 /* Build configuration list for PBXNativeTarget "MantraReaderIdeas" */;
+			buildConfigurationList = 9FBEE9A8285F682D0070BA06 /* Build configuration list for PBXNativeTarget "MantraReader" */;
 			buildPhases = (
-				9F3D1162285CF6F3009A07D0 /* Sources */,
-				9F3D1163285CF6F3009A07D0 /* Frameworks */,
-				9F3D1164285CF6F3009A07D0 /* Resources */,
+				9FBEE990285F682C0070BA06 /* Sources */,
+				9FBEE991285F682C0070BA06 /* Frameworks */,
+				9FBEE992285F682C0070BA06 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = MantraReaderIdeas;
-			productName = MantraReaderIdeas;
-			productReference = 9F3D1166285CF6F3009A07D0 /* MantraReaderIdeas.app */;
+			name = MantraReader;
+			productName = MantraReader;
+			productReference = 9FBEE994285F682C0070BA06 /* MantraReader.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9F3D115E285CF6F3009A07D0 /* Project object */ = {
+		9FBEE98C285F682C0070BA06 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
-					9F3D1165285CF6F3009A07D0 = {
+					9FBEE993285F682C0070BA06 = {
 						CreatedOnToolsVersion = 14.0;
 					};
 				};
 			};
-			buildConfigurationList = 9F3D1161285CF6F3009A07D0 /* Build configuration list for PBXProject "MantraReaderIdeas" */;
+			buildConfigurationList = 9FBEE98F285F682C0070BA06 /* Build configuration list for PBXProject "MantraReader" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -127,47 +127,47 @@
 				en,
 				Base,
 			);
-			mainGroup = 9F3D115D285CF6F3009A07D0;
-			productRefGroup = 9F3D1167285CF6F3009A07D0 /* Products */;
+			mainGroup = 9FBEE98B285F682C0070BA06;
+			productRefGroup = 9FBEE995285F682C0070BA06 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9F3D1165285CF6F3009A07D0 /* MantraReaderIdeas */,
+				9FBEE993285F682C0070BA06 /* MantraReader */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9F3D1164285CF6F3009A07D0 /* Resources */ = {
+		9FBEE992285F682C0070BA06 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F3D1177285CF6F4009A07D0 /* Preview Assets.xcassets in Resources */,
-				9F3D1173285CF6F4009A07D0 /* Assets.xcassets in Resources */,
+				9FBEE9A5285F682D0070BA06 /* Preview Assets.xcassets in Resources */,
+				9FBEE9A1285F682D0070BA06 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9F3D1162285CF6F3009A07D0 /* Sources */ = {
+		9FBEE990285F682C0070BA06 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F3D116A285CF6F3009A07D0 /* MantraReaderIdeasApp.swift in Sources */,
-				9F3D116F285CF6F3009A07D0 /* MantraReaderIdeas.xcdatamodeld in Sources */,
-				9F3D117E285CF770009A07D0 /* NumericTextField.swift in Sources */,
-				9F3D1171285CF6F3009A07D0 /* ContentView.swift in Sources */,
-				9F3D1182285CF7B1009A07D0 /* DetailsView.swift in Sources */,
-				9F3D1180285CF797009A07D0 /* CircularProgressView.swift in Sources */,
-				9F3D116C285CF6F3009A07D0 /* Persistence.swift in Sources */,
+				9FBEE99D285F682C0070BA06 /* MantraReader.xcdatamodeld in Sources */,
+				9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */,
+				9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */,
+				9FBEE9B0285F68CE0070BA06 /* CircularProgressView.swift in Sources */,
+				9FBEE99A285F682C0070BA06 /* Persistence.swift in Sources */,
+				9FBEE9AE285F68CE0070BA06 /* ReadingsView.swift in Sources */,
+				9FBEE9AF285F68CE0070BA06 /* NumericTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		9F3D1178285CF6F4009A07D0 /* Debug */ = {
+		9FBEE9A6285F682D0070BA06 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -217,6 +217,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -225,7 +227,7 @@
 			};
 			name = Debug;
 		};
-		9F3D1179285CF6F4009A07D0 /* Release */ = {
+		9FBEE9A7285F682D0070BA06 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -269,6 +271,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -276,19 +280,21 @@
 			};
 			name = Release;
 		};
-		9F3D117B285CF6F4009A07D0 /* Debug */ = {
+		9FBEE9A9285F682D0070BA06 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = MantraReaderIdeas/MantraReaderIdeas.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MantraReader/MantraReader.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MantraReaderIdeas/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MantraReader/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mantra Reader";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -298,7 +304,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraReaderIdeas;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -308,19 +314,21 @@
 			};
 			name = Debug;
 		};
-		9F3D117C285CF6F4009A07D0 /* Release */ = {
+		9FBEE9AA285F682D0070BA06 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = MantraReaderIdeas/MantraReaderIdeas.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MantraReader/MantraReader.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MantraReaderIdeas/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MantraReader/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mantra Reader";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -330,7 +338,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraReaderIdeas;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -343,20 +351,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9F3D1161285CF6F3009A07D0 /* Build configuration list for PBXProject "MantraReaderIdeas" */ = {
+		9FBEE98F285F682C0070BA06 /* Build configuration list for PBXProject "MantraReader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9F3D1178285CF6F4009A07D0 /* Debug */,
-				9F3D1179285CF6F4009A07D0 /* Release */,
+				9FBEE9A6285F682D0070BA06 /* Debug */,
+				9FBEE9A7285F682D0070BA06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9F3D117A285CF6F4009A07D0 /* Build configuration list for PBXNativeTarget "MantraReaderIdeas" */ = {
+		9FBEE9A8285F682D0070BA06 /* Build configuration list for PBXNativeTarget "MantraReader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9F3D117B285CF6F4009A07D0 /* Debug */,
-				9F3D117C285CF6F4009A07D0 /* Release */,
+				9FBEE9A9285F682D0070BA06 /* Debug */,
+				9FBEE9AA285F682D0070BA06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -364,17 +372,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		9F3D116D285CF6F3009A07D0 /* MantraReaderIdeas.xcdatamodeld */ = {
+		9FBEE99B285F682C0070BA06 /* MantraReader.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9F3D116E285CF6F3009A07D0 /* MantraReaderIdeas.xcdatamodel */,
+				9FBEE99C285F682C0070BA06 /* MantraReader.xcdatamodel */,
 			);
-			currentVersion = 9F3D116E285CF6F3009A07D0 /* MantraReaderIdeas.xcdatamodel */;
-			path = MantraReaderIdeas.xcdatamodeld;
+			currentVersion = 9FBEE99C285F682C0070BA06 /* MantraReader.xcdatamodel */;
+			path = MantraReader.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};
-	rootObject = 9F3D115E285CF6F3009A07D0 /* Project object */;
+	rootObject = 9FBEE98C285F682C0070BA06 /* Project object */;
 }

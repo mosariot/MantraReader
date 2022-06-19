@@ -1,19 +1,19 @@
 //
 //  Persistence.swift
-//  MantraReaderIdeas
+//  MantraReader
 //
-//  Created by Александр Воробьев on 17.06.2022.
+//  Created by Александр Воробьев on 19.06.2022.
 //
 
 import CoreData
 
 struct PersistenceController {
     static let shared = PersistenceController()
-    
-    let container: NSPersistentContainer
-    
+
+    let container: NSPersistentCloudKitContainer
+
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "MantraReaderIdeas")
+        container = NSPersistentCloudKitContainer(name: "MantraReader")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

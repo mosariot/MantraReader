@@ -1,16 +1,16 @@
 //
-//  MantraReaderIdeasApp.swift
-//  MantraReaderIdeas
+//  MantraReaderApp.swift
+//  MantraReader
 //
-//  Created by Александр Воробьев on 17.06.2022.
+//  Created by Александр Воробьев on 19.06.2022.
 //
 
 import SwiftUI
 
 @main
-struct MantraReaderIdeasApp: App {
+struct MantraReaderApp: App {
     let persistenceController = PersistenceController.shared
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()

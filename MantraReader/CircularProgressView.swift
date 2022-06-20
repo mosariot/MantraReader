@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct CircularProgressView: View {
-    let progress: Double
-    let displayedNumber: Double
+    var progress: Double
+    var displayedNumber: Double
+    var isAnimated: Bool = true
     
     var body: some View {
         ZStack {
@@ -29,7 +30,7 @@ struct CircularProgressView: View {
                 )
                 .rotationEffect(.degrees(-90))
                 .animation(
-                    .easeOut(duration: 1),
+                    isAnimated ? .easeOut(duration: 1) : .none,
                     value: progress
                 )
             Text("\(displayedNumber, specifier: "%.0f")")

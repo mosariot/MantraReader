@@ -16,17 +16,16 @@ struct ContentView: View {
         animation: .default)
     private var mantras: FetchedResults<Mantra>
     
-    @State private var selectedMantra: Mantra.ID?
+    @State private var selectedMantra: Mantra?
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
             List(selection: $selectedMantra) {
-                ForEach(mantras, id: \.self) { mantra in
-                    NavigationLink(value: mantra.id) {
+                ForEach(mantras) { mantra in
+                    NavigationLink(value: mantra) {
                         Text("Reads: \(mantra.reads)")
                     }
-                    .tag(mantra.id)
                 }
                 .onDelete(perform: deleteItems)
             }
@@ -44,11 +43,13 @@ struct ContentView: View {
             }
             .navigationTitle("Mantra Reader")
         } detail: {
-            if let selectedMantra = mantras.first(where: { $0.id == selectedMantra }) {
-                ReadingsView(selectedMantra)
-            } else {
-                Text("Select a mantra")
-                    .foregroundColor(.gray)
+            ZStack {
+                if let selectedMantra {
+                    ReadingsView(mantra: selectedMantra, displayedReadings: Double(selectedMantra.reads))
+                } else {
+                    Text("Select a mantra")
+                        .foregroundColor(.gray)
+                }
             }
         }
     }

@@ -12,19 +12,15 @@ import CoreData
 struct ReadingsView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    @ObservedObject private var mantra: Mantra
-    @State private var displayedReadings: Double
+    @ObservedObject var mantra: Mantra
+    @State var displayedReadings: Double
     @State private var actualReadingsString: String = ""
     @State private var deltaReadings: Double = 0
     @State private var actualGoalString: String = ""
     @State private var elapsedTime: Double = 0
     @State private var timerReadings = Timer.publish(every: 0.01, on: .main, in: .common)
     @State private var timerSubscription: Cancellable?
-    
-    init(_ mantra: Mantra) {
-        _mantra = ObservedObject(wrappedValue: mantra)
-        _displayedReadings = State(initialValue: Double(mantra.reads))
-    }
+    @State private var isAnimated: Bool = false
     
     var body: some View {
         VStack {
@@ -34,6 +30,7 @@ struct ReadingsView: View {
                 .frame(width: 200)
             
             Button("Change") {
+                isAnimated = true
                 mantra.reads = Int32(actualReadingsString) ?? mantra.reads
                 saveContext()
                 actualReadingsString = ""
@@ -41,10 +38,14 @@ struct ReadingsView: View {
             .buttonStyle(.borderedProminent)
             .padding()
             .onChange(of: mantra.reads, perform: { newValue in
-                deltaReadings = Double(newValue) - displayedReadings
-                elapsedTime = 0
-                timerReadings = Timer.publish(every: 0.01, on: .main, in: .common)
-                timerSubscription = timerReadings.connect()
+                if isAnimated {
+                    deltaReadings = Double(newValue) - displayedReadings
+                    elapsedTime = 0
+                    timerReadings = Timer.publish(every: 0.01, on: .main, in: .common)
+                    timerSubscription = timerReadings.connect()
+                } else {
+                    displayedReadings = Double(newValue)
+                }
             })
             .onReceive(timerReadings) { _ in
                 if elapsedTime < 1.00 {
@@ -53,12 +54,14 @@ struct ReadingsView: View {
                 } else {
                     displayedReadings = Double(mantra.reads)
                     timerSubscription?.cancel()
+                    isAnimated = false
                 }
             }
             
             CircularProgressView(
                 progress: Double(mantra.reads) / Double(mantra.goal),
-                displayedNumber: displayedReadings
+                displayedNumber: displayedReadings,
+                isAnimated: isAnimated
             )
             .frame(width: 200, height: 200)
             .padding()
@@ -71,9 +74,13 @@ struct ReadingsView: View {
                 .padding()
             
             Button("Change") {
+                isAnimated = true
                 mantra.goal = Int32(actualGoalString) ?? mantra.goal
                 saveContext()
                 actualGoalString = ""
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    isAnimated = false
+                }
             }
             .buttonStyle(.borderedProminent)
             
@@ -91,11 +98,11 @@ struct ReadingsView: View {
     }
 }
 
-struct DetailsView_Previews: PreviewProvider {
+struct ReadingsView_Previews: PreviewProvider {
     static var controller = PersistenceController.preview
     
     static var previews: some View {
-        ReadingsView(controller.savedData.first!)
+        ReadingsView(mantra: controller.savedData.first!, displayedReadings: Double(controller.savedData.first!.reads))
             .environment(\.managedObjectContext, controller.container.viewContext)
     }
 }

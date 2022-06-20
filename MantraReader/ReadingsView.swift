@@ -12,7 +12,7 @@ import CoreData
 struct ReadingsView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    @State private var mantra: Mantra
+    @ObservedObject private var mantra: Mantra
     @State private var displayedReadings: Double
     @State private var actualReadingsString: String = ""
     @State private var deltaReadings: Double = 0
@@ -22,7 +22,7 @@ struct ReadingsView: View {
     @State private var timerSubscription: Cancellable?
     
     init(_ mantra: Mantra) {
-        _mantra = State(initialValue: mantra)
+        _mantra = ObservedObject(wrappedValue: mantra)
         _displayedReadings = State(initialValue: Double(mantra.reads))
     }
     
@@ -92,16 +92,10 @@ struct ReadingsView: View {
 }
 
 struct DetailsView_Previews: PreviewProvider {
-    @Environment(\.managedObjectContext)
-    static private var viewContext
-    
-    static private var newMantra: Mantra {
-        let m = Mantra(context: viewContext)
-        m.reads = Int32.random(in: 0...100)
-        return m
-    }
+    static var controller = PersistenceController.preview
     
     static var previews: some View {
-        ReadingsView(newMantra)
+        ReadingsView(controller.savedData.first!)
+            .environment(\.managedObjectContext, controller.container.viewContext)
     }
 }

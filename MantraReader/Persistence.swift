@@ -9,9 +9,20 @@ import CoreData
 
 struct PersistenceController {
     static let shared = PersistenceController()
-
+    
     let container: NSPersistentCloudKitContainer
-
+    
+    var savedData: [Mantra] {
+        var data = [Mantra]()
+        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
+        do {
+            try data = container.viewContext.fetch(request)
+        } catch {
+            print("Error getting data. \(error.localizedDescription)")
+        }
+        return data
+    }
+    
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "MantraReader")
         if inMemory {
@@ -23,6 +34,10 @@ struct PersistenceController {
             }
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
+    }
+    
+    func getData() {
+
     }
 }
 

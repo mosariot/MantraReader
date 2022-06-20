@@ -10,21 +10,23 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    
+        
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Mantra.reads, ascending: false)],
         animation: .default)
     private var mantras: FetchedResults<Mantra>
     
+    @State private var selectedMantra: Mantra.ID?
+    @State private var columnVisibility: NavigationSplitViewVisibility = .all
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(mantras) { mantra in
-                    NavigationLink {
-                        ReadingsView(mantra)
-                    } label: {
+        NavigationSplitView(columnVisibility: $columnVisibility) {
+            List(selection: $selectedMantra) {
+                ForEach(mantras, id: \.self) { mantra in
+                    NavigationLink(value: mantra.id) {
                         Text("Reads: \(mantra.reads)")
                     }
+                    .tag(mantra.id)
                 }
                 .onDelete(perform: deleteItems)
             }
@@ -40,8 +42,14 @@ struct ContentView: View {
                     }
                 }
             }
-            Text("Select a mantra")
-                .foregroundColor(.gray)
+            .navigationTitle("Mantra Reader")
+        } detail: {
+            if let selectedMantra = mantras.first(where: { $0.id == selectedMantra }) {
+                ReadingsView(selectedMantra)
+            } else {
+                Text("Select a mantra")
+                    .foregroundColor(.gray)
+            }
         }
     }
     
@@ -68,7 +76,6 @@ struct ContentView: View {
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
-
 }
 
 struct ContentView_Previews: PreviewProvider {

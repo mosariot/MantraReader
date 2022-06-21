@@ -30,7 +30,7 @@ struct CircularProgressView: View {
                 )
                 .rotationEffect(.degrees(-90))
                 .animation(
-                    isAnimated ? .easeOut(duration: 1) : .none,
+                    isAnimated ? .easeOut(duration: Constants.animationTime) : .none,
                     value: progress
                 )
             Text("\(displayedNumber, specifier: "%.0f")")

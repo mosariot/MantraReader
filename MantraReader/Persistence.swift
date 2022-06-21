@@ -12,7 +12,7 @@ struct PersistenceController {
     
     let container: NSPersistentCloudKitContainer
     
-    var savedData: [Mantra] {
+    var mantras: [Mantra] {
         var data = [Mantra]()
         let request = NSFetchRequest<Mantra>(entityName: "Mantra")
         do {

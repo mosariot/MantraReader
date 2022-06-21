@@ -9,73 +9,26 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-        
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Mantra.reads, ascending: false)],
-        animation: .default)
-    private var mantras: FetchedResults<Mantra>
-    
     @State private var selectedMantra: Mantra?
-    @State private var columnVisibility: NavigationSplitViewVisibility = .all
+    @State private var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
+    @State private var orientation = UIDevice.current.orientation
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            List(selection: $selectedMantra) {
-                ForEach(mantras) { mantra in
-                    NavigationLink(value: mantra) {
-                        Text("Reads: \(mantra.reads)")
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            .navigationTitle("Mantra Reader")
+            MantraListView(selectedMantra: $selectedMantra)
         } detail: {
-            ZStack {
-                if let selectedMantra {
-                    ReadingsView(mantra: selectedMantra, displayedReadings: Double(selectedMantra.reads))
-                } else {
-                    Text("Select a mantra")
-                        .foregroundColor(.gray)
-                }
+            DetailsView(selectedMantra: selectedMantra)
+        }
+#if os(iOS)
+        .onChange(of: selectedMantra) { _ in
+            if UIDevice.current.userInterfaceIdiom == .pad && orientation.isPortrait {
+                columnVisibility = .detailOnly
             }
         }
-    }
-    
-    private func addItem() {
-        withAnimation {
-            let newMantra = Mantra(context: viewContext)
-            newMantra.reads = Int32.random(in: 0...1000)
-            saveContext()
-        }
-    }
-    
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { mantras[$0] }.forEach(viewContext.delete)
-            saveContext()
-        }
-    }
-    
-    func saveContext() {
-        do {
-            try viewContext.save()
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
+        .detectOrientation($orientation)
+#elseif os(macOS)
+        .frame(minWidth: 600, minHeight: 450)
+#endif
     }
 }
 
@@ -84,4 +37,21 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
+}
+
+struct OrientationDetector: ViewModifier {
+  @Binding var orientation: UIDeviceOrientation
+
+  func body(content: Content) -> some View {
+    content
+      .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+        orientation = UIDevice.current.orientation
+      }
+  }
+}
+
+extension View {
+  func detectOrientation(_ binding: Binding<UIDeviceOrientation>) -> some View {
+    self.modifier(OrientationDetector(orientation: binding))
+  }
 }

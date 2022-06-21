@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class ReadsViewModel: ObservableObject {
+final class ReadsViewModel: ObservableObject {
     @Published var mantra: Mantra
     @Published var displayedReads: Double
     @Published var displayedGoal: Int32

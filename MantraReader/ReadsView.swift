@@ -11,20 +11,20 @@ struct ReadsView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @ObservedObject var viewModel: ReadsViewModel
-    @State private var actualReadingsString: String = ""
-    @State private var actualGoalString: String = ""
+    @State private var readingsString: String = ""
+    @State private var goalString: String = ""
     
     var body: some View {
         VStack {
             Spacer()
             
-            NumericTextField("Enter New Readings", text: $actualReadingsString)
+            NumericTextField("Enter New Readings", text: $readingsString)
                 .frame(width: 200)
             
             Button("Change") {
-                viewModel.animateReadsChanges(with: actualReadingsString)
+                viewModel.animateReadsChanges(with: readingsString)
                 saveContext()
-                actualReadingsString = ""
+                readingsString = ""
             }
             .buttonStyle(.borderedProminent)
             .padding()
@@ -40,14 +40,14 @@ struct ReadsView: View {
             Text("Current goal: \(viewModel.displayedGoal)")
                 .foregroundColor(.gray)
             
-            NumericTextField("Enter New Goal", text: $actualGoalString)
+            NumericTextField("Enter New Goal", text: $goalString)
                 .frame(width: 200)
                 .padding()
             
             Button("Change") {
-                viewModel.animateGoalsChanges(with: actualGoalString)
+                viewModel.animateGoalsChanges(with: goalString)
                 saveContext()
-                actualGoalString = ""
+                goalString = ""
             }
             .buttonStyle(.borderedProminent)
             

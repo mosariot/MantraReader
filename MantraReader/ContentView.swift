@@ -11,7 +11,7 @@ import CoreData
 struct ContentView: View {
     @State private var selectedMantra: Mantra?
     @State private var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
-    @State private var orientation = UIDevice.current.orientation
+    @EnvironmentObject var orientationInfo: OrientationInfo
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
@@ -21,11 +21,10 @@ struct ContentView: View {
         }
 #if os(iOS)
         .onChange(of: selectedMantra) { _ in
-            if UIDevice.current.userInterfaceIdiom == .pad && orientation.isPortrait {
+            if UIDevice.current.userInterfaceIdiom == .pad && orientationInfo.orientation == .portrait {
                 columnVisibility = .detailOnly
             }
         }
-        .detectOrientation($orientation)
 #elseif os(macOS)
         .frame(minWidth: 600, minHeight: 450)
 #endif
@@ -36,22 +35,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            .environmentObject(OrientationInfo())
     }
-}
-
-struct OrientationDetector: ViewModifier {
-  @Binding var orientation: UIDeviceOrientation
-
-  func body(content: Content) -> some View {
-    content
-      .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
-        orientation = UIDevice.current.orientation
-      }
-  }
-}
-
-extension View {
-  func detectOrientation(_ binding: Binding<UIDeviceOrientation>) -> some View {
-    self.modifier(OrientationDetector(orientation: binding))
-  }
 }

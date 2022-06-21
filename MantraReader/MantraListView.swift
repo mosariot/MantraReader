@@ -71,8 +71,10 @@ struct MantraListView_Previews: PreviewProvider {
     @State static var mantra = controller.mantras.first
     
     static var previews: some View {
-        MantraListView(selectedMantra: $mantra)
-            .environment(\.managedObjectContext, controller.container.viewContext)
+        NavigationView {
+            MantraListView(selectedMantra: $mantra)
+                .environment(\.managedObjectContext, controller.container.viewContext)
+        }
     }
 }
 

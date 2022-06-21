@@ -15,6 +15,7 @@ struct MantraReaderApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(OrientationInfo())
         }
     }
 }

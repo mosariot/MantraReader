@@ -26,6 +26,16 @@ struct MantraListView: View {
             }
             .onDelete(perform: deleteItems)
         }
+        .onAppear {
+            if let mantra = mantras.first {
+#if os(iOS)
+                if UIDevice.current.userInterfaceIdiom == .phone {
+                    return
+                }
+#endif
+                selectedMantra = mantra
+            }
+        }
         .toolbar {
 #if os(iOS)
             ToolbarItem(placement: .navigationBarLeading) {

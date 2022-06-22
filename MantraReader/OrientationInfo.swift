@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+#if os(iOS)
 final class OrientationInfo: ObservableObject {
     enum Orientation {
         case portrait
@@ -44,3 +45,4 @@ final class OrientationInfo: ObservableObject {
         }
     }
 }
+#endif

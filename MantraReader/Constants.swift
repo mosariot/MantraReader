@@ -8,6 +8,6 @@
 import Foundation
 
 enum Constants {
-    static let animationTime: Double = 5.0
+    static let animationTime: Double = 1.0
 }
 

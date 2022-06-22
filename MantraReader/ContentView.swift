@@ -9,23 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selectedMantra: Mantra?
+#if os(iOS)
     @State private var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
-    @EnvironmentObject var orientationInfo: OrientationInfo
+    @ObservedObject var orientationInfo = OrientationInfo()
+#endif
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
             MantraListView(selectedMantra: $selectedMantra)
         } detail: {
             DetailsView(selectedMantra: selectedMantra)
+                .navigationSplitViewColumnWidth(min: 400, ideal: 600)
         }
+        .frame(minHeight: 450)
 #if os(iOS)
         .onChange(of: selectedMantra) { _ in
-            if UIDevice.current.userInterfaceIdiom == .pad && orientationInfo.orientation == .portrait {
+            if (UIDevice.current.userInterfaceIdiom == .pad && orientationInfo.orientation == .portrait) ||
+                (UIDevice.current.userInterfaceIdiom == .phone && orientationInfo.orientation == .landscape) {
                 columnVisibility = .detailOnly
             }
         }
-#elseif os(macOS)
-        .frame(minWidth: 600, minHeight: 450)
 #endif
     }
 }
@@ -34,6 +37,5 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-            .environmentObject(OrientationInfo())
     }
 }

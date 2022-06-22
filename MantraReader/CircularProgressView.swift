@@ -17,20 +17,22 @@ struct CircularProgressView: View {
             Circle()
                 .stroke(
                     .gray.opacity(0.5),
-                    lineWidth: 30
+                    lineWidth: 20
                 )
             Circle()
                 .trim(from: 0, to: progress)
                 .stroke(
                     .pink,
                     style: StrokeStyle(
-                        lineWidth: 30,
+                        lineWidth: 20,
                         lineCap: .round
                     )
                 )
                 .rotationEffect(.degrees(-90))
                 .animation(
-                    isAnimated ? .easeOut(duration: Constants.animationTime) : .none,
+                    isAnimated ?
+                        Animation.easeOut(duration: Constants.animationTime) :
+                        Animation.linear(duration: 0.01),
                     value: progress
                 )
             Text("\(displayedNumber, specifier: "%.0f")")

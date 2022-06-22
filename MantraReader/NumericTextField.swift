@@ -20,12 +20,14 @@ struct NumericTextField: View {
         TextField(placeHolder, text: $text)
             .textFieldStyle(.roundedBorder)
             .onChange(of: text) { newValue in
-                let filtered = newValue.filter { "-0123456789".contains($0)}
+                let filtered = newValue.filter { "-0123456789".contains($0) }
                 if filtered != newValue {
                     text = filtered
                 }
             }
+#if os(iOS)
             .keyboardType(.numberPad)
+#endif
     }
 }
 

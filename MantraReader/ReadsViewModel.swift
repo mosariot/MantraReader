@@ -49,6 +49,7 @@ final class ReadsViewModel: ObservableObject {
     func animateGoalsChanges(with value: String) {
         isAnimated = true
         mantra.goal = Int32(value) ?? mantra.goal
+        displayedGoal = mantra.goal
         progress = Double(mantra.reads) / Double(mantra.goal)
         DispatchQueue.main.asyncAfter(deadline: .now() + Constants.animationTime) {
             self.isAnimated = false

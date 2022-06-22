@@ -68,11 +68,10 @@ struct MantraListView: View {
 
 struct MantraListView_Previews: PreviewProvider {
     static var controller = PersistenceController.preview
-    @State static var mantra = controller.mantras.first
     
     static var previews: some View {
         NavigationView {
-            MantraListView(selectedMantra: $mantra)
+            MantraListView(selectedMantra: .constant(nil))
                 .environment(\.managedObjectContext, controller.container.viewContext)
         }
     }

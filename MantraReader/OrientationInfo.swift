@@ -26,10 +26,12 @@ final class OrientationInfo: ObservableObject {
             self.orientation = .portrait
         }
         
-        _observer = NotificationCenter.default.addObserver(forName: UIDevice.orientationDidChangeNotification, object: nil, queue: nil) { [unowned self] note in
-            guard let device = note.object as? UIDevice else {
-                return
-            }
+        _observer = NotificationCenter.default.addObserver(
+            forName: UIDevice.orientationDidChangeNotification,
+            object: nil,
+            queue: nil
+        ) { [unowned self] note in
+            guard let device = note.object as? UIDevice else { return }
             if device.orientation.isPortrait {
                 self.orientation = .portrait
             }

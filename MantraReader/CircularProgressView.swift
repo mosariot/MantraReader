@@ -1,6 +1,6 @@
 //
 //  CircularProgressView.swift
-//  MantraReaderIdeas
+//  MantraReader
 //
 //  Created by Александр Воробьев on 17.06.2022.
 //
@@ -11,7 +11,7 @@ struct CircularProgressView: View {
     var progress: Double
     var displayedNumber: Double
     var displayedGoal: Double
-    var isAnimated: Bool = true
+    var isAnimated: Bool
     
     var body: some View {
         VStack {
@@ -41,15 +41,17 @@ struct CircularProgressView: View {
                 .font(.largeTitle)
                 .bold()
             }
+            .frame(maxHeight: 450)
             Text("Current goal: \(displayedGoal, specifier: "%.0f")")
             .foregroundColor(.gray)
+            .padding()
         }
     }
 }
 
 struct CircularProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        CircularProgressView(progress: 0.4, displayedNumber: 250, displayedGoal: 625)
+        CircularProgressView(progress: 0.4, displayedNumber: 250, displayedGoal: 625, isAnimated: true)
             .frame(width: 300, height: 300)
     }
 }

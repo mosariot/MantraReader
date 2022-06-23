@@ -1,6 +1,6 @@
 //
 //  NumericTextField.swift
-//  MantraReaderIdeas
+//  MantraReader
 //
 //  Created by Александр Воробьев on 17.06.2022.
 //

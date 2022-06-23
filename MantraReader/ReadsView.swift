@@ -1,6 +1,6 @@
 //
 //  ReadsView.swift
-//  MantraReaderIdeas
+//  MantraReader
 //
 //  Created by Александр Воробьев on 17.06.2022.
 //
@@ -35,7 +35,6 @@ struct ReadsView: View {
                 displayedGoal: viewModel.displayedGoal,
                 isAnimated: viewModel.isAnimated
             )
-            .frame(width: 200, height: 200)
             .padding()
             
             NumericTextField("Enter New Goal", text: $goalString)
@@ -67,7 +66,7 @@ struct ReadsView_Previews: PreviewProvider {
     static var controller = PersistenceController.preview
     
     static var previews: some View {
-        ReadsView(viewModel: ReadsViewModel(controller.mantras.first!))
+        ReadsView(viewModel: ReadsViewModel(controller.previewMantras.first!))
             .environment(\.managedObjectContext, controller.container.viewContext)
     }
 }

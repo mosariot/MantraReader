@@ -12,17 +12,6 @@ struct PersistenceController {
     
     let container: NSPersistentCloudKitContainer
     
-    var mantras: [Mantra] {
-        var data = [Mantra]()
-        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
-        do {
-            try data = container.viewContext.fetch(request)
-        } catch {
-            print("Error getting data. \(error.localizedDescription)")
-        }
-        return data
-    }
-    
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "MantraReader")
         if inMemory {
@@ -35,13 +24,21 @@ struct PersistenceController {
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
-    
-    func getData() {
-
-    }
 }
 
 extension PersistenceController {
+    
+    var previewMantras: [Mantra] {
+        var data = [Mantra]()
+        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
+        do {
+            try data = container.viewContext.fetch(request)
+        } catch {
+            print("Error getting data. \(error.localizedDescription)")
+        }
+        return data
+    }
+    
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext

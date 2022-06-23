@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MantraListView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var orientationInfo: OrientationInfo
+    @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Mantra.reads, ascending: false)],
@@ -29,11 +31,17 @@ struct MantraListView: View {
         .onAppear {
             if let mantra = mantras.first {
 #if os(iOS)
-                if UIDevice.current.userInterfaceIdiom == .phone {
+                if (UIDevice.current.userInterfaceIdiom == .phone &&
+                    orientationInfo.orientation == .portrait) ||
+                    (UIDevice.current.userInterfaceIdiom == .phone &&
+                        orientationInfo.orientation == .landscape &&
+                    !isFreshLaunch) {
+                    isFreshLaunch = false
                     return
                 }
 #endif
                 selectedMantra = mantra
+                if isFreshLaunch { isFreshLaunch = false }
             }
         }
         .toolbar {
@@ -66,7 +74,7 @@ struct MantraListView: View {
         }
     }
     
-    func saveContext() {
+    private func saveContext() {
         do {
             try viewContext.save()
         } catch {
@@ -83,6 +91,7 @@ struct MantraListView_Previews: PreviewProvider {
         NavigationView {
             MantraListView(selectedMantra: .constant(nil))
                 .environment(\.managedObjectContext, controller.container.viewContext)
+                .environmentObject(OrientationInfo())
         }
     }
 }

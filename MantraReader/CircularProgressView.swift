@@ -10,16 +10,18 @@ import SwiftUI
 struct CircularProgressView: View {
     var progress: Double
     var displayedNumber: Double
+    var displayedGoal: Double
     var isAnimated: Bool = true
     
     var body: some View {
-        ZStack {
-            Circle()
+        VStack {
+            ZStack {
+                Circle()
                 .stroke(
                     .gray.opacity(0.5),
                     lineWidth: 20
                 )
-            Circle()
+                Circle()
                 .trim(from: 0, to: progress)
                 .stroke(
                     .pink,
@@ -31,20 +33,23 @@ struct CircularProgressView: View {
                 .rotationEffect(.degrees(-90))
                 .animation(
                     isAnimated ?
-                        Animation.easeOut(duration: Constants.animationTime) :
-                        Animation.linear(duration: 0.01),
+                    Animation.easeOut(duration: Constants.animationTime) :
+                    Animation.linear(duration: 0.01),
                     value: progress
                 )
-            Text("\(displayedNumber, specifier: "%.0f")")
+                Text("\(displayedNumber, specifier: "%.0f")")
                 .font(.largeTitle)
                 .bold()
+            }
+            Text("Current goal: \(displayedGoal, specifier: "%.0f")")
+            .foregroundColor(.gray)
         }
     }
 }
 
 struct CircularProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        CircularProgressView(progress: 0.4, displayedNumber: 250)
+        CircularProgressView(progress: 0.4, displayedNumber: 250, displayedGoal: 625)
             .frame(width: 300, height: 300)
     }
 }

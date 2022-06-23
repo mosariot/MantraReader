@@ -32,13 +32,11 @@ struct ReadsView: View {
             CircularProgressView(
                 progress: viewModel.progress,
                 displayedNumber: viewModel.displayedReads,
+                displayedGoal: viewModel.displayedGoal,
                 isAnimated: viewModel.isAnimated
             )
             .frame(width: 200, height: 200)
             .padding()
-            
-            Text("Current goal: \(viewModel.displayedGoal)")
-                .foregroundColor(.gray)
             
             NumericTextField("Enter New Goal", text: $goalString)
                 .frame(width: 200)

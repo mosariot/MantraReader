@@ -69,7 +69,11 @@ struct MantraListView: View {
     private func addItem() {
         withAnimation {
             let newMantra = Mantra(context: viewContext)
-            newMantra.reads = Int32.random(in: 0...1000)
+            newMantra.uuid = UUID()
+            newMantra.reads = Int32.random(in: 0...100_000)
+            newMantra.title = "Some Mantra"
+            newMantra.text = "Some Text"
+            newMantra.details = "Some Details"
             saveContext()
         }
     }

@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct MantraReaderApp: App {
+    @AppStorage("isFirstLaunch") private var isFirstLaunch = true
+    @AppStorage("isFreshLaunch") private var isFreshLaunch = true
+    
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
@@ -16,6 +19,14 @@ struct MantraReaderApp: App {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(OrientationInfo())
+                .onAppear {
+                    if isFirstLaunch {
+                        persistenceController.preloadData()
+                        isFirstLaunch = false
+                    }
+                    isFreshLaunch = true
+                }
+            }
         }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import SwiftUI
 
 struct PersistenceController {
     static let shared = PersistenceController()
@@ -32,6 +33,7 @@ struct PersistenceController {
         PreloadedMantras.data.forEach { data in
             let mantra = Mantra(context: context)
             mantra.uuid = UUID()
+            mantra.reads = Int32.random(in: 0...100_000)
             data.forEach { key, value in
                 switch key {
                 case .title:

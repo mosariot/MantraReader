@@ -13,7 +13,7 @@ struct MantraReaderApp: App {
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     
     let persistenceController = PersistenceController.shared
-
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -21,12 +21,11 @@ struct MantraReaderApp: App {
                 .environmentObject(OrientationInfo())
                 .onAppear {
                     if isFirstLaunch {
-                        persistenceController.preloadData()
+                        persistenceController.preloadData(context: persistenceController.container.viewContext)
                         isFirstLaunch = false
                     }
                     isFreshLaunch = true
                 }
-            }
         }
     }
 }

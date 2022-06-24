@@ -26,14 +26,14 @@ final class ReadsViewModel: ObservableObject {
     init(_ mantra: Mantra) {
         self.mantra = mantra
         self.displayedReads = Double(mantra.reads)
-        self.displayedGoal = Double(mantra.goal)
-        self.progress = Double(mantra.reads) / Double(mantra.goal)
+        self.displayedGoal = Double(mantra.readsGoal)
+        self.progress = Double(mantra.reads) / Double(mantra.readsGoal)
     }
     
     func animateReadsChanges(with value: String) {
         isAnimated = true
         mantra.reads = Int32(value) ?? mantra.reads
-        progress = Double(mantra.reads) / Double(mantra.goal)
+        progress = Double(mantra.reads) / Double(mantra.readsGoal)
         deltaReads = Double(mantra.reads) - displayedReads
         timerReadsSubscription = Timer.publish(every: Constants.animationTime / 100, on: .main, in: .common)
             .autoconnect()
@@ -52,9 +52,9 @@ final class ReadsViewModel: ObservableObject {
     
     func animateGoalsChanges(with value: String) {
         isAnimated = true
-        mantra.goal = Int32(value) ?? mantra.goal
-        progress = Double(mantra.reads) / Double(mantra.goal)
-        deltaGoal = Double(mantra.goal) - displayedGoal
+        mantra.readsGoal = Int32(value) ?? mantra.readsGoal
+        progress = Double(mantra.reads) / Double(mantra.readsGoal)
+        deltaGoal = Double(mantra.readsGoal) - displayedGoal
         timerGoalSubscription = Timer.publish(every: Constants.animationTime / 100, on: .main, in: .common)
             .autoconnect()
             .sink { _ in
@@ -62,7 +62,7 @@ final class ReadsViewModel: ObservableObject {
                     self.displayedGoal += Double(self.deltaGoal) / 100.0
                     self.elapsedTimeGoal += Constants.animationTime / 100
                 } else {
-                    self.displayedGoal = Double(self.mantra.goal)
+                    self.displayedGoal = Double(self.mantra.readsGoal)
                     self.elapsedTimeGoal = 0
                     self.isAnimated = false
                     self.timerGoalSubscription?.cancel()

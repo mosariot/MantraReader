@@ -70,7 +70,7 @@ struct ReadsView_Previews: PreviewProvider {
         var mantras = [Mantra]()
         let request = NSFetchRequest<Mantra>(entityName: "Mantra")
         do {
-            try data = container.viewContext.fetch(request)
+            try mantras = container.viewContext.fetch(request)
         } catch {
             print("Error getting data. \(error.localizedDescription)")
         }
@@ -78,7 +78,7 @@ struct ReadsView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        ReadsView(viewModel: ReadsViewModel(previewMantra(controller.container)))
+        ReadsView(viewModel: ReadsViewModel(previewMantra(container: controller.container)))
             .environment(\.managedObjectContext, controller.container.viewContext)
     }
 }

@@ -22,7 +22,9 @@ struct ContentView: View {
             DetailsView(selectedMantra: selectedMantra)
                 .navigationSplitViewColumnWidth(min: 400, ideal: 600)
         }
-        .frame(minHeight: 450)
+#if os(macOS)
+        .frame(minHeight: 600)
+#endif
 #if os(iOS)
         .onChange(of: selectedMantra) { [selectedMantra] _ in
             if ((UIDevice.current.userInterfaceIdiom == .pad && orientationInfo.orientation == .portrait) ||

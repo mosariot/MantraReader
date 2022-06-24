@@ -28,8 +28,7 @@ struct PersistenceController {
         }
     }
     
-    func preloadData() {
-        let context = container.viewContext
+    func preloadData(context: NSManagedObjectContext) {
         PreloadedMantras.data.forEach { data in
             let mantra = Mantra(context: context)
             mantra.uuid = UUID()
@@ -50,7 +49,7 @@ struct PersistenceController {
             }
         }
         do {
-            try viewContext.save()
+            try context.save()
         } catch {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
@@ -59,32 +58,9 @@ struct PersistenceController {
 }
 
 extension PersistenceController {
-    
-    var previewMantras: [Mantra] {
-        var data = [Mantra]()
-        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
-        do {
-            try data = container.viewContext.fetch(request)
-        } catch {
-            print("Error getting data. \(error.localizedDescription)")
-        }
-        return data
-    }
-    
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
-        let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newMantra = Mantra(context: viewContext)
-            newMantra.reads = Int32.random(in: 0...1000)
-            newMantra.goal = 1000
-        }
-        do {
-            try viewContext.save()
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
+        result.preloadData(context: result.container.viewContext)
         return result
     }()
 }

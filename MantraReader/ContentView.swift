@@ -7,15 +7,12 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @AppStorage("isFirstLaunch") private var isFirstLaunch = true
-    @AppStorage("isFreshLaunch") private var isFreshLaunch = true
-    
+struct ContentView: View {   
     @State private var selectedMantra: Mantra?
     
 #if os(iOS)
-    @State private var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
     @EnvironmentObject var orientationInfo: OrientationInfo
+    @State private var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
 #endif
     
     var body: some View {
@@ -26,15 +23,6 @@ struct ContentView: View {
                 .navigationSplitViewColumnWidth(min: 400, ideal: 600)
         }
         .frame(minHeight: 450)
-        .onAppear {
-            if isFirstLaunch {
-                /// TODO:
-                /// onboarding
-                /// checking for iCloud
-                /// preloading mantras
-                isFirstLaunch = false }
-            isFreshLaunch = true
-        }
 #if os(iOS)
         .onChange(of: selectedMantra) { [selectedMantra] _ in
             if ((UIDevice.current.userInterfaceIdiom == .pad && orientationInfo.orientation == .portrait) ||

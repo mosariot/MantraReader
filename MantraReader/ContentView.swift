@@ -17,9 +17,9 @@ struct ContentView: View {
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            MantraListView(selectedMantra: $selectedMantra)
+            MantraListColumn(selectedMantra: $selectedMantra)
         } detail: {
-            DetailsView(selectedMantra: selectedMantra)
+            DetailsColumn(selectedMantra: selectedMantra)
                 .navigationSplitViewColumnWidth(min: 400, ideal: 600)
         }
 #if os(macOS)

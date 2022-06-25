@@ -1,5 +1,5 @@
 //
-//  MantraListView.swift
+//  MantraListColumn.swift
 //  MantraReader
 //
 //  Created by Александр Воробьев on 21.06.2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MantraListView: View {
+struct MantraListColumn: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var orientationInfo: OrientationInfo
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
@@ -93,7 +93,7 @@ struct MantraListView_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationView {
-            MantraListView(selectedMantra: .constant(nil))
+            MantraListColumn(selectedMantra: .constant(nil))
                 .environment(\.managedObjectContext, controller.container.viewContext)
                 .environmentObject(OrientationInfo())
         }

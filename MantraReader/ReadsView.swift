@@ -66,11 +66,11 @@ import CoreData
 
 struct ReadsView_Previews: PreviewProvider {
     static var controller = PersistenceController.preview
-    static func previewMantra(container: NSPersistentCloudKitContainer) -> Mantra {
+    static func previewMantra(viewContext: NSManagedObjectContext) -> Mantra {
         var mantras = [Mantra]()
         let request = NSFetchRequest<Mantra>(entityName: "Mantra")
         do {
-            try mantras = container.viewContext.fetch(request)
+            try mantras = viewContext.fetch(request)
         } catch {
             print("Error getting data. \(error.localizedDescription)")
         }
@@ -78,7 +78,7 @@ struct ReadsView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        ReadsView(viewModel: ReadsViewModel(previewMantra(container: controller.container)))
+        ReadsView(viewModel: ReadsViewModel(previewMantra(viewContext: controller.container.viewContext)))
             .environment(\.managedObjectContext, controller.container.viewContext)
     }
 }

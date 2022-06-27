@@ -9,11 +9,12 @@ import SwiftUI
 
 struct MantraListColumn: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var orientationInfo: OrientationInfo
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Mantra.reads, ascending: false)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Mantra.title, ascending: true)],
         animation: .default)
     private var mantras: FetchedResults<Mantra>
     
@@ -23,7 +24,23 @@ struct MantraListColumn: View {
         List(selection: $selectedMantra) {
             ForEach(mantras) { mantra in
                 NavigationLink(value: mantra) {
-                    Text("Reads: \(mantra.reads)")
+                    HStack {
+                        Image(uiImage: image(for: mantra))
+                            .resizable()
+                            .aspectRatio(1, contentMode: .fit)
+                            .frame(width: CGFloat(Constants.rowHeight))
+                        VStack(alignment: .leading) {
+                            Text(mantra.title!)
+                            Text("Current reads: \(mantra.reads)")
+                                .font(.caption)
+                                .opacity(0.5)
+                        }
+                        Spacer()
+                        if mantra.reads >= mantra.readsGoal {
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundColor(.green)
+                        }
+                    }
                 }
             }
             .onDelete(perform: deleteItems)
@@ -57,6 +74,16 @@ struct MantraListColumn: View {
             }
         }
         .navigationTitle("Mantra Reader")
+    }
+    
+    private func image(for mantra: Mantra) -> UIImage {
+        if let imageData = mantra.imageForTableView {
+            return UIImage(data: imageData)!
+        } else {
+            return UIImage(named: Constants.defaultImage)!.resize(
+                to: CGSize(width: Constants.rowHeight,
+                           height: Constants.rowHeight))
+        }
     }
     
     private func deleteItems(offsets: IndexSet) {

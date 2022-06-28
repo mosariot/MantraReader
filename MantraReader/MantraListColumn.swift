@@ -14,9 +14,15 @@ enum Sorting: String, Codable {
 
 struct MantraListColumn: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @EnvironmentObject var orientationInfo: OrientationInfo
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("sorting") private var sorting: Sorting = .title
+    
+#if os(iOS)
+    @EnvironmentObject var orientationInfo: OrientationInfo
+    private var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
+    private var isPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }
+    private var isLandscape: Bool { orientationInfo.orientation == .landscape }
+#endif
     
     @FetchRequest(sortDescriptors: [sortDescriptor], animation: .default)
     private var mantras: FetchedResults<Mantra>
@@ -56,10 +62,7 @@ struct MantraListColumn: View {
         .onAppear {
             if let mantra = mantras.first {
 #if os(iOS)
-                if (UIDevice.current.userInterface == .pad
-                    || (UIDevice.current.userInterfaceIdiom == .phone &&
-                     orientationInfo.orientation == .landscape))
-                && isFreshLaunch {
+                if (isPad || (isPhone && isLandscape)) && isFreshLaunch {
                     selectedMantra = mantra
                     isFreshLaunch = false
                 }

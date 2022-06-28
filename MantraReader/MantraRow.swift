@@ -9,8 +9,8 @@ import SwiftUI
 
 struct MantraRow: View {
     
-    var mantra: Mantra
-    let selectedMantra: Mantra?
+    @ObservedObject var mantra: Mantra
+    let isSelected: Bool
     
     var body: some View {
         HStack {
@@ -22,7 +22,7 @@ struct MantraRow: View {
                 Text(mantra.title!)
                 Text("Current reads: \(mantra.reads)")
                     .font(.caption)
-                    .opacity(mantra === selectedMantra ? 1 : 0.5)
+                    .opacity(isSelected ? 1 : 0.5)
             }
             Spacer()
             if mantra.reads >= mantra.readsGoal {
@@ -55,11 +55,13 @@ struct MantraRow_Previews: PreviewProvider {
         } catch {
             print("Error getting data. \(error.localizedDescription)")
         }
-        return mantras.first!
+        return mantras[Int.random(in: 0...mantras.count-1)]
     }
     
     static var previews: some View {
         MantraRow(mantra: previewMantra(viewContext: controller.container.viewContext), selectedMantra: previewMantra(viewContext: controller.container.viewContext))
-            .frame(width: 400, height: 55)
+            .previewLayout(.fixed(width: 400, height: 55))
+            .padding()
+            .previewDisplayName("Mantra Row")
     }
 }

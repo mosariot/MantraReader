@@ -7,17 +7,29 @@
 
 import SwiftUI
 
+enum Sorting: String, Codable {
+    case title
+    case reads
+}
+
 struct MantraListColumn: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var orientationInfo: OrientationInfo
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
+    @AppStorage("sorting") private var sorting: Sorting = .title
     
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Mantra.title, ascending: true)],
-        animation: .default)
+    @FetchRequest(sortDescriptors: [sortDescriptor], animation: .default)
     private var mantras: FetchedResults<Mantra>
     
+    var sortDescriptor: NSSortDescriptor {
+        switch sorting {
+            case .title:
+            return NSSortDescriptor(keyPath: \Mantra.title, ascending: true)
+            case .reads:
+            return NSSortDescriptor(keyPath: \Mantra.reads, ascending: false)
+        }
+    }
     @Binding var selectedMantra: Mantra?
     
     var body: some View {
@@ -65,6 +77,17 @@ struct MantraListColumn: View {
                 EditButton()
             }
 #endif
+            ToolbarItem {
+                Menu {
+                    Picker(selection: $sorting, label: Text("Sorting options")) {
+                        Label("Alphabetically", systemImage: "textformat").tag(Sorting.title)
+                        Label("By readings count", systemImage: "textformat.123").tag(Sorting.reads)
+                    }
+                }
+                label: {
+                    Label("Sorting", systemImage: "line.horizontal.3.decrease.circle")
+                }
+            }
             ToolbarItem {
                 Button(action: addItem) {
                     Label("Add Item", systemImage: "plus")

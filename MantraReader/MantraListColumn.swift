@@ -24,15 +24,15 @@ struct MantraListColumn: View {
     private var isLandscape: Bool { orientationInfo.orientation == .landscape }
 #endif
     
-    @FetchRequest(sortDescriptors: [sortDescriptor], animation: .default)
+    @FetchRequest(sortDescriptors: [SortDescriptor(\Mantra.title, order: .forward)], animation: .default)
     private var mantras: FetchedResults<Mantra>
     
-    private var sortDescriptor: SortDescriptor {
-        switch sorting {
-            case .title: return SortDescriptor(\.title, order: .forward)
-            case .reads: return SortDescriptor(\.reads, order: .reverse)
-        }
-    }
+//    private var sortDescriptor: SortDescriptor<Mantra> {
+//        switch sorting {
+//            case .title: return SortDescriptor(\.title, order: .forward)
+//            case .reads: return SortDescriptor(\.reads, order: .reverse)
+//        }
+//    }
     @Binding var selectedMantra: Mantra?
     @State private var isPresentingPresetMantraView = false
     
@@ -95,7 +95,7 @@ struct MantraListColumn: View {
                     Button(action: addItem) {
                         Label("New Mantra", systemImage: "square.and.pencil")
                     }
-                    Button(action: isPresentingPresetMantraView = true) {
+                    Button(action: empty) {
                         Label("Preset Mantra", systemImage: "books.vertical")
                     }
                 } label: {
@@ -104,6 +104,10 @@ struct MantraListColumn: View {
             }
         }
         .navigationTitle("Mantra Reader")
+    }
+    
+    private func empty() {
+        
     }
     
     private func deleteItems(offsets: IndexSet) {
@@ -122,7 +126,7 @@ struct MantraListColumn: View {
         withAnimation {
             let newMantra = Mantra(context: viewContext)
             newMantra.uuid = UUID()
-            mantra.isFavorite = Bool.random()
+            newMantra.isFavorite = Bool.random()
             newMantra.reads = Int32.random(in: 0...100_000)
             newMantra.title = "Some Mantra"
             newMantra.text = "Some Text"

@@ -74,7 +74,7 @@ struct ReadsView_Previews: PreviewProvider {
         } catch {
             print("Error getting data. \(error.localizedDescription)")
         }
-        return mantras.[Int.random(in: 0...count-1)]
+        return mantras[Int.random(in: 0...mantras.count-1)]
     }
     
     static var previews: some View {

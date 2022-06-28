@@ -19,7 +19,7 @@ struct MantraRow: View {
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: CGFloat(Constants.rowHeight))
             VStack(alignment: .leading) {
-                Text("\(mantra.title)")
+                Text(mantra.title ?? "")
                 Text("Current reads: \(mantra.reads)")
                     .font(.caption)
                     .opacity(isSelected ? 1 : 0.5)
@@ -33,15 +33,13 @@ struct MantraRow: View {
     }
     
     private func image(for mantra: Mantra) -> UIImage {
-        if let image = UIImage(data: mantra.imageForTableView) {
+        if let data = mantra.imageForTableView, let image = UIImage(data: data) {
             return image
         } else {
-            if let defaultImage = UIImage(named: Constants.defaultImage) {
-                return defaultImage.resize(
+            return UIImage(named: Constants.defaultImage)!
+                .resize(
                     to: CGSize(width: Constants.rowHeight,
-                    height: Constants.rowHeight))
-            } else {
-                return Image(systemName: "person")
+                               height: Constants.rowHeight))
         }
     }
 }
@@ -62,7 +60,10 @@ struct MantraRow_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        MantraRow(mantra: previewMantra(viewContext: controller.container.viewContext), selectedMantra: previewMantra(viewContext: controller.container.viewContext))
+        MantraRow(
+            mantra: previewMantra(viewContext: controller.container.viewContext),
+            isSelected: false
+        )
             .previewLayout(.fixed(width: 400, height: 55))
             .padding()
             .previewDisplayName("Mantra Row")

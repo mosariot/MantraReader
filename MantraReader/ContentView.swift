@@ -13,6 +13,10 @@ struct ContentView: View {
 #if os(iOS)
     @EnvironmentObject var orientationInfo: OrientationInfo
     @State private var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
+    private var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
+    private var isPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }
+    private var isLandscape: Bool { orientationInfo.orientation == .landscape }
+    private var isPortrait: Bool { orientationInfo.orientation == .portrait }
 #endif
     
     var body: some View {
@@ -27,9 +31,13 @@ struct ContentView: View {
 #endif
 #if os(iOS)
         .onChange(of: selectedMantra) { [selectedMantra] _ in
-            if ((UIDevice.current.userInterfaceIdiom == .pad && orientationInfo.orientation == .portrait) ||
-                (UIDevice.current.userInterfaceIdiom == .phone && orientationInfo.orientation == .landscape)) && selectedMantra != nil {
+            if ((isPad && isPortrait) || (isPhone && isLandscape)) && selectedMantra != nil {
                 columnVisibility = .detailOnly
+            }
+        }
+        .onChange(of: orientationInfo.orientation) { _ in
+            if isPad && isPortrait {
+                columnVisibility = .doubleColumn
             }
         }
 #endif

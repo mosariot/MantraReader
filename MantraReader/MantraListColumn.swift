@@ -22,13 +22,27 @@ struct MantraListColumn: View {
     
     var body: some View {
         List(selection: $selectedMantra) {
-            ForEach(mantras) { mantra in
-                NavigationLink(value: mantra) {
-                    MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
+            Section(header: Text("Favorites")) {
+                ForEach(mantras.filter { $0.isFavorite } ) { mantra in
+                    NavigationLink(value: mantra) {
+                        MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
+                    }
                 }
+                .onDelete(perform: deleteItems)
             }
-            .onDelete(perform: deleteItems)
+            .headerProminence(.increased)
+                
+            Section(header: Text("Other Mantras")) {
+                ForEach(mantras.filter { !$0.isFavorite } ) { mantra in
+                    NavigationLink(value: mantra) {
+                        MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
+                    }
+                }
+                .onDelete(perform: deleteItems)
+            }
+            .headerProminence(.increased)
         }
+        .listStyle(.insetGrouped)
         .onAppear {
             if let mantra = mantras.first {
 #if os(iOS)

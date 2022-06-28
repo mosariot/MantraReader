@@ -14,7 +14,6 @@ enum Sorting: String, Codable {
 
 struct MantraListColumn: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var orientationInfo: OrientationInfo
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("sorting") private var sorting: Sorting = .title
@@ -22,7 +21,7 @@ struct MantraListColumn: View {
     @FetchRequest(sortDescriptors: [sortDescriptor], animation: .default)
     private var mantras: FetchedResults<Mantra>
     
-    var sortDescriptor: NSSortDescriptor {
+    private var sortDescriptor: NSSortDescriptor {
         switch sorting {
             case .title:
             return NSSortDescriptor(keyPath: \Mantra.title, ascending: true)
@@ -31,6 +30,7 @@ struct MantraListColumn: View {
         }
     }
     @Binding var selectedMantra: Mantra?
+    @State private var isPresentingPresetMantraList = false
     
     var body: some View {
         List(selection: $selectedMantra) {
@@ -83,14 +83,20 @@ struct MantraListColumn: View {
                         Label("Alphabetically", systemImage: "textformat").tag(Sorting.title)
                         Label("By readings count", systemImage: "textformat.123").tag(Sorting.reads)
                     }
-                }
-                label: {
+                } label: {
                     Label("Sorting", systemImage: "line.horizontal.3.decrease.circle")
                 }
             }
             ToolbarItem {
-                Button(action: addItem) {
-                    Label("Add Item", systemImage: "plus")
+                Menu {
+                    Button(action: addItem) {
+                        Label("New Mantra", systemImage: "square.and.pencil")
+                    }
+                    Button(action: isPresentingPresetMantraView = true) {
+                        Label("Preset Mantra", systemImage: "books.vertical")
+                    }
+                } label: {
+                    Label("Adding", systemImage: "plus")
                 }
             }
         }
@@ -108,6 +114,7 @@ struct MantraListColumn: View {
         withAnimation {
             let newMantra = Mantra(context: viewContext)
             newMantra.uuid = UUID()
+            mantra.isFavorite = Bool.random()
             newMantra.reads = Int32.random(in: 0...100_000)
             newMantra.title = "Some Mantra"
             newMantra.text = "Some Text"
@@ -137,5 +144,3 @@ struct MantraListView_Previews: PreviewProvider {
         }
     }
 }
-
-

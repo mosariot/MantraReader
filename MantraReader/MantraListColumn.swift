@@ -33,7 +33,7 @@ struct MantraListColumn: View {
                             Text(mantra.title!)
                             Text("Current reads: \(mantra.reads)")
                                 .font(.caption)
-                                .opacity(0.5)
+                                .opacity(mantra === selectedMantra ? 1 : 0.5)
                         }
                         Spacer()
                         if mantra.reads >= mantra.readsGoal {

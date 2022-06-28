@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9F78728E2865FDA400F52335 /* UIImage+ResizeUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F78728D2865FDA400F52335 /* UIImage+ResizeUIImage.swift */; };
+		9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B1AE3286AB09A007720A0 /* MantraRow.swift */; };
 		9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */; };
 		9FBEE99A285F682C0070BA06 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE999285F682C0070BA06 /* Persistence.swift */; };
 		9FBEE99D285F682C0070BA06 /* MantraReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE99B285F682C0070BA06 /* MantraReader.xcdatamodeld */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		9F78728D2865FDA400F52335 /* UIImage+ResizeUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ResizeUIImage.swift"; sourceTree = "<group>"; };
+		9F7B1AE3286AB09A007720A0 /* MantraRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraRow.swift; sourceTree = "<group>"; };
 		9FBEE994285F682C0070BA06 /* MantraReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MantraReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraReaderApp.swift; sourceTree = "<group>"; };
 		9FBEE999285F682C0070BA06 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -82,10 +84,11 @@
 				9FBEE999285F682C0070BA06 /* Persistence.swift */,
 				9FBEE99E285F682C0070BA06 /* ContentView.swift */,
 				9FDC8DA72862203800BF7051 /* MantraListColumn.swift */,
+				9F7B1AE3286AB09A007720A0 /* MantraRow.swift */,
+				9FDC8DAB28622AEC00BF7051 /* DetailsColumn.swift */,
 				9FBEE9AB285F68CE0070BA06 /* ReadsView.swift */,
 				9FDC8DA9286222C700BF7051 /* ReadsViewModel.swift */,
 				9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */,
-				9FDC8DAB28622AEC00BF7051 /* DetailsColumn.swift */,
 				9FBEE9AC285F68CE0070BA06 /* NumericTextField.swift */,
 				9FDC8DAF28623D5F00BF7051 /* OrientationInfo.swift */,
 				9F78728D2865FDA400F52335 /* UIImage+ResizeUIImage.swift */,
@@ -181,6 +184,7 @@
 				9FDC8DAA286222C700BF7051 /* ReadsViewModel.swift in Sources */,
 				9FDC8DA82862203800BF7051 /* MantraListColumn.swift in Sources */,
 				9FF7C3952864C16200DA5F51 /* PreloadedMantras.swift in Sources */,
+				9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */,
 				9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */,
 				9F78728E2865FDA400F52335 /* UIImage+ResizeUIImage.swift in Sources */,
 				9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */,

@@ -24,23 +24,7 @@ struct MantraListColumn: View {
         List(selection: $selectedMantra) {
             ForEach(mantras) { mantra in
                 NavigationLink(value: mantra) {
-                    HStack {
-                        Image(uiImage: image(for: mantra))
-                            .resizable()
-                            .aspectRatio(1, contentMode: .fit)
-                            .frame(width: CGFloat(Constants.rowHeight))
-                        VStack(alignment: .leading) {
-                            Text(mantra.title!)
-                            Text("Current reads: \(mantra.reads)")
-                                .font(.caption)
-                                .opacity(mantra === selectedMantra ? 1 : 0.5)
-                        }
-                        Spacer()
-                        if mantra.reads >= mantra.readsGoal {
-                            Image(systemName: "checkmark.circle.fill")
-                                .foregroundColor(.green)
-                        }
-                    }
+                    MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
                 }
             }
             .onDelete(perform: deleteItems)
@@ -74,16 +58,6 @@ struct MantraListColumn: View {
             }
         }
         .navigationTitle("Mantra Reader")
-    }
-    
-    private func image(for mantra: Mantra) -> UIImage {
-        if let imageData = mantra.imageForTableView {
-            return UIImage(data: imageData)!
-        } else {
-            return UIImage(named: Constants.defaultImage)!.resize(
-                to: CGSize(width: Constants.rowHeight,
-                           height: Constants.rowHeight))
-        }
     }
     
     private func deleteItems(offsets: IndexSet) {

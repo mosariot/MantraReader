@@ -105,7 +105,12 @@ struct MantraListColumn: View {
     
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { mantras[$0] }.forEach(viewContext.delete)
+            offsets.map { mantras[$0] }.forEach {
+                if $0 === selectedMantra {
+                    selectedMantra = nil
+                }
+                viewContext.delete($0)
+            }
             saveContext()
         }
     }

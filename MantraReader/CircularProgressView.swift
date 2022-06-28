@@ -52,6 +52,8 @@ struct CircularProgressView: View {
 struct CircularProgressView_Previews: PreviewProvider {
     static var previews: some View {
         CircularProgressView(progress: 0.4, displayedNumber: 250, displayedGoal: 625, isAnimated: true)
-            .frame(width: 300, height: 300)
+            .previewLayout(.fixed(width: 300, height: 300))
+            .padding()
+            .previewDisplayName("Circular Progress View")
     }
 }

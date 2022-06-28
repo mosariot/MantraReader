@@ -36,6 +36,7 @@ struct PersistenceController {
             let mantra = Mantra(context: context)
             mantra.uuid = UUID()
             mantra.reads = Int32.random(in: 0...200_000)
+            mantra.isFavorite = Bool.random()
             data.forEach { key, value in
                 switch key {
                 case .title:

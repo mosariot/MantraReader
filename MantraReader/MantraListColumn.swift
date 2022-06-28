@@ -21,16 +21,14 @@ struct MantraListColumn: View {
     @FetchRequest(sortDescriptors: [sortDescriptor], animation: .default)
     private var mantras: FetchedResults<Mantra>
     
-    private var sortDescriptor: NSSortDescriptor {
+    private var sortDescriptor: SortDescriptor {
         switch sorting {
-            case .title:
-            return NSSortDescriptor(keyPath: \Mantra.title, ascending: true)
-            case .reads:
-            return NSSortDescriptor(keyPath: \Mantra.reads, ascending: false)
+            case .title: return SortDescriptor(\.title, order: .forward)
+            case .reads: return SortDescriptor(\.reads, order: .reverse)
         }
     }
     @Binding var selectedMantra: Mantra?
-    @State private var isPresentingPresetMantraList = false
+    @State private var isPresentingPresetMantraView = false
     
     var body: some View {
         List(selection: $selectedMantra) {
@@ -58,17 +56,19 @@ struct MantraListColumn: View {
         .onAppear {
             if let mantra = mantras.first {
 #if os(iOS)
-                if (UIDevice.current.userInterfaceIdiom == .phone &&
-                    orientationInfo.orientation == .portrait) ||
-                    (UIDevice.current.userInterfaceIdiom == .phone &&
-                        orientationInfo.orientation == .landscape &&
-                    !isFreshLaunch) {
+                if (UIDevice.current.userInterface == .pad
+                    || (UIDevice.current.userInterfaceIdiom == .phone &&
+                     orientationInfo.orientation == .landscape))
+                && isFreshLaunch {
+                    selectedMantra = mantra
                     isFreshLaunch = false
-                    return
+                }
+#elseif os(macOS)
+                if isFreshLaunch {
+                    selectedMantra = mantra
+                    isFreshLaunch = false
                 }
 #endif
-                selectedMantra = mantra
-                if isFreshLaunch { isFreshLaunch = false }
             }
         }
         .toolbar {

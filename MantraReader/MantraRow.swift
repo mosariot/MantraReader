@@ -19,7 +19,7 @@ struct MantraRow: View {
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: CGFloat(Constants.rowHeight))
             VStack(alignment: .leading) {
-                Text(mantra.title!)
+                Text("\(mantra.title)")
                 Text("Current reads: \(mantra.reads)")
                     .font(.caption)
                     .opacity(isSelected ? 1 : 0.5)
@@ -33,12 +33,15 @@ struct MantraRow: View {
     }
     
     private func image(for mantra: Mantra) -> UIImage {
-        if let imageData = mantra.imageForTableView {
-            return UIImage(data: imageData)!
+        if let image = UIImage(data: mantra.imageForTableView) {
+            return image
         } else {
-            return UIImage(named: Constants.defaultImage)!.resize(
-                to: CGSize(width: Constants.rowHeight,
-                           height: Constants.rowHeight))
+            if let defaultImage = UIImage(named: Constants.defaultImage) {
+                return defaultImage.resize(
+                    to: CGSize(width: Constants.rowHeight,
+                    height: Constants.rowHeight))
+            } else {
+                return Image(systemName: "person")
         }
     }
 }

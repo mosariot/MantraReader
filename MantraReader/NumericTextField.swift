@@ -34,6 +34,8 @@ struct NumericTextField: View {
 struct NumericTextField_Previews: PreviewProvider {
     static var previews: some View {
         NumericTextField("Enter Some Value", text: .constant(""))
-            .frame(width: 200)
+            .previewLayout(.fixed(width: 200))
+            .padding()
+            .previewDisplayName("Numeric TextField")
     }
 }

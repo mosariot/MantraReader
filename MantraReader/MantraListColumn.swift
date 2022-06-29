@@ -17,6 +17,10 @@ struct MantraListColumn: View {
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("sorting") private var sorting: Sorting = .title
     
+    @FetchRequest(sortDescriptors: [], animation: .default) private var mantras: FetchedResults<Mantra>
+    @State private var isPresentingPresetMantraView = false
+    @Binding var selectedMantra: Mantra?
+    
 #if os(iOS)
     @EnvironmentObject var orientationInfo: OrientationInfo
     private var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
@@ -24,17 +28,10 @@ struct MantraListColumn: View {
     private var isLandscape: Bool { orientationInfo.orientation == .landscape }
 #endif
     
-    @FetchRequest(sortDescriptors: [SortDescriptor(\Mantra.title, order: .forward)], animation: .default)
-    private var mantras: FetchedResults<Mantra>
-    
-//    private var sortDescriptor: SortDescriptor<Mantra> {
-//        switch sorting {
-//            case .title: return SortDescriptor(\.title, order: .forward)
-//            case .reads: return SortDescriptor(\.reads, order: .reverse)
-//        }
-//    }
-    @Binding var selectedMantra: Mantra?
-    @State private var isPresentingPresetMantraView = false
+    init(selectedMantra: Binding<Mantra?>, sorting: Sorting) {
+        _selectedMantra = selectedMantra
+        sort(with: sorting)
+    }
     
     var body: some View {
         List(selection: $selectedMantra) {
@@ -95,7 +92,9 @@ struct MantraListColumn: View {
                     Button(action: addItem) {
                         Label("New Mantra", systemImage: "square.and.pencil")
                     }
-                    Button(action: empty) {
+                    Button {
+                        isPresentingPresetMantraView = true
+                    } label: {
                         Label("Preset Mantra", systemImage: "books.vertical")
                     }
                 } label: {
@@ -103,11 +102,15 @@ struct MantraListColumn: View {
                 }
             }
         }
+        .onChange(of: sorting) { newValue in sort(with: newValue) }
         .navigationTitle("Mantra Reader")
     }
     
-    private func empty() {
-        
+    private func sort(with: Sorting) {
+        switch sorting {
+                case .title: mantras.sortDescriptors = [SortDescriptor(\Mantra.title, order: .forward)]
+                case .reads: mantras.sortDescriptors = [SortDescriptor(\Mantra.reads, order: .forward)]
+            }
     }
     
     private func deleteItems(offsets: IndexSet) {

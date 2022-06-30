@@ -14,8 +14,8 @@ enum Sorting: String, Codable {
 
 struct MantraListColumn: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @AppStorage("sorting") private var sorting: Sorting = .title
-    @AppStorage("isFreshLaunch") private var isFreshLaunch = true
+    @SceneStorage("sorting") private var sorting: Sorting = .title
+    @SceneStorage("isFreshLaunch") private var isFreshLaunch = true
     @FetchRequest(sortDescriptors: [], animation: .default) private var mantras: FetchedResults<Mantra>
     @Binding var selectedMantra: Mantra?
     @State private var searchText = ""

@@ -74,6 +74,11 @@ struct MantraListColumn: View {
                         Button(role: .destructive, action: delete(mantra)) {
                             Label("Delete", systemImage: "trash")
                         }
+                        Button {
+                            mantra.isFavorite.toggle()
+                        } label: {
+                            Label("Favorite", systemImage: mantra.isFavorite ? "star.slash" : "star")
+                        }
                     }
                 }
             }

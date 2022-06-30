@@ -22,16 +22,14 @@ struct MantraListColumn: View {
     @State private var isPresentingPresetMantraView = false
     
     private var sortedMantras: [Mantra] {
-        withAnimation {
-            switch sorting {
-            case .title: return mantras.sorted { $0.title < $1.title }
-            case .reads: return mantras.sorted { $0.title > $1.reads }
-            }
+        switch sorting {
+        case .title: return mantras.sorted { $0.title! < $1.title! }
+        case .reads: return mantras.sorted { $0.reads > $1.reads }
         }
     }
     
     private var sortedSearchedMantras: [Mantra] {
-        searchText.isEmpty ? sortedMantras : sortedMantras.filter { $0.title.contains(searchText) }
+        searchText.isEmpty ? sortedMantras : sortedMantras.filter { $0.title!.contains(searchText) }
     }
     
     private var favoriteMantras: [Mantra] {
@@ -55,64 +53,90 @@ struct MantraListColumn: View {
                 ForEach(favoriteMantras) { mantra in
                     NavigationLink(value: mantra) {
                         MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
-                        .contextMenu {
-                            Button {
-                                mantra.isFavorite.toggle()
-                            } label: {
-                                Label("Unfavorite", systemImage: "star.slash")
+                            .contextMenu {
+                                Button {
+                                    afterDelay(0.3) {
+                                        mantra.isFavorite.toggle()
+                                        saveContext()
+                                    }
+                                } label: {
+                                    Label("Unfavorite", systemImage: "star.slash")
+                                }
+                                Button(role: .destructive) {
+                                    delete(mantra)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
                             }
-                            Button(role: .destructive, action: delete(mantra)) {
-                                Label("Delete", systemImage: "trash")
-                            }
-                        }
                     }
-                    .swipeActions(edge: .trailing) {
-                        Button(role: .destructive, action: delete(mantra)) {
+                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                        Button(role: .destructive) {
+                            delete(mantra)
+                        } label: {
                             Label("Delete", systemImage: "trash")
                         }
                         Button {
                             mantra.isFavorite.toggle()
+                            saveContext()
                         } label: {
                             Label("Favorite", systemImage: "star.slash")
                         }
+                        .tint(.indigo)
                     }
+                }
+                .onDelete { indexSet in
+                    delete(in: favoriteMantras, with: indexSet)
                 }
             }
             .headerProminence(.increased)
-                
+            
             Section(header: Text("Other Mantras")) {
                 ForEach(otherMantras) { mantra in
                     NavigationLink(value: mantra) {
                         MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
-                        .contextMenu {
-                            Button {
-                                mantra.isFavorite.toggle()
-                            } label: {
-                                Label("Favorite", systemImage: "star")
+                            .contextMenu {
+                                Button {
+                                    afterDelay(0.3) {
+                                        mantra.isFavorite.toggle()
+                                        saveContext()
+                                    }
+                                } label: {
+                                    Label("Favorite", systemImage: "star")
+                                }
+                                Button(role: .destructive) {
+                                    delete(mantra)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
                             }
-                            Button(role: .destructive, action: delete(mantra)) {
-                                Label("Delete", systemImage: "trash")
-                            }
-                        }                        
                     }
-                    .swipeActions(edge: .trailing) {
-                        Button(role: .destructive, action: delete(mantra)) {
+                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                        Button(role: .destructive) {
+                            delete(mantra)
+                        } label: {
                             Label("Delete", systemImage: "trash")
                         }
                         Button {
                             mantra.isFavorite.toggle()
+                            saveContext()
                         } label: {
                             Label("Favorite", systemImage: "star")
                         }
+                        .tint(.indigo)
                     }
+                }
+                .onDelete { indexSet in
+                    delete(in: favoriteMantras, with: indexSet)
                 }
             }
             .headerProminence(.increased)
         }
+        .animation(.default, value: sorting)
+        .animation(.default, value: searchText)
         .searchable(text: $searchText, prompt: "Search")
         .listStyle(.insetGrouped)
         .onAppear {
-            if let mantra = mantras.first {
+            if let mantra = favoriteMantras.first {
 #if os(iOS)
                 if (isPad || (isPhone && isLandscape)) && isFreshLaunch {
                     selectedMantra = mantra
@@ -164,6 +188,18 @@ struct MantraListColumn: View {
         withAnimation {
             if mantra === selectedMantra { selectedMantra = nil }
             viewContext.delete(mantra)
+            saveContext()
+        }
+    }
+    
+    private func delete(in mantras: [Mantra], with offsets: IndexSet) {
+        withAnimation {
+            offsets.map { mantras[$0] }.forEach {
+                if $0 === selectedMantra {
+                    selectedMantra = nil
+                }
+                viewContext.delete($0)
+            }
             saveContext()
         }
     }

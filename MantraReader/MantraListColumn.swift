@@ -14,19 +14,32 @@ enum Sorting: String, Codable {
 
 struct MantraListColumn: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @AppStorage("sorting") static private var sorting: Sorting = .title
+    @AppStorage("sorting") private var sorting: Sorting = .title
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
-    
-    @FetchRequest(sortDescriptors: [sortDescriptor], animation: .default)
-    private var mantras: FetchedResults<Mantra>
-    @State private var isPresentingPresetMantraView = false
+    @FetchRequest(sortDescriptors: [], animation: .default) private var mantras: FetchedResults<Mantra>
     @Binding var selectedMantra: Mantra?
-        
-    static private var sortDescriptor: SortDescriptor<Mantra> {
-        switch sorting {
-        case .title: return [SortDescriptor(\.title, order: .forward)]
-        case .reads: return [SortDescriptor(\.reads, order: .forward)]
+    @State private var searchText = ""
+    @State private var isPresentingPresetMantraView = false
+    
+    private var sortedMantras: [Mantra] {
+        withAnimation {
+            switch sorting {
+            case .title: return mantras.sorted { $0.title < $1.title }
+            case .reads: return mantras.sorted { $0.title > $1.reads }
+            }
         }
+    }
+    
+    private var sortedSearchedMantras: [Mantra] {
+        searchText.isEmpty ? sortedMantras : sortedMantras.filter { $0.title.contains(searchText) }
+    }
+    
+    private var favoriteMantras: [Mantra] {
+        sortedSearchedMantras.filter { $0.isFavorite }
+    }
+    
+    private var otherMantras: [Mantra] {
+        sortedSearchedMantras.filter { !$0.isFavorite }
     }
     
 #if os(iOS)
@@ -39,25 +52,34 @@ struct MantraListColumn: View {
     var body: some View {
         List(selection: $selectedMantra) {
             Section(header: Text("Favorites")) {
-                ForEach(mantras.filter { $0.isFavorite } ) { mantra in
+                ForEach(favoriteMantras) { mantra in
                     NavigationLink(value: mantra) {
                         MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
                     }
+                    .swipeActions(edge: .trailing) {
+                        Button(role: .destructive, action: delete(mantra)) {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
                 }
-                .onDelete(perform: deleteItems)
             }
             .headerProminence(.increased)
                 
             Section(header: Text("Other Mantras")) {
-                ForEach(mantras.filter { !$0.isFavorite } ) { mantra in
+                ForEach(otherMantras) { mantra in
                     NavigationLink(value: mantra) {
                         MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
                     }
+                    .swipeActions(edge: .trailing) {
+                        Button(role: .destructive, action: delete(mantra)) {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
                 }
-                .onDelete(perform: deleteItems)
             }
             .headerProminence(.increased)
         }
+        .searchable(text: $searchText, prompt: "Search")
         .listStyle(.insetGrouped)
         .onAppear {
             if let mantra = mantras.first {
@@ -82,7 +104,7 @@ struct MantraListColumn: View {
 #endif
             ToolbarItem {
                 Menu {
-                    Picker(selection: Self.$sorting, label: Text("Sorting options")) {
+                    Picker(selection: $sorting, label: Text("Sorting options")) {
                         Label("Alphabetically", systemImage: "textformat").tag(Sorting.title)
                         Label("By readings count", systemImage: "textformat.123").tag(Sorting.reads)
                     }
@@ -105,19 +127,13 @@ struct MantraListColumn: View {
                 }
             }
         }
-        .onChange(of: Self.sorting) { _ in
-            mantras.sortDescriptors = [Self.sortDescriptor] }
         .navigationTitle("Mantra Reader")
     }
     
-    private func deleteItems(offsets: IndexSet) {
+    private func delete(_ mantra: Mantra) {
         withAnimation {
-            offsets.map { mantras[$0] }.forEach {
-                if $0 === selectedMantra {
-                    selectedMantra = nil
-                }
-                viewContext.delete($0)
-            }
+            if mantra === selectedMantra { selectedMantra = nil }
+            viewContext.delete(mantra)
             saveContext()
         }
     }

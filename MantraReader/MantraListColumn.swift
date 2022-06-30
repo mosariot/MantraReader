@@ -55,10 +55,25 @@ struct MantraListColumn: View {
                 ForEach(favoriteMantras) { mantra in
                     NavigationLink(value: mantra) {
                         MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
+                        .contextMenu {
+                            Button {
+                                mantra.isFavorite.toggle()
+                            } label: {
+                                Label("Unfavorite", systemImage: "star.slash")
+                            }
+                            Button(role: .destructive, action: delete(mantra)) {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
                     }
                     .swipeActions(edge: .trailing) {
                         Button(role: .destructive, action: delete(mantra)) {
                             Label("Delete", systemImage: "trash")
+                        }
+                        Button {
+                            mantra.isFavorite.toggle()
+                        } label: {
+                            Label("Favorite", systemImage: "star.slash")
                         }
                     }
                 }
@@ -69,6 +84,16 @@ struct MantraListColumn: View {
                 ForEach(otherMantras) { mantra in
                     NavigationLink(value: mantra) {
                         MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
+                        .contextMenu {
+                            Button {
+                                mantra.isFavorite.toggle()
+                            } label: {
+                                Label("Favorite", systemImage: "star")
+                            }
+                            Button(role: .destructive, action: delete(mantra)) {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }                        
                     }
                     .swipeActions(edge: .trailing) {
                         Button(role: .destructive, action: delete(mantra)) {
@@ -77,7 +102,7 @@ struct MantraListColumn: View {
                         Button {
                             mantra.isFavorite.toggle()
                         } label: {
-                            Label("Favorite", systemImage: mantra.isFavorite ? "star.slash" : "star")
+                            Label("Favorite", systemImage: "star")
                         }
                     }
                 }

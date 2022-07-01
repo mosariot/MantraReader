@@ -55,10 +55,8 @@ struct MantraListColumn: View {
                         MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
                             .contextMenu {
                                 Button {
-                                    afterDelay(0.3) {
-                                        mantra.isFavorite.toggle()
-                                        saveContext()
-                                    }
+                                    withAnimation { mantra.isFavorite.toggle() }
+                                    saveContext()
                                 } label: {
                                     Label("Unfavorite", systemImage: "star.slash")
                                 }
@@ -69,14 +67,14 @@ struct MantraListColumn: View {
                                 }
                             }
                     }
-                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    .swipeActions(allowsFullSwipe: false) {
                         Button(role: .destructive) {
                             delete(mantra)
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
                         Button {
-                            mantra.isFavorite.toggle()
+                            withAnimation { mantra.isFavorite.toggle() }
                             saveContext()
                         } label: {
                             Label("Favorite", systemImage: "star.slash")
@@ -96,10 +94,8 @@ struct MantraListColumn: View {
                         MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
                             .contextMenu {
                                 Button {
-                                    afterDelay(0.3) {
-                                        mantra.isFavorite.toggle()
-                                        saveContext()
-                                    }
+                                    withAnimation { mantra.isFavorite.toggle() }
+                                    saveContext()
                                 } label: {
                                     Label("Favorite", systemImage: "star")
                                 }
@@ -110,14 +106,14 @@ struct MantraListColumn: View {
                                 }
                             }
                     }
-                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    .swipeActions(allowsFullSwipe: false) {
                         Button(role: .destructive) {
                             delete(mantra)
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
                         Button {
-                            mantra.isFavorite.toggle()
+                            withAnimation { mantra.isFavorite.toggle() }
                             saveContext()
                         } label: {
                             Label("Favorite", systemImage: "star")
@@ -150,7 +146,7 @@ struct MantraListColumn: View {
 #endif
             }
         }
-//        .onReceive(NotifocationCenter.default.publisher(for: .NSPersistentStoreRemoteChange) {
+//        .onReceive(NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange) {
 //            viewContext.refreshAllObjects()
 //        }
         .toolbar {

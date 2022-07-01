@@ -150,6 +150,9 @@ struct MantraListColumn: View {
 #endif
             }
         }
+//        .onReceive(NotifocationCenter.default.publisher(for: .NSPersistentStoreRemoteChange) {
+//            viewContext.refreshAllObjects()
+//        }
         .toolbar {
 #if os(iOS)
             ToolbarItem(placement: .navigationBarLeading) {
@@ -218,11 +221,11 @@ struct MantraListColumn: View {
     }
     
     private func saveContext() {
+        guard viewContext.hasChanges else { return }
         do {
             try viewContext.save()
         } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            fatalCoreDataError(error)
         }
     }
 }

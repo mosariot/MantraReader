@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {   
     @State private var selectedMantra: Mantra?
+    @State private var showingDataFailedAlert = false
     
 #if os(iOS)
     @EnvironmentObject var orientationInfo: OrientationInfo
@@ -25,6 +26,18 @@ struct ContentView: View {
         } detail: {
             DetailsColumn(selectedMantra: selectedMantra)
                 .navigationSplitViewColumnWidth(min: 400, ideal: 600)
+        }
+        .onReceive(NotificationCenter.default.publisher(forName: dataSaveFailedNotification) {
+            showingDataFailedAlert = true
+        }
+        .alert(
+            "There was a fatal error in the app and it cannot continue. Press OK to terminate the app. Sorry for inconvenience.",
+            isPresented: $showingDataFailedAlert
+        ) {
+            Button("OK", role: .cancel) {
+                let exception = NSException(name: NSExceptionName.internalInconsistencyException, reason: "Fatal Core Data error", userInfo: nil)
+                exception.raise()
+            }
         }
 #if os(macOS)
         .frame(minHeight: 600)

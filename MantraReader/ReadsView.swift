@@ -9,25 +9,35 @@ import SwiftUI
 
 struct ReadsView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     @ObservedObject var viewModel: ReadsViewModel
-    @State private var readingsString: String = ""
-    @State private var goalString: String = ""
+    @State private var readings: Int32 = 0
+    @State private var goal: Int32 = 0
+    
+#if os(iOS)
+    private var isPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }
+#endif
     
     var body: some View {
-        VStack {
+        let layout = (horizontalSizeClass == .regular && isPhone) ? AnyLayout(HStack()) : AnyLayout(VStack())
+        
+        layout {
             Spacer()
             
-            NumericTextField("Enter New Readings", text: $readingsString)
-                .frame(width: 200)
-            
-            Button("Change") {
-                viewModel.animateReadsChanges(with: readingsString)
-                saveContext()
-                readingsString = ""
+            VStack {
+                TextField("Enter New Readings", value: $readings, format: .number)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(width: 200)
+                
+                Button("Change") {
+                    viewModel.animateReadsChanges(with: readings)
+                    readings = 0
+                    saveContext()
+                }
+                .buttonStyle(.borderedProminent)
+                .padding()
             }
-            .buttonStyle(.borderedProminent)
-            .padding()
             
             CircularProgressView(
                 progress: viewModel.progress,
@@ -37,16 +47,19 @@ struct ReadsView: View {
             )
             .padding()
             
-            NumericTextField("Enter New Goal", text: $goalString)
-                .frame(width: 200)
-                .padding()
-            
-            Button("Change") {
-                viewModel.animateGoalsChanges(with: goalString)
-                saveContext()
-                goalString = ""
+            VStack {
+                TextField("Enter New Goal", value: $goal, format: .number)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(width: 200)
+                    .padding()
+                
+                Button("Change") {
+                    viewModel.animateGoalsChanges(with: goal)
+                    goal = 0
+                    saveContext()
+                }
+                .buttonStyle(.borderedProminent)
             }
-            .buttonStyle(.borderedProminent)
             
             Spacer()
         }

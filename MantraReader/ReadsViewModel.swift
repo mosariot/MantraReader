@@ -5,7 +5,7 @@
 //  Created by Александр Воробьев on 21.06.2022.
 //
 
-import Foundation
+import SwiftUI
 import Combine
 
 final class ReadsViewModel: ObservableObject {
@@ -26,9 +26,9 @@ final class ReadsViewModel: ObservableObject {
         self.progress = Double(mantra.reads) / Double(mantra.readsGoal)
     }
     
-    func animateReadsChanges(with value: String) {
+    func animateReadsChanges(with value: Int32) {
         isAnimated = true
-        mantra.reads = Int32(value) ?? mantra.reads
+        mantra.reads = value
         progress = Double(mantra.reads) / Double(mantra.readsGoal)
         let deltaReads = Double(mantra.reads) - displayedReads
         timerReadsSubscription = Timer.publish(every: Constants.animationTime / 100, on: .main, in: .common)
@@ -45,9 +45,9 @@ final class ReadsViewModel: ObservableObject {
             }
     }
     
-    func animateGoalsChanges(with value: String) {
+    func animateGoalsChanges(with value: Int32) {
         isAnimated = true
-        mantra.readsGoal = Int32(value) ?? mantra.readsGoal
+        mantra.readsGoal = value
         progress = Double(mantra.reads) / Double(mantra.readsGoal)
         let deltaGoal = Double(mantra.readsGoal) - displayedGoal
         timerGoalSubscription = Timer.publish(every: Constants.animationTime / 100, on: .main, in: .common)

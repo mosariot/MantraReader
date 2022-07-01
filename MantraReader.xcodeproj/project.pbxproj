@@ -18,7 +18,6 @@
 		9FBEE9A1285F682D0070BA06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEE9A0285F682D0070BA06 /* Assets.xcassets */; };
 		9FBEE9A5285F682D0070BA06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEE9A4285F682D0070BA06 /* Preview Assets.xcassets */; };
 		9FBEE9AE285F68CE0070BA06 /* ReadsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE9AB285F68CE0070BA06 /* ReadsView.swift */; };
-		9FBEE9AF285F68CE0070BA06 /* NumericTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE9AC285F68CE0070BA06 /* NumericTextField.swift */; };
 		9FBEE9B0285F68CE0070BA06 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */; };
 		9FDC8DA82862203800BF7051 /* MantraListColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DA72862203800BF7051 /* MantraListColumn.swift */; };
 		9FDC8DAA286222C700BF7051 /* ReadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DA9286222C700BF7051 /* ReadsViewModel.swift */; };
@@ -42,7 +41,6 @@
 		9FBEE9A2285F682D0070BA06 /* MantraReader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MantraReader.entitlements; sourceTree = "<group>"; };
 		9FBEE9A4285F682D0070BA06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9FBEE9AB285F68CE0070BA06 /* ReadsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadsView.swift; sourceTree = "<group>"; };
-		9FBEE9AC285F68CE0070BA06 /* NumericTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericTextField.swift; sourceTree = "<group>"; };
 		9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		9FDC8DA72862203800BF7051 /* MantraListColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraListColumn.swift; sourceTree = "<group>"; };
 		9FDC8DA9286222C700BF7051 /* ReadsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadsViewModel.swift; sourceTree = "<group>"; };
@@ -93,7 +91,6 @@
 				9FBEE9AB285F68CE0070BA06 /* ReadsView.swift */,
 				9FDC8DA9286222C700BF7051 /* ReadsViewModel.swift */,
 				9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */,
-				9FBEE9AC285F68CE0070BA06 /* NumericTextField.swift */,
 				9FDC8DAF28623D5F00BF7051 /* OrientationInfo.swift */,
 				9F78728D2865FDA400F52335 /* UIImage+ResizeUIImage.swift */,
 				9F4DE923286E3B670064ADCB /* UIImage+CropToCircleUIImage.swift */,
@@ -200,7 +197,6 @@
 				9FDC8DB028623D5F00BF7051 /* OrientationInfo.swift in Sources */,
 				9FBEE99A285F682C0070BA06 /* Persistence.swift in Sources */,
 				9FBEE9AE285F68CE0070BA06 /* ReadsView.swift in Sources */,
-				9FBEE9AF285F68CE0070BA06 /* NumericTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

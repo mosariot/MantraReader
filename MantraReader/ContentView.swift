@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {   
-    @SceneStorage("isFreshLaunch") private var isFreshLaunch = true
+    @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @State private var selectedMantra: Mantra?
     @State private var showingDataFailedAlert = false
     
@@ -23,14 +23,15 @@ struct ContentView: View {
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            MantraListColumn(selectedMantra: $selectedMantra)
+//            MantraListColumn(selectedMantra: $selectedMantra)
+            MantraListColumnNative(selectedMantra: $selectedMantra)
         } detail: {
             DetailsColumn(selectedMantra: selectedMantra)
                 .navigationSplitViewColumnWidth(min: 400, ideal: 600)
         }
-        .onReceive(NotificationCenter.default.publisher(for: dataSaveFailedNotification), perform: { _ in
+        .onReceive(NotificationCenter.default.publisher(for: dataSaveFailedNotification)) { _ in
             showingDataFailedAlert = true
-        })
+        }
         .alert("There was a fatal error in the app and it cannot continue. Press OK to terminate the app. Sorry for inconvenience.", isPresented: $showingDataFailedAlert, actions: {
             Button("OK", role: .cancel) {
                 let exception = NSException(name: NSExceptionName.internalInconsistencyException, reason: "Fatal Core Data error", userInfo: nil)

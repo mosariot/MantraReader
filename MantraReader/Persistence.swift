@@ -5,13 +5,16 @@
 //  Created by Александр Воробьев on 19.06.2022.
 //
 
-import CoreData
 import SwiftUI
+import CoreData
+import Combine
 
 struct PersistenceController {
     static let shared = PersistenceController()
     
     let container: NSPersistentCloudKitContainer
+    
+    private var subscriptions: Set<AnyCancellable> = []
     
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "MantraReader")
@@ -41,6 +44,13 @@ struct PersistenceController {
                 fatalError("Failed to pin viewContext to the current generation: \(error)")
             }
         }
+        
+        NotificationCenter.default
+          .publisher(for: .NSPersistentStoreRemoteChange)
+          .sink {_ in
+//              container.viewContext.refreshAllObjects()
+          }
+          .store(in: &subscriptions)
     }
     
     func preloadData(context: NSManagedObjectContext) {

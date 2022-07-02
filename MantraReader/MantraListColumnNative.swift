@@ -7,38 +7,24 @@
 
 import SwiftUI
 
-enum Sorting: String, Codable {
-    case title
-    case reads
-}
+//enum Sorting: String, Codable {
+//    case title
+//    case reads
+//}
 
-struct MantraListColumn: View {
+struct MantraListColumnNative: View {
     @Environment(\.managedObjectContext) private var viewContext
     @AppStorage("sorting") private var sorting: Sorting = .title
-    @SceneStorage("isFreshLaunch") private var isFreshLaunch = true
-    @FetchRequest(sortDescriptors: [], animation: .default) private var mantras: FetchedResults<Mantra>
+    @AppStorage("isFreshLaunch") private var isFreshLaunch = true
+    @SectionedFetchRequest(
+        sectionIdentifier: \.isFavorite,
+        sortDescriptors: [SortDescriptor(\.isFavorite, order: .reverse), SortDescriptor(\.title, order: .forward)],
+        animation: .default
+    )
+    private var mantras: SectionedFetchResults<Bool, Mantra>
     @Binding var selectedMantra: Mantra?
     @State private var searchText = ""
     @State private var isPresentingPresetMantraView = false
-    
-    private var sortedMantras: [Mantra] {
-        switch sorting {
-        case .title: return mantras.sorted { $0.title! < $1.title! }
-        case .reads: return mantras.sorted { $0.reads > $1.reads }
-        }
-    }
-    
-    private var sortedSearchedMantras: [Mantra] {
-        searchText.isEmpty ? sortedMantras : sortedMantras.filter { $0.title!.contains(searchText) }
-    }
-    
-    private var favoriteMantras: [Mantra] {
-        sortedSearchedMantras.filter { $0.isFavorite }
-    }
-    
-    private var otherMantras: [Mantra] {
-        sortedSearchedMantras.filter { !$0.isFavorite }
-    }
     
 #if os(iOS)
     @EnvironmentObject var orientationInfo: OrientationInfo
@@ -48,9 +34,9 @@ struct MantraListColumn: View {
 #endif
     
     var body: some View {
-        List(selection: $selectedMantra) {
-            Section(header: Text("Favorites")) {
-                ForEach(favoriteMantras) { mantra in
+        List(mantras, selection: $selectedMantra) { section in
+            Section(section.id ? "Favorites" : "Other Mantras") {
+                ForEach(section) { mantra in
                     NavigationLink(value: mantra) {
                         MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
                             .contextMenu {
@@ -58,7 +44,10 @@ struct MantraListColumn: View {
                                     withAnimation { mantra.isFavorite.toggle() }
                                     saveContext()
                                 } label: {
-                                    Label("Unfavorite", systemImage: "star.slash")
+                                    Label(
+                                        mantra.isFavorite ? "Unfavorite" : "Favorite",
+                                        systemImage: mantra.isFavorite ? "star.slash" : "star"
+                                    )
                                 }
                                 Button(role: .destructive) {
                                     delete(mantra)
@@ -69,7 +58,7 @@ struct MantraListColumn: View {
                     }
                     .swipeActions(allowsFullSwipe: false) {
                         Button(role: .destructive) {
-                            delete(mantra)
+                            withAnimation { delete(mantra) }
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
@@ -77,52 +66,16 @@ struct MantraListColumn: View {
                             withAnimation { mantra.isFavorite.toggle() }
                             saveContext()
                         } label: {
-                            Label("Unfavorite", systemImage: "star.slash")
+                            Label(
+                                mantra.isFavorite ? "Unfavorite" : "Favorite",
+                                systemImage: mantra.isFavorite ? "star.slash" : "star"
+                            )
                         }
                         .tint(.indigo)
                     }
                 }
                 .onDelete { indexSet in
-                    delete(in: favoriteMantras, with: indexSet)
-                }
-            }
-            .headerProminence(.increased)
-            
-            Section(header: Text("Other Mantras")) {
-                ForEach(otherMantras) { mantra in
-                    NavigationLink(value: mantra) {
-                        MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
-                            .contextMenu {
-                                Button {
-                                    withAnimation { mantra.isFavorite.toggle() }
-                                    saveContext()
-                                } label: {
-                                    Label("Favorite", systemImage: "star")
-                                }
-                                Button(role: .destructive) {
-                                    delete(mantra)
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                            }
-                    }
-                    .swipeActions(allowsFullSwipe: false) {
-                        Button(role: .destructive) {
-                            delete(mantra)
-                        } label: {
-                            Label("Delete", systemImage: "trash")
-                        }
-                        Button {
-                            withAnimation { mantra.isFavorite.toggle() }
-                            saveContext()
-                        } label: {
-                            Label("Favorite", systemImage: "star")
-                        }
-                        .tint(.indigo)
-                    }
-                }
-                .onDelete { indexSet in
-                    delete(in: favoriteMantras, with: indexSet)
+                    delete(for: indexSet, in: section)
                 }
             }
             .headerProminence(.increased)
@@ -130,22 +83,36 @@ struct MantraListColumn: View {
         .animation(.default, value: sorting)
         .animation(.default, value: searchText)
         .searchable(text: $searchText, prompt: "Search")
+        .onChange(of: searchText) {
+            mantras.nsPredicate = $0.isEmpty ? nil : NSPredicate(format: "name contains[cd] %@", $0)
+        }
+        .onChange(of: sorting) {
+            switch $0 {
+            case .title: mantras.sortDescriptors = [
+                SortDescriptor(\.isFavorite, order: .reverse), SortDescriptor(\.title, order: .forward)]
+            case .reads: mantras.sortDescriptors = [
+                SortDescriptor(\.isFavorite, order: .reverse), SortDescriptor(\.reads, order: .reverse)]
+            }
+        }
         .listStyle(.insetGrouped)
         .onAppear {
-            if let mantra = favoriteMantras.first {
+            if !mantras.isEmpty {
 #if os(iOS)
                 if (isPad || (isPhone && isLandscape)) && isFreshLaunch {
-                    selectedMantra = mantra
+                    selectedMantra = mantras[0][0]
                     isFreshLaunch = false
                 }
 #elseif os(macOS)
                 if isFreshLaunch {
-                    selectedMantra = mantra
+                    selectedMantra = mantras[0][0]
                     isFreshLaunch = false
                 }
 #endif
             }
         }
+        .refreshable(action: {
+            viewContext.refreshAllObjects()
+        })
         .toolbar {
 #if os(iOS)
             ToolbarItem(placement: .navigationBarLeading) {
@@ -188,9 +155,12 @@ struct MantraListColumn: View {
         }
     }
     
-    private func delete(in mantras: [Mantra], with offsets: IndexSet) {
+    private func delete(
+        for indexSet: IndexSet,
+        in section: SectionedFetchResults<Bool, Mantra>.Element
+    ) {
         withAnimation {
-            offsets.map { mantras[$0] }.forEach {
+            indexSet.map { section[$0] }.forEach {
                 if $0 === selectedMantra {
                     selectedMantra = nil
                 }
@@ -223,7 +193,7 @@ struct MantraListColumn: View {
     }
 }
 
-struct MantraListView_Previews: PreviewProvider {
+struct MantraListViewNative_Previews: PreviewProvider {
     static var controller = PersistenceController.preview
     
     static var previews: some View {

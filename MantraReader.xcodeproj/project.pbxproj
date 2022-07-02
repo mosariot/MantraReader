@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F03F4962870B8FE00432002 /* MantraListColumnNative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F03F4952870B8FE00432002 /* MantraListColumnNative.swift */; };
 		9F4DE924286E3B670064ADCB /* UIImage+CropToCircleUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DE923286E3B670064ADCB /* UIImage+CropToCircleUIImage.swift */; };
 		9F4DE926286E3B990064ADCB /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DE925286E3B990064ADCB /* Functions.swift */; };
 		9F78728E2865FDA400F52335 /* UIImage+ResizeUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F78728D2865FDA400F52335 /* UIImage+ResizeUIImage.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F03F4952870B8FE00432002 /* MantraListColumnNative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraListColumnNative.swift; sourceTree = "<group>"; };
 		9F4DE923286E3B670064ADCB /* UIImage+CropToCircleUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CropToCircleUIImage.swift"; sourceTree = "<group>"; };
 		9F4DE925286E3B990064ADCB /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		9F78728D2865FDA400F52335 /* UIImage+ResizeUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ResizeUIImage.swift"; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				9FBEE999285F682C0070BA06 /* Persistence.swift */,
 				9FBEE99E285F682C0070BA06 /* ContentView.swift */,
 				9FDC8DA72862203800BF7051 /* MantraListColumn.swift */,
+				9F03F4952870B8FE00432002 /* MantraListColumnNative.swift */,
 				9F7B1AE3286AB09A007720A0 /* MantraRow.swift */,
 				9FDC8DAB28622AEC00BF7051 /* DetailsColumn.swift */,
 				9FBEE9AB285F68CE0070BA06 /* ReadsView.swift */,
@@ -181,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F03F4962870B8FE00432002 /* MantraListColumnNative.swift in Sources */,
 				9FBEE99D285F682C0070BA06 /* MantraReader.xcdatamodeld in Sources */,
 				9FDC8DAE28622D5900BF7051 /* Constants.swift in Sources */,
 				9FDC8DAC28622AEC00BF7051 /* DetailsColumn.swift in Sources */,

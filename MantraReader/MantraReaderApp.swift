@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct MantraReaderApp: App {
     @AppStorage("isFirstLaunch") private var isFirstLaunch = true
-    @SceneStorage("isFreshLaunch") private var isFreshLaunch = true
+    @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     
     let persistenceController = PersistenceController.shared
     

@@ -38,8 +38,6 @@ struct DetailsView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        NavigationView {
-            DetailsColumn(selectedMantra: previewMantra(viewContext: controller.container.viewContext))
-        }
+        DetailsColumn(selectedMantra: previewMantra(viewContext: controller.container.viewContext))
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 enum Sorting: String, Codable {
     case title
@@ -145,6 +146,12 @@ struct MantraListColumn: View {
                 }
 #endif
             }
+        }
+        .refreshable(action: {
+            viewContext.refreshAllObjects()
+        })
+        .onReceive(NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)) {_ in
+ //            viewContext.refreshAllObjects()
         }
         .toolbar {
 #if os(iOS)

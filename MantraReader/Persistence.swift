@@ -14,8 +14,6 @@ struct PersistenceController {
     
     let container: NSPersistentCloudKitContainer
     
-    private var subscriptions: Set<AnyCancellable> = []
-    
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "MantraReader")
         
@@ -44,14 +42,6 @@ struct PersistenceController {
                 fatalError("Failed to pin viewContext to the current generation: \(error)")
             }
         }
-        
-        NotificationCenter.default
-          .publisher(for: .NSPersistentStoreRemoteChange)
-          .sink {_ in
-//              container.viewContext.refreshAllObjects()
-          }
-          .store(in: &subscriptions)
-    }
     
     func preloadData(context: NSManagedObjectContext) {
         PreloadedMantras.data.forEach { data in
@@ -78,8 +68,7 @@ struct PersistenceController {
         do {
             try context.save()
         } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            fatalCoreDataError(error)
         }
     }
 }

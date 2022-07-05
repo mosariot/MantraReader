@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ReadsView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     
     @ObservedObject var viewModel: ReadsViewModel
     @State private var readings: Int32 = 0
@@ -20,48 +20,53 @@ struct ReadsView: View {
 #endif
     
     var body: some View {
-        let layout = (horizontalSizeClass == .regular && isPhone) ? AnyLayout(HStack()) : AnyLayout(VStack())
+        let layout = (verticalSizeClass == .compact && isPhone) ? AnyLayout(HStack()) : AnyLayout(VStack())
         
-        layout {
-            Spacer()
-            
-            VStack {
-                TextField("Enter New Readings", value: $readings, format: .number)
-                    .textFieldStyle(.roundedBorder)
-                    .frame(width: 200)
+        VStack {
+            layout {
+                Spacer()
                 
-                Button("Change") {
-                    viewModel.animateReadsChanges(with: readings)
-                    readings = 0
-                    saveContext()
+                if verticalSizeClass != .compact {
+                    Text("\(viewModel.title!)")
+                        .font(.title)
+                        .padding()
                 }
-                .buttonStyle(.borderedProminent)
-                .padding()
-            }
             
-            CircularProgressView(
-                progress: viewModel.progress,
-                displayedNumber: viewModel.displayedReads,
-                displayedGoal: viewModel.displayedGoal,
-                isAnimated: viewModel.isAnimated
-            )
-            .padding()
-            
-            VStack {
-                TextField("Enter New Goal", value: $goal, format: .number)
-                    .textFieldStyle(.roundedBorder)
-                    .frame(width: 200)
+                Image(systemName: "person.circle")
+                    .font(.system(size: 124))
                     .padding()
                 
-                Button("Change") {
-                    viewModel.animateGoalsChanges(with: goal)
-                    goal = 0
-                    saveContext()
-                }
-                .buttonStyle(.borderedProminent)
+                CircularProgressView(
+                    progress: viewModel.progress,
+                    displayedNumber: viewModel.displayedReads,
+                    displayedGoal: viewModel.displayedGoal,
+                    isAnimated: viewModel.isAnimated
+                )
+                .padding()
+            
+                Spacer()
             }
             
-            Spacer()
+            HStack {
+                Button {
+                } label: {
+                    Image(systemName: "plus.circle.fill")
+                        .font(.system(size: 54))
+                }
+                .padding()
+                Button {
+                } label: {
+                    Image(systemName: "arrow.clockwise.circle.fill")
+                        .font(.system(size: 54))
+                }
+                .padding()
+                Button {
+                } label: {
+                    Image(systemName: "hand.draw.fill")
+                        .font(.system(size: 54))
+                }
+                .padding()
+            }
         }
     }
     

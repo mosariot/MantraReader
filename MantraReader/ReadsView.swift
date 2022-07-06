@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+enum AdjustingType {
+    case reads
+    case rounds
+    case value
+    case goal
+}
+
 struct ReadsView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.verticalSizeClass) var verticalSizeClass
@@ -14,6 +21,8 @@ struct ReadsView: View {
     @ObservedObject var viewModel: ReadsViewModel
     @State private var readings: Int32 = 0
     @State private var goal: Int32 = 0
+    @State private var isPresentingAdjustingAlert = false
+    private var adjustingType: AdjustingType?
     
 #if os(iOS)
     private var isPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }
@@ -24,17 +33,16 @@ struct ReadsView: View {
         
         VStack {
             layout {
-                Spacer()
+                Image(uiImage: viewModel.image)
+                    .resizable()
+                    .aspectRatio(1, contentMode: .fit)
+                    .frame(width: 200)
                 
                 if verticalSizeClass != .compact {
                     Text("\(viewModel.title!)")
                         .font(.title)
                         .padding()
                 }
-            
-                Image(systemName: "person.circle")
-                    .font(.system(size: 124))
-                    .padding()
                 
                 CircularProgressView(
                     progress: viewModel.progress,
@@ -49,33 +57,41 @@ struct ReadsView: View {
             
             HStack {
                 Button {
+                    adjustingType = .reads
+                    isPresentingAdjustingAlert = true
                 } label: {
-                    Image(systemName: "plus.circle.fill")
+                    Image(systemName: "plus")
                         .font(.system(size: 54))
+                        .symbolVariant(.circle.fill)
                 }
                 .padding()
                 Button {
+                    adjustingType = .rounds
+                    isPresentingAdjustingAlert = true
                 } label: {
-                    Image(systemName: "arrow.clockwise.circle.fill")
+                    Image(systemName: "arrow.clockwise")
                         .font(.system(size: 54))
+                        .symbolVariant(.circle.fill)
                 }
                 .padding()
                 Button {
+                    adjustingType = .value
+                    isPresentingAdjustingAlert = true
                 } label: {
-                    Image(systemName: "hand.draw.fill")
+                    Image(systemName: "hand.draw")
                         .font(.system(size: 54))
+                        .symbolVariant(.fill)
                 }
                 .padding()
             }
         }
     }
     
-    func saveContext() {
+    private func saveContext() {
         do {
             try viewContext.save()
         } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            fatalCoreDataError(error)
         }
     }
 }

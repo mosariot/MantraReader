@@ -10,6 +10,7 @@ import Combine
 
 final class ReadsViewModel: ObservableObject {
     @Published var mantra: Mantra
+    @Piblished var title: String
     @Published var displayedReads: Double
     @Published var displayedGoal: Double
     @Published var progress: Double
@@ -22,6 +23,7 @@ final class ReadsViewModel: ObservableObject {
     
     init(_ mantra: Mantra) {
         self.mantra = mantra
+        self.title = mantra.title ?? ""
         self.displayedReads = Double(mantra.reads)
         self.displayedGoal = Double(mantra.readsGoal)
         self.progress = Double(mantra.reads) / Double(mantra.readsGoal)

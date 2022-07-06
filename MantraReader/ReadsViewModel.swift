@@ -13,6 +13,7 @@ final class ReadsViewModel: ObservableObject {
     @Published var displayedReads: Double
     @Published var displayedGoal: Double
     @Published var progress: Double
+    @Punlished var image: UIImage
     @Published var isAnimated: Bool = false
 
     private var timerReadsSubscription: Cancellable?
@@ -24,6 +25,16 @@ final class ReadsViewModel: ObservableObject {
         self.displayedReads = Double(mantra.reads)
         self.displayedGoal = Double(mantra.readsGoal)
         self.progress = Double(mantra.reads) / Double(mantra.readsGoal)
+        self.image = {
+            if let data = mantra.imageForTableView, let image = UIImage(data: data) {
+                return image
+            } else {
+                return UIImage(named: Constants.defaultImage)!
+                    .resize(
+                        to: CGSize(width: Constants.rowHeight,
+                                   height: Constants.rowHeight))
+            }
+        }()
     }
     
     func animateReadsChanges(with value: Int32) {

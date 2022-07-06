@@ -39,7 +39,7 @@ struct ReadsView: View {
                     .frame(width: 200)
                 
                 if verticalSizeClass != .compact {
-                    Text("\(viewModel.title!)")
+                    Text(viewModel.title)
                         .font(.title)
                         .padding()
                 }
@@ -51,8 +51,6 @@ struct ReadsView: View {
                     isAnimated: viewModel.isAnimated
                 )
                 .padding()
-            
-                Spacer()
             }
             
             HStack {

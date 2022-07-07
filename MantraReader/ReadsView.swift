@@ -21,8 +21,9 @@ struct ReadsView: View {
     @ObservedObject var viewModel: ReadsViewModel
     @State private var readings: Int32 = 0
     @State private var goal: Int32 = 0
-    @State private var isPresentingAdjustingAlert = false
-    private var adjustingType: AdjustingType?
+    @State private var isPresentedAdjustingAlert = false
+    @State private var adjustingType: AdjustingType?
+    @State private var adjustingNumber = 0
     
 #if os(iOS)
     private var isPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }
@@ -56,32 +57,50 @@ struct ReadsView: View {
             HStack {
                 Button {
                     adjustingType = .reads
-                    isPresentingAdjustingAlert = true
+                    isPresentedAdjustingAlert = true
                 } label: {
                     Image(systemName: "plus")
-                        .font(.system(size: 54))
+                        .font(.system(size: 60))
                         .symbolVariant(.circle.fill)
                 }
                 .padding()
                 Button {
                     adjustingType = .rounds
-                    isPresentingAdjustingAlert = true
+                    isPresentedAdjustingAlert = true
                 } label: {
                     Image(systemName: "arrow.clockwise")
-                        .font(.system(size: 54))
+                        .font(.system(size: 60))
                         .symbolVariant(.circle.fill)
                 }
                 .padding()
                 Button {
                     adjustingType = .value
-                    isPresentingAdjustingAlert = true
+                    isPresentedAdjustingAlert = true
                 } label: {
                     Image(systemName: "hand.draw")
-                        .font(.system(size: 54))
+                        .font(.system(size: 60))
                         .symbolVariant(.fill)
                 }
                 .padding()
             }
+        }
+        .alert(
+            viewModel.alertTitle(for: adjustingType),
+            isPresented: $isPresentedAdjustingAlert,
+            presenting: adjustingType
+        ) { adjust in
+            TextField("Enter number", value: $adjustingNumber, format: .number)
+            Button(viewModel.buttonTitle(for: adjust)) {
+                viewModel.handleAdjusting(for: adjust, with: adjustingNumber)
+                adjustingType = nil
+                adjustingNumber = 0
+            }
+            .disabled(viewModel.isAllowedAdjusting(for: adjust, with: adjustingNumber)
+            Button("Cancel", role: .destructive) {
+                adjustingType = nil
+            }
+        } message: { adjust in
+            viewModel.alertMessage(for: adjust)
         }
     }
     

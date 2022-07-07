@@ -15,9 +15,7 @@ enum AdjustingType {
 }
 
 struct ReadsView: View {
-    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.verticalSizeClass) var verticalSizeClass
-    
     @ObservedObject var viewModel: ReadsViewModel
     @State private var readings: Int32 = 0
     @State private var goal: Int32 = 0
@@ -103,14 +101,6 @@ struct ReadsView: View {
             viewModel.alertMessage(for: adjust)
         }
     }
-    
-    private func saveContext() {
-        do {
-            try viewContext.save()
-        } catch {
-            fatalCoreDataError(error)
-        }
-    }
 }
 
 import CoreData
@@ -129,7 +119,9 @@ struct ReadsView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        ReadsView(viewModel: ReadsViewModel(previewMantra(viewContext: controller.container.viewContext)))
-            .environment(\.managedObjectContext, controller.container.viewContext)
+        ReadsView(
+            viewModel: ReadsViewModel(previewMantra(viewContext: controller.container.viewContext)),
+            viewContext: controller.container.viewContext
+        )
     }
 }

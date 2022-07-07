@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct DetailsColumn: View {
+    @Environment(\.managedObjectContext) private var viewContext
     var selectedMantra: Mantra?
     
     var body: some View {
         ZStack {
             if let selectedMantra {
-                ReadsView(viewModel: ReadsViewModel(selectedMantra))
+                ReadsView(
+                    viewModel: ReadsViewModel(selectedMantra),
+                    viewContext: viewContext)
+                )
             } else {
                 Text("Select a mantra")
                     .foregroundColor(.gray)

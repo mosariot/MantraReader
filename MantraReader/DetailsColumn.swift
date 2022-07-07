@@ -43,5 +43,6 @@ struct DetailsView_Previews: PreviewProvider {
     
     static var previews: some View {
         DetailsColumn(selectedMantra: previewMantra(viewContext: controller.container.viewContext))
+            .environment(\.managedObjectContext, controller.container.viewContext)
     }
 }

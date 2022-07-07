@@ -23,7 +23,7 @@ struct ReadsView: View {
     @State private var goal: Int32 = 0
     @State private var isPresentedAdjustingAlert = false
     @State private var adjustingType: AdjustingType?
-    @State private var adjustingNumber = 0
+    @State private var adjustingNumber: Int32 = 0
     
 #if os(iOS)
     private var isPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }

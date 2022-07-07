@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import CoreData
 
 final class ReadsViewModel: ObservableObject {
     @Published var mantra: Mantra
@@ -16,32 +17,71 @@ final class ReadsViewModel: ObservableObject {
     @Published var progress: Double
     @Punlished var image: UIImage
     @Published var isAnimated: Bool = false
+    
+    private var viewContext: NSManagedObjectContext
 
     private var timerReadsSubscription: Cancellable?
     private var timerGoalSubscription: Cancellable?
 
-    
-    init(_ mantra: Mantra) {
+    init(_ mantra: Mantra, viewContext: NSManagedObjectContext) {
         self.mantra = mantra
         self.title = mantra.title ?? ""
         self.displayedReads = Double(mantra.reads)
         self.displayedGoal = Double(mantra.readsGoal)
         self.progress = Double(mantra.reads) / Double(mantra.readsGoal)
-        self.image = {
-            if let data = mantra.imageForTableView, let image = UIImage(data: data) {
-                return image
-            } else {
-                return UIImage(named: Constants.defaultImage)!
-                    .resize(
-                        to: CGSize(width: Constants.rowHeight,
-                                   height: Constants.rowHeight))
-            }
-        }()
+        self.image = imageForMantra(mantra)
+        self.viewContext = viewContext
     }
     
-    func animateReadsChanges(with value: Int32) {
-        isAnimated = true
+    func alertTitle(for adjust: AdjustingType?) -> String {
+        guard let adjust else { return "Enter a value" }
+        switch adjust {
+        case .reads: return "Enter readings number"
+        case .rounds: return "Enter rounds number"
+        case .value: return "Set a new readings count"
+        case .goal: return "Set a new readings goal"
+        }
+    }
+    
+    func buttonTitle(for adjust: AdjustingType) -> String {
+        switch adjust {
+        case .reads, .rounds: return "Add"
+        case .value, .goal: return "Set"
+    }
+    
+    func handleAdjusting(for adjust: AdjustingType, with number: Int32) {
+        switch adjust {
+        case .reads: handleReadsChanges(with: mantra.reads + number)
+        case .rounds: handleReadsChanges(with: mantra.reads + number * 108)
+        case .value: handleReadsChanges(with: number)
+        case .goal: handleGoalChanges(with: number)
+    }
+    
+    func isAllowedAdjusting(for adjust: AdjustingType, with number: Int32) -> Bool {
+        switch adjust {
+        case .reads: return 0...1_000_000 ~= (mantra.reads + number)
+        case .rounds:
+            let multiplied = number.multipliedReportingOverflow(by: 108)
+            if multiplied.overflow {
+                return false
+            } else {
+                return 0...1_000_000 ~= mantra.reads + multiplied.partialValue
+            }
+        case .value, .goal: return 0...1_000_000 ~= number
+    }
+    
+    func handleReadsChanges(with value: Int32) {
+        adjustMantraReads(with: value)
+        animateReadsChange()
+    }
+
+    private func adjustMantraReads(with value: Int32) {
         mantra.reads = value
+        saveContext()
+    }
+        
+    private func animateReadsChanges() {
+        isAnimated = true
         progress = Double(mantra.reads) / Double(mantra.readsGoal)
         let deltaReads = Double(mantra.reads) - displayedReads
         timerReadsSubscription = Timer.publish(every: Constants.animationTime / 100, on: .main, in: .common)
@@ -57,10 +97,19 @@ final class ReadsViewModel: ObservableObject {
                 }
             }
     }
+         
+    func handleGoalChanges(with value: Int32) {
+        adjustMantraGoal(with: value)
+        animateGoalChanges()
+    }
     
-    func animateGoalsChanges(with value: Int32) {
-        isAnimated = true
+    private func adjustMantraGoal(with value: Int32) {
         mantra.readsGoal = value
+        saveContext()
+    }
+    
+    private func animateGoalChanges() {
+        isAnimated = true
         progress = Double(mantra.reads) / Double(mantra.readsGoal)
         let deltaGoal = Double(mantra.readsGoal) - displayedGoal
         timerGoalSubscription = Timer.publish(every: Constants.animationTime / 100, on: .main, in: .common)
@@ -75,6 +124,27 @@ final class ReadsViewModel: ObservableObject {
                     self.timerGoalSubscription?.cancel()
                 }
             }
+    }
+        
+    private func imageForMantra(_ mantra: Mantra) -> UIImage {
+        if let data = mantra.imageForTableView, let image = UIImage(data: data) {
+            return image
+        } else {
+            return UIImage(named: Constants.defaultImage)!
+                .resize(
+                    to: CGSize(width: Constants.rowHeight,
+                               height: Constants.rowHeight)
+                )
+        }
+    }
+        
+    private func saveContext() {
+        guard viewContext.hasChanges else { return }
+        do {
+            try viewContext.save()
+        } catch {
+            fatalCoreDataError(error)
+        }
     }
 }
 

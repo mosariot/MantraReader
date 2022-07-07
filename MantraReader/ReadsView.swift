@@ -96,9 +96,8 @@ struct ReadsView: View {
             .disabled(viewModel.isAllowedAdjusting(for: adjust, with: adjustingNumber)
             Button("Cancel", role: .destructive) {
                 adjustingType = nil
+                adjustingNumber = 0
             }
-        } message: { adjust in
-            viewModel.alertMessage(for: adjust)
         }
     }
 }

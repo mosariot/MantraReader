@@ -32,12 +32,19 @@ struct ContentView: View {
         .onReceive(NotificationCenter.default.publisher(for: dataSaveFailedNotification)) { _ in
             showingDataFailedAlert = true
         }
-        .alert("There was a fatal error in the app and it cannot continue. Press OK to terminate the app. Sorry for inconvenience.", isPresented: $showingDataFailedAlert, actions: {
+        .alert(
+            "There was a fatal error in the app and it cannot continue. Press OK to terminate the app. Sorry for inconvenience.",
+            isPresented: $showingDataFailedAlert
+        ) {
             Button("OK", role: .cancel) {
-                let exception = NSException(name: NSExceptionName.internalInconsistencyException, reason: "Fatal Core Data error", userInfo: nil)
+                let exception = NSException(
+                    name: NSExceptionName.internalInconsistencyException,
+                    reason: "Fatal Core Data error",
+                    userInfo: nil
+                )
                 exception.raise()
             }
-        })
+        }
 #if os(macOS)
         .frame(minHeight: 600)
 #endif
@@ -49,7 +56,7 @@ struct ContentView: View {
             }
         }
         .onChange(of: orientationInfo.orientation) { _ in
-            if isPad && isPortrait {
+            if isPad {
                 columnVisibility = .doubleColumn
             }
         }

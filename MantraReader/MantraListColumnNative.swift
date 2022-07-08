@@ -20,13 +20,16 @@ struct MantraListColumnNative: View {
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @SectionedFetchRequest(
         sectionIdentifier: \.isFavorite,
-        sortDescriptors: [SortDescriptor(\.isFavorite, order: .reverse), SortDescriptor(\.title, order: .forward)],
+        sortDescriptors: [
+            SortDescriptor(\.isFavorite, order: .reverse),
+            SortDescriptor(\.title, order: .forward)
+        ],
         animation: .default
     )
     private var mantras: SectionedFetchResults<Bool, Mantra>
     @Binding var selectedMantra: Mantra?
     @State private var searchText = ""
-    @State private var isPresentingPresetMantraView = false
+    @State private var isPresentedPresetMantraView = false
     
 #if os(iOS)
     @EnvironmentObject var orientationInfo: OrientationInfo
@@ -91,9 +94,13 @@ struct MantraListColumnNative: View {
         .onChange(of: sorting) {
             switch $0 {
             case .title: mantras.sortDescriptors = [
-                SortDescriptor(\.isFavorite, order: .reverse), SortDescriptor(\.title, order: .forward)]
+                SortDescriptor(\.isFavorite, order: .reverse),
+                SortDescriptor(\.title, order: .forward)
+            ]
             case .reads: mantras.sortDescriptors = [
-                SortDescriptor(\.isFavorite, order: .reverse), SortDescriptor(\.reads, order: .reverse)]
+                SortDescriptor(\.isFavorite, order: .reverse),
+                SortDescriptor(\.reads, order: .reverse)
+            ]
             }
         }
         .listStyle(.insetGrouped)
@@ -115,7 +122,7 @@ struct MantraListColumnNative: View {
         .refreshable(action: {
             viewContext.refreshAllObjects()
         })
-        .onReceive(NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)) {_ in
+        .onReceive(NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)) { _ in
  //            viewContext.refreshAllObjects()
         }
         .toolbar {
@@ -140,7 +147,7 @@ struct MantraListColumnNative: View {
                         Label("New Mantra", systemImage: "square.and.pencil")
                     }
                     Button {
-                        isPresentingPresetMantraView = true
+                        isPresentedPresetMantraView = true
                     } label: {
                         Label("Preset Mantra", systemImage: "books.vertical")
                     }

@@ -91,7 +91,7 @@ struct ReadsView: View {
                 adjustingType = nil
                 adjustingNumber = 0
             }
-            .disabled(viewModel.isAllowedAdjusting(for: adjust, with: adjustingNumber)
+            .disabled(viewModel.isAllowedAdjusting(for: adjust, with: adjustingNumber))
             Button("Cancel", role: .destructive) {
                 adjustingType = nil
                 adjustingNumber = 0

@@ -11,12 +11,19 @@ import CoreData
 
 final class ReadsViewModel: ObservableObject {
     @Published var mantra: Mantra
-    @Piblished var title: String
     @Published var displayedReads: Double
     @Published var displayedGoal: Double
     @Published var progress: Double
-    @Punlished var image: UIImage
     @Published var isAnimated: Bool = false
+    
+    private(set) var title: String { mantra.title ?? "" }
+    private(set) var image: UIImage {
+        if let data = mantra.image, let image = UIImage(data: data) {
+            return image
+        } else {
+            return UIImage(named: Constants.defaultImage)!
+        }
+    }
     
     private var viewContext: NSManagedObjectContext
 
@@ -25,11 +32,9 @@ final class ReadsViewModel: ObservableObject {
 
     init(_ mantra: Mantra, viewContext: NSManagedObjectContext) {
         self.mantra = mantra
-        self.title = mantra.title ?? ""
         self.displayedReads = Double(mantra.reads)
         self.displayedGoal = Double(mantra.readsGoal)
         self.progress = Double(mantra.reads) / Double(mantra.readsGoal)
-        self.image = imageForMantra(mantra)
         self.viewContext = viewContext
     }
     
@@ -125,15 +130,7 @@ final class ReadsViewModel: ObservableObject {
                 }
             }
     }
-        
-    private func imageForMantra(_ mantra: Mantra) -> UIImage {
-        if let data = mantra.image, let image = UIImage(data: data) {
-            return image
-        } else {
-            return UIImage(named: Constants.defaultImage)!
-        }
-    }
-        
+    
     private func saveContext() {
         guard viewContext.hasChanges else { return }
         do {
@@ -143,4 +140,3 @@ final class ReadsViewModel: ObservableObject {
         }
     }
 }
-

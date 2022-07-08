@@ -17,8 +17,6 @@ enum AdjustingType {
 struct ReadsView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @ObservedObject var viewModel: ReadsViewModel
-    @State private var readings: Int32 = 0
-    @State private var goal: Int32 = 0
     @State private var isPresentedAdjustingAlert = false
     @State private var adjustingType: AdjustingType?
     @State private var adjustingNumber: Int32 = 0

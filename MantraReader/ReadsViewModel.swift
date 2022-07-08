@@ -127,14 +127,10 @@ final class ReadsViewModel: ObservableObject {
     }
         
     private func imageForMantra(_ mantra: Mantra) -> UIImage {
-        if let data = mantra.imageForTableView, let image = UIImage(data: data) {
+        if let data = mantra.image, let image = UIImage(data: data) {
             return image
         } else {
             return UIImage(named: Constants.defaultImage)!
-                .resize(
-                    to: CGSize(width: Constants.rowHeight,
-                               height: Constants.rowHeight)
-                )
         }
     }
         

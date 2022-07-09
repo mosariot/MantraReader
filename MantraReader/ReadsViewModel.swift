@@ -16,8 +16,8 @@ final class ReadsViewModel: ObservableObject {
     @Published var progress: Double
     @Published var isAnimated: Bool = false
     
-    private(set) var title: String { mantra.title ?? "" }
-    private(set) var image: UIImage {
+    var title: String { mantra.title ?? "" }
+    var image: UIImage {
         if let data = mantra.image, let image = UIImage(data: data) {
             return image
         } else {
@@ -26,10 +26,10 @@ final class ReadsViewModel: ObservableObject {
     }
     
     private var viewContext: NSManagedObjectContext
-
+    
     private var timerReadsSubscription: Cancellable?
     private var timerGoalSubscription: Cancellable?
-
+    
     init(_ mantra: Mantra, viewContext: NSManagedObjectContext) {
         self.mantra = mantra
         self.displayedReads = Double(mantra.reads)
@@ -52,6 +52,7 @@ final class ReadsViewModel: ObservableObject {
         switch adjust {
         case .reads, .rounds: return "Add"
         case .value, .goal: return "Set"
+        }
     }
     
     func handleAdjusting(for adjust: AdjustingType, with number: Int32) {
@@ -60,6 +61,7 @@ final class ReadsViewModel: ObservableObject {
         case .rounds: handleReadsChanges(with: mantra.reads + number * 108)
         case .value: handleReadsChanges(with: number)
         case .goal: handleGoalChanges(with: number)
+        }
     }
     
     func isAllowedAdjusting(for adjust: AdjustingType, with number: Int32) -> Bool {
@@ -73,18 +75,19 @@ final class ReadsViewModel: ObservableObject {
                 return 0...1_000_000 ~= mantra.reads + multiplied.partialValue
             }
         case .value, .goal: return 0...1_000_000 ~= number
+        }
     }
     
     func handleReadsChanges(with value: Int32) {
         adjustMantraReads(with: value)
-        animateReadsChange()
+        animateReadsChanges()
     }
-
+    
     private func adjustMantraReads(with value: Int32) {
         mantra.reads = value
         saveContext()
     }
-        
+    
     private func animateReadsChanges() {
         isAnimated = true
         progress = Double(mantra.reads) / Double(mantra.readsGoal)
@@ -102,7 +105,7 @@ final class ReadsViewModel: ObservableObject {
                 }
             }
     }
-         
+    
     func handleGoalChanges(with value: Int32) {
         adjustMantraGoal(with: value)
         animateGoalChanges()

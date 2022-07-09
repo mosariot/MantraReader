@@ -26,10 +26,10 @@ struct ReadsView: View {
 #endif
     
     var body: some View {
-        let layout = (verticalSizeClass == .compact && isPhone) ? AnyLayout(HStack()) : AnyLayout(VStack())
+//        let layout = (verticalSizeClass == .compact && isPhone) ? AnyLayout(HStack()) : AnyLayout(VStack())
         
         VStack {
-            layout {
+            VStack {
                 Image(uiImage: viewModel.image)
                     .resizable()
                     .aspectRatio(1, contentMode: .fit)
@@ -117,8 +117,10 @@ struct ReadsView_Previews: PreviewProvider {
     
     static var previews: some View {
         ReadsView(
-            viewModel: ReadsViewModel(previewMantra(viewContext: controller.container.viewContext)),
-            viewContext: controller.container.viewContext
+            viewModel: ReadsViewModel(
+                previewMantra(viewContext: controller.container.viewContext),
+                viewContext: controller.container.viewContext
+            )
         )
     }
 }

@@ -16,7 +16,7 @@ struct PersistenceController {
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "MantraReader")
         
-         guard let description = container.persistentStoreDescriptions.first else {
+        guard let description = container.persistentStoreDescriptions.first else {
             fatalError("Failed to retrieve a persistent store description.")
         }
         
@@ -41,6 +41,7 @@ struct PersistenceController {
                 fatalError("Failed to pin viewContext to the current generation: \(error)")
             }
         }
+    }
     
     func preloadData(context: NSManagedObjectContext) {
         PreloadedMantras.data.forEach { data in

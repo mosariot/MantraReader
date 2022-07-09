@@ -14,10 +14,7 @@ struct DetailsColumn: View {
     var body: some View {
         ZStack {
             if let selectedMantra {
-                ReadsView(
-                    viewModel: ReadsViewModel(selectedMantra),
-                    viewContext: viewContext)
-                )
+                ReadsView(viewModel: ReadsViewModel(selectedMantra, viewContext: viewContext))
             } else {
                 Text("Select a mantra")
                     .foregroundColor(.gray)

@@ -41,7 +41,7 @@ struct CircularProgressView: View {
                 .font(.largeTitle)
                 .bold()
             }
-            .frame(maxHeight: 450)
+            .frame(maxHeight: 600)
             Text("Current goal: \(displayedGoal, specifier: "%.0f")")
             .foregroundColor(.gray)
             .padding()

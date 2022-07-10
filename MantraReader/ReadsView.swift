@@ -19,35 +19,46 @@ struct ReadsView: View {
     @ObservedObject var viewModel: ReadsViewModel
     @State private var isPresentedAdjustingAlert = false
     @State private var adjustingType: AdjustingType?
-    @State private var adjustingNumber: Int32 = 0
+    @State private var adjustingNumber: Int32?
     
 #if os(iOS)
     private var isPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }
 #endif
     
     var body: some View {
-//        let layout = (verticalSizeClass == .compact && isPhone) ? AnyLayout(HStack()) : AnyLayout(VStack())
-        
         VStack {
-            VStack {
-                Image(uiImage: viewModel.image)
-                    .resizable()
-                    .aspectRatio(1, contentMode: .fit)
-                    .frame(width: 200)
-                
-                if verticalSizeClass != .compact {
+            if verticalSizeClass == .compact && isPhone {
+                HStack {
+                    Image(uiImage: viewModel.image)
+                        .resizable()
+                        .aspectRatio(1, contentMode: .fit)
+                        .frame(maxHeight: 200)
+                    
+                    CircularProgressView(
+                        progress: viewModel.progress,
+                        displayedNumber: viewModel.displayedReads,
+                        displayedGoal: viewModel.displayedGoal,
+                        isAnimated: viewModel.isAnimated
+                    )
+                }
+            } else {
+                VStack {
+                    Image(uiImage: viewModel.image)
+                        .resizable()
+                        .aspectRatio(1, contentMode: .fit)
+                        .frame(maxHeight: 200)
+                    
                     Text(viewModel.title)
                         .font(.title)
                         .padding()
+                    
+                    CircularProgressView(
+                        progress: viewModel.progress,
+                        displayedNumber: viewModel.displayedReads,
+                        displayedGoal: viewModel.displayedGoal,
+                        isAnimated: viewModel.isAnimated
+                    )
                 }
-                
-                CircularProgressView(
-                    progress: viewModel.progress,
-                    displayedNumber: viewModel.displayedReads,
-                    displayedGoal: viewModel.displayedGoal,
-                    isAnimated: viewModel.isAnimated
-                )
-                .padding()
             }
             
             HStack {
@@ -80,6 +91,7 @@ struct ReadsView: View {
                 .padding()
             }
         }
+        .ignoresSafeArea(.keyboard)
         .alert(
             viewModel.alertTitle(for: adjustingType),
             isPresented: $isPresentedAdjustingAlert,
@@ -89,12 +101,12 @@ struct ReadsView: View {
             Button(viewModel.buttonTitle(for: adjust)) {
                 viewModel.handleAdjusting(for: adjust, with: adjustingNumber)
                 adjustingType = nil
-                adjustingNumber = 0
+                adjustingNumber = nil
             }
-            .disabled(viewModel.isAllowedAdjusting(for: adjust, with: adjustingNumber))
-            Button("Cancel", role: .destructive) {
+//            .disabled(!viewModel.isAllowedAdjusting(for: adjust, with: adjustingNumber))
+            Button("Cancel", role: .cancel) {
                 adjustingType = nil
-                adjustingNumber = 0
+                adjustingNumber = nil
             }
         }
     }

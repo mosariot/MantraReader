@@ -55,7 +55,8 @@ final class ReadsViewModel: ObservableObject {
         }
     }
     
-    func handleAdjusting(for adjust: AdjustingType, with number: Int32) {
+    func handleAdjusting(for adjust: AdjustingType, with number: Int32?) {
+        guard let number else { return }
         switch adjust {
         case .reads: handleReadsChanges(with: mantra.reads + number)
         case .rounds: handleReadsChanges(with: mantra.reads + number * 108)
@@ -64,19 +65,20 @@ final class ReadsViewModel: ObservableObject {
         }
     }
     
-    func isAllowedAdjusting(for adjust: AdjustingType, with number: Int32) -> Bool {
-        switch adjust {
-        case .reads: return 0...1_000_000 ~= (mantra.reads + number)
-        case .rounds:
-            let multiplied = number.multipliedReportingOverflow(by: 108)
-            if multiplied.overflow {
-                return false
-            } else {
-                return 0...1_000_000 ~= mantra.reads + multiplied.partialValue
-            }
-        case .value, .goal: return 0...1_000_000 ~= number
-        }
-    }
+//    func isAllowedAdjusting(for adjust: AdjustingType, with number: Int32?) -> Bool {
+//        guard let number else { return true }
+//        switch adjust {
+//        case .reads: return 0...1_000_000 ~= (mantra.reads + number)
+//        case .rounds:
+//            let multiplied = number.multipliedReportingOverflow(by: 108)
+//            if multiplied.overflow {
+//                return false
+//            } else {
+//                return 0...1_000_000 ~= mantra.reads + multiplied.partialValue
+//            }
+//        case .value, .goal: return 0...1_000_000 ~= number
+//        }
+//    }
     
     func handleReadsChanges(with value: Int32) {
         adjustMantraReads(with: value)

@@ -55,11 +55,6 @@ struct ContentView: View {
                 columnVisibility = .detailOnly
             }
         }
-        .onChange(of: orientationInfo.orientation) { _ in
-            if isPad {
-                columnVisibility = .doubleColumn
-            }
-        }
 #endif
     }
 }

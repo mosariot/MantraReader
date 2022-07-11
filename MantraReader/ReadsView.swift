@@ -131,6 +131,8 @@ struct ReadsView_Previews: PreviewProvider {
     }
 }
 
+import UIKit
+
 struct UpdatingAlertView: UIViewControllerRepresentable {
     @Binding var isPresented: Bool
     @Binding var adjustingText: String
@@ -193,7 +195,10 @@ struct UpdatingAlertView: UIViewControllerRepresentable {
                 }
             }
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .default) { _ in
+            let cancelAction = UIAlertAction(
+                title: NSLocalizedString("Cancel", comment: "Alert Button on ReadsView"),
+                style: .default
+            ) { _ in
                 alert.dismiss(animated: true) {
                     adjustingType = nil
                     adjustingText = ""
@@ -206,12 +211,12 @@ struct UpdatingAlertView: UIViewControllerRepresentable {
             alert.view.tintColor = Constants.accentColor ?? .systemOrange
             
             DispatchQueue.main.async {
-                uiViewController.present(alert, animated: true, completion: {
+                uiViewController.present(alert, animated: true) {
                     adjustingType = nil
                     adjustingText = ""
                     isPresented = false
                     context.coordinator.alert = nil
-                })
+                }
             }
         }
     }

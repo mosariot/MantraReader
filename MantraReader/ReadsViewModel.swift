@@ -38,25 +38,47 @@ final class ReadsViewModel: ObservableObject {
         self.viewContext = viewContext
     }
     
-    func alertTitle(for adjust: AdjustingType?) -> String {
-        guard let adjust else { return "Enter a value" }
-        switch adjust {
-        case .reads: return "Enter readings number"
-        case .rounds: return "Enter rounds number"
-        case .value: return "Set a new readings count"
-        case .goal: return "Set a new readings goal"
+    func isValidUpdatingNumber(text: String?, adjustingType: AdjustingType?) -> Bool {
+        guard
+            let alertText = text,
+            let alertNumber = UInt32(alertText),
+            let adjustingType
+        else { return false }
+                
+        switch adjustingType {
+        case .reads:
+            return 0...1_000_000 ~= UInt32(mantra.reads) + alertNumber
+        case .rounds:
+            let multiplied = alertNumber.multipliedReportingOverflow(by: 108)
+            if multiplied.overflow {
+                return false
+            } else {
+                return 0...1_000_000 ~= UInt32(mantra.reads) + multiplied.partialValue
+            }
+        case .goal, .value:
+            return 0...1_000_000 ~= alertNumber
+        }
+    }
+            
+    func alertAndActionTitles(for updatingType: AdjustingType) -> (String, String) {
+        switch updatingType {
+        case .reads:
+            return (NSLocalizedString("Enter Readings Number", comment: "Alert Title on ReadsView"),
+                    NSLocalizedString("Add", comment: "Alert Button on ReadsView"))
+        case .rounds:
+            return (NSLocalizedString("Enter Rounds Number", comment: "Alert Title on ReadsView"),
+                    NSLocalizedString("Add", comment: "Alert Button on ReadsView"))
+        case .value:
+            return (NSLocalizedString("Set a New Readings Count", comment: "Alert Title on ReadsView"),
+                    NSLocalizedString("Set", comment: "Alert Button on ReadsView"))
+        case .goal:
+            return (NSLocalizedString("Set a New Readings Goal", comment: "Alert Title on ReadsView"),
+                    NSLocalizedString("Set", comment: "Alert Button on ReadsView"))
         }
     }
     
-    func buttonTitle(for adjust: AdjustingType) -> String {
-        switch adjust {
-        case .reads, .rounds: return "Add"
-        case .value, .goal: return "Set"
-        }
-    }
-    
-    func handleAdjusting(for adjust: AdjustingType, with number: Int32?) {
-        guard let number else { return }
+    func handleAdjusting(for adjust: AdjustingType?, with number: Int32) {
+        guard let adjust else { return }
         switch adjust {
         case .reads: handleReadsChanges(with: mantra.reads + number)
         case .rounds: handleReadsChanges(with: mantra.reads + number * 108)
@@ -65,22 +87,7 @@ final class ReadsViewModel: ObservableObject {
         }
     }
     
-//    func isAllowedAdjusting(for adjust: AdjustingType, with number: Int32?) -> Bool {
-//        guard let number else { return true }
-//        switch adjust {
-//        case .reads: return 0...1_000_000 ~= (mantra.reads + number)
-//        case .rounds:
-//            let multiplied = number.multipliedReportingOverflow(by: 108)
-//            if multiplied.overflow {
-//                return false
-//            } else {
-//                return 0...1_000_000 ~= mantra.reads + multiplied.partialValue
-//            }
-//        case .value, .goal: return 0...1_000_000 ~= number
-//        }
-//    }
-    
-    func handleReadsChanges(with value: Int32) {
+    private func handleReadsChanges(with value: Int32) {
         adjustMantraReads(with: value)
         animateReadsChanges()
     }
@@ -108,7 +115,7 @@ final class ReadsViewModel: ObservableObject {
             }
     }
     
-    func handleGoalChanges(with value: Int32) {
+    private func handleGoalChanges(with value: Int32) {
         adjustMantraGoal(with: value)
         animateGoalChanges()
     }

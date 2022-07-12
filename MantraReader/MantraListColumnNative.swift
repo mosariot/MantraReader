@@ -89,7 +89,7 @@ struct MantraListColumnNative: View {
         .animation(.default, value: searchText)
         .searchable(text: $searchText, prompt: "Search")
         .onChange(of: searchText) {
-            mantras.nsPredicate = $0.isEmpty ? nil : NSPredicate(format: "name contains[cd] %@", $0)
+            mantras.nsPredicate = $0.isEmpty ? nil : NSPredicate(format: "title contains[cd] %@", $0)
         }
         .onChange(of: sorting) {
             switch $0 {

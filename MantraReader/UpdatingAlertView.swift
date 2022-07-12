@@ -9,11 +9,11 @@ import UIKit
 import SwiftUI
 
 struct UpdatingAlertView: UIViewControllerRepresentable {
+    @State private var adjustingText: String = ""
     @Binding var isPresented: Bool
-    @Binding var adjustingText: String
     @Binding var adjustingType: AdjustingType?
     @ObservedObject var viewModel: ReadsViewModel
-    var delegate = AlertTextFieldDelegate()
+    let delegate = AlertTextFieldDelegate()
     
     func makeUIViewController(
         context: UIViewControllerRepresentableContext<UpdatingAlertView>
@@ -38,7 +38,6 @@ struct UpdatingAlertView: UIViewControllerRepresentable {
                 viewModel.handleAdjusting(for: adjustingType, with: adjustingNumber)
                 alert.dismiss(animated: true) {
                     adjustingType = nil
-                    adjustingText = ""
                     isPresented = false
                 }
             }
@@ -56,7 +55,7 @@ struct UpdatingAlertView: UIViewControllerRepresentable {
                         queue: .main
                     ) { _ in
                         if viewModel.isValidUpdatingNumber(
-                            text: alertTextField.text,
+                            for: alertTextField.text,
                             adjustingType: adjustingType
                         ) {
                             positiveAction.isEnabled = true
@@ -77,7 +76,6 @@ struct UpdatingAlertView: UIViewControllerRepresentable {
             ) { _ in
                 alert.dismiss(animated: true) {
                     adjustingType = nil
-                    adjustingText = ""
                     isPresented = false
                 }
             }

@@ -20,7 +20,6 @@ struct ReadsView: View {
     @ObservedObject var viewModel: ReadsViewModel
     @State private var isPresentedAdjustingAlert = false
     @State private var adjustingType: AdjustingType?
-    @State private var adjustingText: String = ""
     
 #if os(iOS)
     private var isPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }
@@ -38,8 +37,8 @@ struct ReadsView: View {
                     Image(uiImage: viewModel.image)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(minHeight: 80, maxHeight: 250)
-                        .layoutPriority(1)
+                        .frame(minHeight: 80, maxHeight: isPhone ? 160 : 260)
+                        .layoutPriority(3)
                     if verticalSizeClass == .regular {
                         Spacer()
                         Text(viewModel.title)
@@ -54,7 +53,7 @@ struct ReadsView: View {
                             displayedNumber: viewModel.displayedReads,
                             isAnimated: viewModel.isAnimated
                         )
-                        .padding(.bottom)
+                        .padding()
                         Button("Current goal: \(viewModel.displayedGoal, specifier: "%.0f")") {
                             adjustingType = .goal
                             isPresentedAdjustingAlert = true
@@ -62,7 +61,10 @@ struct ReadsView: View {
                     }
                     Spacer()
                 }
-                HStack {
+                HStack(
+                    spacing: (horizontalSizeClass == .compact
+                              && !(verticalSizeClass == .compact && isPhone)) ? 10 : 50
+                ) {
                     Button {
                         adjustingType = .reads
                         isPresentedAdjustingAlert = true
@@ -92,12 +94,10 @@ struct ReadsView: View {
                     .padding()
                 }
             }
-            .ignoresSafeArea(.keyboard)
             
             if isPresentedAdjustingAlert {
                 UpdatingAlertView(
                     isPresented: $isPresentedAdjustingAlert,
-                    adjustingText: $adjustingText,
                     adjustingType: $adjustingType,
                     viewModel: viewModel
                 )

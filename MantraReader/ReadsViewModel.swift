@@ -39,7 +39,7 @@ final class ReadsViewModel: ObservableObject {
         self.viewContext = viewContext
     }
     
-    func isValidUpdatingNumber(text: String?, adjustingType: AdjustingType?) -> Bool {
+    func isValidUpdatingNumber(for text: String?, adjustingType: AdjustingType?) -> Bool {
         guard
             let alertText = text,
             let alertNumber = UInt32(alertText),

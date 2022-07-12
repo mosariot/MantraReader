@@ -16,6 +16,7 @@ enum AdjustingType {
 
 struct ReadsView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @ObservedObject var viewModel: ReadsViewModel
     @State private var isPresentedAdjustingAlert = false
     @State private var adjustingType: AdjustingType?
@@ -41,7 +42,7 @@ struct ReadsView: View {
                     if verticalSizeClass == .regular {
                         Spacer()
                         Text(viewModel.title)
-                            .font(.title)
+                            .font(.system(.largeTitle, weight: .medium))
                             .textSelection(.enabled)
                             .padding()
                     }
@@ -52,12 +53,11 @@ struct ReadsView: View {
                             displayedNumber: viewModel.displayedReads,
                             isAnimated: viewModel.isAnimated
                         )
-                        .padding()
+                        .padding(.bottom)
                         Button("Current goal: \(viewModel.displayedGoal, specifier: "%.0f")") {
                             adjustingType = .goal
                             isPresentedAdjustingAlert = true
                         }
-                            .padding()
                     }
                     Spacer()
                 }
@@ -101,6 +101,9 @@ struct ReadsView: View {
                     viewModel: viewModel
                 )
             }
+        }
+        .toolbar {
+            
         }
     }
 }

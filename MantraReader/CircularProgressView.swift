@@ -16,32 +16,32 @@ struct CircularProgressView: View {
         VStack {
             ZStack {
                 Circle()
-                .stroke(
-                    .gray.opacity(0.5),
-                    lineWidth: 20
-                )
-                Circle()
-                .trim(from: 0, to: progress)
-                .stroke(
-                    .pink,
-                    style: StrokeStyle(
-                        lineWidth: 20,
-                        lineCap: .round
+                    .stroke(
+                        .gray.opacity(0.5),
+                        lineWidth: 20
                     )
-                )
-                .rotationEffect(.degrees(-90))
-                .animation(
-                    isAnimated ?
-                    Animation.easeOut(duration: Constants.animationTime) :
-                    Animation.linear(duration: 0.01),
-                    value: progress
-                )
+                Circle()
+                    .trim(from: 0, to: progress)
+                    .stroke(
+                        .pink,
+                        style: StrokeStyle(
+                            lineWidth: 20,
+                            lineCap: .round
+                        )
+                    )
+                    .rotationEffect(.degrees(-90))
+                    .animation(
+                        isAnimated ?
+                        Animation.easeOut(duration: Constants.animationTime) :
+                            Animation.linear(duration: 0.01),
+                        value: progress
+                    )
                 Text("\(displayedNumber, specifier: "%.0f")")
-                .font(.largeTitle)
-                .textSelection(.enabled)
-                .bold()
+                    .font(.system(.largeTitle, design: .rounded, weight: .medium))
+                    .textSelection(.enabled)
+                    .bold()
             }
-            .frame(maxHeight: 500)
+            .frame(maxHeight: 400)
         }
     }
 }

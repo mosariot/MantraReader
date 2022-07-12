@@ -45,7 +45,7 @@ final class ReadsViewModel: ObservableObject {
             let alertNumber = UInt32(alertText),
             let adjustingType
         else { return false }
-                
+        
         switch adjustingType {
         case .reads:
             return 0...1_000_000 ~= UInt32(mantra.reads) + alertNumber
@@ -60,7 +60,7 @@ final class ReadsViewModel: ObservableObject {
             return 0...1_000_000 ~= alertNumber
         }
     }
-            
+    
     func alertAndActionTitles(for adjustingType: AdjustingType?) -> (String, String) {
         guard let adjustingType else { return ("", "") }
         switch adjustingType {

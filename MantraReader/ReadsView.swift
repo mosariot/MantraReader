@@ -38,7 +38,8 @@ struct ReadsView: View {
                     Image(uiImage: viewModel.image)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(maxHeight: 200)
+                        .frame(minHeight: 80, maxHeight: 250)
+                        .layoutPriority(1)
                     if verticalSizeClass == .regular {
                         Spacer()
                         Text(viewModel.title)

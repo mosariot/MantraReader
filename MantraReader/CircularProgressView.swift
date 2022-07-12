@@ -41,7 +41,7 @@ struct CircularProgressView: View {
                     .textSelection(.enabled)
                     .bold()
             }
-            .frame(maxHeight: 400)
+            .frame(minHeight: 180, maxHeight: 500)
         }
     }
 }

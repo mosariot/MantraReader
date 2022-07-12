@@ -60,8 +60,9 @@ final class ReadsViewModel: ObservableObject {
         }
     }
             
-    func alertAndActionTitles(for updatingType: AdjustingType) -> (String, String) {
-        switch updatingType {
+    func alertAndActionTitles(for adjustingType: AdjustingType?) -> (String, String) {
+        guard let adjustingType else { return ("", "") }
+        switch adjustingType {
         case .reads:
             return (NSLocalizedString("Enter Readings Number", comment: "Alert Title on ReadsView"),
                     NSLocalizedString("Add", comment: "Alert Button on ReadsView"))

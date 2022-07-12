@@ -26,42 +26,30 @@ struct ReadsView: View {
 #endif
     
     var body: some View {
+        let layout = (verticalSizeClass == .compact && isPhone) ? AnyLayout(_HStackLayout()) : AnyLayout(_VStackLayout())
+        
         ZStack {
             VStack {
-                if verticalSizeClass == .compact && isPhone {
-                    HStack {
-                        Image(uiImage: viewModel.image)
-                            .resizable()
-                            .aspectRatio(1, contentMode: .fit)
-                            .frame(maxHeight: 200)
+                layout {
+                    Image(uiImage: viewModel.image)
+                        .resizable()
+                        .aspectRatio(1, contentMode: .fit)
+                        .frame(maxHeight: 200)
                     
-                        CircularProgressView(
-                            progress: viewModel.progress,
-                            displayedNumber: viewModel.displayedReads,
-                            displayedGoal: viewModel.displayedGoal,
-                            isAnimated: viewModel.isAnimated
-                        )
-                    }
-                } else {
-                    VStack {
-                        Image(uiImage: viewModel.image)
-                            .resizable()
-                            .aspectRatio(1, contentMode: .fit)
-                            .frame(maxHeight: 200)
-                    
+                    if verticalSizeClass == .regular {
                         Text(viewModel.title)
                             .font(.title)
                             .padding()
-                    
-                        CircularProgressView(
-                            progress: viewModel.progress,
-                            displayedNumber: viewModel.displayedReads,
-                            displayedGoal: viewModel.displayedGoal,
-                            isAnimated: viewModel.isAnimated
-                        )
                     }
+                    
+                    CircularProgressView(
+                        progress: viewModel.progress,
+                        displayedNumber: viewModel.displayedReads,
+                        displayedGoal: viewModel.displayedGoal,
+                        isAnimated: viewModel.isAnimated
+                    )
                 }
-            
+                
                 HStack {
                     Button {
                         adjustingType = .reads
@@ -158,20 +146,20 @@ struct UpdatingAlertView: UIViewControllerRepresentable {
             let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
             context.coordinator.alert = alert
             
-            let positiveAction = UIAlertAction(title: actionTitle, style: .default) { _ in   
+            let positiveAction = UIAlertAction(title: actionTitle, style: .default) { _ in
                 viewModel.handleAdjusting(for: adjustingType, with: adjustingNumber)
                 alert.dismiss(animated: true) {
                     adjustingType = nil
                     adjustingText = ""
                     isPresented = false
-                }                                                                    
+                }
             }
             
             alert.addTextField { alertTextField in
                 alertTextField.placeholder = "Enter number"
                 alertTextField.keyboardType = .numberPad
                 alertTextField.clearButtonMode = .always
-                alertTextField.delegate = context.coordinator 
+                alertTextField.delegate = context.coordinator
                 positiveAction.isEnabled = false
                 NotificationCenter.default
                     .addObserver(
@@ -179,20 +167,20 @@ struct UpdatingAlertView: UIViewControllerRepresentable {
                         object: alertTextField,
                         queue: .main
                     ) { _ in
-                    if viewModel.isValidUpdatingNumber(
-                        text: alertTextField.text,
-                        adjustingType: adjustingType
-                    ) {
-                        positiveAction.isEnabled = true
-                        guard
-                            let textValue = alertTextField.text,
-                            let numberValue = Int32(textValue)
-                        else { return }
-                        adjustingNumber = numberValue
-                    } else {
-                        positiveAction.isEnabled = false
+                        if viewModel.isValidUpdatingNumber(
+                            text: alertTextField.text,
+                            adjustingType: adjustingType
+                        ) {
+                            positiveAction.isEnabled = true
+                            guard
+                                let textValue = alertTextField.text,
+                                let numberValue = Int32(textValue)
+                            else { return }
+                            adjustingNumber = numberValue
+                        } else {
+                            positiveAction.isEnabled = false
+                        }
                     }
-                }
             }
             
             let cancelAction = UIAlertAction(
@@ -203,7 +191,7 @@ struct UpdatingAlertView: UIViewControllerRepresentable {
                     adjustingType = nil
                     adjustingText = ""
                     isPresented = false
-                }                                                               
+                }
             }
             
             alert.addAction(cancelAction)
@@ -229,7 +217,7 @@ struct UpdatingAlertView: UIViewControllerRepresentable {
         var alert: UIAlertController?
         var view: UpdatingAlertView
         
-        init(_ control: AlertControlView) {
+        init(_ view: UpdatingAlertView) {
             self.view = view
         }
         

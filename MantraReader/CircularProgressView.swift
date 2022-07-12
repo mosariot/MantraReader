@@ -10,7 +10,6 @@ import SwiftUI
 struct CircularProgressView: View {
     var progress: Double
     var displayedNumber: Double
-    var displayedGoal: Double
     var isAnimated: Bool
     
     var body: some View {
@@ -39,19 +38,17 @@ struct CircularProgressView: View {
                 )
                 Text("\(displayedNumber, specifier: "%.0f")")
                 .font(.largeTitle)
+                .textSelection(.enabled)
                 .bold()
             }
-            .frame(maxHeight: 600)
-            Text("Current goal: \(displayedGoal, specifier: "%.0f")")
-            .foregroundColor(.gray)
-            .padding()
+            .frame(maxHeight: 500)
         }
     }
 }
 
 struct CircularProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        CircularProgressView(progress: 0.4, displayedNumber: 250, displayedGoal: 625, isAnimated: true)
+        CircularProgressView(progress: 0.4, displayedNumber: 250, isAnimated: true)
             .previewLayout(.fixed(width: 300, height: 300))
             .padding()
             .previewDisplayName("Circular Progress View")

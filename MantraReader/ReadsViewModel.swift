@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 import CoreData
 
+@MainActor
 final class ReadsViewModel: ObservableObject {
     @Published var mantra: Mantra
     @Published var displayedReads: Double

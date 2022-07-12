@@ -26,30 +26,41 @@ struct ReadsView: View {
 #endif
     
     var body: some View {
-        let layout = (verticalSizeClass == .compact && isPhone) ? AnyLayout(_HStackLayout()) : AnyLayout(_VStackLayout())
+        let layout = (verticalSizeClass == .compact && isPhone) ?
+        AnyLayout(_HStackLayout()) :
+        AnyLayout(_VStackLayout())
         
         ZStack {
             VStack {
                 layout {
+                    Spacer()
                     Image(uiImage: viewModel.image)
                         .resizable()
-                        .aspectRatio(1, contentMode: .fit)
+                        .aspectRatio(contentMode: .fit)
                         .frame(maxHeight: 200)
-                    
                     if verticalSizeClass == .regular {
+                        Spacer()
                         Text(viewModel.title)
                             .font(.title)
+                            .textSelection(.enabled)
                             .padding()
                     }
-                    
-                    CircularProgressView(
-                        progress: viewModel.progress,
-                        displayedNumber: viewModel.displayedReads,
-                        displayedGoal: viewModel.displayedGoal,
-                        isAnimated: viewModel.isAnimated
-                    )
+                    Spacer()
+                    VStack {
+                        CircularProgressView(
+                            progress: viewModel.progress,
+                            displayedNumber: viewModel.displayedReads,
+                            isAnimated: viewModel.isAnimated
+                        )
+                        .padding()
+                        Button("Current goal: \(viewModel.displayedGoal, specifier: "%.0f")") {
+                            adjustingType = .goal
+                            isPresentedAdjustingAlert = true
+                        }
+                            .padding()
+                    }
+                    Spacer()
                 }
-                
                 HStack {
                     Button {
                         adjustingType = .reads
@@ -116,116 +127,5 @@ struct ReadsView_Previews: PreviewProvider {
                 viewContext: controller.container.viewContext
             )
         )
-    }
-}
-
-import UIKit
-
-struct UpdatingAlertView: UIViewControllerRepresentable {
-    @Binding var isPresented: Bool
-    @Binding var adjustingText: String
-    @Binding var adjustingType: AdjustingType?
-    var viewModel: ReadsViewModel
-    
-    func makeUIViewController(
-        context: UIViewControllerRepresentableContext<UpdatingAlertView>
-    ) -> UIViewController {
-        UIViewController()
-    }
-    
-    func updateUIViewController(
-        _ uiViewController: UIViewController,
-        context: UIViewControllerRepresentableContext<UpdatingAlertView>
-    ) {
-        guard context.coordinator.alert == nil else { return }
-        
-        if isPresented {
-            var adjustingNumber: Int32 = 0
-            let (alertTitle, actionTitle) = viewModel.alertAndActionTitles(for: adjustingType)
-            
-            let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
-            context.coordinator.alert = alert
-            
-            let positiveAction = UIAlertAction(title: actionTitle, style: .default) { _ in
-                viewModel.handleAdjusting(for: adjustingType, with: adjustingNumber)
-                alert.dismiss(animated: true) {
-                    adjustingType = nil
-                    adjustingText = ""
-                    isPresented = false
-                }
-            }
-            
-            alert.addTextField { alertTextField in
-                alertTextField.placeholder = "Enter number"
-                alertTextField.keyboardType = .numberPad
-                alertTextField.clearButtonMode = .always
-                alertTextField.delegate = context.coordinator
-                positiveAction.isEnabled = false
-                NotificationCenter.default
-                    .addObserver(
-                        forName: UITextField.textDidChangeNotification,
-                        object: alertTextField,
-                        queue: .main
-                    ) { _ in
-                        if viewModel.isValidUpdatingNumber(
-                            text: alertTextField.text,
-                            adjustingType: adjustingType
-                        ) {
-                            positiveAction.isEnabled = true
-                            guard
-                                let textValue = alertTextField.text,
-                                let numberValue = Int32(textValue)
-                            else { return }
-                            adjustingNumber = numberValue
-                        } else {
-                            positiveAction.isEnabled = false
-                        }
-                    }
-            }
-            
-            let cancelAction = UIAlertAction(
-                title: NSLocalizedString("Cancel", comment: "Alert Button on ReadsView"),
-                style: .default
-            ) { _ in
-                alert.dismiss(animated: true) {
-                    adjustingType = nil
-                    adjustingText = ""
-                    isPresented = false
-                }
-            }
-            
-            alert.addAction(cancelAction)
-            alert.addAction(positiveAction)
-            alert.view.tintColor = Constants.accentColor ?? .systemOrange
-            
-            DispatchQueue.main.async {
-                uiViewController.present(alert, animated: true) {
-                    adjustingType = nil
-                    adjustingText = ""
-                    isPresented = false
-                    context.coordinator.alert = nil
-                }
-            }
-        }
-    }
-    
-    func makeCoordinator() -> UpdatingAlertView.Coordinator {
-        Coordinator(self)
-    }
-    
-    class Coordinator: NSObject, UITextFieldDelegate {
-        var alert: UIAlertController?
-        var view: UpdatingAlertView
-        
-        init(_ view: UpdatingAlertView) {
-            self.view = view
-        }
-        
-        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            guard CharacterSet(charactersIn: "0123456789").isSuperset(of: CharacterSet(charactersIn: string)) else {
-                return false
-            }
-            return true
-        }
     }
 }

@@ -6,11 +6,24 @@
 //
 
 import SwiftUI
+#if os(iOS)
+import UIKit
+#elseif os(macOS)
+import AppKit
+#endif
 
 @main
 struct MantraReaderApp: App {
     @AppStorage("isFirstLaunch") private var isFirstLaunch = true
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
+    
+    init() {
+#if os(iOS)
+        UIView.appearance(whenContainedInInstancesOf: [UIView.self]).tintColor = Constants.accentColor
+#elseif os(macOS)
+        NSView.appearance(whenContainedInInstancesOf: [NSView.self]).tintColor = Constants.accentColor
+#endif
+    }
     
     let persistenceController = PersistenceController.shared
     

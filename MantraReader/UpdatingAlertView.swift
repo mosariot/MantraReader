@@ -5,8 +5,9 @@
 //  Created by Александр Воробьев on 12.07.2022.
 //
 
-import UIKit
+#if os(iOS)
 import SwiftUI
+import UIKit
 
 struct UpdatingAlertView: UIViewControllerRepresentable {
     @State private var adjustingText: String = ""
@@ -29,7 +30,8 @@ struct UpdatingAlertView: UIViewControllerRepresentable {
         
         if isPresented {
             var adjustingNumber: Int32 = 0
-            let (alertTitle, actionTitle) = viewModel.alertAndActionTitles(for: adjustingType)
+            let alertTitle = viewModel.alertTitle(for: adjustingType)
+            let actionTitle = viewModel.alertActionTitle(for: adjustingType)
             
             let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
             context.coordinator.alert = alert
@@ -121,3 +123,4 @@ struct UpdatingAlertView: UIViewControllerRepresentable {
         }
     }
 }
+#endif

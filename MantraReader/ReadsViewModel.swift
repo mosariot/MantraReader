@@ -25,6 +25,7 @@ final class ReadsViewModel: ObservableObject {
             return UIImage(named: Constants.defaultImage)!
         }
     }
+    var favoriteBarImage: String { mantra.isFavorite ? "star.slash" : "star" }
     
     private var viewContext: NSManagedObjectContext
     
@@ -37,6 +38,11 @@ final class ReadsViewModel: ObservableObject {
         self.displayedGoal = Double(mantra.readsGoal)
         self.progress = Double(mantra.reads) / Double(mantra.readsGoal)
         self.viewContext = viewContext
+    }
+    
+    func toggleFavorite() {
+        mantra.isFavorite.toggle()
+        saveContext()
     }
     
     func isValidUpdatingNumber(for text: String?, adjustingType: AdjustingType?) -> Bool {
@@ -61,21 +67,31 @@ final class ReadsViewModel: ObservableObject {
         }
     }
     
-    func alertAndActionTitles(for adjustingType: AdjustingType?) -> (String, String) {
-        guard let adjustingType else { return ("", "") }
+    func alertTitle(for adjustingType: AdjustingType?) -> String {
+        guard let adjustingType else { return "" }
         switch adjustingType {
         case .reads:
-            return (NSLocalizedString("Enter Readings Number", comment: "Alert Title on ReadsView"),
-                    NSLocalizedString("Add", comment: "Alert Button on ReadsView"))
+            return NSLocalizedString("Enter Readings Number", comment: "Alert Title on ReadsView")
         case .rounds:
-            return (NSLocalizedString("Enter Rounds Number", comment: "Alert Title on ReadsView"),
-                    NSLocalizedString("Add", comment: "Alert Button on ReadsView"))
+            return NSLocalizedString("Enter Rounds Number", comment: "Alert Title on ReadsView")
         case .value:
-            return (NSLocalizedString("Set a New Readings Count", comment: "Alert Title on ReadsView"),
-                    NSLocalizedString("Set", comment: "Alert Button on ReadsView"))
+            return NSLocalizedString("Set a New Readings Count", comment: "Alert Title on ReadsView")
         case .goal:
-            return (NSLocalizedString("Set a New Readings Goal", comment: "Alert Title on ReadsView"),
-                    NSLocalizedString("Set", comment: "Alert Button on ReadsView"))
+            return NSLocalizedString("Set a New Readings Goal", comment: "Alert Title on ReadsView")
+        }
+    }
+    
+    func alertActionTitle(for adjustingType: AdjustingType?) -> String {
+        guard let adjustingType else { return "" }
+        switch adjustingType {
+        case .reads:
+            return NSLocalizedString("Add", comment: "Alert Button on ReadsView")
+        case .rounds:
+            return NSLocalizedString("Add", comment: "Alert Button on ReadsView")
+        case .value:
+            return NSLocalizedString("Set", comment: "Alert Button on ReadsView")
+        case .goal:
+            return NSLocalizedString("Set", comment: "Alert Button on ReadsView")
         }
     }
     

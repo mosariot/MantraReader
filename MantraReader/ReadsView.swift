@@ -20,6 +20,8 @@ struct ReadsView: View {
     @ObservedObject var viewModel: ReadsViewModel
     @State private var isPresentedAdjustingAlert = false
     @State private var adjustingType: AdjustingType?
+    @State private var adjustingText: String = ""
+    @State private var isPresentedDetailsSheet = false
     
 #if os(iOS)
     private var isPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }
@@ -29,7 +31,6 @@ struct ReadsView: View {
         let layout = (verticalSizeClass == .compact && isPhone) ?
         AnyLayout(_HStackLayout()) :
         AnyLayout(_VStackLayout())
-        
         
         ZStack {
             GeometryReader { _ in
@@ -98,7 +99,7 @@ struct ReadsView: View {
                 }
                 .ignoresSafeArea(.keyboard)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                
+#if os(iOS)
                 if isPresentedAdjustingAlert {
                     UpdatingAlertView(
                         isPresented: $isPresentedAdjustingAlert,
@@ -106,11 +107,49 @@ struct ReadsView: View {
                         viewModel: viewModel
                     )
                 }
-            }
-            .toolbar {
-                
+#endif
             }
             .ignoresSafeArea(.keyboard)
+#if os(macOS)
+            .alert(
+                viewModel.alertTitle(for: adjustingType),
+                isPresented: $isPresentedAdjustingAlert,
+                presenting: adjustingType
+            ) { _ in
+                TextField("Enter number", text: $adjustingText)
+                Button(viewModel.alertActionTitle(for: adjustingType)) {
+                    if viewModel.isValidUpdatingNumber(for: adjustingText, adjustingType: adjustingType) {
+                        guard let alertNumber = Int32(adjustingText) else { return }
+                        viewModel.handleAdjusting(for: adjustingType, with: alertNumber)
+                    }
+                    adjustingType = nil
+                    adjustingText = ""
+                }
+                Button("Cancel", role: .cancel) {
+                    adjustingType = nil
+                    adjustingText = ""
+                }
+            }
+#endif
+            .toolbar {
+                Button {
+                    // handling to do
+                } label: {
+                    Image(systemName: "arrow.uturn.backward")
+                        .symbolVariant(.circle)
+                }
+                Button {
+                    viewModel.toggleFavorite()
+                } label: {
+                    Image(systemName: viewModel.favoriteBarImage)
+                }
+                Button {
+                    isPresentedDetailsSheet = true
+                } label: {
+                    Image(systemName: "info")
+                        .symbolVariant(.circle)
+                }
+            }
         }
     }
 }

@@ -41,7 +41,7 @@ struct ReadsView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(minHeight: 80, maxHeight: isPhone ? 160 : 260)
-                            .layoutPriority(3)
+                            .layoutPriority(1)
                         if verticalSizeClass == .regular {
                             Spacer()
                             Text(viewModel.title)
@@ -96,6 +96,27 @@ struct ReadsView: View {
                         }
                         .padding()
                     }
+#if os(macOS)
+                    .alert(
+                        viewModel.alertTitle(for: adjustingType),
+                        isPresented: $isPresentedAdjustingAlert,
+                        presenting: adjustingType
+                    ) { _ in
+                        TextField("Enter number", text: $adjustingText)
+                        Button(viewModel.alertActionTitle(for: adjustingType)) {
+                            if viewModel.isValidUpdatingNumber(for: adjustingText, adjustingType: adjustingType) {
+                                guard let alertNumber = Int32(adjustingText) else { return }
+                                viewModel.handleAdjusting(for: adjustingType, with: alertNumber)
+                            }
+                            adjustingType = nil
+                            adjustingText = ""
+                        }
+                        Button("Cancel", role: .cancel) {
+                            adjustingType = nil
+                            adjustingText = ""
+                        }
+                    }
+#endif
                 }
                 .ignoresSafeArea(.keyboard)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -110,27 +131,6 @@ struct ReadsView: View {
 #endif
             }
             .ignoresSafeArea(.keyboard)
-#if os(macOS)
-            .alert(
-                viewModel.alertTitle(for: adjustingType),
-                isPresented: $isPresentedAdjustingAlert,
-                presenting: adjustingType
-            ) { _ in
-                TextField("Enter number", text: $adjustingText)
-                Button(viewModel.alertActionTitle(for: adjustingType)) {
-                    if viewModel.isValidUpdatingNumber(for: adjustingText, adjustingType: adjustingType) {
-                        guard let alertNumber = Int32(adjustingText) else { return }
-                        viewModel.handleAdjusting(for: adjustingType, with: alertNumber)
-                    }
-                    adjustingType = nil
-                    adjustingText = ""
-                }
-                Button("Cancel", role: .cancel) {
-                    adjustingType = nil
-                    adjustingText = ""
-                }
-            }
-#endif
             .toolbar {
                 Button {
                     // handling to do
@@ -138,6 +138,7 @@ struct ReadsView: View {
                     Image(systemName: "arrow.uturn.backward")
                         .symbolVariant(.circle)
                 }
+                .disabled(true)
                 Button {
                     viewModel.toggleFavorite()
                 } label: {
@@ -149,6 +150,9 @@ struct ReadsView: View {
                     Image(systemName: "info")
                         .symbolVariant(.circle)
                 }
+            }
+            .onReceive(viewModel.mantra.objectWillChange) { _ in
+                viewModel.objectWillChange.send()
             }
         }
     }

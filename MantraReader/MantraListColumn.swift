@@ -24,9 +24,10 @@ struct MantraListColumn: View {
     @State private var isPresentingPresetMantraView = false
     
     private var sortedMantras: [Mantra] {
+        let mantrasWithTitle = mantras.filter { $0.title != "" }
         switch sorting {
-        case .title: return mantras.sorted { $0.title! < $1.title! }
-        case .reads: return mantras.sorted { $0.reads > $1.reads }
+        case .title: return mantrasWithTitle.sorted(using: KeyPathComparator(\.title))
+        case .reads: return mantrasWithTitle.sorted(using: KeyPathComparator(\.reads, order: .reverse))
         }
     }
     

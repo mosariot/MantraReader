@@ -9,6 +9,18 @@ import SwiftUI
 import Combine
 import CoreData
 
+enum AdjustingType {
+    case reads
+    case rounds
+    case value
+    case goal
+}
+
+enum UndoType {
+    case value
+    case goal
+}
+
 @MainActor
 final class ReadsViewModel: ObservableObject {
     @Published var mantra: Mantra
@@ -16,6 +28,7 @@ final class ReadsViewModel: ObservableObject {
     @Published var displayedGoal: Double
     @Published var progress: Double
     @Published var isAnimated: Bool = false
+    @Published var undoHistory: [(value: Int32, type: UndoType)] = []
     
     var title: String { mantra.title ?? "" }
     var image: UIImage {
@@ -98,10 +111,18 @@ final class ReadsViewModel: ObservableObject {
     func handleAdjusting(for adjust: AdjustingType?, with number: Int32) {
         guard let adjust else { return }
         switch adjust {
-        case .reads: handleReadsChanges(with: mantra.reads + number)
-        case .rounds: handleReadsChanges(with: mantra.reads + number * 108)
-        case .value: handleReadsChanges(with: number)
-        case .goal: handleGoalChanges(with: number)
+        case .reads:
+            undoHistory.append((mantra.reads, .value))
+            handleReadsChanges(with: mantra.reads + number)
+        case .rounds:
+            undoHistory.append((mantra.reads, .value))
+            handleReadsChanges(with: mantra.reads + number * 108)
+        case .value:
+            undoHistory.append((mantra.reads, .value))
+            handleReadsChanges(with: number)
+        case .goal:
+            undoHistory.append((mantra.readsGoal, .goal))
+            handleGoalChanges(with: number)
         }
     }
     

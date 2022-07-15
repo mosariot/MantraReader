@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-enum AdjustingType {
-    case reads
-    case rounds
-    case value
-    case goal
-}
-
 struct ReadsView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
@@ -138,7 +131,7 @@ struct ReadsView: View {
                     Image(systemName: "arrow.uturn.backward")
                         .symbolVariant(.circle)
                 }
-                .disabled(true)
+                .disabled(viewModel.undoHistory.isEmpty)
                 Button {
                     viewModel.toggleFavorite()
                 } label: {

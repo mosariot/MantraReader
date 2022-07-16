@@ -145,9 +145,7 @@ struct ReadsView: View {
                 }
             }
             .onReceive(viewModel.mantra.objectWillChange) { _ in
-                if viewModel.isUserInitiatedChanges != true {
-                    viewModel.updateForRemoteChanges()
-                }
+                viewModel.updateForMantraChanges()
             }
         }
     }

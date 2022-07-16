@@ -109,45 +109,46 @@ final class ReadsViewModel: ObservableObject {
         }
     }
     
-    func updateForRemoteChanges() {
-        displayedReads = Double(mantra.reads)
-        displayedGoal = Double(mantra.readsGoal)
-        progress = Double(mantra.reads) / Double(mantra.readsGoal)
+    func updateForMantraChanges() {
+        if Int32(displayedReads) != mantra.reads {
+            animateReadsChanges()
+        }
+        if Int32(displayedGoal) != mantra.readsGoal {
+            animateGoalChanges()
+        }
+        objectWillChange.send()
     }
     
-    func handleUdno() {
-        guard let lastAction = undoHistory?.last else { return }
+    func handleUndo() {
+        guard let lastAction = undoHistory.last else { return }
+        isUserInitiatedChanges = true
         switch lastAction.type {
         case .value:
-            handleReadsChange(with: lastAction.value)
-            undoHistory?.removeLast()
+            adjustMantraReads(with: lastAction.value)
+            undoHistory.removeLast()
         case .goal:
-            handleGoalChanges(with: lastAction.value)
-            undoHistory?.removeLast()
+            adjustMantraGoal(with: lastAction.value)
+            undoHistory.removeLast()
         }
     }
     
     func handleAdjusting(for adjust: AdjustingType?, with number: Int32) {
         guard let adjust else { return }
+        isUserInitiatedChanges = true
         switch adjust {
         case .reads:
             undoHistory.append((mantra.reads, .value))
-            handleReadsChanges(with: mantra.reads + number)
+            adjustMantraReads(with: mantra.reads + number)
         case .rounds:
             undoHistory.append((mantra.reads, .value))
-            handleReadsChanges(with: mantra.reads + number * 108)
+            adjustMantraReads(with: mantra.reads + number * 108)
         case .value:
             undoHistory.append((mantra.reads, .value))
-            handleReadsChanges(with: number)
+            adjustMantraReads(with: number)
         case .goal:
             undoHistory.append((mantra.readsGoal, .goal))
-            handleGoalChanges(with: number)
+            adjustMantraGoal(with: number)
         }
-    }
-    
-    private func handleReadsChanges(with value: Int32) {
-        adjustMantraReads(with: value)
-        animateReadsChanges()
     }
     
     private func adjustMantraReads(with value: Int32) {
@@ -157,7 +158,6 @@ final class ReadsViewModel: ObservableObject {
     
     private func animateReadsChanges() {
         isAnimated = true
-        isUserInitiatedChanges = true
         progress = Double(mantra.reads) / Double(mantra.readsGoal)
         let deltaReads = Double(mantra.reads) - displayedReads
         timerReadsSubscription = Timer.publish(every: Constants.animationTime / 100, on: .main, in: .common)
@@ -175,11 +175,6 @@ final class ReadsViewModel: ObservableObject {
             }
     }
     
-    private func handleGoalChanges(with value: Int32) {
-        adjustMantraGoal(with: value)
-        animateGoalChanges()
-    }
-    
     private func adjustMantraGoal(with value: Int32) {
         mantra.readsGoal = value
         saveContext()
@@ -187,7 +182,6 @@ final class ReadsViewModel: ObservableObject {
     
     private func animateGoalChanges() {
         isAnimated = true
-        isUserInitiatedChanges = true
         progress = Double(mantra.reads) / Double(mantra.readsGoal)
         let deltaGoal = Double(mantra.readsGoal) - displayedGoal
         timerGoalSubscription = Timer.publish(every: Constants.animationTime / 100, on: .main, in: .common)

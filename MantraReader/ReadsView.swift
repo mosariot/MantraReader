@@ -126,7 +126,7 @@ struct ReadsView: View {
             .ignoresSafeArea(.keyboard)
             .toolbar {
                 Button {
-                    // handling to do
+                    viewModel.handleUndo()
                 } label: {
                     Image(systemName: "arrow.uturn.backward")
                         .symbolVariant(.circle)
@@ -145,7 +145,9 @@ struct ReadsView: View {
                 }
             }
             .onReceive(viewModel.mantra.objectWillChange) { _ in
-                viewModel.objectWillChange.send()
+                if viewModel.isUserInitiatedChanges != true {
+                    viewModel.updateForRemoteChanges()
+                }
             }
         }
     }

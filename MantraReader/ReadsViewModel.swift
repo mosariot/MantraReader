@@ -29,6 +29,7 @@ final class ReadsViewModel: ObservableObject {
     @Published var progress: Double
     @Published var isAnimated: Bool = false
     @Published var undoHistory: [(value: Int32, type: UndoType)] = []
+    private(set) var isUserInitiatedChanges = false
     
     var title: String { mantra.title ?? "" }
     var image: UIImage {
@@ -108,6 +109,12 @@ final class ReadsViewModel: ObservableObject {
         }
     }
     
+    func updateForRemoteChanges() {
+        displayedReads = Double(mantra.reads)
+        displayedGoal = Double(mantra.readsGoal)
+        progress = Double(mantra.reads) / Double(mantra.readsGoal)
+    }
+    
     func handleUdno() {
         guard let lastAction = undoHistory?.last else { return }
         switch lastAction.type {
@@ -150,6 +157,7 @@ final class ReadsViewModel: ObservableObject {
     
     private func animateReadsChanges() {
         isAnimated = true
+        isUserInitiatedChanges = true
         progress = Double(mantra.reads) / Double(mantra.readsGoal)
         let deltaReads = Double(mantra.reads) - displayedReads
         timerReadsSubscription = Timer.publish(every: Constants.animationTime / 100, on: .main, in: .common)
@@ -161,6 +169,7 @@ final class ReadsViewModel: ObservableObject {
                 } else {
                     self.displayedReads = Double(self.mantra.reads)
                     self.isAnimated = false
+                    self.isUserInitiatedChanges = false
                     self.timerReadsSubscription?.cancel()
                 }
             }
@@ -178,6 +187,7 @@ final class ReadsViewModel: ObservableObject {
     
     private func animateGoalChanges() {
         isAnimated = true
+        isUserInitiatedChanges = true
         progress = Double(mantra.reads) / Double(mantra.readsGoal)
         let deltaGoal = Double(mantra.readsGoal) - displayedGoal
         timerGoalSubscription = Timer.publish(every: Constants.animationTime / 100, on: .main, in: .common)
@@ -189,6 +199,7 @@ final class ReadsViewModel: ObservableObject {
                 } else {
                     self.displayedGoal = Double(self.mantra.readsGoal)
                     self.isAnimated = false
+                    self.isUserInitiatedChanges = false
                     self.timerGoalSubscription?.cancel()
                 }
             }

@@ -108,6 +108,18 @@ final class ReadsViewModel: ObservableObject {
         }
     }
     
+    func handleUdno() {
+        guard let lastAction = undoHistory?.last else { return }
+        switch lastAction.type {
+        case .value:
+            handleReadsChange(with: lastAction.value)
+            undoHistory?.removeLast()
+        case .goal:
+            handleGoalChanges(with: lastAction.value)
+            undoHistory?.removeLast()
+        }
+    }
+    
     func handleAdjusting(for adjust: AdjustingType?, with number: Int32) {
         guard let adjust else { return }
         switch adjust {

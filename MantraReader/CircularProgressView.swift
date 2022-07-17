@@ -12,10 +12,6 @@ struct CircularProgressView: View {
     var displayedNumber: Double
     var isAnimated: Bool
     
-#if os(iOS)
-    private var isPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }
-#endif
-    
     var body: some View {
         VStack {
             ZStack {
@@ -45,7 +41,6 @@ struct CircularProgressView: View {
                     .textSelection(.enabled)
                     .bold()
             }
-            .frame(minHeight: isPhone ? 200 : 300, maxHeight: 500)
         }
     }
 }

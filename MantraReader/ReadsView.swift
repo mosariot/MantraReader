@@ -26,14 +26,21 @@ struct ReadsView: View {
         AnyLayout(_VStackLayout())
         
         ZStack {
-            GeometryReader { _ in
+            GeometryReader { geo in
                 VStack {
                     layout {
                         Spacer()
                         Image(uiImage: viewModel.image)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(minHeight: 80, maxHeight: isPhone ? 160 : 260)
+                        // wChR
+//                            .frame(width: 0.35 * geo.size.width)
+                        // wChC
+//                            .frame(height: 0.45 * geo.size.height)
+                        // wRhC
+                            .frame(height: 0.48 * geo.size.height)
+                        // wRhR
+//                            .frame(height: 0.2 * geo.size.height)
                             .layoutPriority(1)
                         if verticalSizeClass == .regular {
                             Spacer()
@@ -49,6 +56,14 @@ struct ReadsView: View {
                                 displayedNumber: viewModel.displayedReads,
                                 isAnimated: viewModel.isAnimated
                             )
+                            // wChR
+//                            .frame(width: 0.58 * geo.size.width)
+                            // wChC
+//                            .frame(height: 0.53 * geo.size.height)
+                            // wRhC
+                            .frame(height: 0.57 * geo.size.height)
+                            // wRhR
+//                            .frame(height: 0.35 * geo.size.height)
                             .padding()
                             Button("Current goal: \(viewModel.displayedGoal, specifier: "%.0f")") {
                                 adjustingType = .goal

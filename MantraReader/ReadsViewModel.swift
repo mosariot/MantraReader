@@ -29,7 +29,6 @@ final class ReadsViewModel: ObservableObject {
     @Published var progress: Double
     @Published var isAnimated: Bool = false
     @Published var undoHistory: [(value: Int32, type: UndoType)] = []
-    private(set) var isUserInitiatedChanges = false
     
     var title: String { mantra.title ?? "" }
     var image: UIImage {
@@ -121,7 +120,6 @@ final class ReadsViewModel: ObservableObject {
     
     func handleUndo() {
         guard let lastAction = undoHistory.last else { return }
-        isUserInitiatedChanges = true
         switch lastAction.type {
         case .value:
             adjustMantraReads(with: lastAction.value)
@@ -134,7 +132,6 @@ final class ReadsViewModel: ObservableObject {
     
     func handleAdjusting(for adjust: AdjustingType?, with number: Int32) {
         guard let adjust else { return }
-        isUserInitiatedChanges = true
         switch adjust {
         case .reads:
             undoHistory.append((mantra.reads, .value))
@@ -169,7 +166,6 @@ final class ReadsViewModel: ObservableObject {
                 } else {
                     self.displayedReads = Double(self.mantra.reads)
                     self.isAnimated = false
-                    self.isUserInitiatedChanges = false
                     self.timerReadsSubscription?.cancel()
                 }
             }
@@ -193,7 +189,6 @@ final class ReadsViewModel: ObservableObject {
                 } else {
                     self.displayedGoal = Double(self.mantra.readsGoal)
                     self.isAnimated = false
-                    self.isUserInitiatedChanges = false
                     self.timerGoalSubscription?.cancel()
                 }
             }

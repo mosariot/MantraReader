@@ -16,14 +16,8 @@ struct ReadsView: View {
     @State private var adjustingText: String = ""
     @State private var isPresentedDetailsSheet = false
     
-#if os(iOS)
-    private var isPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }
-#endif
-    
     var body: some View {
-        let layout = (verticalSizeClass == .compact && isPhone) ?
-        AnyLayout(_HStackLayout()) :
-        AnyLayout(_VStackLayout())
+        let layout = verticalSizeClass == .compact ? AnyLayout(_HStackLayout()) : AnyLayout(_VStackLayout())
         
         ZStack {
             GeometryReader { geo in
@@ -33,15 +27,10 @@ struct ReadsView: View {
                         Image(uiImage: viewModel.image)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                        // wChR
-//                            .frame(width: 0.35 * geo.size.width)
-                        // wChC
-//                            .frame(height: 0.45 * geo.size.height)
-                        // wRhC
-                            .frame(height: 0.48 * geo.size.height)
-                        // wRhR
-//                            .frame(height: 0.2 * geo.size.height)
-                            .layoutPriority(1)
+                            .frame(
+                                width: imageSize(with: geo).width,
+                                height: imageSize(with: geo).height
+                            )
                         if verticalSizeClass == .regular {
                             Spacer()
                             Text(viewModel.title)
@@ -56,14 +45,10 @@ struct ReadsView: View {
                                 displayedNumber: viewModel.displayedReads,
                                 isAnimated: viewModel.isAnimated
                             )
-                            // wChR
-//                            .frame(width: 0.58 * geo.size.width)
-                            // wChC
-//                            .frame(height: 0.53 * geo.size.height)
-                            // wRhC
-                            .frame(height: 0.57 * geo.size.height)
-                            // wRhR
-//                            .frame(height: 0.35 * geo.size.height)
+                            .frame(
+                                width: circularProgressViewSize(with: geo).width,
+                                height: circularProgressViewSize(with: geo).height
+                            )
                             .padding()
                             Button("Current goal: \(viewModel.displayedGoal, specifier: "%.0f")") {
                                 adjustingType = .goal
@@ -73,8 +58,7 @@ struct ReadsView: View {
                         Spacer()
                     }
                     HStack(
-                        spacing: (horizontalSizeClass == .compact
-                                  && !(verticalSizeClass == .compact && isPhone)) ? 10 : 50
+                        spacing: (horizontalSizeClass == .compact && verticalSizeClass != .compact) ? 10 : 50
                     ) {
                         Button {
                             adjustingType = .reads
@@ -162,6 +146,36 @@ struct ReadsView: View {
             .onReceive(viewModel.mantra.objectWillChange) { _ in
                 viewModel.updateForMantraChanges()
             }
+        }
+    }
+    
+    private func imageSize(with geo: GeometryProxy) -> (width: CGFloat?, height: CGFloat?) {
+        switch (horizontalSizeClass, verticalSizeClass) {
+        case (.compact, .regular):
+            return (0.34 * CGFloat(geo.size.width), nil)
+        case (.compact, .compact):
+            return (nil, CGFloat(0.45 * geo.size.height))
+        case (.regular, .compact):
+            return (nil, CGFloat(0.48 * geo.size.height))
+        case (.regular, .regular):
+            return (nil, CGFloat(0.20 * geo.size.height))
+        default:
+            return (nil, nil)
+        }
+    }
+    
+    private func circularProgressViewSize(with geo: GeometryProxy) -> (width: CGFloat?, height: CGFloat?) {
+        switch (horizontalSizeClass, verticalSizeClass) {
+        case (.compact, .regular):
+            return (0.70 * CGFloat(geo.size.width), nil)
+        case (.compact, .compact):
+            return (nil, 0.53 * CGFloat(geo.size.height))
+        case (.regular, .compact):
+            return (nil, 0.57 * CGFloat(geo.size.height))
+        case (.regular, .regular):
+            return (nil, 0.35 * CGFloat(geo.size.height))
+        default:
+            return (nil, nil)
         }
     }
 }

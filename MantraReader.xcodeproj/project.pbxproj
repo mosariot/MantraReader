@@ -27,6 +27,7 @@
 		9FDC8DAC28622AEC00BF7051 /* DetailsColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DAB28622AEC00BF7051 /* DetailsColumn.swift */; };
 		9FDC8DAE28622D5900BF7051 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DAD28622D5900BF7051 /* Constants.swift */; };
 		9FDC8DB028623D5F00BF7051 /* OrientationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DAF28623D5F00BF7051 /* OrientationInfo.swift */; };
+		9FDF34992884859D00B3007E /* AdjustingAndUpdatingTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF34982884859D00B3007E /* AdjustingAndUpdatingTypes.swift */; };
 		9FF7C3952864C16200DA5F51 /* PreloadedMantras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		9FDC8DAB28622AEC00BF7051 /* DetailsColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsColumn.swift; sourceTree = "<group>"; };
 		9FDC8DAD28622D5900BF7051 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9FDC8DAF28623D5F00BF7051 /* OrientationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationInfo.swift; sourceTree = "<group>"; };
+		9FDF34982884859D00B3007E /* AdjustingAndUpdatingTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustingAndUpdatingTypes.swift; sourceTree = "<group>"; };
 		9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadedMantras.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +99,7 @@
 				9FDC8DAB28622AEC00BF7051 /* DetailsColumn.swift */,
 				9FBEE9AB285F68CE0070BA06 /* ReadsView.swift */,
 				9FDC8DA9286222C700BF7051 /* ReadsViewModel.swift */,
+				9FDF34982884859D00B3007E /* AdjustingAndUpdatingTypes.swift */,
 				9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */,
 				9FC9A690287DA4FE00D05FBD /* UpdatingAlertView.swift */,
 				9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */,
@@ -209,6 +212,7 @@
 				9FBEE99A285F682C0070BA06 /* Persistence.swift in Sources */,
 				9F780038287FF7D200516A0F /* RandomColor.swift in Sources */,
 				9FBEE9AE285F68CE0070BA06 /* ReadsView.swift in Sources */,
+				9FDF34992884859D00B3007E /* AdjustingAndUpdatingTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

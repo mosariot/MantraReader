@@ -9,18 +9,6 @@ import SwiftUI
 import Combine
 import CoreData
 
-enum AdjustingType {
-    case reads
-    case rounds
-    case value
-    case goal
-}
-
-enum UndoType {
-    case value
-    case goal
-}
-
 @MainActor
 final class ReadsViewModel: ObservableObject {
     @Published var mantra: Mantra

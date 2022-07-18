@@ -12,10 +12,6 @@ import CoreData
 @MainActor
 final class ReadsViewModel: ObservableObject {
     @Published var mantra: Mantra
-    @Published var displayedReads: Double
-    @Published var displayedGoal: Double
-    @Published var progress: Double
-    @Published var isAnimated: Bool = false
     @Published var undoHistory: [(value: Int32, type: UndoType)] = []
     
     var title: String { mantra.title ?? "" }
@@ -35,9 +31,6 @@ final class ReadsViewModel: ObservableObject {
     
     init(_ mantra: Mantra, viewContext: NSManagedObjectContext) {
         self.mantra = mantra
-        self.displayedReads = Double(mantra.reads)
-        self.displayedGoal = Double(mantra.readsGoal)
-        self.progress = Double(mantra.reads) / Double(mantra.readsGoal)
         self.viewContext = viewContext
     }
     
@@ -96,16 +89,6 @@ final class ReadsViewModel: ObservableObject {
         }
     }
     
-    func updateForMantraChanges() {
-        if Int32(displayedReads) != mantra.reads {
-            animateReadsChanges()
-        }
-        if Int32(displayedGoal) != mantra.readsGoal {
-            animateGoalChanges()
-        }
-        objectWillChange.send()
-    }
-    
     func handleUndo() {
         guard let lastAction = undoHistory.last else { return }
         switch lastAction.type {
@@ -141,45 +124,9 @@ final class ReadsViewModel: ObservableObject {
         saveContext()
     }
     
-    private func animateReadsChanges() {
-        isAnimated = true
-        progress = Double(mantra.reads) / Double(mantra.readsGoal)
-        let deltaReads = Double(mantra.reads) - displayedReads
-        timerReadsSubscription = Timer.publish(every: Constants.animationTime / 100, on: .main, in: .common)
-            .autoconnect()
-            .scan(0) { elapsedTime, _ in elapsedTime + Constants.animationTime / 100 }
-            .sink { elapsedTime in
-                if elapsedTime < Constants.animationTime {
-                    self.displayedReads += deltaReads / 100.0
-                } else {
-                    self.displayedReads = Double(self.mantra.reads)
-                    self.isAnimated = false
-                    self.timerReadsSubscription?.cancel()
-                }
-            }
-    }
-    
     private func adjustMantraGoal(with value: Int32) {
         mantra.readsGoal = value
         saveContext()
-    }
-    
-    private func animateGoalChanges() {
-        isAnimated = true
-        progress = Double(mantra.reads) / Double(mantra.readsGoal)
-        let deltaGoal = Double(mantra.readsGoal) - displayedGoal
-        timerGoalSubscription = Timer.publish(every: Constants.animationTime / 100, on: .main, in: .common)
-            .autoconnect()
-            .scan(0) { elapsedTime, _ in elapsedTime + Constants.animationTime / 100 }
-            .sink { elapsedTime in
-                if elapsedTime < Constants.animationTime {
-                    self.displayedGoal += deltaGoal / 100.0
-                } else {
-                    self.displayedGoal = Double(self.mantra.readsGoal)
-                    self.isAnimated = false
-                    self.timerGoalSubscription?.cancel()
-                }
-            }
     }
     
     private func saveContext() {

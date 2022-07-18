@@ -28,6 +28,9 @@
 		9FDC8DAE28622D5900BF7051 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DAD28622D5900BF7051 /* Constants.swift */; };
 		9FDC8DB028623D5F00BF7051 /* OrientationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DAF28623D5F00BF7051 /* OrientationInfo.swift */; };
 		9FDF34992884859D00B3007E /* AdjustingAndUpdatingTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF34982884859D00B3007E /* AdjustingAndUpdatingTypes.swift */; };
+		9FDF349B2885B2E000B3007E /* CircularProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF349A2885B2E000B3007E /* CircularProgressViewModel.swift */; };
+		9FDF349D2885E83B00B3007E /* GoalButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF349C2885E83B00B3007E /* GoalButtonViewModel.swift */; };
+		9FDF349F2885E86200B3007E /* GoalButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF349E2885E86200B3007E /* GoalButtonView.swift */; };
 		9FF7C3952864C16200DA5F51 /* PreloadedMantras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +58,9 @@
 		9FDC8DAD28622D5900BF7051 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9FDC8DAF28623D5F00BF7051 /* OrientationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationInfo.swift; sourceTree = "<group>"; };
 		9FDF34982884859D00B3007E /* AdjustingAndUpdatingTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustingAndUpdatingTypes.swift; sourceTree = "<group>"; };
+		9FDF349A2885B2E000B3007E /* CircularProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressViewModel.swift; sourceTree = "<group>"; };
+		9FDF349C2885E83B00B3007E /* GoalButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalButtonViewModel.swift; sourceTree = "<group>"; };
+		9FDF349E2885E86200B3007E /* GoalButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalButtonView.swift; sourceTree = "<group>"; };
 		9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadedMantras.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,9 +105,12 @@
 				9FDC8DAB28622AEC00BF7051 /* DetailsColumn.swift */,
 				9FBEE9AB285F68CE0070BA06 /* ReadsView.swift */,
 				9FDC8DA9286222C700BF7051 /* ReadsViewModel.swift */,
+				9FC9A690287DA4FE00D05FBD /* UpdatingAlertView.swift */,
 				9FDF34982884859D00B3007E /* AdjustingAndUpdatingTypes.swift */,
 				9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */,
-				9FC9A690287DA4FE00D05FBD /* UpdatingAlertView.swift */,
+				9FDF349A2885B2E000B3007E /* CircularProgressViewModel.swift */,
+				9FDF349E2885E86200B3007E /* GoalButtonView.swift */,
+				9FDF349C2885E83B00B3007E /* GoalButtonViewModel.swift */,
 				9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */,
 				9FDC8DAD28622D5900BF7051 /* Constants.swift */,
 				9FDC8DAF28623D5F00BF7051 /* OrientationInfo.swift */,
@@ -204,15 +213,18 @@
 				9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */,
 				9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */,
 				9F78728E2865FDA400F52335 /* UIImage+ResizeUIImage.swift in Sources */,
+				9FDF349D2885E83B00B3007E /* GoalButtonViewModel.swift in Sources */,
 				9FC9A691287DA4FE00D05FBD /* UpdatingAlertView.swift in Sources */,
 				9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */,
 				9F4DE926286E3B990064ADCB /* Functions.swift in Sources */,
 				9FBEE9B0285F68CE0070BA06 /* CircularProgressView.swift in Sources */,
 				9FDC8DB028623D5F00BF7051 /* OrientationInfo.swift in Sources */,
+				9FDF349B2885B2E000B3007E /* CircularProgressViewModel.swift in Sources */,
 				9FBEE99A285F682C0070BA06 /* Persistence.swift in Sources */,
 				9F780038287FF7D200516A0F /* RandomColor.swift in Sources */,
 				9FBEE9AE285F68CE0070BA06 /* ReadsView.swift in Sources */,
 				9FDF34992884859D00B3007E /* AdjustingAndUpdatingTypes.swift in Sources */,
+				9FDF349F2885E86200B3007E /* GoalButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

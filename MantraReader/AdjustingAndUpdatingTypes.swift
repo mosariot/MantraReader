@@ -5,8 +5,6 @@
 //  Created by Александр Воробьев on 17.07.2022.
 //
 
-import Foundation
-
 enum AdjustingType {
     case reads
     case rounds

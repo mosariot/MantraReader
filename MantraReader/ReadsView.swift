@@ -11,6 +11,7 @@ struct ReadsView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @ObservedObject var viewModel: ReadsViewModel
+    
     @State private var isPresentedAdjustingAlert = false
     @State private var adjustingType: AdjustingType?
     @State private var adjustingText: String = ""
@@ -41,19 +42,18 @@ struct ReadsView: View {
                         Spacer()
                         VStack {
                             CircularProgressView(
-                                progress: viewModel.progress,
-                                displayedNumber: viewModel.displayedReads,
-                                isAnimated: viewModel.isAnimated
+                                viewModel: CircularProgressViewModel(viewModel.mantra)
                             )
                             .frame(
                                 width: circularProgressViewSize(with: geo).width,
                                 height: circularProgressViewSize(with: geo).height
                             )
                             .padding()
-                            Button("Current goal: \(viewModel.displayedGoal, specifier: "%.0f")") {
-                                adjustingType = .goal
-                                isPresentedAdjustingAlert = true
-                            }
+                            GoalButtonView(
+                                viewModel: GoalButtonViewModel(viewModel.mantra),
+                                adjustingType: $adjustingType,
+                                isPresentedAdjustingAlert: $isPresentedAdjustingAlert
+                            )
                         }
                         Spacer()
                     }
@@ -143,9 +143,9 @@ struct ReadsView: View {
                         .symbolVariant(.circle)
                 }
             }
-            .onReceive(viewModel.mantra.objectWillChange) { _ in
-                viewModel.updateForMantraChanges()
-            }
+        }
+        .onReceive(viewModel.mantra.objectWillChange) { _ in
+            viewModel.objectWillChange.send()
         }
     }
     

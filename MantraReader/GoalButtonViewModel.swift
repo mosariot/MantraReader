@@ -8,7 +8,6 @@
 import SwiftUI
 import Combine
 
-
 @MainActor
 final class GoalButtonViewModel: ObservableObject {
     @Published var mantra: Mantra

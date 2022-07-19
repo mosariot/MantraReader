@@ -79,4 +79,15 @@ extension PersistenceController {
         result.preloadData(context: result.container.viewContext)
         return result
     }()
+    
+    static func previewMantra(viewContext: NSManagedObjectContext) -> Mantra {
+        var mantras = [Mantra]()
+        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
+        do {
+            try mantras = viewContext.fetch(request)
+        } catch {
+            print("Error getting data. \(error.localizedDescription)")
+        }
+        return mantras[Int.random(in: 0...mantras.count-1)]
+    }
 }

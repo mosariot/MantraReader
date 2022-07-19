@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 import Combine
 
 enum Sorting: String, Codable {

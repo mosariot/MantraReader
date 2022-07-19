@@ -44,24 +44,12 @@ struct MantraRow: View {
     }
 }
 
-import CoreData
-
 struct MantraRow_Previews: PreviewProvider {
-    static var controller = PersistenceController.preview
-    static func previewMantra(viewContext: NSManagedObjectContext) -> Mantra {
-        var mantras = [Mantra]()
-        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
-        do {
-            try mantras = viewContext.fetch(request)
-        } catch {
-            print("Error getting data. \(error.localizedDescription)")
-        }
-        return mantras[Int.random(in: 0...mantras.count-1)]
-    }
-    
     static var previews: some View {
         MantraRow(
-            mantra: previewMantra(viewContext: controller.container.viewContext),
+            mantra: PersistenceController.previewMantra(
+                viewContext: PersistenceController.preview.container.viewContext
+            ),
             isSelected: false
         )
             .previewLayout(.fixed(width: 400, height: 55))

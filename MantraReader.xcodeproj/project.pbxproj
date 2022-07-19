@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9F03F4962870B8FE00432002 /* MantraListColumnNative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F03F4952870B8FE00432002 /* MantraListColumnNative.swift */; };
-		9F4DE924286E3B670064ADCB /* UIImage+CropToCircleUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DE923286E3B670064ADCB /* UIImage+CropToCircleUIImage.swift */; };
+		9F4DE924286E3B670064ADCB /* UIImage+CropToCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DE923286E3B670064ADCB /* UIImage+CropToCircle.swift */; };
 		9F4DE926286E3B990064ADCB /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DE925286E3B990064ADCB /* Functions.swift */; };
 		9F780038287FF7D200516A0F /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F780037287FF7D200516A0F /* RandomColor.swift */; };
-		9F78728E2865FDA400F52335 /* UIImage+ResizeUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F78728D2865FDA400F52335 /* UIImage+ResizeUIImage.swift */; };
+		9F78728E2865FDA400F52335 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F78728D2865FDA400F52335 /* UIImage+Resize.swift */; };
 		9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B1AE3286AB09A007720A0 /* MantraRow.swift */; };
 		9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */; };
 		9FBEE99A285F682C0070BA06 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE999285F682C0070BA06 /* Persistence.swift */; };
@@ -36,10 +36,10 @@
 
 /* Begin PBXFileReference section */
 		9F03F4952870B8FE00432002 /* MantraListColumnNative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraListColumnNative.swift; sourceTree = "<group>"; };
-		9F4DE923286E3B670064ADCB /* UIImage+CropToCircleUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CropToCircleUIImage.swift"; sourceTree = "<group>"; };
+		9F4DE923286E3B670064ADCB /* UIImage+CropToCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CropToCircle.swift"; sourceTree = "<group>"; };
 		9F4DE925286E3B990064ADCB /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		9F780037287FF7D200516A0F /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
-		9F78728D2865FDA400F52335 /* UIImage+ResizeUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ResizeUIImage.swift"; sourceTree = "<group>"; };
+		9F78728D2865FDA400F52335 /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		9F7B1AE3286AB09A007720A0 /* MantraRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraRow.swift; sourceTree = "<group>"; };
 		9FBEE994285F682C0070BA06 /* MantraReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MantraReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraReaderApp.swift; sourceTree = "<group>"; };
@@ -114,8 +114,8 @@
 				9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */,
 				9FDC8DAD28622D5900BF7051 /* Constants.swift */,
 				9FDC8DAF28623D5F00BF7051 /* OrientationInfo.swift */,
-				9F78728D2865FDA400F52335 /* UIImage+ResizeUIImage.swift */,
-				9F4DE923286E3B670064ADCB /* UIImage+CropToCircleUIImage.swift */,
+				9F78728D2865FDA400F52335 /* UIImage+Resize.swift */,
+				9F4DE923286E3B670064ADCB /* UIImage+CropToCircle.swift */,
 				9F4DE925286E3B990064ADCB /* Functions.swift */,
 				9F780037287FF7D200516A0F /* RandomColor.swift */,
 				9FBEE9A0285F682D0070BA06 /* Assets.xcassets */,
@@ -209,10 +209,10 @@
 				9FDC8DAA286222C700BF7051 /* ReadsViewModel.swift in Sources */,
 				9FDC8DA82862203800BF7051 /* MantraListColumn.swift in Sources */,
 				9FF7C3952864C16200DA5F51 /* PreloadedMantras.swift in Sources */,
-				9F4DE924286E3B670064ADCB /* UIImage+CropToCircleUIImage.swift in Sources */,
+				9F4DE924286E3B670064ADCB /* UIImage+CropToCircle.swift in Sources */,
 				9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */,
 				9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */,
-				9F78728E2865FDA400F52335 /* UIImage+ResizeUIImage.swift in Sources */,
+				9F78728E2865FDA400F52335 /* UIImage+Resize.swift in Sources */,
 				9FDF349D2885E83B00B3007E /* GoalButtonViewModel.swift in Sources */,
 				9FC9A691287DA4FE00D05FBD /* UpdatingAlertView.swift in Sources */,
 				9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */,

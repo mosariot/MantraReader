@@ -1,5 +1,5 @@
 //
-//  CropToCircleUIImage.swift
+//  UIImage+CropToCircle.swift
 //  ReadTheMantra
 //
 //  Created by Alex Vorobiev on 16.08.2020.
@@ -21,7 +21,7 @@ extension UIImage {
                 (isUpOrDownImageOrientation ? 0 : ((size.height-size.width)/2).rounded(.down)))
         let yOriginPoint = CGFloat(
             isLandscape ?
-            (isUpOrDownImageOrientation ? 0 : ((size.width-size.height)/2).rounded(.down)) :
+                (isUpOrDownImageOrientation ? 0 : ((size.width-size.height)/2).rounded(.down)) :
                 (isUpOrDownImageOrientation ? ((size.height-size.width)/2).rounded(.down) : 0))
         guard let cgImage = cgImage?.cropping(
             to: CGRect(origin: CGPoint(x: xOriginPoint, y: yOriginPoint),

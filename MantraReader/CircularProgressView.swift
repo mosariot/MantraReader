@@ -56,28 +56,15 @@ struct CircularProgressView: View {
     }
 }
 
-import CoreData
-
 struct CircularProgressView_Previews: PreviewProvider {
-    static var controller = PersistenceController.preview
-    static func previewMantra(viewContext: NSManagedObjectContext) -> Mantra {
-        var mantras = [Mantra]()
-        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
-        do {
-            try mantras = viewContext.fetch(request)
-        } catch {
-            print("Error getting data. \(error.localizedDescription)")
-        }
-        return mantras[Int.random(in: 0...mantras.count-1)]
-    }
-    
     static var previews: some View {
         CircularProgressView(
             viewModel: CircularProgressViewModel(
-                previewMantra(viewContext: controller.container.viewContext)
+                PersistenceController.previewMantra(
+                    viewContext: PersistenceController.preview.container.viewContext
+                )
             )
         )
         .padding()
-        .previewDisplayName("Circular Progress View")
     }
 }

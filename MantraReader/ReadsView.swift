@@ -16,132 +16,140 @@ struct ReadsView: View {
     @State private var adjustingType: AdjustingType?
     @State private var adjustingText: String = ""
     @State private var isPresentedDetailsSheet = false
+    @State private var isMantraReaderMode = false
     
     var body: some View {
         let layout = verticalSizeClass == .compact ? AnyLayout(_HStackLayout()) : AnyLayout(_VStackLayout())
         
-        ZStack {
-            GeometryReader { geo in
-                VStack {
-                    layout {
+        GeometryReader { geo in
+            VStack {
+                layout {
+                    Spacer()
+                    Image(uiImage: viewModel.image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(
+                            width: imageSize(with: geo).width,
+                            height: imageSize(with: geo).height
+                        )
+                    if verticalSizeClass == .regular {
                         Spacer()
-                        Image(uiImage: viewModel.image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(
-                                width: imageSize(with: geo).width,
-                                height: imageSize(with: geo).height
-                            )
-                        if verticalSizeClass == .regular {
-                            Spacer()
-                            Text(viewModel.title)
-                                .font(.system(.largeTitle, weight: .medium))
-                                .textSelection(.enabled)
-                                .padding()
-                        }
-                        Spacer()
-                        VStack {
-                            CircularProgressView(
-                                viewModel: CircularProgressViewModel(viewModel.mantra)
-                            )
-                            .frame(
-                                width: circularProgressViewSize(with: geo).width,
-                                height: circularProgressViewSize(with: geo).height
-                            )
+                        Text(viewModel.title)
+                            .font(.system(.largeTitle, weight: .medium))
+                            .textSelection(.enabled)
                             .padding()
-                            GoalButtonView(
-                                viewModel: GoalButtonViewModel(viewModel.mantra),
-                                adjustingType: $adjustingType,
-                                isPresentedAdjustingAlert: $isPresentedAdjustingAlert
-                            )
-                        }
-                        Spacer()
                     }
-                    HStack(
-                        spacing: (horizontalSizeClass == .compact && verticalSizeClass != .compact) ? 10 : 50
-                    ) {
-                        Button {
-                            adjustingType = .reads
-                            isPresentedAdjustingAlert = true
-                        } label: {
-                            Image(systemName: "plus")
-                                .font(.system(size: 60))
-                                .symbolVariant(.circle.fill)
-                        }
+                    Spacer()
+                    VStack {
+                        CircularProgressView(
+                            viewModel: CircularProgressViewModel(viewModel.mantra)
+                        )
+                        .frame(
+                            width: circularProgressViewSize(with: geo).width,
+                            height: circularProgressViewSize(with: geo).height
+                        )
                         .padding()
-                        Button {
-                            adjustingType = .rounds
-                            isPresentedAdjustingAlert = true
-                        } label: {
-                            Image(systemName: "arrow.clockwise")
-                                .font(.system(size: 60))
-                                .symbolVariant(.circle.fill)
-                        }
-                        .padding()
-                        Button {
-                            adjustingType = .value
-                            isPresentedAdjustingAlert = true
-                        } label: {
-                            Image(systemName: "hand.draw")
-                                .font(.system(size: 60))
-                                .symbolVariant(.fill)
-                        }
-                        .padding()
+                        GoalButtonView(
+                            viewModel: GoalButtonViewModel(viewModel.mantra),
+                            adjustingType: $adjustingType,
+                            isPresentedAdjustingAlert: $isPresentedAdjustingAlert
+                        )
                     }
-#if os(macOS)
-                    .alert(
-                        viewModel.alertTitle(for: adjustingType),
-                        isPresented: $isPresentedAdjustingAlert,
-                        presenting: adjustingType
-                    ) { _ in
-                        TextField("Enter number", text: $adjustingText)
-                        Button(viewModel.alertActionTitle(for: adjustingType)) {
-                            if viewModel.isValidUpdatingNumber(for: adjustingText, adjustingType: adjustingType) {
-                                guard let alertNumber = Int32(adjustingText) else { return }
-                                viewModel.handleAdjusting(for: adjustingType, with: alertNumber)
-                            }
-                            adjustingType = nil
-                            adjustingText = ""
-                        }
-                        Button("Cancel", role: .cancel) {
-                            adjustingType = nil
-                            adjustingText = ""
-                        }
-                    }
-#endif
+                    Spacer()
                 }
-                .ignoresSafeArea(.keyboard)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-#if os(iOS)
-                if isPresentedAdjustingAlert {
-                    UpdatingAlertView(
-                        isPresented: $isPresentedAdjustingAlert,
-                        adjustingType: $adjustingType,
-                        viewModel: viewModel
-                    )
+                HStack(
+                    spacing: (horizontalSizeClass == .compact && verticalSizeClass != .compact) ? 10 : 50
+                ) {
+                    Button {
+                        adjustingType = .reads
+                        isPresentedAdjustingAlert = true
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.system(size: 60))
+                            .symbolVariant(.circle.fill)
+                    }
+                    .padding()
+                    Button {
+                        adjustingType = .rounds
+                        isPresentedAdjustingAlert = true
+                    } label: {
+                        Image(systemName: "arrow.clockwise")
+                            .font(.system(size: 60))
+                            .symbolVariant(.circle.fill)
+                    }
+                    .padding()
+                    Button {
+                        adjustingType = .value
+                        isPresentedAdjustingAlert = true
+                    } label: {
+                        Image(systemName: "hand.draw")
+                            .font(.system(size: 60))
+                            .symbolVariant(.fill)
+                    }
+                    .padding()
+                }
+#if os(macOS)
+                .alert(
+                    viewModel.alertTitle(for: adjustingType),
+                    isPresented: $isPresentedAdjustingAlert,
+                    presenting: adjustingType
+                ) { _ in
+                    TextField("Enter number", text: $adjustingText)
+                    Button(viewModel.alertActionTitle(for: adjustingType)) {
+                        if viewModel.isValidUpdatingNumber(for: adjustingText, adjustingType: adjustingType) {
+                            guard let alertNumber = Int32(adjustingText) else { return }
+                            viewModel.handleAdjusting(for: adjustingType, with: alertNumber)
+                        }
+                        adjustingType = nil
+                        adjustingText = ""
+                    }
+                    Button("Cancel", role: .cancel) {
+                        adjustingType = nil
+                        adjustingText = ""
+                    }
                 }
 #endif
             }
             .ignoresSafeArea(.keyboard)
-            .toolbar {
-                Button {
-                    viewModel.handleUndo()
-                } label: {
-                    Image(systemName: "arrow.uturn.backward")
-                        .symbolVariant(.circle)
-                }
-                .disabled(viewModel.undoHistory.isEmpty)
-                Button {
-                    viewModel.toggleFavorite()
-                } label: {
-                    Image(systemName: viewModel.favoriteBarImage)
-                }
-                Button {
-                    isPresentedDetailsSheet = true
-                } label: {
-                    Image(systemName: "info")
-                        .symbolVariant(.circle)
-                }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+#if os(iOS)
+            if isPresentedAdjustingAlert {
+                UpdatingAlertView(
+                    isPresented: $isPresentedAdjustingAlert,
+                    adjustingType: $adjustingType,
+                    viewModel: viewModel
+                )
+            }
+#endif
+        }
+        .overlay(alignment: .topTrailing) {
+            Button {
+                isMantraReaderMode.toggle()
+            } label: {
+                Image(systemName: "sun.max")
+                    .symbolVariant(isMantraReaderMode ? .fill : .none)
+            }
+            .padding(20)
+        }
+        .ignoresSafeArea(.keyboard)
+        .toolbar {
+            Button {
+                viewModel.handleUndo()
+            } label: {
+                Image(systemName: "arrow.uturn.backward")
+                    .symbolVariant(.circle)
+            }
+            .disabled(viewModel.undoHistory.isEmpty)
+            Button {
+                viewModel.toggleFavorite()
+            } label: {
+                Image(systemName: viewModel.favoriteBarImage)
+            }
+            Button {
+                isPresentedDetailsSheet = true
+            } label: {
+                Image(systemName: "info")
+                    .symbolVariant(.circle)
             }
         }
         .onReceive(viewModel.mantra.objectWillChange) { _ in

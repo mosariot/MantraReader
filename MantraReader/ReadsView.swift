@@ -184,9 +184,7 @@ struct ReadsView_Previews: PreviewProvider {
     static var previews: some View {
         ReadsView(
             viewModel: ReadsViewModel(
-                PersistenceController.previewMantra(
-                    viewContext: PersistenceController.preview.container.viewContext
-                ),
+                PersistenceController.previewMantra,
                 viewContext: PersistenceController.preview.container.viewContext
             )
         )

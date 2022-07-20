@@ -59,11 +59,7 @@ struct CircularProgressView: View {
 struct CircularProgressView_Previews: PreviewProvider {
     static var previews: some View {
         CircularProgressView(
-            viewModel: CircularProgressViewModel(
-                PersistenceController.previewMantra(
-                    viewContext: PersistenceController.preview.container.viewContext
-                )
-            )
+            viewModel: CircularProgressViewModel(PersistenceController.previewMantra)
         )
         .padding()
     }

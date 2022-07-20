@@ -80,11 +80,11 @@ extension PersistenceController {
         return result
     }()
     
-    static func previewMantra(viewContext: NSManagedObjectContext) -> Mantra {
+    static var previewMantra: Mantra {
         var mantras = [Mantra]()
         let request = NSFetchRequest<Mantra>(entityName: "Mantra")
         do {
-            try mantras = viewContext.fetch(request)
+            try mantras = PersistenceController.preview.container.viewContext.fetch(request)
         } catch {
             print("Error getting data. \(error.localizedDescription)")
         }

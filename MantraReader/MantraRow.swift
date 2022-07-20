@@ -47,9 +47,7 @@ struct MantraRow: View {
 struct MantraRow_Previews: PreviewProvider {
     static var previews: some View {
         MantraRow(
-            mantra: PersistenceController.previewMantra(
-                viewContext: PersistenceController.preview.container.viewContext
-            ),
+            mantra: PersistenceController.previewMantra,
             isSelected: false
         )
             .previewLayout(.fixed(width: 400, height: 55))

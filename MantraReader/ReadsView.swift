@@ -37,6 +37,7 @@ struct ReadsView: View {
                         Text(viewModel.title)
                             .font(.system(.largeTitle, weight: .medium))
                             .textSelection(.enabled)
+                            .lineLimit(1)
                             .padding()
                     }
                     Spacer()

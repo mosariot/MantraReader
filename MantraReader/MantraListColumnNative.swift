@@ -16,6 +16,7 @@ import Combine
 
 struct MantraListColumnNative: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @AppStorage("sorting") private var sorting: Sorting = .title
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @SectionedFetchRequest(
@@ -107,7 +108,7 @@ struct MantraListColumnNative: View {
         .onAppear {
             if !mantras.isEmpty {
 #if os(iOS)
-                if (isPad || (isPhone && isLandscape)) && isFreshLaunch {
+                if (isPad || (isPhone && isLandscape && horizontalSizeClass == .regular)) && isFreshLaunch {
                     selectedMantra = mantras[0][0]
                     isFreshLaunch = false
                 }

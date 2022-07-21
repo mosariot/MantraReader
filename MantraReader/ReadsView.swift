@@ -21,98 +21,97 @@ struct ReadsView: View {
     var body: some View {
         let layout = verticalSizeClass == .compact ? AnyLayout(_HStackLayout()) : AnyLayout(_VStackLayout())
         
-        GeometryReader { geo in
-            VStack {
-                layout {
-                    Spacer()
-                    Image(uiImage: viewModel.image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(
-                            width: imageSize(with: geo).width,
-                            height: imageSize(with: geo).height
-                        )
-                    if verticalSizeClass == .regular {
-                        Spacer()
-                        Text(viewModel.title)
-                            .font(.system(.largeTitle, weight: .medium))
-                            .textSelection(.enabled)
-                            .lineLimit(1)
-                            .padding()
-                    }
-                    Spacer()
-                    VStack {
-                        CircularProgressView(
-                            viewModel: CircularProgressViewModel(viewModel.mantra)
-                        )
-                        .frame(
-                            width: circularProgressViewSize(with: geo).width,
-                            height: circularProgressViewSize(with: geo).height
-                        )
-                        .padding()
-                        GoalButtonView(
-                            viewModel: GoalButtonViewModel(viewModel.mantra),
-                            adjustingType: $adjustingType,
-                            isPresentedAdjustingAlert: $isPresentedAdjustingAlert
-                        )
-                    }
-                    Spacer()
-                }
-                HStack(
-                    spacing: (horizontalSizeClass == .compact && verticalSizeClass != .compact) ? 10 : 50
-                ) {
-                    Button {
-                        adjustingType = .reads
-                        isPresentedAdjustingAlert = true
-                    } label: {
-                        Image(systemName: "plus")
-                            .font(.system(size: 60))
-                            .symbolVariant(.circle.fill)
-                    }
-                    .padding()
-                    Button {
-                        adjustingType = .rounds
-                        isPresentedAdjustingAlert = true
-                    } label: {
-                        Image(systemName: "arrow.clockwise")
-                            .font(.system(size: 60))
-                            .symbolVariant(.circle.fill)
-                    }
-                    .padding()
-                    Button {
-                        adjustingType = .value
-                        isPresentedAdjustingAlert = true
-                    } label: {
-                        Image(systemName: "hand.draw")
-                            .font(.system(size: 60))
-                            .symbolVariant(.fill)
-                    }
-                    .padding()
-                }
-#if os(macOS)
-                .alert(
-                    viewModel.alertTitle(for: adjustingType),
-                    isPresented: $isPresentedAdjustingAlert,
-                    presenting: adjustingType
-                ) { _ in
-                    TextField("Enter number", text: $adjustingText)
-                    Button(viewModel.alertActionTitle(for: adjustingType)) {
-                        if viewModel.isValidUpdatingNumber(for: adjustingText, adjustingType: adjustingType) {
-                            guard let alertNumber = Int32(adjustingText) else { return }
-                            viewModel.handleAdjusting(for: adjustingType, with: alertNumber)
+        ZStack {
+            GeometryReader { geo in
+                VStack {
+                    layout {
+                        Image(uiImage: viewModel.image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(
+                                width: imageSize(with: geo).width,
+                                height: imageSize(with: geo).height
+                            )
+                        if verticalSizeClass == .regular {
+                            Text(viewModel.title)
+                                .font(.system(.largeTitle, weight: .medium))
+                                .textSelection(.enabled)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.4)
+                                .padding(.vertical)
                         }
-                        adjustingType = nil
-                        adjustingText = ""
+                        VStack {
+                            CircularProgressView(
+                                viewModel: CircularProgressViewModel(viewModel.mantra)
+                            )
+                            .frame(
+                                width: circularProgressViewSize(with: geo).width,
+                                height: circularProgressViewSize(with: geo).height
+                            )
+                            GoalButtonView(
+                                viewModel: GoalButtonViewModel(viewModel.mantra),
+                                adjustingType: $adjustingType,
+                                isPresentedAdjustingAlert: $isPresentedAdjustingAlert
+                            )
+                            .padding(.vertical, 10)
+                        }
                     }
-                    Button("Cancel", role: .cancel) {
-                        adjustingType = nil
-                        adjustingText = ""
+                    HStack(
+                        spacing: (horizontalSizeClass == .compact && verticalSizeClass != .compact) ? 10 : 50
+                    ) {
+                        Button {
+                            adjustingType = .reads
+                            isPresentedAdjustingAlert = true
+                        } label: {
+                            Image(systemName: "plus")
+                                .font(.system(size: 60))
+                                .symbolVariant(.circle.fill)
+                        }
+                        .padding(.horizontal)
+                        Button {
+                            adjustingType = .rounds
+                            isPresentedAdjustingAlert = true
+                        } label: {
+                            Image(systemName: "arrow.clockwise")
+                                .font(.system(size: 60))
+                                .symbolVariant(.circle.fill)
+                        }
+                        .padding(.horizontal)
+                        Button {
+                            adjustingType = .value
+                            isPresentedAdjustingAlert = true
+                        } label: {
+                            Image(systemName: "hand.draw")
+                                .font(.system(size: 60))
+                                .symbolVariant(.fill)
+                        }
+                        .padding(.horizontal)
                     }
-                }
+#if os(macOS)
+                    .alert(
+                        viewModel.alertTitle(for: adjustingType),
+                        isPresented: $isPresentedAdjustingAlert,
+                        presenting: adjustingType
+                    ) { _ in
+                        TextField("Enter number", text: $adjustingText)
+                        Button(viewModel.alertActionTitle(for: adjustingType)) {
+                            if viewModel.isValidUpdatingNumber(for: adjustingText, adjustingType: adjustingType) {
+                                guard let alertNumber = Int32(adjustingText) else { return }
+                                viewModel.handleAdjusting(for: adjustingType, with: alertNumber)
+                            }
+                            adjustingType = nil
+                            adjustingText = ""
+                        }
+                        Button("Cancel", role: .cancel) {
+                            adjustingType = nil
+                            adjustingText = ""
+                        }
+                    }
 #endif
+                }
+                .ignoresSafeArea(.keyboard)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .ignoresSafeArea(.keyboard)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
 #if os(iOS)
             if isPresentedAdjustingAlert {
                 UpdatingAlertView(
@@ -161,7 +160,7 @@ struct ReadsView: View {
     private func imageSize(with geo: GeometryProxy) -> (width: CGFloat?, height: CGFloat?) {
         switch (horizontalSizeClass, verticalSizeClass) {
         case (.compact, .regular):
-            return (0.34 * CGFloat(geo.size.width), nil)
+            return (nil, CGFloat(0.34 * geo.size.width))
         case (.compact, .compact):
             return (nil, CGFloat(0.45 * geo.size.height))
         case (.regular, .compact):
@@ -176,7 +175,7 @@ struct ReadsView: View {
     private func circularProgressViewSize(with geo: GeometryProxy) -> (width: CGFloat?, height: CGFloat?) {
         switch (horizontalSizeClass, verticalSizeClass) {
         case (.compact, .regular):
-            return (0.70 * CGFloat(geo.size.width), nil)
+            return (nil, 0.60 * CGFloat(geo.size.width))
         case (.compact, .compact):
             return (nil, 0.53 * CGFloat(geo.size.height))
         case (.regular, .compact):

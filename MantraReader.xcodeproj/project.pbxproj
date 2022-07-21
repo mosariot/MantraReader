@@ -12,6 +12,7 @@
 		9F4DE926286E3B990064ADCB /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DE925286E3B990064ADCB /* Functions.swift */; };
 		9F780038287FF7D200516A0F /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F780037287FF7D200516A0F /* RandomColor.swift */; };
 		9F78628A288844970058AAD0 /* PercentageRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F786289288844970058AAD0 /* PercentageRing.swift */; };
+		9F78628D2889A5830058AAD0 /* ReadsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE9AB285F68CE0070BA06 /* ReadsView.swift */; };
 		9F78728E2865FDA400F52335 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F78728D2865FDA400F52335 /* UIImage+Resize.swift */; };
 		9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B1AE3286AB09A007720A0 /* MantraRow.swift */; };
 		9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */; };
@@ -20,7 +21,6 @@
 		9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE99E285F682C0070BA06 /* ContentView.swift */; };
 		9FBEE9A1285F682D0070BA06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEE9A0285F682D0070BA06 /* Assets.xcassets */; };
 		9FBEE9A5285F682D0070BA06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEE9A4285F682D0070BA06 /* Preview Assets.xcassets */; };
-		9FBEE9AE285F68CE0070BA06 /* ReadsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE9AB285F68CE0070BA06 /* ReadsView.swift */; };
 		9FBEE9B0285F68CE0070BA06 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */; };
 		9FC9A691287DA4FE00D05FBD /* UpdatingAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9A690287DA4FE00D05FBD /* UpdatingAlertView.swift */; };
 		9FDC8DA82862203800BF7051 /* MantraListColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DA72862203800BF7051 /* MantraListColumn.swift */; };
@@ -218,6 +218,7 @@
 				9F78728E2865FDA400F52335 /* UIImage+Resize.swift in Sources */,
 				9FDF349D2885E83B00B3007E /* GoalButtonViewModel.swift in Sources */,
 				9FC9A691287DA4FE00D05FBD /* UpdatingAlertView.swift in Sources */,
+				9F78628D2889A5830058AAD0 /* ReadsView.swift in Sources */,
 				9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */,
 				9F4DE926286E3B990064ADCB /* Functions.swift in Sources */,
 				9FBEE9B0285F68CE0070BA06 /* CircularProgressView.swift in Sources */,
@@ -225,7 +226,6 @@
 				9FDF349B2885B2E000B3007E /* CircularProgressViewModel.swift in Sources */,
 				9FBEE99A285F682C0070BA06 /* Persistence.swift in Sources */,
 				9F780038287FF7D200516A0F /* RandomColor.swift in Sources */,
-				9FBEE9AE285F68CE0070BA06 /* ReadsView.swift in Sources */,
 				9F78628A288844970058AAD0 /* PercentageRing.swift in Sources */,
 				9FDF34992884859D00B3007E /* AdjustingAndUpdatingTypes.swift in Sources */,
 				9FDF349F2885E86200B3007E /* GoalButtonView.swift in Sources */,

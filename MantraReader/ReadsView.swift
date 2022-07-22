@@ -22,7 +22,7 @@ struct ReadsView: View {
         let layout = verticalSizeClass == .compact ? AnyLayout(_HStackLayout()) : AnyLayout(_VStackLayout())
         
         ZStack {
-            GeometryReader { geo in
+            GeometryReader { geometry in
                 VStack {
                     layout {
                         Spacer()
@@ -30,8 +30,8 @@ struct ReadsView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(
-                                width: imageSize(with: geo),
-                                height: imageSize(with: geo)
+                                width: imageSize(with: geometry.size),
+                                height: imageSize(with: geometry.size)
                             )
                         if verticalSizeClass == .regular {
                             Spacer()
@@ -48,8 +48,8 @@ struct ReadsView: View {
                                 viewModel: CircularProgressViewModel(viewModel.mantra)
                             )
                             .frame(
-                                width: circularProgressViewSize(with: geo),
-                                height: circularProgressViewSize(with: geo)
+                                width: circularProgressViewSize(with: geometry.size),
+                                height: circularProgressViewSize(with: geometry.size)
                             )
                             GoalButtonView(
                                 viewModel: GoalButtonViewModel(viewModel.mantra),
@@ -161,31 +161,31 @@ struct ReadsView: View {
         }
     }
     
-    private func imageSize(with geo: GeometryProxy) -> CGFloat? {
+    private func imageSize(with frame: CGSize) -> CGFloat? {
         switch (horizontalSizeClass, verticalSizeClass) {
         case (.compact, .regular):
-            return CGFloat(0.34 * geo.size.width)
+            return CGFloat(0.34 * frame.width)
         case (.compact, .compact):
-            return CGFloat(0.45 * geo.size.height)
+            return CGFloat(0.45 * frame.height)
         case (.regular, .compact):
-            return CGFloat(0.48 * geo.size.height)
+            return CGFloat(0.48 * frame.height)
         case (.regular, .regular):
-            return CGFloat(0.20 * geo.size.height)
+            return CGFloat(0.20 * frame.height)
         default:
             return nil
         }
     }
     
-    private func circularProgressViewSize(with geo: GeometryProxy) -> CGFloat? {
+    private func circularProgressViewSize(with frame: CGSize) -> CGFloat? {
         switch (horizontalSizeClass, verticalSizeClass) {
         case (.compact, .regular):
-            return CGFloat(0.55 * geo.size.width)
+            return CGFloat(0.55 * frame.width)
         case (.compact, .compact):
-            return CGFloat(0.53 * geo.size.width))
+            return CGFloat(0.53 * frame.width))
         case (.regular, .compact):
-            return CGFloat(0.57 * geo.size.height)
+            return CGFloat(0.57 * frame.height)
         case (.regular, .regular):
-            return CGFloat(0.35 * geo.size.height)
+            return CGFloat(0.35 * frame.height)
         default:
             return nil
         }

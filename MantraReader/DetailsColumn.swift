@@ -23,23 +23,9 @@ struct DetailsColumn: View {
     }
 }
 
-import CoreData
-
-struct DetailsView_Previews: PreviewProvider {
-    static var controller = PersistenceController.preview
-    static func previewMantra(viewContext: NSManagedObjectContext) -> Mantra {
-        var mantras = [Mantra]()
-        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
-        do {
-            try mantras = viewContext.fetch(request)
-        } catch {
-            print("Error getting data. \(error.localizedDescription)")
-        }
-        return mantras.first!
-    }
-    
+struct DetailsView_Previews: PreviewProvider {    
     static var previews: some View {
-        DetailsColumn(selectedMantra: previewMantra(viewContext: controller.container.viewContext))
-            .environment(\.managedObjectContext, controller.container.viewContext)
+        DetailsColumn(selectedMantra: PersistenceController.previewMantra)
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

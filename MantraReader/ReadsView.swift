@@ -40,7 +40,6 @@ struct ReadsView: View {
                                 .textSelection(.enabled)
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.6)
-                                .padding(.vertical)
                         }
                         Spacer()
                         VStack {
@@ -51,12 +50,12 @@ struct ReadsView: View {
                                 width: circularProgressViewSize(with: geometry.size),
                                 height: circularProgressViewSize(with: geometry.size)
                             )
+                            .padding(.bottom, 10)
                             GoalButtonView(
                                 viewModel: GoalButtonViewModel(viewModel.mantra),
                                 adjustingType: $adjustingType,
                                 isPresentedAdjustingAlert: $isPresentedAdjustingAlert
                             )
-                            .padding(.bottom, 10)
                         }
                         Spacer()
                     }
@@ -163,31 +162,21 @@ struct ReadsView: View {
     
     private func imageSize(with frame: CGSize) -> CGFloat? {
         switch (horizontalSizeClass, verticalSizeClass) {
-        case (.compact, .regular):
-            return CGFloat(0.34 * frame.width)
-        case (.compact, .compact):
-            return CGFloat(0.45 * frame.height)
-        case (.regular, .compact):
-            return CGFloat(0.48 * frame.height)
-        case (.regular, .regular):
-            return CGFloat(0.20 * frame.height)
-        default:
-            return nil
+        case (.compact, .regular): return CGFloat(0.34 * frame.width)
+        case (.compact, .compact): return CGFloat(0.45 * frame.height)
+        case (.regular, .compact): return CGFloat(0.48 * frame.height)
+        case (.regular, .regular): return CGFloat(0.20 * frame.height)
+        default: return nil
         }
     }
     
     private func circularProgressViewSize(with frame: CGSize) -> CGFloat? {
         switch (horizontalSizeClass, verticalSizeClass) {
-        case (.compact, .regular):
-            return CGFloat(0.55 * frame.width)
-        case (.compact, .compact):
-            return CGFloat(0.53 * frame.width))
-        case (.regular, .compact):
-            return CGFloat(0.57 * frame.height)
-        case (.regular, .regular):
-            return CGFloat(0.35 * frame.height)
-        default:
-            return nil
+        case (.compact, .regular): return CGFloat(0.55 * frame.width)
+        case (.compact, .compact): return CGFloat(0.53 * frame.width))
+        case (.regular, .compact): return CGFloat(0.57 * frame.height)
+        case (.regular, .regular): return CGFloat(0.35 * frame.height)
+        default: return nil
         }
     }
 }

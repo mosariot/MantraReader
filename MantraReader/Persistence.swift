@@ -84,7 +84,7 @@ extension PersistenceController {
         var mantras = [Mantra]()
         let request = NSFetchRequest<Mantra>(entityName: "Mantra")
         do {
-            try mantras = PersistenceController.preview.container.viewContext.fetch(request)
+            try mantras = preview.container.viewContext.fetch(request)
         } catch {
             print("Error getting data. \(error.localizedDescription)")
         }

@@ -30,8 +30,8 @@ struct ReadsView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(
-                                width: imageSize(with: geo).width,
-                                height: imageSize(with: geo).height
+                                width: imageSize(with: geo),
+                                height: imageSize(with: geo)
                             )
                         if verticalSizeClass == .regular {
                             Spacer()
@@ -48,15 +48,15 @@ struct ReadsView: View {
                                 viewModel: CircularProgressViewModel(viewModel.mantra)
                             )
                             .frame(
-                                width: circularProgressViewSize(with: geo).width,
-                                height: circularProgressViewSize(with: geo).height
+                                width: circularProgressViewSize(with: geo),
+                                height: circularProgressViewSize(with: geo)
                             )
                             GoalButtonView(
                                 viewModel: GoalButtonViewModel(viewModel.mantra),
                                 adjustingType: $adjustingType,
                                 isPresentedAdjustingAlert: $isPresentedAdjustingAlert
                             )
-                            .padding(.vertical, 10)
+                            .padding(.bottom, 10)
                         }
                         Spacer()
                     }
@@ -133,7 +133,7 @@ struct ReadsView: View {
                 Image(systemName: "sun.max")
                     .symbolVariant(isMantraReaderMode ? .fill : .none)
             }
-            .padding(20)
+            .padding(.trailing, 20)
         }
         .ignoresSafeArea(.keyboard)
         .toolbar {
@@ -161,33 +161,33 @@ struct ReadsView: View {
         }
     }
     
-    private func imageSize(with geo: GeometryProxy) -> (width: CGFloat?, height: CGFloat?) {
+    private func imageSize(with geo: GeometryProxy) -> CGFloat? {
         switch (horizontalSizeClass, verticalSizeClass) {
         case (.compact, .regular):
-            return (CGFloat(0.34 * geo.size.width), CGFloat(0.34 * geo.size.width))
+            return CGFloat(0.34 * geo.size.width)
         case (.compact, .compact):
-            return (CGFloat(0.45 * geo.size.height), CGFloat(0.45 * geo.size.height))
+            return CGFloat(0.45 * geo.size.height)
         case (.regular, .compact):
-            return (CGFloat(0.48 * geo.size.height), CGFloat(0.48 * geo.size.height))
+            return CGFloat(0.48 * geo.size.height)
         case (.regular, .regular):
-            return (CGFloat(0.20 * geo.size.height), CGFloat(0.20 * geo.size.height))
+            return CGFloat(0.20 * geo.size.height)
         default:
-            return (nil, nil)
+            return nil
         }
     }
     
-    private func circularProgressViewSize(with geo: GeometryProxy) -> (width: CGFloat?, height: CGFloat?) {
+    private func circularProgressViewSize(with geo: GeometryProxy) -> CGFloat? {
         switch (horizontalSizeClass, verticalSizeClass) {
         case (.compact, .regular):
-            return (0.60 * CGFloat(geo.size.width), 0.55 * CGFloat(geo.size.width))
+            return CGFloat(0.55 * geo.size.width)
         case (.compact, .compact):
-            return (0.53 * CGFloat(geo.size.height), 0.53 * CGFloat(geo.size.height))
+            return CGFloat(0.53 * geo.size.width))
         case (.regular, .compact):
-            return (0.57 * CGFloat(geo.size.height), 0.57 * CGFloat(geo.size.height))
+            return CGFloat(0.57 * geo.size.height)
         case (.regular, .regular):
-            return (0.35 * CGFloat(geo.size.height), 0.35 * CGFloat(geo.size.height))
+            return CGFloat(0.35 * geo.size.height)
         default:
-            return (nil, nil)
+            return nil
         }
     }
 }

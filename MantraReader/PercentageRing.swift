@@ -102,24 +102,24 @@ struct PercentageRing: View {
                     Circle()
                         .fill(lastGradientColor)
                         .frame(width: ringWidth, height: ringWidth, alignment: .center)
-                        .offset(x: getEndCircleLocation(frame: geometry.size).0,
-                                y: getEndCircleLocation(frame: geometry.size).1)
+                        .offset(x: getEndCircleLocation(frame: geometry.size).x,
+                                y: getEndCircleLocation(frame: geometry.size).y)
                         .shadow(color: PercentageRing.ShadowColor,
                                 radius: PercentageRing.ShadowRadius,
-                                x: getEndCircleShadowOffset().0,
-                                y: getEndCircleShadowOffset().1)
+                                x: getEndCircleShadowOffset().x,
+                                y: getEndCircleShadowOffset().y)
                 }
             }
         }
     }
     
-    private func getEndCircleLocation(frame: CGSize) -> (CGFloat, CGFloat) {
+    private func getEndCircleLocation(frame: CGSize) -> (x: CGFloat, y: CGFloat) {
         let angleOfEndInRadians: Double = relativePercentageAngle.radians
         let offsetRadius = min(frame.width, frame.height) / 2
         return (offsetRadius * CGFloat(cos(angleOfEndInRadians)), offsetRadius * CGFloat(sin(angleOfEndInRadians)))
     }
     
-    private func getEndCircleShadowOffset() -> (CGFloat, CGFloat) {
+    private func getEndCircleShadowOffset() -> (x: CGFloat, y: CGFloat) {
         let angleForOffset = absolutePercentageAngle + (self.startAngle + 90)
         let angleForOffsetInRadians = angleForOffset.radians
         let relativeXOffset = cos(angleForOffsetInRadians)
@@ -132,11 +132,10 @@ struct PercentageRing: View {
     private func getShowShadow(frame: CGSize) -> Bool {
         let circleRadius = min(frame.width, frame.height) / 2
         let remainingAngleInRadians = CGFloat((360 - absolutePercentageAngle).radians)
-        if percent >= 100 {
+        if percent >= 100 || circleRadius * remainingAngleInRadians <= ringWidth {
             return true
-        } else if circleRadius * remainingAngleInRadians <= ringWidth {
-            return true
+        } else {
+            return false
         }
-        return false
     }
 }

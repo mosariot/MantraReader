@@ -173,7 +173,7 @@ struct ReadsView: View {
     private func circularProgressViewSize(with frame: CGSize) -> CGFloat? {
         switch (horizontalSizeClass, verticalSizeClass) {
         case (.compact, .regular): return CGFloat(0.55 * frame.width)
-        case (.compact, .compact): return CGFloat(0.53 * frame.width))
+        case (.compact, .compact): return CGFloat(0.53 * frame.height)
         case (.regular, .compact): return CGFloat(0.57 * frame.height)
         case (.regular, .regular): return CGFloat(0.35 * frame.height)
         default: return nil

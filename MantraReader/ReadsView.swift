@@ -44,7 +44,9 @@ struct ReadsView: View {
                         Spacer()
                         VStack {
                             CircularProgressView(
-                                viewModel: CircularProgressViewModel(viewModel.mantra)
+                                viewModel: CircularProgressViewModel(viewModel.mantra),
+                                isMantraReaderMode: isMantraReaderMode,
+                                frame: circularProgressViewSize(with: geometry.size)
                             )
                             .frame(
                                 width: circularProgressViewSize(with: geometry.size),
@@ -56,6 +58,7 @@ struct ReadsView: View {
                                 adjustingType: $adjustingType,
                                 isPresentedAdjustingAlert: $isPresentedAdjustingAlert
                             )
+                            .disabled(isMantraReaderMode)
                         }
                         Spacer()
                     }
@@ -70,6 +73,7 @@ struct ReadsView: View {
                                 .font(.system(size: 60))
                                 .symbolVariant(.circle.fill)
                         }
+                        .disabled(isMantraReaderMode)
                         .padding(.horizontal)
                         Button {
                             adjustingType = .rounds
@@ -79,6 +83,7 @@ struct ReadsView: View {
                                 .font(.system(size: 60))
                                 .symbolVariant(.circle.fill)
                         }
+                        .disabled(isMantraReaderMode)
                         .padding(.horizontal)
                         Button {
                             adjustingType = .value
@@ -88,6 +93,7 @@ struct ReadsView: View {
                                 .font(.system(size: 60))
                                 .symbolVariant(.fill)
                         }
+                        .disabled(isMantraReaderMode)
                         .padding(.horizontal)
                     }
 #if os(macOS)
@@ -124,15 +130,33 @@ struct ReadsView: View {
                 )
             }
 #endif
+            Color.gray.opacity(isMantraReaderMode ? 0.2 : 0)
+                .ignoresSafeArea()
+                .gesture(
+                    TapGesture(count: 2)
+                        .onEnded {
+                            viewModel.handleAdjusting(for: .rounds, with: 1)
+                        }
+                        .exclusively(
+                            before:
+                                TapGesture(count: 1)
+                                .onEnded {
+                                    viewModel.handleAdjusting(for: .reads, with: 1)
+                                }
+                        )
+                )
         }
         .overlay(alignment: .topTrailing) {
             Button {
-                isMantraReaderMode.toggle()
+                withAnimation {
+                    isMantraReaderMode.toggle()
+                }
             } label: {
                 Image(systemName: "sun.max")
+                    .imageScale(.large)
                     .symbolVariant(isMantraReaderMode ? .fill : .none)
             }
-            .padding(.trailing, 20)
+            .padding(20)
         }
         .ignoresSafeArea(.keyboard)
         .toolbar {

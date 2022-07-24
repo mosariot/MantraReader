@@ -12,6 +12,7 @@ import Combine
 final class CircularProgressViewModel: ObservableObject {
     @Published var mantra: Mantra
     @Published var displayedReads: Double
+    @Published var currentDisplayedReads: Double
     @Published var progress: Double
     @Published var isAnimated: Bool = false
     private var readsGoal: Int32
@@ -21,6 +22,7 @@ final class CircularProgressViewModel: ObservableObject {
     init(_ mantra: Mantra) {
         self.mantra = mantra
         self.displayedReads = Double(mantra.reads)
+        self.currentDisplayedReads = 0
         self.readsGoal = mantra.readsGoal
         self.progress = Double(mantra.reads) / Double(mantra.readsGoal)
     }
@@ -38,10 +40,11 @@ final class CircularProgressViewModel: ObservableObject {
         let deltaReads = Double(mantra.reads) - displayedReads
         timerSubscription = Timer.publish(every: Constants.animationTime / 100, on: .main, in: .common)
             .autoconnect()
-            .scan(0) { elapsedTime, _ in elapsedTime + Constants.animationTime / 100 }
+            .scan(0) { elapsedTime, _ in elapsedTime + Constants.animationTime / 101 }
             .sink { elapsedTime in
                 if elapsedTime < Constants.animationTime {
                     self.displayedReads += deltaReads / 100.0
+                    self.currentDisplayedReads += deltaReads / 100.0
                 } else {
                     self.displayedReads = Double(self.mantra.reads)
                     self.isAnimated = false

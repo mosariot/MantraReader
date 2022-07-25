@@ -18,6 +18,7 @@ struct ReadsView: View {
     @State private var isPresentedDetailsSheet = false
     @State private var isMantraReaderMode = false
     @State private var blink = false
+    @State private var showHUD = false
     
     private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
@@ -160,11 +161,31 @@ struct ReadsView: View {
             Color.gray
                 .blink(on: $blink, opacity: 0.7, duration: 0.15)
                 .ignoresSafeArea()
+            if showHUD {
+                Rectangle()
+                    .fill(.gray)
+                    .frame(width: 96, height: 96)
+                    .cornerRadius(10)
+                    .offset(y: -96)
+            }
         }
         .overlay(alignment: .topTrailing) {
             Button {
                 withAnimation {
                     isMantraReaderMode.toggle()
+                }
+                if isMantraReaderMode {
+                    withAnimation {
+                        showHUD = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            withAnimation {
+                                showHUD = false
+                            }
+                        }
+                    }
+                    UIApplication.shared.isIdleTimerDisabled = true
+                } else {
+                    UIApplication.shared.isIdleTimerDisabled = false
                 }
             } label: {
                 Image(systemName: "sun.max")
@@ -201,13 +222,6 @@ struct ReadsView: View {
         .onReceive(viewModel.mantra.objectWillChange) { _ in
             viewModel.objectWillChange.send()
         }
-        .onChange(of: isMantraReaderMode, perform: { newValue in
-            if isMantraReaderMode {
-                UIApplication.shared.isIdleTimerDisabled = true
-            } else {
-                UIApplication.shared.isIdleTimerDisabled = false
-            }
-        })
         .onAppear {
             UIApplication.shared.isIdleTimerDisabled = false
         }

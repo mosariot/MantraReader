@@ -17,6 +17,7 @@ struct ReadsView: View {
     @State private var adjustingText: String = ""
     @State private var isPresentedDetailsSheet = false
     @State private var isMantraReaderMode = false
+    @State private var blink = false
     
     private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
@@ -132,12 +133,14 @@ struct ReadsView: View {
                 )
             }
 #endif
-            Color.gray.opacity(isMantraReaderMode ? 0.2 : 0)
+            Color.gray
+                .opacity(isMantraReaderMode ? 0.2 : 0)
                 .ignoresSafeArea()
                 .gesture(
                     TapGesture(count: 2)
                         .onEnded {
                             lightHapticGenerator.impactOccurred()
+                            blink = true
                             viewModel.handleAdjusting(for: .rounds, with: 1)
                         }
                         .exclusively(
@@ -145,10 +148,14 @@ struct ReadsView: View {
                                 TapGesture(count: 1)
                                 .onEnded {
                                     lightHapticGenerator.impactOccurred()
+                                    blink = true
                                     viewModel.handleAdjusting(for: .reads, with: 1)
                                 }
                         )
                 )
+            Color.gray
+                .opacity(0)
+                .blink(on: $blink, opacity: 0.6, duration: 0.15)
         }
         .overlay(alignment: .topTrailing) {
             Button {
@@ -216,6 +223,40 @@ struct ReadsView_Previews: PreviewProvider {
                 PersistenceController.previewMantra,
                 viewContext: PersistenceController.preview.container.viewContext
             )
+        )
+    }
+}
+
+struct BlinkingModifier: ViewModifier {
+    let state: Binding<Bool>
+    let opacity: Double
+    let duration: Double
+
+    private var blinking: Binding<Bool> {
+        Binding<Bool>(
+            get: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + self.duration) {
+                    self.state.wrappedValue = false
+                }
+                return self.state.wrappedValue
+            },
+            set: {
+                self.state.wrappedValue = $0
+            }
+        )
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .opacity(self.blinking.wrappedValue ? self.opacity : 0)
+            .animation(.easeOut(duration: duration)
+    }
+}
+
+extension View {
+    func blink(on state: Binding<Bool>, opacity: Double, duration: Double) -> some View {
+        self.modifier(
+            BlinkingModifier(state: state, opacity: opacity, duration: duration)
         )
     }
 }

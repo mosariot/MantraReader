@@ -67,7 +67,7 @@ struct ReadsView: View {
                         Spacer()
                     }
                     HStack(
-                        spacing: (horizontalSizeClass == .compact && verticalSizeClass != .compact) ? 10 : 50
+                        spacing: (horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 10 : 50
                     ) {
                         Button {
                             adjustingType = .reads
@@ -100,7 +100,10 @@ struct ReadsView: View {
                         .disabled(isMantraReaderMode)
                         .padding(.horizontal)
                     }
-                    .padding(.bottom, verticalSizeClass == .compact ? 10 : 0)
+                    .padding(
+                        .bottom,
+                        (horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 10 : 0
+                    )
 #if os(macOS)
                     .alert(
                         viewModel.alertTitle(for: adjustingType),
@@ -170,6 +173,7 @@ struct ReadsView: View {
             }
             .padding(20)
         }
+        .navigationTitle(verticalSizeClass == .compact ? viewModel.mantra.title ?? "" : "")
         .navigationBarTitleDisplayMode(.inline)
         .ignoresSafeArea(.keyboard)
         .toolbar {

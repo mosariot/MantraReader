@@ -43,6 +43,7 @@ struct ReadsView: View {
                                 .textSelection(.enabled)
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.6)
+                                .padding(.horizontal)
                         }
                         Spacer()
                         VStack {
@@ -195,6 +196,16 @@ struct ReadsView: View {
         }
         .onReceive(viewModel.mantra.objectWillChange) { _ in
             viewModel.objectWillChange.send()
+        }
+        .onChange(of: isMantraReaderMode, perform: { newValue in
+            if isMantraReaderMode {
+                UIApplication.shared.isIdleTimerDisabled = true
+            } else {
+                UIApplication.shared.isIdleTimerDisabled = false
+            }
+        })
+        .onAppear {
+            UIApplication.shared.isIdleTimerDisabled = false
         }
     }
     

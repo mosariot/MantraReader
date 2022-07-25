@@ -30,7 +30,7 @@ final class CircularProgressViewModel: ObservableObject {
     func updateForMantraChanges() {
         if Int32(displayedReads) != mantra.reads || readsGoal != mantra.readsGoal {
             readsGoal = mantra.readsGoal
-            if abs(Int32(displayedReads) - mantra.reads) >= 1 {
+            if abs(Int32(displayedReads) - mantra.reads) > 1 {
                 animateChanges()
             } else {
                 progress = Double(mantra.reads) / Double(mantra.readsGoal)

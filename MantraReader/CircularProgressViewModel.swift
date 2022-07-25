@@ -36,6 +36,7 @@ final class CircularProgressViewModel: ObservableObject {
                 progress = Double(mantra.reads) / Double(mantra.readsGoal)
                 currentDisplayedReads += Double(mantra.reads) - displayedReads
                 displayedReads = Double(mantra.reads)
+            }
         }
     }
     

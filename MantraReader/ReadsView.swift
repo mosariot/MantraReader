@@ -134,28 +134,27 @@ struct ReadsView: View {
             }
 #endif
             Color.gray
-                .opacity(isMantraReaderMode ? 0.2 : 0)
+                .opacity(isMantraReaderMode ? 0.4 : 0)
                 .ignoresSafeArea()
                 .gesture(
                     TapGesture(count: 2)
                         .onEnded {
                             lightHapticGenerator.impactOccurred()
-                            blink = true
                             viewModel.handleAdjusting(for: .rounds, with: 1)
                         }
                         .exclusively(
                             before:
                                 TapGesture(count: 1)
                                 .onEnded {
-                                    lightHapticGenerator.impactOccurred()
                                     blink = true
+                                    lightHapticGenerator.impactOccurred()
                                     viewModel.handleAdjusting(for: .reads, with: 1)
                                 }
                         )
                 )
             Color.gray
-                .opacity(0)
-                .blink(on: $blink, opacity: 0.6, duration: 0.15)
+                .blink(on: $blink, opacity: 0.7, duration: 0.15)
+                .ignoresSafeArea()
         }
         .overlay(alignment: .topTrailing) {
             Button {
@@ -183,12 +182,14 @@ struct ReadsView: View {
             } label: {
                 Image(systemName: viewModel.favoriteBarImage)
             }
+            .disabled(isMantraReaderMode)
             Button {
                 isPresentedDetailsSheet = true
             } label: {
                 Image(systemName: "info")
                     .symbolVariant(.circle)
             }
+            .disabled(isMantraReaderMode)
         }
         .onReceive(viewModel.mantra.objectWillChange) { _ in
             viewModel.objectWillChange.send()
@@ -223,40 +224,6 @@ struct ReadsView_Previews: PreviewProvider {
                 PersistenceController.previewMantra,
                 viewContext: PersistenceController.preview.container.viewContext
             )
-        )
-    }
-}
-
-struct BlinkingModifier: ViewModifier {
-    let state: Binding<Bool>
-    let opacity: Double
-    let duration: Double
-
-    private var blinking: Binding<Bool> {
-        Binding<Bool>(
-            get: {
-                DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-                    self.state.wrappedValue = false
-                }
-                return state.wrappedValue
-            },
-            set: {
-                state.wrappedValue = $0
-            }
-        )
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .opacity(blinking.wrappedValue ? opacity : 0)
-            .animation(.easeOut(duration: duration)
-    }
-}
-
-extension View {
-    func blink(on state: Binding<Bool>, opacity: Double, duration: Double) -> some View {
-        self.modifier(
-            BlinkingModifier(state: state, opacity: opacity, duration: duration)
         )
     }
 }

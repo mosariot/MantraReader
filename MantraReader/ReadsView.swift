@@ -235,20 +235,20 @@ struct BlinkingModifier: ViewModifier {
     private var blinking: Binding<Bool> {
         Binding<Bool>(
             get: {
-                DispatchQueue.main.asyncAfter(deadline: .now() + self.duration) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
                     self.state.wrappedValue = false
                 }
-                return self.state.wrappedValue
+                return state.wrappedValue
             },
             set: {
-                self.state.wrappedValue = $0
+                state.wrappedValue = $0
             }
         )
     }
     
     func body(content: Content) -> some View {
         content
-            .opacity(self.blinking.wrappedValue ? self.opacity : 0)
+            .opacity(blinking.wrappedValue ? opacity : 0)
             .animation(.easeOut(duration: duration)
     }
 }

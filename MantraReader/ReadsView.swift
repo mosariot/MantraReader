@@ -18,6 +18,8 @@ struct ReadsView: View {
     @State private var isPresentedDetailsSheet = false
     @State private var isMantraReaderMode = false
     
+    private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
+    
     var body: some View {
         let layout = verticalSizeClass == .compact ? AnyLayout(_HStackLayout()) : AnyLayout(_VStackLayout())
         
@@ -135,12 +137,14 @@ struct ReadsView: View {
                 .gesture(
                     TapGesture(count: 2)
                         .onEnded {
+                            lightHapticGenerator.impactOccurred()
                             viewModel.handleAdjusting(for: .rounds, with: 1)
                         }
                         .exclusively(
                             before:
                                 TapGesture(count: 1)
                                 .onEnded {
+                                    lightHapticGenerator.impactOccurred()
                                     viewModel.handleAdjusting(for: .reads, with: 1)
                                 }
                         )

@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct ContentView: View {   
+struct ContentView: View {
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @State private var selectedMantra: Mantra?
     @State private var showingDataFailedAlert = false
-    
+
 #if os(iOS)
     @EnvironmentObject var orientationInfo: OrientationInfo
     @State private var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
@@ -20,7 +20,7 @@ struct ContentView: View {
     private var isLandscape: Bool { orientationInfo.orientation == .landscape }
     private var isPortrait: Bool { orientationInfo.orientation == .portrait }
 #endif
-    
+
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
 //            MantraListColumn(selectedMantra: $selectedMantra)

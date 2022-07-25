@@ -99,6 +99,7 @@ struct ReadsView: View {
                         .disabled(isMantraReaderMode)
                         .padding(.horizontal)
                     }
+                    .padding(.bottom, verticalSizeClass == .compact ? 10 : 0)
 #if os(macOS)
                     .alert(
                         viewModel.alertTitle(for: adjustingType),
@@ -168,6 +169,7 @@ struct ReadsView: View {
             }
             .padding(20)
         }
+        .navigationBarTitleDisplayMode(.inline)
         .ignoresSafeArea(.keyboard)
         .toolbar {
             Button {
@@ -198,20 +200,20 @@ struct ReadsView: View {
     
     private func imageSize(with frame: CGSize) -> CGFloat? {
         switch (horizontalSizeClass, verticalSizeClass) {
-        case (.compact, .regular): return CGFloat(0.34 * frame.width)
-        case (.compact, .compact): return CGFloat(0.45 * frame.height)
-        case (.regular, .compact): return CGFloat(0.48 * frame.height)
-        case (.regular, .regular): return CGFloat(0.20 * frame.height)
+        case (.compact, .regular): return CGFloat(0.40 * frame.width)
+        case (.compact, .compact): return CGFloat(0.50 * frame.height)
+        case (.regular, .compact): return CGFloat(0.50 * frame.height)
+        case (.regular, .regular): return CGFloat(0.25 * frame.height)
         default: return nil
         }
     }
     
     private func circularProgressViewSize(with frame: CGSize) -> CGFloat? {
         switch (horizontalSizeClass, verticalSizeClass) {
-        case (.compact, .regular): return CGFloat(0.55 * frame.width)
-        case (.compact, .compact): return CGFloat(0.53 * frame.height)
-        case (.regular, .compact): return CGFloat(0.57 * frame.height)
-        case (.regular, .regular): return CGFloat(0.35 * frame.height)
+        case (.compact, .regular): return CGFloat(0.58 * frame.width)
+        case (.compact, .compact): return CGFloat(0.55 * frame.height)
+        case (.regular, .compact): return CGFloat(0.55 * frame.height)
+        case (.regular, .regular): return CGFloat(0.40 * frame.height)
         default: return nil
         }
     }

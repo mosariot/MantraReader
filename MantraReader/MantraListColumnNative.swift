@@ -86,6 +86,8 @@ struct MantraListColumnNative: View {
             }
             .headerProminence(.increased)
         }
+        .navigationTitle("Mantra Reader")
+        
         .animation(.default, value: sorting)
         .animation(.default, value: searchText)
         .searchable(text: $searchText, prompt: "Search")
@@ -157,7 +159,6 @@ struct MantraListColumnNative: View {
                 }
             }
         }
-        .navigationTitle("Mantra Reader")
     }
     
     private func delete(_ mantra: Mantra) {

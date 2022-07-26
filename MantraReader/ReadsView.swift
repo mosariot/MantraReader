@@ -18,7 +18,7 @@ struct ReadsView: View {
     @State private var isPresentedDetailsSheet = false
     @State private var isMantraReaderMode = false
     @State private var blink = false
-    @State private var showHUD = false
+    @State private var showHint = false
     
     private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
@@ -161,32 +161,18 @@ struct ReadsView: View {
             Color.gray
                 .blink(on: $blink, opacity: 0.7, duration: 0.15)
                 .ignoresSafeArea()
-            if showHUD {
+            if showHint {
                 Rectangle()
-                    .fill(.gray)
+                    .fill(.gray.opacity(0.9))
                     .frame(width: 96, height: 96)
                     .cornerRadius(10)
-                    .offset(y: -96)
+                    .alignmentGuide(.bottom, computeValue: { _ in 96 })
+                    .transition(.scale(scale: 1.3).combined(with: .opacity))
             }
         }
         .overlay(alignment: .topTrailing) {
             Button {
-                withAnimation {
-                    isMantraReaderMode.toggle()
-                }
-                if isMantraReaderMode {
-                    withAnimation {
-                        showHUD = true
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            withAnimation {
-                                showHUD = false
-                            }
-                        }
-                    }
-                    UIApplication.shared.isIdleTimerDisabled = true
-                } else {
-                    UIApplication.shared.isIdleTimerDisabled = false
-                }
+                toggleMantraReaderMode()
             } label: {
                 Image(systemName: "sun.max")
                     .imageScale(.large)
@@ -223,6 +209,25 @@ struct ReadsView: View {
             viewModel.objectWillChange.send()
         }
         .onAppear {
+            UIApplication.shared.isIdleTimerDisabled = false
+        }
+    }
+    
+    private func toggleMantraReaderMode() {
+        withAnimation {
+            isMantraReaderMode.toggle()
+        }
+        if isMantraReaderMode {
+            withAnimation(.easeInOut(duration: 0.3)) {
+                showHint = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        showHint = false
+                    }
+                }
+            }
+            UIApplication.shared.isIdleTimerDisabled = true
+        } else {
             UIApplication.shared.isIdleTimerDisabled = false
         }
     }

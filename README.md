@@ -20,7 +20,7 @@ For this reason, at start application doesn't include the mantra texts themselve
 
 We wish you deep awarenesses and spiritual growth!
 
-# Начитай! (SwiftUI version)
+# Начитай! (SwiftUI версия)
 
 / РУС /
 

@@ -163,7 +163,6 @@ struct ReadsView: View {
                 .ignoresSafeArea()
             if showHint {
                 HintView()
-                    .alignmentGuide(.bottom, computeValue: { _ in 96 })
                     .transition(.scale(scale: 1.3).combined(with: .opacity))
             }
         }
@@ -215,10 +214,10 @@ struct ReadsView: View {
             isMantraReaderMode.toggle()
         }
         if isMantraReaderMode {
-            withAnimation(.easeInOut(duration: 0.3)) {
+            withAnimation(.easeInOut(duration: 0.2)) {
                 showHint = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    withAnimation(.easeInOut(duration: 0.3)) {
+                    withAnimation(.easeInOut(duration: 0.2)) {
                         showHint = false
                     }
                 }
@@ -258,27 +257,5 @@ struct ReadsView_Previews: PreviewProvider {
                 viewContext: PersistenceController.preview.container.viewContext
             )
         )
-    }
-}
-
-struct HintView: View {
-    var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(.gray)
-                .cornerRadius(10)
-            VStack {
-                Text("\(Image(systemName: "hand.draw")) = \(Image(systemName: "plus.circle"))")
-                Text("\(Image(systemName: "hand.draw")) + \(Image(systemName: "hand.draw")) = \(Image(systemName: "arrow.clockwise.circle"))")
-            }
-        }
-        .opacity(0.9)
-        .frame(width: 96, height: 96)             
-    }
-}
-
-struct HintView_Previews: PreviewProvider {
-    static var previews: some View {
-        HintView()
     }
 }

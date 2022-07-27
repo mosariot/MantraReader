@@ -18,7 +18,7 @@ struct HintView: View {
                     .scaledToFill()
                     .lineLimit(1)
                     .padding(.vertical, 2)
-                Text("\(Image(systemName: "hand.draw")) + \(Image(systemName: "hand.draw")) = \(Image(systemName: "arrow.clockwise.circle"))")
+                Text("\(Image(systemName: "hand.draw")) \(Image(systemName: "hand.draw")) = \(Image(systemName: "arrow.clockwise.circle"))")
                     .scaledToFill()
                     .lineLimit(1)
                     .padding(.vertical, 2)

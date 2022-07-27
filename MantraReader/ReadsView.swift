@@ -18,17 +18,17 @@ struct ReadsView: View {
     @State private var adjustingType: AdjustingType?
     @State private var adjustingText: String = ""
     @State private var isPresentedDetailsSheet = false
-    @State private var isMantraReaderMode = false
+    @Binding private var isMantraReaderMode: Bool
     @State private var showBlink = false
     @State private var showHint = false
     
     private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
-    init(viewModel: ReadsViewModel) {
+    init(viewModel: ReadsViewModel, isMantraReaderMode: Binding<Bool>) {
         self.viewModel = viewModel
+        self._isMantraReaderMode = isMantraReaderMode
         circularViewModel = CircularProgressViewModel(viewModel.mantra)
         goalButtonViewModel = GoalButtonViewModel(viewModel.mantra)
-        UIApplication.shared.isIdleTimerDisabled = false
     }
     
     var body: some View {
@@ -243,7 +243,8 @@ struct ReadsView_Previews: PreviewProvider {
             viewModel: ReadsViewModel(
                 PersistenceController.previewMantra,
                 viewContext: PersistenceController.preview.container.viewContext
-            )
+            ),
+            isMantraReaderMode: .constant(false)
         )
     }
 }

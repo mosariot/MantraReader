@@ -10,15 +10,21 @@ import SwiftUI
 struct DetailsColumn: View {
     @Environment(\.managedObjectContext) private var viewContext
     var selectedMantra: Mantra?
+    @State var isMantraReaderMode: Bool = false
     
     var body: some View {
-        ZStack {
-            if let selectedMantra {
-                ReadsView(viewModel: ReadsViewModel(selectedMantra, viewContext: viewContext))
-            } else {
-                Text("Select a mantra")
-                    .foregroundColor(.gray)
+        if let selectedMantra {
+            ReadsView(
+                viewModel: ReadsViewModel(selectedMantra, viewContext: viewContext),
+                isMantraReaderMode: $isMantraReaderMode
+            )
+            .onChange(of: selectedMantra) { _ in
+                isMantraReaderMode = false
+                UIApplication.shared.isIdleTimerDisabled = false
             }
+        } else {
+            Text("Select a mantra")
+                .foregroundColor(.gray)
         }
     }
 }

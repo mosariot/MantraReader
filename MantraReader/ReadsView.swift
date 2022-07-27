@@ -11,6 +11,8 @@ struct ReadsView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @ObservedObject var viewModel: ReadsViewModel
+    private var circularViewModel: CircularProgressViewModel
+    private var goalButtonViewModel: GoalButtonViewModel
     
     @State private var isPresentedAdjustingAlert = false
     @State private var adjustingType: AdjustingType?
@@ -21,6 +23,12 @@ struct ReadsView: View {
     @State private var showHint = false
     
     private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
+    
+    init(viewModel: ReadsViewModel) {
+        self.viewModel = viewModel
+        circularViewModel = CircularProgressViewModel(viewModel.mantra)
+        goalButtonViewModel = GoalButtonViewModel(viewModel.mantra)
+    }
     
     var body: some View {
         let layout = verticalSizeClass == .compact ? AnyLayout(_HStackLayout()) : AnyLayout(_VStackLayout())
@@ -49,7 +57,7 @@ struct ReadsView: View {
                         Spacer()
                         VStack {
                             CircularProgressView(
-                                viewModel: CircularProgressViewModel(viewModel.mantra),
+                                viewModel: circularViewModel,
                                 isMantraReaderMode: isMantraReaderMode,
                                 frame: circularProgressViewSize(with: geometry.size)
                             )
@@ -59,7 +67,7 @@ struct ReadsView: View {
                             )
                             .padding(.bottom, 10)
                             GoalButtonView(
-                                viewModel: GoalButtonViewModel(viewModel.mantra),
+                                viewModel: goalButtonViewModel,
                                 adjustingType: $adjustingType,
                                 isPresentedAdjustingAlert: $isPresentedAdjustingAlert
                             )
@@ -163,37 +171,37 @@ struct ReadsView: View {
                 )
             if showBlink {
                 Color.gray
-                    .opacity(0.7)
                     .ignoresSafeArea()
+                    .opacity(0.7)
                     .transition(
-                        assymetric(
-                            .insertion:
-                                .opacity
-                                .animation(.easeIn(duration: 0.05), value: showBlink),
-                            .removal:
-                                .opacity
-                                .animation(.easeOut(duration: 0.10), value: showBlink)
+                        .asymmetric(
+                            insertion:
+                                    .opacity
+                                .animation(.easeIn(duration: 0.05)),
+                            removal:
+                                    .opacity
+                                .animation(.easeOut(duration: 0.15))
                         )
                     )
+            }
             if showHint {
                 HintView()
                     .offset(y: -96)
                     .transition(
-                        .assymetric(
+                        .asymmetric(
                             insertion:
-                                .scale(scale: 1.3)
-                                .combined(with: .opacity)
-                                .offset(y: -96)
-                                .animation(.easeIn(duration: 0.2), value: showHint),
+                                    .scale(scale: 1.3, anchor: .top)
+                                    .combined(with: .opacity)
+                                .animation(.easeIn(duration: 0.2)),
                             removal:
-                                .scale(scale: 1.3)
-                                .combined(with: .opacity)
-                                .offset(y: -96)
-                                .animation(.easeOut(duration: 0.2), value: showHint)
+                                    .scale(scale: 1.3, anchor: .top)
+                                    .combined(with: .opacity)
+                                .animation(.easeOut(duration: 0.2))
                         )
                     )
             }
         }
+//        .background(Color.random)
         .overlay(alignment: .topTrailing) {
             Button {
                 toggleMantraReaderMode()

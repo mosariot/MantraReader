@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GoalButtonView: View {
-    @StateObject var viewModel: GoalButtonViewModel
+    @ObservedObject var viewModel: GoalButtonViewModel
     @Binding var adjustingType: AdjustingType?
     @Binding var isPresentedAdjustingAlert: Bool
     
@@ -17,6 +17,7 @@ struct GoalButtonView: View {
             adjustingType = .goal
             isPresentedAdjustingAlert = true
         }
+//        .background(Color.random)
         .onReceive(viewModel.mantra.objectWillChange) { _ in
             viewModel.updateForMantraChanges()
         }

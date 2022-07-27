@@ -152,9 +152,9 @@ struct ReadsView: View {
                             before:
                                 TapGesture(count: 1)
                                 .onEnded {
-                                    blink = true
+                                    showBlink = true
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                                         showHint = false
+                                         showBlink = false
                                     }
                                     lightHapticGenerator.impactOccurred()
                                     viewModel.handleAdjusting(for: .reads, with: 1)

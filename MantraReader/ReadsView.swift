@@ -17,7 +17,7 @@ struct ReadsView: View {
     @State private var adjustingText: String = ""
     @State private var isPresentedDetailsSheet = false
     @State private var isMantraReaderMode = false
-    @State private var blink = false
+    @State private var showBlink = false
     @State private var showHint = false
     
     private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
@@ -153,21 +153,44 @@ struct ReadsView: View {
                                 TapGesture(count: 1)
                                 .onEnded {
                                     blink = true
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                                         showHint = false
+                                    }
                                     lightHapticGenerator.impactOccurred()
                                     viewModel.handleAdjusting(for: .reads, with: 1)
                                 }
                         )
                 )
-            Color.gray
-                .blink(on: $blink, opacity: 0.7, duration: 0.15)
-                .ignoresSafeArea()
+            if showBlink {
+                Color.gray
+                    .opacity(0.7)
+                    .ignoresSafeArea()
+                    .transition(
+                        assymetric(
+                            .insertion:
+                                .opacity
+                                .animation(.easeIn(duration: 0.05), value: showBlink),
+                            .removal:
+                                .opacity
+                                .animation(.easeOut(duration: 0.10), value: showBlink)
+                        )
+                    )
             if showHint {
                 HintView()
                     .offset(y: -96)
                     .transition(
-                        .scale(scale: 1.3)
-                        .combined(with: .opacity)
-                        .offset(y: -96)
+                        .assymetric(
+                            insertion:
+                                .scale(scale: 1.3)
+                                .combined(with: .opacity)
+                                .offset(y: -96)
+                                .animation(.easeIn(duration: 0.2), value: showHint),
+                            removal:
+                                .scale(scale: 1.3)
+                                .combined(with: .opacity)
+                                .offset(y: -96)
+                                .animation(.easeOut(duration: 0.2), value: showHint)
+                        )
                     )
             }
         }
@@ -219,13 +242,9 @@ struct ReadsView: View {
             isMantraReaderMode.toggle()
         }
         if isMantraReaderMode {
-            withAnimation(.easeInOut(duration: 0.2)) {
-                showHint = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                        showHint = false
-                    }
-                }
+            showHint = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                showHint = false
             }
             UIApplication.shared.isIdleTimerDisabled = true
         } else {

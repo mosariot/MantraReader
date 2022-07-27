@@ -28,6 +28,7 @@ struct ReadsView: View {
         self.viewModel = viewModel
         circularViewModel = CircularProgressViewModel(viewModel.mantra)
         goalButtonViewModel = GoalButtonViewModel(viewModel.mantra)
+        UIApplication.shared.isIdleTimerDisabled = false
     }
     
     var body: some View {
@@ -147,58 +148,18 @@ struct ReadsView: View {
                 )
             }
 #endif
-            Color.gray
-                .opacity(isMantraReaderMode ? 0.4 : 0)
-                .ignoresSafeArea()
-                .gesture(
-                    TapGesture(count: 2)
-                        .onEnded {
-                            lightHapticGenerator.impactOccurred()
-                            viewModel.handleAdjusting(for: .rounds, with: 1)
-                        }
-                        .exclusively(
-                            before:
-                                TapGesture(count: 1)
-                                .onEnded {
-                                    showBlink = true
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                                         showBlink = false
-                                    }
-                                    lightHapticGenerator.impactOccurred()
-                                    viewModel.handleAdjusting(for: .reads, with: 1)
-                                }
-                        )
+            if isMantraReaderMode {
+                MantraReaderModeOverlayView(
+                    showBlink: $showBlink,
+                    viewModel: viewModel,
+                    lightHapticGenerator: lightHapticGenerator
                 )
+            }
             if showBlink {
-                Color.gray
-                    .ignoresSafeArea()
-                    .opacity(0.7)
-                    .transition(
-                        .asymmetric(
-                            insertion:
-                                    .opacity
-                                .animation(.easeIn(duration: 0.05)),
-                            removal:
-                                    .opacity
-                                .animation(.easeOut(duration: 0.15))
-                        )
-                    )
+                BlinkView()
             }
             if showHint {
                 HintView()
-                    .offset(y: -96)
-                    .transition(
-                        .asymmetric(
-                            insertion:
-                                    .scale(scale: 1.3, anchor: .top)
-                                    .combined(with: .opacity)
-                                .animation(.easeIn(duration: 0.2)),
-                            removal:
-                                    .scale(scale: 1.3, anchor: .top)
-                                    .combined(with: .opacity)
-                                .animation(.easeOut(duration: 0.2))
-                        )
-                    )
             }
         }
 //        .background(Color.random)
@@ -240,9 +201,6 @@ struct ReadsView: View {
         .onReceive(viewModel.mantra.objectWillChange) { _ in
             viewModel.objectWillChange.send()
         }
-        .onAppear {
-            UIApplication.shared.isIdleTimerDisabled = false
-        }
     }
     
     private func toggleMantraReaderMode() {
@@ -251,9 +209,7 @@ struct ReadsView: View {
         }
         if isMantraReaderMode {
             showHint = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                showHint = false
-            }
+            afterDelay(1.5) { showHint = false }
             UIApplication.shared.isIdleTimerDisabled = true
         } else {
             UIApplication.shared.isIdleTimerDisabled = false

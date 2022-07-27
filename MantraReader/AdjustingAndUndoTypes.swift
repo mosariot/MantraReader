@@ -1,5 +1,5 @@
 //
-//  AdjustingAndUpdatingTypes.swift
+//  AdjustingAndUndoTypes.swift
 //  MantraReader
 //
 //  Created by Александр Воробьев on 17.07.2022.

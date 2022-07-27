@@ -163,7 +163,8 @@ struct ReadsView: View {
                 .ignoresSafeArea()
             if showHint {
                 HintView()
-                    .transition(.scale(scale: 1.3).combined(with: .opacity))
+                    .offset(y: -96)
+                    .transition(.scale(scale: 1.3).combined(with: .opacity).offset(y: -96))
             }
         }
         .overlay(alignment: .topTrailing) {

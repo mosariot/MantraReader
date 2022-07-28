@@ -19,7 +19,9 @@ struct DetailsColumn: View {
                 isMantraReaderMode: $isMantraReaderMode
             )
             .onChange(of: selectedMantra) { _ in
-                isMantraReaderMode = false
+                withAnimation {
+                    isMantraReaderMode = false
+                }
                 UIApplication.shared.isIdleTimerDisabled = false
             }
         } else {

@@ -40,6 +40,6 @@ struct PreloadedMantraListView: View {
 
 struct PreloadedMantraListView_Previews: PreviewProvider {
     static var previews: some View {
-        PreloadedMantraListView()
+        PreloadedMantraListView(isPresented: .constant(true))
     }
 }

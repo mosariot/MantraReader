@@ -8,13 +8,33 @@
 import SwiftUI
 
 struct PreloadedMantraRow: View {
+    let mantra: PreloadedMantra
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Image(mantra.image)
+                .resizable()
+                .aspectRatio(1, contentMode: .fit)
+                .frame(width: CGFloat(Constants.rowHeight/2))
+            Text(mantra.title)
+                .lineLimit(1)
+            Spacer()
+            if mantra.isSelected {
+                Image(systemName: "checkmark")
+                    .symbolVariant(.circle.fill)
+                    .foregroundColor(.accentColor)
+            } else {
+                Image(systemName: "circle")
+                    .foregroundColor(.accentColor)
+            }
+        }
     }
 }
 
 struct PreloadedMantraRow_Previews: PreviewProvider {
     static var previews: some View {
-        PreloadedMantraRow()
+        PreloadedMantraRow(
+            mantra: PreloadedMantra(title: "Avelokitesvara", image: "Avalokitesvara", isSelected: true)
+        )
     }
 }

@@ -115,7 +115,7 @@ enum PreloadedMantras {
         ]
     ]
     
-    static func sortedData() -> [[MantraAttributes: String]] {
+    static var sorted: [[MantraAttributes: String]] {
         self.data.sorted {
             guard
                 let mantraTitle0 = $0[.title],

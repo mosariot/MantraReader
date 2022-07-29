@@ -8,8 +8,33 @@
 import SwiftUI
 
 struct PreloadedMantraListView: View {
+    @Binding isPresentedPreloadedMantraList: Bool
+    @StateObject var viewModel = PreloadedMantraListViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(viewModel.mantras) { mantra in
+            PreloadedMantraRow(mantra: mantra)
+                .onTapGesture {
+                    viewModel.select(mantra)
+                }
+        }
+        .navigationTitle("Mantras Choice")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    isPresentedPreloadedMantra = false
+                } label: {
+                    Image(systemName: "xmark")
+                        .symbolVariant(.circle.fill)
+                }
+            }
+            Button {
+                viewModel.addMantras()
+            } label: {
+                Text("Add")
+            }
+            .disabled(viewModel.selectedMantras.isEmpty)
+        }
     }
 }
 

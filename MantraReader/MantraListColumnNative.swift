@@ -17,6 +17,7 @@ import Combine
 struct MantraListColumnNative: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     @AppStorage("sorting") private var sorting: Sorting = .title
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @SectionedFetchRequest(
@@ -31,13 +32,6 @@ struct MantraListColumnNative: View {
     @Binding var selectedMantra: Mantra?
     @State private var searchText = ""
     @State private var isPresentedPresetMantraView = false
-    
-#if os(iOS)
-    @EnvironmentObject var orientationInfo: OrientationInfo
-    private var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
-    private var isPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }
-    private var isLandscape: Bool { orientationInfo.orientation == .landscape }
-#endif
     
     var body: some View {
         List(mantras, selection: $selectedMantra) { section in
@@ -110,7 +104,9 @@ struct MantraListColumnNative: View {
         .onAppear {
             if !mantras.isEmpty {
 #if os(iOS)
-                if (isPad || (isPhone && isLandscape && horizontalSizeClass == .regular)) && isFreshLaunch {
+                if (verticalSizeClass == .regular && horizontalSizeClass == .regular)
+                    || (verticalSizeClass == .compact && horizontalSizeClass == .regular)
+                    && isFreshLaunch {
                     selectedMantra = mantras[0][0]
                     isFreshLaunch = false
                 }

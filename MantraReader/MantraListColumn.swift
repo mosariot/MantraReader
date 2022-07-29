@@ -16,6 +16,7 @@ enum Sorting: String, Codable {
 struct MantraListColumn: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     @AppStorage("sorting") private var sorting: Sorting = .title
     @SceneStorage("isFreshLaunch") private var isFreshLaunch = true
     @FetchRequest(sortDescriptors: [], animation: .default) private var mantras: FetchedResults<Mantra>
@@ -42,13 +43,6 @@ struct MantraListColumn: View {
     private var otherMantras: [Mantra] {
         sortedSearchedMantras.filter { !$0.isFavorite }
     }
-    
-#if os(iOS)
-    @EnvironmentObject var orientationInfo: OrientationInfo
-    private var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
-    private var isPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }
-    private var isLandscape: Bool { orientationInfo.orientation == .landscape }
-#endif
     
     var body: some View {
         List(selection: $selectedMantra) {
@@ -137,7 +131,9 @@ struct MantraListColumn: View {
         .onAppear {
             if let mantra = favoriteMantras.first {
 #if os(iOS)
-                if (isPad || (isPhone && isLandscape && horizontalSizeClass == .regular)) && isFreshLaunch {
+                if (verticalSizeClass == .regular && horizontalSizeClass == .regular)
+                    || (verticalSizeClass == .compact && horizontalSizeClass == .regular)
+                    && isFreshLaunch {
                     selectedMantra = mantra
                     isFreshLaunch = false
                 }
@@ -152,7 +148,7 @@ struct MantraListColumn: View {
         .refreshable(action: {
             viewContext.refreshAllObjects()
         })
-        .onReceive(NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)) {_ in
+        .onReceive(NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)) { _ in
  //            viewContext.refreshAllObjects()
         }
         .toolbar {

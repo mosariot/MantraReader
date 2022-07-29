@@ -26,6 +26,11 @@
 		9FBEE9A5285F682D0070BA06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEE9A4285F682D0070BA06 /* Preview Assets.xcassets */; };
 		9FBEE9B0285F68CE0070BA06 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */; };
 		9FC9A691287DA4FE00D05FBD /* UpdatingAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9A690287DA4FE00D05FBD /* UpdatingAlertView.swift */; };
+		9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC52893915B004936E6 /* PreloadedMantraListView.swift */; };
+		9FD61DC8289391A4004936E6 /* PreloadedMantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC7289391A4004936E6 /* PreloadedMantraRow.swift */; };
+		9FD61DCA289391BC004936E6 /* PreloadedMantraLisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC9289391BC004936E6 /* PreloadedMantraLisViewModel.swift */; };
+		9FD61DCC289391D4004936E6 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DCB289391D4004936E6 /* InfoView.swift */; };
+		9FD61DCE289391EF004936E6 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DCD289391EF004936E6 /* InfoViewModel.swift */; };
 		9FDC8DA82862203800BF7051 /* MantraListColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DA72862203800BF7051 /* MantraListColumn.swift */; };
 		9FDC8DAA286222C700BF7051 /* ReadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DA9286222C700BF7051 /* ReadsViewModel.swift */; };
 		9FDC8DAC28622AEC00BF7051 /* DetailsColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DAB28622AEC00BF7051 /* DetailsColumn.swift */; };
@@ -60,6 +65,11 @@
 		9FBEE9AB285F68CE0070BA06 /* ReadsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadsView.swift; sourceTree = "<group>"; };
 		9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		9FC9A690287DA4FE00D05FBD /* UpdatingAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatingAlertView.swift; sourceTree = "<group>"; };
+		9FD61DC52893915B004936E6 /* PreloadedMantraListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraListView.swift; sourceTree = "<group>"; };
+		9FD61DC7289391A4004936E6 /* PreloadedMantraRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraRow.swift; sourceTree = "<group>"; };
+		9FD61DC9289391BC004936E6 /* PreloadedMantraLisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraLisViewModel.swift; sourceTree = "<group>"; };
+		9FD61DCB289391D4004936E6 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		9FD61DCD289391EF004936E6 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
 		9FDC8DA72862203800BF7051 /* MantraListColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraListColumn.swift; sourceTree = "<group>"; };
 		9FDC8DA9286222C700BF7051 /* ReadsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadsViewModel.swift; sourceTree = "<group>"; };
 		9FDC8DAB28622AEC00BF7051 /* DetailsColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsColumn.swift; sourceTree = "<group>"; };
@@ -114,6 +124,8 @@
 				9FDF349E2885E86200B3007E /* GoalButtonView.swift */,
 				9FDF349C2885E83B00B3007E /* GoalButtonViewModel.swift */,
 				9FB279E328902F1B0029ED3B /* HintView.swift */,
+				9FD61DCB289391D4004936E6 /* InfoView.swift */,
+				9FD61DCD289391EF004936E6 /* InfoViewModel.swift */,
 				9FDC8DA72862203800BF7051 /* MantraListColumn.swift */,
 				9F03F4952870B8FE00432002 /* MantraListColumnNative.swift */,
 				9FBEE9A2285F682D0070BA06 /* MantraReader.entitlements */,
@@ -124,6 +136,9 @@
 				9FDC8DAF28623D5F00BF7051 /* OrientationInfo.swift */,
 				9F786289288844970058AAD0 /* PercentageRing.swift */,
 				9FBEE999285F682C0070BA06 /* Persistence.swift */,
+				9FD61DC52893915B004936E6 /* PreloadedMantraListView.swift */,
+				9FD61DC9289391BC004936E6 /* PreloadedMantraLisViewModel.swift */,
+				9FD61DC7289391A4004936E6 /* PreloadedMantraRow.swift */,
 				9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */,
 				9FBEE9A3285F682D0070BA06 /* Preview Content */,
 				9F780037287FF7D200516A0F /* RandomColor.swift */,
@@ -218,7 +233,9 @@
 				9FBEE99D285F682C0070BA06 /* MantraReader.xcdatamodeld in Sources */,
 				9FDC8DAE28622D5900BF7051 /* Constants.swift in Sources */,
 				9FB279E428902F1B0029ED3B /* HintView.swift in Sources */,
+				9FD61DCC289391D4004936E6 /* InfoView.swift in Sources */,
 				9FDC8DAC28622AEC00BF7051 /* DetailsColumn.swift in Sources */,
+				9FD61DCE289391EF004936E6 /* InfoViewModel.swift in Sources */,
 				9F31E15A2891ACE6006F0521 /* MantraReaderModeOverlayView.swift in Sources */,
 				9FDC8DAA286222C700BF7051 /* ReadsViewModel.swift in Sources */,
 				9FDC8DA82862203800BF7051 /* MantraListColumn.swift in Sources */,
@@ -227,7 +244,9 @@
 				9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */,
 				9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */,
 				9F78728E2865FDA400F52335 /* UIImage+Resize.swift in Sources */,
+				9FD61DCA289391BC004936E6 /* PreloadedMantraLisViewModel.swift in Sources */,
 				9FDF349D2885E83B00B3007E /* GoalButtonViewModel.swift in Sources */,
+				9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */,
 				9FC9A691287DA4FE00D05FBD /* UpdatingAlertView.swift in Sources */,
 				9F78628D2889A5830058AAD0 /* ReadsView.swift in Sources */,
 				9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */,
@@ -238,6 +257,7 @@
 				9FBEE99A285F682C0070BA06 /* Persistence.swift in Sources */,
 				9F780038287FF7D200516A0F /* RandomColor.swift in Sources */,
 				9F605143288EE75E005EC6F5 /* BlinkView.swift in Sources */,
+				9FD61DC8289391A4004936E6 /* PreloadedMantraRow.swift in Sources */,
 				9F78628A288844970058AAD0 /* PercentageRing.swift in Sources */,
 				9FDF34992884859D00B3007E /* AdjustingAndUndoTypes.swift in Sources */,
 				9FDF349F2885E86200B3007E /* GoalButtonView.swift in Sources */,

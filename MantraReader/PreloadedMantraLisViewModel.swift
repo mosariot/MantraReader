@@ -20,7 +20,6 @@ final class PreloadedMantraLisViewModel: ObservabledObject {
   
   init() {
     mantras = getPreloadedMantras()
-    
   }
   
   func select(mantra: PreloadedMantra) {
@@ -42,7 +41,7 @@ final class PreloadedMantraLisViewModel: ObservabledObject {
   
   private func getPreloadedMantras() -> [PreloadedMantra] {
         var mantras: [PreloadedMantra] = []
-        PreloadedMantras.sortedData().forEach { data in
+        PreloadedMantras.sorted.forEach { data in
             let mantra = PreloadedMantra()
             data.forEach { key, value in
                 if key == .title {

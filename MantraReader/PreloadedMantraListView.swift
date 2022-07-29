@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PreloadedMantraListView: View {
-    @Binding isPresentedPreloadedMantraList: Bool
+    @Binding isPresented: Bool
     @StateObject var viewModel = PreloadedMantraListViewModel()
     
     var body: some View {
@@ -22,7 +22,7 @@ struct PreloadedMantraListView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
-                    isPresentedPreloadedMantra = false
+                    isPresented = false
                 } label: {
                     Image(systemName: "xmark")
                         .symbolVariant(.circle.fill)

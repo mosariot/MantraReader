@@ -31,7 +31,7 @@ struct MantraListColumnNative: View {
     private var mantras: SectionedFetchResults<Bool, Mantra>
     @Binding var selectedMantra: Mantra?
     @State private var searchText = ""
-    @State private var isPresentedPresetMantraView = false
+    @State private var isPresentedPreloadedMantraList = false
     
     var body: some View {
         List(mantras, selection: $selectedMantra) { section in
@@ -81,7 +81,6 @@ struct MantraListColumnNative: View {
             .headerProminence(.increased)
         }
         .navigationTitle("Mantra Reader")
-        
         .animation(.default, value: sorting)
         .animation(.default, value: searchText)
         .searchable(text: $searchText, prompt: "Search")
@@ -146,7 +145,7 @@ struct MantraListColumnNative: View {
                         Label("New Mantra", systemImage: "square.and.pencil")
                     }
                     Button {
-                        isPresentedPresetMantraView = true
+                        isPresentedPreloadedMantraList = true
                     } label: {
                         Label("Preset Mantra", systemImage: "books.vertical")
                     }
@@ -154,6 +153,9 @@ struct MantraListColumnNative: View {
                     Label("Adding", systemImage: "plus")
                 }
             }
+        }
+        .sheet(isPresented: $isPresentedPreloadedMantraList) {
+            PreloadedMantraListView(isPresented: $isPresentedPreloadedMantraList)
         }
     }
     

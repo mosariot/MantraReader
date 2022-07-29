@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MantraRow: View {
-    
     @ObservedObject var mantra: Mantra
     let isSelected: Bool
     
@@ -26,7 +25,8 @@ struct MantraRow: View {
             }
             Spacer()
             if mantra.reads >= mantra.readsGoal {
-                Image(systemName: "checkmark.circle.fill")
+                Image(systemName: "checkmark")
+                .symbolVariant(.circle.fill)
                     .foregroundColor(.green)
             }
         }

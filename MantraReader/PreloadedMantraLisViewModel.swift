@@ -10,7 +10,7 @@ import SwiftUI
 struct PreloadedMantra: Identifiable, Hashable {
     let id = UUID()
     let title: String
-    let image: UIImage?
+    let image: String
     var isSelected: Bool = false
 }
 
@@ -49,11 +49,7 @@ final class PreloadedMantraLisViewModel: ObservabledObject {
                     mantra.title = value
                 }
                 if key == .image {
-                    if let image = UIImage(named: value) {
-                        mantra.image = image.resize(to: CGSize(width: Constants.rowHeight/2, height: Constants.rowHeight/2))
-                    } else {
-                        mantra.image = UIImage(named: Constants.defaultImage)?.resize(to: CGSize(width: Constants.rowHeight/2, height: Constants.rowHeight/2))
-                    }
+                    mantra.image = value
                 }
             }
             mantras.append(mantra)

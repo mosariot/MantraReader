@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PreloadedMantraListView: View {
     @Binding isPresented: Bool
-    @StateObject var viewModel = PreloadedMantraListViewModel()
+    @StateObject var viewModel: PreloadedMantraListViewModel
     
     var body: some View {
         List(viewModel.mantras) { mantra in
@@ -40,6 +40,9 @@ struct PreloadedMantraListView: View {
 
 struct PreloadedMantraListView_Previews: PreviewProvider {
     static var previews: some View {
-        PreloadedMantraListView(isPresented: .constant(true))
+        PreloadedMantraListView(
+            isPresented: .constant(true),
+            viewContext: PersistentController.preview.container.viewContext)
+        )
     }
 }

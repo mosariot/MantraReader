@@ -17,7 +17,7 @@ struct PreloadedMantra: Identifiable, Hashable {
 
 final class PreloadedMantraLisViewModel: ObservabledObject {
     @Published var mantras: [PreloadedMantra]
-    @Published var selectedMantrasTitles: Set<String>()
+    @Published var selectedMantrasTitles: Set<String>
     
     private var viewContext: NSManagedObjectContext
     private let addHapticGenerator = UINotificationFeedbackGenerator()
@@ -43,7 +43,6 @@ final class PreloadedMantraLisViewModel: ObservabledObject {
     
     func addMantras() {
         addMantrasToContext()
-        saveContext()
         addHapticGenerator.notificationOccurred(.success)
     }
   

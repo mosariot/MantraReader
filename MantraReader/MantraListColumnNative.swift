@@ -155,7 +155,10 @@ struct MantraListColumnNative: View {
             }
         }
         .sheet(isPresented: $isPresentedPreloadedMantraList) {
-            PreloadedMantraListView(isPresented: $isPresentedPreloadedMantraList)
+            PreloadedMantraListView(
+                isPresented: $isPresentedPreloadedMantraList,
+                viewModel: PreloadedMantraViewModel(viewContext: viewContext)
+            )
         }
     }
     

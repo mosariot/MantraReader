@@ -30,6 +30,7 @@ struct PreloadedMantraListView: View {
             }
             Button {
                 viewModel.addMantras()
+                isPresented = false
             } label: {
                 Text("Add")
             }

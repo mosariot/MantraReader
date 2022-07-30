@@ -1,5 +1,5 @@
 //
-//  PreloadedMantraLisViewModel.swift
+//  PreloadedMantraListViewModel.swift
 //  MantraReader
 //
 //  Created by Александр Воробьев on 29.07.2022.
@@ -15,7 +15,7 @@ struct PreloadedMantra: Identifiable, Hashable {
     var isSelected: Bool = false
 }
 
-final class PreloadedMantraLisViewModel: ObservabledObject {
+final class PreloadedMantraListViewModel: ObservableObject {
     @Published var mantras: [PreloadedMantra]
     @Published var selectedMantrasTitles: Set<String>
     

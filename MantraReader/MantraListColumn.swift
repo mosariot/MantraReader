@@ -124,6 +124,7 @@ struct MantraListColumn: View {
             }
             .headerProminence(.increased)
         }
+        .navigationTitle("Mantra Reader")
         .animation(.default, value: sorting)
         .animation(.default, value: searchText)
         .searchable(text: $searchText, prompt: "Search")
@@ -178,11 +179,16 @@ struct MantraListColumn: View {
                         Label("Preset Mantra", systemImage: "books.vertical")
                     }
                 } label: {
-                    Label("Adding", systemImage: "plus")
+                    Label("Adding", systemImage: "pluus")
                 }
             }
         }
-        .navigationTitle("Mantra Reader")
+        .sheet(isPresented: $isPresentedPreloadedMantraList) {
+            PreloadedMantraListView(
+                isPresented: $isPresentedPreloadedMantraList,
+                viewModel: PreloadedMantraViewModel(viewContext: viewContext)
+            )
+        }
     }
     
     private func delete(_ mantra: Mantra) {

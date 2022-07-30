@@ -215,7 +215,6 @@ struct MantraListViewNative_Previews: PreviewProvider {
         NavigationView {
             MantraListColumn(selectedMantra: .constant(nil))
                 .environment(\.managedObjectContext, controller.container.viewContext)
-                .environmentObject(OrientationInfo())
         }
     }
 }

@@ -42,7 +42,9 @@ struct PreloadedMantraListView_Previews: PreviewProvider {
     static var previews: some View {
         PreloadedMantraListView(
             isPresented: .constant(true),
-            viewContext: PersistentController.preview.container.viewContext)
+            viewModel: PreloadedMantraListViewModel(
+                viewContext: PersistentController.preview.container.viewContext
+            )
         )
     }
 }

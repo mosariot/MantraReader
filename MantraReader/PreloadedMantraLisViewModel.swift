@@ -16,15 +16,31 @@ struct PreloadedMantra: Identifiable, Hashable {
 }
 
 final class PreloadedMantraListViewModel: ObservableObject {
-    @Published var mantras: [PreloadedMantra]
-    @Published var selectedMantrasTitles: Set<String>
+    @Published var mantras: [PreloadedMantra] = preloadedMantras
+    @Published var selectedMantrasTitles = Set<String>()
+    @Published var isDuplicating = false
     
     private var viewContext: NSManagedObjectContext
     private let addHapticGenerator = UINotificationFeedbackGenerator()
-  
+    
+    private var getPreloadedMantras: [PreloadedMantra] {
+        var mantras: [PreloadedMantra] = []
+        PreloadedMantras.sorted.forEach { data in
+            let mantra = PreloadedMantra()
+            data.forEach { key, value in
+                if key == .title {
+                    mantra.title = value
+                }
+                if key == .image {
+                    mantra.image = value
+                }
+            }
+            mantras.append(mantra)
+        }
+        return mantras
+    }
+    
     init(viewContext: NSManagedObjectContext) {
-        mantras = getPreloadedMantras()
-        selectedMantrasTitles = Set<String>()
         self.viewContext = viewContext
     }
   
@@ -39,8 +55,18 @@ final class PreloadedMantraListViewModel: ObservableObject {
             mantras[index].isSelected = true
         }
         selectedMantrasTitles.insert(mantra.title)
+        }
     }
     
+    func checkForDuplication(isPresented: Binding<Bool>) {
+        if thereIsDuplication() {
+            isDuplicating = true
+        } else {
+            addMantras()
+            afterDelay(1.7) { isPresented = false }
+        }
+    }
+        
     func addMantras() {
         addMantrasToContext()
         addHapticGenerator.notificationOccurred(.success)
@@ -64,6 +90,10 @@ final class PreloadedMantraListViewModel: ObservableObject {
         }
     }
     
+    private func thereIsDuplication() -> {
+        false
+    }
+    
     private func saveContext() {
         guard viewContext.hasChanges else { return }
         do {
@@ -71,22 +101,5 @@ final class PreloadedMantraListViewModel: ObservableObject {
         } catch {
             fatalCoreDataError(error)
         }
-    }
-  
-  private func getPreloadedMantras() -> [PreloadedMantra] {
-        var mantras: [PreloadedMantra] = []
-        PreloadedMantras.sorted.forEach { data in
-            let mantra = PreloadedMantra()
-            data.forEach { key, value in
-                if key == .title {
-                    mantra.title = value
-                }
-                if key == .image {
-                    mantra.image = value
-                }
-            }
-            mantras.append(mantra)
-        }
-        return mantras
     }
 }

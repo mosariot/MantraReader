@@ -90,8 +90,25 @@ final class PreloadedMantraListViewModel: ObservableObject {
         }
     }
     
-    private func thereIsDuplication() -> {
-        false
+    private var thereIsDuplication: Bool {
+        var thereIsDuplication = false
+        currentMantraTitles.forEach { title in
+            if selectedMantrasTitles.contains(where: { $0.caseInsensitiveCompare(title) == .orderedSame }) {
+                thereIsDuplication = true
+            }
+        }
+        return thereIsDuplication
+    }
+    
+    private var currentMantrasTitles: [String] {
+        var currentMantras = [Mantra]()
+        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
+        do {
+            try currentMantras = viewContext.fetch(request)
+        } catch {
+            print("Error getting data. \(error.localizedDescription)")
+        }
+        return currentMantrasTitles.compactMap { $0.title }
     }
     
     private func saveContext() {

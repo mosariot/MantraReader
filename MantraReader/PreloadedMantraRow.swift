@@ -12,7 +12,7 @@ struct PreloadedMantraRow: View {
     
     var body: some View {
         HStack {
-            Image(mantra.image)
+            Image(mantra.imageString)
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: CGFloat(Constants.rowHeight/2))

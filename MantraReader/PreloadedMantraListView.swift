@@ -8,52 +8,59 @@
 import SwiftUI
 
 struct PreloadedMantraListView: View {
-    @Binding isPresented: Bool
+    @Binding var isPresented: Bool
     @StateObject var viewModel: PreloadedMantraListViewModel
     
     var body: some View {
-        List(viewModel.mantras) { mantra in
-            PreloadedMantraRow(mantra: mantra)
-                .onTapGesture {
+        NavigationStack {
+            List(viewModel.mantras) { mantra in
+                PreloadedMantraRow(mantra: mantra)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        withAnimation {
+                            viewModel.select(mantra)
+                        }
+                    }
+            }
+            .confirmationDialog(
+                "Duplicating Mantras",
+                isPresented: $viewModel.isDuplicating
+            ) {
+                Button {
                     withAnimation {
-                        viewModel.select(mantra)
+                        viewModel.addMantras()
+                        afterDelay(1.7) { isPresented = false }
+                    }
+                } label: {
+                    Text("Add")
+                }
+            } message: {
+                Text("One of the selected mantras is already in your mantra list. Add anyway?")
+            }
+            .listStyle(.plain)
+            .navigationTitle("Mantras Choice")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        isPresented = false
+                    } label: {
+                        Image(systemName: "xmark")
+                            .symbolVariant(.circle.fill)
+                            .foregroundColor(.gray)
                     }
                 }
-        }
-        .confirmationDialog(
-            "Duplicating Mantras",
-            isPresented: $viewModel.isDuplicating
-        ) {
-            Button {
-                withAnimation {
-                    viewModel.addMantras()
-                    afterDelay(1.7) { isPresented = false }
-                }
-            } label: {
-                Text("Add")
-            }
-        } message: {
-            Text("One of the selected mantras is already in your mantra list. Add anyway?")
-        }
-        .navigationTitle("Mantras Choice")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    isPresented = false
-                } label: {
-                    Image(systemName: "xmark")
-                        .symbolVariant(.circle.fill)
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        withAnimation {
+                            viewModel.checkForDuplication()
+                        }
+                    } label: {
+                        Text("Add")
+                    }
+                    .disabled(viewModel.selectedMantrasTitles.isEmpty)
                 }
             }
-            Button {
-                withAnimation {
-                    viewModel.checkForDuplication($isPresented)
-                }
-            } label: {
-                Text("Add")
-            }
-            .disabled(viewModel.selectedMantras.isEmpty)
         }
     }
 }
@@ -63,7 +70,7 @@ struct PreloadedMantraListView_Previews: PreviewProvider {
         PreloadedMantraListView(
             isPresented: .constant(true),
             viewModel: PreloadedMantraListViewModel(
-                viewContext: PersistentController.preview.container.viewContext
+                viewContext: PersistenceController.preview.container.viewContext
             )
         )
     }

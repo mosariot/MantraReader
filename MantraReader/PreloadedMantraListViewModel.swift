@@ -10,70 +10,86 @@ import CoreData
 
 struct PreloadedMantra: Identifiable, Hashable {
     let id = UUID()
-    let title: String
-    let imageString: String
+    var title: String
+    var imageString: String
     var isSelected: Bool = false
 }
 
 final class PreloadedMantraListViewModel: ObservableObject {
-    @Published var mantras: [PreloadedMantra] = preloadedMantras
+    @Published var mantras: [PreloadedMantra]
     @Published var selectedMantrasTitles = Set<String>()
     @Published var isDuplicating = false
     
     private var viewContext: NSManagedObjectContext
     private let addHapticGenerator = UINotificationFeedbackGenerator()
     
-    private var preloadedMantras: [PreloadedMantra] {
-        var mantras: [PreloadedMantra] = []
-        PreloadedMantras.sorted.forEach { data in
-            let mantra = PreloadedMantra()
-            data.forEach { key, value in
-                if key == .title {
-                    mantra.title = value
-                }
-                if key == .image {
-                    mantra.imageString = value
-                }
-            }
-            mantras.append(mantra)
-        }
-        return mantras
-    }
+//    private var preloadedMantras: [PreloadedMantra] {
+//        var mantras: [PreloadedMantra] = []
+//        PreloadedMantras.sorted.forEach { data in
+//            var mantra = PreloadedMantra(title: "", imageString: "")
+//            data.forEach { key, value in
+//                if key == .title {
+//                    mantra.title = value
+//                }
+//                if key == .image {
+//                    mantra.imageString = value
+//                }
+//            }
+//            mantras.append(mantra)
+//        }
+//        return mantras
+//    }
     
     init(viewContext: NSManagedObjectContext) {
+        self.mantras = {
+            var mantras: [PreloadedMantra] = []
+            PreloadedMantras.sorted.forEach { data in
+                var mantra = PreloadedMantra(title: "", imageString: "")
+                data.forEach { key, value in
+                    if key == .title {
+                        mantra.title = value
+                    }
+                    if key == .image {
+                        mantra.imageString = value
+                    }
+                }
+                mantras.append(mantra)
+            }
+            return mantras
+        }()
         self.viewContext = viewContext
     }
-  
-    func select(mantra: PreloadedMantra) {
+    
+    func select(_ mantra: PreloadedMantra) {
         if selectedMantrasTitles.contains(mantra.title) {
             if let index = mantras.firstIndex(where: { $0.title == mantra.title }) {
                 mantras[index].isSelected = false
             }
             selectedMantrasTitles.remove(mantra.title)
-    } else {
-        if let index = mantras.firstIndex(where: { $0.title == mantra.title }) {
-            mantras[index].isSelected = true
-        }
-        selectedMantrasTitles.insert(mantra.title)
+        } else {
+            if let index = mantras.firstIndex(where: { $0.title == mantra.title }) {
+                mantras[index].isSelected = true
+            }
+            selectedMantrasTitles.insert(mantra.title)
         }
     }
     
-    func checkForDuplication(isPresented: Binding<Bool>) {
-        if thereIsDuplication() {
+    func checkForDuplication() {
+        if thereIsDuplication {
             isDuplicating = true
         } else {
             addMantras()
-            afterDelay(1.7) { isPresented = false }
+//            afterDelay(1.7) { isPresented = false }
         }
     }
-        
+    
     func addMantras() {
         addMantrasToContext()
         addHapticGenerator.notificationOccurred(.success)
     }
-  
+    
     func addMantrasToContext() {
-        let selectedMantras = mantras.filter {
+        let selectedMantras = PreloadedMantras.data.filter {
             guard let title = $0[.title] else { return false }
             return selectedMantrasTitles.contains(title)
         }
@@ -92,7 +108,7 @@ final class PreloadedMantraListViewModel: ObservableObject {
     
     private var thereIsDuplication: Bool {
         var thereIsDuplication = false
-        currentMantraTitles.forEach { title in
+        currentMantrasTitles.forEach { title in
             if selectedMantrasTitles.contains(where: { $0.caseInsensitiveCompare(title) == .orderedSame }) {
                 thereIsDuplication = true
             }
@@ -108,7 +124,7 @@ final class PreloadedMantraListViewModel: ObservableObject {
         } catch {
             print("Error getting data. \(error.localizedDescription)")
         }
-        return currentMantrasTitles.compactMap { $0.title }
+        return currentMantras.compactMap { $0.title }
     }
     
     private func saveContext() {

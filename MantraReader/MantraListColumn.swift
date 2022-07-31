@@ -22,7 +22,7 @@ struct MantraListColumn: View {
     @FetchRequest(sortDescriptors: [], animation: .default) private var mantras: FetchedResults<Mantra>
     @Binding var selectedMantra: Mantra?
     @State private var searchText = ""
-    @State private var isPresentingPresetMantraView = false
+    @State private var isPresentedPreloadedMantraList = false
     
     private var sortedMantras: [Mantra] {
         let mantrasWithTitle = mantras.filter { $0.title != "" }
@@ -174,7 +174,7 @@ struct MantraListColumn: View {
                         Label("New Mantra", systemImage: "square.and.pencil")
                     }
                     Button {
-                        isPresentingPresetMantraView = true
+                        isPresentedPreloadedMantraList = true
                     } label: {
                         Label("Preset Mantra", systemImage: "books.vertical")
                     }

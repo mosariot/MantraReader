@@ -28,7 +28,7 @@
 		9FC9A691287DA4FE00D05FBD /* UpdatingAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9A690287DA4FE00D05FBD /* UpdatingAlertView.swift */; };
 		9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC52893915B004936E6 /* PreloadedMantraListView.swift */; };
 		9FD61DC8289391A4004936E6 /* PreloadedMantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC7289391A4004936E6 /* PreloadedMantraRow.swift */; };
-		9FD61DCA289391BC004936E6 /* PreloadedMantraLisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC9289391BC004936E6 /* PreloadedMantraLisViewModel.swift */; };
+		9FD61DCA289391BC004936E6 /* PreloadedMantraListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC9289391BC004936E6 /* PreloadedMantraListViewModel.swift */; };
 		9FD61DCC289391D4004936E6 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DCB289391D4004936E6 /* InfoView.swift */; };
 		9FD61DCE289391EF004936E6 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DCD289391EF004936E6 /* InfoViewModel.swift */; };
 		9FDC8DA82862203800BF7051 /* MantraListColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DA72862203800BF7051 /* MantraListColumn.swift */; };
@@ -67,7 +67,7 @@
 		9FC9A690287DA4FE00D05FBD /* UpdatingAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatingAlertView.swift; sourceTree = "<group>"; };
 		9FD61DC52893915B004936E6 /* PreloadedMantraListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraListView.swift; sourceTree = "<group>"; };
 		9FD61DC7289391A4004936E6 /* PreloadedMantraRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraRow.swift; sourceTree = "<group>"; };
-		9FD61DC9289391BC004936E6 /* PreloadedMantraLisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraLisViewModel.swift; sourceTree = "<group>"; };
+		9FD61DC9289391BC004936E6 /* PreloadedMantraListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraListViewModel.swift; sourceTree = "<group>"; };
 		9FD61DCB289391D4004936E6 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		9FD61DCD289391EF004936E6 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
 		9FDC8DA72862203800BF7051 /* MantraListColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraListColumn.swift; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 				9F786289288844970058AAD0 /* PercentageRing.swift */,
 				9FBEE999285F682C0070BA06 /* Persistence.swift */,
 				9FD61DC52893915B004936E6 /* PreloadedMantraListView.swift */,
-				9FD61DC9289391BC004936E6 /* PreloadedMantraLisViewModel.swift */,
+				9FD61DC9289391BC004936E6 /* PreloadedMantraListViewModel.swift */,
 				9FD61DC7289391A4004936E6 /* PreloadedMantraRow.swift */,
 				9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */,
 				9FBEE9A3285F682D0070BA06 /* Preview Content */,
@@ -244,7 +244,7 @@
 				9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */,
 				9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */,
 				9F78728E2865FDA400F52335 /* UIImage+Resize.swift in Sources */,
-				9FD61DCA289391BC004936E6 /* PreloadedMantraLisViewModel.swift in Sources */,
+				9FD61DCA289391BC004936E6 /* PreloadedMantraListViewModel.swift in Sources */,
 				9FDF349D2885E83B00B3007E /* GoalButtonViewModel.swift in Sources */,
 				9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */,
 				9FC9A691287DA4FE00D05FBD /* UpdatingAlertView.swift in Sources */,

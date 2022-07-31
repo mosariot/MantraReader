@@ -15,7 +15,9 @@ struct PreloadedMantraListView: View {
         List(viewModel.mantras) { mantra in
             PreloadedMantraRow(mantra: mantra)
                 .onTapGesture {
-                    viewModel.select(mantra)
+                    withAnimation {
+                        viewModel.select(mantra)
+                    }
                 }
         }
         .confirmationDialog(
@@ -25,7 +27,7 @@ struct PreloadedMantraListView: View {
             Button {
                 withAnimation {
                     viewModel.addMantras()
-                    isPresented = false
+                    afterDelay(1.7) { isPresented = false }
                 }
             } label: {
                 Text("Add")
@@ -34,6 +36,7 @@ struct PreloadedMantraListView: View {
             Text("One of the selected mantras is already in your mantra list. Add anyway?")
         }
         .navigationTitle("Mantras Choice")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
@@ -44,7 +47,9 @@ struct PreloadedMantraListView: View {
                 }
             }
             Button {
-                viewModel.checkForDuplication($isPresented)
+                withAnimation {
+                    viewModel.checkForDuplication($isPresented)
+                }
             } label: {
                 Text("Add")
             }

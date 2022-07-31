@@ -11,7 +11,7 @@ import CoreData
 struct PreloadedMantra: Identifiable, Hashable {
     let id = UUID()
     let title: String
-    let image: String
+    let imageString: String
     var isSelected: Bool = false
 }
 
@@ -23,7 +23,7 @@ final class PreloadedMantraListViewModel: ObservableObject {
     private var viewContext: NSManagedObjectContext
     private let addHapticGenerator = UINotificationFeedbackGenerator()
     
-    private var getPreloadedMantras: [PreloadedMantra] {
+    private var preloadedMantras: [PreloadedMantra] {
         var mantras: [PreloadedMantra] = []
         PreloadedMantras.sorted.forEach { data in
             let mantra = PreloadedMantra()
@@ -32,7 +32,7 @@ final class PreloadedMantraListViewModel: ObservableObject {
                     mantra.title = value
                 }
                 if key == .image {
-                    mantra.image = value
+                    mantra.imageString = value
                 }
             }
             mantras.append(mantra)

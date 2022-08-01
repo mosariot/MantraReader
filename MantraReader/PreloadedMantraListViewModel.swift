@@ -10,8 +10,8 @@ import CoreData
 
 struct PreloadedMantra: Identifiable, Hashable {
     let id = UUID()
-    var title: String
-    var imageString: String
+    var title: String = ""
+    var imageString: String = ""
     var isSelected: Bool = false
 }
 
@@ -26,7 +26,7 @@ final class PreloadedMantraListViewModel: ObservableObject {
         self.mantras = {
             var mantras: [PreloadedMantra] = []
             PreloadedMantras.sorted.forEach { data in
-                var mantra = PreloadedMantra(title: "", imageString: "")
+                var mantra = PreloadedMantra()
                 data.forEach { key, value in
                     if key == .title {
                         mantra.title = value

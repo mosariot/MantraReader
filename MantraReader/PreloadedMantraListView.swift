@@ -10,6 +10,7 @@ import SwiftUI
 struct PreloadedMantraListView: View {
     @Binding var isPresented: Bool
     @StateObject var viewModel: PreloadedMantraListViewModel
+    private let addHapticGenerator = UINotificationFeedbackGenerator()
     
     var body: some View {
         NavigationStack {
@@ -17,9 +18,7 @@ struct PreloadedMantraListView: View {
                 PreloadedMantraRow(mantra: mantra)
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        withAnimation {
-                            viewModel.select(mantra)
-                        }
+                        viewModel.select(mantra)
                     }
             }
             .confirmationDialog(
@@ -27,10 +26,7 @@ struct PreloadedMantraListView: View {
                 isPresented: $viewModel.isDuplicating
             ) {
                 Button {
-                    withAnimation {
-                        viewModel.addMantras()
-                        afterDelay(1.7) { isPresented = false }
-                    }
+                    addMantras()
                 } label: {
                     Text("Add")
                 }
@@ -52,8 +48,9 @@ struct PreloadedMantraListView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        withAnimation {
-                            viewModel.checkForDuplication()
+                        viewModel.checkForDuplication()
+                        if !viewModel.isDuplicating {
+                            addMantras()
                         }
                     } label: {
                         Text("Add")
@@ -61,6 +58,14 @@ struct PreloadedMantraListView: View {
                     .disabled(viewModel.selectedMantrasTitles.isEmpty)
                 }
             }
+        }
+    }
+    
+    private func addMantras() {
+        withAnimation {
+            viewModel.addMantras()
+            addHapticGenerator.notificationOccurred(.success)
+            afterDelay(1.7) { isPresented = false }
         }
     }
 }

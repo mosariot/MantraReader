@@ -21,24 +21,6 @@ final class PreloadedMantraListViewModel: ObservableObject {
     @Published var isDuplicating = false
     
     private var viewContext: NSManagedObjectContext
-    private let addHapticGenerator = UINotificationFeedbackGenerator()
-    
-//    private var preloadedMantras: [PreloadedMantra] {
-//        var mantras: [PreloadedMantra] = []
-//        PreloadedMantras.sorted.forEach { data in
-//            var mantra = PreloadedMantra(title: "", imageString: "")
-//            data.forEach { key, value in
-//                if key == .title {
-//                    mantra.title = value
-//                }
-//                if key == .image {
-//                    mantra.imageString = value
-//                }
-//            }
-//            mantras.append(mantra)
-//        }
-//        return mantras
-//    }
     
     init(viewContext: NSManagedObjectContext) {
         self.mantras = {
@@ -75,20 +57,16 @@ final class PreloadedMantraListViewModel: ObservableObject {
     }
     
     func checkForDuplication() {
-        if thereIsDuplication {
-            isDuplicating = true
-        } else {
-            addMantras()
-//            afterDelay(1.7) { isPresented = false }
+        var foundADuplication = false
+        currentMantrasTitles.forEach { title in
+            if selectedMantrasTitles.contains(where: { $0.caseInsensitiveCompare(title) == .orderedSame }) {
+                foundADuplication = true
+            }
         }
+        isDuplicating = foundADuplication
     }
     
     func addMantras() {
-        addMantrasToContext()
-        addHapticGenerator.notificationOccurred(.success)
-    }
-    
-    func addMantrasToContext() {
         let selectedMantras = PreloadedMantras.data.filter {
             guard let title = $0[.title] else { return false }
             return selectedMantrasTitles.contains(title)

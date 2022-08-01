@@ -50,6 +50,7 @@ struct PreloadedMantraListView: View {
                         if !viewModel.isDuplicating {
                             addMantras()
                         }
+                    }
                     .disabled(viewModel.selectedMantrasTitles.isEmpty)
                 }
             }

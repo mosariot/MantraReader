@@ -33,7 +33,7 @@ struct MantraListColumnNative: View {
     @State private var searchText = ""
     @State private var isPresentedPreloadedMantraList = false
     @State private var isDeletingMantras = false
-    @State private var mantrasForDeletion: [Mantra]? = nil
+    @State private var mantrasForDeletion: [Mantra]?
     
     var body: some View {
         List(mantras, selection: $selectedMantra) { section in
@@ -54,20 +54,21 @@ struct MantraListColumnNative: View {
                                     )
                                 }
                                 Button(role: .destructive) {
-                                    isDeletingMantras = true
                                     mantrasForDeletion = [mantra]
+                                    isDeletingMantras = true
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
                             }
                     }
                     .swipeActions(allowsFullSwipe: false) {
-                        Button(role: .destructive) {
-                            isDeletingMantras = true
+                        Button {
                             mantrasForDeletion = [mantra]
+                            isDeletingMantras = true
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
+                        .tint(.red)
                         Button {
                             withAnimation {
                                 mantra.isFavorite.toggle()
@@ -83,14 +84,37 @@ struct MantraListColumnNative: View {
                     }
                 }
                 .onDelete { indexSet in
-                    isDeletingMantras = true
                     mantrasForDeletion = nil
                     indexSet.map { section[$0] }.forEach {
-                        mantrasForDeletion.append($0)
+                        mantrasForDeletion?.append($0)
                     }
+                    isDeletingMantras = true
                 }
             }
             .headerProminence(.increased)
+        }
+        .confirmationDialog(
+            "Delete Mantra",
+            isPresented: $isDeletingMantras,
+            titleVisibility: .visible
+        ) {
+            Button("Delete", role: .destructive) {
+                withAnimation {
+                    mantrasForDeletion!.forEach {
+                        if $0 === selectedMantra {
+                            selectedMantra = nil
+                        }
+                        viewContext.delete($0)
+                    }
+                }
+                saveContext()
+                mantrasForDeletion = nil
+            }
+            Button("Cancel", role: .cancel) {
+                mantrasForDeletion = nil
+            }
+        } message: {
+            Text("Are you sure you want to delete this mantra?")
         }
         .navigationTitle("Mantra Reader")
         .animation(.default, value: sorting)
@@ -111,33 +135,12 @@ struct MantraListColumnNative: View {
             ]
             }
         }
-        .confirmationDialog(
-            "Delete Mantra",
-            isPresented: $isDeletingMantras,
-            presenting: mantrasForDeletion
-        ) { mantrasForDeletion in
-           Button("Delete", role: .destructive) {
-               withAnimation { 
-                   mantrasForDeletion.forEach {
-                       if $0 === selectedMantra {
-                           selectedMantra = nil
-                       }
-                       viewContext.delete($0)
-                   }
-               }
-               saveContext()
-               mantrasForDeletion = nil
-           }
-           Button("Cancel", role: .cancel) {
-               mantrasForDeletion = nil
-           }
-        }
         .listStyle(.insetGrouped)
         .onAppear {
             if !mantras.isEmpty {
 #if os(iOS)
-                if (verticalSizeClass == .regular && horizontalSizeClass == .regular)
-                    || (verticalSizeClass == .compact && horizontalSizeClass == .regular)
+                if ((verticalSizeClass == .regular && horizontalSizeClass == .regular)
+                    || (verticalSizeClass == .compact && horizontalSizeClass == .regular))
                     && isFreshLaunch {
                     selectedMantra = mantras[0][0]
                     isFreshLaunch = false
@@ -154,7 +157,7 @@ struct MantraListColumnNative: View {
             viewContext.refreshAllObjects()
         }
         .onReceive(NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)) { _ in
- //            viewContext.refreshAllObjects()
+//            viewContext.refreshAllObjects()
         }
         .toolbar {
 #if os(iOS)

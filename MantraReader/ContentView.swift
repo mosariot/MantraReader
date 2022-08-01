@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var showingDataFailedAlert = false
 
 #if os(iOS)
+    @Environment(\.editMode) private var editMode
     @EnvironmentObject var orientationInfo: OrientationInfo
     @State private var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
     private var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
@@ -51,7 +52,8 @@ struct ContentView: View {
 #if os(iOS)
         .onChange(of: selectedMantra) { [selectedMantra] _ in
             if isFreshLaunch { isFreshLaunch = false }
-            if ((isPad && isPortrait) || (isPhone && isLandscape)) && selectedMantra != nil {
+            if ((isPad && isPortrait) || (isPhone && isLandscape))
+                && selectedMantra != nil && editMode!.wrappedValue.isEditing {
                 columnVisibility = .detailOnly
             }
         }

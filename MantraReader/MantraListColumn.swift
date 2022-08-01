@@ -23,6 +23,8 @@ struct MantraListColumn: View {
     @Binding var selectedMantra: Mantra?
     @State private var searchText = ""
     @State private var isPresentedPreloadedMantraList = false
+    @State private var isDeletingMantras = false
+    @State private var mantrasForDeletion: [Mantra]?
     
     private var sortedMantras: [Mantra] {
         let mantrasWithTitle = mantras.filter { $0.title != "" }
@@ -60,18 +62,21 @@ struct MantraListColumn: View {
                                     Label("Unfavorite", systemImage: "star.slash")
                                 }
                                 Button(role: .destructive) {
-                                    delete(mantra)
+                                    mantrasForDeletion = [mantra]
+                                    isDeletingMantras = true
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
                             }
                     }
                     .swipeActions(allowsFullSwipe: false) {
-                        Button(role: .destructive) {
-                            delete(mantra)
+                        Button {
+                            mantrasForDeletion = [mantra]
+                            isDeletingMantras = true
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
+                        .tint(.red)
                         Button {
                             withAnimation {
                                 mantra.isFavorite.toggle()
@@ -84,7 +89,11 @@ struct MantraListColumn: View {
                     }
                 }
                 .onDelete { indexSet in
-                    delete(in: favoriteMantras, with: indexSet)
+                    mantrasForDeletion = nil
+                    indexSet.map { favoriteMantras[$0] }.forEach {
+                        mantrasForDeletion?.append($0)
+                    }
+                    isDeletingMantras = true
                 }
             }
             .headerProminence(.increased)
@@ -103,18 +112,21 @@ struct MantraListColumn: View {
                                     Label("Favorite", systemImage: "star")
                                 }
                                 Button(role: .destructive) {
-                                    delete(mantra)
+                                    mantrasForDeletion = [mantra]
+                                    isDeletingMantras = true
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
                             }
                     }
                     .swipeActions(allowsFullSwipe: false) {
-                        Button(role: .destructive) {
-                            delete(mantra)
+                        Button {
+                            mantrasForDeletion = [mantra]
+                            isDeletingMantras = true
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
+                        .tint(.red)
                         Button {
                             withAnimation {
                                 mantra.isFavorite.toggle()
@@ -127,10 +139,37 @@ struct MantraListColumn: View {
                     }
                 }
                 .onDelete { indexSet in
-                    delete(in: favoriteMantras, with: indexSet)
+                    mantrasForDeletion = nil
+                    indexSet.map { otherMantras[$0] }.forEach {
+                        mantrasForDeletion?.append($0)
+                    }
+                    isDeletingMantras = true
                 }
             }
             .headerProminence(.increased)
+        }
+        .confirmationDialog(
+            "Delete Mantra",
+            isPresented: $isDeletingMantras,
+            titleVisibility: .visible
+        ) {
+            Button("Delete", role: .destructive) {
+                withAnimation {
+                    mantrasForDeletion!.forEach {
+                        if $0 === selectedMantra {
+                            selectedMantra = nil
+                        }
+                        viewContext.delete($0)
+                    }
+                }
+                saveContext()
+                mantrasForDeletion = nil
+            }
+            Button("Cancel", role: .cancel) {
+                mantrasForDeletion = nil
+            }
+        } message: {
+            Text("Are you sure you want to delete this mantra?")
         }
         .navigationTitle("Mantra Reader")
         .animation(.default, value: sorting)
@@ -147,8 +186,8 @@ struct MantraListColumn: View {
             }
             if let mantraToSelect {
 #if os(iOS)
-                if (verticalSizeClass == .regular && horizontalSizeClass == .regular)
-                    || (verticalSizeClass == .compact && horizontalSizeClass == .regular)
+                if ((verticalSizeClass == .regular && horizontalSizeClass == .regular)
+                    || (verticalSizeClass == .compact && horizontalSizeClass == .regular))
                     && isFreshLaunch {
                     selectedMantra = mantraToSelect
                     isFreshLaunch = false
@@ -165,7 +204,7 @@ struct MantraListColumn: View {
             viewContext.refreshAllObjects()
         })
         .onReceive(NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)) { _ in
- //            viewContext.refreshAllObjects()
+//            viewContext.refreshAllObjects()
         }
         .toolbar {
 #if os(iOS)
@@ -206,26 +245,6 @@ struct MantraListColumn: View {
                 viewModel: PreloadedMantraListViewModel(viewContext: viewContext)
             )
         }
-    }
-    
-    private func delete(_ mantra: Mantra) {
-        withAnimation {
-            if mantra === selectedMantra { selectedMantra = nil }
-            viewContext.delete(mantra)
-        }
-        saveContext()
-    }
-    
-    private func delete(in mantras: [Mantra], with offsets: IndexSet) {
-        withAnimation {
-            offsets.map { mantras[$0] }.forEach {
-                if $0 === selectedMantra {
-                    selectedMantra = nil
-                }
-                viewContext.delete($0)
-            }
-        }
-        saveContext()
     }
     
     private func addItem() {

@@ -25,10 +25,8 @@ struct PreloadedMantraListView: View {
                 "Duplicating Mantras",
                 isPresented: $viewModel.isDuplicating
             ) {
-                Button {
+                Button("Add") {
                     addMantras()
-                } label: {
-                    Text("Add")
                 }
             } message: {
                 Text("One of the selected mantras is already in your mantra list. Add anyway?")

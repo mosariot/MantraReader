@@ -32,6 +32,8 @@ struct MantraListColumnNative: View {
     @Binding var selectedMantra: Mantra?
     @State private var searchText = ""
     @State private var isPresentedPreloadedMantraList = false
+    @State private var isDeletingMantras = false
+    @State private var mantrasForDeletion: [Mantra]? = nil
     
     var body: some View {
         List(mantras, selection: $selectedMantra) { section in
@@ -41,7 +43,9 @@ struct MantraListColumnNative: View {
                         MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
                             .contextMenu {
                                 Button {
-                                    withAnimation { mantra.isFavorite.toggle() }
+                                    withAnimation {
+                                        mantra.isFavorite.toggle()
+                                    }
                                     saveContext()
                                 } label: {
                                     Label(
@@ -50,7 +54,8 @@ struct MantraListColumnNative: View {
                                     )
                                 }
                                 Button(role: .destructive) {
-                                    delete(mantra)
+                                    isDeletingMantras = true
+                                    mantrasForDeletion = [mantra]
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
@@ -58,12 +63,15 @@ struct MantraListColumnNative: View {
                     }
                     .swipeActions(allowsFullSwipe: false) {
                         Button(role: .destructive) {
-                            withAnimation { delete(mantra) }
+                            isDeletingMantras = true
+                            mantrasForDeletion = [mantra]
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
                         Button {
-                            withAnimation { mantra.isFavorite.toggle() }
+                            withAnimation {
+                                mantra.isFavorite.toggle()
+                            }
                             saveContext()
                         } label: {
                             Label(
@@ -75,7 +83,11 @@ struct MantraListColumnNative: View {
                     }
                 }
                 .onDelete { indexSet in
-                    delete(for: indexSet, in: section)
+                    isDeletingMantras = true
+                    mantrasForDeletion = nil
+                    indexSet.map { section[$0] }.forEach {
+                        mantrasForDeletion.append($0)
+                    }
                 }
             }
             .headerProminence(.increased)
@@ -99,6 +111,27 @@ struct MantraListColumnNative: View {
             ]
             }
         }
+        .confirmationDialog(
+            "Delete Mantra",
+            isPresented: $isDeletingMantras,
+            presenting: mantrasForDeletion
+        ) { mantrasForDeletion in
+           Button("Delete", role: .destructive) {
+               withAnimation { 
+                   mantrasForDeletion.forEach {
+                       if $0 === selectedMantra {
+                           selectedMantra = nil
+                       }
+                       viewContext.delete($0)
+                   }
+               }
+               saveContext()
+               mantrasForDeletion = nil
+           }
+           Button("Cancel", role: .cancel) {
+               mantrasForDeletion = nil
+           }
+        }
         .listStyle(.insetGrouped)
         .onAppear {
             if !mantras.isEmpty {
@@ -117,9 +150,9 @@ struct MantraListColumnNative: View {
 #endif
             }
         }
-        .refreshable(action: {
+        .refreshable {
             viewContext.refreshAllObjects()
-        })
+        }
         .onReceive(NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)) { _ in
  //            viewContext.refreshAllObjects()
         }
@@ -159,29 +192,6 @@ struct MantraListColumnNative: View {
                 isPresented: $isPresentedPreloadedMantraList,
                 viewModel: PreloadedMantraListViewModel(viewContext: viewContext)
             )
-        }
-    }
-    
-    private func delete(_ mantra: Mantra) {
-        withAnimation {
-            if mantra === selectedMantra { selectedMantra = nil }
-            viewContext.delete(mantra)
-            saveContext()
-        }
-    }
-    
-    private func delete(
-        for indexSet: IndexSet,
-        in section: SectionedFetchResults<Bool, Mantra>.Element
-    ) {
-        withAnimation {
-            indexSet.map { section[$0] }.forEach {
-                if $0 === selectedMantra {
-                    selectedMantra = nil
-                }
-                viewContext.delete($0)
-            }
-            saveContext()
         }
     }
     

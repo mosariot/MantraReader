@@ -174,7 +174,11 @@ struct MantraListColumnNative: View {
             }
             ToolbarItem {
                 Menu {
-                    Button(action: addItem) {
+                    Button {
+                        withAnimation {
+                            addItem()
+                        }
+                    } label: {
                         Label("New Mantra", systemImage: "square.and.pencil")
                     }
                     Button {
@@ -196,16 +200,14 @@ struct MantraListColumnNative: View {
     }
     
     private func addItem() {
-        withAnimation {
-            let newMantra = Mantra(context: viewContext)
-            newMantra.uuid = UUID()
-            newMantra.isFavorite = Bool.random()
-            newMantra.reads = Int32.random(in: 0...100_000)
-            newMantra.title = "Some Mantra"
-            newMantra.text = "Some Text"
-            newMantra.details = "Some Details"
-            saveContext()
-        }
+        let newMantra = Mantra(context: viewContext)
+        newMantra.uuid = UUID()
+        newMantra.isFavorite = Bool.random()
+        newMantra.reads = Int32.random(in: 0...100_000)
+        newMantra.title = "Some Mantra"
+        newMantra.text = "Some Text"
+        newMantra.details = "Some Details"
+        saveContext()
     }
     
     private func saveContext() {

@@ -17,7 +17,6 @@ struct GoalButtonView: View {
             adjustingType = .goal
             isPresentedAdjustingAlert = true
         }
-//        .background(Color.random)
         .onReceive(viewModel.mantra.objectWillChange) { _ in
             viewModel.updateForMantraChanges()
         }

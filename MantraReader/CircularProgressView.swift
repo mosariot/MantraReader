@@ -45,7 +45,6 @@ struct CircularProgressView: View {
                     .offset(x: 0, y: isMantraReaderMode ? (frame ?? 0) / 6 : 0)
             }
         }
-//        .background(Color.random)
         .onReceive(viewModel.mantra.objectWillChange) { _ in
             viewModel.updateForMantraChanges()
         }

@@ -15,10 +15,7 @@ enum Sorting: String, Codable {
 
 struct MantraListColumn: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    @Environment(\.verticalSizeClass) var verticalSizeClass
     @AppStorage("sorting") private var sorting: Sorting = .title
-    @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     
     @State private var searchText = ""
     @State private var isPresentedPreloadedMantraList = false
@@ -129,23 +126,6 @@ struct MantraListColumn: View {
             }
         }
         .listStyle(.insetGrouped)
-        .onAppear {
-            if !mantras.isEmpty {
-#if os(iOS)
-                if ((verticalSizeClass == .regular && horizontalSizeClass == .regular)
-                    || (verticalSizeClass == .compact && horizontalSizeClass == .regular))
-                    && isFreshLaunch {
-                    selectedMantra = mantras[0][0]
-                    isFreshLaunch = false
-                }
-#elseif os(macOS)
-                if isFreshLaunch {
-                    selectedMantra = mantras[0][0]
-                    isFreshLaunch = false
-                }
-#endif
-            }
-        }
         .refreshable {
             viewContext.refreshAllObjects()
         }

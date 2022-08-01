@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    @Environment(\.managedObjectContext) private var viewContext
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("sorting") private var sorting: Sorting = .title
-    @Environment(\.managedObjectContext) private var viewContext
+    
     @State private var selectedMantra: Mantra?
     @State private var showingDataFailedAlert = false
+    
     @SectionedFetchRequest(sectionIdentifier: \.isFavorite, sortDescriptors: [])
     private var mantras: SectionedFetchResults<Bool, Mantra>
     
 #if os(iOS)
-    @Environment(\.editMode) private var editMode
     @EnvironmentObject var orientationInfo: OrientationInfo
     @State private var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
     private var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
@@ -48,6 +51,21 @@ struct ContentView: View {
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
             MantraListColumn(mantras: mantras ,selectedMantra: $selectedMantra)
+                .onAppear {
+                    if !mantras.isEmpty {
+#if os(iOS)
+                        if ((verticalSizeClass == .regular && horizontalSizeClass == .regular)
+                            || (verticalSizeClass == .compact && horizontalSizeClass == .regular))
+                            && isFreshLaunch {
+                            selectedMantra = mantras[0][0]
+                        }
+#elseif os(macOS)
+                        if isFreshLaunch {
+                            selectedMantra = mantras[0][0]
+                        }
+#endif
+                    }
+                }
         } detail: {
             DetailsColumn(selectedMantra: selectedMantra)
                 .navigationSplitViewColumnWidth(min: 400, ideal: 600)
@@ -72,12 +90,14 @@ struct ContentView: View {
         .frame(minHeight: 600)
 #endif
 #if os(iOS)
-        .onChange(of: selectedMantra) { [selectedMantra] _ in
-            if isFreshLaunch { isFreshLaunch = false }
-            if ((isPad && isPortrait) || (isPhone && isLandscape))
-                && selectedMantra != nil && editMode!.wrappedValue.isEditing {
-                columnVisibility = .detailOnly
+        .onChange(of: selectedMantra) { _ in
+            if !isFreshLaunch {
+                if ((isPad && isPortrait) || (isPhone && isLandscape))
+                    && selectedMantra != nil  {
+                    columnVisibility = .detailOnly
+                }
             }
+            isFreshLaunch = false
         }
 #endif
     }

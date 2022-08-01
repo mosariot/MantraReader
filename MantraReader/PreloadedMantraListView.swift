@@ -21,16 +21,6 @@ struct PreloadedMantraListView: View {
                         viewModel.select(mantra)
                     }
             }
-            .confirmationDialog(
-                "Duplicating Mantras",
-                isPresented: $viewModel.isDuplicating
-            ) {
-                Button("Add") {
-                    addMantras()
-                }
-            } message: {
-                Text("One of the selected mantras is already in your mantra list. Add anyway?")
-            }
             .listStyle(.plain)
             .navigationTitle("Mantras Choice")
             .navigationBarTitleDisplayMode(.inline)
@@ -52,6 +42,17 @@ struct PreloadedMantraListView: View {
                         }
                     }
                     .disabled(viewModel.selectedMantrasTitles.isEmpty)
+                    .confirmationDialog(
+                        "Duplicating Mantras",
+                        isPresented: $viewModel.isDuplicating,
+                        titleVisibility: .visible
+                    ) {
+                        Button("Add") {
+                            addMantras()
+                        }
+                    } message: {
+                        Text("One of the selected mantras is already in your mantra list. Add anyway?")
+                    }
                 }
             }
         }

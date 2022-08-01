@@ -162,7 +162,6 @@ struct ReadsView: View {
                 HintView()
             }
         }
-//        .background(Color.random)
         .overlay(alignment: .topTrailing) {
             Button {
                 toggleMantraReaderMode()

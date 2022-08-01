@@ -82,16 +82,7 @@ final class PreloadedMantraListViewModel: ObservableObject {
                 .resize(to: CGSize(width: Constants.rowHeight,
                                    height: Constants.rowHeight)).pngData()
         }
-    }
-    
-    private var thereIsDuplication: Bool {
-        var thereIsDuplication = false
-        currentMantrasTitles.forEach { title in
-            if selectedMantrasTitles.contains(where: { $0.caseInsensitiveCompare(title) == .orderedSame }) {
-                thereIsDuplication = true
-            }
-        }
-        return thereIsDuplication
+        saveContext()
     }
     
     private var currentMantrasTitles: [String] {

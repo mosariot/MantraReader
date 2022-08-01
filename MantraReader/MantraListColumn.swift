@@ -18,38 +18,20 @@ struct MantraListColumn: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @AppStorage("sorting") private var sorting: Sorting = .title
-    @SceneStorage("isFreshLaunch") private var isFreshLaunch = true
-    @FetchRequest(sortDescriptors: [], animation: .default) private var mantras: FetchedResults<Mantra>
-    @Binding var selectedMantra: Mantra?
+    @AppStorage("isFreshLaunch") private var isFreshLaunch = true
+    
     @State private var searchText = ""
     @State private var isPresentedPreloadedMantraList = false
     @State private var isDeletingMantras = false
     @State private var mantrasForDeletion: [Mantra]?
     
-    private var sortedMantras: [Mantra] {
-        let mantrasWithTitle = mantras.filter { $0.title != "" }
-        switch sorting {
-        case .title: return mantrasWithTitle.sorted(using: KeyPathComparator(\.title))
-        case .reads: return mantrasWithTitle.sorted(using: KeyPathComparator(\.reads, order: .reverse))
-        }
-    }
-    
-    private var sortedSearchedMantras: [Mantra] {
-        searchText.isEmpty ? sortedMantras : sortedMantras.filter { $0.title!.contains(searchText) }
-    }
-    
-    private var favoriteMantras: [Mantra] {
-        sortedSearchedMantras.filter { $0.isFavorite }
-    }
-    
-    private var otherMantras: [Mantra] {
-        sortedSearchedMantras.filter { !$0.isFavorite }
-    }
+    var mantras: SectionedFetchResults<Bool, Mantra>
+    @Binding var selectedMantra: Mantra?
     
     var body: some View {
-        List(selection: $selectedMantra) {
-            Section(header: Text("Favorites")) {
-                ForEach(favoriteMantras) { mantra in
+        List(mantras, selection: $selectedMantra) { section in
+            Section(section.id ? "Favorites" : "Other Mantras") {
+                ForEach(section) { mantra in
                     NavigationLink(value: mantra) {
                         MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
                             .contextMenu {
@@ -59,7 +41,10 @@ struct MantraListColumn: View {
                                     }
                                     saveContext()
                                 } label: {
-                                    Label("Unfavorite", systemImage: "star.slash")
+                                    Label(
+                                        mantra.isFavorite ? "Unfavorite" : "Favorite",
+                                        systemImage: mantra.isFavorite ? "star.slash" : "star"
+                                    )
                                 }
                                 Button(role: .destructive) {
                                     mantrasForDeletion = [mantra]
@@ -83,64 +68,17 @@ struct MantraListColumn: View {
                             }
                             saveContext()
                         } label: {
-                            Label("Unfavorite", systemImage: "star.slash")
+                            Label(
+                                mantra.isFavorite ? "Unfavorite" : "Favorite",
+                                systemImage: mantra.isFavorite ? "star.slash" : "star"
+                            )
                         }
                         .tint(.indigo)
                     }
                 }
                 .onDelete { indexSet in
                     mantrasForDeletion = nil
-                    indexSet.map { favoriteMantras[$0] }.forEach {
-                        mantrasForDeletion?.append($0)
-                    }
-                    isDeletingMantras = true
-                }
-            }
-            .headerProminence(.increased)
-            
-            Section(header: Text("Other Mantras")) {
-                ForEach(otherMantras) { mantra in
-                    NavigationLink(value: mantra) {
-                        MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
-                            .contextMenu {
-                                Button {
-                                    withAnimation {
-                                        mantra.isFavorite.toggle()
-                                    }
-                                    saveContext()
-                                } label: {
-                                    Label("Favorite", systemImage: "star")
-                                }
-                                Button(role: .destructive) {
-                                    mantrasForDeletion = [mantra]
-                                    isDeletingMantras = true
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                            }
-                    }
-                    .swipeActions(allowsFullSwipe: false) {
-                        Button {
-                            mantrasForDeletion = [mantra]
-                            isDeletingMantras = true
-                        } label: {
-                            Label("Delete", systemImage: "trash")
-                        }
-                        .tint(.red)
-                        Button {
-                            withAnimation {
-                                mantra.isFavorite.toggle()
-                            }
-                            saveContext()
-                        } label: {
-                            Label("Favorite", systemImage: "star")
-                        }
-                        .tint(.indigo)
-                    }
-                }
-                .onDelete { indexSet in
-                    mantrasForDeletion = nil
-                    indexSet.map { otherMantras[$0] }.forEach {
+                    indexSet.map { section[$0] }.forEach {
                         mantrasForDeletion?.append($0)
                     }
                     isDeletingMantras = true
@@ -175,36 +113,44 @@ struct MantraListColumn: View {
         .animation(.default, value: sorting)
         .animation(.default, value: searchText)
         .searchable(text: $searchText, prompt: "Search")
+        .onChange(of: searchText) {
+            mantras.nsPredicate = $0.isEmpty ? nil : NSPredicate(format: "title contains[cd] %@", $0)
+        }
+        .onChange(of: sorting) {
+            switch $0 {
+            case .title: mantras.sortDescriptors = [
+                SortDescriptor(\.isFavorite, order: .reverse),
+                SortDescriptor(\.title, order: .forward)
+            ]
+            case .reads: mantras.sortDescriptors = [
+                SortDescriptor(\.isFavorite, order: .reverse),
+                SortDescriptor(\.reads, order: .reverse)
+            ]
+            }
+        }
         .listStyle(.insetGrouped)
         .onAppear {
-            var mantraToSelect: Mantra? = nil
-            if let candidate = otherMantras.first {
-                mantraToSelect = candidate
-            }
-            if let candidate = favoriteMantras.first {
-                mantraToSelect = candidate
-            }
-            if let mantraToSelect {
+            if !mantras.isEmpty {
 #if os(iOS)
                 if ((verticalSizeClass == .regular && horizontalSizeClass == .regular)
                     || (verticalSizeClass == .compact && horizontalSizeClass == .regular))
                     && isFreshLaunch {
-                    selectedMantra = mantraToSelect
+                    selectedMantra = mantras[0][0]
                     isFreshLaunch = false
                 }
 #elseif os(macOS)
                 if isFreshLaunch {
-                    selectedMantra = mantraToSelect
+                    selectedMantra = mantras[0][0]
                     isFreshLaunch = false
                 }
 #endif
             }
         }
-        .refreshable(action: {
+        .refreshable {
             viewContext.refreshAllObjects()
-        })
+        }
         .onReceive(NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)) { _ in
-//            viewContext.refreshAllObjects()
+            viewContext.refreshAllObjects()
         }
         .toolbar {
 #if os(iOS)
@@ -225,7 +171,9 @@ struct MantraListColumn: View {
             ToolbarItem {
                 Menu {
                     Button {
-                        addItem()
+                        withAnimation {
+                            addItem()
+                        }
                     } label: {
                         Label("New Mantra", systemImage: "square.and.pencil")
                     }
@@ -248,15 +196,13 @@ struct MantraListColumn: View {
     }
     
     private func addItem() {
-        withAnimation {
-            let newMantra = Mantra(context: viewContext)
-            newMantra.uuid = UUID()
-            newMantra.isFavorite = Bool.random()
-            newMantra.reads = Int32.random(in: 0...100_000)
-            newMantra.title = "Some Mantra"
-            newMantra.text = "Some Text"
-            newMantra.details = "Some Details"
-        }
+        let newMantra = Mantra(context: viewContext)
+        newMantra.uuid = UUID()
+        newMantra.isFavorite = Bool.random()
+        newMantra.reads = Int32.random(in: 0...100_000)
+        newMantra.title = "Some Mantra"
+        newMantra.text = "Some Text"
+        newMantra.details = "Some Details"
         saveContext()
     }
     
@@ -270,14 +216,13 @@ struct MantraListColumn: View {
     }
 }
 
-struct MantraListView_Previews: PreviewProvider {
-    static var controller = PersistenceController.preview
-    
-    static var previews: some View {
-        NavigationView {
-            MantraListColumn(selectedMantra: .constant(nil))
-                .environment(\.managedObjectContext, controller.container.viewContext)
-                .environmentObject(OrientationInfo())
-        }
-    }
-}
+//struct MantraListView_Previews: PreviewProvider {
+//    static var controller = PersistenceController.preview
+//
+//    static var previews: some View {
+//        NavigationView {
+//            MantraListColumn(selectedMantra: .constant(nil))
+//                .environment(\.managedObjectContext, controller.container.viewContext)
+//        }
+//    }
+//}

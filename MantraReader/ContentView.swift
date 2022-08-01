@@ -9,9 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
+    @AppStorage("sorting") private var sorting: Sorting = .title
+    @Environment(\.managedObjectContext) private var viewContext
     @State private var selectedMantra: Mantra?
     @State private var showingDataFailedAlert = false
-
+    @SectionedFetchRequest(sectionIdentifier: \.isFavorite, sortDescriptors: [])
+    private var mantras: SectionedFetchResults<Bool, Mantra>
+    
 #if os(iOS)
     @Environment(\.editMode) private var editMode
     @EnvironmentObject var orientationInfo: OrientationInfo
@@ -21,11 +25,29 @@ struct ContentView: View {
     private var isLandscape: Bool { orientationInfo.orientation == .landscape }
     private var isPortrait: Bool { orientationInfo.orientation == .portrait }
 #endif
-
+    
+    init() {
+        var currentSortDescriptor: SortDescriptor<Mantra>
+        switch sorting {
+        case .title: currentSortDescriptor = SortDescriptor(\Mantra.title, order: .forward)
+        case .reads: currentSortDescriptor = SortDescriptor(\Mantra.reads, order: .reverse)
+        }
+        self._mantras = SectionedFetchRequest(
+            sectionIdentifier: \.isFavorite,
+            sortDescriptors: [
+                SortDescriptor(\.isFavorite, order: .reverse),
+                currentSortDescriptor
+            ],
+            animation: .default
+        )
+#if os(iOS)
+        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = Constants.accentColor
+#endif
+    }
+    
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-//            MantraListColumn(selectedMantra: $selectedMantra)
-            MantraListColumnNative(selectedMantra: $selectedMantra)
+            MantraListColumn(mantras: mantras ,selectedMantra: $selectedMantra)
         } detail: {
             DetailsColumn(selectedMantra: selectedMantra)
                 .navigationSplitViewColumnWidth(min: 400, ideal: 600)

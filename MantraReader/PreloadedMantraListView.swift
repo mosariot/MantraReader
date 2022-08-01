@@ -45,14 +45,11 @@ struct PreloadedMantraListView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
+                    Button("Add") {
                         viewModel.checkForDuplication()
                         if !viewModel.isDuplicating {
                             addMantras()
                         }
-                    } label: {
-                        Text("Add")
-                    }
                     .disabled(viewModel.selectedMantrasTitles.isEmpty)
                 }
             }

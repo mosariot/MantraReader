@@ -52,7 +52,9 @@ struct MantraListColumn: View {
                         MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
                             .contextMenu {
                                 Button {
-                                    withAnimation { mantra.isFavorite.toggle() }
+                                    withAnimation {
+                                        mantra.isFavorite.toggle()
+                                    }
                                     saveContext()
                                 } label: {
                                     Label("Unfavorite", systemImage: "star.slash")
@@ -71,7 +73,9 @@ struct MantraListColumn: View {
                             Label("Delete", systemImage: "trash")
                         }
                         Button {
-                            withAnimation { mantra.isFavorite.toggle() }
+                            withAnimation {
+                                mantra.isFavorite.toggle()
+                            }
                             saveContext()
                         } label: {
                             Label("Unfavorite", systemImage: "star.slash")
@@ -91,7 +95,9 @@ struct MantraListColumn: View {
                         MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
                             .contextMenu {
                                 Button {
-                                    withAnimation { mantra.isFavorite.toggle() }
+                                    withAnimation {
+                                        mantra.isFavorite.toggle()
+                                    }
                                     saveContext()
                                 } label: {
                                     Label("Favorite", systemImage: "star")
@@ -110,7 +116,9 @@ struct MantraListColumn: View {
                             Label("Delete", systemImage: "trash")
                         }
                         Button {
-                            withAnimation { mantra.isFavorite.toggle() }
+                            withAnimation {
+                                mantra.isFavorite.toggle()
+                            }
                             saveContext()
                         } label: {
                             Label("Favorite", systemImage: "star")
@@ -177,7 +185,9 @@ struct MantraListColumn: View {
             }
             ToolbarItem {
                 Menu {
-                    Button(action: addItem) {
+                    Button {
+                        addItem()
+                    } label: {
                         Label("New Mantra", systemImage: "square.and.pencil")
                     }
                     Button {
@@ -186,7 +196,7 @@ struct MantraListColumn: View {
                         Label("Preset Mantra", systemImage: "books.vertical")
                     }
                 } label: {
-                    Label("Adding", systemImage: "pluus")
+                    Label("Adding", systemImage: "plus")
                 }
             }
         }
@@ -202,8 +212,8 @@ struct MantraListColumn: View {
         withAnimation {
             if mantra === selectedMantra { selectedMantra = nil }
             viewContext.delete(mantra)
-            saveContext()
         }
+        saveContext()
     }
     
     private func delete(in mantras: [Mantra], with offsets: IndexSet) {
@@ -214,8 +224,8 @@ struct MantraListColumn: View {
                 }
                 viewContext.delete($0)
             }
-            saveContext()
         }
+        saveContext()
     }
     
     private func addItem() {
@@ -227,8 +237,8 @@ struct MantraListColumn: View {
             newMantra.title = "Some Mantra"
             newMantra.text = "Some Text"
             newMantra.details = "Some Details"
-            saveContext()
         }
+        saveContext()
     }
     
     private func saveContext() {

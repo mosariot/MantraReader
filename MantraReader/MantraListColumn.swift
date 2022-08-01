@@ -130,17 +130,24 @@ struct MantraListColumn: View {
         .searchable(text: $searchText, prompt: "Search")
         .listStyle(.insetGrouped)
         .onAppear {
-            if let mantra = favoriteMantras.first {
+            var mantraToSelect: Mantra? = nil
+            if let candidate = otherMantras.first {
+                mantraToSelect = candidate
+            }
+            if let candidate = favoriteMantras.first {
+                mantraToSelect = candidate
+            }
+            if let mantraToSelect {
 #if os(iOS)
                 if (verticalSizeClass == .regular && horizontalSizeClass == .regular)
                     || (verticalSizeClass == .compact && horizontalSizeClass == .regular)
                     && isFreshLaunch {
-                    selectedMantra = mantra
+                    selectedMantra = mantraToSelect
                     isFreshLaunch = false
                 }
 #elseif os(macOS)
                 if isFreshLaunch {
-                    selectedMantra = mantra
+                    selectedMantra = mantraToSelect
                     isFreshLaunch = false
                 }
 #endif

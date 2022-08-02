@@ -196,13 +196,23 @@ struct MantraListColumn: View {
     }
 }
 
-//struct MantraListView_Previews: PreviewProvider {
-//    static var controller = PersistenceController.preview
-//
-//    static var previews: some View {
-//        NavigationView {
-//            MantraListColumn(selectedMantra: .constant(nil))
-//                .environment(\.managedObjectContext, controller.container.viewContext)
-//        }
-//    }
-//}
+struct MantraListView_Previews: PreviewProvider {
+    static var controller = PersistenceController.preview
+
+    static var previews: some View {
+        NavigationView {
+            MantraListColumn(
+                SectionedFetchRequest(
+                    sectionIdentifier: \.isFavorite,
+                    sortDescriptors: [
+                        SortDescriptor(\.isFavorite, order: .reverse),
+                        SortDescriptor(\.title, order: .forward)
+                    ],
+                    animation: .default
+                ),
+                selectedMantra: .constant(nil)
+            )
+            .environment(\.managedObjectContext, controller.container.viewContext)
+        }
+    }
+}

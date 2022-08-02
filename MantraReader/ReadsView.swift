@@ -234,6 +234,10 @@ struct ReadsView: View {
         default: return nil
         }
     }
+    
+    deinit {
+        UIApplication.shared.isIdleTimerDisabled = false
+    }
 }
 
 struct ReadsView_Previews: PreviewProvider {

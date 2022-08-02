@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    @Environment(\.verticalSizeClass) var verticalSizeClass
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
     @Environment(\.managedObjectContext) private var viewContext
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("sorting") private var sorting: Sorting = .title
@@ -32,8 +32,8 @@ struct ContentView: View {
     init() {
         var currentSortDescriptor: SortDescriptor<Mantra>
         switch sorting {
-        case .title: currentSortDescriptor = SortDescriptor(\Mantra.title, order: .forward)
-        case .reads: currentSortDescriptor = SortDescriptor(\Mantra.reads, order: .reverse)
+        case .title: currentSortDescriptor = SortDescriptor(\.title, order: .forward)
+        case .reads: currentSortDescriptor = SortDescriptor(\.reads, order: .reverse)
         }
         self._mantras = SectionedFetchRequest(
             sectionIdentifier: \.isFavorite,
@@ -50,7 +50,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            MantraListColumn(mantras: mantras ,selectedMantra: $selectedMantra)
+            MantraListColumn(mantras: mantras, selectedMantra: $selectedMantra)
                 .onAppear {
                     if !mantras.isEmpty {
 #if os(iOS)

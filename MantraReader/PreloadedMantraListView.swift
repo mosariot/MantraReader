@@ -6,17 +6,17 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct PreloadedMantraListView: View {
-    @Environment(\.managedObjectContext) private var viewContext
     @Binding private var isPresented: Bool
     @StateObject private var viewModel: PreloadedMantraListViewModel
     @State private var successfullyAdded = false
     private let addHapticGenerator = UINotificationFeedbackGenerator()
     
-    init(isPresented: Binding<Bool>) {
+    init(isPresented: Binding<Bool>, viewContext: NSManagedObjectContext) {
         self._isPresented = isPresented
-        self.viewModel = PreloadedMantraListViewModel(viewContext: viewContext)
+        _viewModel = StateObject(wrappedValue: PreloadedMantraListViewModel(viewContext: viewContext))
     }
     
     var body: some View {
@@ -83,7 +83,8 @@ struct PreloadedMantraListView: View {
 
 struct PreloadedMantraListView_Previews: PreviewProvider {
     static var previews: some View {
-        PreloadedMantraListView(isPresented: .constant(true))
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        PreloadedMantraListView(
+            isPresented: .constant(true),
+            viewContext: PersistenceController.preview.container.viewContext)
     }
 }

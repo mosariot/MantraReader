@@ -71,7 +71,7 @@ final class ReadsViewModel: ObservableObject {
         }
     }
     
-    func adjudtingAlertTitle(for adjustingType: AdjustingType?) -> String {
+    func adjustingAlertTitle(for adjustingType: AdjustingType?) -> String {
         guard let adjustingType else { return "" }
         switch adjustingType {
         case .reads:
@@ -139,25 +139,25 @@ final class ReadsViewModel: ObservableObject {
             adjustMantraReads(with: value)
         case .goal:
             undoHistory.append((mantra.readsGoal, .goal))
-            adjustMantraGoal(with: number)
+            adjustMantraGoal(with: value)
         }
     }
     
-    private func checkForCongratilations(with value: Int32) {
+    private func checkForCongratulations(with value: Int32) {
         if mantra.reads < mantra.readsGoal && value >= mantra.readsGoal {
             congratulationsGenerator.notificationOccurred(.success)
             showConfetti = true
-            afterDelay(Constants.animationTime + 2.7) { showConfetti = false }
+            afterDelay(Constants.animationTime + 2.7) { self.showConfetti = false }
             afterDelay(Constants.animationTime + 1.8) {
-                congratulations = .full
-                isPresentedCongratulations = true
+                self.congratulations = .full
+                self.isPresentedCongratulations = true
             }
             return
         }
         if mantra.reads < mantra.readsGoal/2 && mantra.readsGoal/2..<mantra.readsGoal ~= value {
             afterDelay(Constants.animationTime + 0.3) {
-                congratulations = .half
-                isPresentedCongratulations = true
+                self.congratulations = .half
+                self.isPresentedCongratulations = true
             }
         }
         lightHapticGenerator.impactOccurred()

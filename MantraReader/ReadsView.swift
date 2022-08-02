@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ReadsView: View {
-    @Environment(\.verticalSizeClass) var verticalSizeClass
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @AppStorage("isFirstLaunchOfMantraReaderMode") private var isFirstLaunchOfMantraReaderMode = true
     @ObservedObject private var viewModel: ReadsViewModel
     private var circularViewModel: CircularProgressViewModel
@@ -193,8 +193,6 @@ struct ReadsView: View {
                     isPresentedMantraReaderModeAlert = true
                 }
                 toggleMantraReaderMode()
-            }
-
             } label: {
                 Image(systemName: "sun.max")
                     .imageScale(.large)
@@ -240,6 +238,9 @@ struct ReadsView: View {
         .onReceive(viewModel.mantra.objectWillChange) { _ in
             viewModel.objectWillChange.send()
         }
+        .onDisappear {
+            UIApplication.shared.isIdleTimerDisabled = false
+        }
     }
     
     private func toggleMantraReaderMode() {
@@ -273,10 +274,6 @@ struct ReadsView: View {
         case (.regular, .regular): return CGFloat(0.40 * frame.height)
         default: return nil
         }
-    }
-    
-    deinit {
-        UIApplication.shared.isIdleTimerDisabled = false
     }
 }
 

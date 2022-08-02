@@ -168,7 +168,10 @@ struct MantraListColumn: View {
             }
         }
         .sheet(isPresented: $isPresentedPreloadedMantraList) {
-            PreloadedMantraListView(isPresented: $isPresentedPreloadedMantraList)
+            PreloadedMantraListView(
+                isPresented: $isPresentedPreloadedMantraList,
+                viewContext: viewContext
+            )
         }
     }
     
@@ -193,21 +196,14 @@ struct MantraListColumn: View {
     }
 }
 
-struct MantraListView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            MantraListColumn(
-                SectionedFetchRequest(
-                    sectionIdentifier: \.isFavorite,
-                    sortDescriptors: [
-                        SortDescriptor(\.isFavorite, order: .reverse),
-                        SortDescriptor(\.title, order: .forward)
-                    ],
-                    animation: .default
-                ),
-                selectedMantra: .constant(nil)
-            )
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-        }
-    }
-}
+//struct MantraListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            MantraListColumn(
+//                mantras: mantras,
+//                selectedMantra: .constant(nil)
+//            )
+//            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//        }
+//    }
+//}

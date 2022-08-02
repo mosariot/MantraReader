@@ -40,8 +40,7 @@ struct MantraReaderModeOverlayView_Previews: PreviewProvider {
             viewModel: ReadsViewModel(
                 PersistenceController.previewMantra,
                 viewContext: PersistenceController.preview.container.viewContext
-            ),
-            lightHapticGenerator: UIImpactFeedbackGenerator(style: .light)
+            )
         )
     }
 }

@@ -30,8 +30,8 @@ struct UpdatingAlertView: UIViewControllerRepresentable {
         
         if isPresented {
             var adjustingNumber: Int32 = 0
-            let alertTitle = viewModel.alertTitle(for: adjustingType)
-            let actionTitle = viewModel.alertActionTitle(for: adjustingType)
+            let alertTitle = viewModel.adjustingAlertTitle(for: adjustingType)
+            let actionTitle = viewModel.adjustingAlertActionTitle(for: adjustingType)
             
             let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
             context.coordinator.alert = alert

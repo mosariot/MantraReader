@@ -27,7 +27,7 @@ struct CheckMarkView: View {
         }
         .opacity(0.9)
         .frame(width: 100, height: 100)
-        .offset(y: -100)
+        .offset(y: -50)
         .transition(
             .scale(scale: 1.3, anchor: .top)
             .combined(with: .opacity)

@@ -116,12 +116,12 @@ struct ReadsView: View {
                     )
 #if os(macOS)
                     .alert(
-                        viewModel.alertTitle(for: adjustingType),
+                        viewModel.adjustingAlertTitle(for: adjustingType),
                         isPresented: $isPresentedAdjustingAlert,
                         presenting: adjustingType
                     ) { _ in
                         TextField("Enter number", text: $adjustingText)
-                        Button(viewModel.alertActionTitle(for: adjustingType)) {
+                        Button(viewModel.adjustingAlertActionTitle(for: adjustingType)) {
                             if viewModel.isValidUpdatingNumber(for: adjustingText, adjustingType: adjustingType) {
                                 guard let alertNumber = Int32(adjustingText) else { return }
                                 viewModel.handleAdjusting(for: adjustingType, with: alertNumber)
@@ -135,6 +135,17 @@ struct ReadsView: View {
                         }
                     }
 #endif
+                    .alert(
+                        "Congratulations!",
+                        isPresented: $viewModel.isPresentedCongratulations,
+                        presenting: viewModel.congratulations
+                    ) { _ in
+                        Button("OK", role: .cancel) {
+                            viewModel.congratulations = nil
+                        }
+                    } message: { congratulation in
+                        Text(viewModelcongratulationsAlertMessage(for: congratulation))
+                    }
                 }
                 .ignoresSafeArea(.keyboard)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -160,6 +171,9 @@ struct ReadsView: View {
             }
             if showHint {
                 HintView()
+            }
+            if viewModel.showConfetti {
+                Color.pink.opacity(0.3)
             }
         }
         .overlay(alignment: .topTrailing) {

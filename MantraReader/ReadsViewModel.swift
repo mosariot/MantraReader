@@ -20,6 +20,8 @@ final class ReadsViewModel: ObservableObject {
     @Published var undoHistory: [(value: Int32, type: UndoType)] = []
     @Published var congratulations: Congratulations?
     @Published var isPresentedCongratulations = false
+    @Published var showConfetti = false
+    private let congratulationsGenerator = UINotificationFeedbackGenerator()
     
     var title: String { mantra.title ?? "" }
     var image: UIImage {
@@ -140,12 +142,20 @@ final class ReadsViewModel: ObservableObject {
     }
     
     private func checkForCongratilations(with value: Int32) {
-        if value >= mantra.readsGoal && mantra.reads <= mantra.readsGoal {
-            congratulations = .half
-            isPresentedCongratulations = true
-        } else if value >= mantra.readsGoal / 2 && mantra.reads <= mantra.readsGoal / 2 {
-            congratulations = .full
-            isPresentedCongratulations = true
+        if mantra.reads < mantra.readsGoal/2 && mantra.readsGoal/2..<mantra.readsGoal ~= value {
+            afterDelay(Constants.animationTime + 0.3) {
+                congratulations = .half
+                isPresentedCongratulations = true
+            }
+        }
+        if mantra.reads < mantra.readsGoal && value >= mantra.readsGoal {
+            congratulationsGenerator.notificationOccurred(.success)
+            showConfetti = true
+            afterDelay(Constants.animationTime + 2.7) { showConfetti = false }
+            afterDelay(Constants.animationTime + 1.8) {
+                congratulations = .full
+                isPresentedCongratulations = true
+            }
         }
     }
     

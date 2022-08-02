@@ -8,13 +8,6 @@
 import SwiftUI
 import CoreData
 
-struct PreloadedMantra: Identifiable, Hashable {
-    let id = UUID()
-    var title: String = ""
-    var imageString: String = ""
-    var isSelected: Bool = false
-}
-
 final class PreloadedMantraListViewModel: ObservableObject {
     @Published var mantras: [PreloadedMantra]
     @Published var selectedMantrasTitles = Set<String>()

@@ -10,7 +10,6 @@ import SwiftUI
 struct MantraReaderModeOverlayView: View {
     @Binding var showBlink: Bool
     let viewModel: ReadsViewModel
-    private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
     var body: some View {
         Color.gray
@@ -19,7 +18,6 @@ struct MantraReaderModeOverlayView: View {
             .gesture(
                 TapGesture(count: 2)
                     .onEnded {
-                        lightHapticGenerator.impactOccurred()
                         viewModel.handleAdjusting(for: .rounds, with: 1)
                     }
                     .exclusively(
@@ -28,7 +26,6 @@ struct MantraReaderModeOverlayView: View {
                             .onEnded {
                                 showBlink = true
                                 afterDelay(0.05) { showBlink = false }
-                                lightHapticGenerator.impactOccurred()
                                 viewModel.handleAdjusting(for: .reads, with: 1)
                             }
                     )

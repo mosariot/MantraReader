@@ -10,7 +10,8 @@ import SwiftUI
 struct ReadsView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    @ObservedObject var viewModel: ReadsViewModel
+    @AppStorage("isFirstLaunchOfMantraReaderMode") private var isFirstLaunchOfMantraReaderMode = true
+    @ObservedObject private var viewModel: ReadsViewModel
     private var circularViewModel: CircularProgressViewModel
     private var goalButtonViewModel: GoalButtonViewModel
     
@@ -19,6 +20,7 @@ struct ReadsView: View {
     @State private var adjustingText: String = ""
     @State private var isPresentedDetailsSheet = false
     @State private var isPresentedUndoAlert = false
+    @State private var isPresentedMantraReaderModeAlert = false
     @Binding private var isMantraReaderMode: Bool
     @State private var showBlink = false
     @State private var showHint = false
@@ -187,7 +189,12 @@ struct ReadsView: View {
         }
         .overlay(alignment: .topTrailing) {
             Button {
+                if isFirstLaunchOfMantraReaderMode {
+                    isPresentedMantraReaderModeAlert = true
+                }
                 toggleMantraReaderMode()
+            }
+
             } label: {
                 Image(systemName: "sun.max")
                     .imageScale(.large)
@@ -219,6 +226,16 @@ struct ReadsView: View {
                     .symbolVariant(.circle)
             }
             .disabled(isMantraReaderMode)
+        }
+        .alert(
+            "'Mantra Counter' Mode",
+            isPresented: $isPresentedMantraReaderModeAlert
+        ) {
+            Button("OK", role: .cancel) {
+                isFirstLaunchOfMantraReaderMode = false
+            }
+        } message: {
+            Text("You have entered the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. The screen won’t dim. The edit buttons at the bottom are disabled.")
         }
         .onReceive(viewModel.mantra.objectWillChange) { _ in
             viewModel.objectWillChange.send()

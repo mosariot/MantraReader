@@ -8,10 +8,16 @@
 import SwiftUI
 
 struct PreloadedMantraListView: View {
-    @Binding var isPresented: Bool
-    @StateObject var viewModel: PreloadedMantraListViewModel
+    @Environment(\.managedObjectContext) private var viewContext
+    @Binding private var isPresented: Bool
+    @StateObject private var viewModel: PreloadedMantraListViewModel
     @State private var successfullyAdded = false
     private let addHapticGenerator = UINotificationFeedbackGenerator()
+    
+    init(isPresented: Binding<Bool>) {
+        self._isPresented = isPresented
+        self.viewModel = PreloadedMantraListViewModel(viewContext: viewContext)
+    }
     
     var body: some View {
         NavigationStack {

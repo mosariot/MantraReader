@@ -9,10 +9,17 @@ import SwiftUI
 import Combine
 import CoreData
 
+enum Congratulations {
+    case half
+    case full
+}
+
 @MainActor
 final class ReadsViewModel: ObservableObject {
     @Published var mantra: Mantra
     @Published var undoHistory: [(value: Int32, type: UndoType)] = []
+    @Published var congratulations: Congratulations?
+    @Published var isPresentedCongratulations = false
     
     var title: String { mantra.title ?? "" }
     var image: UIImage {
@@ -61,31 +68,41 @@ final class ReadsViewModel: ObservableObject {
         }
     }
     
-    func alertTitle(for adjustingType: AdjustingType?) -> String {
+    func adjudtingAlertTitle(for adjustingType: AdjustingType?) -> String {
         guard let adjustingType else { return "" }
         switch adjustingType {
         case .reads:
-            return NSLocalizedString("Enter Readings Number", comment: "Alert Title on ReadsView")
+            return NSLocalizedString("Enter Readings Number", comment: "Enter value title for adjusting alert on ReadsView")
         case .rounds:
-            return NSLocalizedString("Enter Rounds Number", comment: "Alert Title on ReadsView")
+            return NSLocalizedString("Enter Rounds Number", comment: "Enter value title for adjusting alert on ReadsView")
         case .value:
-            return NSLocalizedString("Set a New Readings Count", comment: "Alert Title on ReadsView")
+            return NSLocalizedString("Set a New Readings Count", comment: "Set value title for adjusting alert on ReadsView")
         case .goal:
-            return NSLocalizedString("Set a New Readings Goal", comment: "Alert Title on ReadsView")
+            return NSLocalizedString("Set a New Readings Goal", comment: "Set value title for adjusting alert on ReadsView")
         }
     }
     
-    func alertActionTitle(for adjustingType: AdjustingType?) -> String {
+    func adjustingAlertActionTitle(for adjustingType: AdjustingType?) -> String {
         guard let adjustingType else { return "" }
         switch adjustingType {
         case .reads:
-            return NSLocalizedString("Add", comment: "Alert Button on ReadsView")
+            return NSLocalizedString("Add", comment: "Add button for adjusting alert on ReadsView")
         case .rounds:
-            return NSLocalizedString("Add", comment: "Alert Button on ReadsView")
+            return NSLocalizedString("Add", comment: "Add button for adjusting alert on ReadsView")
         case .value:
-            return NSLocalizedString("Set", comment: "Alert Button on ReadsView")
+            return NSLocalizedString("Set", comment: "Set button for adjusting alert on ReadsView")
         case .goal:
-            return NSLocalizedString("Set", comment: "Alert Button on ReadsView")
+            return NSLocalizedString("Set", comment: "Set button for adjusting alert on ReadsView")
+        }
+    }
+        
+    func congratulationsAlertMessage(for congratulations: Congratulations?) -> String {
+        guard let congratulations else { return "" }
+        switch congratulations {
+        case .half:
+            return NSLocalizedString("You're half way to your goal!", comment: "Congratulations alert message on ReadsView - half goal")
+        case .full:
+            return NSLocalizedString("You've reached your goal!", comment: "Congratulations alert message on ReadsView - full goal")
         }
     }
     
@@ -101,21 +118,34 @@ final class ReadsViewModel: ObservableObject {
         }
     }
     
-    func handleAdjusting(for adjust: AdjustingType?, with number: Int32) {
+    func handleAdjusting(for adjust: AdjustingType?, with value: Int32) {
         guard let adjust else { return }
         switch adjust {
         case .reads:
             undoHistory.append((mantra.reads, .value))
-            adjustMantraReads(with: mantra.reads + number)
+            checkForCongratulations(with: mantra.reads + value)
+            adjustMantraReads(with: mantra.reads + value)
         case .rounds:
             undoHistory.append((mantra.reads, .value))
-            adjustMantraReads(with: mantra.reads + number * 108)
+            checkForCongratulations(with: mantra.reads + value * 108)
+            adjustMantraReads(with: mantra.reads + value * 108)
         case .value:
             undoHistory.append((mantra.reads, .value))
-            adjustMantraReads(with: number)
+            checkForCongratulations(with: value)
+            adjustMantraReads(with: value)
         case .goal:
             undoHistory.append((mantra.readsGoal, .goal))
             adjustMantraGoal(with: number)
+        }
+    }
+    
+    private func checkForCongratilations(with value: Int32) {
+        if value >= mantra.readsGoal && mantra.reads <= mantra.readsGoal {
+            congratulations = .half
+            isPresentedCongratulations = true
+        } else if value >= mantra.readsGoal / 2 && mantra.reads <= mantra.readsGoal / 2 {
+            congratulations = .full
+            isPresentedCongratulations = true
         }
     }
     

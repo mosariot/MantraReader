@@ -168,10 +168,7 @@ struct MantraListColumn: View {
             }
         }
         .sheet(isPresented: $isPresentedPreloadedMantraList) {
-            PreloadedMantraListView(
-                isPresented: $isPresentedPreloadedMantraList,
-                viewModel: PreloadedMantraListViewModel(viewContext: viewContext)
-            )
+            PreloadedMantraListView(isPresented: $isPresentedPreloadedMantraList)
         }
     }
     

@@ -58,12 +58,10 @@ struct PreloadedMantraListView: View {
                     }
                 }
                 if successfullyAdded {
-                    ZStack {
-                        CheckMarkView()
-                        Color.gray.opacity(0.01)
-                    }
+                    CheckMarkView()
                 }
             }
+            .disabled(successfullyAdded)
         }
     }
     

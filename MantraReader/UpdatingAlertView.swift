@@ -9,7 +9,7 @@
 import SwiftUI
 import UIKit
 
-struct UpdatingAlertView: UIViewControllerRepresentable {
+struct AdjustingAlertView: UIViewControllerRepresentable {
     @State private var adjustingText: String = ""
     @Binding var isPresented: Bool
     @Binding var adjustingType: AdjustingType?
@@ -17,14 +17,14 @@ struct UpdatingAlertView: UIViewControllerRepresentable {
     let delegate = AlertTextFieldDelegate()
     
     func makeUIViewController(
-        context: UIViewControllerRepresentableContext<UpdatingAlertView>
+        context: UIViewControllerRepresentableContext<AdjustingAlertView>
     ) -> UIViewController {
         UIViewController()
     }
     
     func updateUIViewController(
         _ uiViewController: UIViewController,
-        context: UIViewControllerRepresentableContext<UpdatingAlertView>
+        context: UIViewControllerRepresentableContext<AdjustingAlertView>
     ) {
         guard context.coordinator.alert == nil else { return }
         
@@ -74,7 +74,7 @@ struct UpdatingAlertView: UIViewControllerRepresentable {
             
             let cancelAction = UIAlertAction(
                 title: NSLocalizedString("Cancel", comment: "Alert Button on ReadsView"),
-                style: .default
+                style: .cancel
             ) { _ in
                 alert.dismiss(animated: true) {
                     adjustingType = nil
@@ -95,15 +95,15 @@ struct UpdatingAlertView: UIViewControllerRepresentable {
         }
     }
     
-    func makeCoordinator() -> UpdatingAlertView.Coordinator {
+    func makeCoordinator() -> AdjustingAlertView.Coordinator {
         Coordinator(self)
     }
     
     final class Coordinator {
         var alert: UIAlertController?
-        var view: UpdatingAlertView
+        var view: AdjustingAlertView
         
-        init(_ view: UpdatingAlertView) {
+        init(_ view: AdjustingAlertView) {
             self.view = view
         }
     }

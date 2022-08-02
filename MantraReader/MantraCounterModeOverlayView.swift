@@ -1,5 +1,5 @@
 //
-//  MantraReaderModeOverlayView.swift
+//  MantraCounterModeOverlayView.swift
 //  MantraReader
 //
 //  Created by Александр Воробьев on 27.07.2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MantraReaderModeOverlayView: View {
+struct MantraCounterModeOverlayView: View {
     @Binding var showBlink: Bool
     let viewModel: ReadsViewModel
     
@@ -35,7 +35,7 @@ struct MantraReaderModeOverlayView: View {
 
 struct MantraReaderModeOverlayView_Previews: PreviewProvider {
     static var previews: some View {
-        MantraReaderModeOverlayView(
+        MantraCounterModeOverlayView(
             showBlink: .constant(false),
             viewModel: ReadsViewModel(
                 PersistenceController.previewMantra,

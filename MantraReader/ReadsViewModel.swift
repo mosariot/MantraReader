@@ -16,11 +16,12 @@ enum Congratulations {
 
 @MainActor
 final class ReadsViewModel: ObservableObject {
+    static private var confettiTrigger: Int = 0
     @Published var mantra: Mantra
     @Published var undoHistory: [(value: Int32, type: UndoType)] = []
     @Published var congratulations: Congratulations?
     @Published var isPresentedCongratulations = false
-    @Published var showConfetti = false
+    @Published var confettiTrigger: Int = 0
     private let congratulationsGenerator = UINotificationFeedbackGenerator()
     private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
@@ -42,6 +43,7 @@ final class ReadsViewModel: ObservableObject {
     init(_ mantra: Mantra, viewContext: NSManagedObjectContext) {
         self.mantra = mantra
         self.viewContext = viewContext
+        self.confettiTrigger = Self.confettiTrigger
     }
     
     func toggleFavorite() {
@@ -146,8 +148,8 @@ final class ReadsViewModel: ObservableObject {
     private func checkForCongratulations(with value: Int32) {
         if mantra.reads < mantra.readsGoal && value >= mantra.readsGoal {
             congratulationsGenerator.notificationOccurred(.success)
-            showConfetti = true
-            afterDelay(Constants.animationTime + 2.7) { self.showConfetti = false }
+            confettiTrigger += 1
+            Self.confettiTrigger += 1
             afterDelay(Constants.animationTime + 1.8) {
                 self.congratulations = .full
                 self.isPresentedCongratulations = true

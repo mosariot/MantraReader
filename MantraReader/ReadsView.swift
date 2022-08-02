@@ -21,13 +21,14 @@ struct ReadsView: View {
     @State private var isPresentedDetailsSheet = false
     @State private var isPresentedUndoAlert = false
     @State private var isPresentedMantraReaderModeAlert = false
-    @Binding private var isMantraReaderMode: Bool
+    @Binding private var isMantraCounterMode: Bool
     @State private var showBlink = false
     @State private var showHint = false
+    @State private var congratulations: Int = 0
     
     init(viewModel: ReadsViewModel, isMantraReaderMode: Binding<Bool>) {
         self.viewModel = viewModel
-        self._isMantraReaderMode = isMantraReaderMode
+        self._isMantraCounterMode = isMantraReaderMode
         circularViewModel = CircularProgressViewModel(viewModel.mantra)
         goalButtonViewModel = GoalButtonViewModel(viewModel.mantra)
     }
@@ -60,7 +61,7 @@ struct ReadsView: View {
                         VStack {
                             CircularProgressView(
                                 viewModel: circularViewModel,
-                                isMantraReaderMode: isMantraReaderMode,
+                                isMantraReaderMode: isMantraCounterMode,
                                 frame: circularProgressViewSize(with: geometry.size)
                             )
                             .frame(
@@ -68,12 +69,20 @@ struct ReadsView: View {
                                 height: circularProgressViewSize(with: geometry.size)
                             )
                             .padding(.bottom, 10)
+                            .confettiCannon(
+                                counter: $viewModel.confettiTrigger,
+                                num: 200,
+                                rainHeight: 1000,
+                                openingAngle: Angle(degrees: 0),
+                                closingAngle: Angle(degrees: 180),
+                                radius: 400
+                            )
                             GoalButtonView(
                                 viewModel: goalButtonViewModel,
                                 adjustingType: $adjustingType,
                                 isPresentedAdjustingAlert: $isPresentedAdjustingAlert
                             )
-                            .disabled(isMantraReaderMode)
+                            .disabled(isMantraCounterMode)
                         }
                         Spacer()
                     }
@@ -88,7 +97,7 @@ struct ReadsView: View {
                                 .font(.system(size: 60))
                                 .symbolVariant(.circle.fill)
                         }
-                        .disabled(isMantraReaderMode)
+                        .disabled(isMantraCounterMode)
                         .padding(.horizontal)
                         Button {
                             adjustingType = .rounds
@@ -98,7 +107,7 @@ struct ReadsView: View {
                                 .font(.system(size: 60))
                                 .symbolVariant(.circle.fill)
                         }
-                        .disabled(isMantraReaderMode)
+                        .disabled(isMantraCounterMode)
                         .padding(.horizontal)
                         Button {
                             adjustingType = .value
@@ -108,14 +117,13 @@ struct ReadsView: View {
                                 .font(.system(size: 60))
                                 .symbolVariant(.fill)
                         }
-                        .disabled(isMantraReaderMode)
+                        .disabled(isMantraCounterMode)
                         .padding(.horizontal)
                     }
                     .padding(
                         .bottom,
                         (horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 10 : 0
                     )
-#if os(macOS)
                     .alert(
                         viewModel.adjustingAlertTitle(for: adjustingType),
                         isPresented: $isPresentedAdjustingAlert,
@@ -135,7 +143,6 @@ struct ReadsView: View {
                             adjustingText = ""
                         }
                     }
-#endif
                     .alert(
                         "Congratulations!",
                         isPresented: $viewModel.isPresentedCongratulations,
@@ -162,17 +169,16 @@ struct ReadsView: View {
                 .ignoresSafeArea(.keyboard)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-#if os(iOS)
-            if isPresentedAdjustingAlert {
-                UpdatingAlertView(
-                    isPresented: $isPresentedAdjustingAlert,
-                    adjustingType: $adjustingType,
-                    viewModel: viewModel
-                )
-            }
-#endif
-            if isMantraReaderMode {
-                MantraReaderModeOverlayView(
+// UIAlerController implementation for Adjusting alert
+//            if isPresentedAdjustingAlert {
+//                AdjustingAlertView(
+//                    isPresented: $isPresentedAdjustingAlert,
+//                    adjustingType: $adjustingType,
+//                    viewModel: viewModel
+//                )
+//            }
+            if isMantraCounterMode {
+                MantraCounterModeOverlayView(
                     showBlink: $showBlink,
                     viewModel: viewModel
                 )
@@ -182,9 +188,6 @@ struct ReadsView: View {
             }
             if showHint {
                 HintView()
-            }
-            if viewModel.showConfetti {
-                Color.pink.opacity(0.3)
             }
         }
         .overlay(alignment: .topTrailing) {
@@ -196,7 +199,7 @@ struct ReadsView: View {
             } label: {
                 Image(systemName: "sun.max")
                     .imageScale(.large)
-                    .symbolVariant(isMantraReaderMode ? .fill : .none)
+                    .symbolVariant(isMantraCounterMode ? .fill : .none)
             }
             .padding(20)
         }
@@ -216,14 +219,14 @@ struct ReadsView: View {
             } label: {
                 Image(systemName: viewModel.favoriteBarImage)
             }
-            .disabled(isMantraReaderMode)
+            .disabled(isMantraCounterMode)
             Button {
                 isPresentedDetailsSheet = true
             } label: {
                 Image(systemName: "info")
                     .symbolVariant(.circle)
             }
-            .disabled(isMantraReaderMode)
+            .disabled(isMantraCounterMode)
         }
         .alert(
             "'Mantra Counter' Mode",
@@ -245,9 +248,9 @@ struct ReadsView: View {
     
     private func toggleMantraReaderMode() {
         withAnimation {
-            isMantraReaderMode.toggle()
+            isMantraCounterMode.toggle()
         }
-        if isMantraReaderMode {
+        if isMantraCounterMode {
             showHint = true
             afterDelay(1.5) { showHint = false }
             UIApplication.shared.isIdleTimerDisabled = true

@@ -194,8 +194,6 @@ struct MantraListColumn: View {
 }
 
 struct MantraListView_Previews: PreviewProvider {
-    static var controller = PersistenceController.preview
-
     static var previews: some View {
         NavigationView {
             MantraListColumn(
@@ -209,7 +207,7 @@ struct MantraListView_Previews: PreviewProvider {
                 ),
                 selectedMantra: .constant(nil)
             )
-            .environment(\.managedObjectContext, controller.container.viewContext)
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
         }
     }
 }

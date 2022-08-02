@@ -18,11 +18,10 @@ struct ReadsView: View {
     @State private var adjustingType: AdjustingType?
     @State private var adjustingText: String = ""
     @State private var isPresentedDetailsSheet = false
+    @State private var isPresentedUndoAlert = false
     @Binding private var isMantraReaderMode: Bool
     @State private var showBlink = false
     @State private var showHint = false
-    
-    private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
     init(viewModel: ReadsViewModel, isMantraReaderMode: Binding<Bool>) {
         self.viewModel = viewModel
@@ -144,7 +143,18 @@ struct ReadsView: View {
                             viewModel.congratulations = nil
                         }
                     } message: { congratulation in
-                        Text(viewModelcongratulationsAlertMessage(for: congratulation))
+                        Text(viewModel.congratulationsAlertMessage(for: congratulation))
+                    }
+                    .alert(
+                        "Undo Changes",
+                        isPresented: $isPresentedUndoAlert
+                    ) {
+                        Button("Yes") {
+                            viewModel.handleUndo()
+                        }
+                        Button("No", role: .cancel) {}
+                    } message: {
+                        Text("Are you sure you want to undo the last change?")
                     }
                 }
                 .ignoresSafeArea(.keyboard)
@@ -162,8 +172,7 @@ struct ReadsView: View {
             if isMantraReaderMode {
                 MantraReaderModeOverlayView(
                     showBlink: $showBlink,
-                    viewModel: viewModel,
-                    lightHapticGenerator: lightHapticGenerator
+                    viewModel: viewModel
                 )
             }
             if showBlink {
@@ -191,7 +200,7 @@ struct ReadsView: View {
         .ignoresSafeArea(.keyboard)
         .toolbar {
             Button {
-                viewModel.handleUndo()
+                isPresentedUndoAlert = true
             } label: {
                 Image(systemName: "arrow.uturn.backward")
                     .symbolVariant(.circle)

@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreData
 
+@MainActor
 final class PreloadedMantraListViewModel: ObservableObject {
     @Published var mantras: [PreloadedMantra]
     @Published var selectedMantrasTitles = Set<String>()

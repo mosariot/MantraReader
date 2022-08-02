@@ -22,6 +22,7 @@ final class ReadsViewModel: ObservableObject {
     @Published var isPresentedCongratulations = false
     @Published var showConfetti = false
     private let congratulationsGenerator = UINotificationFeedbackGenerator()
+    private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
     var title: String { mantra.title ?? "" }
     var image: UIImage {
@@ -110,6 +111,7 @@ final class ReadsViewModel: ObservableObject {
     
     func handleUndo() {
         guard let lastAction = undoHistory.last else { return }
+        lightHapticGenerator.impactOccurred()
         switch lastAction.type {
         case .value:
             adjustMantraReads(with: lastAction.value)
@@ -142,12 +144,6 @@ final class ReadsViewModel: ObservableObject {
     }
     
     private func checkForCongratilations(with value: Int32) {
-        if mantra.reads < mantra.readsGoal/2 && mantra.readsGoal/2..<mantra.readsGoal ~= value {
-            afterDelay(Constants.animationTime + 0.3) {
-                congratulations = .half
-                isPresentedCongratulations = true
-            }
-        }
         if mantra.reads < mantra.readsGoal && value >= mantra.readsGoal {
             congratulationsGenerator.notificationOccurred(.success)
             showConfetti = true
@@ -156,7 +152,15 @@ final class ReadsViewModel: ObservableObject {
                 congratulations = .full
                 isPresentedCongratulations = true
             }
+            return
         }
+        if mantra.reads < mantra.readsGoal/2 && mantra.readsGoal/2..<mantra.readsGoal ~= value {
+            afterDelay(Constants.animationTime + 0.3) {
+                congratulations = .half
+                isPresentedCongratulations = true
+            }
+        }
+        lightHapticGenerator.impactOccurred()
     }
     
     private func adjustMantraReads(with value: Int32) {

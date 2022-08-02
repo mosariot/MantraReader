@@ -10,8 +10,7 @@ import SwiftUI
 struct MantraReaderModeOverlayView: View {
     @Binding var showBlink: Bool
     let viewModel: ReadsViewModel
-    let lightHapticGenerator: UIImpactFeedbackGenerator
-    
+    private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
     var body: some View {
         Color.gray

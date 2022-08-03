@@ -10,7 +10,7 @@ import SwiftUI
 struct DetailsColumn: View {
     @Environment(\.managedObjectContext) private var viewContext
     var selectedMantra: Mantra?
-    @State var isMantraReaderMode: Bool = false
+    @State var isMantraCounterMode: Bool = false
     
     var body: some View {
         if let selectedMantra {

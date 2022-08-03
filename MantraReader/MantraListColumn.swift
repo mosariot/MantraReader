@@ -125,11 +125,8 @@ struct MantraListColumn: View {
             ]
             }
         }
-        .listStyle(.insetGrouped)
+        .listStyle(.sidebar)
         .refreshable {
-            viewContext.refreshAllObjects()
-        }
-        .onReceive(NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)) { _ in
             viewContext.refreshAllObjects()
         }
         .toolbar {
@@ -173,15 +170,6 @@ struct MantraListColumn: View {
                 viewContext: viewContext
             )
         }
-//        .onReceive(viewContext.publisher(for: \.hasChanges).receive(on: DispatchQueue.main)) { _ in
-//            viewContext.performAndWait {
-//                do {
-//                    try viewContext.save()
-//                } catch {
-//                    fatalCoreDataError(error)
-//                }
-//            }
-//        }
     }
     
     private func addItem() {

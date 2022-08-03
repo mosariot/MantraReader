@@ -15,7 +15,6 @@ enum Sorting: String, Codable {
 
 struct MantraListColumn: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @AppStorage("sorting") private var sorting: Sorting = .title
     
     @State private var searchText = ""
     @State private var isPresentedPreloadedMantraList = false
@@ -24,6 +23,7 @@ struct MantraListColumn: View {
     
     var mantras: SectionedFetchResults<Bool, Mantra>
     @Binding var selectedMantra: Mantra?
+    @Binding var sorting: Sorting
     
     var body: some View {
         List(mantras, selection: $selectedMantra) { section in

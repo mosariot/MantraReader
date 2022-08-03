@@ -211,7 +211,7 @@ struct ConfettiView: View {
                 withAnimation(getAnimation()) {
                     opacity = confettiConfig.opacity
                     
-                    let randomAngle:CGFloat
+                    let randomAngle: CGFloat
                     if confettiConfig.openingAngle.degrees <= confettiConfig.closingAngle.degrees {
                         randomAngle = CGFloat.random(in: CGFloat(confettiConfig.openingAngle.degrees)...CGFloat(confettiConfig.closingAngle.degrees))
                     } else {
@@ -255,9 +255,9 @@ struct ConfettiAnimationView: View {
         shape
             .foregroundColor(color)
             .rotation3DEffect(.degrees(move ? 360:0), axis: (x: spinDirX, y: 0, z: 0))
-            .animation(Animation.linear(duration: xSpeed).repeatCount(10, autoreverses: false), value: move)
+            .animation(.linear(duration: xSpeed).repeatCount(10, autoreverses: false), value: move)
             .rotation3DEffect(.degrees(move ? 360:0), axis: (x: 0, y: 0, z: spinDirZ), anchor: UnitPoint(x: anchor, y: anchor))
-            .animation(Animation.linear(duration: zSpeed).repeatForever(autoreverses: false), value: move)
+            .animation(.linear(duration: zSpeed).repeatForever(autoreverses: false), value: move)
             .onAppear() {
                 if firstAppear {
                     move = true

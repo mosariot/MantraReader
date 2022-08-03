@@ -35,6 +35,7 @@ struct CircularProgressView: View {
                     .bold()
                     .dynamicTypeSize(.xLarge)
                     .offset(x: 0, y: isMantraReaderMode ? -(frame ?? 0) / 6 : 0)
+                    .contentTransition(.numericText())
                 Text("\(viewModel.currentDisplayedReads, specifier: "%.0f")")
                     .font(.system(.largeTitle, design: .rounded, weight: .medium))
                     .textSelection(.enabled)
@@ -43,10 +44,13 @@ struct CircularProgressView: View {
                     .dynamicTypeSize(.xLarge)
                     .opacity(isMantraReaderMode ? 1 : 0)
                     .offset(x: 0, y: isMantraReaderMode ? (frame ?? 0) / 6 : 0)
+                    .contentTransition(.numericText())
             }
         }
         .onReceive(viewModel.mantra.objectWillChange) { _ in
-            viewModel.updateForMantraChanges()
+            withAnimation {
+                viewModel.updateForMantraChanges()
+            }
         }
     }
 }

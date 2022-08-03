@@ -1,5 +1,5 @@
 //
-//  UpdatingAlertView.swift
+//  AdjustingAlertView.swift
 //  MantraReader
 //
 //  Created by Александр Воробьев on 12.07.2022.

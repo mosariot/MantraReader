@@ -32,7 +32,7 @@
 		9FBEE9A1285F682D0070BA06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEE9A0285F682D0070BA06 /* Assets.xcassets */; };
 		9FBEE9A5285F682D0070BA06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEE9A4285F682D0070BA06 /* Preview Assets.xcassets */; };
 		9FBEE9B0285F68CE0070BA06 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */; };
-		9FC9A691287DA4FE00D05FBD /* UpdatingAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9A690287DA4FE00D05FBD /* UpdatingAlertView.swift */; };
+		9FC9A691287DA4FE00D05FBD /* AdjustingAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9A690287DA4FE00D05FBD /* AdjustingAlertView.swift */; };
 		9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC52893915B004936E6 /* PreloadedMantraListView.swift */; };
 		9FD61DC8289391A4004936E6 /* PreloadedMantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC7289391A4004936E6 /* PreloadedMantraRow.swift */; };
 		9FD61DCA289391BC004936E6 /* PreloadedMantraListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC9289391BC004936E6 /* PreloadedMantraListViewModel.swift */; };
@@ -77,7 +77,7 @@
 		9FBEE9A4285F682D0070BA06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9FBEE9AB285F68CE0070BA06 /* ReadsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadsView.swift; sourceTree = "<group>"; };
 		9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
-		9FC9A690287DA4FE00D05FBD /* UpdatingAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatingAlertView.swift; sourceTree = "<group>"; };
+		9FC9A690287DA4FE00D05FBD /* AdjustingAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustingAlertView.swift; sourceTree = "<group>"; };
 		9FD61DC52893915B004936E6 /* PreloadedMantraListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraListView.swift; sourceTree = "<group>"; };
 		9FD61DC7289391A4004936E6 /* PreloadedMantraRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraRow.swift; sourceTree = "<group>"; };
 		9FD61DC9289391BC004936E6 /* PreloadedMantraListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraListViewModel.swift; sourceTree = "<group>"; };
@@ -180,7 +180,7 @@
 				9FDC8DA9286222C700BF7051 /* ReadsViewModel.swift */,
 				9F4DE923286E3B670064ADCB /* UIImage+CropToCircle.swift */,
 				9F78728D2865FDA400F52335 /* UIImage+Resize.swift */,
-				9FC9A690287DA4FE00D05FBD /* UpdatingAlertView.swift */,
+				9FC9A690287DA4FE00D05FBD /* AdjustingAlertView.swift */,
 			);
 			path = MantraReader;
 			sourceTree = "<group>";
@@ -286,7 +286,7 @@
 				9FD61DCA289391BC004936E6 /* PreloadedMantraListViewModel.swift in Sources */,
 				9FDF349D2885E83B00B3007E /* GoalButtonViewModel.swift in Sources */,
 				9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */,
-				9FC9A691287DA4FE00D05FBD /* UpdatingAlertView.swift in Sources */,
+				9FC9A691287DA4FE00D05FBD /* AdjustingAlertView.swift in Sources */,
 				9FA8E88B28985D3100479F08 /* CheckMarkView.swift in Sources */,
 				9F78628D2889A5830058AAD0 /* ReadsView.swift in Sources */,
 				9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */,

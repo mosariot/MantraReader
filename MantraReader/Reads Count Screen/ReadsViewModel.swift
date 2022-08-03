@@ -28,7 +28,7 @@ final class ReadsViewModel: ObservableObject {
             return UIImage(named: Constants.defaultImage)!
         }
     }
-    var favoriteBarImage: String { mantra.isFavorite ? "star.slash" : "star" }
+    var favoriteBarImage: String { mantra.isFavorite ? "star.fill" : "star" }
     
     private var viewContext: NSManagedObjectContext
     

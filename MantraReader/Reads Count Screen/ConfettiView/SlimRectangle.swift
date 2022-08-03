@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-public struct SlimRectangle: Shape {
-    public func path(in rect: CGRect) -> Path {
+struct SlimRectangle: Shape {
+    func path(in rect: CGRect) -> Path {
         var path = Path()
         path.move(to: CGPoint(x: rect.minX, y: 4*rect.maxY/5))
         path.addLine(to: CGPoint(x: rect.maxX, y: 4*rect.maxY/5))

@@ -16,11 +16,11 @@ struct DetailsColumn: View {
         if let selectedMantra {
             ReadsView(
                 viewModel: ReadsViewModel(selectedMantra, viewContext: viewContext),
-                isMantraReaderMode: $isMantraReaderMode
+                isMantraCounterMode: $isMantraReaderMode
             )
             .onChange(of: selectedMantra) { _ in
                 withAnimation {
-                    isMantraReaderMode = false
+                    isMantraCounterMode = false
                 }
                 UIApplication.shared.isIdleTimerDisabled = false
             }

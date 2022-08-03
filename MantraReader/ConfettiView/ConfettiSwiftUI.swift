@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum ConfettiType:CaseIterable, Hashable {
+enum ConfettiType: CaseIterable, Hashable {
     enum Shape {
         case circle
         case triangle
@@ -67,7 +67,7 @@ public struct ConfettiCannon: View {
     ///   - radius: explosion radius
     ///   - repetitions: number of repetitions of the explosion
     ///   - repetitionInterval: duration between the repetitions
-    init(counter:Binding<Int>,
+    init(counter: Binding<Int>,
          num: Int = 20,
          confettis: [ConfettiType] = ConfettiType.allCases,
          colors: [Color] = [.blue, .red, .green, .yellow, .pink, .purple, .orange],
@@ -84,8 +84,8 @@ public struct ConfettiCannon: View {
         self._counter = counter
         var shapes = [AnyView]()
         
-        for confetti in confettis{
-            for color in colors{
+        for confetti in confettis {
+            for color in colors {
                 switch confetti {
                 case .shape(_):
                     shapes.append(AnyView(confetti.view.foregroundColor(color).frame(width: confettiSize, height: confettiSize, alignment: .center)))
@@ -123,9 +123,9 @@ public struct ConfettiCannon: View {
         .onAppear {
             firstAppear = true
         }
-        .onChange(of: counter) {value in
+        .onChange(of: counter) { value in
             if firstAppear {
-                for i in 0...confettiConfig.repetitions{
+                for i in 0...confettiConfig.repetitions {
                     afterDelay(confettiConfig.repetitionInterval * Double(i)) {
                         animate.append(false)
                         if (value > 0 && value < animate.count) {
@@ -144,13 +144,13 @@ struct ConfettiContainer: View {
     @State var firstAppear = true
     
     var body: some View{
-        ZStack{
+        ZStack {
             ForEach(0...confettiConfig.num-1, id:\.self) { _ in
                 ConfettiView(confettiConfig: confettiConfig)
             }
         }
         .onAppear {
-            if firstAppear{
+            if firstAppear {
                 afterDelay(confettiConfig.animationDuration) {
                     self.finishedAnimationCounter += 1
                 }
@@ -166,11 +166,11 @@ struct ConfettiView: View {
     @StateObject var confettiConfig: ConfettiConfig
     
     func getShape() -> AnyView {
-        return confettiConfig.shapes.randomElement()!
+        confettiConfig.shapes.randomElement()!
     }
     
     func getColor() -> Color {
-        return confettiConfig.colors.randomElement()!
+        confettiConfig.colors.randomElement()!
     }
     
     func getSpinDirection() -> CGFloat {
@@ -183,15 +183,15 @@ struct ConfettiView: View {
     }
     
     func getAnimationDuration() -> CGFloat {
-        return 0.2 + confettiConfig.explosionAnimationDuration + getRandomExplosionTimeVariation()
+        0.2 + confettiConfig.explosionAnimationDuration + getRandomExplosionTimeVariation()
     }
     
     func getAnimation() -> Animation {
-        return Animation.timingCurve(0.1, 0.8, 0, 1, duration: getAnimationDuration())
+        Animation.timingCurve(0.1, 0.8, 0, 1, duration: getAnimationDuration())
     }
     
     func getDistance() -> CGFloat {
-        return pow(CGFloat.random(in: 0.01...1), 2.0/7.0) * confettiConfig.radius
+        pow(CGFloat.random(in: 0.01...1), 2.0/7.0) * confettiConfig.radius
     }
     
     func getDelayBeforeRainAnimation() -> TimeInterval {
@@ -207,14 +207,14 @@ struct ConfettiView: View {
         )
             .offset(x: location.x, y: location.y)
             .opacity(opacity)
-            .onAppear(){
+            .onAppear {
                 withAnimation(getAnimation()) {
                     opacity = confettiConfig.opacity
                     
                     let randomAngle:CGFloat
-                    if confettiConfig.openingAngle.degrees <= confettiConfig.closingAngle.degrees{
+                    if confettiConfig.openingAngle.degrees <= confettiConfig.closingAngle.degrees {
                         randomAngle = CGFloat.random(in: CGFloat(confettiConfig.openingAngle.degrees)...CGFloat(confettiConfig.closingAngle.degrees))
-                    }else{
+                    } else {
                         randomAngle = CGFloat.random(in: CGFloat(confettiConfig.openingAngle.degrees)...CGFloat(confettiConfig.closingAngle.degrees + 360)).truncatingRemainder(dividingBy: 360)
                     }
                     
@@ -234,7 +234,7 @@ struct ConfettiView: View {
     }
     
     func deg2rad(_ number: CGFloat) -> CGFloat {
-        return number * CGFloat.pi / 180
+        number * CGFloat.pi / 180
     }
     
 }
@@ -247,8 +247,7 @@ struct ConfettiAnimationView: View {
     @State var firstAppear = true
     
     @State var move = false
-    @State var xSpeed:Double = Double.random(in: 0.501...2.201)
-    
+    @State var xSpeed: Double = Double.random(in: 0.501...2.201)
     @State var zSpeed = Double.random(in: 0.501...2.201)
     @State var anchor = CGFloat.random(in: 0...1).rounded()
     
@@ -268,7 +267,7 @@ struct ConfettiAnimationView: View {
     }
 }
 
-class ConfettiConfig: ObservableObject {
+final class ConfettiConfig: ObservableObject {
     init(
         num: Int,
         shapes: [AnyView],
@@ -300,30 +299,29 @@ class ConfettiConfig: ObservableObject {
     }
     
     @Published var num:Int
-    @Published var shapes:[AnyView]
-    @Published var colors:[Color]
-    @Published var confettiSize:CGFloat
-    @Published var rainHeight:CGFloat
-    @Published var fadesOut:Bool
-    @Published var opacity:Double
-    @Published var openingAngle:Angle
-    @Published var closingAngle:Angle
-    @Published var radius:CGFloat
-    @Published var repetitions:Int
-    @Published var repetitionInterval:Double
-    @Published var explosionAnimationDuration:Double
-    @Published var rainAnimationDuration:Double
-    
+    @Published var shapes: [AnyView]
+    @Published var colors: [Color]
+    @Published var confettiSize: CGFloat
+    @Published var rainHeight: CGFloat
+    @Published var fadesOut: Bool
+    @Published var opacity: Double
+    @Published var openingAngle: Angle
+    @Published var closingAngle: Angle
+    @Published var radius: CGFloat
+    @Published var repetitions: Int
+    @Published var repetitionInterval: Double
+    @Published var explosionAnimationDuration: Double
+    @Published var rainAnimationDuration: Double
     
     var animationDuration: Double {
-        return explosionAnimationDuration + rainAnimationDuration
+        explosionAnimationDuration + rainAnimationDuration
     }
     
     var openingAngleRad: CGFloat {
-        return CGFloat(openingAngle.degrees) * 180 / .pi
+        CGFloat(openingAngle.degrees) * 180 / .pi
     }
     
     var closingAngleRad: CGFloat {
-        return CGFloat(closingAngle.degrees) * 180 / .pi
+        CGFloat(closingAngle.degrees) * 180 / .pi
     }
 }

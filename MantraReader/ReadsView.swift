@@ -10,7 +10,7 @@ import SwiftUI
 struct ReadsView: View {
     @Environment(\.verticalSizeClass) private var verticalSizeClass
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    @AppStorage("isFirstLaunchOfMantraReaderMode") private var isFirstLaunchOfMantraReaderMode = true
+    @AppStorage("isFirstLaunchOfMantraCounterMode") private var isFirstLaunchOfMantraCounterMode = true
     @ObservedObject private var viewModel: ReadsViewModel
     private var circularViewModel: CircularProgressViewModel
     private var goalButtonViewModel: GoalButtonViewModel
@@ -20,15 +20,15 @@ struct ReadsView: View {
     @State private var adjustingText: String = ""
     @State private var isPresentedDetailsSheet = false
     @State private var isPresentedUndoAlert = false
-    @State private var isPresentedMantraReaderModeAlert = false
+    @State private var isPresentedMantraCounterModeAlert = false
     @Binding private var isMantraCounterMode: Bool
     @State private var showBlink = false
     @State private var showHint = false
     @State private var congratulations: Int = 0
     
-    init(viewModel: ReadsViewModel, isMantraReaderMode: Binding<Bool>) {
+    init(viewModel: ReadsViewModel, isMantraCounterMode: Binding<Bool>) {
         self.viewModel = viewModel
-        self._isMantraCounterMode = isMantraReaderMode
+        self._isMantraCounterMode = isMantraCounterMode
         circularViewModel = CircularProgressViewModel(viewModel.mantra)
         goalButtonViewModel = GoalButtonViewModel(viewModel.mantra)
     }
@@ -61,7 +61,7 @@ struct ReadsView: View {
                         VStack {
                             CircularProgressView(
                                 viewModel: circularViewModel,
-                                isMantraReaderMode: isMantraCounterMode,
+                                isMantraCounterMode: isMantraCounterMode,
                                 frame: circularProgressViewSize(with: geometry.size)
                             )
                             .frame(
@@ -192,10 +192,10 @@ struct ReadsView: View {
         }
         .overlay(alignment: .topTrailing) {
             Button {
-                if isFirstLaunchOfMantraReaderMode {
-                    isPresentedMantraReaderModeAlert = true
+                if isFirstLaunchOfMantraCounterMode {
+                    isPresentedMantraCounterModeAlert = true
                 }
-                toggleMantraReaderMode()
+                toggleMantraCounterMode()
             } label: {
                 Image(systemName: "sun.max")
                     .imageScale(.large)
@@ -230,10 +230,10 @@ struct ReadsView: View {
         }
         .alert(
             "'Mantra Counter' Mode",
-            isPresented: $isPresentedMantraReaderModeAlert
+            isPresented: $isPresentedMantraCounterModeAlert
         ) {
             Button("OK", role: .cancel) {
-                isFirstLaunchOfMantraReaderMode = false
+                isFirstLaunchOfMantraCounterMode = false
             }
         } message: {
             Text("You have entered the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. The screen won’t dim. The edit buttons at the bottom are disabled.")
@@ -246,7 +246,7 @@ struct ReadsView: View {
         }
     }
     
-    private func toggleMantraReaderMode() {
+    private func toggleMantraCounterMode() {
         withAnimation {
             isMantraCounterMode.toggle()
         }
@@ -287,7 +287,7 @@ struct ReadsView_Previews: PreviewProvider {
                 PersistenceController.previewMantra,
                 viewContext: PersistenceController.preview.container.viewContext
             ),
-            isMantraReaderMode: .constant(false)
+            isMantraCounterMode: .constant(false)
         )
     }
 }

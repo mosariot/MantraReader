@@ -6,11 +6,6 @@
 //
 
 import SwiftUI
-#if os(iOS)
-import UIKit
-#elseif os(macOS)
-import AppKit
-#endif
 
 @main
 struct MantraReaderApp: App {

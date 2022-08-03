@@ -8,11 +8,6 @@
 import SwiftUI
 import Combine
 
-enum Sorting: String, Codable {
-    case title
-    case reads
-}
-
 struct MantraListColumn: View {
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -129,6 +124,13 @@ struct MantraListColumn: View {
         .refreshable {
             viewContext.refreshAllObjects()
         }
+        .onReceive(
+            NotificationCenter.default
+                .publisher(for: .NSPersistentStoreRemoteChange)
+                .receive(on: DispatchQueue.main)
+        ) { _ in
+            viewContext.refreshAllObjects()
+        }
         .toolbar {
 #if os(iOS)
             ToolbarItem(placement: .navigationBarLeading) {
@@ -186,7 +188,9 @@ struct MantraListColumn: View {
     private func saveContext() {
         guard viewContext.hasChanges else { return }
         do {
+            print("before")
             try viewContext.save()
+            print("after")
         } catch {
             fatalCoreDataError(error)
         }

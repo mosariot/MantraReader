@@ -9,11 +9,6 @@ import SwiftUI
 import Combine
 import CoreData
 
-enum Congratulations {
-    case half
-    case full
-}
-
 @MainActor
 final class ReadsViewModel: ObservableObject {
     static private var confettiTrigger: Int = 0

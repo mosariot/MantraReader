@@ -73,7 +73,7 @@ struct ReadsView: View {
                                 counter: $viewModel.confettiTrigger,
                                 num: 200,
                                 rainHeight: 1000,
-                                openingAngle: Angle(degrees: 0),
+                                openingAngle: Angle(degrees: 30),
                                 closingAngle: Angle(degrees: 180),
                                 radius: 400
                             )
@@ -242,6 +242,9 @@ struct ReadsView: View {
             viewModel.objectWillChange.send()
         }
         .onDisappear {
+            withAnimation {
+                isMantraCounterMode = false
+            }
             UIApplication.shared.isIdleTimerDisabled = false
         }
     }

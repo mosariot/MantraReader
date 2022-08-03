@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CircularProgressView: View {
     @ObservedObject var viewModel: CircularProgressViewModel
-    var isMantraReaderMode: Bool
+    var isMantraCounterMode: Bool
     var frame: CGFloat?
     
     var body: some View {
@@ -34,17 +34,15 @@ struct CircularProgressView: View {
                     .textSelection(.enabled)
                     .bold()
                     .dynamicTypeSize(.xLarge)
-                    .offset(x: 0, y: isMantraReaderMode ? -(frame ?? 0) / 6 : 0)
-                    .contentTransition(.numericText())
+                    .offset(x: 0, y: isMantraCounterMode ? -(frame ?? 0) / 6 : 0)
                 Text("\(viewModel.currentDisplayedReads, specifier: "%.0f")")
                     .font(.system(.largeTitle, design: .rounded, weight: .medium))
                     .textSelection(.enabled)
                     .bold()
                     .foregroundColor(.accentColor)
                     .dynamicTypeSize(.xLarge)
-                    .opacity(isMantraReaderMode ? 1 : 0)
-                    .offset(x: 0, y: isMantraReaderMode ? (frame ?? 0) / 6 : 0)
-                    .contentTransition(.numericText())
+                    .opacity(isMantraCounterMode ? 1 : 0)
+                    .offset(x: 0, y: isMantraCounterMode ? (frame ?? 0) / 6 : 0)
             }
         }
         .onReceive(viewModel.mantra.objectWillChange) { _ in
@@ -59,7 +57,7 @@ struct CircularProgressView_Previews: PreviewProvider {
     static var previews: some View {
         CircularProgressView(
             viewModel: CircularProgressViewModel(PersistenceController.previewMantra),
-            isMantraReaderMode: false
+            isMantraCounterMode: false
         )
         .padding()
     }

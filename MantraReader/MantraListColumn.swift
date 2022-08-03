@@ -173,6 +173,15 @@ struct MantraListColumn: View {
                 viewContext: viewContext
             )
         }
+//        .onReceive(viewContext.publisher(for: \.hasChanges).receive(on: DispatchQueue.main)) { _ in
+//            viewContext.performAndWait {
+//                do {
+//                    try viewContext.save()
+//                } catch {
+//                    fatalCoreDataError(error)
+//                }
+//            }
+//        }
     }
     
     private func addItem() {

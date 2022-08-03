@@ -33,7 +33,7 @@ struct MantraCounterModeOverlayView: View {
     }
 }
 
-struct MantraReaderModeOverlayView_Previews: PreviewProvider {
+struct MantraCounterModeOverlayView_Previews: PreviewProvider {
     static var previews: some View {
         MantraCounterModeOverlayView(
             showBlink: .constant(false),

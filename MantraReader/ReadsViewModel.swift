@@ -175,6 +175,7 @@ final class ReadsViewModel: ObservableObject {
         saveContext()
     }
     
+    @MainActor
     private func saveContext() {
         guard viewContext.hasChanges else { return }
         do {

@@ -53,7 +53,7 @@ struct ContentView: View {
             MantraListColumn(
                 mantras: mantras,
                 selectedMantra: $selectedMantra,
-                sorting: $sorting)
+                sorting: $sorting
             )
             .onAppear {
                 if !mantras.isEmpty {

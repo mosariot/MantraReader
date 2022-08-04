@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @AppStorage("isOnboardingCompleted") private var isOnboardingCompleted = false
     @Binding var isPresented: Bool
     
     var body: some View {
         VStack {
             Image("DefaultImage")
-            .resizable()
-            .scaledToFit()
-            .frame(minHeight: 30)
+                .resizable()
+                .scaledToFit()
+                .frame(minHeight: 30)
             
             Text(
     """
@@ -31,7 +30,6 @@ struct OnboardingView: View {
             .layoutPriority(1)
             
             Button("UNDERSTAND!") {
-                isOnboardingCompleted = true
                 isPresented = false
             }
             .buttonStyle(.borderedProminent)

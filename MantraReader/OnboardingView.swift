@@ -8,16 +8,29 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
+    
     @Binding var isPresented: Bool
+    
+    private var textFont: Font {
+        if horizontalSizeClass == .regular && verticalSizeClass == .regular {
+            return .title2
+        } else {
+            return .body
+        }
+    }
     
     var body: some View {
         VStack {
             Image("DefaultImage")
                 .resizable()
                 .scaledToFit()
-                .frame(minHeight: 30)
+                .frame(maxHeight: 200)
+                .padding(.top)
             
-            Text(
+            ScrollView {
+                Text(
     """
     Recitation of mantras is a sacrament.
     Approach this issue with all your awareness.
@@ -25,15 +38,15 @@ struct OnboardingView: View {
     For this reason, at start application doesn't include the mantra texts themselves (except Vajrasattva). They must be given to you by your spiritual mentor and can be added manually later.
     We wish you deep awarenesses and spiritual growth!
     """
-            )
-            .padding()
-            .layoutPriority(1)
-            
+                )
+                .font(textFont)
+                .padding()
+            }
             Button("UNDERSTAND!") {
                 isPresented = false
             }
             .buttonStyle(.borderedProminent)
-            .padding()
+            .padding(.bottom)
         }
     }
 }

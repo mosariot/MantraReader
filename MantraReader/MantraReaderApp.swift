@@ -11,6 +11,7 @@ import SwiftUI
 struct MantraReaderApp: App {
     @AppStorage("isFirstLaunch") private var isFirstLaunch = true
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
+    @AppStorage("isPresentedOnboarding") private var isPresentedOnboarding = true
     
     let persistenceController = PersistenceController.shared
     
@@ -25,6 +26,10 @@ struct MantraReaderApp: App {
                         isFirstLaunch = false
                     }
                     isFreshLaunch = true
+                }
+                .sheet(isPresented: $isPresentedOnboarding) {
+                    OnboardingView(isPresented: $isPresentedOnboarding)
+                        .interactiveDismissDisabled()
                 }
         }
     }

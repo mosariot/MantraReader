@@ -1,5 +1,5 @@
 //
-//  Persistence.swift
+//  PersistenceController.swift
 //  MantraReader
 //
 //  Created by Александр Воробьев on 19.06.2022.

@@ -14,6 +14,10 @@ struct OnboardingView: View {
     var body: some View {
         VStack {
             Image("DefaultImage")
+            .resizable()
+            .scaledToFit()
+            .frame(minHeight: 30)
+            
             Text(
     """
     Recitation of mantras is a sacrament.
@@ -23,9 +27,9 @@ struct OnboardingView: View {
     We wish you deep awarenesses and spiritual growth!
     """
             )
-            .frame(maxWidth: 800)
-            .minimumScaleFactor(0.9)
             .padding()
+            .layoutPriority(1)
+            
             Button("UNDERSTAND!") {
                 isOnboardingCompleted = true
                 isPresented = false

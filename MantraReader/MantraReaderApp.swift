@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct MantraReaderApp: App {
-    @AppStorage("isFirstLaunchSwiftUIVersion") private var isFirstLaunchSwiftUIVersion = true
+    @AppStorage("isFirstLaunch") private var isFirstLaunch = true
     @AppStorage("isPreloadedMantrasDueToNoInternet") private var isPreloadedMantrasDueToNoInternet = false
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("isPresentedOnboarding") private var isPresentedOnboarding = true
@@ -22,11 +22,11 @@ struct MantraReaderApp: App {
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(OrientationInfo())
                 .onAppear {
-                    if isFirstLaunchSwiftUIVersion {
-                        isFirstLaunchSwiftUIVersion = false
+                    if isFirstLaunch {
+                        isFirstLaunch = false
                         persistenceController.preloadData(context: persistenceController.container.viewContext)
 //                        let launchPreparer = LaunchPreparer(persistenceController: persistenceController)
-//                        launchPreparer.firstLaunchChecks()
+//                        launchPreparer.firstLaunchPreparations()
                     }
                     isFreshLaunch = true
                 }

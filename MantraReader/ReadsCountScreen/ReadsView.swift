@@ -143,28 +143,17 @@ struct ReadsView: View {
                             adjustingText = ""
                         }
                     }
-                    .alert(
-                        "Congratulations!",
-                        isPresented: $viewModel.isPresentedCongratulations,
-                        presenting: viewModel.congratulations
-                    ) { _ in
-                        Button("OK", role: .cancel) {
-                            viewModel.congratulations = nil
-                        }
-                    } message: { congratulation in
-                        Text(viewModel.congratulationsAlertMessage(for: congratulation))
+                }
+                .alert(
+                    "Congratulations!",
+                    isPresented: $viewModel.isPresentedCongratulations,
+                    presenting: viewModel.congratulations
+                ) { _ in
+                    Button("OK", role: .cancel) {
+                        viewModel.congratulations = nil
                     }
-                    .alert(
-                        "Undo Changes",
-                        isPresented: $isPresentedUndoAlert
-                    ) {
-                        Button("Yes") {
-                            viewModel.handleUndo()
-                        }
-                        Button("No", role: .cancel) {}
-                    } message: {
-                        Text("Are you sure you want to undo the last change?")
-                    }
+                } message: { congratulation in
+                    Text(viewModel.congratulationsAlertMessage(for: congratulation))
                 }
                 .ignoresSafeArea(.keyboard)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -214,6 +203,17 @@ struct ReadsView: View {
                     .symbolVariant(.circle)
             }
             .disabled(viewModel.undoHistory.isEmpty)
+            .alert(
+                "Undo Changes",
+                isPresented: $isPresentedUndoAlert
+            ) {
+                Button("Yes") {
+                    viewModel.handleUndo()
+                }
+                Button("No", role: .cancel) {}
+            } message: {
+                Text("Are you sure you want to undo the last change?")
+            }
             Button {
                 viewModel.toggleFavorite()
             } label: {

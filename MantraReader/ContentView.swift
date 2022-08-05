@@ -12,6 +12,7 @@ struct ContentView: View {
     @Environment(\.verticalSizeClass) private var verticalSizeClass
     @Environment(\.managedObjectContext) private var viewContext
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
+    @AppStorage("isInitalDataLoading") private var isInitalDataLoading = true
     @AppStorage("sorting") private var sorting: Sorting = .title
     
     @State private var selectedMantra: Mantra?
@@ -50,29 +51,42 @@ struct ContentView: View {
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            MantraListColumn(
-                mantras: mantras,
-                selectedMantra: $selectedMantra,
-                sorting: $sorting
-            )
-            .onAppear {
-                if !mantras.isEmpty {
+            ZStack {
+                MantraListColumn(
+                    mantras: mantras,
+                    selectedMantra: $selectedMantra,
+                    sorting: $sorting
+                )
+                .onAppear {
+                    if !mantras.isEmpty {
 #if os(iOS)
-                    if ((verticalSizeClass == .regular && horizontalSizeClass == .regular)
-                        || (verticalSizeClass == .compact && horizontalSizeClass == .regular))
-                        && isFreshLaunch {
-                        selectedMantra = mantras[0][0]
-                    }
+                        if ((verticalSizeClass == .regular && horizontalSizeClass == .regular)
+                            || (verticalSizeClass == .compact && horizontalSizeClass == .regular))
+                            && isFreshLaunch {
+                            selectedMantra = mantras[0][0]
+                        }
 #elseif os(macOS)
-                    if isFreshLaunch {
-                        selectedMantra = mantras[0][0]
-                    }
+                        if isFreshLaunch {
+                            selectedMantra = mantras[0][0]
+                        }
 #endif
+                    }
+                }
+                if isInitalDataLoading {
+                    ProgressView("Syncing...")
+                        .scaleEffect(3)
                 }
             }
         } detail: {
             DetailsColumn(selectedMantra: selectedMantra)
                 .navigationSplitViewColumnWidth(min: 400, ideal: 600)
+        }
+        .onReceive(mantras.publisher.count()) { count in
+            if isInitalDataLoading {
+                if count > 0 {
+                    isInitalDataLoading = false
+                }
+            }
         }
         .onReceive(NotificationCenter.default.publisher(for: dataSaveFailedNotification)) { _ in
             showingDataFailedAlert = true

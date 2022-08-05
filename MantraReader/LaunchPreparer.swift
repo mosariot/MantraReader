@@ -10,26 +10,25 @@ import CloudKit
 
 struct LaunchPreparer {
     let persistenceController: PersistenceController
+    let isFirstLaunchUIKitVersion = UserDefaults.standard.bool(forKey: "isFirstLaunch")
     
     init(persistenceController: PersistenceController) {
         self.persistenceController = persistenceController
-        registerDefaults()
+        UserDefaults.standard.register(defaults: ["isFirstLaunch": true])
     }
     
     func firstLaunchChecks() {
-        let isFirstLaunchUIKitVersion = UserDefaults.standard.bool(forKey: "isFirstLaunch")
         if isFirstLaunchUIKitVersion {
+            UserDefaults.standard.set(false, forKey: "isFirstLaunch")
             let networkMonitor = NetworkMonitor()
             networkMonitor.startMonitoring()
             DispatchQueue.main.async {
                 if !(networkMonitor.isReachable) {
                     persistenceController.preloadData(context: persistenceController.container.viewContext)
-                    UserDefaults.standard.set(true, forKey: "isPreloadedMantrasDueToNoInternetConnection")
-                    UserDefaults.standard.set(false, forKey: "isInitalDataLoading")
+                    UserDefaults.standard.set(true, forKey: "isPreloadedMantrasDueToNoInternet")
                 } else {
                     checkForiCloudRecords()
                 }
-                UserDefaults.standard.set(false, forKey: "isFirstLaunch")
                 networkMonitor.stopMonitoring()
             }
         }
@@ -39,11 +38,11 @@ struct LaunchPreparer {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "CD_Mantra", predicate: predicate)
         let operation = CKQueryOperation(query: query)
-        var areThereSomeRecords = false
+        var areThereAnyRecords = false
         
         operation.recordMatchedBlock = { (recordId, result) in
             if case .success(_) = result {
-                areThereSomeRecords = true
+                areThereAnyRecords = true
             }
         }
         
@@ -58,19 +57,11 @@ struct LaunchPreparer {
                         // CloudKit automatically handles loading records from iCloud
                     }
                 case .failure(_):
-                    print("error")
                     // for example user is not logged-in iCloud
                     persistenceController.preloadData(context: persistenceController.container.viewContext)
                 }
             }
         }
         CKContainer.default().privateCloudDatabase.add(operation)
-    }
-    
-    func registerDefaults() {
-        let dictionary = ["isFirstLaunch": true,
-                          "isInitalDataLoading": true,
-                          "isPreloadedMantrasDueToNoInternetConnection": false]
-        UserDefaults.standard.register(defaults: dictionary)
     }
 }

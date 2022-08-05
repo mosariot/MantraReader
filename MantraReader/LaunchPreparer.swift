@@ -10,27 +10,22 @@ import CloudKit
 
 struct LaunchPreparer {
     let persistenceController: PersistenceController
-    let isFirstLaunchUIKitVersion = UserDefaults.standard.bool(forKey: "isFirstLaunch")
     
     init(persistenceController: PersistenceController) {
         self.persistenceController = persistenceController
-        UserDefaults.standard.register(defaults: ["isFirstLaunch": true])
     }
     
-    func firstLaunchChecks() {
-        if isFirstLaunchUIKitVersion {
-            UserDefaults.standard.set(false, forKey: "isFirstLaunch")
-            let networkMonitor = NetworkMonitor()
-            networkMonitor.startMonitoring()
-            DispatchQueue.main.async {
-                if !(networkMonitor.isReachable) {
-                    persistenceController.preloadData(context: persistenceController.container.viewContext)
-                    UserDefaults.standard.set(true, forKey: "isPreloadedMantrasDueToNoInternet")
-                } else {
-                    checkForiCloudRecords()
-                }
-                networkMonitor.stopMonitoring()
+    func firstLaunchPreparations() {
+        let networkMonitor = NetworkMonitor()
+        networkMonitor.startMonitoring()
+        DispatchQueue.main.async {
+            if !(networkMonitor.isReachable) {
+                persistenceController.preloadData(context: persistenceController.container.viewContext)
+                UserDefaults.standard.set(true, forKey: "isPreloadedMantrasDueToNoInternet")
+            } else {
+                checkForiCloudRecords()
             }
+            networkMonitor.stopMonitoring()
         }
     }
     
@@ -50,14 +45,14 @@ struct LaunchPreparer {
             DispatchQueue.main.async {
                 switch result {
                 case .success(_):
-                    if !areThereSomeRecords {
+                    if !areThereAnyRecords {
                         // no records in iCloud
                         persistenceController.preloadData(context: persistenceController.container.viewContext)
                     } else {
                         // CloudKit automatically handles loading records from iCloud
                     }
                 case .failure(_):
-                    // for example user is not logged-in iCloud
+                    // for example, user is not logged-in iCloud (type of error doesn't matter)
                     persistenceController.preloadData(context: persistenceController.container.viewContext)
                 }
             }

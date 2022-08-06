@@ -11,10 +11,6 @@ import CloudKit
 struct LaunchPreparer {
     let persistenceController: PersistenceController
     
-    init(persistenceController: PersistenceController) {
-        self.persistenceController = persistenceController
-    }
-    
     func firstLaunchPreparations() {
         let networkMonitor = NetworkMonitor()
         networkMonitor.startMonitoring()

@@ -194,6 +194,15 @@
 			path = MantraListScreen;
 			sourceTree = "<group>";
 		};
+		9F794EE1289D57D000DDF940 /* LaunchPreparing */ = {
+			isa = PBXGroup;
+			children = (
+				9F794EDD289C35E900DDF940 /* LaunchPreparer.swift */,
+				9F794EDF289C360F00DDF940 /* NetworkMonitor.swift */,
+			);
+			path = LaunchPreparing;
+			sourceTree = "<group>";
+		};
 		9FBEE98B285F682C0070BA06 = {
 			isa = PBXGroup;
 			children = (
@@ -219,8 +228,7 @@
 				9FBEE99E285F682C0070BA06 /* ContentView.swift */,
 				9F794EDB289B84AF00DDF940 /* OnboardingView.swift */,
 				9FBEE999285F682C0070BA06 /* PersistenceController.swift */,
-				9F794EDD289C35E900DDF940 /* LaunchPreparer.swift */,
-				9F794EDF289C360F00DDF940 /* NetworkMonitor.swift */,
+				9F794EE1289D57D000DDF940 /* LaunchPreparing */,
 				9F794EDA289B051900DDF940 /* MantraListScreen */,
 				9F794ED6289B03CA00DDF940 /* ReadsCountScreen */,
 				9F794ED9289B04F900DDF940 /* MantraInfoScreen */,

@@ -50,8 +50,6 @@ struct MantraRow_Previews: PreviewProvider {
             mantra: PersistenceController.previewMantra,
             isSelected: false
         )
-            .previewLayout(.fixed(width: 400, height: 55))
-            .padding()
-            .previewDisplayName("Mantra Row")
+        .padding()
     }
 }

@@ -23,12 +23,14 @@ struct OnboardingView: View {
     
     var body: some View {
         VStack {
+            Text("Welcome to the path of Enlightenment!")
+                .font(.title)
+                .multilineTextAlignment(.center)
+                .padding(.top)
             Image("DefaultImage")
                 .resizable()
                 .scaledToFit()
-                .frame(maxHeight: 200)
-                .padding(.top)
-            
+                .frame(maxHeight: 150)
             ScrollView {
                 Text(
     """

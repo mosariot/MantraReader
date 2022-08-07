@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import CloudKit
 
 struct PersistenceController {
     static let shared = PersistenceController()
@@ -14,7 +15,7 @@ struct PersistenceController {
     let container: NSPersistentCloudKitContainer
     
     init(inMemory: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: "MantraReader")
+        container = NSPersistentCloudKitContainer(name: "ReadTheMantra")
         
         guard let description = container.persistentStoreDescriptions.first else {
             fatalError("Failed to retrieve a persistent store description.")

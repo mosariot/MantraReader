@@ -124,13 +124,6 @@ struct MantraListColumn: View {
         .refreshable {
             viewContext.refreshAllObjects()
         }
-        .onReceive(
-            NotificationCenter.default
-                .publisher(for: .NSPersistentStoreRemoteChange)
-                .receive(on: DispatchQueue.main)
-        ) { _ in
-            viewContext.refreshAllObjects()
-        }
         .toolbar {
 #if os(iOS)
             ToolbarItem(placement: .navigationBarLeading) {

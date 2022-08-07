@@ -16,9 +16,11 @@ struct LaunchPreparer {
         networkMonitor.startMonitoring()
         DispatchQueue.main.async {
             if !(networkMonitor.isReachable) {
+                print("no internet")
                 persistenceController.preloadData(context: persistenceController.container.viewContext)
                 UserDefaults.standard.set(true, forKey: "isPreloadedMantrasDueToNoInternet")
             } else {
+                print("checking for icloud")
                 checkForiCloudRecords()
             }
             networkMonitor.stopMonitoring()
@@ -26,6 +28,7 @@ struct LaunchPreparer {
     }
     
     private func checkForiCloudRecords() {
+        let container = CKContainer(identifier: "iCloud.com.mosariot.MantraCounter")
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "CD_Mantra", predicate: predicate)
         let operation = CKQueryOperation(query: query)
@@ -43,16 +46,20 @@ struct LaunchPreparer {
                 case .success(_):
                     if !areThereAnyRecords {
                         // no records in iCloud
+                        print("no records in icloud")
                         persistenceController.preloadData(context: persistenceController.container.viewContext)
                     } else {
                         // CloudKit automatically handles loading records from iCloud
+                        print("downloading records from icloud")
                     }
-                case .failure(_):
-                    // for example, user is not logged-in iCloud (type of error doesn't matter)
+                case let .failure(error):
+//                    // for example, user is not logged-in iCloud (type of error doesn't matter)
+                    print("something went wrong with icloud")
+                    print(error)
                     persistenceController.preloadData(context: persistenceController.container.viewContext)
                 }
             }
         }
-        CKContainer.default().privateCloudDatabase.add(operation)
+        container.privateCloudDatabase.add(operation)
     }
 }

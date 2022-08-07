@@ -74,7 +74,6 @@ struct ContentView: View {
                 }
                 if isInitalDataLoading {
                     ProgressView("Syncing...")
-                        .scaleEffect(3)
                 }
             }
         } detail: {

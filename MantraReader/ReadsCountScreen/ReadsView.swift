@@ -184,10 +184,14 @@ struct ReadsView: View {
                 if isFirstLaunchOfMantraCounterMode {
                     isPresentedMantraCounterModeAlert = true
                 }
-                toggleMantraCounterMode()
+                withAnimation {
+                    toggleMantraCounterMode()
+                }
+                
             } label: {
                 Image(systemName: "sun.max")
                     .imageScale(.large)
+                    .font(isMantraCounterMode ? .title : .none)
                     .symbolVariant(isMantraCounterMode ? .fill : .none)
             }
             .padding(20)

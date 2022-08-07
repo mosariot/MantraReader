@@ -27,7 +27,6 @@
 		9F794EDE289C35E900DDF940 /* LaunchPreparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794EDD289C35E900DDF940 /* LaunchPreparer.swift */; };
 		9F794EE0289C360F00DDF940 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794EDF289C360F00DDF940 /* NetworkMonitor.swift */; };
 		9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B1AE3286AB09A007720A0 /* MantraRow.swift */; };
-		9F9B169B289E7E4700AFA248 /* ReadTheMantra.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B1699289E7E4700AFA248 /* ReadTheMantra.xcdatamodeld */; };
 		9FA8E88B28985D3100479F08 /* CheckMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA8E88A28985D3100479F08 /* CheckMarkView.swift */; };
 		9FA8E88D2898DB7B00479F08 /* PreloadedMantra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA8E88C2898DB7B00479F08 /* PreloadedMantra.swift */; };
 		9FB279E428902F1B0029ED3B /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB279E328902F1B0029ED3B /* HintView.swift */; };
@@ -52,6 +51,7 @@
 		9FDF349D2885E83B00B3007E /* GoalButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF349C2885E83B00B3007E /* GoalButtonViewModel.swift */; };
 		9FDF349F2885E86200B3007E /* GoalButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF349E2885E86200B3007E /* GoalButtonView.swift */; };
 		9FF7C3952864C16200DA5F51 /* PreloadedMantras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */; };
+		9FFB322E289FC0E9000A5D80 /* ReadTheMantra.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9FFB322C289FC0E9000A5D80 /* ReadTheMantra.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,7 +75,6 @@
 		9F794EDF289C360F00DDF940 /* NetworkMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		9F794EE2289E777600DDF940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9F7B1AE3286AB09A007720A0 /* MantraRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraRow.swift; sourceTree = "<group>"; };
-		9F9B169A289E7E4700AFA248 /* ReadTheMantra.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReadTheMantra.xcdatamodel; sourceTree = "<group>"; };
 		9FA8E88A28985D3100479F08 /* CheckMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkView.swift; sourceTree = "<group>"; };
 		9FA8E88C2898DB7B00479F08 /* PreloadedMantra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantra.swift; sourceTree = "<group>"; };
 		9FB279E328902F1B0029ED3B /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
@@ -103,6 +102,7 @@
 		9FDF349C2885E83B00B3007E /* GoalButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalButtonViewModel.swift; sourceTree = "<group>"; };
 		9FDF349E2885E86200B3007E /* GoalButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalButtonView.swift; sourceTree = "<group>"; };
 		9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadedMantras.swift; sourceTree = "<group>"; };
+		9FFB322D289FC0E9000A5D80 /* ReadTheMantra.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReadTheMantra.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,7 +226,7 @@
 				9F794EE2289E777600DDF940 /* Info.plist */,
 				9FBEE9A2285F682D0070BA06 /* MantraReader.entitlements */,
 				9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */,
-				9F9B1699289E7E4700AFA248 /* ReadTheMantra.xcdatamodeld */,
+				9FFB322C289FC0E9000A5D80 /* ReadTheMantra.xcdatamodeld */,
 				9FBEE99E285F682C0070BA06 /* ContentView.swift */,
 				9F794EDB289B84AF00DDF940 /* OnboardingView.swift */,
 				9FBEE999285F682C0070BA06 /* PersistenceController.swift */,
@@ -344,7 +344,7 @@
 				9FDF349D2885E83B00B3007E /* GoalButtonViewModel.swift in Sources */,
 				9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */,
 				9FC9A691287DA4FE00D05FBD /* AdjustingAlertView.swift in Sources */,
-				9F9B169B289E7E4700AFA248 /* ReadTheMantra.xcdatamodeld in Sources */,
+				9FFB322E289FC0E9000A5D80 /* ReadTheMantra.xcdatamodeld in Sources */,
 				9FA8E88B28985D3100479F08 /* CheckMarkView.swift in Sources */,
 				9F78628D2889A5830058AAD0 /* ReadsView.swift in Sources */,
 				9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */,
@@ -580,14 +580,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		9F9B1699289E7E4700AFA248 /* ReadTheMantra.xcdatamodeld */ = {
+		9FFB322C289FC0E9000A5D80 /* ReadTheMantra.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9F9B169A289E7E4700AFA248 /* ReadTheMantra.xcdatamodel */,
+				9FFB322D289FC0E9000A5D80 /* ReadTheMantra.xcdatamodel */,
 			);
-			currentVersion = 9F9B169A289E7E4700AFA248 /* ReadTheMantra.xcdatamodel */;
+			currentVersion = 9FFB322D289FC0E9000A5D80 /* ReadTheMantra.xcdatamodel */;
 			name = ReadTheMantra.xcdatamodeld;
-			path = "../../MantraCounter Xcode 14/ReadTheMantra/Models/ReadTheMantra.xcdatamodeld";
+			path = ../../MantraCounter/ReadTheMantra/Models/ReadTheMantra.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

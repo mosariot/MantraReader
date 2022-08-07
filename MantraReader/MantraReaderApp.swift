@@ -25,7 +25,6 @@ struct MantraReaderApp: App {
                     if isFirstLaunch {
                         print("first launch")
                         isFirstLaunch = false
-//                        persistenceController.preloadData(context: persistenceController.container.viewContext)
                         let launchPreparer = LaunchPreparer(persistenceController: persistenceController)
                         launchPreparer.firstLaunchPreparations()
                     } else {

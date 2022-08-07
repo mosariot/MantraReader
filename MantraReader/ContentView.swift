@@ -80,13 +80,6 @@ struct ContentView: View {
             DetailsColumn(selectedMantra: selectedMantra)
                 .navigationSplitViewColumnWidth(min: 400, ideal: 600)
         }
-        .onReceive(mantras.publisher.count()) { count in
-            if isInitalDataLoading {
-                if count > 0 {
-                    isInitalDataLoading = false
-                }
-            }
-        }
         .onReceive(NotificationCenter.default.publisher(for: dataSaveFailedNotification)) { _ in
             showingDataFailedAlert = true
         }

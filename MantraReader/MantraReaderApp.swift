@@ -12,7 +12,7 @@ struct MantraReaderApp: App {
     @AppStorage("isFirstLaunch") private var isFirstLaunch = true
     @AppStorage("isPreloadedMantrasDueToNoInternet") private var isPreloadedMantrasDueToNoInternet = false
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
-    @AppStorage("isPresentedOnboarding") private var isPresentedOnboarding = true
+    @AppStorage("isOnboarding") private var isOnboarding = true
     
     let persistenceController = PersistenceController.shared
     
@@ -42,8 +42,8 @@ struct MantraReaderApp: App {
                 } message: {
                     Text("It seems like there is no internet connection right now. New set of mantras was preloaded. If you were using 'Mantra Reader' previously with enabled iCloud account, your recordings will be added to the list automatically when internet connection will be available (you may need to relaunch the app).")
                 }
-                .sheet(isPresented: $isPresentedOnboarding) {
-                    OnboardingView(isPresented: $isPresentedOnboarding)
+                .sheet(isPresented: $isOnboarding) {
+                    OnboardingView(isPresented: $isOnboarding)
                         .interactiveDismissDisabled()
                 }
         }

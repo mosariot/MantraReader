@@ -14,6 +14,7 @@ struct ReadsView: View {
     @ObservedObject private var viewModel: ReadsViewModel
     private var circularViewModel: CircularProgressViewModel
     private var goalButtonViewModel: GoalButtonViewModel
+    private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
     @State private var isPresentedAdjustingAlert = false
     @State private var adjustingType: AdjustingType?
@@ -258,6 +259,7 @@ struct ReadsView: View {
             isMantraCounterMode.toggle()
         }
         if isMantraCounterMode {
+            lightHapticGenerator.impactOccurred()
             showHint = true
             afterDelay(1.5) { showHint = false }
             UIApplication.shared.isIdleTimerDisabled = true

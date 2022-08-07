@@ -42,6 +42,7 @@ final class ReadsViewModel: ObservableObject {
     }
     
     func toggleFavorite() {
+        lightHapticGenerator.impactOccurred()
         mantra.isFavorite.toggle()
         saveContext()
     }

@@ -38,8 +38,9 @@ struct PreloadedMantraListView: View {
                             isPresented = false
                         } label: {
                             Image(systemName: "xmark")
+                                .font(.headline)
                                 .symbolVariant(.circle.fill)
-                                .foregroundColor(.gray)
+                                .foregroundColor(.gray.opacity(0.8))
                         }
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -76,7 +77,7 @@ struct PreloadedMantraListView: View {
             viewModel.addMantras()
             addHapticGenerator.notificationOccurred(.success)
             successfullyAdded = true
-            afterDelay(0.9) { isPresented = false }
+            afterDelay(0.7) { isPresented = false }
         }
     }
 }

@@ -17,6 +17,7 @@ struct GoalButtonView: View {
             adjustingType = .goal
             isPresentedAdjustingAlert = true
         }
+        .font(.subheadline)
         .onReceive(viewModel.mantra.objectWillChange) { _ in
             viewModel.updateForMantraChanges()
         }

@@ -22,7 +22,7 @@ struct MantraListColumn: View {
     
     var body: some View {
         List(mantras, selection: $selectedMantra) { section in
-            Section(section.id ? "Favorites" : "Other Mantras") {
+            Section(section.id ? "Favorites" : "Mantras") {
                 ForEach(section) { mantra in
                     NavigationLink(value: mantra) {
                         MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)

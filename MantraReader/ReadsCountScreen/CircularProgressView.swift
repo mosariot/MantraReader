@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CircularProgressView: View {
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
     @ObservedObject var viewModel: CircularProgressViewModel
     var isMantraCounterMode: Bool
     var frame: CGFloat?
@@ -30,13 +31,23 @@ struct CircularProgressView: View {
                     value: viewModel.progress
                 )
                 Text("\(viewModel.displayedReads, specifier: "%.0f")")
-                    .font(.system(.largeTitle, design: .rounded, weight: .medium))
+                    .font(
+                        .system(
+                            verticalSizeClass == .compact ? .title : .largeTitle,
+                            design: .rounded
+                        )
+                    )
                     .textSelection(.enabled)
                     .bold()
                     .dynamicTypeSize(.xLarge)
                     .offset(x: 0, y: isMantraCounterMode ? -(frame ?? 0) / 6 : 0)
                 Text("\(viewModel.currentDisplayedReads, specifier: "%.0f")")
-                    .font(.system(.largeTitle, design: .rounded, weight: .medium))
+                    .font(
+                        .system(
+                            verticalSizeClass == .compact ? .title : .largeTitle,
+                            design: .rounded
+                        )
+                    )
                     .textSelection(.enabled)
                     .bold()
                     .foregroundColor(.accentColor)

@@ -25,6 +25,7 @@ struct OnboardingView: View {
         VStack {
             Text("Welcome to the path of Enlightenment!")
                 .font(.title)
+                .bold()
                 .multilineTextAlignment(.center)
                 .padding(.top)
             Image("DefaultImage")
@@ -44,8 +45,14 @@ struct OnboardingView: View {
                 .font(textFont)
                 .padding()
             }
-            Button("UNDERSTAND!") {
+            Button {
                 isPresented = false
+            } label: {
+                Text("UNDERSTAND!")
+                    .font(.callout)
+                    .bold()
+                    .padding(.vertical, 5)
+                    .padding(.horizontal, 25)
             }
             .buttonStyle(.borderedProminent)
             .padding(.bottom)

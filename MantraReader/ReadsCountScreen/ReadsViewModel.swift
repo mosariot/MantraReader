@@ -136,6 +136,7 @@ final class ReadsViewModel: ObservableObject {
             adjustMantraReads(with: value)
         case .goal:
             undoHistory.append((mantra.readsGoal, .goal))
+            lightHapticGenerator.impactOccurred()
             adjustMantraGoal(with: value)
         }
     }

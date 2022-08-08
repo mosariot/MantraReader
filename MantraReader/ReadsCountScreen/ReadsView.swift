@@ -131,6 +131,9 @@ struct ReadsView: View {
                         presenting: adjustingType
                     ) { _ in
                         TextField("Enter number", text: $adjustingText)
+#if os(iOS)
+                           .keyboardType(.numberPad)
+#endif
                         Button(viewModel.adjustingAlertActionTitle(for: adjustingType)) {
                             if viewModel.isValidUpdatingNumber(for: adjustingText, adjustingType: adjustingType) {
                                 guard let alertNumber = Int32(adjustingText) else { return }

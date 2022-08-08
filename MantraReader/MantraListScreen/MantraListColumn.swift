@@ -20,6 +20,8 @@ struct MantraListColumn: View {
     @Binding var selectedMantra: Mantra?
     @Binding var sorting: Sorting
     
+    private let widgetManager = MantraWidgetManager()
+    
     var body: some View {
         List(mantras, selection: $selectedMantra) { section in
             Section(section.id ? "Favorites" : "Mantras") {
@@ -181,9 +183,8 @@ struct MantraListColumn: View {
     private func saveContext() {
         guard viewContext.hasChanges else { return }
         do {
-            print("before")
             try viewContext.save()
-            print("after")
+            widgetManager.updateWidgetData(viewContext: viewContext)
         } catch {
             fatalCoreDataError(error)
         }

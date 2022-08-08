@@ -11,8 +11,8 @@ import CloudKit
 
 struct PersistenceController {
     static let shared = PersistenceController()
-    
     let container: NSPersistentCloudKitContainer
+    private let widgetManager = MantraWidgetManager()
     
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "ReadTheMantra")
@@ -68,11 +68,14 @@ struct PersistenceController {
         }
         do {
             try context.save()
+            widgetManager.updateWidgetData(viewContext: context)
         } catch {
             fatalCoreDataError(error)
         }
     }
 }
+
+// MARK: - Previews
 
 extension PersistenceController {
     static var preview: PersistenceController = {

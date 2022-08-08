@@ -20,6 +20,7 @@ struct ContentView: View {
     
     @SectionedFetchRequest(sectionIdentifier: \.isFavorite, sortDescriptors: [])
     private var mantras: SectionedFetchResults<Bool, Mantra>
+    private let widgetManager = MantraWidgetManager()
     
 #if os(iOS)
     @EnvironmentObject var orientationInfo: OrientationInfo
@@ -70,6 +71,16 @@ struct ContentView: View {
                             selectedMantra = mantras[0][0]
                         }
 #endif
+                    }
+                    widgetManager.updateWidgetData(viewContext: viewContext)
+                }
+                .onOpenURL { url in
+                    mantras.forEach { section in
+                        section.forEach { mantra in
+                            if mantra.uuid == UUID(uuidString: "\(url)") {
+                                selectedMantra = mantra
+                            }
+                        }
                     }
                 }
                 if isInitalDataLoading {

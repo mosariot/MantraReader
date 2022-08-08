@@ -15,6 +15,7 @@ final class PreloadedMantraListViewModel: ObservableObject {
     @Published var isDuplicating = false
     
     private var viewContext: NSManagedObjectContext
+    private let widgetManager = MantraWidgetManager()
     
     init(viewContext: NSManagedObjectContext) {
         self.mantras = {
@@ -94,6 +95,7 @@ final class PreloadedMantraListViewModel: ObservableObject {
         guard viewContext.hasChanges else { return }
         do {
             try viewContext.save()
+            widgetManager.updateWidgetData(viewContext: viewContext)
         } catch {
             fatalCoreDataError(error)
         }

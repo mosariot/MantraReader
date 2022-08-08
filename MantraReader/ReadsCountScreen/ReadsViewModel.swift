@@ -19,6 +19,7 @@ final class ReadsViewModel: ObservableObject {
     @Published var confettiTrigger: Int = 0
     private let congratulationsGenerator = UINotificationFeedbackGenerator()
     private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
+    private let widgetManager = MantraWidgetManager()
     
     var title: String { mantra.title ?? "" }
     var image: UIImage {
@@ -172,11 +173,11 @@ final class ReadsViewModel: ObservableObject {
         saveContext()
     }
     
-    @MainActor
     private func saveContext() {
         guard viewContext.hasChanges else { return }
         do {
             try viewContext.save()
+            widgetManager.updateWidgetData(viewContext: viewContext)
         } catch {
             fatalCoreDataError(error)
         }

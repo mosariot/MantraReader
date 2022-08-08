@@ -110,18 +110,6 @@ struct MantraListColumn: View {
         .onChange(of: searchText) {
             mantras.nsPredicate = $0.isEmpty ? nil : NSPredicate(format: "title contains[cd] %@", $0)
         }
-        .onChange(of: sorting) {
-            switch $0 {
-            case .title: mantras.sortDescriptors = [
-                SortDescriptor(\.isFavorite, order: .reverse),
-                SortDescriptor(\.title, order: .forward)
-            ]
-            case .reads: mantras.sortDescriptors = [
-                SortDescriptor(\.isFavorite, order: .reverse),
-                SortDescriptor(\.reads, order: .reverse)
-            ]
-            }
-        }
         .listStyle(.sidebar)
         .refreshable {
             viewContext.refreshAllObjects()
@@ -134,7 +122,7 @@ struct MantraListColumn: View {
 #endif
             ToolbarItem {
                 Menu {
-                    Picker(selection: $sorting, label: Text("Sorting options")) {
+                    Picker("", selection: $sorting) {
                         Label("Alphabetically", systemImage: "textformat").tag(Sorting.title)
                         Label("By readings count", systemImage: "textformat.123").tag(Sorting.reads)
                     }
@@ -160,6 +148,19 @@ struct MantraListColumn: View {
                     Label("Adding", systemImage: "plus")
                 }
             }
+        }
+        .onChange(of: sorting) {
+            switch $0 {
+            case .title: mantras.sortDescriptors = [
+                SortDescriptor(\.isFavorite, order: .reverse),
+                SortDescriptor(\.title, order: .forward)
+            ]
+            case .reads: mantras.sortDescriptors = [
+                SortDescriptor(\.isFavorite, order: .reverse),
+                SortDescriptor(\.reads, order: .reverse)
+            ]
+            }
+            widgetManager.updateWidgetData(viewContext: viewContext)
         }
         .sheet(isPresented: $isPresentedPreloadedMantraList) {
             PreloadedMantraListView(

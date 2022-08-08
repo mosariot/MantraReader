@@ -23,12 +23,10 @@ struct MantraReaderApp: App {
                 .environmentObject(OrientationInfo())
                 .onAppear {
                     if isFirstLaunch {
-                        print("first launch")
                         isFirstLaunch = false
                         let launchPreparer = LaunchPreparer(persistenceController: persistenceController)
                         launchPreparer.firstLaunchPreparations()
                     } else {
-                        print("not first launch")
                     }
                     isFreshLaunch = true
                 }

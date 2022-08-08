@@ -7,12 +7,25 @@
 		<key>MantraReader.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<key>MantraWidgetExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>9F1AB3C928A18E57001FF7DE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9FBEE993285F682C0070BA06</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

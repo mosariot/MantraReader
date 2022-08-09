@@ -73,6 +73,19 @@ struct PersistenceController {
             fatalCoreDataError(error)
         }
     }
+    
+    func deleteEmptyMantrasIfNeeded() {
+        var mantras = [Mantra]()
+        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
+        do {
+            try mantras = viewContext.fetch(request)
+        } catch {
+            print("Error getting data. \(error.localizedDescription)")
+        }
+        mantras
+            .filter { $0.title == "" }
+            .forEach { mantra in container.viewContext.delete(mantra) }
+    }
 }
 
 // MARK: - Previews

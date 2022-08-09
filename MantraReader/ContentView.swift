@@ -43,6 +43,7 @@ struct ContentView: View {
                 SortDescriptor(\.isFavorite, order: .reverse),
                 currentSortDescriptor
             ],
+            predicate: NSPredicate(format: "title != %@", ""),
             animation: .default
         )
 #if os(iOS)

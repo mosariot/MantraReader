@@ -26,9 +26,9 @@ struct MantraReaderApp: App {
                         isFirstLaunch = false
                         let launchPreparer = LaunchPreparer(persistenceController: persistenceController)
                         launchPreparer.firstLaunchPreparations()
-                    } else {
                     }
                     isFreshLaunch = true
+                    persistenceController.deleteEmptyMantrasIfNeeded()
                 }
                 .alert(
                     "No Internet Connection",

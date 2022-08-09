@@ -33,12 +33,14 @@ struct MantraWidgetManager {
     }
     
     private func getWidgetModel(for allMantras: [Mantra]) -> WidgetModel {
-        let mantras = Array(allMantras
-            .sorted { $0.isFavorite && !$1.isFavorite }
-            .sorted { sorting == .title ?
-                $0.title! < $1.title! :
-                $0.reads > $1.reads }
-        )
+        var sort = [KeyPathComparator<Mantra>]
+        switch sorting {
+        case .title:
+            sort = [KeyPathComparator(\.isFavorite, order: .reverse), KeyPathComparator(\.title, order: .forward)]
+        case .reads:
+            sort = [KeyPathComparator(\.isFavorite, order: .reverse), KeyPathComparator(\.reads, order: .reverse)]
+        }
+        let mantras = allMantras.sorted(using: sort)
         let mantrasItems = mantras
             .map { WidgetModel.Item(id: $0.uuid ?? UUID(), title: $0.title ?? "", reads: $0.reads, image: $0.imageForTableView) }
         let widgetModel = WidgetModel(mantras: mantrasItems)

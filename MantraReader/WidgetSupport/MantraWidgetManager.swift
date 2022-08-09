@@ -33,7 +33,7 @@ struct MantraWidgetManager {
     }
     
     private func getWidgetModel(for allMantras: [Mantra]) -> WidgetModel {
-        var sort = [KeyPathComparator<Mantra>]
+        var sort: [KeyPathComparator<Mantra>]
         switch sorting {
         case .title:
             sort = [KeyPathComparator(\.isFavorite, order: .reverse), KeyPathComparator(\.title, order: .forward)]
@@ -52,5 +52,15 @@ struct MantraWidgetManager {
         guard let data = try? encoder.encode(widgetModel) else { return }
         widgetItemData = data
         WidgetCenter.shared.reloadAllTimelines()
+    }
+}
+
+extension Bool: Comparable {
+    static public func < (lhs: Bool, rhs: Bool) -> Bool {
+        return lhs.description < rhs.description
+    }
+    
+    static public func == (lhs: Bool, rhs: Bool) -> Bool {
+        return lhs.description == rhs.description
     }
 }

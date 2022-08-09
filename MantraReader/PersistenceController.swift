@@ -78,7 +78,7 @@ struct PersistenceController {
         var mantras = [Mantra]()
         let request = NSFetchRequest<Mantra>(entityName: "Mantra")
         do {
-            try mantras = viewContext.fetch(request)
+            try mantras = container.viewContext.fetch(request)
         } catch {
             print("Error getting data. \(error.localizedDescription)")
         }

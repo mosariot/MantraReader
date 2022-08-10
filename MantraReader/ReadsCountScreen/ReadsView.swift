@@ -131,16 +131,14 @@ struct ReadsView: View {
                         presenting: adjustingType
                     ) { _ in
                         TextField("Enter number", text: $adjustingText)
+                        .onSubmit {
+                            validateAndHandleAdjusting()
+                        }
 #if os(iOS)
                            .keyboardType(.numberPad)
 #endif
                         Button(viewModel.adjustingAlertActionTitle(for: adjustingType)) {
-                            if viewModel.isValidUpdatingNumber(for: adjustingText, adjustingType: adjustingType) {
-                                guard let alertNumber = Int32(adjustingText) else { return }
-                                viewModel.handleAdjusting(for: adjustingType, with: alertNumber)
-                            }
-                            adjustingType = nil
-                            adjustingText = ""
+                            validateAndHandleAdjusting()
                         }
                         Button("Cancel", role: .cancel) {
                             adjustingType = nil
@@ -255,6 +253,15 @@ struct ReadsView: View {
             }
             UIApplication.shared.isIdleTimerDisabled = false
         }
+    }
+    
+    private func validateAndHandleAdjusting() {
+        if viewModel.isValidUpdatingNumber(for: adjustingText, adjustingType: adjustingType) {
+            guard let alertNumber = Int32(adjustingText) else { return }
+            viewModel.handleAdjusting(for: adjustingType, with: alertNumber)
+        }
+        adjustingType = nil
+        adjustingText = ""
     }
     
     private func toggleMantraCounterMode() {

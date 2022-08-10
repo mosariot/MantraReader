@@ -195,6 +195,7 @@ struct ReadsView: View {
                     .imageScale(.large)
                     .font(isMantraCounterMode ? .title : .none)
                     .symbolVariant(isMantraCounterMode ? .fill : .none)
+                    .contentTransition()
             }
             .padding(20)
         }

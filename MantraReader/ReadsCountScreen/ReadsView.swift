@@ -19,7 +19,7 @@ struct ReadsView: View {
     @State private var isPresentedAdjustingAlert = false
     @State private var adjustingType: AdjustingType?
     @State private var adjustingText: String = ""
-    @State private var isPresentedDetailsSheet = false
+    @State private var isPresentedInfoSheet = false
     @State private var isPresentedUndoAlert = false
     @State private var isPresentedMantraCounterModeAlert = false
     @Binding private var isMantraCounterMode: Bool
@@ -228,7 +228,7 @@ struct ReadsView: View {
             }
             .disabled(isMantraCounterMode)
             Button {
-                isPresentedDetailsSheet = true
+                isPresentedInfoSheet = true
             } label: {
                 Image(systemName: "info")
                     .symbolVariant(.circle)
@@ -244,6 +244,9 @@ struct ReadsView: View {
             }
         } message: {
             Text("You have entered the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. The screen won’t dim. The edit buttons at the bottom are disabled.")
+        }
+        .sheet(isPresented: $isPresentedPreloadedMantraList) {
+            InfoView()
         }
         .onReceive(viewModel.mantra.objectWillChange) { _ in
             viewModel.objectWillChange.send()

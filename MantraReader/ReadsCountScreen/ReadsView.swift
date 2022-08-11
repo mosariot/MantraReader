@@ -14,6 +14,7 @@ struct ReadsView: View {
     @ObservedObject private var viewModel: ReadsViewModel
     private var circularViewModel: CircularProgressViewModel
     private var goalButtonViewModel: GoalButtonViewModel
+    private var infoViewModel: InfoViewModel
     private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
     @State private var isPresentedAdjustingAlert = false
@@ -32,6 +33,7 @@ struct ReadsView: View {
         self._isMantraCounterMode = isMantraCounterMode
         circularViewModel = CircularProgressViewModel(viewModel.mantra)
         goalButtonViewModel = GoalButtonViewModel(viewModel.mantra)
+        infoViewModel = InfoViewModel(viewModel.mantra, viewContext: viewModel.viewContext)
     }
     
     var body: some View {
@@ -248,7 +250,7 @@ struct ReadsView: View {
         }
         .sheet(isPresented: $isPresentedInfoView) {
             InfoView(
-                viewModel: InfoViewModel(viewModel.mantra, viewContext: viewModel.viewContext),
+                viewModel: infoViewModel,
                 infoMode: .view,
                 isPresented: $isPresentedInfoView
             )

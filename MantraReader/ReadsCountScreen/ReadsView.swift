@@ -196,8 +196,8 @@ struct ReadsView: View {
                     .imageScale(.large)
                     .font(isMantraCounterMode ? .title : .none)
                     .symbolVariant(isMantraCounterMode ? .fill : .none)
-                    .contentTransition(.interpolate)
             }
+            .contentTransition(.interpolate)
             .padding(20)
         }
         .navigationTitle(verticalSizeClass == .compact ? viewModel.mantra.title ?? "" : "")
@@ -247,7 +247,11 @@ struct ReadsView: View {
             Text("You have entered the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. The screen won’t dim. The edit buttons at the bottom are disabled.")
         }
         .sheet(isPresented: $isPresentedInfoView) {
-            InfoView()
+            InfoView(
+                viewModel: InfoViewModel(viewModel.mantra, viewContext: viewModel.viewContext),
+                infoMode: .view,
+                isPresented: $isPresentedInfoView
+            )
         }
         .onReceive(viewModel.mantra.objectWillChange) { _ in
             viewModel.objectWillChange.send()

@@ -60,7 +60,6 @@ struct InfoView: View {
                     }
                     .background(Color(UIColor.secondarySystemGroupedBackground))
                     .cornerRadius(15)
-                    .padding()
                     
                     ZStack(alignment: .topLeading) {
                         RoundedRectangle(cornerRadius: 15)

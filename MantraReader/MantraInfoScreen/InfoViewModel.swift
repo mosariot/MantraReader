@@ -33,8 +33,38 @@ final class InfoViewModel: ObservableObject {
     }
     
     func saveMantra() {
+        mantra.title = title
+        mantra.text = text
+        mantra.details = description
+        mantra.image = image.pngData()
+        saveContext()
     }
     
     func deleteNewMantra() {
+        viewContext.delete(mantra)
+        saveContext()
+    }
+    
+    func updateUI() {
+        title = mantra.title ?? ""
+        text = mantra.text ?? ""
+        description = mantra.details ?? ""
+        image = UIImage {
+            if let data = mantra.image, let image = UIImage(data: data) {
+                return image
+            } else {
+                return UIImage(named: Constants.defaultImage)!
+            }
+        }
+    }
+    
+    private func saveContext() {
+        guard viewContext.hasChanges else { return }
+        do {
+            try viewContext.save()
+            widgetManager.updateWidgetData(viewContext: viewContext)
+        } catch {
+            fatalCoreDataError(error)
+        }
     }
 }

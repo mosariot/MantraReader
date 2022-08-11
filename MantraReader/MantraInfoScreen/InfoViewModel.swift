@@ -5,4 +5,9 @@
 //  Created by Александр Воробьев on 29.07.2022.
 //
 
-import Foundation
+import SwiftUI
+
+@MainActor
+final class InfoViewModel: ObservableObject {
+    
+}

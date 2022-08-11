@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct MantraRow: View {
-    @Environment(\.verticalSizeClass) private var verticalSizeClass
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @ObservedObject var mantra: Mantra
     let isSelected: Bool
     
@@ -23,7 +21,7 @@ struct MantraRow: View {
                 Text(mantra.title ?? "")
                 Text("Current reads: \(mantra.reads)")
                     .font(.caption)
-                    .opacity(isSelected && verticalSizeClass == .regular && horizontalSizeClass == .regular ? 1 : 0.5)
+                    .opacity(isSelected && UIDevice.current.userInterfaceIdiom == .pad ? 1 : 0.5)
             }
             Spacer()
             if mantra.reads >= mantra.readsGoal {

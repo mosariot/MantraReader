@@ -54,13 +54,3 @@ struct MantraWidgetManager {
         WidgetCenter.shared.reloadAllTimelines()
     }
 }
-
-extension Bool: Comparable {
-    static public func < (lhs: Bool, rhs: Bool) -> Bool {
-        return lhs.description < rhs.description
-    }
-    
-    static public func == (lhs: Bool, rhs: Bool) -> Bool {
-        return lhs.description == rhs.description
-    }
-}

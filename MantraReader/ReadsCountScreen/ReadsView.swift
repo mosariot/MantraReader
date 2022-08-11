@@ -19,7 +19,7 @@ struct ReadsView: View {
     @State private var isPresentedAdjustingAlert = false
     @State private var adjustingType: AdjustingType?
     @State private var adjustingText: String = ""
-    @State private var isPresentedInfoSheet = false
+    @State private var isPresentedInfoView = false
     @State private var isPresentedUndoAlert = false
     @State private var isPresentedMantraCounterModeAlert = false
     @Binding private var isMantraCounterMode: Bool
@@ -45,6 +45,7 @@ struct ReadsView: View {
                         Image(uiImage: viewModel.image)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
+                            .accessibilityIgnoresInvertColors()
                             .frame(
                                 width: imageSize(with: geometry.size),
                                 height: imageSize(with: geometry.size)
@@ -131,11 +132,11 @@ struct ReadsView: View {
                         presenting: adjustingType
                     ) { _ in
                         TextField("Enter number", text: $adjustingText)
-                        .onSubmit {
-                            validateAndHandleAdjusting()
-                        }
+                            .onSubmit {
+                                validateAndHandleAdjusting()
+                            }
 #if os(iOS)
-                           .keyboardType(.numberPad)
+                            .keyboardType(.numberPad)
 #endif
                         Button(viewModel.adjustingAlertActionTitle(for: adjustingType)) {
                             validateAndHandleAdjusting()
@@ -160,14 +161,14 @@ struct ReadsView: View {
                 .ignoresSafeArea(.keyboard)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-// UIAlerController implementation for Adjusting alert
-//            if isPresentedAdjustingAlert {
-//                AdjustingAlertView(
-//                    isPresented: $isPresentedAdjustingAlert,
-//                    adjustingType: $adjustingType,
-//                    viewModel: viewModel
-//                )
-//            }
+            // UIAlerController implementation for Adjusting alert
+            //            if isPresentedAdjustingAlert {
+            //                AdjustingAlertView(
+            //                    isPresented: $isPresentedAdjustingAlert,
+            //                    adjustingType: $adjustingType,
+            //                    viewModel: viewModel
+            //                )
+            //            }
             if isMantraCounterMode {
                 MantraCounterModeOverlayView(
                     showBlink: $showBlink,
@@ -195,7 +196,7 @@ struct ReadsView: View {
                     .imageScale(.large)
                     .font(isMantraCounterMode ? .title : .none)
                     .symbolVariant(isMantraCounterMode ? .fill : .none)
-                    .contentTransition()
+                    .contentTransition(.interpolate)
             }
             .padding(20)
         }
@@ -228,7 +229,7 @@ struct ReadsView: View {
             }
             .disabled(isMantraCounterMode)
             Button {
-                isPresentedInfoSheet = true
+                isPresentedInfoView = true
             } label: {
                 Image(systemName: "info")
                     .symbolVariant(.circle)
@@ -245,7 +246,7 @@ struct ReadsView: View {
         } message: {
             Text("You have entered the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. The screen won’t dim. The edit buttons at the bottom are disabled.")
         }
-        .sheet(isPresented: $isPresentedPreloadedMantraList) {
+        .sheet(isPresented: $isPresentedInfoView) {
             InfoView()
         }
         .onReceive(viewModel.mantra.objectWillChange) { _ in

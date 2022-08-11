@@ -8,6 +8,7 @@
 import Foundation
 
 enum InfoMode {
+    case view
     case edit
     case addNew
 }

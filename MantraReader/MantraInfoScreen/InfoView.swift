@@ -143,6 +143,11 @@ struct InfoView: View {
                     }
                 }
             }
+            .onReceive(of: viewModel.mantra.objectWillChange) { _ in
+                if infoMode == .view {
+                    viewModel.updateUI()
+                }
+            }
         }
     }
 }

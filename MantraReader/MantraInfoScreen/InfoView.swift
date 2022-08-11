@@ -89,7 +89,7 @@ struct InfoView: View {
                     }
                     .padding()
                 }
-                .navigationTitle("Information")
+                .navigationTitle(infoMode == .addNew ? "New Mantra" : "Information")
                 .navigationBarTitleDisplayMode(.inline)
             }
             .toolbar {

@@ -13,6 +13,7 @@ struct MantraListColumn: View {
     
     @State private var searchText = ""
     @State private var isPresentedPreloadedMantraList = false
+    @State private var isPresentedNewMantraSheet = false
     @State private var isDeletingMantras = false
     @State private var mantrasForDeletion: [Mantra]?
     
@@ -133,9 +134,7 @@ struct MantraListColumn: View {
             ToolbarItem {
                 Menu {
                     Button {
-                        withAnimation {
-                            addItem()
-                        }
+                        isPresentedNewMantraSheet = true
                     } label: {
                         Label("New Mantra", systemImage: "square.and.pencil")
                     }
@@ -168,17 +167,13 @@ struct MantraListColumn: View {
                 viewContext: viewContext
             )
         }
-    }
-    
-    private func addItem() {
-        let newMantra = Mantra(context: viewContext)
-        newMantra.uuid = UUID()
-        newMantra.isFavorite = Bool.random()
-        newMantra.reads = Int32.random(in: 0...100_000)
-        newMantra.title = "Some Mantra"
-        newMantra.text = "Some Text"
-        newMantra.details = "Some Details"
-        saveContext()
+        .sheet(isPresented: $isPresentedNewMantraSheet) {
+            InfoView(
+                viewModel: InfoViewModel(Mantra(context: viewContext), viewContext: viewContext),
+                infoMode: .addNew,
+                isPresented: $isPresentedNewMantraSheet
+            )
+        }
     }
     
     private func saveContext() {

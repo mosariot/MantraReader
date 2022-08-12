@@ -22,9 +22,9 @@ final class InfoViewModel: ObservableObject {
 
     var areThereSomeChanges: Bool {
         if mantra.title != title
-            || (mantra.text != text && mantra.text != nil)
+            || (mantra.text != text && !(text.trimmingCharacters(in: .whitespaces) == "" && mantra.text = nil))
             || mantra.details != description
-            || (mantra.image != image.pngData() && mantra.image != nil) {
+            || (mantra.image != imageData) {
             return true
         } else {
             return false
@@ -33,15 +33,15 @@ final class InfoViewModel: ObservableObject {
     
     var isCleanMantra: Bool {
         if title.trimmingCharacters(in: .whitespaces) == ""
-            && text == ""
-            && description == ""
-            && image.pngData() == nil {
+            && text.trimmingCharacters(in: .whitespaces) == ""
+            && description.trimmingCharacters(in: .whitespaces) == ""
+            && imageData == nil {
             return true
         } else {
             return false
         }
     }
-    
+    private var imageData: Data? = nil
     private var viewContext: NSManagedObjectContext
     private let widgetManager = MantraWidgetManager()
     

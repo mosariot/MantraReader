@@ -11,6 +11,8 @@ struct InfoView: View {
     @ObservedObject private var viewModel: InfoViewModel
     @State private var infoMode: InfoMode
     @Binding private var isPresented: Bool
+    @State private var isPresentedChangesAlert = false
+    @State private var isPresentedDiscardingMantraAlert = false
     
     init(viewModel: InfoViewModel, infoMode: InfoMode, isPresented: Binding<Bool>) {
         self.viewModel = viewModel
@@ -143,8 +145,20 @@ struct InfoView: View {
 //                if infoMode == .addNew {
 //                    ToolbarItem(placement: .navigationBarLeading) {
 //                        Button("Cancel") {
-//                            viewModel.deleteNewMantra()
-//                            isPresented = false
+//                            isPresentedDiscardingMantraAlert = true
+//                        }
+//                        .confirmationDialog(
+//                            "Discarding Mantra",
+//                            isPresented: $isPresentedDiscardingMantraAlert,
+//                            titleVisibility: .hidden
+//                        ) {
+//                            Button("Discard Mantra", role: .destructive) {
+//                                viewModel.deleteNewMantra()
+//                                isPresented = false
+//                            }
+//                            Button("Cancel", role: .cancel) { }
+//                        } message: {
+//                            Text("Are you sure you want to discard this Mantra?")
 //                        }
 //                    }
 //                    ToolbarItem(placement: .navigationBarTrailing) {

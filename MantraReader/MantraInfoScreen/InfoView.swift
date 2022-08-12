@@ -195,6 +195,7 @@ struct InfoView: View {
 //                    }
 //                }
             }
+            .disabled(successfullyAdded)
             .onReceive(viewModel.mantra.objectWillChange) { _ in
                 if infoMode == .view {
                     viewModel.updateUI()

@@ -17,14 +17,25 @@ final class InfoViewModel: ObservableObject {
     @Published var image: UIImage
     
     var isThereAreSomeChanges: Bool {
-        if mantra.title != title ||
-        mantra.text != text ||
-        mantra.details != description ||
-        mantra.image != image.pngData() {
-            return true
-        } else {
+        if mantra.title != title
+            || mantra.text != text
+            || mantra.details != description
+            || mantra.image != image.pngData() {
+                return true
+            } else {
+                return false
+            }
+    }
+    
+    var isCleanMantra: Bool {
+        if mantra.title.trimmingCharacters(in: .whitespaces) == ""
+            && mantra.text == ""
+            && mantra.description == ""
+            && mantra.image.pngData() == nil {
+                return true
+            } else {
             return false
-        }
+            }
     }
     
     private var viewContext: NSManagedObjectContext

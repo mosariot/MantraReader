@@ -145,7 +145,12 @@ struct InfoView: View {
 //                if infoMode == .addNew {
 //                    ToolbarItem(placement: .navigationBarLeading) {
 //                        Button("Cancel") {
-//                            isPresentedDiscardingMantraAlert = true
+//                            if viewModel.isCleanMantra {
+//                                viewModel.deleteNewMantra()
+//                                isPresented = false
+//                            } else {
+//                                isPresentedDiscardingMantraAlert = true
+//                            }
 //                        }
 //                        .confirmationDialog(
 //                            "Discarding Mantra",

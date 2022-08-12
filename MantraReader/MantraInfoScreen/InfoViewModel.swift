@@ -50,7 +50,8 @@ final class InfoViewModel: ObservableObject {
         self.title = mantra.title ?? ""
         self.text = mantra.text ?? ""
         self.description = mantra.details ?? ""
-        if let data = mantra.image, let image = UIImage(data: data) {
+        self.imageData = mantra.image
+        if let data = imageData, let image = UIImage(data: data) {
             self.image = image
         } else {
             self.image = UIImage(named: Constants.defaultImage)!
@@ -62,7 +63,7 @@ final class InfoViewModel: ObservableObject {
         if mantra.title != title { mantra.title = title }
         if mantra.text != text { mantra.text = text }
         if mantra.details != description { mantra.details = description }
-        if mantra.image != image.pngData() { mantra.image = image.pngData() }
+        if mantra.image != imageData { mantra.image = imageData }
         saveContext()
     }
     
@@ -75,7 +76,8 @@ final class InfoViewModel: ObservableObject {
         title = mantra.title ?? ""
         text = mantra.text ?? ""
         description = mantra.details ?? ""
-        if let data = mantra.image, let image = UIImage(data: data) {
+        imageData = mantra.image
+        if let data = imageData, let image = UIImage(data: data) {
             self.image = image
         } else {
             self.image = UIImage(named: Constants.defaultImage)!

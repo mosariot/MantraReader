@@ -100,8 +100,8 @@ struct InfoView: View {
             .navigationTitle(infoMode == .addNew ? "New Mantra" : "Information")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                if infoMode == .edit || infoMode == .view {
-                    ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    if infoMode == .edit || infoMode == .view {
                         Button {
                             if viewModel.isThereAreSomeChanges {
                                 isPresentedChangesAlert = true
@@ -127,9 +127,31 @@ struct InfoView: View {
                             Text("Are you sure you want to discard changes?")
                         }
                     }
+                    if infoMode == .addNew {
+                        Button("Cancel") {
+                            if viewModel.isCleanMantra {
+                                viewModel.deleteNewMantra()
+                                isPresented = false
+                            } else {
+                                isPresentedDiscardingMantraAlert = true
+                            }
+                        }
+                        .confirmationDialog(
+                            "Discarding Mantra",
+                            isPresented: $isPresentedDiscardingMantraAlert,
+                            titleVisibility: .hidden
+                        ) {
+                            Button("Discard Mantra", role: .destructive) {
+                                viewModel.deleteNewMantra()
+                                isPresented = false
+                            }
+                        } message: {
+                            Text("Are you sure you want to discard this Mantra?")
+                        }
+                    }
                 }
-                if infoMode == .edit {
-                    ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    if infoMode == .edit {
                         Button {
                             infoMode = .view
                             viewModel.saveMantraIfNeeded()
@@ -139,61 +161,35 @@ struct InfoView: View {
                         }
                         .disabled(viewModel.title.trimmingCharacters(in: .whitespaces) == "")
                     }
-                }
-                if infoMode == .view {
-                    ToolbarItem(placement: .navigationBarTrailing) {
+                    if infoMode == .view {
                         Button("Edit") {
                             infoMode = .edit
                         }
                     }
+                    if infoMode == .addNew {
+                        Button {
+                            viewModel.checkForDuplication()
+                            if !viewModel.isDuplicating {
+                                addMantra()
+                            }
+                        } label: {
+                            Text("Add")
+                                .bold()
+                        }
+                        .disabled(viewModel.title.trimmingCharacters(in: .whitespaces) == "")
+                        .confirmationDialog(
+                            "Duplicating Mantra",
+                            isPresented: $viewModel.isDuplicating,
+                            titleVisibility: .visible
+                        ) {
+                            Button("Add") {
+                                addMantra()
+                            }
+                        } message: {
+                            Text("It's already in your mantra list. Add another one?")
+                        }
+                    }
                 }
-//                if infoMode == .addNew {
-//                    ToolbarItem(placement: .navigationBarLeading) {
-//                        Button("Cancel") {
-//                            if viewModel.isCleanMantra {
-//                                viewModel.deleteNewMantra()
-//                                isPresented = false
-//                            } else {
-//                                isPresentedDiscardingMantraAlert = true
-//                            }
-//                        }
-//                        .confirmationDialog(
-//                            "Discarding Mantra",
-//                            isPresented: $isPresentedDiscardingMantraAlert,
-//                            titleVisibility: .hidden
-//                        ) {
-//                            Button("Discard Mantra", role: .destructive) {
-//                                viewModel.deleteNewMantra()
-//                                isPresented = false
-//                            }
-//                        } message: {
-//                            Text("Are you sure you want to discard this Mantra?")
-//                        }
-//                    }
-//                    ToolbarItem(placement: .navigationBarTrailing) {
-//                        Button {
-//                            viewModel.checkForDuplication()
-//                            if !viewModel.isDuplicating {
-//                                addMantra()
-//                            }
-//                        } label: {
-//                            Text("Add")
-//                                .bold()
-//                        }
-//                        .disabled(viewModel.title.trimmingCharacters(in: .whitespaces) == "")
-//                        .confirmationDialog(
-//                            "Duplicating Mantra",
-//                            isPresented: $viewModel.isDuplicating,
-//                            titleVisibility: .visible
-//                        ) {
-//                            Button("Add") {
-//                                addMantra()
-//                            }
-//                        } message: {
-//                            Text("It's already in your mantra list. Add another one?")
-//                        }
-//                    }
-//                }
             }
             .disabled(successfullyAdded)
             .onReceive(viewModel.mantra.objectWillChange) { _ in

@@ -13,6 +13,8 @@ struct InfoView: View {
     @Binding private var isPresented: Bool
     @State private var isPresentedChangesAlert = false
     @State private var isPresentedDiscardingMantraAlert = false
+    @State private var successfullyAdded = false
+    private let addHapticGenerator = UINotificationFeedbackGenerator()
     
     init(viewModel: InfoViewModel, infoMode: InfoMode, isPresented: Binding<Bool>) {
         self.viewModel = viewModel
@@ -91,9 +93,12 @@ struct InfoView: View {
                     }
                     .padding()
                 }
-                .navigationTitle(infoMode == .addNew ? "New Mantra" : "Information")
-                .navigationBarTitleDisplayMode(.inline)
+                if successfullyAdded {
+                    CheckMarkView()
+                }
             }
+            .navigationTitle(infoMode == .addNew ? "New Mantra" : "Information")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 if infoMode == .edit || infoMode == .view {
                     ToolbarItem(placement: .navigationBarLeading) {
@@ -161,20 +166,32 @@ struct InfoView: View {
 //                                viewModel.deleteNewMantra()
 //                                isPresented = false
 //                            }
-//                            Button("Cancel", role: .cancel) { }
 //                        } message: {
 //                            Text("Are you sure you want to discard this Mantra?")
 //                        }
 //                    }
 //                    ToolbarItem(placement: .navigationBarTrailing) {
 //                        Button {
-//                            viewModel.saveMantra()
-//                            isPresented = false
+//                            viewModel.checkForDuplication()
+//                            if !viewModel.isDuplicating {
+//                                addMantra()
+//                            }
 //                        } label: {
 //                            Text("Add")
 //                                .bold()
 //                        }
 //                        .disabled(viewModel.title.trimmingCharacters(in: .whitespaces) == "")
+//                        .confirmationDialog(
+//                            "Duplicating Mantra",
+//                            isPresented: $viewModel.isDuplicating,
+//                            titleVisibility: .visible
+//                        ) {
+//                            Button("Add") {
+//                                addMantra()
+//                            }
+//                        } message: {
+//                            Text("It's already in your mantra list. Add another one?")
+//                        }
 //                    }
 //                }
             }
@@ -183,6 +200,15 @@ struct InfoView: View {
                     viewModel.updateUI()
                 }
             }
+        }
+    }
+    
+    private func addMantra() {
+        withAnimation {
+            viewModel.saveMantraIfNeeded()
+            addHapticGenerator.notificationOccurred(.success)
+            successfullyAdded = true
+            afterDelay(0.7) { isPresented = false }
         }
     }
 }

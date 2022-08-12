@@ -16,6 +16,17 @@ final class InfoViewModel: ObservableObject {
     @Published var description: String
     @Published var image: UIImage
     
+    var isThereAreSomeChanges: Bool {
+        if mantra.title != title ||
+        mantra.text != text ||
+        mantra.details != description ||
+        mantra.image != image.pngData() {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     private var viewContext: NSManagedObjectContext
     private let widgetManager = MantraWidgetManager()
     
@@ -32,11 +43,11 @@ final class InfoViewModel: ObservableObject {
         self.viewContext = viewContext
     }
     
-    func saveMantra() {
-        mantra.title = title
-        mantra.text = text
-        mantra.details = description
-        mantra.image = image.pngData()
+    func saveMantraIfNeeded() {
+        if mantra.title != title { mantra.title = title }
+        if mantra.text != text { mantra.text = text }
+        if mantra.details != description { mantra.details = description }
+        if mantra.image != image.pngData() { mantra.image != image.pngData() }
         saveContext()
     }
     

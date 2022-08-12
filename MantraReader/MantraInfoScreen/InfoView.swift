@@ -96,12 +96,28 @@ struct InfoView: View {
                 if infoMode == .edit || infoMode == .view {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button {
-                            isPresented = false
+                            if viewModel.isThereAreSomeChanges {
+                                isPresentedChangesAlert = true
+                            } else {
+                                isPresented = false
+                            }
                         } label: {
                             Image(systemName: "xmark")
                                 .font(.headline)
                                 .symbolVariant(.circle.fill)
                                 .foregroundColor(.gray.opacity(0.8))
+                        }
+                        .confirmationDialog(
+                            "There were some changes",
+                            isPresented: $isPresentedChangesAlert,
+                            titleVisibility: .hidden
+                        ) {
+                            Button("Discard Changes", role: .destructive) {
+                                isPresented = false
+                            }
+                            Button("Cancel", role: .cancel) { }
+                        } message: {
+                            Text("Are you sure you want to discard changes?")
                         }
                     }
                 }
@@ -109,7 +125,7 @@ struct InfoView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             infoMode = .view
-                            viewModel.saveMantra()
+                            viewModel.saveMantraIfNeeded()
                         } label: {
                             Text("Done")
                                 .bold()

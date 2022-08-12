@@ -15,9 +15,12 @@ final class InfoViewModel: ObservableObject {
     @Published var text: String
     @Published var description: String
     @Published var image: UIImage
-    @Published var isDuplicating = false
     
-    var isThereAreSomeChanges: Bool {
+    var isDuplicating: Bool {
+        currentMantrasTitles.contains(title)
+    }
+
+    var areThereSomeChanges: Bool {
         if mantra.title != title
             || (mantra.text != text && mantra.text != nil)
             || mantra.details != description
@@ -76,14 +79,6 @@ final class InfoViewModel: ObservableObject {
             self.image = image
         } else {
             self.image = UIImage(named: Constants.defaultImage)!
-        }
-    }
-    
-    func checkForDuplication() {
-        currentMantrasTitles.forEach { title in
-            if self.title.caseInsensitiveCompare(title) == .orderedSame {
-                isDuplicating = true
-            }
         }
     }
     

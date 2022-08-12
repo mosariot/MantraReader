@@ -132,7 +132,7 @@ struct InfoView: View {
                             Text("Done")
                                 .bold()
                         }
-                        .disabled(viewModel.title.isEmpty)
+                        .disabled(viewModel.title.trimmingCharacters(in: .whitespaces) == "")
                     }
                 }
                 if infoMode == .view {
@@ -174,7 +174,7 @@ struct InfoView: View {
 //                            Text("Add")
 //                                .bold()
 //                        }
-//                        .disabled(viewModel.title.isEmpty)
+//                        .disabled(viewModel.title.trimmingCharacters(in: .whitespaces) == "")
 //                    }
 //                }
             }

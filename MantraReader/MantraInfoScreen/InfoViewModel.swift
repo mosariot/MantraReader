@@ -15,27 +15,27 @@ final class InfoViewModel: ObservableObject {
     @Published var text: String
     @Published var description: String
     @Published var image: UIImage
+    @Published var isDuplicating = false
     
-    var isDuplicating = false
     var isThereAreSomeChanges: Bool {
         if mantra.title != title
             || mantra.text != text
             || mantra.details != description
             || mantra.image != image.pngData() {
-                return true
-            } else {
-                return false
-            }
+            return true
+        } else {
+            return false
+        }
     }
     var isCleanMantra: Bool {
         if mantra.title.trimmingCharacters(in: .whitespaces) == ""
             && mantra.text == ""
             && mantra.description == ""
             && mantra.image.pngData() == nil {
-                return true
-            } else {
-            return false
-            }
+            return true
+        } else {
+        return false
+        }
     }
     
     private var viewContext: NSManagedObjectContext

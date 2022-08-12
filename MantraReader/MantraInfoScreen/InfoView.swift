@@ -106,7 +106,7 @@ struct InfoView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     if infoMode == .edit || infoMode == .view {
                         Button {
-                            if viewModel.isThereAreSomeChanges {
+                            if viewModel.areThereSomeChanges {
                                 isPresentedChangesAlert = true
                             } else {
                                 isPresented = false
@@ -171,7 +171,6 @@ struct InfoView: View {
                     }
                     if infoMode == .addNew {
                         Button {
-                            viewModel.checkForDuplication()
                             if !viewModel.isDuplicating {
                                 addMantra()
                             }

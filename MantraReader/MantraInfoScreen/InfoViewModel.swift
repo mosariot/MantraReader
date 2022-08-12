@@ -62,16 +62,29 @@ final class InfoViewModel: ObservableObject {
         }
     }
     
-    func saveMantraIfNeeded() {
+    func saveMantraIfNeeded(withCleanUp: Bool = false) {
         if mantra.title != title { mantra.title = title }
         if mantra.text != text { mantra.text = text }
         if mantra.details != description { mantra.details = description }
         if mantra.image != imageData { mantra.image = imageData }
-        saveContext()
+        if withCleanUp {
+            deleteEmptyMantras()
+        } else {
+            saveContext()
+        }
     }
     
-    func deleteNewMantra() {
-        viewContext.delete(mantra)
+    func deleteEmptyMantras() {
+        var mantras = [Mantra]()
+        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
+        do {
+            try mantras = viewContext.fetch(request)
+        } catch {
+            print("Error getting data. \(error.localizedDescription)")
+        }
+        mantras
+            .filter { $0.title == "" }
+            .forEach { mantra in viewContext.delete(mantra) }
         saveContext()
     }
     

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InfoView: View {
-    @ObservedObject private var viewModel: InfoViewModel
+    @StateObject private var viewModel: InfoViewModel
     @State private var infoMode: InfoMode
     @Binding private var isPresented: Bool
     @State private var isPresentedChangesAlert = false
@@ -18,7 +18,7 @@ struct InfoView: View {
     private let addHapticGenerator = UINotificationFeedbackGenerator()
     
     init(viewModel: InfoViewModel, infoMode: InfoMode, isPresented: Binding<Bool>) {
-        self.viewModel = viewModel
+        self._viewModel = StateObject(wrappedValue: viewModel)
         self._infoMode = State(initialValue: infoMode)
         self._isPresented = isPresented
         UITextField.appearance().backgroundColor = .clear
@@ -42,7 +42,7 @@ struct InfoView: View {
                             .foregroundColor(.secondary)
                             .padding(.horizontal, 15)
                             .padding(.top, 15)
-                        TextField("Enter mantra title", text: $viewModel.title)
+                        TextField("Enter mantra title", text: $viewModel.title, axis: .vertical)
                             .font(.title2)
                             .autocorrectionDisabled()
                             .padding()
@@ -51,7 +51,6 @@ struct InfoView: View {
                     .background(Color(UIColor.secondarySystemGroupedBackground))
                     .cornerRadius(15)
                     .padding()
-                    
                     VStack(alignment: .leading, spacing: 0) {
                         Text("MANTRA TEXT")
                             .font(.headline)
@@ -69,32 +68,20 @@ struct InfoView: View {
                     .background(Color(UIColor.secondarySystemGroupedBackground))
                     .cornerRadius(15)
                     .padding(.horizontal)
-                    
-                    ZStack(alignment: .topLeading) {
-                        RoundedRectangle(cornerRadius: 15)
-                            .fill(Color(UIColor.secondarySystemGroupedBackground))
+                    VStack(alignment: .leading, spacing: 0) {
                         Text("DESCRIPTION")
                             .font(.headline)
                             .bold()
                             .foregroundColor(.secondary)
                             .padding(.horizontal, 15)
                             .padding(.top, 15)
-                        if viewModel.description.isEmpty {
-                            Text("Enter mantra description")
-                                .font(.title2)
-                                .foregroundColor(Color(UIColor.placeholderText))
-                                .padding(.horizontal, 15)
-                                .padding(.top, 52)
-                                .padding(.bottom, 16)
-                        }
-                        TextEditor(text: $viewModel.description)
+                        TextField("Enter mantra description", text: $viewModel.description, axis: .vertical)
                             .font(.title2)
-                            .scrollContentBackground(.hidden)
-                            .padding(.horizontal, 11)
-                            .padding(.top, 44)
-                            .padding(.bottom, 10)
+                            .padding()
                             .disabled(infoMode == .view)
                     }
+                    .background(Color(UIColor.secondarySystemGroupedBackground))
+                    .cornerRadius(15)
                     .padding()
                 }
                 if successfullyAdded {
@@ -134,7 +121,7 @@ struct InfoView: View {
                     if infoMode == .addNew {
                         Button("Cancel") {
                             if viewModel.isCleanMantra {
-                                viewModel.deleteNewMantra()
+                                viewModel.deleteEmptyMantras()
                                 isPresented = false
                             } else {
                                 isPresentedDiscardingMantraAlert = true
@@ -146,7 +133,7 @@ struct InfoView: View {
                             titleVisibility: .hidden
                         ) {
                             Button("Discard Mantra", role: .destructive) {
-                                viewModel.deleteNewMantra()
+                                viewModel.deleteEmptyMantras()
                                 isPresented = false
                             }
                         } message: {
@@ -196,7 +183,6 @@ struct InfoView: View {
                     }
                 }
             }
-            .disabled(successfullyAdded)
             .onReceive(viewModel.mantra.objectWillChange) { _ in
                 if infoMode == .view {
                     viewModel.updateFields()
@@ -206,11 +192,12 @@ struct InfoView: View {
                 viewModel.updateFields()
             }
         }
+        .disabled(successfullyAdded)
     }
     
     private func addMantra() {
         withAnimation {
-            viewModel.saveMantraIfNeeded()
+            viewModel.saveMantraIfNeeded(withCleanUp: true)
             addHapticGenerator.notificationOccurred(.success)
             successfullyAdded = true
             afterDelay(0.7) { isPresented = false }

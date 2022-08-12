@@ -121,7 +121,7 @@ struct MantraListColumn: View {
                 EditButton()
             }
 #endif
-            ToolbarItem {
+            ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     Picker("", selection: $sorting) {
                         Label("Alphabetically", systemImage: "textformat").tag(Sorting.title)
@@ -131,7 +131,7 @@ struct MantraListColumn: View {
                     Label("Sorting", systemImage: "line.horizontal.3.decrease.circle")
                 }
             }
-            ToolbarItem {
+            ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     Button {
                         isPresentedNewMantraSheet = true

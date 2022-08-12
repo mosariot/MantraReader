@@ -47,6 +47,9 @@ final class InfoViewModel: ObservableObject {
     
     init(_ mantra: Mantra, viewContext: NSManagedObjectContext) {
         self.mantra = mantra
+        if self.mantra.uuid == nil {
+            mantra.uuid = UUID()
+        }
         self.title = mantra.title ?? ""
         self.text = mantra.text ?? ""
         self.description = mantra.details ?? ""

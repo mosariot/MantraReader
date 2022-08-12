@@ -13,6 +13,7 @@ struct InfoView: View {
     @Binding private var isPresented: Bool
     @State private var isPresentedChangesAlert = false
     @State private var isPresentedDiscardingMantraAlert = false
+    @State private var isPresentedDuplicationAlert = false
     @State private var successfullyAdded = false
     private let addHapticGenerator = UINotificationFeedbackGenerator()
     
@@ -173,6 +174,8 @@ struct InfoView: View {
                         Button {
                             if !viewModel.isDuplicating {
                                 addMantra()
+                            } else {
+                                isPresentedDuplicationAlert = true
                             }
                         } label: {
                             Text("Add")
@@ -181,7 +184,7 @@ struct InfoView: View {
                         .disabled(viewModel.title.trimmingCharacters(in: .whitespaces) == "")
                         .confirmationDialog(
                             "Duplicating Mantra",
-                            isPresented: $viewModel.isDuplicating,
+                            isPresented: $isPresentedDuplicationAlert,
                             titleVisibility: .visible
                         ) {
                             Button("Add") {

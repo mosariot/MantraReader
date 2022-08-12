@@ -22,7 +22,7 @@ final class InfoViewModel: ObservableObject {
 
     var areThereSomeChanges: Bool {
         if mantra.title != title
-            || (mantra.text != text && !(text.trimmingCharacters(in: .whitespaces) == "" && mantra.text = nil))
+            || (mantra.text != text && !(text.trimmingCharacters(in: .whitespaces) == "" && mantra.text == nil))
             || mantra.details != description
             || (mantra.image != imageData) {
             return true
@@ -47,9 +47,6 @@ final class InfoViewModel: ObservableObject {
     
     init(_ mantra: Mantra, viewContext: NSManagedObjectContext) {
         self.mantra = mantra
-        if self.mantra.uuid == nil {
-            mantra.uuid = UUID()
-        }
         self.title = mantra.title ?? ""
         self.text = mantra.text ?? ""
         self.description = mantra.details ?? ""
@@ -60,6 +57,9 @@ final class InfoViewModel: ObservableObject {
             self.image = UIImage(named: Constants.defaultImage)!
         }
         self.viewContext = viewContext
+        if self.mantra.uuid == nil {
+            mantra.uuid = UUID()
+        }
     }
     
     func saveMantraIfNeeded() {

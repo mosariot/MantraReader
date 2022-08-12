@@ -85,6 +85,11 @@ struct PersistenceController {
         mantras
             .filter { $0.title == "" }
             .forEach { mantra in container.viewContext.delete(mantra) }
+        do {
+            try container.viewContext.save()
+        } catch {
+            fatalCoreDataError(error)
+        }
     }
 }
 

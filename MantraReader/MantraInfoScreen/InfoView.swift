@@ -106,7 +106,7 @@ struct InfoView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     if infoMode == .edit || infoMode == .view {
                         Button {
-                            if viewModel.areThereSomeChanges {
+                            if infoMode == .edit && viewModel.areThereSomeChanges {
                                 isPresentedChangesAlert = true
                             } else {
                                 isPresented = false

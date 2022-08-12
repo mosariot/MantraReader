@@ -31,7 +31,7 @@ final class ReadsViewModel: ObservableObject {
     }
     var favoriteBarImage: String { mantra.isFavorite ? "star.fill" : "star" }
     
-    private var viewContext: NSManagedObjectContext
+    private(set) var viewContext: NSManagedObjectContext
     
     private var timerReadsSubscription: Cancellable?
     private var timerGoalSubscription: Cancellable?

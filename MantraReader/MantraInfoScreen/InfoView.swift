@@ -60,6 +60,7 @@ struct InfoView: View {
                     }
                     .background(Color(UIColor.secondarySystemGroupedBackground))
                     .cornerRadius(15)
+                    .padding(.horizontal)
                     
                     ZStack(alignment: .topLeading) {
                         RoundedRectangle(cornerRadius: 15)
@@ -70,7 +71,7 @@ struct InfoView: View {
                             .foregroundColor(.secondary)
                             .padding(.horizontal, 15)
                             .padding(.top, 15)
-                        if description.isEmpty {
+                        if viewModel.description.isEmpty {
                             Text("Enter mantra description")
                                 .font(.title2)
                                 .foregroundColor(Color(UIColor.placeholderText))
@@ -84,7 +85,7 @@ struct InfoView: View {
                             .padding(.horizontal, 11)
                             .padding(.top, 44)
                             .padding(.bottom, 10)
-                            .disabled(infoMode == .view)
+//                            .disabled(infoMode == .view)
                     }
                     .padding()
                 }
@@ -105,7 +106,7 @@ struct InfoView: View {
                     }
                 }
                 if infoMode == .edit {
-                     ToolbarItem(placement: .navigationBarTrailing) {
+                    ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             infoMode = .view
                             viewModel.saveMantra()
@@ -117,32 +118,32 @@ struct InfoView: View {
                     }
                 }
                 if infoMode == .view {
-                     ToolbarItem(placement: .navigationBarTrailing) {
+                    ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Edit") {
                             infoMode = .edit
                         }
                     }
                 }
-                if infoMode == .addNew {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button("Cancel") {
-                            viewModel.deleteNewMantra()
-                            isPresented = false
-                        }
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            viewModel.saveMantra()
-                            isPresented = false
-                        } label: {
-                            Text("Add")
-                                .bold()
-                        }
-                        .disabled(viewModel.title.isEmpty)
-                    }
-                }
+//                if infoMode == .addNew {
+//                    ToolbarItem(placement: .navigationBarLeading) {
+//                        Button("Cancel") {
+//                            viewModel.deleteNewMantra()
+//                            isPresented = false
+//                        }
+//                    }
+//                    ToolbarItem(placement: .navigationBarTrailing) {
+//                        Button {
+//                            viewModel.saveMantra()
+//                            isPresented = false
+//                        } label: {
+//                            Text("Add")
+//                                .bold()
+//                        }
+//                        .disabled(viewModel.title.isEmpty)
+//                    }
+//                }
             }
-            .onReceive(of: viewModel.mantra.objectWillChange) { _ in
+            .onReceive(viewModel.mantra.objectWillChange) { _ in
                 if infoMode == .view {
                     viewModel.updateUI()
                 }
@@ -159,7 +160,7 @@ struct InfoView_Previews: PreviewProvider {
                     PersistenceController.previewMantra,
                     viewContext: PersistenceController.preview.container.viewContext
                 ),
-                infoMode: .constant(.edit),
+                infoMode: .edit,
                 isPresented: .constant(true)
             )
         }

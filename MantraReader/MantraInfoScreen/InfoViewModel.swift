@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 @MainActor
 final class InfoViewModel: ObservableObject {
@@ -16,18 +17,17 @@ final class InfoViewModel: ObservableObject {
     @Published var image: UIImage
     
     private var viewContext: NSManagedObjectContext
+    private let widgetManager = MantraWidgetManager()
     
     init(_ mantra: Mantra, viewContext: NSManagedObjectContext) {
         self.mantra = mantra
         self.title = mantra.title ?? ""
         self.text = mantra.text ?? ""
         self.description = mantra.details ?? ""
-        self.image = UIImage {
-            if let data = mantra.image, let image = UIImage(data: data) {
-                return image
-            } else {
-                return UIImage(named: Constants.defaultImage)!
-            }
+        if let data = mantra.image, let image = UIImage(data: data) {
+            self.image = image
+        } else {
+            self.image = UIImage(named: Constants.defaultImage)!
         }
         self.viewContext = viewContext
     }
@@ -49,12 +49,10 @@ final class InfoViewModel: ObservableObject {
         title = mantra.title ?? ""
         text = mantra.text ?? ""
         description = mantra.details ?? ""
-        image = UIImage {
-            if let data = mantra.image, let image = UIImage(data: data) {
-                return image
-            } else {
-                return UIImage(named: Constants.defaultImage)!
-            }
+        if let data = mantra.image, let image = UIImage(data: data) {
+            self.image = image
+        } else {
+            self.image = UIImage(named: Constants.defaultImage)!
         }
     }
     

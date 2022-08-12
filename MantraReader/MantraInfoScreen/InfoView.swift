@@ -25,7 +25,7 @@ struct InfoView: View {
                 Color(UIColor.systemGroupedBackground)
                     .ignoresSafeArea()
                 ScrollView {
-                    Image("DefaultImage")
+                    Image(uiImage: viewModel.image)
                         .accessibilityIgnoresInvertColors()
                     VStack(alignment: .leading, spacing: 0) {
                         Text("TITLE")
@@ -51,7 +51,7 @@ struct InfoView: View {
                             .foregroundColor(.secondary)
                             .padding(.horizontal, 15)
                             .padding(.top, 15)
-                        TextField("Enter mantra text", text: $viewModel.text)
+                        TextField("Enter mantra text", text: $viewModel.text, axis: .vertical)
                             .font(.title2)
                             .autocorrectionDisabled()
                             .textInputAutocapitalization(.characters)

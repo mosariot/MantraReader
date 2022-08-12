@@ -16,6 +16,7 @@ final class InfoViewModel: ObservableObject {
     @Published var description: String
     @Published var image: UIImage
     
+    var isDuplicating = false
     var isThereAreSomeChanges: Bool {
         if mantra.title != title
             || mantra.text != text
@@ -26,7 +27,6 @@ final class InfoViewModel: ObservableObject {
                 return false
             }
     }
-    
     var isCleanMantra: Bool {
         if mantra.title.trimmingCharacters(in: .whitespaces) == ""
             && mantra.text == ""
@@ -76,6 +76,27 @@ final class InfoViewModel: ObservableObject {
         } else {
             self.image = UIImage(named: Constants.defaultImage)!
         }
+    }
+    
+    func checkForDuplication() {
+        var foundADuplication = false
+        currentMantrasTitles.forEach { title in
+            if selectedMantrasTitles.contains(where: { $0.caseInsensitiveCompare(title) == .orderedSame }) {
+                foundADuplication = true
+            }
+        }
+        isDuplicating = foundADuplication
+    }
+    
+    private var currentMantrasTitles: [String] {
+        var currentMantras = [Mantra]()
+        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
+        do {
+            try currentMantras = viewContext.fetch(request)
+        } catch {
+            print("Error getting data. \(error.localizedDescription)")
+        }
+        return currentMantras.compactMap { $0.title }
     }
     
     private func saveContext() {

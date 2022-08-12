@@ -19,22 +19,23 @@ final class InfoViewModel: ObservableObject {
     
     var isThereAreSomeChanges: Bool {
         if mantra.title != title
-            || mantra.text != text
+            || (mantra.text != text && mantra.text != nil)
             || mantra.details != description
-            || mantra.image != image.pngData() {
+            || (mantra.image != image.pngData() && mantra.image != nil) {
             return true
         } else {
             return false
         }
     }
+    
     var isCleanMantra: Bool {
-        if mantra.title.trimmingCharacters(in: .whitespaces) == ""
-            && mantra.text == ""
-            && mantra.description == ""
-            && mantra.image.pngData() == nil {
+        if title.trimmingCharacters(in: .whitespaces) == ""
+            && text == ""
+            && description == ""
+            && image.pngData() == nil {
             return true
         } else {
-        return false
+            return false
         }
     }
     
@@ -58,7 +59,7 @@ final class InfoViewModel: ObservableObject {
         if mantra.title != title { mantra.title = title }
         if mantra.text != text { mantra.text = text }
         if mantra.details != description { mantra.details = description }
-        if mantra.image != image.pngData() { mantra.image != image.pngData() }
+        if mantra.image != image.pngData() { mantra.image = image.pngData() }
         saveContext()
     }
     
@@ -67,7 +68,7 @@ final class InfoViewModel: ObservableObject {
         saveContext()
     }
     
-    func updateUI() {
+    func updateFields() {
         title = mantra.title ?? ""
         text = mantra.text ?? ""
         description = mantra.details ?? ""
@@ -79,13 +80,11 @@ final class InfoViewModel: ObservableObject {
     }
     
     func checkForDuplication() {
-        var foundADuplication = false
         currentMantrasTitles.forEach { title in
-            if selectedMantrasTitles.contains(where: { $0.caseInsensitiveCompare(title) == .orderedSame }) {
-                foundADuplication = true
+            if self.title.caseInsensitiveCompare(title) == .orderedSame {
+                isDuplicating = true
             }
         }
-        isDuplicating = foundADuplication
     }
     
     private var currentMantrasTitles: [String] {

@@ -30,6 +30,9 @@ struct InfoView: View {
                     .ignoresSafeArea()
                 ScrollView {
                     Image(uiImage: viewModel.image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxHeight: 200)
                         .accessibilityIgnoresInvertColors()
                     VStack(alignment: .leading, spacing: 0) {
                         Text("TITLE")
@@ -89,7 +92,7 @@ struct InfoView: View {
                             .padding(.horizontal, 11)
                             .padding(.top, 44)
                             .padding(.bottom, 10)
-//                            .disabled(infoMode == .view)
+                            .disabled(infoMode == .view)
                     }
                     .padding()
                 }
@@ -194,8 +197,11 @@ struct InfoView: View {
             .disabled(successfullyAdded)
             .onReceive(viewModel.mantra.objectWillChange) { _ in
                 if infoMode == .view {
-                    viewModel.updateUI()
+                    viewModel.updateFields()
                 }
+            }
+            .onDisappear {
+                viewModel.updateFields()
             }
         }
     }

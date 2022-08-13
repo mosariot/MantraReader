@@ -190,14 +190,13 @@ struct ReadsView: View {
                 withAnimation {
                     toggleMantraCounterMode()
                 }
-                
             } label: {
                 Image(systemName: "sun.max")
                     .imageScale(.large)
                     .symbolVariant(isMantraCounterMode ? .circle.fill : .none)
+                    .padding(25)
             }
-            .contentTransition(.interpolate)
-            .padding(20)
+            .contentShape(Rectangle())
         }
         .navigationTitle(verticalSizeClass == .compact ? viewModel.mantra.title ?? "" : "")
         .navigationBarTitleDisplayMode(.inline)

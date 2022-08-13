@@ -40,8 +40,23 @@ struct InfoView: View {
                     Image(uiImage: viewModel.image)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(maxHeight: 200)
+                        .frame(height: 200)
+                        .opacity(infoMode == .edit || infoMode == .addNew ? 0.6 : 1)
                         .accessibilityIgnoresInvertColors()
+                        .overlay(alignment: .bottom) {
+                            Button {
+                            } label: {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .fill(.gray)
+                                        .frame(width: 200, height: 30)
+                                    Text("EDIT")
+                                        .foregroundColor(.white.opacity(0.8))
+                                        .font(.headline.bold())
+                                }
+                            }
+                            .opacity(infoMode == .edit || infoMode == .addNew ? 0.8 : 0)
+                        }
                     VStack(alignment: .leading, spacing: 0) {
                         Text("TITLE")
                             .font(.headline)
@@ -163,7 +178,9 @@ struct InfoView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     if infoMode == .edit {
                         Button {
-                            infoMode = .view
+                            withAnimation {
+                                infoMode = .view
+                            }
                             viewModel.saveMantraIfNeeded()
                         } label: {
                             Text("Done")
@@ -173,7 +190,9 @@ struct InfoView: View {
                     }
                     if infoMode == .view {
                         Button("Edit") {
-                            infoMode = .edit
+                            withAnimation {
+                                infoMode = .edit
+                            }
                             focus = .title
                         }
                     }
@@ -210,9 +229,7 @@ struct InfoView: View {
             }
             .onAppear {
                 if infoMode == .addNew {
-                    afterDelay(0.1) {
-                        focus = .title
-                    }
+                    focus = .title
                 }
             }
             .onDisappear {

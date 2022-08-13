@@ -161,14 +161,14 @@ struct ReadsView: View {
                 .ignoresSafeArea(.keyboard)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            // UIAlerController implementation for Adjusting alert
-            //            if isPresentedAdjustingAlert {
-            //                AdjustingAlertView(
-            //                    isPresented: $isPresentedAdjustingAlert,
-            //                    adjustingType: $adjustingType,
-            //                    viewModel: viewModel
-            //                )
-            //            }
+//            UIAlerController implementation for Adjusting alert
+//            if isPresentedAdjustingAlert {
+//                AdjustingAlertView(
+//                    isPresented: $isPresentedAdjustingAlert,
+//                    adjustingType: $adjustingType,
+//                    viewModel: viewModel
+//                )
+//            }
             if isMantraCounterMode {
                 MantraCounterModeOverlayView(
                     showBlink: $showBlink,
@@ -186,6 +186,9 @@ struct ReadsView: View {
             Button {
                 if isFirstLaunchOfMantraCounterMode {
                     isPresentedMantraCounterModeAlert = true
+                    withAnimation {
+                        toggleMantraCounterMode(withHint: false)
+                    }
                 }
                 withAnimation {
                     toggleMantraCounterMode()
@@ -258,10 +261,12 @@ struct ReadsView: View {
             isPresentedUndoAlert = true
         }
         .onDisappear {
-            withAnimation {
-                isMantraCounterMode = false
+            if isMantraCounterMode {
+                withAnimation {
+                    isMantraCounterMode = false
+                }
+                UIApplication.shared.isIdleTimerDisabled = false
             }
-            UIApplication.shared.isIdleTimerDisabled = false
         }
     }
     
@@ -274,14 +279,16 @@ struct ReadsView: View {
         adjustingText = ""
     }
     
-    private func toggleMantraCounterMode() {
+    private func toggleMantraCounterMode(withHint: Bool = true) {
         withAnimation {
             isMantraCounterMode.toggle()
         }
         if isMantraCounterMode {
             lightHapticGenerator.impactOccurred()
-            showHint = true
-            afterDelay(1.5) { showHint = false }
+            if withHint {
+                showHint = true
+                afterDelay(1.5) { showHint = false }
+            }
             UIApplication.shared.isIdleTimerDisabled = true
         } else {
             UIApplication.shared.isIdleTimerDisabled = false

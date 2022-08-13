@@ -19,10 +19,12 @@ struct DetailsColumn: View {
                 isMantraCounterMode: $isMantraCounterMode
             )
             .onChange(of: selectedMantra) { _ in
-                withAnimation {
-                    isMantraCounterMode = false
+                if isMantraCounterMode {
+                    withAnimation {
+                        isMantraCounterMode = false
+                    }
+                    UIApplication.shared.isIdleTimerDisabled = false
                 }
-                UIApplication.shared.isIdleTimerDisabled = false
             }
         } else {
             Text("Select a mantra")

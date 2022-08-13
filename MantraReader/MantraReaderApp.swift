@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import IQKeyboardManagerSwift
 
 @main
 struct MantraReaderApp: App {
@@ -29,6 +30,7 @@ struct MantraReaderApp: App {
                     }
                     isFreshLaunch = true
                     persistenceController.deleteEmptyMantrasIfNeeded()
+                    IQKeyboardManager.shared.enable = true
                 }
                 .alert(
                     "No Internet Connection",

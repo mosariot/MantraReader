@@ -47,6 +47,7 @@
 		9FA8E88D2898DB7B00479F08 /* PreloadedMantra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA8E88C2898DB7B00479F08 /* PreloadedMantra.swift */; };
 		9FB279E428902F1B0029ED3B /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB279E328902F1B0029ED3B /* HintView.swift */; };
 		9FB32B1128A7D48C000A910E /* ShakeSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB32B1028A7D48C000A910E /* ShakeSupport.swift */; };
+		9FB32B1428A7D8F2000A910E /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9FB32B1328A7D8F2000A910E /* IQKeyboardManagerSwift */; };
 		9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */; };
 		9FBEE99A285F682C0070BA06 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE999285F682C0070BA06 /* PersistenceController.swift */; };
 		9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE99E285F682C0070BA06 /* ContentView.swift */; };
@@ -176,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FB32B1428A7D8F2000A910E /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +394,7 @@
 			);
 			name = MantraReader;
 			packageProductDependencies = (
+				9FB32B1328A7D8F2000A910E /* IQKeyboardManagerSwift */,
 			);
 			productName = MantraReader;
 			productReference = 9FBEE994285F682C0070BA06 /* MantraReader.app */;
@@ -425,6 +428,7 @@
 			);
 			mainGroup = 9FBEE98B285F682C0070BA06;
 			packageReferences = (
+				9FB32B1228A7D8F2000A910E /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 9FBEE995285F682C0070BA06 /* Products */;
 			projectDirPath = "";
@@ -815,6 +819,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9FB32B1228A7D8F2000A910E /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9FB32B1328A7D8F2000A910E /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9FB32B1228A7D8F2000A910E /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		9FFB322C289FC0E9000A5D80 /* ReadTheMantra.xcdatamodeld */ = {

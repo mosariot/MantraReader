@@ -44,7 +44,19 @@ struct InfoView: View {
                         .opacity(infoMode == .edit || infoMode == .addNew ? 0.6 : 1)
                         .accessibilityIgnoresInvertColors()
                         .overlay(alignment: .bottom) {
-                            Button {
+                            Menu {
+                                Button {
+                                } label: {
+                                    Label("Photo Library", systemImage: "photo.on.rectangle.angled")
+                                }
+                                Button {
+                                } label: {
+                                    Label("Standard Image", systemImage: "photo")
+                                }
+                                Button {
+                                } label: {
+                                    Label("Search on the Internet", systemImage: "globe")
+                                }
                             } label: {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 5)

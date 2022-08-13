@@ -46,6 +46,7 @@
 		9FA8E88B28985D3100479F08 /* CheckMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA8E88A28985D3100479F08 /* CheckMarkView.swift */; };
 		9FA8E88D2898DB7B00479F08 /* PreloadedMantra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA8E88C2898DB7B00479F08 /* PreloadedMantra.swift */; };
 		9FB279E428902F1B0029ED3B /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB279E328902F1B0029ED3B /* HintView.swift */; };
+		9FB32B1128A7D48C000A910E /* ShakeSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB32B1028A7D48C000A910E /* ShakeSupport.swift */; };
 		9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */; };
 		9FBEE99A285F682C0070BA06 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE999285F682C0070BA06 /* PersistenceController.swift */; };
 		9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE99E285F682C0070BA06 /* ContentView.swift */; };
@@ -133,6 +134,7 @@
 		9FA8E88A28985D3100479F08 /* CheckMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkView.swift; sourceTree = "<group>"; };
 		9FA8E88C2898DB7B00479F08 /* PreloadedMantra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantra.swift; sourceTree = "<group>"; };
 		9FB279E328902F1B0029ED3B /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
+		9FB32B1028A7D48C000A910E /* ShakeSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeSupport.swift; sourceTree = "<group>"; };
 		9FBEE994285F682C0070BA06 /* MantraReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MantraReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraReaderApp.swift; sourceTree = "<group>"; };
 		9FBEE999285F682C0070BA06 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				9F4DE925286E3B990064ADCB /* Functions.swift */,
 				9FDC8DAF28623D5F00BF7051 /* OrientationInfo.swift */,
 				9F780037287FF7D200516A0F /* RandomColor.swift */,
+				9FB32B1028A7D48C000A910E /* ShakeSupport.swift */,
 				9F4DE923286E3B670064ADCB /* UIImage+CropToCircle.swift */,
 				9F78728D2865FDA400F52335 /* UIImage+Resize.swift */,
 			);
@@ -502,6 +505,7 @@
 				9FBEE9B0285F68CE0070BA06 /* CircularProgressView.swift in Sources */,
 				9F794EDE289C35E900DDF940 /* LaunchPreparer.swift in Sources */,
 				9F1AB3E928A18EEF001FF7DE /* WidgetModel.swift in Sources */,
+				9FB32B1128A7D48C000A910E /* ShakeSupport.swift in Sources */,
 				9FA8E88D2898DB7B00479F08 /* PreloadedMantra.swift in Sources */,
 				9FDC8DB028623D5F00BF7051 /* OrientationInfo.swift in Sources */,
 				9FDF349B2885B2E000B3007E /* CircularProgressViewModel.swift in Sources */,

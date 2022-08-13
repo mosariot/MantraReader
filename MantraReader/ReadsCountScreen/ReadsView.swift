@@ -254,6 +254,9 @@ struct ReadsView: View {
         .onReceive(viewModel.mantra.objectWillChange) { _ in
             viewModel.objectWillChange.send()
         }
+        .onShake {
+            isPresentedUndoAlert = true
+        }
         .onDisappear {
             withAnimation {
                 isMantraCounterMode = false

@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct InfoView: View {
+    private enum FocusableField: Hashable {
+        case title
+        case text
+        case description
+    }
+    
     @StateObject private var viewModel: InfoViewModel
     @State private var infoMode: InfoMode
     @Binding private var isPresented: Bool
@@ -15,6 +21,7 @@ struct InfoView: View {
     @State private var isPresentedDiscardingMantraAlert = false
     @State private var isPresentedDuplicationAlert = false
     @State private var successfullyAdded = false
+    @FocusState private var focus: FocusableField?
     private let addHapticGenerator = UINotificationFeedbackGenerator()
     
     init(viewModel: InfoViewModel, infoMode: InfoMode, isPresented: Binding<Bool>) {
@@ -45,8 +52,12 @@ struct InfoView: View {
                         TextField("Enter mantra title", text: $viewModel.title, axis: .vertical)
                             .font(.title2)
                             .autocorrectionDisabled()
+                            .focused($focus, equals: .title)
                             .padding()
                             .disabled(infoMode == .view)
+                            .onSubmit {
+                                focus = .text
+                            }
                     }
                     .background(Color(UIColor.secondarySystemGroupedBackground))
                     .cornerRadius(15)
@@ -61,9 +72,13 @@ struct InfoView: View {
                         TextField("Enter mantra text", text: $viewModel.text, axis: .vertical)
                             .font(.title2)
                             .autocorrectionDisabled()
+                            .focused($focus, equals: .text)
                             .textInputAutocapitalization(.characters)
                             .padding()
                             .disabled(infoMode == .view)
+                            .onSubmit {
+                                focus = .description
+                            }
                     }
                     .background(Color(UIColor.secondarySystemGroupedBackground))
                     .cornerRadius(15)
@@ -77,8 +92,12 @@ struct InfoView: View {
                             .padding(.top, 15)
                         TextField("Enter mantra description", text: $viewModel.description, axis: .vertical)
                             .font(.title2)
+                            .focused($focus, equals: .description)
                             .padding()
                             .disabled(infoMode == .view)
+                            .onSubmit {
+                                focus = nil
+                            }
                     }
                     .background(Color(UIColor.secondarySystemGroupedBackground))
                     .cornerRadius(15)
@@ -155,6 +174,7 @@ struct InfoView: View {
                     if infoMode == .view {
                         Button("Edit") {
                             infoMode = .edit
+                            focus = .title
                         }
                     }
                     if infoMode == .addNew {
@@ -188,8 +208,18 @@ struct InfoView: View {
                     viewModel.updateFields()
                 }
             }
+            .onAppear {
+                if infoMode == .addNew {
+                    afterDelay(0.1) {
+                        focus = .title
+                    }
+                }
+            }
             .onDisappear {
                 viewModel.updateFields()
+                if infoMode == .addNew {
+                    viewModel.deleteEmptyMantras()
+                }
             }
         }
         .disabled(successfullyAdded)

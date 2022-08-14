@@ -18,9 +18,9 @@ final class InfoViewModel: ObservableObject {
     
     var image: UIImage {
         if let data = imageData, let image = UIImage(data: data) {
-            self.image = image
+            return image
         } else {
-            self.image = UIImage(named: Constants.defaultImage)!
+            return UIImage(named: Constants.defaultImage)!
         }
     }
     

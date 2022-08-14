@@ -50,7 +50,9 @@ struct InfoView: View {
                                     Label("Photo Library", systemImage: "photo.on.rectangle.angled")
                                 }
                                 Button {
-                                    viewModel.setDefaultImage()
+                                    withAnimation {
+                                        viewModel.setDefaultImage()
+                                    }
                                 } label: {
                                     Label("Default Image", systemImage: "photo")
                                 }

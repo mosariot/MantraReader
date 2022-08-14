@@ -14,7 +14,15 @@ final class InfoViewModel: ObservableObject {
     @Published var title: String
     @Published var text: String
     @Published var description: String
-    @Published var image: UIImage
+    @Published var imageData: Data?
+    
+    var image: UIImage {
+        if let data = imageData, let image = UIImage(data: data) {
+            self.image = image
+        } else {
+            self.image = UIImage(named: Constants.defaultImage)!
+        }
+    }
     
     var isDuplicating: Bool {
         currentMantrasTitles.contains(title)
@@ -41,7 +49,7 @@ final class InfoViewModel: ObservableObject {
             return false
         }
     }
-    private var imageData: Data? = nil
+    
     private var viewContext: NSManagedObjectContext
     private let widgetManager = MantraWidgetManager()
     
@@ -51,11 +59,6 @@ final class InfoViewModel: ObservableObject {
         self.text = mantra.text ?? ""
         self.description = mantra.details ?? ""
         self.imageData = mantra.image
-        if let data = imageData, let image = UIImage(data: data) {
-            self.image = image
-        } else {
-            self.image = UIImage(named: Constants.defaultImage)!
-        }
         self.viewContext = viewContext
         if self.mantra.uuid == nil {
             mantra.uuid = UUID()
@@ -72,6 +75,10 @@ final class InfoViewModel: ObservableObject {
         } else {
             saveContext()
         }
+    }
+    
+    func setDefaultImage() {
+        imageData = nil
     }
     
     func deleteEmptyMantras() {
@@ -93,11 +100,6 @@ final class InfoViewModel: ObservableObject {
         text = mantra.text ?? ""
         description = mantra.details ?? ""
         imageData = mantra.image
-        if let data = imageData, let image = UIImage(data: data) {
-            self.image = image
-        } else {
-            self.image = UIImage(named: Constants.defaultImage)!
-        }
     }
     
     private var currentMantrasTitles: [String] {

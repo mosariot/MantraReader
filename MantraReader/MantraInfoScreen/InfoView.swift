@@ -21,7 +21,9 @@ struct InfoView: View {
     @State private var isPresentedChangesAlert = false
     @State private var isPresentedDiscardingMantraAlert = false
     @State private var isPresentedDuplicationAlert = false
+    @State private var isPresentedNoImageAlert = false
     @State private var isPresentedSafariController = false
+    @State private var isProcessingImage = false
     @State private var successfullyAdded = false
     @State private var selectedPhotoItem: PhotosPickerItem? = nil
     @FocusState private var focus: FocusableField?
@@ -40,55 +42,71 @@ struct InfoView: View {
                 Color(UIColor.systemGroupedBackground)
                     .ignoresSafeArea()
                 ScrollView {
-                    Image(uiImage: viewModel.image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 200)
-                        .opacity(infoMode == .edit || infoMode == .addNew ? 0.6 : 1)
-                        .accessibilityIgnoresInvertColors()
-                        .overlay(alignment: .bottom) {
-                            Menu {
-                                PhotosPicker(
-                                    selection: $selectedPhotoItem,
-                                    matching: .images,
-                                    photoLibrary: .shared()
-                                ) {
-                                    Label("Photo Library", systemImage: "photo.on.rectangle.angled")
-                                }
-                                Button {
-                                    withAnimation {
-                                        viewModel.setDefaultImage()
+                    ZStack {
+                        Image(uiImage: viewModel.image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 200)
+                            .opacity(infoMode == .edit || infoMode == .addNew ? 0.6 : 1)
+                            .accessibilityIgnoresInvertColors()
+                            .overlay(alignment: .bottom) {
+                                Menu {
+                                    PhotosPicker(
+                                        selection: $selectedPhotoItem,
+                                        matching: .images,
+                                        photoLibrary: .shared()
+                                    ) {
+                                        Label("Photo Library", systemImage: "photo.on.rectangle.angled")
                                     }
-                                } label: {
-                                    Label("Default Image", systemImage: "photo")
-                                }
-#if os(iOS)
-                                Button {
-                                    isPresentedSafariController = true
-                                } label: {
-                                    Label("Search on the Internet", systemImage: "globe")
-                                }
-                                .onChange(of: isPresentedSafariController) { [isPresentedSafariController] newValue in
-                                    if isPresentedSafariController && !newValue {
-                                        if UIPasteboard.general.hasImages {
-                                            guard let image = UIPasteboard.general.image else { return }
-                                            withAnimation {
-                                                viewModel.handleIncomingImage(image)
-                                            }
-                                            UIPasteboard.general.items.removeAll()
-                                        } else if UIPasteboard.general.hasURLs {
-                                            guard let url = UIPasteboard.general.url else { return }
-                                            if let data = try? Data(contentsOf: url) {
+                                    .onChange(of: selectedPhotoItem) { item in
+                                        Task {
+                                            isProcessingImage = true
+                                            if let data = try? await item?.loadTransferable(type: Data.self) {
                                                 if let image = UIImage(data: data) {
-                                                    withAnimation {
-                                                        viewModel.handleIncomingImage(image)
+                                                    viewModel.handleIncomingImage(image)
+                                                } else {
+                                                    isPresentedNoImageAlert = true
+                                                }
+                                            } else {
+                                                isPresentedNoImageAlert = true
+                                            }
+                                            isProcessingImage = false
+                                        }
+                                    }
+                                    Button {
+                                        withAnimation {
+                                            viewModel.setDefaultImage()
+                                        }
+                                    } label: {
+                                        Label("Default Image", systemImage: "photo")
+                                    }
+#if os(iOS)
+                                    Button {
+                                        isPresentedSafariController = true
+                                    } label: {
+                                        Label("Search on the Internet", systemImage: "globe")
+                                    }
+                                    .onChange(of: isPresentedSafariController) { [oldValue = isPresentedSafariController] newValue in
+                                        if oldValue && !newValue {
+                                            if UIPasteboard.general.hasImages {
+                                                guard let image = UIPasteboard.general.image else { return }
+                                                withAnimation {
+                                                    viewModel.handleIncomingImage(image)
+                                                }
+                                                UIPasteboard.general.items.removeAll()
+                                            } else if UIPasteboard.general.hasURLs {
+                                                guard let url = UIPasteboard.general.url else { return }
+                                                if let data = try? Data(contentsOf: url) {
+                                                    if let image = UIImage(data: data) {
+                                                        withAnimation {
+                                                            viewModel.handleIncomingImage(image)
+                                                        }
+                                                        UIPasteboard.general.items.removeAll()
                                                     }
-                                                    UIPasteboard.general.items.removeAll()
                                                 }
                                             }
                                         }
                                     }
-                                }
 #endif
                             } label: {
                                 ZStack {
@@ -102,6 +120,10 @@ struct InfoView: View {
                             }
                             .opacity(infoMode == .edit || infoMode == .addNew ? 0.8 : 0)
                         }
+                        if isProcessingImage {
+                            ProgressView()
+                        }
+                    }
                     VStack(alignment: .leading, spacing: 0) {
                         Text("TITLE")
                             .font(.headline)

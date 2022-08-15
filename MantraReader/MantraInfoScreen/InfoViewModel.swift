@@ -88,6 +88,14 @@ final class InfoViewModel: ObservableObject {
         imageData = nil
     }
     
+    func handleIncomingImage(_ image: UIImage) {
+        let circledImage = image.cropToCircle()
+        let resizedCircledImage = circledImage?.resize(to: CGSize(width: 200, height: 200))
+        if let processedImageData = resizedCircledImage?.pngData() {
+            imageData = processedImageData
+        }
+    }
+    
     func deleteEmptyMantras() {
         var mantras = [Mantra]()
         let request = NSFetchRequest<Mantra>(entityName: "Mantra")

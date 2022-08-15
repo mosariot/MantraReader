@@ -15,8 +15,7 @@ struct InfoView: View {
         case description
     }
     
-    @AppStorage("isFirstSearchOnTheInternet") pravate var isFirstSearchOnTheInternet = true
-    
+    @AppStorage("isFirstSearchOnTheInternet") private var isFirstSearchOnTheInternet = true
     @StateObject private var viewModel: InfoViewModel
     @State private var infoMode: InfoMode
     @Binding private var isPresented: Bool
@@ -66,7 +65,9 @@ struct InfoView: View {
                                             isProcessingImage = true
                                             if let data = try? await item?.loadTransferable(type: Data.self) {
                                                 if let image = UIImage(data: data) {
-                                                    viewModel.handleIncomingImage(image)
+                                                    withAnimation {
+                                                        viewModel.handleIncomingImage(image)
+                                                    }
                                                 } else {
                                                     isPresentedNoImageAlert = true
                                                 }
@@ -75,11 +76,6 @@ struct InfoView: View {
                                             }
                                             isProcessingImage = false
                                         }
-                                    }
-                                    .alert("Unavailable Photo", isPresented: $isPresentedNoImageAlert) {
-                                        Button("OK") { }
-                                    } message: {
-                                        Text("It seems like this photo is unavailable. Try to pick another one")
                                     }
                                     Button {
                                         withAnimation {
@@ -97,14 +93,6 @@ struct InfoView: View {
                                         }
                                     } label: {
                                         Label("Search on the Internet", systemImage: "globe")
-                                    }
-                                    .alert("Pick Photo", isPresented: $isPresentedFirstSearchOnTheInternetAlert) {
-                                        Button("OK") {
-                                            isFirstSearchOnTheInternet = false
-                                            isPresentedSafariController = true
-                                        }
-                                    } message: {
-                                        Text("Search for image in the next window. Then just longpress on the one you liked, choose 'Copy' in contextual menu and confirm it by 'Done'")
                                     }
                                     .onChange(of: isPresentedSafariController) { [oldValue = isPresentedSafariController] newValue in
                                         if oldValue && !newValue {
@@ -128,18 +116,23 @@ struct InfoView: View {
                                         }
                                     }
 #endif
-                            } label: {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .fill(.gray)
-                                        .frame(width: 200, height: 30)
-                                    Text("EDIT")
-                                        .foregroundColor(.white.opacity(0.8))
-                                        .font(.headline.bold())
+                                } label: {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 5)
+                                            .fill(.gray)
+                                            .frame(width: 200, height: 30)
+                                        Text("EDIT")
+                                            .foregroundColor(.white.opacity(0.8))
+                                            .font(.headline.bold())
+                                    }
                                 }
+                                .opacity(infoMode == .edit || infoMode == .addNew ? 0.8 : 0)
                             }
-                            .opacity(infoMode == .edit || infoMode == .addNew ? 0.8 : 0)
-                        }
+                            .alert("Unavailable Photo", isPresented: $isPresentedNoImageAlert) {
+                                Button("OK") { }
+                            } message: {
+                                Text("It seems like this photo is unavailable. Try to pick another one")
+                            }
                         if isProcessingImage {
                             ProgressView()
                         }
@@ -212,6 +205,14 @@ struct InfoView: View {
             .navigationTitle(infoMode == .addNew ? "New Mantra" : "Information")
             .navigationBarTitleDisplayMode(.inline)
 #if os(iOS)
+            .alert("Pick Photo", isPresented: $isPresentedFirstSearchOnTheInternetAlert) {
+                Button("OK") {
+                    isFirstSearchOnTheInternet = false
+                    isPresentedSafariController = true
+                }
+            } message: {
+                Text("Search for image in the next window. Then just longpress on the one you liked, choose 'Copy' in contextual menu and confirm it by 'Done'")
+            }
             .sheet(isPresented: $isPresentedSafariController) {
                 SafariView(
                     url: URL(string: "https://www.google.com/search?q=\(viewModel.title)&tbm=isch"

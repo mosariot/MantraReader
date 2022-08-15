@@ -71,17 +71,22 @@ struct InfoView: View {
                                 .onChange(of: isPresentedSafariController) { [isPresentedSafariController] newValue in
                                     if isPresentedSafariController && !newValue {
                                         if UIPasteboard.general.hasImages {
-                                            guard let _ = UIPasteboard.general.image else { return }
-                                            print("there is an image")
+                                            guard let image = UIPasteboard.general.image else { return }
+                                            withAnimation {
+                                                viewModel.handleIncomingImage(image)
+                                            }
+                                            UIPasteboard.general.items.removeAll()
                                         } else if UIPasteboard.general.hasURLs {
                                             guard let url = UIPasteboard.general.url else { return }
                                             if let data = try? Data(contentsOf: url) {
-                                                if let _ = UIImage(data: data) {
-                                                    print("there is an image from url")
+                                                if let image = UIImage(data: data) {
+                                                    withAnimation {
+                                                        viewModel.handleIncomingImage(image)
+                                                    }
+                                                    UIPasteboard.general.items.removeAll()
                                                 }
                                             }
                                         }
-                                        UIPasteboard.general.items.removeAll()
                                     }
                                 }
 #endif

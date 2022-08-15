@@ -15,17 +15,20 @@ struct InfoView: View {
         case description
     }
     
+    @AppStorage("isFirstSearchOnTheInternet") pravate var isFirstSearchOnTheInternet = true
+    
     @StateObject private var viewModel: InfoViewModel
     @State private var infoMode: InfoMode
     @Binding private var isPresented: Bool
     @State private var isPresentedChangesAlert = false
     @State private var isPresentedDiscardingMantraAlert = false
     @State private var isPresentedDuplicationAlert = false
-    @State private var isPresentedNoImageAlert = false
     @State private var isPresentedSafariController = false
+    @State private var isPresentedFirstSearchOnTheInternetAlert = false
     @State private var isProcessingImage = false
+    @State private var selectedPhotoItem: PhotosPickerItem?
+    @State private var isPresentedNoImageAlert = false
     @State private var successfullyAdded = false
-    @State private var selectedPhotoItem: PhotosPickerItem? = nil
     @FocusState private var focus: FocusableField?
     private let addHapticGenerator = UINotificationFeedbackGenerator()
     
@@ -73,6 +76,11 @@ struct InfoView: View {
                                             isProcessingImage = false
                                         }
                                     }
+                                    .alert("Unavailable Photo", isPresented: $isPresentedNoImageAlert) {
+                                        Button("OK") { }
+                                    } message: {
+                                        Text("It seems like this photo is unavailable. Try to pick another one")
+                                    }
                                     Button {
                                         withAnimation {
                                             viewModel.setDefaultImage()
@@ -82,9 +90,21 @@ struct InfoView: View {
                                     }
 #if os(iOS)
                                     Button {
-                                        isPresentedSafariController = true
+                                        if isFirstSearchOnTheInternet {
+                                            isPresentedFirstSearchOnTheInternetAlert = true
+                                        } else {
+                                            isPresentedSafariController = true
+                                        }
                                     } label: {
                                         Label("Search on the Internet", systemImage: "globe")
+                                    }
+                                    .alert("Pick Photo", isPresented: $isPresentedFirstSearchOnTheInternetAlert) {
+                                        Button("OK") {
+                                            isFirstSearchOnTheInternet = false
+                                            isPresentedSafariController = true
+                                        }
+                                    } message: {
+                                        Text("Search for image in the next window. Then just longpress on the one you liked, choose 'Copy' in contextual menu and confirm it by 'Done'")
                                     }
                                     .onChange(of: isPresentedSafariController) { [oldValue = isPresentedSafariController] newValue in
                                         if oldValue && !newValue {
@@ -191,12 +211,14 @@ struct InfoView: View {
             }
             .navigationTitle(infoMode == .addNew ? "New Mantra" : "Information")
             .navigationBarTitleDisplayMode(.inline)
+#if os(iOS)
             .sheet(isPresented: $isPresentedSafariController) {
                 SafariView(
                     url: URL(string: "https://www.google.com/search?q=\(viewModel.title)&tbm=isch"
                         .addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!
                 )
             }
+#endif
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     if infoMode == .edit || infoMode == .view {

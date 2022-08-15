@@ -32,6 +32,7 @@
 		9F348D4228A430F70070F157 /* InfoMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F348D4128A430F70070F157 /* InfoMode.swift */; };
 		9F4DE924286E3B670064ADCB /* UIImage+CropToCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DE923286E3B670064ADCB /* UIImage+CropToCircle.swift */; };
 		9F4DE926286E3B990064ADCB /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DE925286E3B990064ADCB /* Functions.swift */; };
+		9F53A56F28A967900070D2B3 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F53A56E28A967900070D2B3 /* SafariView.swift */; };
 		9F605143288EE75E005EC6F5 /* BlinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F605142288EE75E005EC6F5 /* BlinkView.swift */; };
 		9F780038287FF7D200516A0F /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F780037287FF7D200516A0F /* RandomColor.swift */; };
 		9F78628A288844970058AAD0 /* PercentageRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F786289288844970058AAD0 /* PercentageRing.swift */; };
@@ -121,6 +122,7 @@
 		9F348D4128A430F70070F157 /* InfoMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMode.swift; sourceTree = "<group>"; };
 		9F4DE923286E3B670064ADCB /* UIImage+CropToCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CropToCircle.swift"; sourceTree = "<group>"; };
 		9F4DE925286E3B990064ADCB /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		9F53A56E28A967900070D2B3 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		9F605142288EE75E005EC6F5 /* BlinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkView.swift; sourceTree = "<group>"; };
 		9F780037287FF7D200516A0F /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
 		9F786289288844970058AAD0 /* PercentageRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageRing.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				9FD61DCB289391D4004936E6 /* InfoView.swift */,
 				9FD61DCD289391EF004936E6 /* InfoViewModel.swift */,
 				9F348D4128A430F70070F157 /* InfoMode.swift */,
+				9F53A56E28A967900070D2B3 /* SafariView.swift */,
 			);
 			path = MantraInfoScreen;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				9F605143288EE75E005EC6F5 /* BlinkView.swift in Sources */,
 				9FD61DC8289391A4004936E6 /* PreloadedMantraRow.swift in Sources */,
 				9F338B5E2899A64200E393E2 /* SlimRectangle.swift in Sources */,
+				9F53A56F28A967900070D2B3 /* SafariView.swift in Sources */,
 				9F78628A288844970058AAD0 /* PercentageRing.swift in Sources */,
 				9F338B602899A64200E393E2 /* ConfettiSwiftUI.swift in Sources */,
 				9F1AB3D828A18E58001FF7DE /* MantraWidget.intentdefinition in Sources */,

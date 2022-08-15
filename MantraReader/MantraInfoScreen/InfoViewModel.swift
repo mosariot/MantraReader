@@ -69,7 +69,14 @@ final class InfoViewModel: ObservableObject {
         if mantra.title != title { mantra.title = title }
         if mantra.text != text { mantra.text = text }
         if mantra.details != description { mantra.details = description }
-        if mantra.image != imageData { mantra.image = imageData }
+        if mantra.image != imageData {
+            mantra.image = imageData
+            if imageData != nil {
+                mantra.imageForTableView = image.resize(to: CGSize(width: Constants.rowHeight, height: Constants.rowHeight)).pngData()
+            } else {
+                mantra.imageForTableView = nil
+            }
+        }
         if withCleanUp {
             deleteEmptyMantras()
         } else {

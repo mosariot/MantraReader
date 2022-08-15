@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct InfoView: View {
     private enum FocusableField: Hashable {
@@ -20,7 +21,9 @@ struct InfoView: View {
     @State private var isPresentedChangesAlert = false
     @State private var isPresentedDiscardingMantraAlert = false
     @State private var isPresentedDuplicationAlert = false
+    @State private var isPresentedSafariController = false
     @State private var successfullyAdded = false
+    @State private var selectedPhotoItem: PhotosPickerItem? = nil
     @FocusState private var focus: FocusableField?
     private let addHapticGenerator = UINotificationFeedbackGenerator()
     
@@ -45,8 +48,11 @@ struct InfoView: View {
                         .accessibilityIgnoresInvertColors()
                         .overlay(alignment: .bottom) {
                             Menu {
-                                Button {
-                                } label: {
+                                PhotosPicker(
+                                    selection: $selectedPhotoItem,
+                                    matching: .images,
+                                    photoLibrary: .shared()
+                                ) {
                                     Label("Photo Library", systemImage: "photo.on.rectangle.angled")
                                 }
                                 Button {
@@ -56,10 +62,29 @@ struct InfoView: View {
                                 } label: {
                                     Label("Default Image", systemImage: "photo")
                                 }
+#if os(iOS)
                                 Button {
+                                    isPresentedSafariController = true
                                 } label: {
                                     Label("Search on the Internet", systemImage: "globe")
                                 }
+                                .onChange(of: isPresentedSafariController) { [isPresentedSafariController] newValue in
+                                    if isPresentedSafariController && !newValue {
+                                        if UIPasteboard.general.hasImages {
+                                            guard let _ = UIPasteboard.general.image else { return }
+                                            print("there is an image")
+                                        } else if UIPasteboard.general.hasURLs {
+                                            guard let url = UIPasteboard.general.url else { return }
+                                            if let data = try? Data(contentsOf: url) {
+                                                if let _ = UIImage(data: data) {
+                                                    print("there is an image from url")
+                                                }
+                                            }
+                                        }
+                                        UIPasteboard.general.items.removeAll()
+                                    }
+                                }
+#endif
                             } label: {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 5)
@@ -139,6 +164,12 @@ struct InfoView: View {
             }
             .navigationTitle(infoMode == .addNew ? "New Mantra" : "Information")
             .navigationBarTitleDisplayMode(.inline)
+            .sheet(isPresented: $isPresentedSafariController) {
+                SafariView(
+                    url: URL(string: "https://www.google.com/search?q=\(viewModel.title)&tbm=isch"
+                        .addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!
+                )
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     if infoMode == .edit || infoMode == .view {

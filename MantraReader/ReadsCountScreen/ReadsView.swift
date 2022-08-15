@@ -186,19 +186,21 @@ struct ReadsView: View {
             Button {
                 if isFirstLaunchOfMantraCounterMode {
                     isPresentedMantraCounterModeAlert = true
+                } else {
                     withAnimation {
-                        toggleMantraCounterMode(withHint: false)
+                        toggleMantraCounterMode()
                     }
-                }
-                withAnimation {
-                    toggleMantraCounterMode()
                 }
             } label: {
                 Image(systemName: "sun.max")
                     .imageScale(.large)
                     .symbolVariant(isMantraCounterMode ? .circle.fill : .none)
-                    .padding(25)
+                    .padding(.trailing, 20)
+                    .padding(.top, 20)
+                    .padding(.leading, 25)
+                    .padding(.bottom, 25)
             }
+            .controlSize(.large)
             .contentShape(Rectangle())
         }
         .navigationTitle(verticalSizeClass == .compact ? viewModel.mantra.title ?? "" : "")
@@ -243,9 +245,12 @@ struct ReadsView: View {
         ) {
             Button("OK", role: .cancel) {
                 isFirstLaunchOfMantraCounterMode = false
+                withAnimation {
+                    toggleMantraCounterMode()
+                }
             }
         } message: {
-            Text("You have entered the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. The screen won’t dim. The edit buttons at the bottom are disabled.")
+            Text("You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. The screen won’t dim. The edit buttons at the bottom are disabled.")
         }
         .sheet(isPresented: $isPresentedInfoView) {
             InfoView(
@@ -279,16 +284,14 @@ struct ReadsView: View {
         adjustingText = ""
     }
     
-    private func toggleMantraCounterMode(withHint: Bool = true) {
+    private func toggleMantraCounterMode() {
         withAnimation {
             isMantraCounterMode.toggle()
         }
         if isMantraCounterMode {
             lightHapticGenerator.impactOccurred()
-            if withHint {
-                showHint = true
-                afterDelay(1.5) { showHint = false }
-            }
+            showHint = true
+            afterDelay(1.5) { showHint = false }
             UIApplication.shared.isIdleTimerDisabled = true
         } else {
             UIApplication.shared.isIdleTimerDisabled = false

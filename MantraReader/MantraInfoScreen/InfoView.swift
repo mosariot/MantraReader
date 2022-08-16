@@ -218,6 +218,7 @@ struct InfoView: View {
                     url: URL(string: "https://www.google.com/search?q=\(viewModel.title)&tbm=isch"
                         .addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!
                 )
+                .presentationDetents([.medium, .large])
             }
 #endif
             .toolbar {

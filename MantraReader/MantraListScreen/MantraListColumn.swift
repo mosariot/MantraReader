@@ -10,6 +10,7 @@ import Combine
 
 struct MantraListColumn: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.isSearching) private var isSearching: Bool
     
     @State private var searchText = ""
     @State private var isPresentedPreloadedMantraList = false
@@ -24,62 +25,72 @@ struct MantraListColumn: View {
     private let widgetManager = MantraWidgetManager()
     
     var body: some View {
-        List(mantras, selection: $selectedMantra) { section in
-            Section(section.id ? "Favorites" : "Mantras") {
-                ForEach(section) { mantra in
-                    NavigationLink(value: mantra) {
-                        MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
-                            .contextMenu {
-                                Button {
-                                    withAnimation {
-                                        mantra.isFavorite.toggle()
+        ZStack {
+            List(mantras, selection: $selectedMantra) { section in
+                Section(section.id ? "Favorites" : "Mantras") {
+                    ForEach(section) { mantra in
+                        NavigationLink(value: mantra) {
+                            MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
+                                .contextMenu {
+                                    Button {
+                                        withAnimation {
+                                            mantra.isFavorite.toggle()
+                                        }
+                                        saveContext()
+                                    } label: {
+                                        Label(
+                                            mantra.isFavorite ? "Unfavorite" : "Favorite",
+                                            systemImage: mantra.isFavorite ? "star.slash" : "star"
+                                        )
                                     }
-                                    saveContext()
-                                } label: {
-                                    Label(
-                                        mantra.isFavorite ? "Unfavorite" : "Favorite",
-                                        systemImage: mantra.isFavorite ? "star.slash" : "star"
-                                    )
+                                    Button(role: .destructive) {
+                                        mantrasForDeletion = [mantra]
+                                        isDeletingMantras = true
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                    }
                                 }
-                                Button(role: .destructive) {
-                                    mantrasForDeletion = [mantra]
-                                    isDeletingMantras = true
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
+                        }
+                        .swipeActions(allowsFullSwipe: false) {
+                            Button {
+                                mantrasForDeletion = [mantra]
+                                isDeletingMantras = true
+                            } label: {
+                                Label("Delete", systemImage: "trash")
                             }
+                            .tint(.red)
+                            Button {
+                                withAnimation {
+                                    mantra.isFavorite.toggle()
+                                }
+                                saveContext()
+                            } label: {
+                                Label(
+                                    mantra.isFavorite ? "Unfavorite" : "Favorite",
+                                    systemImage: mantra.isFavorite ? "star.slash" : "star"
+                                )
+                            }
+                            .tint(.indigo)
+                        }
                     }
-                    .swipeActions(allowsFullSwipe: false) {
-                        Button {
-                            mantrasForDeletion = [mantra]
-                            isDeletingMantras = true
-                        } label: {
-                            Label("Delete", systemImage: "trash")
+                    .onDelete { indexSet in
+                        mantrasForDeletion = nil
+                        indexSet.map { section[$0] }.forEach {
+                            mantrasForDeletion?.append($0)
                         }
-                        .tint(.red)
-                        Button {
-                            withAnimation {
-                                mantra.isFavorite.toggle()
-                            }
-                            saveContext()
-                        } label: {
-                            Label(
-                                mantra.isFavorite ? "Unfavorite" : "Favorite",
-                                systemImage: mantra.isFavorite ? "star.slash" : "star"
-                            )
-                        }
-                        .tint(.indigo)
+                        isDeletingMantras = true
                     }
                 }
-                .onDelete { indexSet in
-                    mantrasForDeletion = nil
-                    indexSet.map { section[$0] }.forEach {
-                        mantrasForDeletion?.append($0)
-                    }
-                    isDeletingMantras = true
+                .headerProminence(.increased)
+            }
+            if isSearching && mantras.isEmpty {
+                VStack {
+                    Spacer()
+                        .frame(height: 50)
+                    Text("No matches found")
+                    Spacer()
                 }
             }
-            .headerProminence(.increased)
         }
         .confirmationDialog(
             "Delete Mantra",

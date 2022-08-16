@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  MantraReader
+
+  Created by Александр Воробьев on 15.08.2022.
+  
+*/
+
+CFBundleDisplayName = "Начитай!";
+
+Add_New_Mantra_Shortcut_Title = "Добавить мантру";

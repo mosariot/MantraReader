@@ -13,7 +13,7 @@ struct GoalButtonView: View {
     @Binding var isPresentedAdjustingAlert: Bool
     
     var body: some View {
-        Button("Current goal: \(viewModel.displayedGoal, specifier: "%.0f")") {
+        Button("Goal: \(viewModel.displayedGoal, specifier: "%.0f")") {
             adjustingType = .goal
             isPresentedAdjustingAlert = true
         }

@@ -49,6 +49,9 @@
 		9FB279E428902F1B0029ED3B /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB279E328902F1B0029ED3B /* HintView.swift */; };
 		9FB32B1128A7D48C000A910E /* ShakeSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB32B1028A7D48C000A910E /* ShakeSupport.swift */; };
 		9FB32B1428A7D8F2000A910E /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9FB32B1328A7D8F2000A910E /* IQKeyboardManagerSwift */; };
+		9FB5983228AAC54A00798AD7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983428AAC54A00798AD7 /* InfoPlist.strings */; };
+		9FB5983828AAC65B00798AD7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983A28AAC65B00798AD7 /* Localizable.strings */; };
+		9FB5983B28AB4E7F00798AD7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983A28AAC65B00798AD7 /* Localizable.strings */; };
 		9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */; };
 		9FBEE99A285F682C0070BA06 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE999285F682C0070BA06 /* PersistenceController.swift */; };
 		9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE99E285F682C0070BA06 /* ContentView.swift */; };
@@ -138,6 +141,9 @@
 		9FA8E88C2898DB7B00479F08 /* PreloadedMantra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantra.swift; sourceTree = "<group>"; };
 		9FB279E328902F1B0029ED3B /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		9FB32B1028A7D48C000A910E /* ShakeSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeSupport.swift; sourceTree = "<group>"; };
+		9FB5983328AAC54A00798AD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9FB5983528AAC54F00798AD7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9FB5983928AAC65B00798AD7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9FBEE994285F682C0070BA06 /* MantraReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MantraReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraReaderApp.swift; sourceTree = "<group>"; };
 		9FBEE999285F682C0070BA06 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
@@ -334,6 +340,8 @@
 			isa = PBXGroup;
 			children = (
 				9F794EE2289E777600DDF940 /* Info.plist */,
+				9FB5983428AAC54A00798AD7 /* InfoPlist.strings */,
+				9FB5983A28AAC65B00798AD7 /* Localizable.strings */,
 				9FBEE9A2285F682D0070BA06 /* MantraReader.entitlements */,
 				9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */,
 				9FFB322C289FC0E9000A5D80 /* ReadTheMantra.xcdatamodeld */,
@@ -428,6 +436,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 9FBEE98B285F682C0070BA06;
 			packageReferences = (
@@ -449,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F1AB3D528A18E58001FF7DE /* Assets.xcassets in Resources */,
+				9FB5983B28AB4E7F00798AD7 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +467,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FBEE9A5285F682D0070BA06 /* Preview Assets.xcassets in Resources */,
+				9FB5983828AAC65B00798AD7 /* Localizable.strings in Resources */,
+				9FB5983228AAC54A00798AD7 /* InfoPlist.strings in Resources */,
 				9FBEE9A1285F682D0070BA06 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,6 +556,26 @@
 			targetProxy = 9F1AB3D928A18E58001FF7DE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9FB5983428AAC54A00798AD7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FB5983328AAC54A00798AD7 /* en */,
+				9FB5983528AAC54F00798AD7 /* ru */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9FB5983A28AAC65B00798AD7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FB5983928AAC65B00798AD7 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		9F1AB3DD28A18E58001FF7DE /* Debug */ = {

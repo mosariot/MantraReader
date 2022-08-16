@@ -19,7 +19,7 @@ struct MantraRow: View {
                 .frame(width: CGFloat(Constants.rowHeight))
             VStack(alignment: .leading) {
                 Text(mantra.title ?? "")
-                Text("Current reads: \(mantra.reads)")
+                Text("Current readings: \(mantra.reads)")
                     .font(.caption)
                     .opacity(isSelected && UIDevice.current.userInterfaceIdiom == .pad ? 1 : 0.5)
             }

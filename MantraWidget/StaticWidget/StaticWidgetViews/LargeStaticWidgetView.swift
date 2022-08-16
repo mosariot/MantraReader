@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct LargeStaticWidgetView: View {
-    @Environment(\.redactionReasons) var reasons
     var widgetModel: WidgetModel
     
     var body: some View {
@@ -37,7 +36,6 @@ struct LargeStaticWidgetView: View {
                                             Text("\(mantra.reads)")
                                                 .font(.system(.footnote, weight: .semibold))
                                                 .foregroundColor(.secondary)
-                                                .privacySensitive()
                                         }
                                     }
                                     Spacer()
@@ -50,7 +48,6 @@ struct LargeStaticWidgetView: View {
                             }
                         }
                     }
-                    .redacted(reason: reasons)
                 }
                 .padding()
             }

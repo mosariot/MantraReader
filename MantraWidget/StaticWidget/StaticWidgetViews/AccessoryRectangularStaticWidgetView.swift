@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AccessoryRectangularStaticWidgetView: View {
-    @Environment(\.redactionReasons) var reasons
     var widgetModel: WidgetModel
     
     var body: some View {
@@ -16,13 +15,11 @@ struct AccessoryRectangularStaticWidgetView: View {
             Image(systemName: "book")
                 .imageScale(.large)
             VStack(alignment: .leading) {
-                Text("Overall mantra readings")
+                Text("Total Mantras")
                     .font(.subheadline)
                 Text("\(widgetModel.mantras.map { $0.reads }.reduce(0,+))")
-                    .privacySensitive()
             }
             Spacer()
         }
-        .redacted(reason: reasons)
     }
 }

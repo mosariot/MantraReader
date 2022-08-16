@@ -74,13 +74,13 @@ final class ReadsViewModel: ObservableObject {
         guard let adjustingType else { return "" }
         switch adjustingType {
         case .reads:
-            return NSLocalizedString("Enter Readings Number", comment: "Enter value title for adjusting alert on ReadsView")
+            return String(localized: "Enter Readings Number")
         case .rounds:
-            return NSLocalizedString("Enter Rounds Number", comment: "Enter value title for adjusting alert on ReadsView")
+            return String(localized: "Enter Rounds Number")
         case .value:
-            return NSLocalizedString("Set a New Readings Count", comment: "Set value title for adjusting alert on ReadsView")
+            return String(localized: "Set a New Readings Count")
         case .goal:
-            return NSLocalizedString("Set a New Readings Goal", comment: "Set value title for adjusting alert on ReadsView")
+            return String(localized: "Set a New Readings Goal")
         }
     }
     
@@ -88,13 +88,13 @@ final class ReadsViewModel: ObservableObject {
         guard let adjustingType else { return "" }
         switch adjustingType {
         case .reads:
-            return NSLocalizedString("Add", comment: "Add button for adjusting alert on ReadsView")
+            return String(localized: "Add")
         case .rounds:
-            return NSLocalizedString("Add", comment: "Add button for adjusting alert on ReadsView")
+            return String(localized: "Add")
         case .value:
-            return NSLocalizedString("Set", comment: "Set button for adjusting alert on ReadsView")
+            return String(localized: "Set")
         case .goal:
-            return NSLocalizedString("Set", comment: "Set button for adjusting alert on ReadsView")
+            return String(localized: "Set")
         }
     }
         
@@ -102,9 +102,9 @@ final class ReadsViewModel: ObservableObject {
         guard let congratulations else { return "" }
         switch congratulations {
         case .half:
-            return NSLocalizedString("You're half way to your goal!", comment: "Congratulations alert message on ReadsView - half goal")
+            return String(localized: "You're half way to your goal!")
         case .full:
-            return NSLocalizedString("You've reached your goal!", comment: "Congratulations alert message on ReadsView - full goal")
+            return String(localized: "You've reached your goal!")
         }
     }
     

@@ -45,8 +45,8 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 /* Main section title */
 "Mantras" = "Мантры";
 
-/* Back Button */
-"Mantra List" = "Список мантр";
+/* Current readings count */
+"Current readings: %d" = "Текущая начитка: %d";
 
 /* Search Placeholder */
 "Search" = "Поиск";
@@ -99,7 +99,7 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 //MARK: - READS COUNT VIEW
 
 /* Goal Button Title */
-"Goal: " = "Цель: ";
+"Goal: %.0f" = "Цель: %.0f";
 
 /* New Readings Goal Alert Title */
 "Set a New Readings Goal" = "Установите новую цель";
@@ -109,9 +109,6 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 
 /* Cancel Alert Button */
 "Cancel" = "Отменить";
-
-/* Current readings count */
-"Current readings: %lld" = "Текущая начитка: %lld";
 
 /* Done Alert Button */
 "Done" = "Готово";
@@ -240,7 +237,7 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 /* Duplication Alert Message */
 "One of the selected mantras is already in your mantra list. Add anyway?" = "Одна из выбранных мантр уже есть в вашем списке. Все равно добавить?";
 
-//MARK: - WIDGET SUPPORT
+//MARK: - WIDGET
 
 /* Widget Subtitle */
 "Favorites" = "Избранное";
@@ -253,6 +250,12 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 
 /* Widget Description */
 "Favorites and Your Other Mantras" = "Избранные и другие Ваши мантры";
+
+/* Accessory Inline static widget title */
+"Mantras: %d" = "Мантры: %d";
+
+/* Accessory Rectangular static widget title */
+"Overall mantra readings" = "Общая начитка мантр";
 
 //MARK: - MISC
 

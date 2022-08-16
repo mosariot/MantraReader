@@ -18,8 +18,6 @@ struct DetailsColumn: View {
                 viewModel: ReadsViewModel(selectedMantra, viewContext: viewContext),
                 isMantraCounterMode: $isMantraCounterMode
             )
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: Text("Mantra List")
             .onChange(of: selectedMantra) { _ in
                 if isMantraCounterMode {
                     withAnimation {
@@ -39,5 +37,16 @@ struct DetailsView_Previews: PreviewProvider {
     static var previews: some View {
         DetailsColumn(selectedMantra: PersistenceController.previewMantra)
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
+}
+
+extension UINavigationController: UIGestureRecognizerDelegate {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+    }
+
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return viewControllers.count > 1
     }
 }

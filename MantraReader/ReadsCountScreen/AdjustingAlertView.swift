@@ -73,7 +73,7 @@ struct AdjustingAlertView: UIViewControllerRepresentable {
             }
             
             let cancelAction = UIAlertAction(
-                title: NSLocalizedString("Cancel", comment: "Alert Button on ReadsView"),
+                title: String(localized: "Cancel"),
                 style: .cancel
             ) { _ in
                 alert.dismiss(animated: true) {

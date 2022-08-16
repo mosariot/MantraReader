@@ -1,15 +1,15 @@
 //
-//  MediumWidgetView.swift
+//  MediumStaticWidgetView.swift
 //  MantraWidgetExtension
 //
 //  Created by Alex Vorobiev on 21.03.2021.
 //  Copyright © 2021 Alex Vorobiev. All rights reserved.
 //
 
-import WidgetKit
 import SwiftUI
 
-struct MediumWidget: View {
+struct MediumStaticWidgetView: View {
+    @Environment(\.redactionReasons) var reasons
     var widgetModel: WidgetModel
     
     var body: some View {
@@ -45,6 +45,7 @@ struct MediumWidget: View {
                             .frame(maxWidth: .infinity)
                         }
                     }
+                    .redacted(reason: reasons)
                 }
                 .padding()
             }

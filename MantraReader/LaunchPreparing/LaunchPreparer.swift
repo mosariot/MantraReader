@@ -16,12 +16,10 @@ struct LaunchPreparer {
         networkMonitor.startMonitoring()
         DispatchQueue.main.async {
             if !(networkMonitor.isReachable) {
-                print("no internet")
                 persistenceController.preloadData(context: persistenceController.container.viewContext)
                 UserDefaults.standard.set(true, forKey: "isPreloadedMantrasDueToNoInternet")
                 UserDefaults.standard.set(false, forKey: "isInitalDataLoading")
             } else {
-                print("checking for icloud")
                 checkForiCloudRecords()
             }
             networkMonitor.stopMonitoring()
@@ -47,18 +45,15 @@ struct LaunchPreparer {
                 case .success(_):
                     if !areThereAnyRecords {
                         // no records in iCloud
-                        print("no records in icloud")
                         persistenceController.preloadData(context: persistenceController.container.viewContext)
                         UserDefaults.standard.set(false, forKey: "isInitalDataLoading")
                     } else {
                         // CloudKit automatically handles loading records from iCloud
                         print("downloading records from icloud")
-                        UserDefaults.standard.set(false, forKey: "isInitalDataLoading")
+//                        UserDefaults.standard.set(false, forKey: "isInitalDataLoading")
                     }
-                case let .failure(error):
-//                    // for example, user is not logged-in iCloud (type of error doesn't matter)
-                    print("something went wrong with icloud")
-                    print(error)
+                case .failure(_):
+                    // for example, user is not logged-in iCloud (type of error doesn't matter)
                     persistenceController.preloadData(context: persistenceController.container.viewContext)
                     UserDefaults.standard.set(false, forKey: "isInitalDataLoading")
                 }

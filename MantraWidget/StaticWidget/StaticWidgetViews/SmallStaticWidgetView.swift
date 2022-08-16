@@ -1,15 +1,15 @@
 //
-//  SmallWidgetView.swift
+//  SmallStaticWidgetView.swift
 //  MantraWidgetExtension
 //
 //  Created by Alex Vorobiev on 21.03.2021.
 //  Copyright © 2021 Alex Vorobiev. All rights reserved.
 //
 
-import WidgetKit
 import SwiftUI
 
-struct SmallWidget: View {
+struct SmallStaticWidgetView: View {
+    @Environment(\.redactionReasons) var reasons
     var widgetModel: WidgetModel
     
     var body: some View {
@@ -42,6 +42,7 @@ struct SmallWidget: View {
                                 }
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                             }
+                            .redacted(reason: reasons)
                         }
                     }
                 }

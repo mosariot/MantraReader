@@ -1,0 +1,31 @@
+//
+//  StaticWidgetEntryView.swift
+//  MantraReader
+//
+//  Created by Александр Воробьев on 16.08.2022.
+//
+
+import SwiftUI
+
+struct StaticWidgetEntryView: View {
+    @Environment(\.widgetFamily) var family
+    var entry: Provider.Entry
+    
+    @ViewBuilder
+    var body: some View {
+        switch family {
+        case .systemSmall:
+            SmallStaticWidgetView(widgetModel: entry.widgetModel)
+        case .systemMedium:
+            MediumStaticWidgetView(widgetModel: entry.widgetModel)
+        case .systemLarge:
+            LargeStaticWidgetView(widgetModel: entry.widgetModel)
+        case .accessoryInline:
+            Text("Mantra: \(entry.widgetModel.mantras.map { $0.reads }.reduce(0,+))")
+        case .accessoryRectangular:
+            AccessoryRectangularStaticWidgetView(widgetModel: entry.widgetModel)
+        default:
+            fatalError("Not implemented")
+        }
+    }
+}

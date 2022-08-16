@@ -28,6 +28,7 @@ struct OnboardingView: View {
                 .bold()
                 .multilineTextAlignment(.center)
                 .padding(.top)
+                .padding(.horizontal)
             Image("DefaultImage")
                 .resizable()
                 .scaledToFit()

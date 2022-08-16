@@ -84,6 +84,11 @@ struct ContentView: View {
                         }
                     }
                 }
+                .onReceive(mantras.publisher.count()) { count in
+                    if isInitalDataLoading && count > 0 {
+                        isInitalDataLoading = false
+                    }
+                }
                 if isInitalDataLoading {
                     ProgressView("Syncing...")
                 }

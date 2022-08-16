@@ -1,15 +1,15 @@
 //
-//  LargeWidgetView.swift
+//  LargeStaticWidgetView.swift
 //  MantraWidgetExtension
 //
 //  Created by Alex Vorobiev on 21.03.2021.
 //  Copyright © 2021 Alex Vorobiev. All rights reserved.
 //
 
-import WidgetKit
 import SwiftUI
 
-struct LargeWidget: View {
+struct LargeStaticWidgetView: View {
+    @Environment(\.redactionReasons) var reasons
     var widgetModel: WidgetModel
     
     var body: some View {
@@ -50,6 +50,7 @@ struct LargeWidget: View {
                             }
                         }
                     }
+                    .redacted(reason: reasons)
                 }
                 .padding()
             }

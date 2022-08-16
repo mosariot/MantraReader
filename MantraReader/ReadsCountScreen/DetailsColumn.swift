@@ -18,6 +18,8 @@ struct DetailsColumn: View {
                 viewModel: ReadsViewModel(selectedMantra, viewContext: viewContext),
                 isMantraCounterMode: $isMantraCounterMode
             )
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: Text("Mantra List")
             .onChange(of: selectedMantra) { _ in
                 if isMantraCounterMode {
                     withAnimation {

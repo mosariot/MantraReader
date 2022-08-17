@@ -17,6 +17,7 @@ struct ContentView: View {
     
     @State private var selectedMantra: Mantra?
     @State private var showingDataFailedAlert = false
+    @State private var search = ""
     
     @SectionedFetchRequest(sectionIdentifier: \.isFavorite, sortDescriptors: [])
     private var mantras: SectionedFetchResults<Bool, Mantra>
@@ -57,40 +58,45 @@ struct ContentView: View {
                 MantraListColumn(
                     mantras: mantras,
                     selectedMantra: $selectedMantra,
-                    sorting: $sorting
+                    sorting: $sorting,
+                    searchText: $search
                 )
-                .onAppear {
-                    if !mantras.isEmpty {
-#if os(iOS)
-                        if ((verticalSizeClass == .regular && horizontalSizeClass == .regular)
-                            || (verticalSizeClass == .compact && horizontalSizeClass == .regular))
-                            && isFreshLaunch {
-                            selectedMantra = mantras[0][0]
-                        }
-#elseif os(macOS)
-                        if isFreshLaunch {
-                            selectedMantra = mantras[0][0]
-                        }
-#endif
-                    }
-                    widgetManager.updateWidgetData(viewContext: viewContext)
-                }
-                .onOpenURL { url in
-                    mantras.forEach { section in
-                        section.forEach { mantra in
-                            if mantra.uuid == UUID(uuidString: "\(url)") {
-                                selectedMantra = mantra
-                            }
-                        }
-                    }
-                }
-                .onReceive(mantras.publisher.count()) { count in
-                    if isInitalDataLoading && count > 0 {
-                        isInitalDataLoading = false
-                    }
+                .searchable(text: $search)
+                .onChange(of: search) {
+                    mantras.nsPredicate = $0.isEmpty ? nil : NSPredicate(format: "title contains[cd] %@", $0)
                 }
                 if isInitalDataLoading {
                     ProgressView("Syncing...")
+                }
+            }
+            .onAppear {
+                if !mantras.isEmpty {
+#if os(iOS)
+                    if ((verticalSizeClass == .regular && horizontalSizeClass == .regular)
+                        || (verticalSizeClass == .compact && horizontalSizeClass == .regular))
+                        && isFreshLaunch {
+                        selectedMantra = mantras[0][0]
+                    }
+#elseif os(macOS)
+                    if isFreshLaunch {
+                        selectedMantra = mantras[0][0]
+                    }
+#endif
+                }
+                widgetManager.updateWidgetData(viewContext: viewContext)
+            }
+            .onOpenURL { url in
+                mantras.forEach { section in
+                    section.forEach { mantra in
+                        if mantra.uuid == UUID(uuidString: "\(url)") {
+                            selectedMantra = mantra
+                        }
+                    }
+                }
+            }
+            .onReceive(mantras.publisher.count()) { count in
+                if isInitalDataLoading && count > 0 {
+                    isInitalDataLoading = false
                 }
             }
         } detail: {

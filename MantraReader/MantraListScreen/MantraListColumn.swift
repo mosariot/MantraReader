@@ -12,7 +12,6 @@ struct MantraListColumn: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.isSearching) private var isSearching: Bool
     
-    @State private var searchText = ""
     @State private var isPresentedPreloadedMantraList = false
     @State private var isPresentedNewMantraSheet = false
     @State private var isDeletingMantras = false
@@ -21,6 +20,7 @@ struct MantraListColumn: View {
     var mantras: SectionedFetchResults<Bool, Mantra>
     @Binding var selectedMantra: Mantra?
     @Binding var sorting: Sorting
+    @Binding var searchText: String
     
     private let widgetManager = MantraWidgetManager()
     
@@ -88,6 +88,7 @@ struct MantraListColumn: View {
                     Spacer()
                         .frame(height: 50)
                     Text("No matches found")
+                        .foregroundColor(.secondary)
                     Spacer()
                 }
             }
@@ -118,10 +119,10 @@ struct MantraListColumn: View {
         .navigationTitle("Mantra Reader")
         .animation(.default, value: sorting)
         .animation(.default, value: searchText)
-        .searchable(text: $searchText, prompt: "Search")
-        .onChange(of: searchText) {
-            mantras.nsPredicate = $0.isEmpty ? nil : NSPredicate(format: "title contains[cd] %@", $0)
-        }
+//        .searchable(text: $searchText, prompt: "Search")
+//        .onChange(of: searchText) {
+//            mantras.nsPredicate = $0.isEmpty ? nil : NSPredicate(format: "title contains[cd] %@", $0)
+//        }
         .listStyle(.sidebar)
         .refreshable {
             viewContext.refreshAllObjects()

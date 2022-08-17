@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct LargeStaticWidgetView: View {
+    @Environment(\.redactionReasons) private var reasons
     var widgetModel: WidgetModel
     
     var body: some View {
@@ -36,18 +37,20 @@ struct LargeStaticWidgetView: View {
                                             Text("\(mantra.reads)")
                                                 .font(.system(.footnote, weight: .semibold))
                                                 .foregroundColor(.secondary)
+                                                .privacySensitive()
                                         }
                                     }
                                     Spacer()
-                                    Image(uiImage: ((mantra.image != nil) ?
-                                                        UIImage(data: mantra.image!) :
-                                                        UIImage(named: Constants.defaultImage))!)
+                                    Image(uiImage: (((mantra.image != nil) ?
+                                                     UIImage(data: mantra.image!) :
+                                                        UIImage(named: Constants.defaultImage)?.resize(to: CGSize(width: Constants.rowHeight, height: Constants.rowHeight)))!))
                                         .resizable()
                                         .frame(width: 41, height: 41, alignment: .center)
                                 }
                             }
                         }
                     }
+                    .redacted(reason: reasons)
                 }
                 .padding()
             }

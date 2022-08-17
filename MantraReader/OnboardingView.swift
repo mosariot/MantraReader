@@ -2,7 +2,7 @@
 //  OnboardingView.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 04.08.2022.
+//  Created by Alex Vorobiev on 04.08.2022.
 //
 
 import SwiftUI

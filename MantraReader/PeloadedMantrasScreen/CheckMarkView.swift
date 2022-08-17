@@ -2,7 +2,7 @@
 //  CheckMarkView.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 01.08.2022.
+//  Created by Alex Vorobiev on 01.08.2022.
 //
 
 import SwiftUI

@@ -2,13 +2,13 @@
 //  Provider.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 16.08.2022.
+//  Created by Alex Vorobiev on 16.08.2022.
 //
 
 import SwiftUI
 import WidgetKit
 
-struct Provider: TimelineProvider {
+struct StaticProvider: TimelineProvider {
     @AppStorage("widgetItem", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
     private var widgetItemData: Data = Data()
     

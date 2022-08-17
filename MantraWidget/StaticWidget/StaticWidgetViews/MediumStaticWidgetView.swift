@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct MediumStaticWidgetView: View {
+    @Environment(\.redactionReasons) private var reasons
     var widgetModel: WidgetModel
     
     var body: some View {
@@ -39,10 +40,12 @@ struct MediumStaticWidgetView: View {
                                 Text("\(mantra.reads)")
                                     .font(.system(.caption, weight: .semibold))
                                     .foregroundColor(.secondary)
+                                    .privacySensitive()
                             }
                             .frame(maxWidth: .infinity)
                         }
                     }
+                    .redacted(reason: reasons)
                 }
                 .padding()
             }

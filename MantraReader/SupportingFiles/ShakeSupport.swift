@@ -2,7 +2,7 @@
 //  ShakeSupport.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 13.08.2022.
+//  Created by Alex Vorobiev on 13.08.2022.
 //
 
 import SwiftUI

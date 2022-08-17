@@ -2,7 +2,7 @@
 //  PreloadedMantra.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 02.08.2022.
+//  Created by Alex Vorobiev on 02.08.2022.
 //
 
 import Foundation

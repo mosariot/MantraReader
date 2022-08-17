@@ -2,7 +2,7 @@
 //  AdjustingAndUndoTypes.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 17.07.2022.
+//  Created by Alex Vorobiev on 17.07.2022.
 //
 
 enum AdjustingType {

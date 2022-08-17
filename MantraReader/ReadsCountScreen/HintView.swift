@@ -2,7 +2,7 @@
 //  HintView.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 26.07.2022.
+//  Created by Alex Vorobiev on 26.07.2022.
 //
 
 import SwiftUI

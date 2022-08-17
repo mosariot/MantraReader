@@ -2,7 +2,7 @@
 //  InfoView.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 29.07.2022.
+//  Created by Alex Vorobiev on 29.07.2022.
 //
 
 import SwiftUI

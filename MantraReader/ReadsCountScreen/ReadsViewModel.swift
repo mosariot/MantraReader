@@ -2,7 +2,7 @@
 //  ReadsViewModel.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 21.06.2022.
+//  Created by Alex Vorobiev on 21.06.2022.
 //
 
 import SwiftUI

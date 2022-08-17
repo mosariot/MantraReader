@@ -13,7 +13,7 @@ struct StaticWidget: Widget {
     let kind: String = "MantraWidget"
     
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+        StaticConfiguration(kind: kind, provider: StaticProvider()) { entry in
             StaticWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Mantra Reader")

@@ -2,7 +2,7 @@
 //  MantraRow.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 28.06.2022.
+//  Created by Alex Vorobiev on 28.06.2022.
 //
 
 import SwiftUI

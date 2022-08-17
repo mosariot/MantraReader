@@ -2,7 +2,7 @@
 //  MantraCounterModeOverlayView.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 27.07.2022.
+//  Created by Alex Vorobiev on 27.07.2022.
 //
 
 import SwiftUI

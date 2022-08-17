@@ -2,7 +2,7 @@
 //  SafariView.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 14.08.2022.
+//  Created by Alex Vorobiev on 14.08.2022.
 //
 
 import SwiftUI

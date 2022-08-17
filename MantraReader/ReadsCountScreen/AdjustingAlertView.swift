@@ -2,7 +2,7 @@
 //  AdjustingAlertView.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 12.07.2022.
+//  Created by Alex Vorobiev on 12.07.2022.
 //
 
 #if os(iOS)

@@ -2,7 +2,7 @@
 //  StaticWidgetEntry.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 16.08.2022.
+//  Created by Alex Vorobiev on 16.08.2022.
 //
 
 import WidgetKit

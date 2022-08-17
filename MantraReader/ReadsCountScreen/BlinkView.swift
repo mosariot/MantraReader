@@ -2,7 +2,7 @@
 //  BlinkView.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 25.07.2022.
+//  Created by Alex Vorobiev on 25.07.2022.
 //
 
 import SwiftUI

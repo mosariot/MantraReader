@@ -2,7 +2,7 @@
 //  MantraListColumn.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 21.06.2022.
+//  Created by Alex Vorobiev on 21.06.2022.
 //
 
 import SwiftUI
@@ -119,10 +119,6 @@ struct MantraListColumn: View {
         .navigationTitle("Mantra Reader")
         .animation(.default, value: sorting)
         .animation(.default, value: searchText)
-//        .searchable(text: $searchText, prompt: "Search")
-//        .onChange(of: searchText) {
-//            mantras.nsPredicate = $0.isEmpty ? nil : NSPredicate(format: "title contains[cd] %@", $0)
-//        }
         .listStyle(.sidebar)
         .refreshable {
             viewContext.refreshAllObjects()

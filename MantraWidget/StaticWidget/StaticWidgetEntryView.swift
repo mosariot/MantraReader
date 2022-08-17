@@ -2,14 +2,14 @@
 //  StaticWidgetEntryView.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 16.08.2022.
+//  Created by Alex Vorobiev on 16.08.2022.
 //
 
 import SwiftUI
 
 struct StaticWidgetEntryView: View {
     @Environment(\.widgetFamily) var family
-    var entry: Provider.Entry
+    var entry: StaticProvider.Entry
     
     @ViewBuilder
     var body: some View {

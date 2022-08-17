@@ -33,6 +33,16 @@
 		9F4DE924286E3B670064ADCB /* UIImage+CropToCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DE923286E3B670064ADCB /* UIImage+CropToCircle.swift */; };
 		9F4DE926286E3B990064ADCB /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DE925286E3B990064ADCB /* Functions.swift */; };
 		9F53A56F28A967900070D2B3 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F53A56E28A967900070D2B3 /* SafariView.swift */; };
+		9F5422E928ACA0CC00F15040 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F78728D2865FDA400F52335 /* UIImage+Resize.swift */; };
+		9F5422ED28ACA24100F15040 /* IntentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422EC28ACA24100F15040 /* IntentWidget.swift */; };
+		9F5422EF28ACA29400F15040 /* IntentWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422EE28ACA29400F15040 /* IntentWidgetEntryView.swift */; };
+		9F5422F128ACA29E00F15040 /* IntentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F028ACA29E00F15040 /* IntentProvider.swift */; };
+		9F5422F328ACA2B000F15040 /* IntentWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F228ACA2B000F15040 /* IntentWidgetEntry.swift */; };
+		9F5422F528ACA2D700F15040 /* MediumIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F428ACA2D700F15040 /* MediumIntentWidgetView.swift */; };
+		9F5422F728ACA2E800F15040 /* SmallIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F628ACA2E800F15040 /* SmallIntentWidgetView.swift */; };
+		9F5422F928ACA30300F15040 /* AccessoryRectangularIntentWidgetVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F828ACA30300F15040 /* AccessoryRectangularIntentWidgetVIew.swift */; };
+		9F5422FB28ACA31700F15040 /* AccessoryCircularIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422FA28ACA31700F15040 /* AccessoryCircularIntentWidgetView.swift */; };
+		9F5422FD28ACA32E00F15040 /* AccessoryInlineIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422FC28ACA32E00F15040 /* AccessoryInlineIntentWidgetView.swift */; };
 		9F605143288EE75E005EC6F5 /* BlinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F605142288EE75E005EC6F5 /* BlinkView.swift */; };
 		9F780038287FF7D200516A0F /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F780037287FF7D200516A0F /* RandomColor.swift */; };
 		9F78628A288844970058AAD0 /* PercentageRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F786289288844970058AAD0 /* PercentageRing.swift */; };
@@ -46,8 +56,8 @@
 		9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B1AE3286AB09A007720A0 /* MantraRow.swift */; };
 		9FA0552F28ABFB8C006E5798 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEE9A0285F682D0070BA06 /* Assets.xcassets */; };
 		9FA0553228AC00D3006E5798 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553028AC0084006E5798 /* Widgets.swift */; };
-		9FA0553B28AC018E006E5798 /* MantraWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553928AC015F006E5798 /* MantraWidgetEntryView.swift */; };
-		9FA0553C28AC018E006E5798 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553728AC014C006E5798 /* Provider.swift */; };
+		9FA0553B28AC018E006E5798 /* StaticWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553928AC015F006E5798 /* StaticWidgetEntryView.swift */; };
+		9FA0553C28AC018E006E5798 /* StaticProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553728AC014C006E5798 /* StaticProvider.swift */; };
 		9FA0553D28AC018E006E5798 /* StaticWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553528AC013E006E5798 /* StaticWidgetEntry.swift */; };
 		9FA0553F28AC021D006E5798 /* AccessoryRectangularStaticWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553E28AC021D006E5798 /* AccessoryRectangularStaticWidgetView.swift */; };
 		9FA8E88B28985D3100479F08 /* CheckMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA8E88A28985D3100479F08 /* CheckMarkView.swift */; };
@@ -132,6 +142,15 @@
 		9F4DE923286E3B670064ADCB /* UIImage+CropToCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CropToCircle.swift"; sourceTree = "<group>"; };
 		9F4DE925286E3B990064ADCB /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		9F53A56E28A967900070D2B3 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		9F5422EC28ACA24100F15040 /* IntentWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentWidget.swift; sourceTree = "<group>"; };
+		9F5422EE28ACA29400F15040 /* IntentWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentWidgetEntryView.swift; sourceTree = "<group>"; };
+		9F5422F028ACA29E00F15040 /* IntentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentProvider.swift; sourceTree = "<group>"; };
+		9F5422F228ACA2B000F15040 /* IntentWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentWidgetEntry.swift; sourceTree = "<group>"; };
+		9F5422F428ACA2D700F15040 /* MediumIntentWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumIntentWidgetView.swift; sourceTree = "<group>"; };
+		9F5422F628ACA2E800F15040 /* SmallIntentWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallIntentWidgetView.swift; sourceTree = "<group>"; };
+		9F5422F828ACA30300F15040 /* AccessoryRectangularIntentWidgetVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryRectangularIntentWidgetVIew.swift; sourceTree = "<group>"; };
+		9F5422FA28ACA31700F15040 /* AccessoryCircularIntentWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCircularIntentWidgetView.swift; sourceTree = "<group>"; };
+		9F5422FC28ACA32E00F15040 /* AccessoryInlineIntentWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryInlineIntentWidgetView.swift; sourceTree = "<group>"; };
 		9F605142288EE75E005EC6F5 /* BlinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkView.swift; sourceTree = "<group>"; };
 		9F780037287FF7D200516A0F /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
 		9F786289288844970058AAD0 /* PercentageRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageRing.swift; sourceTree = "<group>"; };
@@ -145,8 +164,8 @@
 		9F7B1AE3286AB09A007720A0 /* MantraRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraRow.swift; sourceTree = "<group>"; };
 		9FA0553028AC0084006E5798 /* Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widgets.swift; sourceTree = "<group>"; };
 		9FA0553528AC013E006E5798 /* StaticWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticWidgetEntry.swift; sourceTree = "<group>"; };
-		9FA0553728AC014C006E5798 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
-		9FA0553928AC015F006E5798 /* MantraWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraWidgetEntryView.swift; sourceTree = "<group>"; };
+		9FA0553728AC014C006E5798 /* StaticProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticProvider.swift; sourceTree = "<group>"; };
+		9FA0553928AC015F006E5798 /* StaticWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticWidgetEntryView.swift; sourceTree = "<group>"; };
 		9FA0553E28AC021D006E5798 /* AccessoryRectangularStaticWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryRectangularStaticWidgetView.swift; sourceTree = "<group>"; };
 		9FA8E88A28985D3100479F08 /* CheckMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkView.swift; sourceTree = "<group>"; };
 		9FA8E88C2898DB7B00479F08 /* PreloadedMantra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantra.swift; sourceTree = "<group>"; };
@@ -216,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				9FA0553028AC0084006E5798 /* Widgets.swift */,
+				9F5422EA28ACA21400F15040 /* IntentWidget */,
 				9FA0553328AC0113006E5798 /* StaticWidget */,
 				9F1AB3D328A18E57001FF7DE /* MantraWidget.intentdefinition */,
 				9F1AB3D428A18E58001FF7DE /* Assets.xcassets */,
@@ -243,6 +263,30 @@
 				9F338B592899A64100E393E2 /* SlimRectangle.swift */,
 			);
 			path = ConfettiView;
+			sourceTree = "<group>";
+		};
+		9F5422EA28ACA21400F15040 /* IntentWidget */ = {
+			isa = PBXGroup;
+			children = (
+				9F5422EB28ACA22300F15040 /* IntentWidgetViews */,
+				9F5422EC28ACA24100F15040 /* IntentWidget.swift */,
+				9F5422EE28ACA29400F15040 /* IntentWidgetEntryView.swift */,
+				9F5422F028ACA29E00F15040 /* IntentProvider.swift */,
+				9F5422F228ACA2B000F15040 /* IntentWidgetEntry.swift */,
+			);
+			path = IntentWidget;
+			sourceTree = "<group>";
+		};
+		9F5422EB28ACA22300F15040 /* IntentWidgetViews */ = {
+			isa = PBXGroup;
+			children = (
+				9F5422F428ACA2D700F15040 /* MediumIntentWidgetView.swift */,
+				9F5422F628ACA2E800F15040 /* SmallIntentWidgetView.swift */,
+				9F5422F828ACA30300F15040 /* AccessoryRectangularIntentWidgetVIew.swift */,
+				9F5422FA28ACA31700F15040 /* AccessoryCircularIntentWidgetView.swift */,
+				9F5422FC28ACA32E00F15040 /* AccessoryInlineIntentWidgetView.swift */,
+			);
+			path = IntentWidgetViews;
 			sourceTree = "<group>";
 		};
 		9F794ED6289B03CA00DDF940 /* ReadsCountScreen */ = {
@@ -330,8 +374,8 @@
 			children = (
 				9FA0553428AC0128006E5798 /* StaticWidgetViews */,
 				9F1AB3D128A18E57001FF7DE /* StaticWidget.swift */,
-				9FA0553928AC015F006E5798 /* MantraWidgetEntryView.swift */,
-				9FA0553728AC014C006E5798 /* Provider.swift */,
+				9FA0553928AC015F006E5798 /* StaticWidgetEntryView.swift */,
+				9FA0553728AC014C006E5798 /* StaticProvider.swift */,
 				9FA0553528AC013E006E5798 /* StaticWidgetEntry.swift */,
 			);
 			path = StaticWidget;
@@ -371,9 +415,6 @@
 		9FBEE996285F682C0070BA06 /* MantraReader */ = {
 			isa = PBXGroup;
 			children = (
-				9F794EE2289E777600DDF940 /* Info.plist */,
-				9FB5983428AAC54A00798AD7 /* InfoPlist.strings */,
-				9FB5983A28AAC65B00798AD7 /* Localizable.strings */,
 				9FBEE9A2285F682D0070BA06 /* MantraReader.entitlements */,
 				9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */,
 				9FFB322C289FC0E9000A5D80 /* ReadTheMantra.xcdatamodeld */,
@@ -388,6 +429,9 @@
 				9F1AB3E628A18ED6001FF7DE /* WidgetSupport */,
 				9F794ED8289B04E400DDF940 /* SupportingFiles */,
 				9FBEE9A0285F682D0070BA06 /* Assets.xcassets */,
+				9FB5983A28AAC65B00798AD7 /* Localizable.strings */,
+				9F794EE2289E777600DDF940 /* Info.plist */,
+				9FB5983428AAC54A00798AD7 /* InfoPlist.strings */,
 				9FBEE9A3285F682D0070BA06 /* Preview Content */,
 			);
 			path = MantraReader;
@@ -513,18 +557,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F5422FB28ACA31700F15040 /* AccessoryCircularIntentWidgetView.swift in Sources */,
 				9F1AB3E328A18EAA001FF7DE /* MediumStaticWidgetView.swift in Sources */,
 				9F1AB3D228A18E57001FF7DE /* StaticWidget.swift in Sources */,
+				9F5422F328ACA2B000F15040 /* IntentWidgetEntry.swift in Sources */,
 				9FA0553F28AC021D006E5798 /* AccessoryRectangularStaticWidgetView.swift in Sources */,
+				9F5422EF28ACA29400F15040 /* IntentWidgetEntryView.swift in Sources */,
+				9F5422ED28ACA24100F15040 /* IntentWidget.swift in Sources */,
+				9F5422F928ACA30300F15040 /* AccessoryRectangularIntentWidgetVIew.swift in Sources */,
 				9F1AB3E428A18EAA001FF7DE /* LargeStaticWidgetView.swift in Sources */,
 				9F1AB3EA28A18EEF001FF7DE /* WidgetModel.swift in Sources */,
+				9F5422E928ACA0CC00F15040 /* UIImage+Resize.swift in Sources */,
 				9F1AB3E528A18EAA001FF7DE /* SmallStaticWidgetView.swift in Sources */,
 				9FA0553D28AC018E006E5798 /* StaticWidgetEntry.swift in Sources */,
 				9F1AB3D728A18E58001FF7DE /* MantraWidget.intentdefinition in Sources */,
+				9F5422FD28ACA32E00F15040 /* AccessoryInlineIntentWidgetView.swift in Sources */,
 				9F1AB3ED28A18F17001FF7DE /* Constants.swift in Sources */,
-				9FA0553B28AC018E006E5798 /* MantraWidgetEntryView.swift in Sources */,
-				9FA0553C28AC018E006E5798 /* Provider.swift in Sources */,
+				9F5422F128ACA29E00F15040 /* IntentProvider.swift in Sources */,
+				9FA0553B28AC018E006E5798 /* StaticWidgetEntryView.swift in Sources */,
+				9F5422F528ACA2D700F15040 /* MediumIntentWidgetView.swift in Sources */,
+				9FA0553C28AC018E006E5798 /* StaticProvider.swift in Sources */,
 				9FA0553228AC00D3006E5798 /* Widgets.swift in Sources */,
+				9F5422F728ACA2E800F15040 /* SmallIntentWidgetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

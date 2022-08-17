@@ -2,7 +2,7 @@
 //  GoalButtonViewModel.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 18.07.2022.
+//  Created by Alex Vorobiev on 18.07.2022.
 //
 
 import SwiftUI

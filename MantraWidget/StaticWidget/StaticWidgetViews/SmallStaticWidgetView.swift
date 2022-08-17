@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct SmallStaticWidgetView: View {
+    @Environment(\.redactionReasons) private var reasons
     var widgetModel: WidgetModel
     
     var body: some View {
@@ -36,12 +37,14 @@ struct SmallStaticWidgetView: View {
                                         Text("\(mantraArray[2 * row + column].reads)")
                                             .font(.system(.caption2, weight: .bold))
                                             .foregroundColor(.secondary)
+                                            .privacySensitive()
                                     }
                                 }
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                             }
                         }
                     }
+                    .redacted(reason: reasons)
                 }
                 .padding()
             }

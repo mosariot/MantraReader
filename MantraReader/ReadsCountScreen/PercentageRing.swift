@@ -2,7 +2,7 @@
 //  PercentageRing.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 20.07.2022.
+//  Created by Alex Vorobiev on 20.07.2022.
 //
 
 import SwiftUI

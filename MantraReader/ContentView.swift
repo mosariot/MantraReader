@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  MantraReader
 //
-//  Created by Александр Воробьев on 19.06.2022.
+//  Created by Alex Vorobiev on 19.06.2022.
 //
 
 import SwiftUI

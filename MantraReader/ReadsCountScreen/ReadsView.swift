@@ -35,7 +35,7 @@ struct ReadsView: View {
     }
     
     var body: some View {
-        let layout = verticalSizeClass == .compact ? AnyLayout(_HStackLayout()) : AnyLayout(_VStackLayout())
+        let layout = verticalSizeClass == .compact ? AnyLayout(HStackLayout()) : AnyLayout(VStackLayout())
         
         ZStack {
             GeometryReader { geometry in
@@ -88,6 +88,7 @@ struct ReadsView: View {
                         }
                         Spacer()
                     }
+                    .animation(.default, value: verticalSizeClass)
                     HStack(
                         spacing: (horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 10 : 50
                     ) {

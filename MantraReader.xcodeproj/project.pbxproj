@@ -43,6 +43,12 @@
 		9F5422F928ACA30300F15040 /* AccessoryRectangularIntentWidgetVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F828ACA30300F15040 /* AccessoryRectangularIntentWidgetVIew.swift */; };
 		9F5422FB28ACA31700F15040 /* AccessoryCircularIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422FA28ACA31700F15040 /* AccessoryCircularIntentWidgetView.swift */; };
 		9F5422FD28ACA32E00F15040 /* AccessoryInlineIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422FC28ACA32E00F15040 /* AccessoryInlineIntentWidgetView.swift */; };
+		9F54231E28AD4E2400F15040 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F54231D28AD4E2400F15040 /* Intents.framework */; };
+		9F54232128AD4E2400F15040 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F54232028AD4E2400F15040 /* IntentHandler.swift */; };
+		9F54232528AD4E2400F15040 /* MantraIntent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9F54231C28AD4E2400F15040 /* MantraIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9F54232928AD4E5900F15040 /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3D328A18E57001FF7DE /* MantraWidget.intentdefinition */; };
+		9F54232A28AD507000F15040 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F54232028AD4E2400F15040 /* IntentHandler.swift */; };
+		9F54232D28AD56A200F15040 /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E728A18EEF001FF7DE /* WidgetModel.swift */; };
 		9F605143288EE75E005EC6F5 /* BlinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F605142288EE75E005EC6F5 /* BlinkView.swift */; };
 		9F780038287FF7D200516A0F /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F780037287FF7D200516A0F /* RandomColor.swift */; };
 		9F78628A288844970058AAD0 /* PercentageRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F786289288844970058AAD0 /* PercentageRing.swift */; };
@@ -100,6 +106,13 @@
 			remoteGlobalIDString = 9F1AB3C928A18E57001FF7DE;
 			remoteInfo = MantraWidgetExtension;
 		};
+		9F54232328AD4E2400F15040 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9FBEE98C285F682C0070BA06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9F54231B28AD4E2400F15040;
+			remoteInfo = MantraIntent;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -110,6 +123,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				9F1AB3DB28A18E58001FF7DE /* MantraWidgetExtension.appex in Embed Foundation Extensions */,
+				9F54232528AD4E2400F15040 /* MantraIntent.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,6 +165,11 @@
 		9F5422F828ACA30300F15040 /* AccessoryRectangularIntentWidgetVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryRectangularIntentWidgetVIew.swift; sourceTree = "<group>"; };
 		9F5422FA28ACA31700F15040 /* AccessoryCircularIntentWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCircularIntentWidgetView.swift; sourceTree = "<group>"; };
 		9F5422FC28ACA32E00F15040 /* AccessoryInlineIntentWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryInlineIntentWidgetView.swift; sourceTree = "<group>"; };
+		9F54231C28AD4E2400F15040 /* MantraIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MantraIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F54231D28AD4E2400F15040 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		9F54232028AD4E2400F15040 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		9F54232228AD4E2400F15040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F54232B28AD55CD00F15040 /* MantraIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MantraIntent.entitlements; sourceTree = "<group>"; };
 		9F605142288EE75E005EC6F5 /* BlinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkView.swift; sourceTree = "<group>"; };
 		9F780037287FF7D200516A0F /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
 		9F786289288844970058AAD0 /* PercentageRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageRing.swift; sourceTree = "<group>"; };
@@ -211,6 +230,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9F54231928AD4E2400F15040 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F54231E28AD4E2400F15040 /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FBEE991285F682C0070BA06 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -227,6 +254,7 @@
 			children = (
 				9F1AB3CC28A18E57001FF7DE /* WidgetKit.framework */,
 				9F1AB3CE28A18E57001FF7DE /* SwiftUI.framework */,
+				9F54231D28AD4E2400F15040 /* Intents.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -287,6 +315,16 @@
 				9F5422FC28ACA32E00F15040 /* AccessoryInlineIntentWidgetView.swift */,
 			);
 			path = IntentWidgetViews;
+			sourceTree = "<group>";
+		};
+		9F54231F28AD4E2400F15040 /* MantraIntent */ = {
+			isa = PBXGroup;
+			children = (
+				9F54232B28AD55CD00F15040 /* MantraIntent.entitlements */,
+				9F54232028AD4E2400F15040 /* IntentHandler.swift */,
+				9F54232228AD4E2400F15040 /* Info.plist */,
+			);
+			path = MantraIntent;
 			sourceTree = "<group>";
 		};
 		9F794ED6289B03CA00DDF940 /* ReadsCountScreen */ = {
@@ -398,6 +436,7 @@
 				9F1AB3EE28A1924A001FF7DE /* MantraWidgetExtension.entitlements */,
 				9FBEE996285F682C0070BA06 /* MantraReader */,
 				9F1AB3D028A18E57001FF7DE /* MantraWidget */,
+				9F54231F28AD4E2400F15040 /* MantraIntent */,
 				9F1AB3CB28A18E57001FF7DE /* Frameworks */,
 				9FBEE995285F682C0070BA06 /* Products */,
 			);
@@ -408,6 +447,7 @@
 			children = (
 				9FBEE994285F682C0070BA06 /* MantraReader.app */,
 				9F1AB3CA28A18E57001FF7DE /* MantraWidgetExtension.appex */,
+				9F54231C28AD4E2400F15040 /* MantraIntent.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -465,6 +505,23 @@
 			productReference = 9F1AB3CA28A18E57001FF7DE /* MantraWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		9F54231B28AD4E2400F15040 /* MantraIntent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F54232628AD4E2400F15040 /* Build configuration list for PBXNativeTarget "MantraIntent" */;
+			buildPhases = (
+				9F54231828AD4E2400F15040 /* Sources */,
+				9F54231928AD4E2400F15040 /* Frameworks */,
+				9F54231A28AD4E2400F15040 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MantraIntent;
+			productName = MantraIntent;
+			productReference = 9F54231C28AD4E2400F15040 /* MantraIntent.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		9FBEE993285F682C0070BA06 /* MantraReader */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FBEE9A8285F682D0070BA06 /* Build configuration list for PBXNativeTarget "MantraReader" */;
@@ -478,6 +535,7 @@
 			);
 			dependencies = (
 				9F1AB3DA28A18E58001FF7DE /* PBXTargetDependency */,
+				9F54232428AD4E2400F15040 /* PBXTargetDependency */,
 			);
 			name = MantraReader;
 			packageProductDependencies = (
@@ -498,6 +556,9 @@
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					9F1AB3C928A18E57001FF7DE = {
+						CreatedOnToolsVersion = 14.0;
+					};
+					9F54231B28AD4E2400F15040 = {
 						CreatedOnToolsVersion = 14.0;
 					};
 					9FBEE993285F682C0070BA06 = {
@@ -524,6 +585,7 @@
 			targets = (
 				9FBEE993285F682C0070BA06 /* MantraReader */,
 				9F1AB3C928A18E57001FF7DE /* MantraWidgetExtension */,
+				9F54231B28AD4E2400F15040 /* MantraIntent */,
 			);
 		};
 /* End PBXProject section */
@@ -536,6 +598,13 @@
 				9F1AB3D528A18E58001FF7DE /* Assets.xcassets in Resources */,
 				9FA0552F28ABFB8C006E5798 /* Assets.xcassets in Resources */,
 				9FB5983B28AB4E7F00798AD7 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F54231A28AD4E2400F15040 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +630,7 @@
 				9F1AB3E328A18EAA001FF7DE /* MediumStaticWidgetView.swift in Sources */,
 				9F1AB3D228A18E57001FF7DE /* StaticWidget.swift in Sources */,
 				9F5422F328ACA2B000F15040 /* IntentWidgetEntry.swift in Sources */,
+				9F54232A28AD507000F15040 /* IntentHandler.swift in Sources */,
 				9FA0553F28AC021D006E5798 /* AccessoryRectangularStaticWidgetView.swift in Sources */,
 				9F5422EF28ACA29400F15040 /* IntentWidgetEntryView.swift in Sources */,
 				9F5422ED28ACA24100F15040 /* IntentWidget.swift in Sources */,
@@ -579,6 +649,16 @@
 				9FA0553C28AC018E006E5798 /* StaticProvider.swift in Sources */,
 				9FA0553228AC00D3006E5798 /* Widgets.swift in Sources */,
 				9F5422F728ACA2E800F15040 /* SmallIntentWidgetView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F54231828AD4E2400F15040 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F54232D28AD56A200F15040 /* WidgetModel.swift in Sources */,
+				9F54232128AD4E2400F15040 /* IntentHandler.swift in Sources */,
+				9F54232928AD4E5900F15040 /* MantraWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,6 +726,11 @@
 			isa = PBXTargetDependency;
 			target = 9F1AB3C928A18E57001FF7DE /* MantraWidgetExtension */;
 			targetProxy = 9F1AB3D928A18E58001FF7DE /* PBXContainerItemProxy */;
+		};
+		9F54232428AD4E2400F15040 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9F54231B28AD4E2400F15040 /* MantraIntent */;
+			targetProxy = 9F54232328AD4E2400F15040 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -721,6 +806,63 @@
 				);
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraCounter.MantraWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9F54232728AD4E2400F15040 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = MantraIntent/MantraIntent.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R89YUVSKU6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MantraIntent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MantraIntent;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraCounter.MantraIntent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9F54232828AD4E2400F15040 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = MantraIntent/MantraIntent.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R89YUVSKU6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MantraIntent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MantraIntent;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraCounter.MantraIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -924,6 +1066,15 @@
 			buildConfigurations = (
 				9F1AB3DD28A18E58001FF7DE /* Debug */,
 				9F1AB3DE28A18E58001FF7DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9F54232628AD4E2400F15040 /* Build configuration list for PBXNativeTarget "MantraIntent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F54232728AD4E2400F15040 /* Debug */,
+				9F54232828AD4E2400F15040 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

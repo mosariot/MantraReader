@@ -42,7 +42,7 @@ struct MantraWidgetManager {
         }
         let mantras = allMantras.sorted(using: sort)
         let mantrasItems = mantras
-            .map { WidgetModel.WidgetMantra(id: $0.uuid ?? UUID(), title: $0.title ?? "", reads: $0.reads, image: $0.imageForTableView) }
+            .map { WidgetModel.WidgetMantra(id: $0.uuid ?? UUID(), title: $0.title ?? "", reads: $0.reads, goal: $0.readsGoal, image: $0.imageForTableView) }
         let widgetModel = WidgetModel(mantras: mantrasItems)
         return widgetModel
     }

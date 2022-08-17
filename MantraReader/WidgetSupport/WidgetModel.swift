@@ -16,6 +16,7 @@ struct WidgetModel: Identifiable, Codable {
         let id: UUID
         let title: String
         let reads: Int32
+        let goal: Int32
         let image: Data?
     }
 }

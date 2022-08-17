@@ -10,7 +10,7 @@ import SwiftUI
 import WidgetKit
 
 struct StaticWidget: Widget {
-    let kind: String = "MantraWidget"
+    let kind: String = "StaticWidget"
     
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: StaticProvider()) { entry in

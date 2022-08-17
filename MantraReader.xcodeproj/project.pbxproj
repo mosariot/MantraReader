@@ -61,7 +61,7 @@
 		9F794EE0289C360F00DDF940 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794EDF289C360F00DDF940 /* NetworkMonitor.swift */; };
 		9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B1AE3286AB09A007720A0 /* MantraRow.swift */; };
 		9FA0552F28ABFB8C006E5798 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEE9A0285F682D0070BA06 /* Assets.xcassets */; };
-		9FA0553228AC00D3006E5798 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553028AC0084006E5798 /* Widgets.swift */; };
+		9FA0553228AC00D3006E5798 /* MantraWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553028AC0084006E5798 /* MantraWidgets.swift */; };
 		9FA0553B28AC018E006E5798 /* StaticWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553928AC015F006E5798 /* StaticWidgetEntryView.swift */; };
 		9FA0553C28AC018E006E5798 /* StaticProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553728AC014C006E5798 /* StaticProvider.swift */; };
 		9FA0553D28AC018E006E5798 /* StaticWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553528AC013E006E5798 /* StaticWidgetEntry.swift */; };
@@ -181,7 +181,7 @@
 		9F794EDF289C360F00DDF940 /* NetworkMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		9F794EE2289E777600DDF940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9F7B1AE3286AB09A007720A0 /* MantraRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraRow.swift; sourceTree = "<group>"; };
-		9FA0553028AC0084006E5798 /* Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widgets.swift; sourceTree = "<group>"; };
+		9FA0553028AC0084006E5798 /* MantraWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraWidgets.swift; sourceTree = "<group>"; };
 		9FA0553528AC013E006E5798 /* StaticWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticWidgetEntry.swift; sourceTree = "<group>"; };
 		9FA0553728AC014C006E5798 /* StaticProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticProvider.swift; sourceTree = "<group>"; };
 		9FA0553928AC015F006E5798 /* StaticWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticWidgetEntryView.swift; sourceTree = "<group>"; };
@@ -262,7 +262,7 @@
 		9F1AB3D028A18E57001FF7DE /* MantraWidget */ = {
 			isa = PBXGroup;
 			children = (
-				9FA0553028AC0084006E5798 /* Widgets.swift */,
+				9FA0553028AC0084006E5798 /* MantraWidgets.swift */,
 				9F5422EA28ACA21400F15040 /* IntentWidget */,
 				9FA0553328AC0113006E5798 /* StaticWidget */,
 				9F1AB3D328A18E57001FF7DE /* MantraWidget.intentdefinition */,
@@ -647,7 +647,7 @@
 				9FA0553B28AC018E006E5798 /* StaticWidgetEntryView.swift in Sources */,
 				9F5422F528ACA2D700F15040 /* MediumIntentWidgetView.swift in Sources */,
 				9FA0553C28AC018E006E5798 /* StaticProvider.swift in Sources */,
-				9FA0553228AC00D3006E5798 /* Widgets.swift in Sources */,
+				9FA0553228AC00D3006E5798 /* MantraWidgets.swift in Sources */,
 				9F5422F728ACA2E800F15040 /* SmallIntentWidgetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -833,7 +833,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraCounter.MantraIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -861,7 +861,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraCounter.MantraIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

@@ -17,7 +17,7 @@ struct StaticWidget: Widget {
             StaticWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Mantra Reader")
-        .description("Favorites and Your Other Mantras")
+        .description("Your Mantras")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryInline, .accessoryRectangular])
     }
 }

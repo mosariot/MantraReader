@@ -1,6 +1,6 @@
 //
 //  StaticWidgetEntryView.swift
-//  MantraReader
+//  MantraWidgetExtension
 //
 //  Created by Alex Vorobiev on 16.08.2022.
 //

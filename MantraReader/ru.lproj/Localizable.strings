@@ -237,25 +237,28 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 /* Duplication Alert Message */
 "One of the selected mantras is already in your mantra list. Add anyway?" = "Одна из выбранных мантр уже есть в вашем списке. Все равно добавить?";
 
-//MARK: - WIDGET
+//MARK: - WIDGETS
 
-/* Widget Subtitle */
-"Favorites" = "Избранное";
-
-/* Widget Subtitle */
-"Mantras" = "Мантры";
-
-/* Widget Title */
+/* Static Widget Title */
 "Mantra Reader" = "Начитай!";
 
-/* Widget Description */
-"Favorites and Your Other Mantras" = "Избранные и другие Ваши мантры";
+/* Static Widget Description */
+"Track your mantras" = "Следите за своими мантрами";
 
 /* Accessory Inline static widget title */
 "Mantras: %d" = "Мантры: %d";
 
 /* Accessory Rectangular static widget title */
 "Total Mantras" = "Общая начитка";
+
+/* Intent Widget Title */
+"Current mantra" = "Актуальная мантра"
+
+/* Intent Widget Description */
+"Track your current mantra" = "Следите за актуальной мантрой";
+
+/* Accessory Inline intent widget title */
+"Mantra: %d" = "Мантра: %d";
 
 //MARK: - MISC
 

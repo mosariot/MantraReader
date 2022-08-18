@@ -12,6 +12,14 @@ struct AccessoryCircularIntentWidgetView: View {
     var selectedMantra: WidgetModel.WidgetMantra?
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Gauge(value: selectedMantra?.reads ?? Int32(34568), in: 0...(selectedMantra?.goal ?? Int32(100000))) {
+        } currentValueLabel: {
+            Text("/(selectedMantra?.reads ?? Int32(34568))")
+            .privacySensitive()
+        }
+        .gaugeStyle(.accessoryCircularCapacity)
+        .tint(Color(red: 0.880, green: 0.000, blue: 0.100))
+        .redacted(reason: reasons)
+        .widgetURL(URL(string: "\(selectedMantra?.id)"))
     }
 }

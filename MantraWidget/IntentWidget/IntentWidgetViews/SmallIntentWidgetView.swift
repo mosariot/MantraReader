@@ -18,7 +18,7 @@ struct SmallIntentWidgetView: View {
              VStack {
                  ZStack {
                      PercentageRing(
-                         ringWidth: 10, percent: Double(selectedMantra?.reads ?? 34568)/Double(selectedMantra.goal ?? 100000) * 100,
+                         ringWidth: 10, percent: Double(selectedMantra?.reads ?? 34568) / Double(selectedMantra.goal ?? 100000) * 100,
                          backgroundColor: .red.opacity(0.2),
                          foregroundColors: [
                              Color(red: 0.880, green: 0.000, blue: 0.100),
@@ -29,7 +29,7 @@ struct SmallIntentWidgetView: View {
                         .font(.system(.headline, weight: .bold))
                         .privacySensitive()
                  }
-                 Text(selectedMantra?.title ?? "Avalokitesvara")
+                 Text(selectedMantra?.title ?? "Your mantra")
                      .font(.system(.subheadline, weight: .bold))
                      .multilineTextAlignment(.center)
                      .lineLimit(2)

@@ -21,7 +21,7 @@ struct AccessoryRectangularIntentWidgetVIew: View {
             Text("\(selectedMantra?.reads ?? Int32(34568))")
             .privacySensitive()
         }
-        .gaugeStyle(.accessoryLinearCapacity)
+        .gaugeStyle(.linearCapacity)
         .tint(Color(red: 0.880, green: 0.000, blue: 0.100))
         .redacted(reason: reasons)
         .widgetURL(URL(string: "\(selectedMantra?.id)"))

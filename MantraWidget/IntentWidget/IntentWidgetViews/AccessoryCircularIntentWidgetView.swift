@@ -13,8 +13,9 @@ struct AccessoryCircularIntentWidgetView: View {
     
     var body: some View {
         Gauge(value: selectedMantra?.reads ?? Int32(34568), in: 0...(selectedMantra?.goal ?? Int32(100000))) {
+            Text(selectedMantra?.title ?? "Your mantra")
         } currentValueLabel: {
-            Text("/(selectedMantra?.reads ?? Int32(34568))")
+            Text("\(selectedMantra?.reads ?? Int32(34568))")
             .privacySensitive()
         }
         .gaugeStyle(.accessoryCircularCapacity)

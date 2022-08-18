@@ -252,13 +252,16 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "Total Mantras" = "Общая начитка";
 
 /* Intent Widget Title */
-"Current mantra" = "Актуальная мантра"
+"Current mantra" = "Актуальная мантра";
 
 /* Intent Widget Description */
 "Track your current mantra" = "Следите за актуальной мантрой";
 
 /* Accessory Inline intent widget title */
 "Mantra: %d" = "Мантра: %d";
+
+/* Placeholder in intent widget */
+"Your mantra" = "Ваша мантра";
 
 //MARK: - MISC
 

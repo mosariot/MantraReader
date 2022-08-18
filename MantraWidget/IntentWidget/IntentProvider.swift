@@ -13,7 +13,7 @@ struct IntentProvider: IntentTimelineProvider {
     private var widgetItemData: Data = Data()
     
     func placeholder(in context: Context) -> IntentWidgetEntry {
-        let placeholderMantra = WidgetModel.WidgetMantra(id: UUID(), title: "Mantra", reads: 40000, goal: 100000, image: nil)
+        let placeholderMantra = WidgetModel.WidgetMantra(id: UUID(), title: "Your mantra", reads: 0, goal: 100000, image: nil)
         return IntentWidgetEntry(date: Date(), selectedMantra: placeholderMantra, configuration: SelectMantraIntent())
     }
 

@@ -20,9 +20,10 @@ struct IntentWidgetEntryView : View {
         case .accessoryCircular:
             AccessoryCircularIntentWidgetView(selectedMantra: entry.selectedMantra)
         case .accessoryInline:
-            Text("Mantra: \(entry.selectedMantra?.reads ?? Int32(34568))")
+            Text("Mantra: \(entry.selectedMantra?.reads ?? 0)")
+                .widgetURL(URL(string: "\(entry.selectedMantra?.id ?? UUID())"))
         case .accessoryRectangular:
-            AccessoryRectangularIntentWidgetView(selectedMantra: entry.selectedMantra)
+            AccessoryRectangularIntentWidgetVIew(selectedMantra: entry.selectedMantra)
         default:
             fatalError("Not implemented")
         }

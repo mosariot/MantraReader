@@ -24,7 +24,6 @@ struct MediumIntentWidgetView: View {
                     .frame(width: 70, height: 70, alignment: .center)
                     Text(selectedMantra?.title ?? "Your mantra")
                         .font(.system(.subheadline, weight: .bold))
-                        .multilineTextAlignment(.center)
                         .lineLimit(2)
                 }
                 ZStack {

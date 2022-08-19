@@ -17,6 +17,7 @@ struct ReadsView: View {
     private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
     @State private var isPresentedAdjustingAlert = false
+    @State private var isPresentedValidNumberAlert = false
     @State private var adjustingType: AdjustingType?
     @State private var adjustingText: String = ""
     @State private var isPresentedInfoView = false
@@ -122,6 +123,11 @@ struct ReadsView: View {
                         }
                         .disabled(isMantraCounterMode)
                         .padding(.horizontal)
+                        .alert("Please enter a valid number", isPresented: $isPresentedValidNumberAlert) {
+                            Button("OK") {
+                                isPresentedAdjustingAlert = true
+                            }
+                        }
                     }
                     .padding(
                         .bottom,
@@ -280,9 +286,11 @@ struct ReadsView: View {
         if viewModel.isValidUpdatingNumber(for: adjustingText, adjustingType: adjustingType) {
             guard let alertNumber = Int32(adjustingText) else { return }
             viewModel.handleAdjusting(for: adjustingType, with: alertNumber)
+            adjustingType = nil
+            adjustingText = ""
+        } else {
+            isPresentedValidNumberAlert = true
         }
-        adjustingType = nil
-        adjustingText = ""
     }
     
     private func toggleMantraCounterMode() {

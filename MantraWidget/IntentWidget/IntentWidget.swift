@@ -15,7 +15,7 @@ struct IntentWidget: Widget {
         IntentConfiguration(kind: kind, intent: SelectMantraIntent.self, provider: IntentProvider()) { entry in
             IntentWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Current Mantra")
+        .configurationDisplayName("Current mantra")
         .description("Track your current mantra")
         .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryInline, .accessoryRectangular])
     }

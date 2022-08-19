@@ -16,7 +16,7 @@ extension KMBFormatter {
     }
 }
 
-open class KMBFormatter: Formatter {
+class KMBFormatter: Formatter {
     private let numberFormatter = NumberFormatter()
     private let unitSize: [Unit: Double] = [
         .none: 1,
@@ -25,13 +25,13 @@ open class KMBFormatter: Formatter {
         .B: pow(1000, 3)
     ]
     
-    open func string(fromNumber number: Int32) -> String {
+    func string(fromNumber number: Int32) -> String {
         numberFormatter.numberStyle = .decimal
         numberFormatter.roundingMode = .down
         return convertValue(fromNumber: number)
     }
     
-    open override func string(for obj: Any?) -> String? {
+    override func string(for obj: Any?) -> String? {
         guard let value = obj as? Double else { return nil }
         return string(fromNumber: Int32(value))
     }

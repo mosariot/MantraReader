@@ -252,7 +252,10 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "Mantras: %d" = "Мантры: %d";
 
 /* Accessory Rectangular static widget title */
-"Total Mantras" = "Общая начитка";
+"Total mantras" = "Общая начитка";
+
+/* Static Widget subtitle for readings */
+"Current readings: " = "Текущая начитка: ";
 
 /* Intent Widget Title */
 "Current mantra" = "Актуальная мантра";
@@ -265,6 +268,9 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 
 /* Placeholder in intent widget */
 "Your mantra" = "Ваша мантра";
+
+/* Mantra intent definition */
+"Mantra" = "Мантра";
 
 //MARK: - MISC
 

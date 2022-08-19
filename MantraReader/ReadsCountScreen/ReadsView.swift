@@ -125,6 +125,7 @@ struct ReadsView: View {
                         .padding(.horizontal)
                         .alert("Please enter a valid number", isPresented: $isPresentedValidNumberAlert) {
                             Button("OK") {
+                                adjustingText = ""
                                 isPresentedAdjustingAlert = true
                             }
                         }

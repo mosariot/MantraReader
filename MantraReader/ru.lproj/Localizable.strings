@@ -125,6 +125,9 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 /* Rounds Number Alert Title */
 "Enter Rounds Number" = "Введите число кругов";
 
+/* Non-valid number Alert Title */
+"Please enter a valid number" = "Пожалуйста, введите верное значение";
+
 /* Congratulations Alert Title */
 "Congratulations!" = "Поздравляем!";
 

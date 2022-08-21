@@ -14,8 +14,6 @@
 		9F1AB3CF28A18E57001FF7DE /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1AB3CE28A18E57001FF7DE /* SwiftUI.framework */; };
 		9F1AB3D228A18E57001FF7DE /* StaticWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3D128A18E57001FF7DE /* StaticWidget.swift */; };
 		9F1AB3D528A18E58001FF7DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F1AB3D428A18E58001FF7DE /* Assets.xcassets */; };
-		9F1AB3D728A18E58001FF7DE /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3D328A18E57001FF7DE /* MantraWidget.intentdefinition */; };
-		9F1AB3D828A18E58001FF7DE /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3D328A18E57001FF7DE /* MantraWidget.intentdefinition */; };
 		9F1AB3DB28A18E58001FF7DE /* MantraWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9F1AB3CA28A18E57001FF7DE /* MantraWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9F1AB3E328A18EAA001FF7DE /* MediumStaticWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E028A18EAA001FF7DE /* MediumStaticWidgetView.swift */; };
 		9F1AB3E428A18EAA001FF7DE /* LargeStaticWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E128A18EAA001FF7DE /* LargeStaticWidgetView.swift */; };
@@ -48,10 +46,15 @@
 		9F54231E28AD4E2400F15040 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F54231D28AD4E2400F15040 /* Intents.framework */; };
 		9F54232128AD4E2400F15040 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F54232028AD4E2400F15040 /* IntentHandler.swift */; };
 		9F54232528AD4E2400F15040 /* MantraIntent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9F54231C28AD4E2400F15040 /* MantraIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		9F54232928AD4E5900F15040 /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3D328A18E57001FF7DE /* MantraWidget.intentdefinition */; };
 		9F54232A28AD507000F15040 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F54232028AD4E2400F15040 /* IntentHandler.swift */; };
 		9F54232D28AD56A200F15040 /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E728A18EEF001FF7DE /* WidgetModel.swift */; };
 		9F605143288EE75E005EC6F5 /* BlinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F605142288EE75E005EC6F5 /* BlinkView.swift */; };
+		9F6E65AE28B273CB0054F6D6 /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B228B273CB0054F6D6 /* MantraWidget.intentdefinition */; };
+		9F6E65AF28B273CB0054F6D6 /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B228B273CB0054F6D6 /* MantraWidget.intentdefinition */; };
+		9F6E65B028B273CB0054F6D6 /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B228B273CB0054F6D6 /* MantraWidget.intentdefinition */; };
+		9F6E65B828B2755E0054F6D6 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B728B2755D0054F6D6 /* ImagePickerView.swift */; };
+		9F6E65BB28B275CF0054F6D6 /* HomeScreenAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65BA28B275CF0054F6D6 /* HomeScreenAction.swift */; };
+		9F6E65BD28B276080054F6D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65BC28B276080054F6D6 /* AppDelegate.swift */; };
 		9F780038287FF7D200516A0F /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F780037287FF7D200516A0F /* RandomColor.swift */; };
 		9F78628A288844970058AAD0 /* PercentageRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F786289288844970058AAD0 /* PercentageRing.swift */; };
 		9F78628D2889A5830058AAD0 /* ReadsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE9AB285F68CE0070BA06 /* ReadsView.swift */; };
@@ -138,7 +141,6 @@
 		9F1AB3CC28A18E57001FF7DE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		9F1AB3CE28A18E57001FF7DE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		9F1AB3D128A18E57001FF7DE /* StaticWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticWidget.swift; sourceTree = "<group>"; };
-		9F1AB3D328A18E57001FF7DE /* MantraWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = MantraWidget.intentdefinition; sourceTree = "<group>"; };
 		9F1AB3D428A18E58001FF7DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F1AB3D628A18E58001FF7DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F1AB3E028A18EAA001FF7DE /* MediumStaticWidgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediumStaticWidgetView.swift; sourceTree = "<group>"; };
@@ -173,6 +175,12 @@
 		9F54232228AD4E2400F15040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F54232B28AD55CD00F15040 /* MantraIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MantraIntent.entitlements; sourceTree = "<group>"; };
 		9F605142288EE75E005EC6F5 /* BlinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkView.swift; sourceTree = "<group>"; };
+		9F6E65B128B273CB0054F6D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/MantraWidget.intentdefinition; sourceTree = "<group>"; };
+		9F6E65B428B273D30054F6D6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MantraWidget.strings; sourceTree = "<group>"; };
+		9F6E65B628B2751A0054F6D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MantraWidget.strings; sourceTree = "<group>"; };
+		9F6E65B728B2755D0054F6D6 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		9F6E65BA28B275CF0054F6D6 /* HomeScreenAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenAction.swift; sourceTree = "<group>"; };
+		9F6E65BC28B276080054F6D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F780037287FF7D200516A0F /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
 		9F786289288844970058AAD0 /* PercentageRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageRing.swift; sourceTree = "<group>"; };
 		9F78728D2865FDA400F52335 /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
@@ -267,7 +275,7 @@
 				9FA0553028AC0084006E5798 /* MantraWidgets.swift */,
 				9F5422EA28ACA21400F15040 /* IntentWidget */,
 				9FA0553328AC0113006E5798 /* StaticWidget */,
-				9F1AB3D328A18E57001FF7DE /* MantraWidget.intentdefinition */,
+				9F6E65B228B273CB0054F6D6 /* MantraWidget.intentdefinition */,
 				9F1AB3D428A18E58001FF7DE /* Assets.xcassets */,
 				9F1AB3D628A18E58001FF7DE /* Info.plist */,
 			);
@@ -385,6 +393,7 @@
 				9FD61DCB289391D4004936E6 /* InfoView.swift */,
 				9FD61DCD289391EF004936E6 /* InfoViewModel.swift */,
 				9F348D4128A430F70070F157 /* InfoMode.swift */,
+				9F6E65B728B2755D0054F6D6 /* ImagePickerView.swift */,
 				9F53A56E28A967900070D2B3 /* SafariView.swift */,
 			);
 			path = MantraInfoScreen;
@@ -463,6 +472,8 @@
 				9FBEE99E285F682C0070BA06 /* ContentView.swift */,
 				9F794EDB289B84AF00DDF940 /* OnboardingView.swift */,
 				9FBEE999285F682C0070BA06 /* PersistenceController.swift */,
+				9F6E65BC28B276080054F6D6 /* AppDelegate.swift */,
+				9F6E65BA28B275CF0054F6D6 /* HomeScreenAction.swift */,
 				9F794EE1289D57D000DDF940 /* LaunchPreparing */,
 				9F794EDA289B051900DDF940 /* MantraListScreen */,
 				9F794ED6289B03CA00DDF940 /* ReadsCountScreen */,
@@ -642,7 +653,7 @@
 				9F5422E928ACA0CC00F15040 /* UIImage+Resize.swift in Sources */,
 				9F1AB3E528A18EAA001FF7DE /* SmallStaticWidgetView.swift in Sources */,
 				9FA0553D28AC018E006E5798 /* StaticWidgetEntry.swift in Sources */,
-				9F1AB3D728A18E58001FF7DE /* MantraWidget.intentdefinition in Sources */,
+				9F6E65AF28B273CB0054F6D6 /* MantraWidget.intentdefinition in Sources */,
 				9F5422FD28ACA32E00F15040 /* KMBFormatter.swift in Sources */,
 				9F1AB3ED28A18F17001FF7DE /* Constants.swift in Sources */,
 				9F5422F128ACA29E00F15040 /* IntentProvider.swift in Sources */,
@@ -661,7 +672,7 @@
 			files = (
 				9F54232D28AD56A200F15040 /* WidgetModel.swift in Sources */,
 				9F54232128AD4E2400F15040 /* IntentHandler.swift in Sources */,
-				9F54232928AD4E5900F15040 /* MantraWidget.intentdefinition in Sources */,
+				9F6E65B028B273CB0054F6D6 /* MantraWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,6 +711,7 @@
 				9F794EDE289C35E900DDF940 /* LaunchPreparer.swift in Sources */,
 				9F1AB3E928A18EEF001FF7DE /* WidgetModel.swift in Sources */,
 				9FB32B1128A7D48C000A910E /* ShakeSupport.swift in Sources */,
+				9F6E65BB28B275CF0054F6D6 /* HomeScreenAction.swift in Sources */,
 				9FA8E88D2898DB7B00479F08 /* PreloadedMantra.swift in Sources */,
 				9FDC8DB028623D5F00BF7051 /* OrientationInfo.swift in Sources */,
 				9FDF349B2885B2E000B3007E /* CircularProgressViewModel.swift in Sources */,
@@ -716,8 +728,10 @@
 				9F338B5E2899A64200E393E2 /* SlimRectangle.swift in Sources */,
 				9F53A56F28A967900070D2B3 /* SafariView.swift in Sources */,
 				9F78628A288844970058AAD0 /* PercentageRing.swift in Sources */,
+				9F6E65BD28B276080054F6D6 /* AppDelegate.swift in Sources */,
 				9F338B602899A64200E393E2 /* ConfettiSwiftUI.swift in Sources */,
-				9F1AB3D828A18E58001FF7DE /* MantraWidget.intentdefinition in Sources */,
+				9F6E65B828B2755E0054F6D6 /* ImagePickerView.swift in Sources */,
+				9F6E65AE28B273CB0054F6D6 /* MantraWidget.intentdefinition in Sources */,
 				9FDF34992884859D00B3007E /* AdjustingAndUndoTypes.swift in Sources */,
 				9FDF349F2885E86200B3007E /* GoalButtonView.swift in Sources */,
 			);
@@ -739,6 +753,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		9F6E65B228B273CB0054F6D6 /* MantraWidget.intentdefinition */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9F6E65B128B273CB0054F6D6 /* Base */,
+				9F6E65B428B273D30054F6D6 /* ru */,
+				9F6E65B628B2751A0054F6D6 /* en */,
+			);
+			name = MantraWidget.intentdefinition;
+			sourceTree = "<group>";
+		};
 		9FB5983428AAC54A00798AD7 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

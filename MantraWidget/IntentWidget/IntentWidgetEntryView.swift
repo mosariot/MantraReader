@@ -14,16 +14,16 @@ struct IntentWidgetEntryView : View {
     var body: some View {
         switch family {
         case .systemSmall:
-            SmallIntentWidgetView(selectedMantra: entry.selectedMantra)
+            SmallIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
         case .systemMedium:
-            MediumIntentWidgetView(selectedMantra: entry.selectedMantra)
+            MediumIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
         case .accessoryCircular:
-            AccessoryCircularIntentWidgetView(selectedMantra: entry.selectedMantra)
+            AccessoryCircularIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
         case .accessoryInline:
-            Text("Mantra: \(entry.selectedMantra?.reads ?? 0)")
-                .widgetURL(URL(string: "\(entry.selectedMantra?.id ?? UUID())"))
+            Text("Mantra: \(entry.selectedMantra?.reads ?? entry.firstMantra?.reads ?? 0)")
+                .widgetURL(URL(string: "\(entry.selectedMantra?.id ?? entry.firstMantra?.id ?? UUID())"))
         case .accessoryRectangular:
-            AccessoryRectangularIntentWidgetVIew(selectedMantra: entry.selectedMantra)
+            AccessoryRectangularIntentWidgetVIew(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
         default:
             fatalError("Not implemented")
         }

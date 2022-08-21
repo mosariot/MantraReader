@@ -10,5 +10,6 @@ import WidgetKit
 struct IntentWidgetEntry: TimelineEntry {
     let date: Date
     let selectedMantra: WidgetModel.WidgetMantra?
+    let firstMantra: WidgetModel.WidgetMantra?
     let configuration: SelectMantraIntent
 }

@@ -7,3 +7,7 @@
 */
 
 CFBundleDisplayName = "Mantra Reader";
+
+NewMantra = "Add New Mantra";
+
+ShowStatistics = "Show Statistics";

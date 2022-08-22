@@ -141,6 +141,7 @@ final class ReadsViewModel: ObservableObject {
             lightHapticGenerator.impactOccurred()
             adjustMantraGoal(with: value)
         }
+        mantra.insertShortcutItem()
     }
     
     private func checkForCongratulations(with value: Int32) {

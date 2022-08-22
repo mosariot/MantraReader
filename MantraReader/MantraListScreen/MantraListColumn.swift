@@ -11,6 +11,10 @@ import Combine
 struct MantraListColumn: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.isSearching) private var isSearching: Bool
+#if os(iOS)
+    @EnvironmentObject var actionService: ActionService
+    @Environment(\.scenePhase) var scenePhase
+#endif
     
     @State private var isPresentedPreloadedMantraList = false
     @State private var isPresentedNewMantraSheet = false
@@ -182,7 +186,38 @@ struct MantraListColumn: View {
                 isPresented: $isPresentedNewMantraSheet
             )
         }
+#if os(iOS)
+        .onChange(of: scenePhase) { newValue in
+            switch newValue {
+            case .active:
+                performActionIfNeeded()
+            default:
+                break
+            }
+        }
+#endif
     }
+    
+#if os(iOS)
+    private func performActionIfNeeded() {
+        guard let action = actionService.action else { return }
+        switch action {
+        case .newMantra:
+            isPresentedNewMantraSheet = true
+        case .showStatistics:
+            print("Show Statistics")
+        case .openMantra(let id):
+            mantras.forEach { section in
+                section.forEach { mantra in
+                    if mantra.uuid == UUID(uuidString: "\(id)") {
+                        selectedMantra = mantra
+                    }
+                }
+            }
+        }
+        actionService.action = nil
+    }
+#endif
     
     private func saveContext() {
         guard viewContext.hasChanges else { return }

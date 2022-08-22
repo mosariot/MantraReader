@@ -96,6 +96,9 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 /* No matches found while perforimng search */
 "No matches found" = "Совпадений не найдено";
 
+/* Open Mantra ShortcutItem title */
+"Open Mantra" = "Открыть мантру";
+
 //MARK: - READS COUNT VIEW
 
 /* Goal Button Title */

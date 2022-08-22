@@ -17,13 +17,21 @@ struct MantraReaderApp: App {
     
     @State private var isPresentedNoInternetAlert = false
     
-    let persistenceController = PersistenceController.shared
+    private let persistenceController = PersistenceController.shared
+    
+#if os(iOS)
+    private let actionService = ActionService.shared
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+#endif
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+#if os(iOS)
+                .environmentObject(actionService)
                 .environmentObject(OrientationInfo())
+#endif
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .onAppear {
                     if isFirstLaunch {
                         isFirstLaunch = false

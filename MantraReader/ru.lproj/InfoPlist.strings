@@ -8,4 +8,6 @@
 
 CFBundleDisplayName = "Начитай!";
 
-Add_New_Mantra_Shortcut_Title = "Добавить мантру";
+NewMantra = "Добавить мантру";
+
+ShowStatistics = "Показать статистику";

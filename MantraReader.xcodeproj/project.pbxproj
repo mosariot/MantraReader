@@ -54,6 +54,7 @@
 		9F6E65B828B2755E0054F6D6 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B728B2755D0054F6D6 /* ImagePickerView.swift */; };
 		9F6E65BB28B275CF0054F6D6 /* HomeScreenAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65BA28B275CF0054F6D6 /* HomeScreenAction.swift */; };
 		9F6E65BD28B276080054F6D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65BC28B276080054F6D6 /* AppDelegate.swift */; };
+		9F6E65BF28B3970B0054F6D6 /* Mantra+ShortcutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65BE28B3970B0054F6D6 /* Mantra+ShortcutItem.swift */; };
 		9F780038287FF7D200516A0F /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F780037287FF7D200516A0F /* RandomColor.swift */; };
 		9F78628A288844970058AAD0 /* PercentageRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F786289288844970058AAD0 /* PercentageRing.swift */; };
 		9F78628D2889A5830058AAD0 /* ReadsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE9AB285F68CE0070BA06 /* ReadsView.swift */; };
@@ -180,6 +181,7 @@
 		9F6E65B728B2755D0054F6D6 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		9F6E65BA28B275CF0054F6D6 /* HomeScreenAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenAction.swift; sourceTree = "<group>"; };
 		9F6E65BC28B276080054F6D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9F6E65BE28B3970B0054F6D6 /* Mantra+ShortcutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mantra+ShortcutItem.swift"; sourceTree = "<group>"; };
 		9F780037287FF7D200516A0F /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
 		9F786289288844970058AAD0 /* PercentageRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageRing.swift; sourceTree = "<group>"; };
 		9F78728D2865FDA400F52335 /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				9FBEE999285F682C0070BA06 /* PersistenceController.swift */,
 				9F6E65BC28B276080054F6D6 /* AppDelegate.swift */,
 				9F6E65BA28B275CF0054F6D6 /* HomeScreenAction.swift */,
+				9F6E65BE28B3970B0054F6D6 /* Mantra+ShortcutItem.swift */,
 				9F794EE1289D57D000DDF940 /* LaunchPreparing */,
 				9F794EDA289B051900DDF940 /* MantraListScreen */,
 				9F794ED6289B03CA00DDF940 /* ReadsCountScreen */,
@@ -698,6 +701,7 @@
 				9F78728E2865FDA400F52335 /* UIImage+Resize.swift in Sources */,
 				9FD61DCA289391BC004936E6 /* PreloadedMantraListViewModel.swift in Sources */,
 				9FDF349D2885E83B00B3007E /* GoalButtonViewModel.swift in Sources */,
+				9F6E65BF28B3970B0054F6D6 /* Mantra+ShortcutItem.swift in Sources */,
 				9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */,
 				9FC9A691287DA4FE00D05FBD /* AdjustingAlertView.swift in Sources */,
 				9FFB322E289FC0E9000A5D80 /* ReadTheMantra.xcdatamodeld in Sources */,

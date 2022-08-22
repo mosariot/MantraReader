@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
+#if os(iOS)
 import IQKeyboardManagerSwift
+#endif
 
 @main
 struct MantraReaderApp: App {
@@ -21,6 +23,7 @@ struct MantraReaderApp: App {
     
 #if os(iOS)
     private let actionService = ActionService.shared
+    private let orientationInfo = OrientationInfo()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 #endif
     
@@ -29,7 +32,7 @@ struct MantraReaderApp: App {
             ContentView()
 #if os(iOS)
                 .environmentObject(actionService)
-                .environmentObject(OrientationInfo())
+                .environmentObject(orientationInfo)
 #endif
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .onAppear {
@@ -40,7 +43,9 @@ struct MantraReaderApp: App {
                     }
                     isFreshLaunch = true
                     persistenceController.deleteEmptyMantrasIfNeeded()
+#if os(iOS)
                     IQKeyboardManager.shared.enable = true
+#endif
                 }
                 .onChange(of: isOnboarding) { newValue in
                     if !newValue {

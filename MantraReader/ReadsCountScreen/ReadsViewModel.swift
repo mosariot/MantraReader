@@ -22,6 +22,7 @@ final class ReadsViewModel: ObservableObject {
     private let widgetManager = MantraWidgetManager()
     
     var title: String { mantra.title ?? "" }
+    #if os(iOS)
     var image: UIImage {
         if let data = mantra.image, let image = UIImage(data: data) {
             return image
@@ -29,6 +30,15 @@ final class ReadsViewModel: ObservableObject {
             return UIImage(named: Constants.defaultImage)!
         }
     }
+    #elseif os(macOS)
+    var image: NSImage {
+        if let data = mantra.image, let image = NSImage(data: data) {
+            return image
+        } else {
+            return NSImage(named: Constants.defaultImage)!
+        }
+    }
+    #endif
     var favoriteBarImage: String { mantra.isFavorite ? "star.fill" : "star" }
     
     private(set) var viewContext: NSManagedObjectContext
@@ -141,7 +151,9 @@ final class ReadsViewModel: ObservableObject {
             lightHapticGenerator.impactOccurred()
             adjustMantraGoal(with: value)
         }
+#if os(iOS)
         mantra.insertShortcutItem()
+#endif
     }
     
     private func checkForCongratulations(with value: Int32) {

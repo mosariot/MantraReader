@@ -23,7 +23,9 @@ struct DetailsColumn: View {
                     withAnimation {
                         isMantraCounterMode = false
                     }
+#if os(iOS)
                     UIApplication.shared.isIdleTimerDisabled = false
+#endif
                 }
             }
         } else {
@@ -33,20 +35,9 @@ struct DetailsColumn: View {
     }
 }
 
-struct DetailsView_Previews: PreviewProvider {    
-    static var previews: some View {
-        DetailsColumn(selectedMantra: PersistenceController.previewMantra)
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
-
-extension UINavigationController: UIGestureRecognizerDelegate {
-    override open func viewDidLoad() {
-        super.viewDidLoad()
-        interactivePopGestureRecognizer?.delegate = self
-    }
-
-    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return viewControllers.count > 1
-    }
-}
+//struct DetailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailsColumn(selectedMantra: PersistenceController.previewMantra)
+//            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//    }
+//}

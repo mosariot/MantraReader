@@ -19,7 +19,8 @@ struct SmallIntentWidgetView: View {
             VStack {
                 ZStack {
                     PercentageRing(
-                        ringWidth: 10, percent: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000) * 100,
+                        ringWidth: 10,
+                        percent: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000) * 100,
                         backgroundColor: .red.opacity(0.2),
                         foregroundColors: [
                             Color(Constants.progressStartColor),

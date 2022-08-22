@@ -30,12 +30,18 @@ struct InfoView: View {
 // Native PhotoPicker code -start-
 // Old PHPicker code -start-
     @State private var isPresentedImagePickerView = false
+#if os(iOS)
     @State private var selectedPhoto: UIImage?
+#elseif os(macOS)
+    @State private var selectedPhoto: NSImage?
+#endif
 // Old PHPicker code -end-
     @State private var isPresentedNoImageAlert = false
     @State private var successfullyAdded = false
     @FocusState private var focus: FocusableField?
+#if os(iOS)
     private let addHapticGenerator = UINotificationFeedbackGenerator()
+#endif
     
     init(viewModel: InfoViewModel, infoMode: InfoMode, isPresented: Binding<Bool>) {
         self._viewModel = StateObject(wrappedValue: viewModel)
@@ -53,11 +59,12 @@ struct InfoView: View {
                     .ignoresSafeArea()
                 ScrollView {
                     ZStack {
+#if os(iOS)
                         Image(uiImage: viewModel.image)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(height: 200)
-                            .opacity(infoMode == .edit || infoMode == .addNew ? 0.6 : 1)
+                            .opacity(infoMode == .edit || infoMode == .addNew ? 0.7 : 1)
                             .accessibilityIgnoresInvertColors()
                             .overlay(alignment: .bottom) {
                                 Menu {
@@ -101,7 +108,6 @@ struct InfoView: View {
                                     } label: {
                                         Label("Default Image", systemImage: "photo")
                                     }
-#if os(iOS)
                                     Button {
                                         if isFirstSearchOnTheInternet {
                                             isPresentedFirstSearchOnTheInternetAlert = true
@@ -132,7 +138,6 @@ struct InfoView: View {
                                             }
                                         }
                                     }
-#endif
                                 } label: {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 5)
@@ -145,16 +150,79 @@ struct InfoView: View {
                                 }
                                 .opacity(infoMode == .edit || infoMode == .addNew ? 0.8 : 0)
                             }
-                            .alert("Unavailable Photo", isPresented: $isPresentedNoImageAlert) {
-                                Button("OK") {
-                                    isProcessingImage = false
+#elseif os(macOS)
+                        Image(nsImage: viewModel.image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 200)
+                            .opacity(infoMode == .edit || infoMode == .addNew ? 0.7 : 1)
+                            .accessibilityIgnoresInvertColors()
+                            .overlay(alignment: .bottom) {
+                                Menu {
+// Old PHPicker code -start-
+                                    Button {
+                                        isPresentedImagePickerView = true
+                                    } label: {
+                                        Label("Photo Library", systemImage: "photo.on.rectangle.angled")
+                                    }
+// Old PHPicker code -end-
+// Native PhotoPicker code -start-
+//                                    PhotosPicker(
+//                                        selection: $selectedPhotoItem,
+//                                        matching: .images,
+//                                        photoLibrary: .shared()
+//                                    ) {
+//                                        Label("Photo Library", systemImage: "photo.on.rectangle.angled")
+//                                    }
+//                                    .onChange(of: selectedPhotoItem) { item in
+//                                        Task {
+//                                            isProcessingImage = true
+//                                            if let data = try? await item?.loadTransferable(type: Data.self) {
+//                                                if let image = UIImage(data: data) {
+//                                                    withAnimation {
+//                                                        viewModel.handleIncomingImage(image)
+//                                                    }
+//                                                } else {
+//                                                    isPresentedNoImageAlert = true
+//                                                }
+//                                            } else {
+//                                                isPresentedNoImageAlert = true
+//                                            }
+//                                            isProcessingImage = false
+//                                        }
+//                                    }
+// Native PhotoPicker code -end-
+                                    Button {
+                                        withAnimation {
+                                            viewModel.setDefaultImage()
+                                        }
+                                    } label: {
+                                        Label("Default Image", systemImage: "photo")
+                                    }
+                                } label: {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 5)
+                                            .fill(.gray)
+                                            .frame(width: 200, height: 30)
+                                        Text("EDIT")
+                                            .foregroundColor(.white.opacity(0.8))
+                                            .font(.headline.bold())
+                                    }
                                 }
-                            } message: {
-                                Text("It seems like this photo is unavailable. Try to pick another one")
+                                .opacity(infoMode == .edit || infoMode == .addNew ? 0.8 : 0)
                             }
+#endif
+                            
                         if isProcessingImage {
                             ProgressView()
                         }
+                    }
+                    .alert("Unavailable Photo", isPresented: $isPresentedNoImageAlert) {
+                        Button("OK") {
+                            isProcessingImage = false
+                        }
+                    } message: {
+                        Text("It seems like this photo is unavailable. Try to pick another one")
                     }
                     VStack(alignment: .leading, spacing: 0) {
                         Text("TITLE")
@@ -173,7 +241,11 @@ struct InfoView: View {
                                 focus = .text
                             }
                     }
+#if os(iOS)
                     .background(Color(UIColor.secondarySystemGroupedBackground))
+#elseif os(macOS)
+                    .background(Color(NSColor.secondarySystemGroupedBackground))
+#endif
                     .cornerRadius(15)
                     .padding()
                     VStack(alignment: .leading, spacing: 0) {
@@ -194,7 +266,11 @@ struct InfoView: View {
                                 focus = .description
                             }
                     }
+#if os(iOS)
                     .background(Color(UIColor.secondarySystemGroupedBackground))
+#elseif os(macOS)
+                    .background(Color(NSColor.secondarySystemGroupedBackground))
+#endif
                     .cornerRadius(15)
                     .padding(.horizontal)
                     VStack(alignment: .leading, spacing: 0) {
@@ -213,7 +289,11 @@ struct InfoView: View {
                                 focus = nil
                             }
                     }
+#if os(iOS)
                     .background(Color(UIColor.secondarySystemGroupedBackground))
+#elseif os(macOS)
+                    .background(Color(NSColor.secondarySystemGroupedBackground))
+#endif
                     .cornerRadius(15)
                     .padding()
                 }
@@ -385,17 +465,17 @@ struct InfoView: View {
     }
 }
 
-struct InfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            InfoView(
-                viewModel: InfoViewModel(
-                    PersistenceController.previewMantra,
-                    viewContext: PersistenceController.preview.container.viewContext
-                ),
-                infoMode: .edit,
-                isPresented: .constant(true)
-            )
-        }
-    }
-}
+//struct InfoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationStack {
+//            InfoView(
+//                viewModel: InfoViewModel(
+//                    PersistenceController.previewMantra,
+//                    viewContext: PersistenceController.preview.container.viewContext
+//                ),
+//                infoMode: .edit,
+//                isPresented: .constant(true)
+//            )
+//        }
+//    }
+//}

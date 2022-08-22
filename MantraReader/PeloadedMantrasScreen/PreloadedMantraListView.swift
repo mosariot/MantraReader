@@ -12,7 +12,9 @@ struct PreloadedMantraListView: View {
     @Binding private var isPresented: Bool
     @StateObject private var viewModel: PreloadedMantraListViewModel
     @State private var successfullyAdded = false
+#if os(iOS)
     private let addHapticGenerator = UINotificationFeedbackGenerator()
+#endif
     
     init(isPresented: Binding<Bool>, viewContext: NSManagedObjectContext) {
         self._isPresented = isPresented
@@ -74,18 +76,20 @@ struct PreloadedMantraListView: View {
     
     private func addMantras() {
         withAnimation {
-            viewModel.addMantras()
+#if os(iOS)
             addHapticGenerator.notificationOccurred(.success)
+#endif
+            viewModel.addMantras()
             successfullyAdded = true
             afterDelay(0.7) { isPresented = false }
         }
     }
 }
 
-struct PreloadedMantraListView_Previews: PreviewProvider {
-    static var previews: some View {
-        PreloadedMantraListView(
-            isPresented: .constant(true),
-            viewContext: PersistenceController.preview.container.viewContext)
-    }
-}
+//struct PreloadedMantraListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PreloadedMantraListView(
+//            isPresented: .constant(true),
+//            viewContext: PersistenceController.preview.container.viewContext)
+//    }
+//}

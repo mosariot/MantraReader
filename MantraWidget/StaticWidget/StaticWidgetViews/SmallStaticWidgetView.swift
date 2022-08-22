@@ -28,11 +28,21 @@ struct SmallStaticWidgetView: View {
                             ForEach(0 ..< 2, id: \.self) { column in
                                 VStack {
                                     if (2 * row + column) < mantraArray.count {
+#if os(iOS)
                                         Image(uiImage: ((mantraArray[2 * row + column].image != nil) ?
-                                                            UIImage(data: mantraArray[2 * row + column].image!) :
+                                                        UIImage(data: mantraArray[2 * row + column].image!) :
                                                             UIImage(named: Constants.defaultImage))!)
-                                            .resizable()
-                                            .frame(width: 43, height: 43, alignment: .center)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 43, height: 43, alignment: .center)
+#elseif os(macOS)
+                                        Image(nsImage: ((mantraArray[2 * row + column].image != nil) ?
+                                                        NSImage(data: mantraArray[2 * row + column].image!) :
+                                                            NSImage(named: Constants.defaultImage))!)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 43, height: 43, alignment: .center)
+#endif
                                         Text("\(mantraArray[2 * row + column].reads)")
                                             .font(.system(.caption2, weight: .bold))
                                             .foregroundColor(.secondary)

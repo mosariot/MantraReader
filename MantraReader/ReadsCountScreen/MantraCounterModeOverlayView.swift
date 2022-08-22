@@ -33,14 +33,14 @@ struct MantraCounterModeOverlayView: View {
     }
 }
 
-struct MantraCounterModeOverlayView_Previews: PreviewProvider {
-    static var previews: some View {
-        MantraCounterModeOverlayView(
-            showBlink: .constant(false),
-            viewModel: ReadsViewModel(
-                PersistenceController.previewMantra,
-                viewContext: PersistenceController.preview.container.viewContext
-            )
-        )
-    }
-}
+//struct MantraCounterModeOverlayView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MantraCounterModeOverlayView(
+//            showBlink: .constant(false),
+//            viewModel: ReadsViewModel(
+//                PersistenceController.previewMantra,
+//                viewContext: PersistenceController.preview.container.viewContext
+//            )
+//        )
+//    }
+//}

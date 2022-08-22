@@ -49,7 +49,6 @@ struct LaunchPreparer {
                     } else {
                         // CloudKit automatically handles loading records from iCloud
                         print("downloading records from icloud")
-//                        UserDefaults.standard.set(false, forKey: "isInitalDataLoading")
                     }
                 case .failure(_):
                     // for example, user is not logged-in iCloud (type of error doesn't matter)

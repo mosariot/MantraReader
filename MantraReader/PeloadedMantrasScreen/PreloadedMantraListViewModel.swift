@@ -72,10 +72,17 @@ final class PreloadedMantraListViewModel: ObservableObject {
             mantra.title = selectedMantra[.title]
             mantra.text = selectedMantra[.text]
             mantra.details = selectedMantra[.details]
+            #if os(iOS)
             mantra.image = UIImage(named: selectedMantra[.image] ?? Constants.defaultImage)?.pngData()
             mantra.imageForTableView = UIImage(named: selectedMantra[.image] ?? Constants.defaultImage)?
                 .resize(to: CGSize(width: Constants.rowHeight,
                                    height: Constants.rowHeight)).pngData()
+            #elseif os(macOS)
+            mantra.image = NSImage(named: selectedMantra[.image] ?? Constants.defaultImage)?.pngData()
+            mantra.imageForTableView = NSImage(named: selectedMantra[.image] ?? Constants.defaultImage)?
+                .resize(to: CGSize(width: Constants.rowHeight,
+                                   height: Constants.rowHeight)).pngData()
+            #endif
         }
         saveContext()
     }

@@ -36,8 +36,8 @@ struct CheckMarkView: View {
     }
 }
 
-struct CheckMarkView_Previews: PreviewProvider {
-    static var previews: some View {
-        CheckMarkView()
-    }
-}
+//struct CheckMarkView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CheckMarkView()
+//    }
+//}

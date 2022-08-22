@@ -14,7 +14,7 @@ struct PreloadedMantraRow: View {
         HStack {
             Image(mantra.imageString)
                 .resizable()
-                .aspectRatio(1, contentMode: .fit)
+                .aspectRatio(contentMode: .fit)
                 .frame(width: CGFloat(Constants.rowHeight/2))
             Text(mantra.title)
                 .lineLimit(1)
@@ -31,10 +31,10 @@ struct PreloadedMantraRow: View {
     }
 }
 
-struct PreloadedMantraRow_Previews: PreviewProvider {
-    static var previews: some View {
-        PreloadedMantraRow(
-            mantra: PreloadedMantra(title: "Avelokitesvara", imageString: "Avalokitesvara", isSelected: true)
-        )
-    }
-}
+//struct PreloadedMantraRow_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PreloadedMantraRow(
+//            mantra: PreloadedMantra(title: "Avelokitesvara", imageString: "Avalokitesvara", isSelected: true)
+//        )
+//    }
+//}

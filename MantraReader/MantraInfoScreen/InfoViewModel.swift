@@ -16,6 +16,7 @@ final class InfoViewModel: ObservableObject {
     @Published var description: String
     @Published var imageData: Data?
     
+    #if os(iOS)
     var image: UIImage {
         if let data = imageData, let image = UIImage(data: data) {
             return image
@@ -23,6 +24,15 @@ final class InfoViewModel: ObservableObject {
             return UIImage(named: Constants.defaultImage)!
         }
     }
+    #elseif os(macOS)
+    var image: NSImage {
+        if let data = imageData, let image = NSImage(data: data) {
+            return image
+        } else {
+            return NSImage(named: Constants.defaultImage)!
+        }
+    }
+    #endif
     
     var isDuplicating: Bool {
         currentMantrasTitles.contains(title)
@@ -88,6 +98,7 @@ final class InfoViewModel: ObservableObject {
         imageData = nil
     }
     
+#if os(iOS)
     func handleIncomingImage(_ image: UIImage) {
         let circledImage = image.cropToCircle()
         let resizedCircledImage = circledImage?.resize(to: CGSize(width: 200, height: 200))
@@ -95,6 +106,14 @@ final class InfoViewModel: ObservableObject {
             imageData = processedImageData
         }
     }
+#elseif os(macOS)
+    func handleIncomingImage(_ image: NSImage) {
+        let resizedImage = image.resize(to: CGSize(width: 200, height: 200))
+        if let processedImageData = resizedImage?.pngData() {
+            imageData = processedImageData
+        }
+    }
+#endif
     
     func deleteEmptyMantras() {
         var mantras = [Mantra]()

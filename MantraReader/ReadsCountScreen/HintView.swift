@@ -37,8 +37,8 @@ struct HintView: View {
     }
 }
 
-struct HintView_Previews: PreviewProvider {
-    static var previews: some View {
-        HintView()
-    }
-}
+//struct HintView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HintView()
+//    }
+//}

@@ -5,6 +5,7 @@
 //  Created by Alex Vorobiev on 14.08.2022.
 //
 
+#if os(iOS)
 import SwiftUI
 import SafariServices
 
@@ -21,3 +22,4 @@ struct SafariView: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: SFSafariViewController, context: UIViewControllerRepresentableContext<SafariView>) {
     }
 }
+#endif

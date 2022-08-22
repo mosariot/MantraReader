@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    @Environment(\.verticalSizeClass) private var verticalSizeClass
     @Environment(\.managedObjectContext) private var viewContext
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("isInitalDataLoading") private var isInitalDataLoading = true
@@ -24,6 +22,8 @@ struct ContentView: View {
     private let widgetManager = MantraWidgetManager()
     
 #if os(iOS)
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
     @EnvironmentObject var orientationInfo: OrientationInfo
     @State private var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
     private var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
@@ -136,10 +136,10 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-            .environmentObject(OrientationInfo())
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//            .environmentObject(OrientationInfo())
+//    }
+//}

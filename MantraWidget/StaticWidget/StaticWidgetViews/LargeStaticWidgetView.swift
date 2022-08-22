@@ -40,11 +40,22 @@ struct LargeStaticWidgetView: View {
                                         }
                                     }
                                     Spacer()
+#if os(iOS)
                                     Image(uiImage: (((mantra.image != nil) ?
                                                      UIImage(data: mantra.image!) :
                                                         UIImage(named: Constants.defaultImage)?.resize(to: CGSize(width: Constants.rowHeight, height: Constants.rowHeight)))!))
-                                        .resizable()
-                                        .frame(width: 41, height: 41, alignment: .center)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 41, height: 41, alignment: .center)
+#elseif os(macOS)
+                                    Image(nsImage: (((mantra.image != nil) ?
+                                                     NSImage(data: mantra.image!) :
+                                                        NSImage(named: Constants.defaultImage)?.resize(to: CGSize(width: Constants.rowHeight, height: Constants.rowHeight)))!))
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 41, height: 41, alignment: .center)
+                                    .scaledToFit()
+#endif
                                 }
                             }
                         }

@@ -3,7 +3,6 @@
 //  MantraWidgetExtension
 //
 //  Created by Alex Vorobiev on 21.03.2021.
-//  Copyright © 2021 Alex Vorobiev. All rights reserved.
 //
 
 import SwiftUI

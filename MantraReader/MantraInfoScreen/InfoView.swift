@@ -25,7 +25,13 @@ struct InfoView: View {
     @State private var isPresentedSafariController = false
     @State private var isPresentedFirstSearchOnTheInternetAlert = false
     @State private var isProcessingImage = false
-    @State private var selectedPhotoItem: PhotosPickerItem?
+// Native PhotoPicker code -start-
+//    @State private var selectedPhotoItem: PhotosPickerItem?
+// Native PhotoPicker code -start-
+// Old PHPicker code -start-
+    @State private var isPresentedImagePickerView = false
+    @State private var selectedPhoto: UIImage?
+// Old PHPicker code -end-
     @State private var isPresentedNoImageAlert = false
     @State private var successfullyAdded = false
     @FocusState private var focus: FocusableField?
@@ -35,7 +41,9 @@ struct InfoView: View {
         self._viewModel = StateObject(wrappedValue: viewModel)
         self._infoMode = State(initialValue: infoMode)
         self._isPresented = isPresented
+#if os(iOS)
         UITextField.appearance().backgroundColor = .clear
+#endif
     }
     
     var body: some View {
@@ -53,30 +61,39 @@ struct InfoView: View {
                             .accessibilityIgnoresInvertColors()
                             .overlay(alignment: .bottom) {
                                 Menu {
-                                    PhotosPicker(
-                                        selection: $selectedPhotoItem,
-                                        matching: .images,
-                                        photoLibrary: .shared()
-                                    ) {
+// Old PHPicker code -start-
+                                    Button {
+                                        isPresentedImagePickerView = true
+                                    } label: {
                                         Label("Photo Library", systemImage: "photo.on.rectangle.angled")
                                     }
-                                    .onChange(of: selectedPhotoItem) { item in
-                                        Task {
-                                            isProcessingImage = true
-                                            if let data = try? await item?.loadTransferable(type: Data.self) {
-                                                if let image = UIImage(data: data) {
-                                                    withAnimation {
-                                                        viewModel.handleIncomingImage(image)
-                                                    }
-                                                } else {
-                                                    isPresentedNoImageAlert = true
-                                                }
-                                            } else {
-                                                isPresentedNoImageAlert = true
-                                            }
-                                            isProcessingImage = false
-                                        }
-                                    }
+// Old PHPicker code -end-
+// Native PhotoPicker code -start-
+//                                    PhotosPicker(
+//                                        selection: $selectedPhotoItem,
+//                                        matching: .images,
+//                                        photoLibrary: .shared()
+//                                    ) {
+//                                        Label("Photo Library", systemImage: "photo.on.rectangle.angled")
+//                                    }
+//                                    .onChange(of: selectedPhotoItem) { item in
+//                                        Task {
+//                                            isProcessingImage = true
+//                                            if let data = try? await item?.loadTransferable(type: Data.self) {
+//                                                if let image = UIImage(data: data) {
+//                                                    withAnimation {
+//                                                        viewModel.handleIncomingImage(image)
+//                                                    }
+//                                                } else {
+//                                                    isPresentedNoImageAlert = true
+//                                                }
+//                                            } else {
+//                                                isPresentedNoImageAlert = true
+//                                            }
+//                                            isProcessingImage = false
+//                                        }
+//                                    }
+// Native PhotoPicker code -end-
                                     Button {
                                         withAnimation {
                                             viewModel.setDefaultImage()
@@ -129,7 +146,9 @@ struct InfoView: View {
                                 .opacity(infoMode == .edit || infoMode == .addNew ? 0.8 : 0)
                             }
                             .alert("Unavailable Photo", isPresented: $isPresentedNoImageAlert) {
-                                Button("OK") { }
+                                Button("OK") {
+                                    isProcessingImage = false
+                                }
                             } message: {
                                 Text("It seems like this photo is unavailable. Try to pick another one")
                             }
@@ -221,6 +240,23 @@ struct InfoView: View {
                 .presentationDetents([.medium, .large])
             }
 #endif
+// Old PHPicker code -start-
+            .sheet(isPresented: $isPresentedImagePickerView) {
+                ImagePickerView(
+                    image: $selectedPhoto,
+                    isProcessingImage: $isProcessingImage,
+                    isPresentedNoImageAlert: $isPresentedNoImageAlert
+                )
+                .presentationDetents([.medium, .large])
+            }
+            .onChange(of: selectedPhoto) { image in
+                guard let image else { return }
+                withAnimation {
+                    viewModel.handleIncomingImage(image)
+                    isProcessingImage = false
+                }
+            }
+// Old PHPicker code -end-
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     if infoMode == .edit || infoMode == .view {

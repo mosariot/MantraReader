@@ -3,7 +3,6 @@
 //  MantraReader
 //
 //  Created by Alex Vorobiev on 17.08.2021.
-//  Copyright © 2021 Alex Vorobiev. All rights reserved.
 //
 
 import CloudKit

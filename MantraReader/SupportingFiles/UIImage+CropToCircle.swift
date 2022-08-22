@@ -3,7 +3,6 @@
 //  ReadTheMantra
 //
 //  Created by Alex Vorobiev on 16.08.2020.
-//  Copyright © 2020 Alex Vorobiev. All rights reserved.
 //
 
 import UIKit

@@ -55,6 +55,7 @@
 		9F6E65BB28B275CF0054F6D6 /* HomeScreenAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65BA28B275CF0054F6D6 /* HomeScreenAction.swift */; };
 		9F6E65BD28B276080054F6D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65BC28B276080054F6D6 /* AppDelegate.swift */; };
 		9F6E65BF28B3970B0054F6D6 /* Mantra+ShortcutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65BE28B3970B0054F6D6 /* Mantra+ShortcutItem.swift */; };
+		9F6E65C228B39E750054F6D6 /* ReadTheMantra.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65C028B39E750054F6D6 /* ReadTheMantra.xcdatamodeld */; };
 		9F780038287FF7D200516A0F /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F780037287FF7D200516A0F /* RandomColor.swift */; };
 		9F78628A288844970058AAD0 /* PercentageRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F786289288844970058AAD0 /* PercentageRing.swift */; };
 		9F78628D2889A5830058AAD0 /* ReadsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE9AB285F68CE0070BA06 /* ReadsView.swift */; };
@@ -100,7 +101,6 @@
 		9FDF349D2885E83B00B3007E /* GoalButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF349C2885E83B00B3007E /* GoalButtonViewModel.swift */; };
 		9FDF349F2885E86200B3007E /* GoalButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF349E2885E86200B3007E /* GoalButtonView.swift */; };
 		9FF7C3952864C16200DA5F51 /* PreloadedMantras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */; };
-		9FFB322E289FC0E9000A5D80 /* ReadTheMantra.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9FFB322C289FC0E9000A5D80 /* ReadTheMantra.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +182,7 @@
 		9F6E65BA28B275CF0054F6D6 /* HomeScreenAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenAction.swift; sourceTree = "<group>"; };
 		9F6E65BC28B276080054F6D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F6E65BE28B3970B0054F6D6 /* Mantra+ShortcutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mantra+ShortcutItem.swift"; sourceTree = "<group>"; };
+		9F6E65C128B39E750054F6D6 /* ReadTheMantra.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReadTheMantra.xcdatamodel; sourceTree = "<group>"; };
 		9F780037287FF7D200516A0F /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
 		9F786289288844970058AAD0 /* PercentageRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageRing.swift; sourceTree = "<group>"; };
 		9F78728D2865FDA400F52335 /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
@@ -228,7 +229,6 @@
 		9FDF349C2885E83B00B3007E /* GoalButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalButtonViewModel.swift; sourceTree = "<group>"; };
 		9FDF349E2885E86200B3007E /* GoalButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalButtonView.swift; sourceTree = "<group>"; };
 		9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadedMantras.swift; sourceTree = "<group>"; };
-		9FFB322D289FC0E9000A5D80 /* ReadTheMantra.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReadTheMantra.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,7 +469,7 @@
 			children = (
 				9FBEE9A2285F682D0070BA06 /* MantraReader.entitlements */,
 				9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */,
-				9FFB322C289FC0E9000A5D80 /* ReadTheMantra.xcdatamodeld */,
+				9F6E65C028B39E750054F6D6 /* ReadTheMantra.xcdatamodeld */,
 				9FBEE99E285F682C0070BA06 /* ContentView.swift */,
 				9F794EDB289B84AF00DDF940 /* OnboardingView.swift */,
 				9FBEE999285F682C0070BA06 /* PersistenceController.swift */,
@@ -704,11 +704,11 @@
 				9F6E65BF28B3970B0054F6D6 /* Mantra+ShortcutItem.swift in Sources */,
 				9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */,
 				9FC9A691287DA4FE00D05FBD /* AdjustingAlertView.swift in Sources */,
-				9FFB322E289FC0E9000A5D80 /* ReadTheMantra.xcdatamodeld in Sources */,
 				9FA8E88B28985D3100479F08 /* CheckMarkView.swift in Sources */,
 				9F78628D2889A5830058AAD0 /* ReadsView.swift in Sources */,
 				9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */,
 				9F4DE926286E3B990064ADCB /* Functions.swift in Sources */,
+				9F6E65C228B39E750054F6D6 /* ReadTheMantra.xcdatamodeld in Sources */,
 				9F348D4228A430F70070F157 /* InfoMode.swift in Sources */,
 				9FBEE9B0285F68CE0070BA06 /* CircularProgressView.swift in Sources */,
 				9F794EDE289C35E900DDF940 /* LaunchPreparer.swift in Sources */,
@@ -1149,14 +1149,13 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		9FFB322C289FC0E9000A5D80 /* ReadTheMantra.xcdatamodeld */ = {
+		9F6E65C028B39E750054F6D6 /* ReadTheMantra.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9FFB322D289FC0E9000A5D80 /* ReadTheMantra.xcdatamodel */,
+				9F6E65C128B39E750054F6D6 /* ReadTheMantra.xcdatamodel */,
 			);
-			currentVersion = 9FFB322D289FC0E9000A5D80 /* ReadTheMantra.xcdatamodel */;
-			name = ReadTheMantra.xcdatamodeld;
-			path = ../../MantraCounter/ReadTheMantra/Models/ReadTheMantra.xcdatamodeld;
+			currentVersion = 9F6E65C128B39E750054F6D6 /* ReadTheMantra.xcdatamodel */;
+			path = ReadTheMantra.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

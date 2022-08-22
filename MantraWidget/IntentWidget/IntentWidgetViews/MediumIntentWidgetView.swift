@@ -34,8 +34,8 @@ struct MediumIntentWidgetView: View {
                         ringWidth: 10, percent: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000) * 100,
                         backgroundColor: .red.opacity(0.2),
                         foregroundColors: [
-                            Color("progressStart"),
-                            Color("progressEnd")
+                            Color(Constants.progressStartColor),
+                            Color(Constants.progressEndColor)
                         ]
                     )
                     Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")

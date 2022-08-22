@@ -19,7 +19,7 @@ struct MediumStaticWidgetView: View {
                 .ignoresSafeArea()
             
             if mantraArray.count == 0 {
-                Image("DefaultImage")
+                Image(Constants.defaultImage)
                     .resizable()
                     .frame(width: 100, height: 100, alignment: .center)
             } else {

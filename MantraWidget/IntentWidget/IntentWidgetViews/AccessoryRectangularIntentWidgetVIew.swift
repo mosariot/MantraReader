@@ -24,7 +24,7 @@ struct AccessoryRectangularIntentWidgetVIew: View {
                 .privacySensitive()
         }
         .gaugeStyle(.accessoryLinearCapacity)
-        .tint(Color(red: 0.880, green: 0.000, blue: 0.100))
+        .tint(Color(Constants.progressStartColor))
         .redacted(reason: reasons)
         .widgetURL(URL(string: (selectedMantra?.id.uuidString ?? firstMantra?.id.uuidString) ?? ""))
     }

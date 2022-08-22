@@ -19,7 +19,7 @@ struct LargeStaticWidgetView: View {
                 .ignoresSafeArea()
             
             if mantraArray.count == 0 {
-                Image("DefaultImage")
+                Image(Constants.defaultImage)
             } else {
                 VStack {
                     ForEach(mantraArray, id: \.self) { mantra in

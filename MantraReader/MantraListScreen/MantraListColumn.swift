@@ -9,7 +9,6 @@ import SwiftUI
 import Combine
 
 struct MantraListColumn: View {
-    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.isSearching) private var isSearching: Bool
     @EnvironmentObject private var dataManager: DataManager
 #if os(iOS)
@@ -110,7 +109,6 @@ struct MantraListColumn: View {
                         dataManager.delete($0)
                     }
                 }
-                dataManager.saveData()
                 mantrasForDeletion = nil
             }
             Button("Cancel", role: .cancel) {
@@ -124,7 +122,7 @@ struct MantraListColumn: View {
         .animation(.default, value: searchText)
         .listStyle(.sidebar)
         .refreshable {
-            viewContext.refreshAllObjects()
+            dataManager.refresh()
         }
         .toolbar {
 #if os(iOS)
@@ -180,7 +178,7 @@ struct MantraListColumn: View {
         }
         .sheet(isPresented: $isPresentedNewMantraSheet) {
             InfoView(
-                viewModel: InfoViewModel(Mantra(context: viewContext), dataManager: dataManager),
+                viewModel: InfoViewModel(Mantra(context: dataManager.viewContext), dataManager: dataManager),
                 infoMode: .addNew,
                 isPresented: $isPresentedNewMantraSheet
             )
@@ -218,15 +216,3 @@ struct MantraListColumn: View {
     }
 #endif
 }
-
-//struct MantraListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            MantraListColumn(
-//                mantras: mantras,
-//                selectedMantra: .constant(nil)
-//            )
-//            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-//        }
-//    }
-//}

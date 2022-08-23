@@ -473,18 +473,3 @@ struct InfoView: View {
         }
     }
 }
-
-//struct InfoView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationStack {
-//            InfoView(
-//                viewModel: InfoViewModel(
-//                    PersistenceController.previewMantra,
-//                    viewContext: PersistenceController.preview.container.viewContext
-//                ),
-//                infoMode: .edit,
-//                isPresented: .constant(true)
-//            )
-//        }
-//    }
-//}

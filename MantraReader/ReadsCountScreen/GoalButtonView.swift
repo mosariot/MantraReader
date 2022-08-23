@@ -23,13 +23,3 @@ struct GoalButtonView: View {
         }
     }
 }
-
-//struct GoalButtonView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GoalButtonView(
-//            viewModel: GoalButtonViewModel(PersistenceController.previewMantra),
-//            adjustingType: .constant(.reads),
-//            isPresentedAdjustingAlert: .constant(false)
-//        )
-//    }
-//}

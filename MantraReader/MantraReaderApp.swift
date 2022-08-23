@@ -39,7 +39,7 @@ struct MantraReaderApp: App {
                 .onAppear {
                     if isFirstLaunch {
                         isFirstLaunch = false
-                        let launchPreparer = LaunchPreparer(persistenceController: persistenceController)
+                        let launchPreparer = LaunchPreparer(dataManager: DataManager(viewContext: persistenceController.container.viewContext))
                         launchPreparer.firstLaunchPreparations()
                     }
                     isFreshLaunch = true

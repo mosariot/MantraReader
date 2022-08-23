@@ -8,14 +8,14 @@
 import CloudKit
 
 struct LaunchPreparer {
-    let persistenceController: PersistenceController
+    let dataManager: DataManager
     
     func firstLaunchPreparations() {
         let networkMonitor = NetworkMonitor()
         networkMonitor.startMonitoring()
         DispatchQueue.main.async {
             if !(networkMonitor.isReachable) {
-                persistenceController.preloadData(context: persistenceController.container.viewContext)
+                dataManager.preloadData()
                 UserDefaults.standard.set(true, forKey: "isPreloadedMantrasDueToNoInternet")
                 UserDefaults.standard.set(false, forKey: "isInitalDataLoading")
             } else {
@@ -44,7 +44,7 @@ struct LaunchPreparer {
                 case .success(_):
                     if !areThereAnyRecords {
                         // no records in iCloud
-                        persistenceController.preloadData(context: persistenceController.container.viewContext)
+                        dataManager.preloadData()
                         UserDefaults.standard.set(false, forKey: "isInitalDataLoading")
                     } else {
                         // CloudKit automatically handles loading records from iCloud
@@ -52,7 +52,7 @@ struct LaunchPreparer {
                     }
                 case .failure(_):
                     // for example, user is not logged-in iCloud (type of error doesn't matter)
-                    persistenceController.preloadData(context: persistenceController.container.viewContext)
+                    dataManager.preloadData()
                     UserDefaults.standard.set(false, forKey: "isInitalDataLoading")
                 }
             }

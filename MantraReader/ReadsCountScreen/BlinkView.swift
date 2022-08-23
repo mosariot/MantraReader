@@ -24,9 +24,3 @@ struct BlinkView: View {
             )
     }
 }
-
-//struct BlinkView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BlinkView()
-//    }
-//}

@@ -62,13 +62,3 @@ struct MantraRow: View {
     }
 #endif
 }
-
-//struct MantraRow_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MantraRow(
-//            mantra: PersistenceController.previewMantra,
-//            isSelected: false
-//        )
-//        .padding()
-//    }
-//}

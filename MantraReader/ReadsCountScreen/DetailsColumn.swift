@@ -34,10 +34,3 @@ struct DetailsColumn: View {
         }
     }
 }
-
-//struct DetailsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DetailsColumn(selectedMantra: PersistenceController.previewMantra)
-//            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-//    }
-//}

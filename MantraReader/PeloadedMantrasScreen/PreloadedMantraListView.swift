@@ -86,11 +86,3 @@ struct PreloadedMantraListView: View {
         }
     }
 }
-
-//struct PreloadedMantraListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PreloadedMantraListView(
-//            isPresented: .constant(true),
-//            viewContext: PersistenceController.preview.container.viewContext)
-//    }
-//}

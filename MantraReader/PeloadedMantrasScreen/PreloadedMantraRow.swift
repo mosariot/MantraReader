@@ -30,11 +30,3 @@ struct PreloadedMantraRow: View {
         }
     }
 }
-
-//struct PreloadedMantraRow_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PreloadedMantraRow(
-//            mantra: PreloadedMantra(title: "Avelokitesvara", imageString: "Avalokitesvara", isSelected: true)
-//        )
-//    }
-//}

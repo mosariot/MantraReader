@@ -12,7 +12,6 @@ import CloudKit
 struct PersistenceController {
     static let shared = PersistenceController()
     let container: NSPersistentCloudKitContainer
-    private let widgetManager = MantraWidgetManager()
     
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "ReadTheMantra")
@@ -42,67 +41,5 @@ struct PersistenceController {
                 fatalError("Failed to pin viewContext to the current generation: \(error)")
             }
         }
-    }
-    
-    var currentMantras: [Mantra] {
-        var mantras = [Mantra]()
-        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
-        do {
-            try mantras = container.viewContext.fetch(request)
-        } catch {
-            print("Error getting data. \(error.localizedDescription)")
-        }
-        return mantras
-    }
-    
-    func preloadData(context: NSManagedObjectContext) {
-        PreloadedMantras.data.forEach { data in
-            let mantra = Mantra(context: context)
-            mantra.uuid = UUID()
-            mantra.reads = Int32.random(in: 0...200_000)
-            mantra.isFavorite = Bool.random()
-            data.forEach { key, value in
-                switch key {
-                case .title:
-                    mantra.title = value
-                case .text:
-                    mantra.text = value
-                case .details:
-                    mantra.details = value
-                case .image:
-                    if let image = UIImage(named: value) {
-                        mantra.image = image.pngData()
-                        mantra.imageForTableView = image.resize(to: CGSize(width: Constants.rowHeight, height: Constants.rowHeight)).pngData()
-                    }
-                }
-            }
-        }
-        do {
-            try context.save()
-            widgetManager.updateWidgetData(with: currentMantras)
-        } catch {
-            fatalCoreDataError(error)
-        }
-    }
-}
-
-// MARK: - Previews
-
-extension PersistenceController {
-    static var preview: PersistenceController = {
-        let result = PersistenceController(inMemory: true)
-        result.preloadData(context: result.container.viewContext)
-        return result
-    }()
-    
-    static var previewMantra: Mantra {
-        var mantras = [Mantra]()
-        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
-        do {
-            try mantras = preview.container.viewContext.fetch(request)
-        } catch {
-            print("Error getting data. \(error.localizedDescription)")
-        }
-        return mantras[Int.random(in: 0...mantras.count-1)]
     }
 }

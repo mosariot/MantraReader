@@ -63,13 +63,3 @@ struct CircularProgressView: View {
         }
     }
 }
-
-//struct CircularProgressView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CircularProgressView(
-//            viewModel: CircularProgressViewModel(PersistenceController.previewMantra),
-//            isMantraCounterMode: false
-//        )
-//        .padding()
-//    }
-//}

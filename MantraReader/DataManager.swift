@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 final class DataManager: ObservableObject {
-    private var viewContext: NSManagedObjectContext
+    private(set) var viewContext: NSManagedObjectContext
     private let widgetManager = MantraWidgetManager()
     
     init(viewContext: NSManagedObjectContext) {
@@ -36,6 +36,31 @@ final class DataManager: ObservableObject {
             print("Error getting data. \(error.localizedDescription)")
         }
         return mantras
+    }
+    
+    func preloadData() {
+        PreloadedMantras.data.forEach { data in
+            let mantra = Mantra(context: viewContext)
+            mantra.uuid = UUID()
+            mantra.reads = Int32.random(in: 0...200_000)
+            mantra.isFavorite = Bool.random()
+            data.forEach { key, value in
+                switch key {
+                case .title:
+                    mantra.title = value
+                case .text:
+                    mantra.text = value
+                case .details:
+                    mantra.details = value
+                case .image:
+                    if let image = UIImage(named: value) {
+                        mantra.image = image.pngData()
+                        mantra.imageForTableView = image.resize(to: CGSize(width: Constants.rowHeight, height: Constants.rowHeight)).pngData()
+                    }
+                }
+            }
+        }
+        saveData()
     }
     
     func addMantras(with selectedMantrasTitles: Set<String>) {
@@ -83,6 +108,10 @@ final class DataManager: ObservableObject {
             .filter { $0.title == "" }
             .forEach { mantra in delete(mantra, withSaving: false) }
         saveData()
+    }
+    
+    func refresh() {
+        viewContext.refreshAllObjects()
     }
     
     func saveData() {

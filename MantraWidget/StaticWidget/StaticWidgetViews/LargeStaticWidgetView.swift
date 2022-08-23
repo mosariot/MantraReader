@@ -14,9 +14,13 @@ struct LargeStaticWidgetView: View {
     var body: some View {
         let mantraArray = widgetModel.mantras.prefix(6)
         ZStack {
-            Color.init(UIColor.systemGroupedBackground)
+#if os(iOS)
+            Color(uiColor: UIColor.systemGroupedBackground)
                 .ignoresSafeArea()
-            
+#elseif os (macOS)
+            Color(nsColor: NSColor.systemGroupedBackground)
+                .ignoresSafeArea()
+#endif
             if mantraArray.count == 0 {
                 Image(Constants.defaultImage)
             } else {

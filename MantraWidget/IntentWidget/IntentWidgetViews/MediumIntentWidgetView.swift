@@ -14,8 +14,13 @@ struct MediumIntentWidgetView: View {
     
     var body: some View {
         ZStack {
+            #if os(iOS)
             Color(uiColor: UIColor.systemGroupedBackground)
                 .ignoresSafeArea()
+            #elseif os (macOS)
+            Color(nsColor: NSColor.systemGroupedBackground)
+                .ignoresSafeArea()
+            #endif
             HStack(alignment: .bottom) {
                 VStack(alignment: .leading) {
 #if os(iOS)

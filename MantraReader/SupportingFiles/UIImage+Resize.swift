@@ -25,6 +25,8 @@ extension UIImage {
     }
 }
 #elseif os(macOS)
+import Cocoa
+
 extension NSImage {
     func resize(to targetSize: CGSize) -> NSImage {
         let widthRatio = targetSize.width / size.width

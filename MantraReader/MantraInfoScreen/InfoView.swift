@@ -55,8 +55,13 @@ struct InfoView: View {
     var body: some View {
         NavigationStack {
             ZStack {
+#if os(iOS)
                 Color(UIColor.systemGroupedBackground)
                     .ignoresSafeArea()
+#elseif os(macOS)
+                Color(NSColor.systemGroupedBackground)
+                    .ignoresSafeArea()
+#endif
                 ScrollView {
                     ZStack {
 #if os(iOS)
@@ -220,6 +225,9 @@ struct InfoView: View {
                     .alert("Unavailable Photo", isPresented: $isPresentedNoImageAlert) {
                         Button("OK") {
                             isProcessingImage = false
+// Old PHPicker code -start-
+                            isPresentedImagePickerView = true
+// Old PHPicker code -end-
                         }
                     } message: {
                         Text("It seems like this photo is unavailable. Try to pick another one")

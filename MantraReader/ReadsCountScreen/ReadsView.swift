@@ -13,6 +13,7 @@ struct ReadsView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 #endif
     @AppStorage("isFirstLaunchOfMantraCounterMode") private var isFirstLaunchOfMantraCounterMode = true
+    @EnvironmentObject private var dataManager: DataManager
     @ObservedObject private var viewModel: ReadsViewModel
     private var circularViewModel: CircularProgressViewModel
     private var goalButtonViewModel: GoalButtonViewModel
@@ -287,7 +288,7 @@ struct ReadsView: View {
         }
         .sheet(isPresented: $isPresentedInfoView) {
             InfoView(
-                viewModel: InfoViewModel(viewModel.mantra, viewContext: viewModel.viewContext),
+                viewModel: InfoViewModel(viewModel.mantra, dataManager: dataManager),
                 infoMode: .view,
                 isPresented: $isPresentedInfoView
             )

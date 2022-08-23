@@ -19,7 +19,6 @@ final class ReadsViewModel: ObservableObject {
     @Published var confettiTrigger: Int = 0
     private let congratulationsGenerator = UINotificationFeedbackGenerator()
     private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
-    private let widgetManager = MantraWidgetManager()
     
     var title: String { mantra.title ?? "" }
     #if os(iOS)
@@ -41,21 +40,21 @@ final class ReadsViewModel: ObservableObject {
     #endif
     var favoriteBarImage: String { mantra.isFavorite ? "star.fill" : "star" }
     
-    private(set) var viewContext: NSManagedObjectContext
+    private var dataManager: DataManager
     
     private var timerReadsSubscription: Cancellable?
     private var timerGoalSubscription: Cancellable?
     
-    init(_ mantra: Mantra, viewContext: NSManagedObjectContext) {
+    init(_ mantra: Mantra, dataManager: DataManager) {
         self.mantra = mantra
-        self.viewContext = viewContext
+        self.dataManager = dataManager
         self.confettiTrigger = Self.confettiTrigger
     }
     
     func toggleFavorite() {
         lightHapticGenerator.impactOccurred()
         mantra.isFavorite.toggle()
-        saveContext()
+        dataManager.saveData()
     }
     
     func isValidUpdatingNumber(for text: String?, adjustingType: AdjustingType?) -> Bool {
@@ -178,21 +177,11 @@ final class ReadsViewModel: ObservableObject {
     
     private func adjustMantraReads(with value: Int32) {
         mantra.reads = value
-        saveContext()
+        dataManager.saveData()
     }
     
     private func adjustMantraGoal(with value: Int32) {
         mantra.readsGoal = value
-        saveContext()
-    }
-    
-    private func saveContext() {
-        guard viewContext.hasChanges else { return }
-        do {
-            try viewContext.save()
-            widgetManager.updateWidgetData(viewContext: viewContext)
-        } catch {
-            fatalCoreDataError(error)
-        }
+        dataManager.saveData()
     }
 }

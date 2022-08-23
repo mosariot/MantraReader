@@ -10,25 +10,12 @@ import CoreData
 import WidgetKit
 
 struct MantraWidgetManager {
-    @AppStorage("widgetItem", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
-    private var widgetItemData: Data = Data()
+    @AppStorage("widgetItem", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter")) private var widgetItemData: Data = Data()
     @AppStorage("sorting") private var sorting: Sorting = .title
     
-    func updateWidgetData(viewContext: NSManagedObjectContext) {
-        let allMantras = currentMantras(viewContext: viewContext)
-        let widgetModel = getWidgetModel(for: allMantras)
+    func updateWidgetData(with currentMantras: [Mantra]) {
+        let widgetModel = getWidgetModel(for: currentMantras)
         storeWidgetItem(widgetModel: widgetModel)
-    }
-    
-    private func currentMantras(viewContext: NSManagedObjectContext) -> [Mantra] {
-        var mantras = [Mantra]()
-        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
-        do {
-            try mantras = viewContext.fetch(request)
-        } catch {
-            print("Error getting data. \(error.localizedDescription)")
-        }
-        return mantras
     }
     
     private func getWidgetModel(for allMantras: [Mantra]) -> WidgetModel {

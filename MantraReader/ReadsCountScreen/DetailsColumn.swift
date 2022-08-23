@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct DetailsColumn: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject private var dataManager: DataManager
     var selectedMantra: Mantra?
     @State var isMantraCounterMode: Bool = false
     
     var body: some View {
         if let selectedMantra {
             ReadsView(
-                viewModel: ReadsViewModel(selectedMantra, viewContext: viewContext),
+                viewModel: ReadsViewModel(selectedMantra, dataManager: dataManager),
                 isMantraCounterMode: $isMantraCounterMode
             )
             .onChange(of: selectedMantra) { _ in

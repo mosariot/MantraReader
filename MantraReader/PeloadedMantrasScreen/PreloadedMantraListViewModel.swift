@@ -14,10 +14,9 @@ final class PreloadedMantraListViewModel: ObservableObject {
     @Published var selectedMantrasTitles = Set<String>()
     @Published var isDuplicating = false
     
-    private var viewContext: NSManagedObjectContext
-    private let widgetManager = MantraWidgetManager()
+    private var dataManager: DataManager
     
-    init(viewContext: NSManagedObjectContext) {
+    init(dataManager: DataManager) {
         self.mantras = {
             var mantras: [PreloadedMantra] = []
             PreloadedMantras.sorted.forEach { data in
@@ -34,7 +33,7 @@ final class PreloadedMantraListViewModel: ObservableObject {
             }
             return mantras
         }()
-        self.viewContext = viewContext
+        self.dataManager = dataManager
     }
     
     func select(_ mantra: PreloadedMantra) {
@@ -53,58 +52,11 @@ final class PreloadedMantraListViewModel: ObservableObject {
     
     func checkForDuplication() {
         var foundADuplication = false
-        currentMantrasTitles.forEach { title in
+        dataManager.currentMantrasTitles.forEach { title in
             if selectedMantrasTitles.contains(where: { $0.caseInsensitiveCompare(title) == .orderedSame }) {
                 foundADuplication = true
             }
         }
         isDuplicating = foundADuplication
-    }
-    
-    func addMantras() {
-        let selectedMantras = PreloadedMantras.data.filter {
-            guard let title = $0[.title] else { return false }
-            return selectedMantrasTitles.contains(title)
-        }
-        selectedMantras.forEach { selectedMantra in
-            let mantra = Mantra(context: viewContext)
-            mantra.uuid = UUID()
-            mantra.title = selectedMantra[.title]
-            mantra.text = selectedMantra[.text]
-            mantra.details = selectedMantra[.details]
-            #if os(iOS)
-            mantra.image = UIImage(named: selectedMantra[.image] ?? Constants.defaultImage)?.pngData()
-            mantra.imageForTableView = UIImage(named: selectedMantra[.image] ?? Constants.defaultImage)?
-                .resize(to: CGSize(width: Constants.rowHeight,
-                                   height: Constants.rowHeight)).pngData()
-            #elseif os(macOS)
-            mantra.image = NSImage(named: selectedMantra[.image] ?? Constants.defaultImage)?.pngData()
-            mantra.imageForTableView = NSImage(named: selectedMantra[.image] ?? Constants.defaultImage)?
-                .resize(to: CGSize(width: Constants.rowHeight,
-                                   height: Constants.rowHeight)).pngData()
-            #endif
-        }
-        saveContext()
-    }
-    
-    private var currentMantrasTitles: [String] {
-        var currentMantras = [Mantra]()
-        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
-        do {
-            try currentMantras = viewContext.fetch(request)
-        } catch {
-            print("Error getting data. \(error.localizedDescription)")
-        }
-        return currentMantras.compactMap { $0.title }
-    }
-    
-    private func saveContext() {
-        guard viewContext.hasChanges else { return }
-        do {
-            try viewContext.save()
-            widgetManager.updateWidgetData(viewContext: viewContext)
-        } catch {
-            fatalCoreDataError(error)
-        }
     }
 }

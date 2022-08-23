@@ -35,6 +35,7 @@ struct MantraReaderApp: App {
                 .environmentObject(orientationInfo)
 #endif
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(DataManager(viewContext: persistenceController.container.viewContext))
                 .onAppear {
                     if isFirstLaunch {
                         isFirstLaunch = false
@@ -42,7 +43,6 @@ struct MantraReaderApp: App {
                         launchPreparer.firstLaunchPreparations()
                     }
                     isFreshLaunch = true
-                    persistenceController.deleteEmptyMantrasIfNeeded()
 #if os(iOS)
                     IQKeyboardManager.shared.enable = true
 #endif

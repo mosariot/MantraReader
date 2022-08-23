@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject private var dataManager: DataManager
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("isInitalDataLoading") private var isInitalDataLoading = true
     @AppStorage("sorting") private var sorting: Sorting = .title
@@ -18,7 +19,6 @@ struct ContentView: View {
     
     @SectionedFetchRequest(sectionIdentifier: \.isFavorite, sortDescriptors: [])
     private var mantras: SectionedFetchResults<Bool, Mantra>
-    private let widgetManager = MantraWidgetManager()
     
 #if os(iOS)
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
@@ -82,7 +82,7 @@ struct ContentView: View {
                     }
 #endif
                 }
-                widgetManager.updateWidgetData(viewContext: viewContext)
+                dataManager.deleteEmptyMantrasIfNeeded()
             }
             .onOpenURL { url in
                 mantras.forEach { section in

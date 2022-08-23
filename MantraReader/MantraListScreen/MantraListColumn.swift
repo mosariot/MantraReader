@@ -11,6 +11,7 @@ import Combine
 struct MantraListColumn: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.isSearching) private var isSearching: Bool
+    @EnvironmentObject private var dataManager: DataManager
 #if os(iOS)
     @EnvironmentObject var actionService: ActionService
     @Environment(\.scenePhase) var scenePhase
@@ -26,8 +27,6 @@ struct MantraListColumn: View {
     @Binding var sorting: Sorting
     @Binding var searchText: String
     
-    private let widgetManager = MantraWidgetManager()
-    
     var body: some View {
         ZStack {
             List(mantras, selection: $selectedMantra) { section in
@@ -40,7 +39,7 @@ struct MantraListColumn: View {
                                         withAnimation {
                                             mantra.isFavorite.toggle()
                                         }
-                                        saveContext()
+                                        dataManager.saveData()
                                     } label: {
                                         Label(
                                             mantra.isFavorite ? "Unfavorite" : "Favorite",
@@ -67,7 +66,7 @@ struct MantraListColumn: View {
                                 withAnimation {
                                     mantra.isFavorite.toggle()
                                 }
-                                saveContext()
+                                dataManager.saveData()
                             } label: {
                                 Label(
                                     mantra.isFavorite ? "Unfavorite" : "Favorite",
@@ -108,10 +107,10 @@ struct MantraListColumn: View {
                         if $0 === selectedMantra {
                             selectedMantra = nil
                         }
-                        viewContext.delete($0)
+                        dataManager.delete($0)
                     }
                 }
-                saveContext()
+                dataManager.saveData()
                 mantrasForDeletion = nil
             }
             Button("Cancel", role: .cancel) {
@@ -171,17 +170,17 @@ struct MantraListColumn: View {
                 SortDescriptor(\.reads, order: .reverse)
             ]
             }
-            widgetManager.updateWidgetData(viewContext: viewContext)
+            dataManager.saveData()
         }
         .sheet(isPresented: $isPresentedPreloadedMantraList) {
             PreloadedMantraListView(
                 isPresented: $isPresentedPreloadedMantraList,
-                viewContext: viewContext
+                dataManager: dataManager
             )
         }
         .sheet(isPresented: $isPresentedNewMantraSheet) {
             InfoView(
-                viewModel: InfoViewModel(Mantra(context: viewContext), viewContext: viewContext),
+                viewModel: InfoViewModel(Mantra(context: viewContext), dataManager: dataManager),
                 infoMode: .addNew,
                 isPresented: $isPresentedNewMantraSheet
             )
@@ -218,16 +217,6 @@ struct MantraListColumn: View {
         actionService.action = nil
     }
 #endif
-    
-    private func saveContext() {
-        guard viewContext.hasChanges else { return }
-        do {
-            try viewContext.save()
-            widgetManager.updateWidgetData(viewContext: viewContext)
-        } catch {
-            fatalCoreDataError(error)
-        }
-    }
 }
 
 //struct MantraListView_Previews: PreviewProvider {

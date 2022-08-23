@@ -35,7 +35,7 @@ final class InfoViewModel: ObservableObject {
     #endif
     
     var isDuplicating: Bool {
-        currentMantrasTitles.contains(title)
+        dataManager.currentMantrasTitles.contains(title)
     }
 
     var areThereSomeChanges: Bool {
@@ -60,16 +60,15 @@ final class InfoViewModel: ObservableObject {
         }
     }
     
-    private var viewContext: NSManagedObjectContext
-    private let widgetManager = MantraWidgetManager()
+    private var dataManager: DataManager
     
-    init(_ mantra: Mantra, viewContext: NSManagedObjectContext) {
+    init(_ mantra: Mantra, dataManager: DataManager) {
         self.mantra = mantra
         self.title = mantra.title ?? ""
         self.text = mantra.text ?? ""
         self.description = mantra.details ?? ""
         self.imageData = mantra.image
-        self.viewContext = viewContext
+        self.dataManager = dataManager
         if self.mantra.uuid == nil {
             mantra.uuid = UUID()
         }
@@ -88,9 +87,9 @@ final class InfoViewModel: ObservableObject {
             }
         }
         if withCleanUp {
-            deleteEmptyMantras()
+            dataManager.deleteEmptyMantrasIfNeeded()
         } else {
-            saveContext()
+            dataManager.saveData()
         }
     }
     
@@ -115,45 +114,10 @@ final class InfoViewModel: ObservableObject {
     }
 #endif
     
-    func deleteEmptyMantras() {
-        var mantras = [Mantra]()
-        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
-        do {
-            try mantras = viewContext.fetch(request)
-        } catch {
-            print("Error getting data. \(error.localizedDescription)")
-        }
-        mantras
-            .filter { $0.title == "" }
-            .forEach { mantra in viewContext.delete(mantra) }
-        saveContext()
-    }
-    
     func updateFields() {
         title = mantra.title ?? ""
         text = mantra.text ?? ""
         description = mantra.details ?? ""
         imageData = mantra.image
-    }
-    
-    private var currentMantrasTitles: [String] {
-        var currentMantras = [Mantra]()
-        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
-        do {
-            try currentMantras = viewContext.fetch(request)
-        } catch {
-            print("Error getting data. \(error.localizedDescription)")
-        }
-        return currentMantras.compactMap { $0.title }
-    }
-    
-    private func saveContext() {
-        guard viewContext.hasChanges else { return }
-        do {
-            try viewContext.save()
-            widgetManager.updateWidgetData(viewContext: viewContext)
-        } catch {
-            fatalCoreDataError(error)
-        }
     }
 }

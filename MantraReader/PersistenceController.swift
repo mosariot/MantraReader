@@ -44,6 +44,17 @@ struct PersistenceController {
         }
     }
     
+    var currentMantras: [Mantra] {
+        var mantras = [Mantra]()
+        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
+        do {
+            try mantras = container.viewContext.fetch(request)
+        } catch {
+            print("Error getting data. \(error.localizedDescription)")
+        }
+        return mantras
+    }
+    
     func preloadData(context: NSManagedObjectContext) {
         PreloadedMantras.data.forEach { data in
             let mantra = Mantra(context: context)
@@ -68,25 +79,7 @@ struct PersistenceController {
         }
         do {
             try context.save()
-            widgetManager.updateWidgetData(viewContext: context)
-        } catch {
-            fatalCoreDataError(error)
-        }
-    }
-    
-    func deleteEmptyMantrasIfNeeded() {
-        var mantras = [Mantra]()
-        let request = NSFetchRequest<Mantra>(entityName: "Mantra")
-        do {
-            try mantras = container.viewContext.fetch(request)
-        } catch {
-            print("Error getting data. \(error.localizedDescription)")
-        }
-        mantras
-            .filter { $0.title == "" }
-            .forEach { mantra in container.viewContext.delete(mantra) }
-        do {
-            try container.viewContext.save()
+            widgetManager.updateWidgetData(with: currentMantras)
         } catch {
             fatalCoreDataError(error)
         }

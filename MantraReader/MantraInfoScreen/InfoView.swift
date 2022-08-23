@@ -16,6 +16,7 @@ struct InfoView: View {
     }
     
     @AppStorage("isFirstSearchOnTheInternet") private var isFirstSearchOnTheInternet = true
+    @EnvironmentObject private var dataManager: DataManager
     @StateObject private var viewModel: InfoViewModel
     @State private var infoMode: InfoMode
     @Binding private var isPresented: Bool
@@ -376,7 +377,7 @@ struct InfoView: View {
                     if infoMode == .addNew {
                         Button("Cancel") {
                             if viewModel.isCleanMantra {
-                                viewModel.deleteEmptyMantras()
+                                dataManager.deleteEmptyMantrasIfNeeded()
                                 isPresented = false
                             } else {
                                 isPresentedDiscardingMantraAlert = true
@@ -388,7 +389,7 @@ struct InfoView: View {
                             titleVisibility: .hidden
                         ) {
                             Button("Discard Mantra", role: .destructive) {
-                                viewModel.deleteEmptyMantras()
+                                dataManager.deleteEmptyMantrasIfNeeded()
                                 isPresented = false
                             }
                         } message: {
@@ -456,7 +457,7 @@ struct InfoView: View {
             .onDisappear {
                 viewModel.updateFields()
                 if infoMode == .addNew {
-                    viewModel.deleteEmptyMantras()
+                    dataManager.deleteEmptyMantrasIfNeeded()
                 }
             }
         }

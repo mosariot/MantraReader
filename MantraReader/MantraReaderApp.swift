@@ -67,6 +67,22 @@ struct MantraReaderApp: App {
                     OnboardingView(isPresented: $isOnboarding)
                         .interactiveDismissDisabled()
                 }
+                .onReceive(NotificationCenter.default.publisher(for: dataSaveFailedNotification)) { _ in
+                    let alertController = GlobalAlertController(
+                        title: String(localized: "There was a fatal error in the app and it cannot continue. Press OK to terminate the app. Sorry for inconvenience."),
+                        message: "",
+                        preferredStyle: .alert
+                    )
+                    alertController.addAction(UIAlertAction(title: String(localized: "OK"), style: .cancel) { _ in
+                        let exception = NSException(
+                            name: NSExceptionName.internalInconsistencyException,
+                            reason: "Fatal Core Data error",
+                            userInfo: nil
+                        )
+                        exception.raise()
+                    })
+                    alertController.presentGlobally(animated: true, completion: nil)
+                }
         }
     }
 }

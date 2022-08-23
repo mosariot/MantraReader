@@ -80,6 +80,8 @@
 		9FB5983228AAC54A00798AD7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983428AAC54A00798AD7 /* InfoPlist.strings */; };
 		9FB5983828AAC65B00798AD7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983A28AAC65B00798AD7 /* Localizable.strings */; };
 		9FB5983B28AB4E7F00798AD7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983A28AAC65B00798AD7 /* Localizable.strings */; };
+		9FB7AE6728B556150044C55E /* GlobalAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB7AE6628B556150044C55E /* GlobalAlertViewController.swift */; };
+		9FB7AE6928B557F70044C55E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB7AE6828B557F70044C55E /* DataManager.swift */; };
 		9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */; };
 		9FBEE99A285F682C0070BA06 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE999285F682C0070BA06 /* PersistenceController.swift */; };
 		9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE99E285F682C0070BA06 /* ContentView.swift */; };
@@ -205,6 +207,8 @@
 		9FB5983328AAC54A00798AD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9FB5983528AAC54F00798AD7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9FB5983928AAC65B00798AD7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9FB7AE6628B556150044C55E /* GlobalAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalAlertViewController.swift; sourceTree = "<group>"; };
+		9FB7AE6828B557F70044C55E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		9FBEE994285F682C0070BA06 /* MantraReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MantraReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraReaderApp.swift; sourceTree = "<group>"; };
 		9FBEE999285F682C0070BA06 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
@@ -377,6 +381,7 @@
 			children = (
 				9F348D3F28A404810070F157 /* Bool+Comparable.swift */,
 				9FDC8DAD28622D5900BF7051 /* Constants.swift */,
+				9FB7AE6628B556150044C55E /* GlobalAlertViewController.swift */,
 				9F4DE925286E3B990064ADCB /* Functions.swift */,
 				9F5422FC28ACA32E00F15040 /* KMBFormatter.swift */,
 				9FDC8DAF28623D5F00BF7051 /* OrientationInfo.swift */,
@@ -442,6 +447,16 @@
 			path = StaticWidgetViews;
 			sourceTree = "<group>";
 		};
+		9FB7AE6A28B558040044C55E /* HomeScreenQuickActions */ = {
+			isa = PBXGroup;
+			children = (
+				9F6E65BC28B276080054F6D6 /* AppDelegate.swift */,
+				9F6E65BA28B275CF0054F6D6 /* HomeScreenAction.swift */,
+				9F6E65BE28B3970B0054F6D6 /* Mantra+ShortcutItem.swift */,
+			);
+			path = HomeScreenQuickActions;
+			sourceTree = "<group>";
+		};
 		9FBEE98B285F682C0070BA06 = {
 			isa = PBXGroup;
 			children = (
@@ -473,9 +488,8 @@
 				9FBEE99E285F682C0070BA06 /* ContentView.swift */,
 				9F794EDB289B84AF00DDF940 /* OnboardingView.swift */,
 				9FBEE999285F682C0070BA06 /* PersistenceController.swift */,
-				9F6E65BC28B276080054F6D6 /* AppDelegate.swift */,
-				9F6E65BA28B275CF0054F6D6 /* HomeScreenAction.swift */,
-				9F6E65BE28B3970B0054F6D6 /* Mantra+ShortcutItem.swift */,
+				9FB7AE6828B557F70044C55E /* DataManager.swift */,
+				9FB7AE6A28B558040044C55E /* HomeScreenQuickActions */,
 				9F794EE1289D57D000DDF940 /* LaunchPreparing */,
 				9F794EDA289B051900DDF940 /* MantraListScreen */,
 				9F794ED6289B03CA00DDF940 /* ReadsCountScreen */,
@@ -699,6 +713,7 @@
 				9F338B5D2899A64200E393E2 /* Triangle.swift in Sources */,
 				9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */,
 				9F78728E2865FDA400F52335 /* UIImage+Resize.swift in Sources */,
+				9FB7AE6928B557F70044C55E /* DataManager.swift in Sources */,
 				9FD61DCA289391BC004936E6 /* PreloadedMantraListViewModel.swift in Sources */,
 				9FDF349D2885E83B00B3007E /* GoalButtonViewModel.swift in Sources */,
 				9F6E65BF28B3970B0054F6D6 /* Mantra+ShortcutItem.swift in Sources */,
@@ -716,6 +731,7 @@
 				9FB32B1128A7D48C000A910E /* ShakeSupport.swift in Sources */,
 				9F6E65BB28B275CF0054F6D6 /* HomeScreenAction.swift in Sources */,
 				9FA8E88D2898DB7B00479F08 /* PreloadedMantra.swift in Sources */,
+				9FB7AE6728B556150044C55E /* GlobalAlertViewController.swift in Sources */,
 				9FDC8DB028623D5F00BF7051 /* OrientationInfo.swift in Sources */,
 				9FDF349B2885B2E000B3007E /* CircularProgressViewModel.swift in Sources */,
 				9F794EE0289C360F00DDF940 /* NetworkMonitor.swift in Sources */,

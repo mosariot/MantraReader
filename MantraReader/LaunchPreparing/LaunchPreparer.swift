@@ -5,9 +5,12 @@
 //  Created by Alex Vorobiev on 17.08.2021.
 //
 
+import SwiftUI
 import CloudKit
 
 struct LaunchPreparer {
+    @AppStorage("isPreloadedMantrasDueToNoInternet") private var isPreloadedMantrasDueToNoInternet = false
+    @AppStorage("isInitalDataLoading") private var isInitalDataLoading = true
     let dataManager: DataManager
     
     func firstLaunchPreparations() {
@@ -16,8 +19,8 @@ struct LaunchPreparer {
         DispatchQueue.main.async {
             if !(networkMonitor.isReachable) {
                 dataManager.preloadData()
-                UserDefaults.standard.set(true, forKey: "isPreloadedMantrasDueToNoInternet")
-                UserDefaults.standard.set(false, forKey: "isInitalDataLoading")
+                isPreloadedMantrasDueToNoInternet = true
+                isInitalDataLoading = false
             } else {
                 checkForiCloudRecords()
             }
@@ -45,15 +48,14 @@ struct LaunchPreparer {
                     if !areThereAnyRecords {
                         // no records in iCloud
                         dataManager.preloadData()
-                        UserDefaults.standard.set(false, forKey: "isInitalDataLoading")
+                        isInitalDataLoading = false
                     } else {
                         // CloudKit automatically handles loading records from iCloud
-                        print("downloading records from icloud")
                     }
                 case .failure(_):
                     // for example, user is not logged-in iCloud (type of error doesn't matter)
                     dataManager.preloadData()
-                    UserDefaults.standard.set(false, forKey: "isInitalDataLoading")
+                    isInitalDataLoading = false
                 }
             }
         }

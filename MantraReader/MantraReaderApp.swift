@@ -19,7 +19,7 @@ struct MantraReaderApp: App {
     
     @State private var isPresentedNoInternetAlert = false
     
-    private let persistenceController = PersistenceController.shared
+    private let dataManager = DataManager(viewContext: PersistenceController.shared.container.viewContext)
     
 #if os(iOS)
     private let actionService = ActionService.shared
@@ -34,12 +34,12 @@ struct MantraReaderApp: App {
                 .environmentObject(actionService)
                 .environmentObject(orientationInfo)
 #endif
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environmentObject(DataManager(viewContext: persistenceController.container.viewContext))
+                .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+                .environmentObject(dataManager)
                 .onAppear {
                     if isFirstLaunch {
                         isFirstLaunch = false
-                        let launchPreparer = LaunchPreparer(dataManager: DataManager(viewContext: persistenceController.container.viewContext))
+                        let launchPreparer = LaunchPreparer(dataManager: dataManager)
                         launchPreparer.firstLaunchPreparations()
                     }
                     isFreshLaunch = true

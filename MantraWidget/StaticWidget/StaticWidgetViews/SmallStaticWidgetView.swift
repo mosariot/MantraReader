@@ -15,10 +15,10 @@ struct SmallStaticWidgetView: View {
         let mantraArray = widgetModel.mantras.prefix(4)
         ZStack {
 #if os(iOS)
-            Color(uiColor: UIColor.systemGroupedBackground)
+            Color(UIColor.systemGroupedBackground)
                 .ignoresSafeArea()
 #elseif os (macOS)
-            Color(nsColor: NSColor.systemGroupedBackground)
+            Color(NSColor.systemGroupedBackground)
                 .ignoresSafeArea()
 #endif
             if mantraArray.count == 0 {

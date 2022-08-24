@@ -153,7 +153,8 @@ struct ReadsView: View {
 #if os(iOS)
                     .padding(
                         .bottom,
-                        (horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 10 : 0
+                        (horizontalSizeClass == .compact && verticalSizeClass == .regular) ||
+                        (horizontalSizeClass == .regular && verticalSizeClass == .regular) ? 10 : 0
                     )
 #elseif os(macOS)
                     .padding(.bottom, 10)

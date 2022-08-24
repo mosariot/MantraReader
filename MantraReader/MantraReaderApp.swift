@@ -16,9 +16,7 @@ struct MantraReaderApp: App {
     @AppStorage("isPreloadedMantrasDueToNoInternet") private var isPreloadedMantrasDueToNoInternet = false
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("isOnboarding") private var isOnboarding = true
-    
     @State private var isPresentedNoInternetAlert = false
-    
     private let dataManager = DataManager(viewContext: PersistenceController.shared.container.viewContext)
     
 #if os(iOS)

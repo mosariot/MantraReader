@@ -15,10 +15,10 @@ struct SmallIntentWidgetView: View {
     var body: some View {
         ZStack {
 #if os(iOS)
-            Color(uiColor: UIColor.systemGroupedBackground)
+            Color(UIColor.systemGroupedBackground)
                 .ignoresSafeArea()
 #elseif os (macOS)
-            Color(nsColor: NSColor.systemGroupedBackground)
+            Color(NSColor.systemGroupedBackground)
                 .ignoresSafeArea()
 #endif
             VStack {

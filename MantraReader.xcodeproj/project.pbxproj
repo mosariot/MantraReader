@@ -49,6 +49,7 @@
 		9F54232A28AD507000F15040 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F54232028AD4E2400F15040 /* IntentHandler.swift */; };
 		9F54232D28AD56A200F15040 /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E728A18EEF001FF7DE /* WidgetModel.swift */; };
 		9F605143288EE75E005EC6F5 /* BlinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F605142288EE75E005EC6F5 /* BlinkView.swift */; };
+		9F6C7D0628B67072004CC501 /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F780037287FF7D200516A0F /* RandomColor.swift */; };
 		9F6E65AF28B273CB0054F6D6 /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B228B273CB0054F6D6 /* MantraWidget.intentdefinition */; };
 		9F6E65B028B273CB0054F6D6 /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B228B273CB0054F6D6 /* MantraWidget.intentdefinition */; };
 		9F6E65B828B2755E0054F6D6 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B728B2755D0054F6D6 /* ImagePickerView.swift */; };
@@ -666,6 +667,7 @@
 				9F5422F928ACA30300F15040 /* AccessoryRectangularIntentWidgetVIew.swift in Sources */,
 				9F1AB3E428A18EAA001FF7DE /* LargeStaticWidgetView.swift in Sources */,
 				9F1AB3EA28A18EEF001FF7DE /* WidgetModel.swift in Sources */,
+				9F6C7D0628B67072004CC501 /* RandomColor.swift in Sources */,
 				9F5422E928ACA0CC00F15040 /* UIImage+Resize.swift in Sources */,
 				9F1AB3E528A18EAA001FF7DE /* SmallStaticWidgetView.swift in Sources */,
 				9FA0553D28AC018E006E5798 /* StaticWidgetEntry.swift in Sources */,

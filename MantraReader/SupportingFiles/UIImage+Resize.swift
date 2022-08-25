@@ -25,7 +25,7 @@ extension UIImage {
     }
 }
 #elseif os(macOS)
-import Cocoa
+import AppKit
 
 extension NSImage {
     func resize(to targetSize: CGSize) -> NSImage {

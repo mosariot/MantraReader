@@ -16,7 +16,6 @@ final class InfoViewModel: ObservableObject {
     @Published var description: String
     @Published var imageData: Data?
     
-    #if os(iOS)
     var image: UIImage {
         if let data = imageData, let image = UIImage(data: data) {
             return image
@@ -24,15 +23,6 @@ final class InfoViewModel: ObservableObject {
             return UIImage(named: Constants.defaultImage)!
         }
     }
-    #elseif os(macOS)
-    var image: NSImage {
-        if let data = imageData, let image = NSImage(data: data) {
-            return image
-        } else {
-            return NSImage(named: Constants.defaultImage)!
-        }
-    }
-    #endif
     
     var isDuplicating: Bool {
         dataManager.currentMantrasTitles.contains(title)

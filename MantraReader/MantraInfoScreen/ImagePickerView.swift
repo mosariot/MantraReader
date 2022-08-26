@@ -8,7 +8,6 @@
 import PhotosUI
 import SwiftUI
 
-#if os(iOS)
 struct ImagePickerView: UIViewControllerRepresentable {
     @Binding var image: UIImage?
     @Binding var isProcessingImage: Bool
@@ -57,53 +56,3 @@ struct ImagePickerView: UIViewControllerRepresentable {
         }
     }
 }
-#elseif os(macOS)
-struct ImagePickerView: NSViewControllerRepresentable {
-    @Binding var image: NSImage?
-    @Binding var isProcessingImage: Bool
-    @Binding var isPresentedNoImageAlert: Bool
-    
-    func makeNSViewController(context: Context) -> PHPickerViewController {
-        var config = PHPickerConfiguration()
-        config.filter = .images
-        let picker = PHPickerViewController(configuration: config)
-        picker.delegate = context.coordinator
-        return picker
-    }
-    
-    func updateNSViewController(_ nsViewController: PHPickerViewController, context: Context) {
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-    
-    class Coordinator: NSObject, PHPickerViewControllerDelegate {
-        let parent: ImagePickerView
-        
-        init(_ parent: ImagePickerView) {
-            self.parent = parent
-        }
-        
-        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            picker.dismiss(animated: true)
-            guard !results.isEmpty else { return }
-            parent.isProcessingImage = true
-            
-            results.forEach { result in
-                let provider = result.itemProvider
-                if provider.canLoadObject(ofClass: NSImage.self) {
-                    provider.loadObject(ofClass: NSImage.self, completionHandler: { (object, error) in
-                        if let image = object as? NSImage {
-                            self.parent.image = image
-                        }
-                        if error != nil {
-                            self.parent.isPresentedNoImageAlert = true
-                        }
-                    })
-                }
-            }
-        }
-    }
-}
-#endif

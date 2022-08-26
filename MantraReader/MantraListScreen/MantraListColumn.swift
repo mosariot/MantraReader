@@ -11,10 +11,8 @@ import Combine
 struct MantraListColumn: View {
     @Environment(\.isSearching) private var isSearching: Bool
     @EnvironmentObject private var dataManager: DataManager
-#if os(iOS)
     @EnvironmentObject var actionService: ActionService
     @Environment(\.scenePhase) var scenePhase
-#endif
     
     @State private var isPresentedPreloadedMantraList = false
     @State private var isPresentedNewMantraSheet = false
@@ -125,11 +123,9 @@ struct MantraListColumn: View {
             dataManager.refresh()
         }
         .toolbar {
-#if os(iOS)
             ToolbarItem(placement: .navigationBarLeading) {
                 EditButton()
             }
-#endif
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     Picker("", selection: $sorting) {
@@ -183,7 +179,6 @@ struct MantraListColumn: View {
                 isPresented: $isPresentedNewMantraSheet
             )
         }
-#if os(iOS)
         .onChange(of: scenePhase) { newValue in
             switch newValue {
             case .active:
@@ -192,10 +187,8 @@ struct MantraListColumn: View {
                 break
             }
         }
-#endif
     }
     
-#if os(iOS)
     private func performActionIfNeeded() {
         guard let action = actionService.action else { return }
         switch action {
@@ -214,5 +207,4 @@ struct MantraListColumn: View {
         }
         actionService.action = nil
     }
-#endif
 }

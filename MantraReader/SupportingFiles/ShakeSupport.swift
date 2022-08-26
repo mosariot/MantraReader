@@ -5,7 +5,6 @@
 //  Created by Alex Vorobiev on 13.08.2022.
 //
 
-#if os(iOS)
 import SwiftUI
 import UIKit
 
@@ -38,4 +37,3 @@ extension View {
         self.modifier(DeviceShakeViewModifier(action: action))
     }
 }
-#endif

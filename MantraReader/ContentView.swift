@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
     @EnvironmentObject private var dataManager: DataManager
+    @EnvironmentObject var orientationInfo: OrientationInfo
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("isInitalDataLoading") private var isInitalDataLoading = true
     @AppStorage("sorting") private var sorting: Sorting = .title
@@ -20,16 +23,11 @@ struct ContentView: View {
     @SectionedFetchRequest(sectionIdentifier: \.isFavorite, sortDescriptors: [])
     private var mantras: SectionedFetchResults<Bool, Mantra>
     
-#if os(iOS)
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    @Environment(\.verticalSizeClass) private var verticalSizeClass
-    @EnvironmentObject var orientationInfo: OrientationInfo
     @State private var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
     private var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
     private var isPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }
     private var isLandscape: Bool { orientationInfo.orientation == .landscape }
     private var isPortrait: Bool { orientationInfo.orientation == .portrait }
-#endif
     
     init() {
         var currentSortDescriptor: SortDescriptor<Mantra>
@@ -46,9 +44,7 @@ struct ContentView: View {
             predicate: NSPredicate(format: "title != %@", ""),
             animation: .default
         )
-#if os(iOS)
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = Constants.accentColor
-#endif
     }
     
     var body: some View {
@@ -70,17 +66,11 @@ struct ContentView: View {
             }
             .onAppear {
                 if !mantras.isEmpty {
-#if os(iOS)
                     if ((verticalSizeClass == .regular && horizontalSizeClass == .regular)
                         || (verticalSizeClass == .compact && horizontalSizeClass == .regular))
                         && isFreshLaunch {
                         selectedMantra = mantras[0][0]
                     }
-#elseif os(macOS)
-                    if isFreshLaunch {
-                        selectedMantra = mantras[0][0]
-                    }
-#endif
                 }
                 dataManager.deleteEmptyMantrasIfNeeded()
             }
@@ -102,10 +92,6 @@ struct ContentView: View {
             DetailsColumn(selectedMantra: selectedMantra)
                 .navigationSplitViewColumnWidth(min: 400, ideal: 600)
         }
-#if os(macOS)
-        .frame(minHeight: 600)
-#endif
-#if os(iOS)
         .onChange(of: selectedMantra) { _ in
             if !isFreshLaunch {
                 if ((isPad && isPortrait) || (isPhone && isLandscape))
@@ -115,6 +101,5 @@ struct ContentView: View {
             }
             isFreshLaunch = false
         }
-#endif
     }
 }

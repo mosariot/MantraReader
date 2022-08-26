@@ -14,13 +14,8 @@ struct SmallIntentWidgetView: View {
     
     var body: some View {
         ZStack {
-#if os(iOS)
             Color(UIColor.systemGroupedBackground)
                 .ignoresSafeArea()
-#elseif os (macOS)
-            Color(NSColor.systemGroupedBackground)
-                .ignoresSafeArea()
-#endif
             VStack {
                 ZStack {
                     PercentageRing(

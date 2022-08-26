@@ -6,9 +6,7 @@
 //
 
 import SwiftUI
-#if os(iOS)
 import IQKeyboardManagerSwift
-#endif
 
 @main
 struct MantraReaderApp: App {
@@ -16,24 +14,19 @@ struct MantraReaderApp: App {
     @AppStorage("isPreloadedMantrasDueToNoInternet") private var isPreloadedMantrasDueToNoInternet = false
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("isOnboarding") private var isOnboarding = true
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State private var isPresentedNoInternetAlert = false
     private let dataManager = DataManager(viewContext: PersistenceController.shared.container.viewContext)
-    
-#if os(iOS)
     private let actionService = ActionService.shared
     private let orientationInfo = OrientationInfo()
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-#endif
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-#if os(iOS)
-                .environmentObject(actionService)
-                .environmentObject(orientationInfo)
-#endif
                 .environment(\.managedObjectContext, dataManager.viewContext)
                 .environmentObject(dataManager)
+                .environmentObject(actionService)
+                .environmentObject(orientationInfo)
                 .onAppear {
                     if isFirstLaunch {
                         isFirstLaunch = false
@@ -41,9 +34,7 @@ struct MantraReaderApp: App {
                         launchPreparer.firstLaunchPreparations()
                     }
                     isFreshLaunch = true
-#if os(iOS)
                     IQKeyboardManager.shared.enable = true
-#endif
                 }
                 .onChange(of: isOnboarding) { newValue in
                     if !newValue {
@@ -71,14 +62,16 @@ struct MantraReaderApp: App {
                         message: "",
                         preferredStyle: .alert
                     )
-                    alertController.addAction(UIAlertAction(title: String(localized: "OK"), style: .cancel) { _ in
-                        let exception = NSException(
-                            name: NSExceptionName.internalInconsistencyException,
-                            reason: "Fatal Core Data error",
-                            userInfo: nil
-                        )
-                        exception.raise()
-                    })
+                    alertController.addAction(
+                        UIAlertAction(title: String(localized: "OK"), style: .cancel) { _ in
+                            let exception = NSException(
+                                name: NSExceptionName.internalInconsistencyException,
+                                reason: "Fatal Core Data error",
+                                userInfo: nil
+                            )
+                            exception.raise()
+                        }
+                    )
                     alertController.presentGlobally(animated: true, completion: nil)
                 }
         }

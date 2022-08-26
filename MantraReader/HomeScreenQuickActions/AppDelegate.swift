@@ -5,7 +5,6 @@
 //  Created by Alex Vorobiev on 21.08.2022.
 //
 
-#if os(iOS)
 import UIKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -41,4 +40,3 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         completionHandler(true)
     }
 }
-#endif

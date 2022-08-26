@@ -5,7 +5,6 @@
 //  Created by Alex Vorobiev on 21.08.2022.
 //
 
-#if os(iOS)
 import UIKit
 
 enum ActionType: String {
@@ -40,4 +39,3 @@ class ActionService: ObservableObject {
     static let shared = ActionService()
     @Published var action: Action?
 }
-#endif

@@ -13,9 +13,7 @@ struct PreloadedMantraListView: View {
     @Binding private var isPresented: Bool
     @StateObject private var viewModel: PreloadedMantraListViewModel
     @State private var successfullyAdded = false
-#if os(iOS)
     private let addHapticGenerator = UINotificationFeedbackGenerator()
-#endif
     
     init(isPresented: Binding<Bool>, dataManager: DataManager) {
         self._isPresented = isPresented
@@ -77,9 +75,7 @@ struct PreloadedMantraListView: View {
     
     private func addMantras() {
         withAnimation {
-#if os(iOS)
             addHapticGenerator.notificationOccurred(.success)
-#endif
             dataManager.addMantras(with: viewModel.selectedMantrasTitles)
             successfullyAdded = true
             afterDelay(0.7) { isPresented = false }

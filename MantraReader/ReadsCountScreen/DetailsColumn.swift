@@ -23,9 +23,7 @@ struct DetailsColumn: View {
                     withAnimation {
                         isMantraCounterMode = false
                     }
-#if os(iOS)
                     UIApplication.shared.isIdleTimerDisabled = false
-#endif
                 }
             }
         } else {

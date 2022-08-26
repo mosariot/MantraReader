@@ -8,18 +8,14 @@
 import SwiftUI
 
 struct ReadsView: View {
-#if os(iOS)
     @Environment(\.verticalSizeClass) private var verticalSizeClass
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-#endif
     @AppStorage("isFirstLaunchOfMantraCounterMode") private var isFirstLaunchOfMantraCounterMode = true
     @EnvironmentObject private var dataManager: DataManager
     @ObservedObject private var viewModel: ReadsViewModel
     private var circularViewModel: CircularProgressViewModel
     private var goalButtonViewModel: GoalButtonViewModel
-#if os(iOS)
     private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
-#endif
     
     @State private var isPresentedAdjustingAlert = false
     @State private var isPresentedValidNumberAlert = false
@@ -41,18 +37,13 @@ struct ReadsView: View {
     }
     
     var body: some View {
-#if os(iOS)
         let layout = verticalSizeClass == .compact ? AnyLayout(HStackLayout()) : AnyLayout(VStackLayout())
-#elseif os(macOS)
-        let layout = AnyLayout(VStackLayout())
-#endif
         
         ZStack {
             GeometryReader { geometry in
                 VStack {
                     layout {
                         Spacer()
-#if os(iOS)
                         Image(uiImage: viewModel.image)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -61,16 +52,6 @@ struct ReadsView: View {
                                 width: imageSize(with: geometry.size),
                                 height: imageSize(with: geometry.size)
                             )
-#elseif os(macOS)
-                        Image(nsImage: viewModel.image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .accessibilityIgnoresInvertColors()
-                            .frame(
-                                width: imageSize(with: geometry.size),
-                                height: imageSize(with: geometry.size)
-                            )
-#endif
                         if verticalSizeClass == .regular {
                             Spacer()
                             Text(viewModel.title)
@@ -150,15 +131,11 @@ struct ReadsView: View {
                             }
                         }
                     }
-#if os(iOS)
                     .padding(
                         .bottom,
                         (horizontalSizeClass == .compact && verticalSizeClass == .regular) ||
                         (horizontalSizeClass == .regular && verticalSizeClass == .regular) ? 10 : 0
                     )
-#elseif os(macOS)
-                    .padding(.bottom, 10)
-#endif
                     .alert(
                         viewModel.adjustingAlertTitle(for: adjustingType),
                         isPresented: $isPresentedAdjustingAlert,
@@ -168,9 +145,7 @@ struct ReadsView: View {
                             .onSubmit {
                                 validateAndHandleAdjusting()
                             }
-#if os(iOS)
                             .keyboardType(.numberPad)
-#endif
                         Button(viewModel.adjustingAlertActionTitle(for: adjustingType)) {
                             validateAndHandleAdjusting()
                         }
@@ -236,9 +211,7 @@ struct ReadsView: View {
             .controlSize(.large)
             .contentShape(Rectangle())
         }
-#if os(iOS)
         .navigationTitle(verticalSizeClass == .compact ? viewModel.mantra.title ?? "" : "")
-#endif
         .navigationBarTitleDisplayMode(.inline)
         .ignoresSafeArea(.keyboard)
         .toolbar {
@@ -297,19 +270,15 @@ struct ReadsView: View {
         .onReceive(viewModel.mantra.objectWillChange) { _ in
             viewModel.objectWillChange.send()
         }
-#if os(iOS)
         .onShake {
             isPresentedUndoAlert = true
         }
-#endif
         .onDisappear {
             if isMantraCounterMode {
                 withAnimation {
                     isMantraCounterMode = false
                 }
-#if os(iOS)
                 UIApplication.shared.isIdleTimerDisabled = false
-#endif
             }
         }
     }
@@ -330,21 +299,16 @@ struct ReadsView: View {
             isMantraCounterMode.toggle()
         }
         if isMantraCounterMode {
-#if os(iOS)
             lightHapticGenerator.impactOccurred()
             UIApplication.shared.isIdleTimerDisabled = true
-#endif
             showHint = true
             afterDelay(1.5) { showHint = false }
         } else {
-#if os(iOS)
             UIApplication.shared.isIdleTimerDisabled = false
-#endif
         }
     }
     
     private func imageSize(with frame: CGSize) -> CGFloat? {
-#if os(iOS)
         switch (horizontalSizeClass, verticalSizeClass) {
         case (.compact, .regular): return CGFloat(0.40 * frame.width)
         case (.compact, .compact): return CGFloat(0.50 * frame.height)
@@ -352,13 +316,9 @@ struct ReadsView: View {
         case (.regular, .regular): return CGFloat(0.25 * frame.height)
         default: return nil
         }
-#elseif os(macOS)
-        return CGFloat(0.25 * frame.height)
-#endif
     }
     
     private func circularProgressViewSize(with frame: CGSize) -> CGFloat? {
-#if os(iOS)
         switch (horizontalSizeClass, verticalSizeClass) {
         case (.compact, .regular): return CGFloat(0.58 * frame.width)
         case (.compact, .compact): return CGFloat(0.55 * frame.height)
@@ -366,8 +326,5 @@ struct ReadsView: View {
         case (.regular, .regular): return CGFloat(0.40 * frame.height)
         default: return nil
         }
-#elseif os(macOS)
-        return CGFloat(0.40 * frame.height)
-#endif
     }
 }

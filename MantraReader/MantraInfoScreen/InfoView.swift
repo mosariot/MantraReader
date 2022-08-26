@@ -31,41 +31,27 @@ struct InfoView: View {
 // Native PhotoPicker code -start-
 // Old PHPicker code -start-
     @State private var isPresentedImagePickerView = false
-#if os(iOS)
     @State private var selectedPhoto: UIImage?
-#elseif os(macOS)
-    @State private var selectedPhoto: NSImage?
-#endif
 // Old PHPicker code -end-
     @State private var isPresentedNoImageAlert = false
     @State private var successfullyAdded = false
     @FocusState private var focus: FocusableField?
-#if os(iOS)
     private let addHapticGenerator = UINotificationFeedbackGenerator()
-#endif
     
     init(viewModel: InfoViewModel, infoMode: InfoMode, isPresented: Binding<Bool>) {
         self._viewModel = StateObject(wrappedValue: viewModel)
         self._infoMode = State(initialValue: infoMode)
         self._isPresented = isPresented
-#if os(iOS)
         UITextField.appearance().backgroundColor = .clear
-#endif
     }
     
     var body: some View {
         NavigationStack {
             ZStack {
-#if os(iOS)
                 Color(UIColor.systemGroupedBackground)
                     .ignoresSafeArea()
-#elseif os(macOS)
-                Color(NSColor.systemGroupedBackground)
-                    .ignoresSafeArea()
-#endif
                 ScrollView {
                     ZStack {
-#if os(iOS)
                         Image(uiImage: viewModel.image)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -156,69 +142,6 @@ struct InfoView: View {
                                 }
                                 .opacity(infoMode == .edit || infoMode == .addNew ? 0.8 : 0)
                             }
-#elseif os(macOS)
-                        Image(nsImage: viewModel.image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(height: 200)
-                            .opacity(infoMode == .edit || infoMode == .addNew ? 0.7 : 1)
-                            .accessibilityIgnoresInvertColors()
-                            .overlay(alignment: .bottom) {
-                                Menu {
-// Old PHPicker code -start-
-                                    Button {
-                                        isPresentedImagePickerView = true
-                                    } label: {
-                                        Label("Photo Library", systemImage: "photo.on.rectangle.angled")
-                                    }
-// Old PHPicker code -end-
-// Native PhotoPicker code -start-
-//                                    PhotosPicker(
-//                                        selection: $selectedPhotoItem,
-//                                        matching: .images,
-//                                        photoLibrary: .shared()
-//                                    ) {
-//                                        Label("Photo Library", systemImage: "photo.on.rectangle.angled")
-//                                    }
-//                                    .onChange(of: selectedPhotoItem) { item in
-//                                        Task {
-//                                            isProcessingImage = true
-//                                            if let data = try? await item?.loadTransferable(type: Data.self) {
-//                                                if let image = UIImage(data: data) {
-//                                                    withAnimation {
-//                                                        viewModel.handleIncomingImage(image)
-//                                                    }
-//                                                } else {
-//                                                    isPresentedNoImageAlert = true
-//                                                }
-//                                            } else {
-//                                                isPresentedNoImageAlert = true
-//                                            }
-//                                            isProcessingImage = false
-//                                        }
-//                                    }
-// Native PhotoPicker code -end-
-                                    Button {
-                                        withAnimation {
-                                            viewModel.setDefaultImage()
-                                        }
-                                    } label: {
-                                        Label("Default Image", systemImage: "photo")
-                                    }
-                                } label: {
-                                    ZStack {
-                                        RoundedRectangle(cornerRadius: 5)
-                                            .fill(.gray)
-                                            .frame(width: 200, height: 30)
-                                        Text("EDIT")
-                                            .foregroundColor(.white.opacity(0.8))
-                                            .font(.headline.bold())
-                                    }
-                                }
-                                .opacity(infoMode == .edit || infoMode == .addNew ? 0.8 : 0)
-                            }
-#endif
-                            
                         if isProcessingImage {
                             ProgressView()
                         }
@@ -250,11 +173,7 @@ struct InfoView: View {
                                 focus = .text
                             }
                     }
-#if os(iOS)
                     .background(Color(UIColor.secondarySystemGroupedBackground))
-#elseif os(macOS)
-                    .background(Color(NSColor.secondarySystemGroupedBackground))
-#endif
                     .cornerRadius(15)
                     .padding()
                     VStack(alignment: .leading, spacing: 0) {
@@ -275,11 +194,7 @@ struct InfoView: View {
                                 focus = .description
                             }
                     }
-#if os(iOS)
                     .background(Color(UIColor.secondarySystemGroupedBackground))
-#elseif os(macOS)
-                    .background(Color(NSColor.secondarySystemGroupedBackground))
-#endif
                     .cornerRadius(15)
                     .padding(.horizontal)
                     VStack(alignment: .leading, spacing: 0) {
@@ -298,11 +213,7 @@ struct InfoView: View {
                                 focus = nil
                             }
                     }
-#if os(iOS)
                     .background(Color(UIColor.secondarySystemGroupedBackground))
-#elseif os(macOS)
-                    .background(Color(NSColor.secondarySystemGroupedBackground))
-#endif
                     .cornerRadius(15)
                     .padding()
                 }
@@ -312,7 +223,6 @@ struct InfoView: View {
             }
             .navigationTitle(infoMode == .addNew ? "New Mantra" : "Information")
             .navigationBarTitleDisplayMode(.inline)
-#if os(iOS)
             .alert("Pick Photo", isPresented: $isPresentedFirstSearchOnTheInternetAlert) {
                 Button("OK") {
                     isFirstSearchOnTheInternet = false
@@ -328,7 +238,6 @@ struct InfoView: View {
                 )
                 .presentationDetents([.medium, .large])
             }
-#endif
 // Old PHPicker code -start-
             .sheet(isPresented: $isPresentedImagePickerView) {
                 ImagePickerView(

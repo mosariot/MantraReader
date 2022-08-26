@@ -5,7 +5,6 @@
 //  Created by Alex Vorobiev on 22.08.2022.
 //
 
-#if os(iOS)
 import UIKit
 
 extension Mantra {
@@ -28,4 +27,3 @@ extension Mantra {
         )
     }
 }
-#endif

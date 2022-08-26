@@ -9,16 +9,17 @@ import SwiftUI
 
 struct SmallStaticWidgetView: View {
     @Environment(\.redactionReasons) private var reasons
+    @Environment(\.colorScheme) var colorScheme
     var widgetModel: WidgetModel
     
     var body: some View {
         let mantraArray = widgetModel.mantras.prefix(4)
         ZStack {
 #if os(iOS)
-            Color(UIColor.systemGroupedBackground)
+            Color(colorScheme == .dark ? UIColor.systemGroupedBackground : UIColor.white)
                 .ignoresSafeArea()
 #elseif os (macOS)
-            Color(NSColor.systemGroupedBackground)
+            Color(colorScheme == .dark ? NSColor.systemGroupedBackground : NSColor.white)
                 .ignoresSafeArea()
 #endif
             if mantraArray.count == 0 {
@@ -33,16 +34,12 @@ struct SmallStaticWidgetView: View {
                                 VStack {
                                     if (2 * row + column) < mantraArray.count {
 #if os(iOS)
-                                        Image(uiImage: ((mantraArray[2 * row + column].image != nil) ?
-                                                        UIImage(data: mantraArray[2 * row + column].image!) :
-                                                            UIImage(named: Constants.defaultImage))!)
+                                        Image(uiImage: image(mantra: mantraArray[2 * row + column]))
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 43, height: 43, alignment: .center)
 #elseif os(macOS)
-                                        Image(nsImage: ((mantraArray[2 * row + column].image != nil) ?
-                                                        NSImage(data: mantraArray[2 * row + column].image!) :
-                                                            NSImage(named: Constants.defaultImage))!)
+                                        Image(nsImage: image(mantra: mantraArray[2 * row + column]))
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 43, height: 43, alignment: .center)
@@ -63,4 +60,21 @@ struct SmallStaticWidgetView: View {
             }
         }
     }
+#if os(iOS)
+    func image(mantra: WidgetModel.WidgetMantra) -> UIImage {
+        if let data = mantra.image, let image = UIImage(data: data) {
+            return image
+        } else {
+            return UIImage(named: Constants.defaultImage)!.resize(to: CGSize(width: Constants.rowHeight, height: Constants.rowHeight))
+        }
+    }
+#elseif os(macOS)
+    func image(mantra: WidgetModel.WidgetMantra) -> NSImage {
+        if let data = mantra.image, let image = UIImage(data: data) {
+            return image
+        } else {
+            return UIImage(named: Constants.defaultImage)!.resize(to: CGSize(width: Constants.rowHeight, height: Constants.rowHeight))
+        }
+    }
+#endif
 }

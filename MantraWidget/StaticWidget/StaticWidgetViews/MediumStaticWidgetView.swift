@@ -9,16 +9,17 @@ import SwiftUI
 
 struct MediumStaticWidgetView: View {
     @Environment(\.redactionReasons) private var reasons
+    @Environment(\.colorScheme) var colorScheme
     var widgetModel: WidgetModel
     
     var body: some View {
         let mantraArray = widgetModel.mantras.prefix(4)
         ZStack {
 #if os(iOS)
-            Color(UIColor.systemGroupedBackground)
+            Color(colorScheme == .dark ? UIColor.systemGroupedBackground : UIColor.white)
                 .ignoresSafeArea()
 #elseif os (macOS)
-            Color(NSColor.systemGroupedBackground)
+            Color(colorScheme == .dark ? NSColor.systemGroupedBackground : NSColor.white)
                 .ignoresSafeArea()
 #endif
             if mantraArray.count == 0 {
@@ -31,16 +32,12 @@ struct MediumStaticWidgetView: View {
                         Link(destination: URL(string: "\(mantra.id)")!) {
                             VStack {
 #if os(iOS)
-                                Image(uiImage: ((mantra.image != nil) ?
-                                                UIImage(data: mantra.image!) :
-                                                    UIImage(named: Constants.defaultImage))!)
+                                Image(uiImage: image(data: mantra.image))
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 55, height: 55, alignment: .center)
 #elseif os(macOS)
-                                Image(nsImage: ((mantra.image != nil) ?
-                                                NSImage(data: mantra.image!) :
-                                                    NSImage(named: Constants.defaultImage))!)
+                                Image(nsImage: image(data: mantra.image))
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 55, height: 55, alignment: .center)
@@ -64,4 +61,21 @@ struct MediumStaticWidgetView: View {
             }
         }
     }
+#if os(iOS)
+    func image(data: Data?) -> UIImage {
+        if let data, let image = UIImage(data: data) {
+            return image
+        } else {
+            return UIImage(named: Constants.defaultImage)!.resize(to: CGSize(width: Constants.rowHeight, height: Constants.rowHeight))
+        }
+    }
+#elseif os(macOS)
+    func image(data: Data?) -> NSImage {
+        if let data, let image = NSImage(data: data) {
+            return image
+        } else {
+            return NSImage(named: Constants.defaultImage)!.resize(to: CGSize(width: Constants.rowHeight, height: Constants.rowHeight))
+        }
+    }
+#endif
 }

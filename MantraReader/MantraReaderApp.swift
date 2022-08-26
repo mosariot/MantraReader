@@ -32,7 +32,7 @@ struct MantraReaderApp: App {
                 .environmentObject(actionService)
                 .environmentObject(orientationInfo)
 #endif
-                .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+                .environment(\.managedObjectContext, dataManager.viewContext)
                 .environmentObject(dataManager)
                 .onAppear {
                     if isFirstLaunch {

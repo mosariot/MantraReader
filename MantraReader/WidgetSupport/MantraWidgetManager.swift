@@ -28,14 +28,13 @@ struct MantraWidgetManager {
         }
         let mantras = allMantras.sorted(using: sort)
         let mantrasItems = mantras
-            .map { WidgetModel.WidgetMantra(id: $0.uuid ?? UUID(), title: $0.title ?? "", reads: $0.reads, goal: $0.readsGoal, image: $0.image) }
+            .map { WidgetModel.WidgetMantra(id: $0.uuid ?? UUID(), title: $0.title ?? "", reads: $0.reads, goal: $0.readsGoal, image: $0.imageForTableView) }
         let widgetModel = WidgetModel(mantras: mantrasItems)
         return widgetModel
     }
     
     private func storeWidgetItem(widgetModel: WidgetModel) {
-        let encoder = JSONEncoder()
-        guard let data = try? encoder.encode(widgetModel) else { return }
+        guard let data = try? JSONEncoder().encode(widgetModel) else { return }
         widgetItemData = data
         WidgetCenter.shared.reloadAllTimelines()
     }

@@ -22,6 +22,7 @@ struct StaticWidgetEntryView: View {
             LargeStaticWidgetView(widgetModel: entry.widgetModel)
         case .accessoryInline:
             Text("Mantras: \(entry.widgetModel.mantras.map { $0.reads }.reduce(0,+))")
+                .privacySensitive()
         case .accessoryRectangular:
             AccessoryRectangularStaticWidgetView(widgetModel: entry.widgetModel)
         default:

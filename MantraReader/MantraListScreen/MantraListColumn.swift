@@ -16,6 +16,7 @@ struct MantraListColumn: View {
     
     @State private var isPresentedPreloadedMantraList = false
     @State private var isPresentedNewMantraSheet = false
+    @State private var isPresentedStatisticsSheet = false
     @State private var isDeletingMantras = false
     @State private var mantrasForDeletion: [Mantra]?
     
@@ -137,6 +138,13 @@ struct MantraListColumn: View {
                 }
             }
             ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    isPresentedStatisticsSheet = true
+                } label: {
+                    Image(systemName: "chart.bar")
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     Button {
                         isPresentedNewMantraSheet = true
@@ -165,6 +173,9 @@ struct MantraListColumn: View {
             ]
             }
             dataManager.saveData()
+        }
+        .sheet(isPresented: $isPresentedStatisticsSheet) {
+            StatisticsView()
         }
         .sheet(isPresented: $isPresentedPreloadedMantraList) {
             PreloadedMantraListView(
@@ -195,7 +206,7 @@ struct MantraListColumn: View {
         case .newMantra:
             isPresentedNewMantraSheet = true
         case .showStatistics:
-            print("Show Statistics")
+            isPresentedStatisticsSheet = true
         case .openMantra(let id):
             mantras.forEach { section in
                 section.forEach { mantra in
@@ -206,5 +217,13 @@ struct MantraListColumn: View {
             }
         }
         actionService.action = nil
+    }
+}
+
+struct StatisticsView: View {
+    @EnvironmentObject private var dataManager: DataManager
+    
+    var body: some View {
+        Text("Statistics")
     }
 }

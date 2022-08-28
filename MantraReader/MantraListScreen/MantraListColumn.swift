@@ -128,6 +128,13 @@ struct MantraListColumn: View {
                 EditButton()
             }
             ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    isPresentedStatisticsSheet = true
+                } label: {
+                    Image(systemName: "chart.bar")
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     Picker("", selection: $sorting) {
                         Label("Alphabetically", systemImage: "textformat").tag(Sorting.title)
@@ -135,13 +142,6 @@ struct MantraListColumn: View {
                     }
                 } label: {
                     Label("Sorting", systemImage: "line.horizontal.3.decrease.circle")
-                }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    isPresentedStatisticsSheet = true
-                } label: {
-                    Image(systemName: "chart.bar")
                 }
             }
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -217,13 +217,5 @@ struct MantraListColumn: View {
             }
         }
         actionService.action = nil
-    }
-}
-
-struct StatisticsView: View {
-    @EnvironmentObject private var dataManager: DataManager
-    
-    var body: some View {
-        Text("Statistics")
     }
 }

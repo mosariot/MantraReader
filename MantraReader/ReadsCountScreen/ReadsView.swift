@@ -17,6 +17,7 @@ struct ReadsView: View {
     private var goalButtonViewModel: GoalButtonViewModel
     private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
+    @State private var isPresentedStatisticsSheet = false
     @State private var isPresentedAdjustingAlert = false
     @State private var isPresentedValidNumberAlert = false
     @State private var adjustingType: AdjustingType?
@@ -215,11 +216,13 @@ struct ReadsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .ignoresSafeArea(.keyboard)
         .toolbar {
-            Button {
-                isPresentedUndoAlert = true
-            } label: {
-                Image(systemName: "arrow.uturn.backward")
-                    .symbolVariant(.circle)
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    isPresentedUndoAlert = true
+                } label: {
+                    Image(systemName: "arrow.uturn.backward")
+                        .symbolVariant(.circle)
+                }
             }
             .disabled(viewModel.undoHistory.isEmpty)
             .alert(
@@ -233,17 +236,26 @@ struct ReadsView: View {
             } message: {
                 Text("Are you sure you want to undo the last change?")
             }
-            Button {
-                viewModel.toggleFavorite()
-            } label: {
-                Image(systemName: viewModel.favoriteBarImage)
-            }
-            .disabled(isMantraCounterMode)
-            Button {
-                isPresentedInfoView = true
-            } label: {
-                Image(systemName: "info")
-                    .symbolVariant(.circle)
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Menu {
+                    Button {
+                        isPresentedStatisticsSheet = true
+                    } label: {
+                        Label("Mantra Statistics", systemImage: "chart.bar")
+                    }
+                    Button {
+                        viewModel.toggleFavorite()
+                    } label: {
+                        Label(viewModel.favoriteBarTitle, systemImage: viewModel.favoriteBarImage)
+                    }
+                    Button {
+                        isPresentedInfoView = true
+                    } label: {
+                        Label("Mantra Info", systemImage: "info.circle")
+                    }
+                } label: {
+                    Label("Menu", systemImage: "ellipsis.circle")
+                }
             }
             .disabled(isMantraCounterMode)
         }
@@ -259,6 +271,9 @@ struct ReadsView: View {
             }
         } message: {
             Text("You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. The screen won’t dim. The edit buttons at the bottom are disabled.")
+        }
+        .sheet(isPresented: $isPresentedStatisticsSheet) {
+            StatisticsView(mantra: viewModel.mantra)
         }
         .sheet(isPresented: $isPresentedInfoView) {
             InfoView(

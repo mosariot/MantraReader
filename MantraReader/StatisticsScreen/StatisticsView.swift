@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StatisticsView: View {
     @EnvironmentObject private var dataManager: DataManager
-    @Binding var isPresented: Bool
+    @Environment(\.dismiss) var dismiss
     var mantra: Mantra?
     
     var body: some View {
@@ -18,24 +18,24 @@ struct StatisticsView: View {
                 Section("Week") {
                     Text("Week Statistics")
                         .foregroundColor(.secondary)
-                        .frame(height: 150)
+                        .frame(height: 200)
                 }
                 Section("Month") {
                     Text("Month Statistics")
                         .foregroundColor(.secondary)
-                        .frame(height: 150)
+                        .frame(height: 200)
                 }
                 Section("Year") {
                     Text("Year Statistics")
                         .foregroundColor(.secondary)
-                        .frame(height: 150)
+                        .frame(height: 200)
                 }
             }
             .navigationTitle(mantra?.title ?? String(localized: "Overall Statistics"))
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        isPresented = false
+                        dismiss()
                     } label: {
                         Image(systemName: "xmark")
                             .font(.headline)
@@ -51,7 +51,7 @@ struct StatisticsView: View {
 struct StatisticsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            StatisticsView(isPresented: .constant(true))
+            StatisticsView()
         }
     }
 }

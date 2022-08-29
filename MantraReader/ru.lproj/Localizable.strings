@@ -51,11 +51,17 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 /* Search Placeholder */
 "Search" = "Поиск";
 
+/* Adding Menu Title */
+"Adding" = "Добавление";
+
 /* Add New Mantra Menu Item */
 "New Mantra" = "Новая мантра";
 
 /* Add Preset Mantra Menu Item */
 "Preset Mantra" = "Из предустановленных";
+
+/* Sorting Picker Menu Title */
+"Sorting" = "Сортировка";
 
 /* Alphabetical Sorting Menu Item */
 "Alphabetically" = "По алфавиту";
@@ -100,6 +106,15 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "Open Mantra" = "Открыть мантру";
 
 //MARK: - READS COUNT VIEW
+
+/* Mantra Statistics Menu title */
+"Mantra Statistics" = "Статистика начитки";
+
+/* Mantra Info Menu title */
+"Mantra Info" = "Информация о мантре";
+
+/* Menu title */
+"Menu" = "Меню";
 
 /* Goal Button Title */
 "Goal: %.0f" = "Цель: %.0f";
@@ -242,6 +257,20 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 
 /* Duplication Alert Message */
 "One of the selected mantras is already in your mantra list. Add anyway?" = "Одна из выбранных мантр уже есть в вашем списке. Все равно добавить?";
+
+//MARK: - STATISTICS VIEW
+
+/* Overall statistics Title */
+"Overall Statistics" = "Общая статистика";
+
+/* Week Statistics Title */
+"Week" = "Неделя";
+
+/* Month Statistics Title */
+"Month" = "Месяц";
+
+/* Year Statistics Title */
+"Year" = "Год";
 
 //MARK: - WIDGETS
 

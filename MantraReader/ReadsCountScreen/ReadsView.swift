@@ -241,7 +241,7 @@ struct ReadsView: View {
                     Button {
                         isPresentedStatisticsSheet = true
                     } label: {
-                        Label("Mantra Statistics", systemImage: "chart.bar")
+                        Label("Readings Statistics", systemImage: "chart.bar")
                     }
                     Button {
                         viewModel.toggleFavorite()
@@ -251,7 +251,7 @@ struct ReadsView: View {
                     Button {
                         isPresentedInfoView = true
                     } label: {
-                        Label("Mantra Info", systemImage: "info.circle")
+                        Label("Detailed Info", systemImage: "info.circle")
                     }
                 } label: {
                     Label("Menu", systemImage: "ellipsis.circle")

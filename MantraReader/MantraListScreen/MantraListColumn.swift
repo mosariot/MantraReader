@@ -127,37 +127,37 @@ struct MantraListColumn: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 EditButton()
             }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    isPresentedStatisticsSheet = true
-                } label: {
-                    Image(systemName: "chart.bar")
-                }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Menu {
-                    Picker("Sorting", selection: $sorting) {
-                        Label("Alphabetically", systemImage: "textformat").tag(Sorting.title)
-                        Label("By readings count", systemImage: "textformat.123").tag(Sorting.reads)
-                    }
-                } label: {
-                    Label("Sorting", systemImage: "line.horizontal.3.decrease.circle")
-                }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItem(placement: .primaryAction) {
                 Menu {
                     Button {
-                        isPresentedNewMantraSheet = true
+                        isPresentedStatisticsSheet = true
                     } label: {
-                        Label("New Mantra", systemImage: "square.and.pencil")
+                        Label("Readings Statistics", systemImage: "chart.bar")
                     }
-                    Button {
-                        isPresentedPreloadedMantraList = true
+                    Menu {
+                        Picker("Sorting", selection: $sorting) {
+                            Label("Alphabetically", systemImage: "textformat").tag(Sorting.title)
+                            Label("By readings count", systemImage: "textformat.123").tag(Sorting.reads)
+                        }
                     } label: {
-                        Label("Preset Mantra", systemImage: "books.vertical")
+                        Label("Sorting", systemImage: "line.horizontal.3.decrease.circle")
+                    }
+                    Menu {
+                        Button {
+                            isPresentedNewMantraSheet = true
+                        } label: {
+                            Label("New Mantra", systemImage: "square.and.pencil")
+                        }
+                        Button {
+                            isPresentedPreloadedMantraList = true
+                        } label: {
+                            Label("Preset Mantra", systemImage: "books.vertical")
+                        }
+                    } label: {
+                        Label("Add new", systemImage: "plus")
                     }
                 } label: {
-                    Label("Adding", systemImage: "plus")
+                    Label("Menu", systemImage: "ellipsis.circle")
                 }
             }
         }

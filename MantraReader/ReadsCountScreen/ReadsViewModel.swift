@@ -28,7 +28,7 @@ final class ReadsViewModel: ObservableObject {
             return UIImage(named: Constants.defaultImage)!
         }
     }
-    var favoriteBarImage: String { mantra.isFavorite ? "star.fill" : "star" }
+    var favoriteBarImage: String { mantra.isFavorite ? "star.slash" : "star" }
     var favoriteBarTitle: String { mantra.isFavorite ? String(localized: "Unfavorite") : String(localized: "Favorite") }
     
     private var dataManager: DataManager

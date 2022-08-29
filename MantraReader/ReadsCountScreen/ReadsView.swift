@@ -216,27 +216,27 @@ struct ReadsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .ignoresSafeArea(.keyboard)
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItem(placement: .primaryAction) {
                 Button {
                     isPresentedUndoAlert = true
                 } label: {
                     Image(systemName: "arrow.uturn.backward")
                         .symbolVariant(.circle)
                 }
-            }
-            .disabled(viewModel.undoHistory.isEmpty)
-            .alert(
-                "Undo Changes",
-                isPresented: $isPresentedUndoAlert
-            ) {
-                Button("Yes") {
-                    viewModel.handleUndo()
+                .disabled(viewModel.undoHistory.isEmpty || isMantraCounterMode)
+                .alert(
+                    "Undo Changes",
+                    isPresented: $isPresentedUndoAlert
+                ) {
+                    Button("Yes") {
+                        viewModel.handleUndo()
+                    }
+                    Button("No", role: .cancel) { }
+                } message: {
+                    Text("Are you sure you want to undo the last change?")
                 }
-                Button("No", role: .cancel) {}
-            } message: {
-                Text("Are you sure you want to undo the last change?")
             }
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItem(placement: .primaryAction) {
                 Menu {
                     Button {
                         isPresentedStatisticsSheet = true
@@ -256,8 +256,8 @@ struct ReadsView: View {
                 } label: {
                     Label("Menu", systemImage: "ellipsis.circle")
                 }
+                .disabled(isMantraCounterMode)
             }
-            .disabled(isMantraCounterMode)
         }
         .alert(
             "'Mantra Counter' Mode",

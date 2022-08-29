@@ -102,6 +102,7 @@ struct ReadsView: View {
                             Image(systemName: "plus")
                                 .font(.system(size: 60))
                                 .symbolVariant(.circle.fill)
+                                .foregroundStyle(Color.accentColor.gradient)
                         }
                         .disabled(isMantraCounterMode)
                         .padding(.horizontal)
@@ -112,6 +113,7 @@ struct ReadsView: View {
                             Image(systemName: "arrow.clockwise")
                                 .font(.system(size: 60))
                                 .symbolVariant(.circle.fill)
+                                .foregroundStyle(Color.accentColor.gradient)
                         }
                         .disabled(isMantraCounterMode)
                         .padding(.horizontal)
@@ -122,6 +124,7 @@ struct ReadsView: View {
                             Image(systemName: "hand.draw")
                                 .font(.system(size: 60))
                                 .symbolVariant(.fill)
+                                .foregroundStyle(Color.accentColor.gradient)
                         }
                         .disabled(isMantraCounterMode)
                         .padding(.horizontal)

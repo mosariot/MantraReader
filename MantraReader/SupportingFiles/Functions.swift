@@ -11,6 +11,10 @@ func afterDelay(_ seconds: Double, run: @escaping () -> Void) {
     DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: run)
 }
 
+func date(year: Int, month: Int, day: Int = 1) -> Date {
+    Calendar.current.date(from: DateComponents(year: year, month: month, day: day)) ?? Date()
+}
+
 let dataSaveFailedNotification = Notification.Name("DataSaveFailedNotification")
 func fatalCoreDataError(_ error: Error) {
     print("*** Fatal error \(error)")

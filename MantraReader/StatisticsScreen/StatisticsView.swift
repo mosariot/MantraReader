@@ -16,18 +16,18 @@ struct StatisticsView: View {
         NavigationStack {
             List {
                 Section("Week") {
-                    Text("Week Statistics")
-                        .foregroundColor(.secondary)
+                    WeekStatisticsView()
+                        .foregroundStyle(.blue.gradient)
                         .frame(height: 200)
                 }
                 Section("Month") {
-                    Text("Month Statistics")
-                        .foregroundColor(.secondary)
+                    MonthStatisticsView()
+                        .foregroundStyle(.green.gradient)
                         .frame(height: 200)
                 }
                 Section("Year") {
-                    Text("Year Statistics")
-                        .foregroundColor(.secondary)
+                    YearStatisticsView()
+                        .foregroundStyle(.red.gradient)
                         .frame(height: 200)
                 }
             }

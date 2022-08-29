@@ -1,32 +1,11 @@
 //
-//  StatisticsRowView.swift
+//  ReadingsModel.swift
 //  MantraReader
 //
 //  Created by Alex Vorobiev on 29.08.2022.
 //
 
-import SwiftUI
-import Charts
-
-struct MonthStatisticsView: View {
-    @State var data: [Reading] = ReadingsData.last30Days
-    
-    var body: some View {
-        Chart(data, id: \.day) {
-            BarMark(
-                x: .value("Date", $0.day),
-                y: .value("Readings", $0.readings)
-            )
-        }
-    }
-}
-
-struct StatisticsRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        MonthStatisticsView()
-            .frame(height: 200)
-    }
-}
+import Foundation
 
 enum ReadingsData {
     static let last30Days = [
@@ -60,10 +39,35 @@ enum ReadingsData {
         (day: date(year: 2022, month: 6, day: 4), readings: 214),
         (day: date(year: 2022, month: 6, day: 5), readings: 250),
         (day: date(year: 2022, month: 6, day: 6), readings: 146)
-    ].map { Reading(day: $0.day, readings: $0.readings) }
+    ].map { Reading(period: $0.day, readings: $0.readings) }
+    
+    static let last7Days = [
+        (day: date(year: 2022, month: 5, day: 8), readings: 168),
+        (day: date(year: 2022, month: 5, day: 9), readings: 117),
+        (day: date(year: 2022, month: 5, day: 10), readings: 106),
+        (day: date(year: 2022, month: 5, day: 11), readings: 119),
+        (day: date(year: 2022, month: 5, day: 12), readings: 109),
+        (day: date(year: 2022, month: 5, day: 13), readings: 104),
+        (day: date(year: 2022, month: 5, day: 14), readings: 196)
+    ].map { Reading(period: $0.day, readings: $0.readings) }
+    
+    static let last12Months = [
+        (month: date(year: 2021, month: 9), readings: 1680),
+        (month: date(year: 2021, month: 10), readings: 1170),
+        (month: date(year: 2021, month: 11), readings: 1060),
+        (month: date(year: 2021, month: 12), readings: 1190),
+        (month: date(year: 2022, month: 1), readings: 1090),
+        (month: date(year: 2022, month: 2), readings: 1040),
+        (month: date(year: 2022, month: 3), readings: 1960),
+        (month: date(year: 2022, month: 4), readings: 1720),
+        (month: date(year: 2022, month: 5), readings: 1220),
+        (month: date(year: 2022, month: 6), readings: 1150),
+        (month: date(year: 2022, month: 7), readings: 1380),
+        (month: date(year: 2022, month: 8), readings: 1100),
+    ].map { Reading(period: $0.month, readings: $0.readings)}
 }
 
 struct Reading {
-    let day: Date
+    let period: Date
     var readings: Int
 }

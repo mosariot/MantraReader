@@ -102,16 +102,16 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 /* No matches found while perforimng search */
 "No matches found" = "Совпадений не найдено";
 
-/* Open Mantra ShortcutItem title */
+/* Open Mantra ShortcutItem Title */
 "Open Mantra" = "Открыть мантру";
 
 //MARK: - READS COUNT VIEW
 
-/* Mantra Statistics Menu title */
-"Mantra Statistics" = "Статистика начитки";
+/* Mantra Statistics Menu Title */
+"Readings Statistics" = "Статистика начитки";
 
 /* Mantra Info Menu title */
-"Mantra Info" = "Информация о мантре";
+"Detailed Info" = "Детальная информация";
 
 /* Menu title */
 "Menu" = "Меню";

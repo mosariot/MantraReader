@@ -51,6 +51,7 @@
 		9F605143288EE75E005EC6F5 /* BlinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F605142288EE75E005EC6F5 /* BlinkView.swift */; };
 		9F6C7D0628B67072004CC501 /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F780037287FF7D200516A0F /* RandomColor.swift */; };
 		9F6C7D6328BBE379004CC501 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C7D6228BBE379004CC501 /* StatisticsView.swift */; };
+		9F6C7D6528BC76C7004CC501 /* StatisticsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C7D6428BC76C7004CC501 /* StatisticsRowView.swift */; };
 		9F6E65AF28B273CB0054F6D6 /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B228B273CB0054F6D6 /* MantraWidget.intentdefinition */; };
 		9F6E65B028B273CB0054F6D6 /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B228B273CB0054F6D6 /* MantraWidget.intentdefinition */; };
 		9F6E65B828B2755E0054F6D6 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B728B2755D0054F6D6 /* ImagePickerView.swift */; };
@@ -180,6 +181,7 @@
 		9F54232B28AD55CD00F15040 /* MantraIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MantraIntent.entitlements; sourceTree = "<group>"; };
 		9F605142288EE75E005EC6F5 /* BlinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkView.swift; sourceTree = "<group>"; };
 		9F6C7D6228BBE379004CC501 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		9F6C7D6428BC76C7004CC501 /* StatisticsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsRowView.swift; sourceTree = "<group>"; };
 		9F6E65B128B273CB0054F6D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/MantraWidget.intentdefinition; sourceTree = "<group>"; };
 		9F6E65B428B273D30054F6D6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MantraWidget.strings; sourceTree = "<group>"; };
 		9F6E65B628B2751A0054F6D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MantraWidget.strings; sourceTree = "<group>"; };
@@ -344,12 +346,13 @@
 			path = MantraIntent;
 			sourceTree = "<group>";
 		};
-		9F6C7D6128BBE35F004CC501 /* Statistics */ = {
+		9F6C7D6128BBE35F004CC501 /* StatisticsScreen */ = {
 			isa = PBXGroup;
 			children = (
 				9F6C7D6228BBE379004CC501 /* StatisticsView.swift */,
+				9F6C7D6428BC76C7004CC501 /* StatisticsRowView.swift */,
 			);
-			path = Statistics;
+			path = StatisticsScreen;
 			sourceTree = "<group>";
 		};
 		9F794ED6289B03CA00DDF940 /* ReadsCountScreen */ = {
@@ -505,7 +508,7 @@
 				9F794EDA289B051900DDF940 /* MantraListScreen */,
 				9F794ED6289B03CA00DDF940 /* ReadsCountScreen */,
 				9F794ED9289B04F900DDF940 /* MantraInfoScreen */,
-				9F6C7D6128BBE35F004CC501 /* Statistics */,
+				9F6C7D6128BBE35F004CC501 /* StatisticsScreen */,
 				9F794ED7289B047900DDF940 /* PeloadedMantrasScreen */,
 				9F1AB3E628A18ED6001FF7DE /* WidgetSupport */,
 				9F794ED8289B04E400DDF940 /* SupportingFiles */,
@@ -741,6 +744,7 @@
 				9F348D4228A430F70070F157 /* InfoMode.swift in Sources */,
 				9FBEE9B0285F68CE0070BA06 /* CircularProgressView.swift in Sources */,
 				9F794EDE289C35E900DDF940 /* LaunchPreparer.swift in Sources */,
+				9F6C7D6528BC76C7004CC501 /* StatisticsRowView.swift in Sources */,
 				9F1AB3E928A18EEF001FF7DE /* WidgetModel.swift in Sources */,
 				9FB32B1128A7D48C000A910E /* ShakeSupport.swift in Sources */,
 				9F6E65BB28B275CF0054F6D6 /* HomeScreenAction.swift in Sources */,

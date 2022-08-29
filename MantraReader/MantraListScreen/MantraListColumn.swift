@@ -136,7 +136,7 @@ struct MantraListColumn: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
-                    Picker("", selection: $sorting) {
+                    Picker("Sorting", selection: $sorting) {
                         Label("Alphabetically", systemImage: "textformat").tag(Sorting.title)
                         Label("By readings count", systemImage: "textformat.123").tag(Sorting.reads)
                     }

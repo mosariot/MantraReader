@@ -29,6 +29,7 @@ final class ReadsViewModel: ObservableObject {
         }
     }
     var favoriteBarImage: String { mantra.isFavorite ? "star.fill" : "star" }
+    var favoriteBarTitle: String { mantra.isFavorite ? String(localized: "Unfavorite") : String(localized: "Favorite") }
     
     private var dataManager: DataManager
     

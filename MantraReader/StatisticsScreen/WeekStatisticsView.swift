@@ -30,7 +30,6 @@ struct WeekStatisticsView: View {
                         yStart: .value("Start", readings),
                         yEnd: .value("End", data.map { $0.readings }.max())
                     )
-                    .lineStyle(.init(lineWidth: 2, miterLimit: 2, dash: [2], dashPhase: 5))
                     .foregroundColor(.secondary)
                     .annotation(position: .top) {
                         Text("\(readings)")

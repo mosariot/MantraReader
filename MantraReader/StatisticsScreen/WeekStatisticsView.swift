@@ -11,19 +11,28 @@ import Charts
 struct WeekStatisticsView: View {
     @State var data: [Reading] = ReadingsData.last7Days
     @State private var selectedDate: Date?
+    private var calendar = Calendar.current
     
     var body: some View {
-        Chart(data, id: \.period) {
-            BarMark(
-                x: .value("Date", $0.period, unit: .weekday),
-                y: .value("Readings", $0.readings),
-                width: 30
-            )
-            if let selectedDate,
-               let readings = data
-                .first(where: { $0.period == Calendar.current.startOfDay(for: selectedDate) })?.readings {
-                RuleMark(x: .value("Date", selectedDate))
-                    .annotation(position: .trailing, alignment: .top) {
+        VStack {
+            Text("Week total: \(data.map { $0.readings }.reduce(0, +))")
+                .font(.title3.bold())
+            Chart(data, id: \.period) {
+                BarMark(
+                    x: .value("Date", $0.period, unit: .weekday),
+                    y: .value("Readings", $0.readings),
+                    width: 30
+                )
+                if let selectedDate,
+                    let readings = data.first(where: { $0.period == calendar.startOfDay(for: selectedDate) })?.readings {
+                    RuleMark(
+                        x: .value("Date", selectedDate),
+                        yStart: .value("Start", readings),
+                        yEnd: .value("End", data.map { $0.readings }.max())
+                    )
+                    .lineStyle(.init(lineWidth: 2, miterLimit: 2, dash: [2], dashPhase: 5))
+                    .foregroundColor(.secondary)
+                    .annotation(position: .top) {
                         Text("\(readings)")
                             .font(.title2.bold())
                             .foregroundColor(.primary)
@@ -39,7 +48,9 @@ struct WeekStatisticsView: View {
                             }
                             .padding(.bottom, 4)
                     }
+                }
             }
+            .padding(.top, 40)
         }
         .chartXAxis {
             AxisMarks(values: .stride(by: .day)) { _ in
@@ -56,8 +67,8 @@ struct WeekStatisticsView: View {
                             .onChanged { value in
                                 let x = value.location.x - geo[proxy.plotAreaFrame].origin.x
                                 if let gestureDate: Date = proxy.value(atX: x) {
-                                    let startOfDay = Calendar.current.startOfDay(for: gestureDate)
-                                    self.selectedDate = Calendar.current.date(byAdding: .hour, value: 12, to: startOfDay)
+                                    let startOfDay = calendar.startOfDay(for: gestureDate)
+                                    self.selectedDate = calendar.date(byAdding: .hour, value: 12, to: startOfDay)
                                 }
                             }
                             .onEnded { value in

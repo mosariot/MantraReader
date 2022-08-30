@@ -63,17 +63,19 @@ struct WeekStatisticsView: View {
             GeometryReader { geo in
                 Rectangle().fill(.clear).contentShape(Rectangle())
                     .gesture(
-                        DragGesture(minimumDistance: 0)
-                            .onChanged { value in
-                                let x = value.location.x - geo[proxy.plotAreaFrame].origin.x
-                                if let gestureDate: Date = proxy.value(atX: x) {
-                                    let startOfDay = calendar.startOfDay(for: gestureDate)
-                                    self.selectedDate = calendar.date(byAdding: .hour, value: 12, to: startOfDay)
+                        LongPressGesture().sequenced(before:
+                            DragGesture()
+                                .onChanged { value in
+                                    let x = value.location.x - geo[proxy.plotAreaFrame].origin.x
+                                    if let gestureDate: Date = proxy.value(atX: x) {
+                                        let startOfDay = calendar.startOfDay(for: gestureDate)
+                                        self.selectedDate = calendar.date(byAdding: .hour, value: 12, to: startOfDay)
+                                    }
                                 }
-                            }
-                            .onEnded { value in
-                                self.selectedDate = nil
-                            }
+                                .onEnded { value in
+                                    self.selectedDate = nil
+                                }
+                        )
                     )
             }
         }

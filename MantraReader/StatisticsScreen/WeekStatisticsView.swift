@@ -24,9 +24,9 @@ struct WeekStatisticsView: View {
                     width: 30
                 )
                 if let selectedDate,
-                    let readings = data.first(where: { $0.period == calendar.startOfDay(for: selectedDate) })?.readings {
+                    let readings = data.first(where: { $0.period == selectedDate })?.readings {
                     RuleMark(
-                        x: .value("Date", selectedDate),
+                        x: .value("Date", calendar.date(byAdding: .hour, value: 12, to: selectedDate)),
                         yStart: .value("Start", readings),
                         yEnd: .value("End", data.map { $0.readings }.max())
                     )
@@ -49,7 +49,7 @@ struct WeekStatisticsView: View {
                     }
                 }
             }
-            .padding(.top, 40)
+            .padding(.top, 30)
         }
         .chartXAxis {
             AxisMarks(values: .stride(by: .day)) { _ in
@@ -67,8 +67,7 @@ struct WeekStatisticsView: View {
                                 .onChanged { value in
                                     let x = value.location.x - geo[proxy.plotAreaFrame].origin.x
                                     if let gestureDate: Date = proxy.value(atX: x) {
-                                        let startOfDay = calendar.startOfDay(for: gestureDate)
-                                        self.selectedDate = calendar.date(byAdding: .hour, value: 12, to: startOfDay)
+                                        self.selectedDate = calendar.startOfDay(for: gestureDate)
                                     }
                                 }
                                 .onEnded { value in

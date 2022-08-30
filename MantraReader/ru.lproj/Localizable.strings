@@ -273,13 +273,13 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "Year" = "Год";
 
 /* Week Total readings */
-"Week total: %d" = "Всего за неделю: %d";
+"Week total: %lld" = "Всего за неделю: %lld";
 
 /* Month Total readings */
-"Month total: %d" = "Всего за месяц: %d";
+"Month total: %lld" = "Всего за месяц: %lld";
 
 /* Year Total readings */
-"Year total: %d" = "Всего за год: %d";
+"Year total: %lld" = "Всего за год: %lld";
 
 //MARK: - WIDGETS
 

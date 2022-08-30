@@ -15,8 +15,12 @@ struct WeekStatisticsView: View {
     
     var body: some View {
         VStack {
-            Text("Week total: \(data.map { $0.readings }.reduce(0, +))")
-                .font(.title3.bold())
+            HStack {
+                Text("Week total: \(data.map { $0.readings }.reduce(0, +))")
+                    .font(.title3.bold())
+                    .foregroundColor(.primary)
+                Spacer()
+            }
             Chart(data, id: \.period) {
                 BarMark(
                     x: .value("Date", $0.period, unit: .weekday),
@@ -24,16 +28,16 @@ struct WeekStatisticsView: View {
                     width: 30
                 )
                 if let selectedDate,
-                    let readings = data.first(where: { $0.period == selectedDate })?.readings {
+                   let readings = data.first(where: { $0.period == selectedDate })?.readings {
                     RuleMark(
-                        x: .value("Date", calendar.date(byAdding: .hour, value: 12, to: selectedDate)),
+                        x: .value("Date", calendar.date(byAdding: .hour, value: 12, to: selectedDate) ?? Date()),
                         yStart: .value("Start", readings),
-                        yEnd: .value("End", data.map { $0.readings }.max())
+                        yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
                     )
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(Color.secondary)
                     .annotation(position: .top) {
                         VStack {
-                            Text("\(selectedDate.period.formatted(date: .abbreviated, time: .omitted))")
+                            Text("\(selectedDate.formatted(date: .abbreviated, time: .omitted))")
                                 .font(.caption)
                                 .foregroundColor(.gray)
                             Text("\(readings)")
@@ -44,12 +48,12 @@ struct WeekStatisticsView: View {
                         .padding(.vertical, 4)
                         .background {
                             RoundedRectangle(cornerRadius: 6, style: .continuous)
-                                .fill(.white.shadow(.drop(radius: 2)))
+                                .fill(.white.shadow(.drop(color: .black.opacity(0.1), radius: 2, x: 2, y: 2)))
                         }
                     }
                 }
             }
-            .padding(.top, 30)
+            .padding(.top, 20)
         }
         .chartXAxis {
             AxisMarks(values: .stride(by: .day)) { _ in
@@ -61,19 +65,18 @@ struct WeekStatisticsView: View {
         .chartOverlay { proxy in
             GeometryReader { geo in
                 Rectangle().fill(.clear).contentShape(Rectangle())
+                    .onTapGesture{}
                     .gesture(
-                        LongPressGesture().sequenced(before:
-                            DragGesture()
-                                .onChanged { value in
-                                    let x = value.location.x - geo[proxy.plotAreaFrame].origin.x
-                                    if let gestureDate: Date = proxy.value(atX: x) {
-                                        self.selectedDate = calendar.startOfDay(for: gestureDate)
-                                    }
+                        DragGesture(minimumDistance: 0)
+                            .onChanged { value in
+                                let x = value.location.x - geo[proxy.plotAreaFrame].origin.x
+                                if let gestureDate: Date = proxy.value(atX: x) {
+                                    self.selectedDate = gestureDate.startOfDay
                                 }
-                                .onEnded { value in
-                                    self.selectedDate = nil
-                                }
-                        )
+                            }
+                            .onEnded { value in
+                                self.selectedDate = nil
+                            }
                     )
             }
         }

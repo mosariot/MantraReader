@@ -32,20 +32,20 @@ struct WeekStatisticsView: View {
                     )
                     .foregroundColor(.secondary)
                     .annotation(position: .top) {
-                        Text("\(readings)")
-                            .font(.title2.bold())
-                            .foregroundColor(.primary)
-                            .background {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(.background)
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(.quaternary.opacity(0.7))
-                                }
-                                .padding(.horizontal, -8)
-                                .padding(.vertical, -4)
-                            }
-                            .padding(.bottom, 4)
+                        VStack {
+                            Text("\(selectedDate.period.formatted(date: .abbreviated, time: .shortened))")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                            Text("\(readings)")
+                                .font(.title2.bold())
+                                .foregroundColor(.black)
+                        }
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 4)
+                        .background {
+                            RoundedRectangle(cornerRadius: 6, style: .continuous)
+                                .fill(.white.shadow(.drop(radius: 2)))
+                        }
                     }
                 }
             }

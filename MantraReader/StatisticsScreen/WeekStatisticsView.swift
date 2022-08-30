@@ -33,7 +33,7 @@ struct WeekStatisticsView: View {
                     .foregroundColor(.secondary)
                     .annotation(position: .top) {
                         VStack {
-                            Text("\(selectedDate.period.formatted(date: .abbreviated, time: .shortened))")
+                            Text("\(selectedDate.period.formatted(date: .abbreviated, time: .omitted))")
                                 .font(.caption)
                                 .foregroundColor(.gray)
                             Text("\(readings)")

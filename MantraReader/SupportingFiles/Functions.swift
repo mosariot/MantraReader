@@ -11,7 +11,7 @@ func afterDelay(_ seconds: Double, run: @escaping () -> Void) {
     DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: run)
 }
 
-func date(year: Int, month: Int, day: Int = 1) -> Date {
+func date(year: Int, month: Int = 1, day: Int = 1) -> Date {
     Calendar.current.date(from: DateComponents(year: year, month: month, day: day)) ?? Date()
 }
 

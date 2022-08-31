@@ -288,10 +288,10 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "Last 12 months" = "Последние 12 месяцев";
 
 /* Monthly average */
-"Monthly average" = "В среднем за месяц";
+"Monthly average: %lld" = "В среднем за месяц: %lld";
 
 /* Daily average */
-"Daily average" = "В среднем за день";
+"Daily average: %lld" = "В среднем за день: %lld";
 
 //MARK: - WIDGETS
 

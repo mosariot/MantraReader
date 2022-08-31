@@ -10,6 +10,8 @@ import SwiftUI
 struct StatisticsView: View {
     @EnvironmentObject private var dataManager: DataManager
     @Environment(\.dismiss) var dismiss
+    @State private var monthHeader = String(localized: "Month")
+    @State private var yearHeader = String(localized: "Year")
     var mantra: Mantra?
     
     var body: some View {
@@ -17,18 +19,12 @@ struct StatisticsView: View {
             List {
                 Section("Week") {
                     WeekStatisticsView()
-                        .foregroundStyle(.blue.gradient)
-                        .frame(height: 200)
                 }
-                Section("Month") {
-                    MonthStatisticsView()
-                        .foregroundStyle(.green.gradient)
-                        .frame(height: 200)
+                Section(monthHeader) {
+                    MonthStatisticsView(monthHeader: $monthHeader)
                 }
-                Section("Year") {
-                    YearStatisticsView()
-                        .foregroundStyle(.red.gradient)
-                        .frame(height: 200)
+                Section(yearHeader) {
+                    YearStatisticsView(yearHeader: $yearHeader)
                 }
             }
             .navigationTitle(mantra?.title ?? String(localized: "Overall Statistics"))

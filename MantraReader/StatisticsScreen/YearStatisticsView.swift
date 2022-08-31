@@ -90,6 +90,7 @@ struct YearStatisticsView: View {
                     Text("\(date(year: $0).formatted(.dateTime.year()))").tag($0)
                 }
             }
+            .padding(.top, 10)
         }
         .onChange(of: selectedYear) { newValue in
             switch selectedYear {

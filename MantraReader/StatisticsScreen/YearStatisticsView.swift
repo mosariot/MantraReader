@@ -11,7 +11,10 @@ import Charts
 struct YearStatisticsView: View {
     @State var data: [Reading] = ReadingsData.last12Months
     @State private var selectedMonth: Date?
+    @State private var selectedYear: Int
+    @Binding var yearHeader: String
     private var calendar = Calendar.current
+    private var currentYear: Date { calendar.dateComponents([.year], from: Date()).year! }
     
     var body: some View {
         VStack {
@@ -27,6 +30,7 @@ struct YearStatisticsView: View {
                     y: .value("Readings", $0.readings),
                     width: 16
                 )
+                .foregroundStyle(.red.gradient)
                 if let selectedMonth,
                    let readings = data.first(where: { $0.period == selectedMonth })?.readings {
                     RuleMark(
@@ -34,7 +38,7 @@ struct YearStatisticsView: View {
                         yStart: .value("Start", readings),
                         yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
                     )
-                    .foregroundStyle(Color.secondary)
+                    .foregroundStyle(.gray)
                     .annotation(position: .top) {
                         VStack {
                             Text("\(selectedMonth.formatted(.dateTime.month().year()))")
@@ -53,39 +57,46 @@ struct YearStatisticsView: View {
                     }
                 }
             }
-            .padding(.top, 20)
-        }
-        .chartXAxis {
-            AxisMarks(values: .stride(by: .month)) { _ in
-                AxisGridLine()
-                AxisTick()
-                AxisValueLabel(format: .dateTime.month(.narrow), centered: true)
+            .padding(.top, 10)
+            .chartXAxis {
+                AxisMarks(values: .stride(by: .month)) { _ in
+                    AxisGridLine()
+                    AxisTick()
+                    AxisValueLabel(format: .dateTime.month(.narrow), centered: true)
+                }
             }
-        }
-        .chartOverlay { proxy in
-            GeometryReader { geo in
-                Rectangle().fill(.clear).contentShape(Rectangle())
-                    .onTapGesture{}
-                    .gesture(
-                        DragGesture(minimumDistance: 0)
-                            .onChanged { value in
-                                let x = value.location.x - geo[proxy.plotAreaFrame].origin.x
-                                if let gestureMonth: Date = proxy.value(atX: x) {
-                                    selectedMonth = gestureMonth.startOfMonth
+            .chartOverlay { proxy in
+                GeometryReader { geo in
+                    Rectangle().fill(.clear).contentShape(Rectangle())
+                        .onTapGesture{}
+                        .gesture(
+                            DragGesture(minimumDistance: 0)
+                                .onChanged { value in
+                                    let x = value.location.x - geo[proxy.plotAreaFrame].origin.x
+                                    if let gestureMonth: Date = proxy.value(atX: x) {
+                                        selectedMonth = gestureMonth.startOfMonth
+                                    }
                                 }
-                            }
-                            .onEnded { value in
-                                selectedMonth = nil
-                            }
-                    )
+                                .onEnded { value in
+                                    selectedMonth = nil
+                                }
+                        )
+                }
+            }
+            .frame(height: 150)
+            Picker("Select Year", selection: $selectedYear) {
+                Text("Last 12 months").tag(0)
+                ForEach((2022...currentYear), id: \.self) {
+                    Text("\(date(year: $0).formatted(.dateTime.year()))").tag($0)
+                }
             }
         }
-    }
-}
-
-struct YearStatisticsView_Previews: PreviewProvider {
-    static var previews: some View {
-        YearStatisticsView()
-            .frame(height: 200)
+        .onChange(of: selectedYear) { newValue in
+            switch selectedYear {
+                case 0: yearHeader = String(localized: "Year")
+                case 2022...2100: monthHeader = date(year: newValue).formatted(.dateTime.year())
+                default: String(localized: "Year")
+            }
+        }
     }
 }

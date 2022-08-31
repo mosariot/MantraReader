@@ -276,7 +276,7 @@ struct ReadsView: View {
             Text("You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. The screen won’t dim. The edit buttons at the bottom are disabled.")
         }
         .sheet(isPresented: $isPresentedStatisticsSheet) {
-            StatisticsView(mantra: viewModel.mantra)
+            StatisticsView(viewModel: StatisticsViewModel(mantra: viewModel.mantra, dataManager: dataManager))
         }
         .sheet(isPresented: $isPresentedInfoView) {
             InfoView(

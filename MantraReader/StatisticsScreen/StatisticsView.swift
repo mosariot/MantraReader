@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct StatisticsView: View {
-    @EnvironmentObject private var dataManager: DataManager
     @Environment(\.dismiss) var dismiss
+    @ObservedObject var viewModel: StatisticsViewModel
     @State private var monthHeader = String(localized: "Month")
     @State private var yearHeader = String(localized: "Year")
-    var mantra: Mantra?
     
     var body: some View {
         NavigationStack {
@@ -27,7 +26,7 @@ struct StatisticsView: View {
                     YearStatisticsView(yearHeader: $yearHeader)
                 }
             }
-            .navigationTitle(mantra?.title ?? String(localized: "Overall Statistics"))
+            .navigationTitle(viewModel.navigationTitle)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {

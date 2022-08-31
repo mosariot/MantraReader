@@ -175,7 +175,7 @@ struct MantraListColumn: View {
             dataManager.saveData()
         }
         .sheet(isPresented: $isPresentedStatisticsSheet) {
-            StatisticsView()
+            StatisticsView(viewModel: StatisticsViewModel(dataManager: dataManager))
         }
         .sheet(isPresented: $isPresentedPreloadedMantraList) {
             PreloadedMantraListView(

@@ -27,6 +27,7 @@ struct WeekStatisticsView: View {
                     y: .value("Readings", $0.readings),
                     width: 30
                 )
+                .foregroundStyle(.blue.gradient)
                 if let selectedDate,
                    let readings = data.first(where: { $0.period == selectedDate })?.readings {
                     RuleMark(
@@ -79,6 +80,7 @@ struct WeekStatisticsView: View {
                         )
                 }
             }
+            .frame(height: 150)
         }
     }
 }

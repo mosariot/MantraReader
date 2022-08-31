@@ -9,6 +9,7 @@ import SwiftUI
 import Charts
 
 struct WeekStatisticsView: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @State var data: [Reading] = ReadingsData.last7Days
     @State private var selectedDate: Date?
     
@@ -22,6 +23,7 @@ struct WeekStatisticsView: View {
             }
             HStack {
                 Text("Daily average: \(data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0)")
+                    .font(.subheadline)
                     .foregroundColor(.secondary)
                 Spacer()
             }
@@ -63,7 +65,7 @@ struct WeekStatisticsView: View {
                 AxisMarks(values: .stride(by: .day)) { _ in
                     AxisGridLine()
                     AxisTick()
-                    AxisValueLabel(format: .dateTime.weekday(.abbreviated), centered: true)
+                    AxisValueLabel(format: .dateTime.weekday(horizontalSizeClass == .regular ? .wide : .abbreviated), centered: true)
                 }
             }
             .chartOverlay { proxy in
@@ -75,11 +77,11 @@ struct WeekStatisticsView: View {
                                 .onChanged { value in
                                     let x = value.location.x - geo[proxy.plotAreaFrame].origin.x
                                     if let gestureDate: Date = proxy.value(atX: x) {
-                                        self.selectedDate = gestureDate.startOfDay
+                                        selectedDate = gestureDate.startOfDay
                                     }
                                 }
                                 .onEnded { value in
-                                    self.selectedDate = nil
+                                    selectedDate = nil
                                 }
                         )
                 }

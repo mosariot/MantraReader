@@ -11,10 +11,10 @@ import Charts
 struct MonthStatisticsView: View {
     @State var data: [Reading] = ReadingsData.last30Days
     @State private var selectedDate: Date?
-    @State private var selectedMonth: Int
+    @State private var selectedMonth: Int = 0
     @Binding var monthHeader: String
-    private var currentMonth: Date { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
-    private var currentYear: Date { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
+    private var currentMonth: Int { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
+    private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
     
     var body: some View {
         VStack {
@@ -26,6 +26,7 @@ struct MonthStatisticsView: View {
             }
             HStack {
                 Text("Daily average: \(data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0)")
+                    .font(.subheadline)
                     .foregroundColor(.secondary)
                 Spacer()
             }
@@ -71,7 +72,7 @@ struct MonthStatisticsView: View {
                                 .onChanged { value in
                                     let x = value.location.x - geo[proxy.plotAreaFrame].origin.x
                                     if let gestureDate: Date = proxy.value(atX: x) {
-                                        self.selectedDate = gestureDate.startOfDay
+                                        selectedDate = gestureDate.startOfDay
                                     }
                                 }
                                 .onEnded { value in
@@ -93,7 +94,7 @@ struct MonthStatisticsView: View {
             switch selectedMonth {
                 case 0: monthHeader = String(localized: "Month")
                 case 1...currentMonth: monthHeader = date(year: currentYear, month: newValue).formatted(.dateTime.month(.wide))
-                default: String(localized: "Month")
+                default: monthHeader = String(localized: "Month")
             }
         }
     }

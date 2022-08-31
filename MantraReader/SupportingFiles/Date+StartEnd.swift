@@ -13,7 +13,7 @@ extension Date {
     }
 
     var startOfMonth: Date {
-        let components = calendar.dateComponents([.year, .month], from: self)
+        let components = Calendar(identifier: .gregorian).dateComponents([.year, .month], from: self)
         return Calendar(identifier: .gregorian).date(from: components)!
     }
 

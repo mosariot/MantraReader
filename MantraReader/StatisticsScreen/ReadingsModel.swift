@@ -52,18 +52,18 @@ enum ReadingsData {
     ].map { Reading(period: $0.period, readings: $0.readings) }
     
     static let last12Months = [
-        (month: date(year: 2021, month: 9), readings: 1680),
-        (month: date(year: 2021, month: 10), readings: 1170),
-        (month: date(year: 2021, month: 11), readings: 1060),
-        (month: date(year: 2021, month: 12), readings: 1190),
-        (month: date(year: 2022, month: 1), readings: 1090),
-        (month: date(year: 2022, month: 2), readings: 1040),
-        (month: date(year: 2022, month: 3), readings: 1960),
-        (month: date(year: 2022, month: 4), readings: 1720),
-        (month: date(year: 2022, month: 5), readings: 1220),
-        (month: date(year: 2022, month: 6), readings: 1150),
-        (month: date(year: 2022, month: 7), readings: 1380),
-        (month: date(year: 2022, month: 8), readings: 1100),
+        (period: date(year: 2021, month: 9), readings: 1680),
+        (period: date(year: 2021, month: 10), readings: 1170),
+        (period: date(year: 2021, month: 11), readings: 1060),
+        (period: date(year: 2021, month: 12), readings: 1190),
+        (period: date(year: 2022, month: 1), readings: 1090),
+        (period: date(year: 2022, month: 2), readings: 1040),
+        (period: date(year: 2022, month: 3), readings: 1960),
+        (period: date(year: 2022, month: 4), readings: 1720),
+        (period: date(year: 2022, month: 5), readings: 1220),
+        (period: date(year: 2022, month: 6), readings: 1150),
+        (period: date(year: 2022, month: 7), readings: 1380),
+        (period: date(year: 2022, month: 8), readings: 1100),
     ].map { Reading(period: $0.period, readings: $0.readings)}
 }
 

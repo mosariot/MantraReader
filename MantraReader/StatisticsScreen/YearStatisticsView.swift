@@ -12,9 +12,9 @@ struct YearStatisticsView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @State var data: [Reading] = ReadingsData.last12Months
     @State private var selectedMonth: Date?
-    @State private var selectedYear: Int
+    @State private var selectedYear: Int = 0
     @Binding var yearHeader: String
-    private var currentYear: Date { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
+    private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
     
     var body: some View {
         VStack {
@@ -26,6 +26,7 @@ struct YearStatisticsView: View {
             }
             HStack {
                 Text("Monthly average: \(data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0)")
+                    .font(.subheadline)
                     .foregroundColor(.secondary)
                 Spacer()
             }
@@ -101,7 +102,7 @@ struct YearStatisticsView: View {
             switch selectedYear {
                 case 0: yearHeader = String(localized: "Year")
                 case 2022...selectedYear: yearHeader = date(year: newValue).formatted(.dateTime.year())
-                default: String(localized: "Year")
+                default: yearHeader = String(localized: "Year")
             }
         }
     }

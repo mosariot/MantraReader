@@ -43,11 +43,3 @@ struct StatisticsView: View {
         }
     }
 }
-
-struct StatisticsView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            StatisticsView()
-        }
-    }
-}

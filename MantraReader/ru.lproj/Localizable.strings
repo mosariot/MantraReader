@@ -282,10 +282,16 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "Year total: %lld" = "Всего за год: %lld";
 
 /* Month Picker 30 days option */
-"Last 30 days" = "Последние 30 дней";
+"Last 30 days" = "последние 30 дней";
 
 /* Year Picker 12 months option */
-"Last 12 months" = "Последние 12 месяцев";
+"Last 12 months" = "последние 12 месяцев";
+
+/* Month Picker Title */
+"Select Month" = "Выберите месяц";
+
+/* Year Picker Title */
+"Select Year" = "Выберите год";
 
 /* Monthly average */
 "Monthly average: %lld" = "В среднем за месяц: %lld";

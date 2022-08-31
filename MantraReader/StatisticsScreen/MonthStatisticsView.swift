@@ -11,7 +11,11 @@ import Charts
 struct MonthStatisticsView: View {
     @State var data: [Reading] = ReadingsData.last30Days
     @State private var selectedDate: Date?
+    @State private var selectedMonth: Int
+    @Binding var monthHeader: String
     private var calendar = Calendar.current
+    private var currentMonth: Date { Calendar.current.dateComponents([.month, .year], from: Date()).month! }
+    private var currentYear: Date { Calendar.current.dateComponents([.year], from: Date()).year! }
     
     var body: some View {
         VStack {
@@ -26,6 +30,7 @@ struct MonthStatisticsView: View {
                     x: .value("Date", $0.period, unit: .day),
                     y: .value("Readings", $0.readings)
                 )
+                .foregroundStyle(.green.gradient)
                 if let selectedDate,
                    let readings = data.first(where: { $0.period == selectedDate })?.readings {
                     RuleMark(
@@ -33,7 +38,7 @@ struct MonthStatisticsView: View {
                         yStart: .value("Start", readings),
                         yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
                     )
-                    .foregroundStyle(Color.secondary)
+                    .foregroundStyle(.gray)
                     .annotation(position: .top) {
                         VStack {
                             Text("\(selectedDate.formatted(date: .abbreviated, time: .omitted))")
@@ -52,32 +57,39 @@ struct MonthStatisticsView: View {
                     }
                 }
             }
-            .padding(.top, 20)
-        }
-        .chartOverlay { proxy in
-            GeometryReader { geo in
-                Rectangle().fill(.clear).contentShape(Rectangle())
-                    .onTapGesture{}
-                    .gesture(
-                        DragGesture(minimumDistance: 0)
-                            .onChanged { value in
-                                let x = value.location.x - geo[proxy.plotAreaFrame].origin.x
-                                if let gestureDate: Date = proxy.value(atX: x) {
-                                    self.selectedDate = gestureDate.startOfDay
+            .padding(.top, 10)
+            .chartOverlay { proxy in
+                GeometryReader { geo in
+                    Rectangle().fill(.clear).contentShape(Rectangle())
+                        .onTapGesture{}
+                        .gesture(
+                            DragGesture(minimumDistance: 0)
+                                .onChanged { value in
+                                    let x = value.location.x - geo[proxy.plotAreaFrame].origin.x
+                                    if let gestureDate: Date = proxy.value(atX: x) {
+                                        self.selectedDate = gestureDate.startOfDay
+                                    }
                                 }
-                            }
-                            .onEnded { value in
-                                self.selectedDate = nil
-                            }
-                    )
+                                .onEnded { value in
+                                    self.selectedDate = nil
+                                }
+                        )
+                }
+            }
+            .frame(height: 150)
+            Picker("Select Month", selection: $selectedMonth) {
+                Text("Last 30 days").tag(0)
+                ForEach((1...currentMonth), id: \.self) {
+                    Text("\(date(year: currentYear, month: $0).formatted(.dateTime.month(.wide)))").tag($0)
+                }
             }
         }
-    }
-}
-
-struct MonthStatisticsView_Previews: PreviewProvider {
-    static var previews: some View {
-        MonthStatisticsView()
-            .frame(height: 200)
+        .onChange(of: selectedMonth) { newValue in
+            switch selectedMonth {
+                case 0: monthHeader = String(localized: "Month")
+                case 1...12: monthHeader = date(year: currentYear, month: newValue).formatted(.dateTime.month(.wide))
+                default: String(localized: "Month")
+            }
+        }
     }
 }

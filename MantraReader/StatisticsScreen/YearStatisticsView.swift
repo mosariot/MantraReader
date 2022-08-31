@@ -9,6 +9,7 @@ import SwiftUI
 import Charts
 
 struct YearStatisticsView: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @State var data: [Reading] = ReadingsData.last12Months
     @State private var selectedMonth: Date?
     @State private var selectedYear: Int
@@ -32,7 +33,7 @@ struct YearStatisticsView: View {
                 BarMark(
                     x: .value("Date", $0.period, unit: .month),
                     y: .value("Readings", $0.readings),
-                    width: 16
+                    width: horizontalSizeClass == .regular ? 32 : 16
                 )
                 .foregroundStyle(.red.gradient)
                 if let selectedMonth,
@@ -66,7 +67,7 @@ struct YearStatisticsView: View {
                 AxisMarks(values: .stride(by: .month)) { _ in
                     AxisGridLine()
                     AxisTick()
-                    AxisValueLabel(format: .dateTime.month(.narrow), centered: true)
+                    AxisValueLabel(format: .dateTime.month(horizontalSizeClass == .regular ? .abbreviated : .narrow), centered: true)
                 }
             }
             .chartOverlay { proxy in

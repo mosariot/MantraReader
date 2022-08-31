@@ -34,7 +34,7 @@ struct WeekStatisticsView: View {
                         yStart: .value("Start", readings),
                         yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
                     )
-                    .foregroundStyle(Color.secondary)
+                    .foregroundStyle(.gray)
                     .annotation(position: .top) {
                         VStack {
                             Text("\(selectedDate.formatted(date: .abbreviated, time: .omitted))")
@@ -54,38 +54,31 @@ struct WeekStatisticsView: View {
                 }
             }
             .padding(.top, 20)
-        }
-        .chartXAxis {
-            AxisMarks(values: .stride(by: .day)) { _ in
-                AxisGridLine()
-                AxisTick()
-                AxisValueLabel(format: .dateTime.weekday(.abbreviated), centered: true)
+            .chartXAxis {
+                AxisMarks(values: .stride(by: .day)) { _ in
+                    AxisGridLine()
+                    AxisTick()
+                    AxisValueLabel(format: .dateTime.weekday(.abbreviated), centered: true)
+                }
             }
-        }
-        .chartOverlay { proxy in
-            GeometryReader { geo in
-                Rectangle().fill(.clear).contentShape(Rectangle())
-                    .onTapGesture{}
-                    .gesture(
-                        DragGesture(minimumDistance: 0)
-                            .onChanged { value in
-                                let x = value.location.x - geo[proxy.plotAreaFrame].origin.x
-                                if let gestureDate: Date = proxy.value(atX: x) {
-                                    self.selectedDate = gestureDate.startOfDay
+            .chartOverlay { proxy in
+                GeometryReader { geo in
+                    Rectangle().fill(.clear).contentShape(Rectangle())
+                        .onTapGesture{}
+                        .gesture(
+                            DragGesture(minimumDistance: 0)
+                                .onChanged { value in
+                                    let x = value.location.x - geo[proxy.plotAreaFrame].origin.x
+                                    if let gestureDate: Date = proxy.value(atX: x) {
+                                        self.selectedDate = gestureDate.startOfDay
+                                    }
                                 }
-                            }
-                            .onEnded { value in
-                                self.selectedDate = nil
-                            }
-                    )
+                                .onEnded { value in
+                                    self.selectedDate = nil
+                                }
+                        )
+                }
             }
         }
-    }
-}
-
-struct WeekStatisticsView_Previews: PreviewProvider {
-    static var previews: some View {
-        WeekStatisticsView()
-            .frame(height: 200)
     }
 }

@@ -13,9 +13,8 @@ struct MonthStatisticsView: View {
     @State private var selectedDate: Date?
     @State private var selectedMonth: Int
     @Binding var monthHeader: String
-    private var calendar = Calendar.current
-    private var currentMonth: Date { calendar.dateComponents([.month], from: Date()).month! }
-    private var currentYear: Date { calendar.dateComponents([.year], from: Date()).year! }
+    private var currentMonth: Date { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
+    private var currentYear: Date { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
     
     var body: some View {
         VStack {
@@ -23,6 +22,11 @@ struct MonthStatisticsView: View {
                 Text("Month total: \(data.map { $0.readings }.reduce(0, +))")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
+                Spacer()
+            }
+            HStack {
+                Text("Daily average: \(data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0)")
+                    .foregroundColor(.secondary)
                 Spacer()
             }
             Chart(data, id: \.period) {
@@ -34,7 +38,7 @@ struct MonthStatisticsView: View {
                 if let selectedDate,
                    let readings = data.first(where: { $0.period == selectedDate })?.readings {
                     RuleMark(
-                        x: .value("Date", calendar.date(byAdding: .hour, value: 12, to: selectedDate) ?? Date()),
+                        x: .value("Date", Calendar(identifier: .gregorian).date(byAdding: .hour, value: 12, to: selectedDate)!),
                         yStart: .value("Start", readings),
                         yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
                     )
@@ -88,7 +92,7 @@ struct MonthStatisticsView: View {
         .onChange(of: selectedMonth) { newValue in
             switch selectedMonth {
                 case 0: monthHeader = String(localized: "Month")
-                case 1...12: monthHeader = date(year: currentYear, month: newValue).formatted(.dateTime.month(.wide))
+                case 1...currentMonth: monthHeader = date(year: currentYear, month: newValue).formatted(.dateTime.month(.wide))
                 default: String(localized: "Month")
             }
         }

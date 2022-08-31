@@ -287,6 +287,12 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 /* Year Picker 12 months option */
 "Last 12 months" = "Последние 12 месяцев";
 
+/* Monthly average */
+"Monthly average" = "В среднем за месяц";
+
+/* Daily average */
+"Daily average" = "В среднем за день";
+
 //MARK: - WIDGETS
 
 /* Static Widget Title */

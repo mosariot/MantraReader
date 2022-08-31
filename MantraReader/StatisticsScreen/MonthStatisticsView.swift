@@ -83,6 +83,7 @@ struct MonthStatisticsView: View {
                     Text("\(date(year: currentYear, month: $0).formatted(.dateTime.month(.wide)))").tag($0)
                 }
             }
+            .padding(.top, 10)
         }
         .onChange(of: selectedMonth) { newValue in
             switch selectedMonth {

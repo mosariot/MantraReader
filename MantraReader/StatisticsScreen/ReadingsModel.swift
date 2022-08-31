@@ -9,47 +9,47 @@ import Foundation
 
 enum ReadingsData {
     static let last30Days = [
-        (day: date(year: 2022, month: 5, day: 8), readings: 168),
-        (day: date(year: 2022, month: 5, day: 9), readings: 117),
-        (day: date(year: 2022, month: 5, day: 10), readings: 106),
-        (day: date(year: 2022, month: 5, day: 11), readings: 119),
-        (day: date(year: 2022, month: 5, day: 12), readings: 109),
-        (day: date(year: 2022, month: 5, day: 13), readings: 104),
-        (day: date(year: 2022, month: 5, day: 14), readings: 196),
-        (day: date(year: 2022, month: 5, day: 15), readings: 172),
-        (day: date(year: 2022, month: 5, day: 16), readings: 122),
-        (day: date(year: 2022, month: 5, day: 17), readings: 115),
-        (day: date(year: 2022, month: 5, day: 18), readings: 138),
-        (day: date(year: 2022, month: 5, day: 19), readings: 110),
-        (day: date(year: 2022, month: 5, day: 20), readings: 106),
-        (day: date(year: 2022, month: 5, day: 21), readings: 187),
-        (day: date(year: 2022, month: 5, day: 22), readings: 187),
-        (day: date(year: 2022, month: 5, day: 23), readings: 119),
-        (day: date(year: 2022, month: 5, day: 24), readings: 160),
-        (day: date(year: 2022, month: 5, day: 25), readings: 144),
-        (day: date(year: 2022, month: 5, day: 26), readings: 152),
-        (day: date(year: 2022, month: 5, day: 27), readings: 148),
-        (day: date(year: 2022, month: 5, day: 28), readings: 240),
-        (day: date(year: 2022, month: 5, day: 29), readings: 242),
-        (day: date(year: 2022, month: 5, day: 30), readings: 173),
-        (day: date(year: 2022, month: 5, day: 31), readings: 143),
-        (day: date(year: 2022, month: 6, day: 1), readings: 137),
-        (day: date(year: 2022, month: 6, day: 2), readings: 123),
-        (day: date(year: 2022, month: 6, day: 3), readings: 146),
-        (day: date(year: 2022, month: 6, day: 4), readings: 214),
-        (day: date(year: 2022, month: 6, day: 5), readings: 250),
-        (day: date(year: 2022, month: 6, day: 6), readings: 146)
-    ].map { Reading(period: $0.day, readings: $0.readings) }
+        (period: date(year: 2022, month: 5, day: 8), readings: 168),
+        (period: date(year: 2022, month: 5, day: 9), readings: 117),
+        (period: date(year: 2022, month: 5, day: 10), readings: 106),
+        (period: date(year: 2022, month: 5, day: 11), readings: 119),
+        (period: date(year: 2022, month: 5, day: 12), readings: 109),
+        (period: date(year: 2022, month: 5, day: 13), readings: 104),
+        (period: date(year: 2022, month: 5, day: 14), readings: 196),
+        (period: date(year: 2022, month: 5, day: 15), readings: 172),
+        (period: date(year: 2022, month: 5, day: 16), readings: 122),
+        (period: date(year: 2022, month: 5, day: 17), readings: 115),
+        (period: date(year: 2022, month: 5, day: 18), readings: 138),
+        (period: date(year: 2022, month: 5, day: 19), readings: 110),
+        (period: date(year: 2022, month: 5, day: 20), readings: 106),
+        (period: date(year: 2022, month: 5, day: 21), readings: 187),
+        (period: date(year: 2022, month: 5, day: 22), readings: 187),
+        (period: date(year: 2022, month: 5, day: 23), readings: 119),
+        (period: date(year: 2022, month: 5, day: 24), readings: 160),
+        (period: date(year: 2022, month: 5, day: 25), readings: 144),
+        (period: date(year: 2022, month: 5, day: 26), readings: 152),
+        (period: date(year: 2022, month: 5, day: 27), readings: 148),
+        (period: date(year: 2022, month: 5, day: 28), readings: 240),
+        (period: date(year: 2022, month: 5, day: 29), readings: 242),
+        (period: date(year: 2022, month: 5, day: 30), readings: 173),
+        (period: date(year: 2022, month: 5, day: 31), readings: 143),
+        (period: date(year: 2022, month: 6, day: 1), readings: 137),
+        (period: date(year: 2022, month: 6, day: 2), readings: 123),
+        (period: date(year: 2022, month: 6, day: 3), readings: 146),
+        (period: date(year: 2022, month: 6, day: 4), readings: 214),
+        (period: date(year: 2022, month: 6, day: 5), readings: 250),
+        (period: date(year: 2022, month: 6, day: 6), readings: 146)
+    ].map { Reading(period: $0.period, readings: $0.readings) }
     
     static let last7Days = [
-        (day: date(year: 2022, month: 5, day: 8), readings: 168),
-        (day: date(year: 2022, month: 5, day: 9), readings: 117),
-        (day: date(year: 2022, month: 5, day: 10), readings: 106),
-        (day: date(year: 2022, month: 5, day: 11), readings: 119),
-        (day: date(year: 2022, month: 5, day: 12), readings: 109),
-        (day: date(year: 2022, month: 5, day: 13), readings: 104),
-        (day: date(year: 2022, month: 5, day: 14), readings: 196)
-    ].map { Reading(period: $0.day, readings: $0.readings) }
+        (period: date(year: 2022, month: 5, day: 8), readings: 168),
+        (period: date(year: 2022, month: 5, day: 9), readings: 117),
+        (period: date(year: 2022, month: 5, day: 10), readings: 106),
+        (period: date(year: 2022, month: 5, day: 11), readings: 119),
+        (period: date(year: 2022, month: 5, day: 12), readings: 109),
+        (period: date(year: 2022, month: 5, day: 13), readings: 104),
+        (period: date(year: 2022, month: 5, day: 14), readings: 196)
+    ].map { Reading(period: $0.period, readings: $0.readings) }
     
     static let last12Months = [
         (month: date(year: 2021, month: 9), readings: 1680),
@@ -64,7 +64,7 @@ enum ReadingsData {
         (month: date(year: 2022, month: 6), readings: 1150),
         (month: date(year: 2022, month: 7), readings: 1380),
         (month: date(year: 2022, month: 8), readings: 1100),
-    ].map { Reading(period: $0.month, readings: $0.readings)}
+    ].map { Reading(period: $0.period, readings: $0.readings)}
 }
 
 struct Reading {

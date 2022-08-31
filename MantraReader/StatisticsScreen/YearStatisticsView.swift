@@ -23,6 +23,11 @@ struct YearStatisticsView: View {
                     .foregroundColor(.primary)
                 Spacer()
             }
+            HStack {
+                Text("Monthly average: \(data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0)")
+                    .foregroundColor(.secondary)
+                Spacer()
+            }
             Chart(data, id: \.period) {
                 BarMark(
                     x: .value("Date", $0.period, unit: .month),
@@ -94,7 +99,7 @@ struct YearStatisticsView: View {
         .onChange(of: selectedYear) { newValue in
             switch selectedYear {
                 case 0: yearHeader = String(localized: "Year")
-                case 2022...2100: monthHeader = date(year: newValue).formatted(.dateTime.year())
+                case 2022...selectedYear: yearHeader = date(year: newValue).formatted(.dateTime.year())
                 default: String(localized: "Year")
             }
         }

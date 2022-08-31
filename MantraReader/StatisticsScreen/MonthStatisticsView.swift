@@ -14,8 +14,8 @@ struct MonthStatisticsView: View {
     @State private var selectedMonth: Int
     @Binding var monthHeader: String
     private var calendar = Calendar.current
-    private var currentMonth: Date { Calendar.current.dateComponents([.month, .year], from: Date()).month! }
-    private var currentYear: Date { Calendar.current.dateComponents([.year], from: Date()).year! }
+    private var currentMonth: Date { calendar.dateComponents([.month], from: Date()).month! }
+    private var currentYear: Date { calendar.dateComponents([.year], from: Date()).year! }
     
     var body: some View {
         VStack {
@@ -71,7 +71,7 @@ struct MonthStatisticsView: View {
                                     }
                                 }
                                 .onEnded { value in
-                                    self.selectedDate = nil
+                                    selectedDate = nil
                                 }
                         )
                 }

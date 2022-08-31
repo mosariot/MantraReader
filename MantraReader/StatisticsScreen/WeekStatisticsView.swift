@@ -11,7 +11,6 @@ import Charts
 struct WeekStatisticsView: View {
     @State var data: [Reading] = ReadingsData.last7Days
     @State private var selectedDate: Date?
-    private var calendar = Calendar.current
     
     var body: some View {
         VStack {
@@ -36,7 +35,7 @@ struct WeekStatisticsView: View {
                 if let selectedDate,
                    let readings = data.first(where: { $0.period == selectedDate })?.readings {
                     RuleMark(
-                        x: .value("Date", calendar.date(byAdding: .hour, value: 12, to: selectedDate) ?? Date()),
+                        x: .value("Date", Calendar(identifier: .gregorian).date(byAdding: .hour, value: 12, to: selectedDate) ?? Date()),
                         yStart: .value("Start", readings),
                         yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
                     )

@@ -21,6 +21,11 @@ struct WeekStatisticsView: View {
                     .foregroundColor(.primary)
                 Spacer()
             }
+            HStack {
+                Text("Daily average: \(data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0)")
+                    .foregroundColor(.secondary)
+                Spacer()
+            }
             Chart(data, id: \.period) {
                 BarMark(
                     x: .value("Date", $0.period, unit: .weekday),
@@ -54,7 +59,7 @@ struct WeekStatisticsView: View {
                     }
                 }
             }
-            .padding(.top, 20)
+            .padding(.top, 10)
             .chartXAxis {
                 AxisMarks(values: .stride(by: .day)) { _ in
                     AxisGridLine()

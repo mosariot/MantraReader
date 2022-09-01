@@ -31,7 +31,7 @@ extension Date {
         return Calendar(identifier: .gregorian).date(byAdding: components, to: startOfMonth)!
     }
     
-    var startOfMonth: Date {
+    var startOfYear: Date {
         let components = Calendar(identifier: .gregorian).dateComponents([.year], from: self)
         return Calendar(identifier: .gregorian).date(from: components)!
     }

@@ -10,10 +10,9 @@ import Charts
 
 struct YearStatisticsView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    @State var data: [Reading] = ReadingsData.last12Months
+    var data: [Reading]
     @State private var selectedMonth: Date?
-    @State private var selectedYear: Int = 0
-    @Binding var yearHeader: String
+    @Binding private var selectedYear: Int
     private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
     
     var body: some View {
@@ -97,13 +96,6 @@ struct YearStatisticsView: View {
                 }
             }
             .padding(.top, 10)
-        }
-        .onChange(of: selectedYear) { newValue in
-            switch selectedYear {
-                case 0: yearHeader = String(localized: "Year")
-                case 2022...selectedYear: yearHeader = date(year: newValue).formatted(.dateTime.year())
-                default: yearHeader = String(localized: "Year")
-            }
         }
     }
 }

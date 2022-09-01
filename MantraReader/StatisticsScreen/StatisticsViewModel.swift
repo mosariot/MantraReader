@@ -12,6 +12,9 @@ final class StatisticsViewModel: ObservableObject {
     var dataManager: DataManager
     var mantra: Mantra?
     private var data: Data = ReadingsData.last540
+    private var readings: [Readings] {
+        try? JSONDecoder().decode([Readings].self, from: data) ?? []
+    }
     
     init(mantra: Mantra? = nil, dataManager: DataManager) {
         self.mantra = mantra

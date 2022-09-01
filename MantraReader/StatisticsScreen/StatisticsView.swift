@@ -16,16 +16,16 @@ struct StatisticsView: View {
     private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
     private var monthHeader: String {
             switch selectedMonth {
-            case 0: monthHeader = String(localized: "Month")
-            case 1...currentMonth: monthHeader = date(year: currentYear, month: newValue).formatted(.dateTime.month(.wide))
-            default: monthHeader = String(localized: "Month")
+            case 0: return String(localized: "Month")
+            case 1...currentMonth: return date(year: currentYear, month: selectedMonth).formatted(.dateTime.month(.wide))
+            default: return String(localized: "Month")
         }
     }
     private var yearHeader: String {
         switch selectedYear {
-            case 0: yearHeader = String(localized: "Year")
-            case 2022...currentYear: yearHeader = date(year: newValue).formatted(.dateTime.year())
-            default: yearHeader = String(localized: "Year")
+            case 0: return String(localized: "Year")
+            case 2022...currentYear: return date(year: selectedYear).formatted(.dateTime.year())
+            default: return String(localized: "Year")
         }
     }
     

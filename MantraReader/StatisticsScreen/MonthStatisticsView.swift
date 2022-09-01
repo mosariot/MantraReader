@@ -11,8 +11,8 @@ import Charts
 struct MonthStatisticsView: View {
     var data: [Reading]
     @State private var selectedDate: Date?
-    @Binding private var selectedMonth: Int
-    private var currentMonth: Int { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
+    @Binding var selectedMonth: Int
+    var currentMonth: Int { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
     
     var body: some View {
         VStack {

@@ -12,8 +12,8 @@ struct YearStatisticsView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     var data: [Reading]
     @State private var selectedMonth: Date?
-    @Binding private var selectedYear: Int
-    private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
+    @Binding var selectedYear: Int
+    var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
     
     var body: some View {
         VStack {

@@ -18,7 +18,8 @@ final class StatisticsViewModel: ObservableObject {
     private var data: Data = ReadingsData.last540
 //  
     private var readings: [Reading] {
-        try? JSONDecoder().decode([Reading].self, from: data) ?? []
+        guard let result = try? JSONDecoder().decode([Reading].self, from: data) else { return [] }
+        return result
     }
     
     init(mantra: Mantra? = nil, dataManager: DataManager) {
@@ -31,31 +32,31 @@ final class StatisticsViewModel: ObservableObject {
     }
     
     var weekData: [Reading] {
-        var result = [Reading]()
-        let filtered = readings.filter { weekStart...weekEnd.contains($0.period) }
-        for day in stride(from: weekStart, to: weekEnd, by: 60*60*24) {
-            var dayReadings = 0
-            dayReadings += filtered.filter { $0.period == day }.map { $0.readings }.reduce(0, +)
-            result.append(Reading(period: day, readings: dayReadings))
-        }
-        return result
-//        ReadingsData.last7Days
+//        var result = [Reading]()
+//        let weekEnd = calendar.date(byAdding: .day, value: 1, to: Date())!.startOfDay
+//        let weekStart = calendar.date(byAdding: .day, value: -7, to: weekEnd)!
+//        let filtered = readings.filter { (weekStart...weekEnd).contains($0.period) }
+//        for day in stride(from: weekStart, to: weekEnd, by: 60*60*24) {
+//            var dayReadings = 0
+//            dayReadings += filtered.filter { $0.period == day }.map { $0.readings }.reduce(0, +)
+//            result.append(Reading(period: day, readings: dayReadings))
+//        }
+//        return result
+        ReadingsData.last7Days
     }
-    private var weekStart = calendar.date(byAdding: .day, value: -7, to: weekEnd)!
-    private var weekEnd = calendar.date(byAdding: .day, value: 1, to: Date())!.startOfDay
     
-    func monthData(_ month: Int): [Reading] {
-        var result = [Reading]()
-        let monthStart = monthStart(month)
-        let monthEnd = monthEnd(month)
-        let filtered = readings.filter { monthStart...monthEnd.contains($0.period) }
-        for day in stride(from: monthStart, to: monthEnd, by: 60*60*24) {
-            var dayReadings = 0
-            dayReadings += filtered.filter { $0.period == day }.map { $0.readings }.reduce(0, +)
-            result.append(Reading(period: day, readings: dayReadings))
-        }
-        return result
-//        ReadingsData.last30Days
+    func monthData(_ month: Int) -> [Reading] {
+//        var result = [Reading]()
+//        let monthStart = monthStart(month)
+//        let monthEnd = monthEnd(month)
+//        let filtered = readings.filter { (monthStart...monthEnd).contains($0.period) }
+//        for day in stride(from: monthStart, to: monthEnd, by: 60*60*24) {
+//            var dayReadings = 0
+//            dayReadings += filtered.filter { $0.period == day }.map { $0.readings }.reduce(0, +)
+//            result.append(Reading(period: day, readings: dayReadings))
+//        }
+//        return result
+        ReadingsData.last30Days
     }
     
     private func monthStart(_ month: Int) -> Date {
@@ -74,24 +75,22 @@ final class StatisticsViewModel: ObservableObject {
         }
     }
     
-    func yearData(_ year: Int): [Reading] {
-        var result = [Reading]()
-        let yearStart = yearStart(year)
-        let yearEnd = yearEnd(year)
-        let filtered = readings.filter { yearStart...yearEnd.contains($0.period) }
-        for month in 1...12 {
-            let monthResult = [Reading]()
-            let monthStart = date(year: year, month: month)
-            let monthEnd = date(year: year, month: month).endOfMonth.startOfDay
-            for day in stride(from: monthStart, to: monthEnd, by: 60*60*24) {
-                var dayReadings = 0
-                dayReadings += filtered.filter { $0.period == day }.map { $0.readings }.reduce(0, +)
-                monthResult.append(Reading(period: day, readings: dayReadings))
-            }
-            result.append(Reading(period: date(year: year, month: month), readings: monthReadings))
-        }
-        return result
-//        ReadingsData.last12Months
+    func yearData(_ year: Int) -> [Reading] {
+//        var result = [Reading]()
+//        let yearStart = yearStart(year)
+//        let yearEnd = yearEnd(year)
+//        let filtered = readings.filter { (yearStart...yearEnd).contains($0.period) }
+//        for month in 1...12 {
+//            var monthReadings = 0
+//            let monthStart = date(year: year, month: month)
+//            let monthEnd = date(year: year, month: month).endOfMonth.startOfDay
+//            for day in stride(from: monthStart, to: monthEnd, by: 60*60*24) {
+//                monthReadings += filtered.filter { $0.period == day }.map { $0.readings }.reduce(0, +)
+//            }
+//            result.append(Reading(period: date(year: year, month: month), readings: monthReadings))
+//        }
+//        return result
+        ReadingsData.last12Months
     }
     
     private func yearStart(_ year: Int) -> Date {

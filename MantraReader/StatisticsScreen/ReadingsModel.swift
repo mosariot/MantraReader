@@ -14,7 +14,8 @@ enum ReadingsData {
             count: 540
         )
         .map { Reading(period: $0.period, readings: $0.readings) }
-        return try? JSONEncoder().encode(readings) ?? Data()
+        guard let result = try? JSONEncoder().encode(readings) else { return Data() }
+        return result
     }
     
     static let last30Days = [

@@ -36,11 +36,11 @@ struct StatisticsView: View {
                     WeekStatisticsView(data: viewModel.weekData)
                 }
                 Section(monthHeader) {
-                    MonthStatisticsView(data: viewModel.monthData, selectedMonth: $selectedMonth)
+                    MonthStatisticsView(data: viewModel.monthData(selectedMonth), selectedMonth: $selectedMonth)
                         .animation(.easeInOut, value: selectedMonth)
                 }
                 Section(yearHeader) {
-                    YearStatisticsView(data: viewModel.yearData, selectedYear: $selectedYear)
+                    YearStatisticsView(data: viewModel.yearData(selectedYear), selectedYear: $selectedYear)
                         .animation(.easeInOut, value: selectedYear)
                 }
             }

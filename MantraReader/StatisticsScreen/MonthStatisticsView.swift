@@ -9,12 +9,10 @@ import SwiftUI
 import Charts
 
 struct MonthStatisticsView: View {
-    @State var data: [Reading] = ReadingsData.last30Days
+    var data: [Reading]
     @State private var selectedDate: Date?
-    @State private var selectedMonth: Int = 0
-    @Binding var monthHeader: String
+    @Binding private var selectedMonth: Int
     private var currentMonth: Int { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
-    private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
     
     var body: some View {
         VStack {
@@ -85,17 +83,10 @@ struct MonthStatisticsView: View {
             Picker("Select Month", selection: $selectedMonth) {
                 Text("Last 30 days").tag(0)
                 ForEach((1...currentMonth), id: \.self) {
-                    Text("\(date(year: currentYear, month: $0).formatted(.dateTime.month(.wide)))").tag($0)
+                    Text("\(date(month: $0).formatted(.dateTime.month(.wide)))").tag($0)
                 }
             }
             .padding(.top, 10)
-        }
-        .onChange(of: selectedMonth) { newValue in
-            switch selectedMonth {
-                case 0: monthHeader = String(localized: "Month")
-                case 1...currentMonth: monthHeader = date(year: currentYear, month: newValue).formatted(.dateTime.month(.wide))
-                default: monthHeader = String(localized: "Month")
-            }
         }
     }
 }

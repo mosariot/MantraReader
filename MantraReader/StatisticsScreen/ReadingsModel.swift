@@ -8,7 +8,7 @@
 import Foundation
 
 enum ReadingsData {
-    static let last540: Data {
+    static var last540: Data {
         let readings = Array(
             repeating: (period: date(year: 2022, month: Int.random(in: 3...8), day: Int.random(in: 1...30)), readings: Int.random(in: 0...256)),
             count: 540
@@ -76,7 +76,7 @@ enum ReadingsData {
     ].map { Reading(period: $0.period, readings: $0.readings)}
 }
 
-struct Reading {
+struct Reading: Codable {
     let period: Date
     var readings: Int
 }

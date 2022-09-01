@@ -9,11 +9,13 @@ import SwiftUI
 
 @MainActor
 final class StatisticsViewModel: ObservableObject {
-    var dataManager: DataManager
-    var mantra: Mantra?
+    private var mantra: Mantra?
+    private var dataManager: DataManager
+// To be replaced with mantra.statistics
     private var data: Data = ReadingsData.last540
-    private var readings: [Readings] {
-        try? JSONDecoder().decode([Readings].self, from: data) ?? []
+//  
+    private var readings: [Reading] {
+        try? JSONDecoder().decode([Reading].self, from: data) ?? []
     }
     
     init(mantra: Mantra? = nil, dataManager: DataManager) {
@@ -25,15 +27,15 @@ final class StatisticsViewModel: ObservableObject {
         mantra?.title ?? String(localized: "Overall Statistics")
     }
     
-    var weekData: [Readings] {
+    var weekData: [Reading] {
         ReadingsData.last7Days
     }
     
-    var monthData: [Readings] {
+    var monthData: [Reading] {
         ReadingsData.last30Days
     }
     
-    var yearData: [Readings] {
+    var yearData: [Reading] {
         ReadingsData.last12Months
     }
 }

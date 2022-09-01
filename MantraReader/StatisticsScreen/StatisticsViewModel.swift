@@ -42,7 +42,7 @@ final class StatisticsViewModel: ObservableObject {
 //        ReadingsData.last7Days
     }
     private var weekStart = calendar.date(byAdding: .day, value: -7, to: weekEnd)!
-    private var weekEnd = Date().startOfDay
+    private var weekEnd = calendar.date(byAdding: .day, value: 1, to: Date())!.startOfDay
     
     func monthData(_ month: Int): [Reading] {
         var result = [Reading]()
@@ -66,10 +66,10 @@ final class StatisticsViewModel: ObservableObject {
         }
     }
     
-    private func monthEnd(_ month: Int) -> [Reading] {
+    private func monthEnd(_ month: Int) -> Date {
         switch month {
             case 0: return Date().startOfDay
-            case 1...currentMonth: return date(year: currentYear, month: month).endOfMonth.startOfDay
+            case 1...currentMonth: return calendar.date(byAdding: .day, value: 1, to: date(year: currentYear, month: month).endOfMonth.startOfDay)!
             default: return Date()
         }
     }
@@ -102,10 +102,10 @@ final class StatisticsViewModel: ObservableObject {
         }
     }
     
-    private func yearEnd(_ year: Int) -> [Reading] {
+    private func yearEnd(_ year: Int) -> Date {
         switch year {
             case 0: return date(year: currentYear, month: currentMonth)
-            case 2022...currentYear: return date(year: year).endOfYear.startOfDay
+            case 2022...currentYear: return date(year: year + 1, month: 1, day: 1).startOfDay
             default: return Date()
         }
     }

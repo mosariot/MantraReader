@@ -10,7 +10,7 @@ import Charts
 
 struct WeekStatisticsView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    @State var data: [Reading] = ReadingsData.last7Days
+    var data: [Reading]
     @State private var selectedDate: Date?
     
     var body: some View {

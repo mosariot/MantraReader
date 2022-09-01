@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-class StatisticsViewModel: ObservableObject {
+@MainActor
+final class StatisticsViewModel: ObservableObject {
     var dataManager: DataManager
     var mantra: Mantra?
-    private var data = ReadingsData.last2000
+    private var data: Data = ReadingsData.last540
     
     init(mantra: Mantra? = nil, dataManager: DataManager) {
         self.mantra = mantra
@@ -19,5 +20,17 @@ class StatisticsViewModel: ObservableObject {
     
     var navigationTitle: String {
         mantra?.title ?? String(localized: "Overall Statistics")
+    }
+    
+    var weekData: [Readings] {
+        ReadingsData.last7Days
+    }
+    
+    var monthData: [Readings] {
+        ReadingsData.last30Days
+    }
+    
+    var yearData: [Readings] {
+        ReadingsData.last12Months
     }
 }

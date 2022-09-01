@@ -8,8 +8,14 @@
 import Foundation
 
 enum ReadingsData {
-    static let last2000 = Array(repeating: (period: date(year: 2022, month: Int.random(in: 3...8), day: Int.random(in: 1...30)), readings: Int.random(in: 0...256)), count: 540)
+    static let last540: Data {
+        let readings = Array(
+            repeating: (period: date(year: 2022, month: Int.random(in: 3...8), day: Int.random(in: 1...30)), readings: Int.random(in: 0...256)),
+            count: 540
+        )
         .map { Reading(period: $0.period, readings: $0.readings) }
+        return try? JSONEncoder().encode(readings) ?? Data()
+    }
     
     static let last30Days = [
         (period: date(year: 2022, month: 5, day: 8), readings: 168),

@@ -7,14 +7,19 @@
 
 import Foundation
 
+struct Reading: Codable, Hashable {
+    let period: Date
+    var readings: Int
+}
+
 enum ReadingsData {
     static var last540: Data {
-        let readings = Array(
-            repeating: (period: date(year: 2022, month: Int.random(in: 3...8), day: Int.random(in: 1...30)), readings: Int.random(in: 0...256)),
-            count: 540
-        )
-        .map { Reading(period: $0.period, readings: $0.readings) }
-        guard let result = try? JSONEncoder().encode(readings) else { return Data() }
+        var readings = [Reading]()
+        for _ in 1...1000 {
+            readings.append(Reading(period: date(year: 2022, month: Int.random(in: 1...9), day: Int.random(in: 1...28)), readings: Int.random(in: 0...56)))
+        }
+        let reads = Array(Set(readings))
+        guard let result = try? JSONEncoder().encode(reads) else { return Data() }
         return result
     }
     
@@ -75,9 +80,4 @@ enum ReadingsData {
         (period: date(year: 2022, month: 7), readings: 1380),
         (period: date(year: 2022, month: 8), readings: 1100),
     ].map { Reading(period: $0.period, readings: $0.readings)}
-}
-
-struct Reading: Codable {
-    let period: Date
-    var readings: Int
 }

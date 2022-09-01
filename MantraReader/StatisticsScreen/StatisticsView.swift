@@ -15,17 +15,17 @@ struct StatisticsView: View {
     private var currentMonth: Int { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
     private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
     private var monthHeader: String {
-            switch selectedMonth {
-            case 0: return String(localized: "Month")
-            case 1...currentMonth: return date(year: currentYear, month: selectedMonth).formatted(.dateTime.month(.wide))
-            default: return String(localized: "Month")
+        switch selectedMonth {
+        case 0: return String(localized: "Month")
+        case 1...currentMonth: return date(year: currentYear, month: selectedMonth).formatted(.dateTime.month(.wide))
+        default: return String(localized: "Month")
         }
     }
     private var yearHeader: String {
         switch selectedYear {
-            case 0: return String(localized: "Year")
-            case 2022...currentYear: return date(year: selectedYear).formatted(.dateTime.year())
-            default: return String(localized: "Year")
+        case 0: return String(localized: "Year")
+        case 2022...currentYear: return date(year: selectedYear).formatted(.dateTime.year())
+        default: return String(localized: "Year")
         }
     }
     
@@ -56,12 +56,6 @@ struct StatisticsView: View {
                             .foregroundColor(.gray.opacity(0.8))
                     }
                 }
-            }
-            .onChange(of: selectedMonth) { newValue in
-                print("to handle data providing in viewmodel")
-            }
-            .onChange(of: selectedYear) { newValue in
-                print("to handle data providing in viewmodel")
             }
         }
     }

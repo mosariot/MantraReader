@@ -14,9 +14,9 @@ final class StatisticsViewModel: ObservableObject {
     private var calendar = Calendar(identifier: .gregorian)
     private var currentMonth: Int { calendar.dateComponents([.month], from: Date()).month! }
     private var currentYear: Int { calendar.dateComponents([.year], from: Date()).year! }
-// To be replaced with mantra.statistics or mantras statistics
+    // To be replaced with mantra.statistics or mantras statistics
     private var data: Data = ReadingsData.last540
-//  
+    //
     private var readings: [Reading] {
         guard let result = try? JSONDecoder().decode([Reading].self, from: data) else { return [] }
         return result
@@ -32,62 +32,64 @@ final class StatisticsViewModel: ObservableObject {
     }
     
     var weekData: [Reading] {
-//        var result = [Reading]()
-//        let weekEnd = calendar.date(byAdding: .day, value: 1, to: Date())!.startOfDay
-//        let weekStart = calendar.date(byAdding: .day, value: -7, to: weekEnd)!
-//        let filtered = readings.filter { (weekStart...weekEnd).contains($0.period) }
-//        for day in stride(from: weekStart, to: weekEnd, by: 60*60*24) {
-//            var dayReadings = 0
-//            dayReadings += filtered.filter { $0.period == day }.map { $0.readings }.reduce(0, +)
-//            result.append(Reading(period: day, readings: dayReadings))
-//        }
-//        return result
-        ReadingsData.last7Days
+        var result = [Reading]()
+        let weekEnd = calendar.date(byAdding: .day, value: 1, to: Date())!.startOfDay
+        let weekStart = calendar.date(byAdding: .day, value: -7, to: weekEnd)!
+        let filtered = readings.filter { (weekStart...weekEnd).contains($0.period) }
+        for day in stride(from: weekStart, to: weekEnd, by: 60*60*24) {
+            var dayReadings = 0
+            dayReadings += filtered.first(where: { $0.period == day })?.readings ?? 0
+            result.append(Reading(period: day, readings: dayReadings))
+        }
+        return result
     }
     
     func monthData(_ month: Int) -> [Reading] {
-//        var result = [Reading]()
-//        let monthStart = monthStart(month)
-//        let monthEnd = monthEnd(month)
-//        let filtered = readings.filter { (monthStart...monthEnd).contains($0.period) }
-//        for day in stride(from: monthStart, to: monthEnd, by: 60*60*24) {
-//            var dayReadings = 0
-//            dayReadings += filtered.filter { $0.period == day }.map { $0.readings }.reduce(0, +)
-//            result.append(Reading(period: day, readings: dayReadings))
-//        }
-//        return result
-        ReadingsData.last30Days
+        var result = [Reading]()
+        let monthStart = monthStart(month)
+        let monthEnd = monthEnd(month)
+        let filtered = readings.filter { (monthStart...monthEnd).contains($0.period) }
+        for day in stride(from: monthStart, to: monthEnd, by: 60*60*24) {
+            var dayReadings = 0
+            dayReadings += filtered.first(where: { $0.period == day })?.readings ?? 0
+            result.append(Reading(period: day, readings: dayReadings))
+        }
+        return result
     }
     
     private func monthStart(_ month: Int) -> Date {
         switch month {
-            case 0: return calendar.date(byAdding: .day, value: -30, to: Date().startOfDay)!
-            case 1...currentMonth: return date(year: currentYear, month: month)
-            default: return Date()
+        case 0: return calendar.date(byAdding: .day, value: -30, to: Date().startOfDay)!
+        case 1...currentMonth: return date(year: currentYear, month: month)
+        default: return Date()
         }
     }
     
     private func monthEnd(_ month: Int) -> Date {
         switch month {
-            case 0: return Date().startOfDay
-            case 1...currentMonth: return calendar.date(byAdding: .day, value: 1, to: date(year: currentYear, month: month).endOfMonth.startOfDay)!
-            default: return Date()
+        case 0: return calendar.date(byAdding: .day, value: 1, to: Date().startOfDay)!
+        case 1...currentMonth: return date(year: currentYear, month: month).endOfMonth.startOfDay
+        default: return Date()
         }
     }
     
     func yearData(_ year: Int) -> [Reading] {
+//        var processingYear = 2022
+//        switch year {
+//        case 0: processingYear = currentYear
+//        case 2022...currentYear: processingYear = year
+//        default: processingYear = currentYear
+//        }
+//        
 //        var result = [Reading]()
 //        let yearStart = yearStart(year)
 //        let yearEnd = yearEnd(year)
 //        let filtered = readings.filter { (yearStart...yearEnd).contains($0.period) }
 //        for month in 1...12 {
-//            var monthReadings = 0
-//            let monthStart = date(year: year, month: month)
-//            let monthEnd = date(year: year, month: month).endOfMonth.startOfDay
-//            for day in stride(from: monthStart, to: monthEnd, by: 60*60*24) {
-//                monthReadings += filtered.filter { $0.period == day }.map { $0.readings }.reduce(0, +)
-//            }
-//            result.append(Reading(period: date(year: year, month: month), readings: monthReadings))
+//            let monthStart = date(year: processingYear, month: month)
+//            let monthEnd = date(year: processingYear, month: month).endOfMonth.startOfDay
+//            let monthReadings = filtered.filter { (monthStart...monthEnd).contains($0.period) }.map { $0.readings }.reduce(0, +)
+//            result.append(Reading(period: date(year: processingYear, month: month), readings: monthReadings))
 //        }
 //        return result
         ReadingsData.last12Months
@@ -95,17 +97,17 @@ final class StatisticsViewModel: ObservableObject {
     
     private func yearStart(_ year: Int) -> Date {
         switch year {
-            case 0: return date(year: currentYear - 1, month: currentMonth + 1)
-            case 2022...currentYear: return date(year: year)
-            default: return Date()
+        case 0: return date(year: currentYear - 1, month: currentMonth + 1)
+        case 2022...currentYear: return date(year: year)
+        default: return Date()
         }
     }
     
     private func yearEnd(_ year: Int) -> Date {
         switch year {
-            case 0: return date(year: currentYear, month: currentMonth)
-            case 2022...currentYear: return date(year: year + 1, month: 1, day: 1).startOfDay
-            default: return Date()
+        case 0: return date(year: currentYear, month: currentMonth)
+        case 2022...currentYear: return date(year: year + 1, month: 1, day: 1).startOfDay
+        default: return Date()
         }
     }
 }

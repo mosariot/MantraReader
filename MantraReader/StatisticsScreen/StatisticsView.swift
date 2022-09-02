@@ -15,10 +15,21 @@ struct StatisticsView: View {
     @State private var selectedYear: Int = 0
     private var currentMonth: Int { Calendar.current.dateComponents([.month], from: Date()).month! }
     private var currentYear: Int { Calendar.current.dateComponents([.year], from: Date()).year! }
+    private var weekHeader: String {
+        switch selectedWeek {
+        case 0: return String(localized: "Week")
+        case 1...currentWeek:
+            let startOfWeek = date(year: currentYear, weekDay: 2, weekOfYear: week)
+            let endOfWeek = calendar.date(byAdding: .day, value: 6, to: startOfWeek)!
+            return "\(startOfWeek.formatted(.dateTime.day().month(.abbreviated))) - \(endOfWeek.formatted(.dateTime.day().month(.abbreviated)))"
+        default: return String(localized: "Week")
+        }
+    }
     private var monthHeader: String {
         switch selectedMonth {
         case 0: return String(localized: "Month")
         case 1...currentMonth: return date(year: currentYear, month: selectedMonth).formatted(.dateTime.month(.wide))
+        case (currentMonth-1)...12: return date(year: currentYear-1, month: selectedMonth).formatted(.dateTime.month(.wide).year())
         default: return String(localized: "Month")
         }
     }
@@ -33,7 +44,7 @@ struct StatisticsView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section("Week") {
+                Section(weekHeader) {
                     WeekStatisticsView(data: viewModel.weekData(selectedWeek), selectedWeek: $selectedWeek)
                 }
                 Section(monthHeader) {

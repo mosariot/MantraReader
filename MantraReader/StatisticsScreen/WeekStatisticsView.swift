@@ -13,14 +13,13 @@ struct WeekStatisticsView: View {
     var data: [Reading]
     @State private var selectedDate: Date?
     @Binding var selectedWeek: Int
-    private var calendar = Calendar.current
-    private var currentWeek: Int { calendar.dateComponents([.weekOfYear], from: Date()).weekOfYear! }
-    private var currentYear: Int { calendar.dateComponents([.year], from: Date()).year! }
+    private var currentWeek: Int { Calendar(identifier: .gregorian).dateComponents([.weekOfYear], from: Date()).weekOfYear! }
+    private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
     
     var body: some View {
         VStack {
             HStack {
-                Text("Week total: \(data.map { $0.readings }.reduce(0, +))")
+                Text("Week Total: \(data.map { $0.readings }.reduce(0, +))")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
                 Spacer()
@@ -41,7 +40,7 @@ struct WeekStatisticsView: View {
                 if let selectedDate,
                    let readings = data.first(where: { $0.period == selectedDate })?.readings {
                     RuleMark(
-                        x: .value("Date", calendar.date(byAdding: .hour, value: 12, to: selectedDate) ?? Date()),
+                        x: .value("Date", Calendar(identifier: .gregorian).date(byAdding: .hour, value: 12, to: selectedDate) ?? Date()),
                         yStart: .value("Start", readings),
                         yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
                     )
@@ -92,8 +91,8 @@ struct WeekStatisticsView: View {
             }
             .frame(height: 150)
             Picker("Select Week", selection: $selectedWeek) {
-                Text("Last 7 days").tag(0)
-                ForEach((0...currentWeek).reversed(), id: \.self) {
+                Text("Last 7 Days").tag(0)
+                ForEach((2...currentWeek).reversed(), id: \.self) {
                     Text("\(startOfWeek($0).formatted(.dateTime.day().month(.abbreviated))) - \(endOfWeek($0).formatted(.dateTime.day().month(.abbreviated)))").tag($0)
                 }
             }
@@ -106,6 +105,6 @@ struct WeekStatisticsView: View {
     }
     
     private func endOfWeek(_ week: Int) -> Date {
-        calendar.date(byAdding: .day, value: 6, to: startOfWeek(week))!
+        Calendar(identifier: .gregorian).date(byAdding: .day, value: 6, to: startOfWeek(week))!
     }
 }

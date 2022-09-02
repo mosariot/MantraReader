@@ -13,12 +13,12 @@ struct YearStatisticsView: View {
     var data: [Reading]
     @State private var selectedMonth: Date?
     @Binding var selectedYear: Int
-    private var currentYear: Int { Calendar.current.dateComponents([.year], from: Date()).year! }
+    private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
     
     var body: some View {
         VStack {
             HStack {
-                Text("Year total: \(data.map { $0.readings }.reduce(0, +))")
+                Text("Year Total: \(data.map { $0.readings }.reduce(0, +))")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
                 Spacer()
@@ -39,7 +39,7 @@ struct YearStatisticsView: View {
                 if let selectedMonth,
                    let readings = data.first(where: { $0.period == selectedMonth })?.readings {
                     RuleMark(
-                        x: .value("Date", Calendar.current.date(byAdding: .day, value: 15, to: selectedMonth)!),
+                        x: .value("Date", Calendar(identifier: .gregorian).date(byAdding: .day, value: 15, to: selectedMonth)!),
                         yStart: .value("Start", readings),
                         yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
                     )
@@ -90,7 +90,7 @@ struct YearStatisticsView: View {
             }
             .frame(height: 150)
             Picker("Select Year", selection: $selectedYear) {
-                Text("Last 12 months").tag(0)
+                Text("Last 12 Months").tag(0)
                 ForEach((2022...currentYear).reversed(), id: \.self) {
                     Text("\(date(year: $0).formatted(.dateTime.year()))").tag($0)
                 }

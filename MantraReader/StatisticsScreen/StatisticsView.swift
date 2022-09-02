@@ -13,16 +13,15 @@ struct StatisticsView: View {
     @State private var selectedWeek: Int = 0
     @State private var selectedMonth: Int = 0
     @State private var selectedYear: Int = 0
-    private var calendar = Calendar.current
-    private var currentWeek: Int { calendar.dateComponents([.weekOfYear], from: Date()).weekOfYear! }
-    private var currentMonth: Int { calendar.dateComponents([.month], from: Date()).month! }
-    private var currentYear: Int { calendar.dateComponents([.year], from: Date()).year! }
+    private var currentWeek: Int { Calendar(identifier: .gregorian).dateComponents([.weekOfYear], from: Date()).weekOfYear! }
+    private var currentMonth: Int { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
+    private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
     private var weekHeader: String {
         switch selectedWeek {
         case 0: return String(localized: "Week")
         case 1...currentWeek:
             let weekStart = date(year: currentYear, weekDay: 2, weekOfYear: selectedWeek)
-            let weekEnd = calendar.date(byAdding: .day, value: 6, to: weekStart)!
+            let weekEnd = Calendar(identifier: .gregorian).date(byAdding: .day, value: 6, to: weekStart)!
             return "\(weekStart.formatted(.dateTime.day().month(.abbreviated))) - \(weekEnd.formatted(.dateTime.day().month(.abbreviated)))"
         default: return String(localized: "Week")
         }

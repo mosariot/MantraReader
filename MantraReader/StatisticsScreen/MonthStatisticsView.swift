@@ -12,12 +12,13 @@ struct MonthStatisticsView: View {
     var data: [Reading]
     @State private var selectedDate: Date?
     @Binding var selectedMonth: Int
-    private var currentMonth: Int { Calendar.current.dateComponents([.month], from: Date()).month! }
+    private var currentMonth: Int { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
+    private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
     
     var body: some View {
         VStack {
             HStack {
-                Text("Month total: \(data.map { $0.readings }.reduce(0, +))")
+                Text("Month Total: \(data.map { $0.readings }.reduce(0, +))")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
                 Spacer()
@@ -37,7 +38,7 @@ struct MonthStatisticsView: View {
                 if let selectedDate,
                    let readings = data.first(where: { $0.period == selectedDate })?.readings {
                     RuleMark(
-                        x: .value("Date", Calendar.current.date(byAdding: .hour, value: 12, to: selectedDate)!),
+                        x: .value("Date", Calendar(identifier: .gregorian).date(byAdding: .hour, value: 12, to: selectedDate)!),
                         yStart: .value("Start", readings),
                         yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
                     )
@@ -81,12 +82,12 @@ struct MonthStatisticsView: View {
             }
             .frame(height: 150)
             Picker("Select Month", selection: $selectedMonth) {
-                Text("Last 30 days").tag(0)
+                Text("Last 30 Days").tag(0)
                 ForEach((1...currentMonth).reversed(), id: \.self) {
                     Text("\(date(month: $0).formatted(.dateTime.month(.wide)))").tag($0)
                 }
                 ForEach(((currentMonth+1)...12).reversed(), id: \.self) {
-                    Text("\(date(month: $0).formatted(.dateTime.month(.wide).year()))").tag($0)
+                    Text("\(date(year: currentYear-1, month: $0).formatted(.dateTime.month(.wide).year()))").tag($0)
                 }
             }
             .padding(.top, 10)

@@ -13,9 +13,10 @@ struct StatisticsView: View {
     @State private var selectedWeek: Int = 0
     @State private var selectedMonth: Int = 0
     @State private var selectedYear: Int = 0
-    private var currentWeek: Int { Calendar.current.dateComponents([.weekOfYear], from: Date()).weekOfYear! }
-    private var currentMonth: Int { Calendar.current.dateComponents([.month], from: Date()).month! }
-    private var currentYear: Int { Calendar.current.dateComponents([.year], from: Date()).year! }
+    private var calendar = Calendar.current
+    private var currentWeek: Int { calendar.dateComponents([.weekOfYear], from: Date()).weekOfYear! }
+    private var currentMonth: Int { calendar.dateComponents([.month], from: Date()).month! }
+    private var currentYear: Int { calendar.dateComponents([.year], from: Date()).year! }
     private var weekHeader: String {
         switch selectedWeek {
         case 0: return String(localized: "Week")

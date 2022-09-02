@@ -13,10 +13,10 @@ struct Reading: Codable, Hashable {
 }
 
 enum ReadingsData {
-    static var last540: Data {
+    static var last: Data {
         var readings = [Reading]()
-        for _ in 1...1000 {
-            readings.append(Reading(period: date(year: 2022, month: Int.random(in: 1...9), day: Int.random(in: 1...28)), readings: Int.random(in: 0...56)))
+        for _ in 1...3000 {
+            readings.append(Reading(period: date(year: Int.random(in: 2021...2022), month: Int.random(in: 1...12), day: Int.random(in: 1...31)), readings: Int.random(in: 0...56)))
         }
         let reads = Array(Set(readings))
         guard let result = try? JSONEncoder().encode(reads) else { return Data() }

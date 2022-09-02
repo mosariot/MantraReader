@@ -12,7 +12,7 @@ struct MonthStatisticsView: View {
     var data: [Reading]
     @State private var selectedDate: Date?
     @Binding var selectedMonth: Int
-    var currentMonth: Int { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
+    private var currentMonth: Int { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
     
     var body: some View {
         VStack {
@@ -82,7 +82,7 @@ struct MonthStatisticsView: View {
             .frame(height: 150)
             Picker("Select Month", selection: $selectedMonth) {
                 Text("Last 30 days").tag(0)
-                ForEach((1...currentMonth), id: \.self) {
+                ForEach((1...currentMonth).reversed(), id: \.self) {
                     Text("\(date(month: $0).formatted(.dateTime.month(.wide)))").tag($0)
                 }
             }

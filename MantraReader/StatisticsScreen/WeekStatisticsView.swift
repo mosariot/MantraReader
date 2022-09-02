@@ -12,6 +12,9 @@ struct WeekStatisticsView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     var data: [Reading]
     @State private var selectedDate: Date?
+    @Binding var selectedWeek: Int
+    private var currentWeek: Int { Calendar(identifier: .gregorian).dateComponents([.weekOfYear], from: Date()).weekOfYear! }
+    private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
     
     var body: some View {
         VStack {
@@ -87,6 +90,22 @@ struct WeekStatisticsView: View {
                 }
             }
             .frame(height: 150)
+            Picker("Select Week", selection: $selectedWeek) {
+                Text("Last 7 days").tag(0)
+                ForEach((0...currentWeek-1).reversed(), id: \.self) {
+                    Text("\(startOfWeek($0).formatted(.dateTime.day().month(.abbreviated))) - \(endOfWeek($0).formatted(.dateTime.day().month(.abbreviated)))").tag($0)
+                }
+            }
+            .padding(.top, 10)
         }
+    }
+    
+    private func startOfWeek(_ week: Int) -> Date {
+        let sunday = Calendar(identifier: .gregorian).date(from: DateComponents(year: currentYear, weekday: 1, weekOfYear: week)) ?? Date()
+        return Calendar(identifier: .gregorian).date(byAdding: .day, value: 1, to: sunday)!
+    }
+    
+    private func endOfWeek(_ week: Int) -> Date {
+        Calendar(identifier: .iso8601).date(byAdding: .day, value: 7, to: startOfWeek(week))!
     }
 }

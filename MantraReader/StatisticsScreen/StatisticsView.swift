@@ -10,6 +10,7 @@ import SwiftUI
 struct StatisticsView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel: StatisticsViewModel
+    @State private var selectedWeek: Int = 0
     @State private var selectedMonth: Int = 0
     @State private var selectedYear: Int = 0
     private var currentMonth: Int { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
@@ -33,7 +34,7 @@ struct StatisticsView: View {
         NavigationStack {
             List {
                 Section("Week") {
-                    WeekStatisticsView(data: viewModel.weekData)
+                    WeekStatisticsView(data: viewModel.weekData, selectedWeek: $selectedWeek)
                 }
                 Section(monthHeader) {
                     MonthStatisticsView(data: viewModel.monthData(selectedMonth), selectedMonth: $selectedMonth)

@@ -15,7 +15,7 @@ final class StatisticsViewModel: ObservableObject {
     private var currentMonth: Int { calendar.dateComponents([.month], from: Date()).month! }
     private var currentYear: Int { calendar.dateComponents([.year], from: Date()).year! }
     // To be replaced with mantra.statistics or mantras statistics
-    private var data: Data = ReadingsData.last540
+    private var data: Data = ReadingsData.last
     //
     private var readings: [Reading] {
         guard let result = try? JSONDecoder().decode([Reading].self, from: data) else { return [] }
@@ -38,7 +38,7 @@ final class StatisticsViewModel: ObservableObject {
         let filtered = readings.filter { (weekStart...weekEnd).contains($0.period) }
         for day in stride(from: weekStart, to: weekEnd, by: 60*60*24) {
             var dayReadings = 0
-            dayReadings += filtered.first(where: { $0.period == day })?.readings ?? 0
+            dayReadings += filtered.filter { $0.period == day }.map { $0.readings }.reduce(0, +)
             result.append(Reading(period: day, readings: dayReadings))
         }
         return result
@@ -51,7 +51,7 @@ final class StatisticsViewModel: ObservableObject {
         let filtered = readings.filter { (monthStart...monthEnd).contains($0.period) }
         for day in stride(from: monthStart, to: monthEnd, by: 60*60*24) {
             var dayReadings = 0
-            dayReadings += filtered.first(where: { $0.period == day })?.readings ?? 0
+            dayReadings += filtered.filter { $0.period == day }.map { $0.readings }.reduce(0, +)
             result.append(Reading(period: day, readings: dayReadings))
         }
         return result
@@ -80,7 +80,7 @@ final class StatisticsViewModel: ObservableObject {
 //        case 2022...currentYear: processingYear = year
 //        default: processingYear = currentYear
 //        }
-//        
+//
 //        var result = [Reading]()
 //        let yearStart = yearStart(year)
 //        let yearEnd = yearEnd(year)

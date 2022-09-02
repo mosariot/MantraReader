@@ -13,7 +13,7 @@ struct YearStatisticsView: View {
     var data: [Reading]
     @State private var selectedMonth: Date?
     @Binding var selectedYear: Int
-    var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
+    private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
     
     var body: some View {
         VStack {
@@ -91,7 +91,7 @@ struct YearStatisticsView: View {
             .frame(height: 150)
             Picker("Select Year", selection: $selectedYear) {
                 Text("Last 12 months").tag(0)
-                ForEach((2022...currentYear), id: \.self) {
+                ForEach((2022...currentYear).reversed(), id: \.self) {
                     Text("\(date(year: $0).formatted(.dateTime.year()))").tag($0)
                 }
             }

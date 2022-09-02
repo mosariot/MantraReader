@@ -281,11 +281,17 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 /* Year Total readings */
 "Year total: %lld" = "Всего за год: %lld";
 
+/* Week Picker 7 days option */
+"Last 7 days" = "последние 7 дней";
+
 /* Month Picker 30 days option */
 "Last 30 days" = "последние 30 дней";
 
 /* Year Picker 12 months option */
 "Last 12 months" = "последние 12 месяцев";
+
+/* Week Picker Title */
+"Select Week" = "Выберите неделю";
 
 /* Month Picker Title */
 "Select Month" = "Выберите месяц";

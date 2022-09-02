@@ -13,8 +13,8 @@ struct StatisticsView: View {
     @State private var selectedWeek: Int = 0
     @State private var selectedMonth: Int = 0
     @State private var selectedYear: Int = 0
-    private var currentMonth: Int { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
-    private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
+    private var currentMonth: Int { Calendar.current.dateComponents([.month], from: Date()).month! }
+    private var currentYear: Int { Calendar.current.dateComponents([.year], from: Date()).year! }
     private var monthHeader: String {
         switch selectedMonth {
         case 0: return String(localized: "Month")

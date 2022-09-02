@@ -13,8 +13,9 @@ struct WeekStatisticsView: View {
     var data: [Reading]
     @State private var selectedDate: Date?
     @Binding var selectedWeek: Int
-    private var currentWeek: Int { Calendar(identifier: .gregorian).dateComponents([.weekOfYear], from: Date()).weekOfYear! }
-    private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
+    private var calendar = Calendar.current
+    private var currentWeek: Int { calendar.dateComponents([.weekOfYear], from: Date()).weekOfYear! }
+    private var currentYear: Int { calendar.dateComponents([.year], from: Date()).year! }
     
     var body: some View {
         VStack {
@@ -40,7 +41,7 @@ struct WeekStatisticsView: View {
                 if let selectedDate,
                    let readings = data.first(where: { $0.period == selectedDate })?.readings {
                     RuleMark(
-                        x: .value("Date", Calendar(identifier: .gregorian).date(byAdding: .hour, value: 12, to: selectedDate) ?? Date()),
+                        x: .value("Date", calendar.date(byAdding: .hour, value: 12, to: selectedDate) ?? Date()),
                         yStart: .value("Start", readings),
                         yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
                     )
@@ -92,7 +93,7 @@ struct WeekStatisticsView: View {
             .frame(height: 150)
             Picker("Select Week", selection: $selectedWeek) {
                 Text("Last 7 days").tag(0)
-                ForEach((0...currentWeek-1).reversed(), id: \.self) {
+                ForEach((0...currentWeek).reversed(), id: \.self) {
                     Text("\(startOfWeek($0).formatted(.dateTime.day().month(.abbreviated))) - \(endOfWeek($0).formatted(.dateTime.day().month(.abbreviated)))").tag($0)
                 }
             }
@@ -101,11 +102,10 @@ struct WeekStatisticsView: View {
     }
     
     private func startOfWeek(_ week: Int) -> Date {
-        let sunday = Calendar(identifier: .gregorian).date(from: DateComponents(year: currentYear, weekday: 1, weekOfYear: week)) ?? Date()
-        return Calendar(identifier: .gregorian).date(byAdding: .day, value: 1, to: sunday)!
+        calendar.date(from: DateComponents(year: currentYear, weekDay: 2, weekOfYear: 1))
     }
     
     private func endOfWeek(_ week: Int) -> Date {
-        Calendar(identifier: .iso8601).date(byAdding: .day, value: 7, to: startOfWeek(week))!
+        calendar.date(byAdding: .day, value: 6, to: startOfWeek(week))!
     }
 }

@@ -11,8 +11,8 @@ func afterDelay(_ seconds: Double, run: @escaping () -> Void) {
     DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: run)
 }
 
-func date(year: Int? = nil, month: Int? = nil, day: Int? = nil) -> Date {
-    Calendar(identifier: .gregorian).date(from: DateComponents(year: year, month: month, day: day)) ?? Date()
+func date(year: Int? = nil, month: Int? = nil, day: Int? = nil, weekDay: Int? = nil, weekOfYear: Int? = nil) -> Date {
+    Calendar.current.date(from: DateComponents(year: year, month: month, day: day, weekDay: weekDay, weekOfYear: weekOfYear)) ?? Date()
 }
 
 let dataSaveFailedNotification = Notification.Name("DataSaveFailedNotification")

@@ -15,9 +15,13 @@ final class StatisticsViewModel: ObservableObject {
     private var currentWeek: Int { calendar.dateComponents([.weekOfYear], from: Date()).weekOfYear! }
     private var currentMonth: Int { calendar.dateComponents([.month], from: Date()).month! }
     private var currentYear: Int { calendar.dateComponents([.year], from: Date()).year! }
-    // To be replaced with mantra.statistics or mantras statistics
-    private var data: Data = ReadingsData.last
-    //
+    private var data: Data {
+        if let mantra {
+            ReadingsData.last
+        } else {
+            ReadingsData.last
+        }
+    }
     private var readings: [Reading] {
         guard let result = try? JSONDecoder().decode([Reading].self, from: data) else { return [] }
         return result

@@ -17,9 +17,13 @@ final class StatisticsViewModel: ObservableObject {
     private var currentYear: Int { calendar.dateComponents([.year], from: Date()).year! }
     private var data: Data {
         if let mantra {
-            ReadingsData.last
+//            return mantra.decodeStatistics()
+            return ReadingsData.last
         } else {
-            ReadingsData.last
+//            var readings: [Reading]()
+//            dataManager.currentMantras.forEach { readings.append($0.decodeStatistics) }
+//            return readings
+            return ReadingsData.last
         }
     }
     private var readings: [Reading] {

@@ -78,6 +78,7 @@ final class StatisticsViewModel: ObservableObject {
         switch month {
         case 0: return calendar.date(byAdding: .day, value: -30, to: Date().startOfDay)!
         case 1...currentMonth: return date(year: currentYear, month: month)
+        case currentMonth-1...12: return date(year: currentYear-1, month: month)
         default: return Date()
         }
     }

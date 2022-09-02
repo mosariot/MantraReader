@@ -12,7 +12,7 @@ struct MonthStatisticsView: View {
     var data: [Reading]
     @State private var selectedDate: Date?
     @Binding var selectedMonth: Int
-    private var currentMonth: Int { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
+    private var currentMonth: Int { Calendar.current.dateComponents([.month], from: Date()).month! }
     
     var body: some View {
         VStack {
@@ -37,7 +37,7 @@ struct MonthStatisticsView: View {
                 if let selectedDate,
                    let readings = data.first(where: { $0.period == selectedDate })?.readings {
                     RuleMark(
-                        x: .value("Date", Calendar(identifier: .gregorian).date(byAdding: .hour, value: 12, to: selectedDate)!),
+                        x: .value("Date", Calendar.current.date(byAdding: .hour, value: 12, to: selectedDate)!),
                         yStart: .value("Start", readings),
                         yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
                     )

@@ -19,7 +19,7 @@ struct StatisticsView: View {
         switch selectedWeek {
         case 0: return String(localized: "Week")
         case 1...currentWeek:
-            let startOfWeek = date(year: currentYear, weekDay: 2, weekOfYear: week)
+            let startOfWeek = date(year: currentYear, weekDay: 2, weekOfYear: selectedWeek)
             let endOfWeek = calendar.date(byAdding: .day, value: 6, to: startOfWeek)!
             return "\(startOfWeek.formatted(.dateTime.day().month(.abbreviated))) - \(endOfWeek.formatted(.dateTime.day().month(.abbreviated)))"
         default: return String(localized: "Week")

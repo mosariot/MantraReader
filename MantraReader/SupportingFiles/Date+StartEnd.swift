@@ -13,7 +13,7 @@ extension Date {
     }
 
     var startOfMonth: Date {
-        let components = Calendar(identifier: .gregorian).dateComponents([.year, .month], from: self)
+        let components = Calendar.current.dateComponents([.year, .month], from: self)
         return Calendar(identifier: .gregorian).date(from: components)!
     }
 
@@ -28,23 +28,18 @@ extension Date {
         var components = DateComponents()
         components.month = 1
         components.nanosecond = -1
-        return Calendar(identifier: .gregorian).date(byAdding: components, to: startOfMonth)!
+        return Calendar.current.date(byAdding: components, to: startOfMonth)!
     }
     
     var startOfYear: Date {
         let components = Calendar(identifier: .gregorian).dateComponents([.year], from: self)
-        return Calendar(identifier: .gregorian).date(from: components)!
+        return Calendar.current.date(from: components)!
     }
     
     var endOfYear: Date {
         var components = DateComponents()
         components.year = 1
         components.nanosecond = -1
-        return Calendar(identifier: .gregorian).date(byAdding: components, to: startOfYear)!
-    }
-
-    func isMonday() -> Bool {
-        let components = Calendar(identifier: .gregorian).dateComponents([.weekday], from: self)
-        return components.weekday == 2
+        return Calendar.current.date(byAdding: components, to: startOfYear)!
     }
 }

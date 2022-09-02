@@ -85,7 +85,7 @@ struct MonthStatisticsView: View {
                 ForEach((1...currentMonth).reversed(), id: \.self) {
                     Text("\(date(month: $0).formatted(.dateTime.month(.wide)))").tag($0)
                 }
-                ForEach((currentMonth-1...12).reversed(), id: \.self) {
+                ForEach(((currentMonth-1)...12).reversed(), id: \.self) {
                     Text("\(date(month: $0).formatted(.dateTime.month(.wide).year()))").tag($0)
                 }
             }

@@ -102,7 +102,7 @@ struct WeekStatisticsView: View {
     }
     
     private func startOfWeek(_ week: Int) -> Date {
-        calendar.date(from: DateComponents(year: currentYear, weekDay: 2, weekOfYear: 1))
+        date(year: currentYear, weekDay: 2, weekOfYear: week)
     }
     
     private func endOfWeek(_ week: Int) -> Date {

@@ -34,7 +34,7 @@ struct StatisticsView: View {
         NavigationStack {
             List {
                 Section("Week") {
-                    WeekStatisticsView(data: viewModel.weekData, selectedWeek: $selectedWeek)
+                    WeekStatisticsView(data: viewModel.weekData(selectedWeek), selectedWeek: $selectedWeek)
                 }
                 Section(monthHeader) {
                     MonthStatisticsView(data: viewModel.monthData(selectedMonth), selectedMonth: $selectedMonth)

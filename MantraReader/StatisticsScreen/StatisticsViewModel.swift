@@ -11,7 +11,8 @@ import SwiftUI
 final class StatisticsViewModel: ObservableObject {
     private var mantra: Mantra?
     private var dataManager: DataManager
-    private var calendar = Calendar(identifier: .gregorian)
+    private var calendar = Calendar.current
+    private var currentWeek: Int { calendar.dateComponents([.weekOfYear], from: Date()).weekOfYear! }
     private var currentMonth: Int { calendar.dateComponents([.month], from: Date()).month! }
     private var currentYear: Int { calendar.dateComponents([.year], from: Date()).year! }
     // To be replaced with mantra.statistics or mantras statistics
@@ -31,10 +32,10 @@ final class StatisticsViewModel: ObservableObject {
         mantra?.title ?? String(localized: "Overall Statistics")
     }
     
-    var weekData: [Reading] {
+    func weekData(_ week: Int) -> [Reading] {
         var result = [Reading]()
-        let weekEnd = calendar.date(byAdding: .day, value: 1, to: Date())!.startOfDay
-        let weekStart = calendar.date(byAdding: .day, value: -7, to: weekEnd)!
+        let weekStart = weekStart(week)
+        let weekEnd = weekEnd(week)
         let filtered = readings.filter { (weekStart...weekEnd).contains($0.period) }
         for day in stride(from: weekStart, to: weekEnd, by: 60*60*24) {
             var dayReadings = 0
@@ -42,6 +43,22 @@ final class StatisticsViewModel: ObservableObject {
             result.append(Reading(period: day, readings: dayReadings))
         }
         return result
+    }
+    
+    func weekStart(_ week: Int) -> Date {
+        switch week {
+        case 0: return calendar.date(byAdding: .day, value: -7, to: weekEnd(week))!
+        case 1...currentWeek: date(year: currentYear, weekDay: 2, weekOfYear: week)
+        default: return Date()
+        } 
+    }
+        
+    func weekEnd(_ week: Int) -> Date {
+        switch week {
+        case 0: calendar.date(byAdding: .day, value: 1, to: Date())!.startOfDay
+        case 1...currentWeek: calendar.date(byAdding: .day, value: 6, to: startOfWeek(week))!
+        default: return Date()
+        }
     }
     
     func monthData(_ month: Int) -> [Reading] {

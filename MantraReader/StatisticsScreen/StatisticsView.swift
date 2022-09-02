@@ -19,9 +19,9 @@ struct StatisticsView: View {
         switch selectedWeek {
         case 0: return String(localized: "Week")
         case 1...currentWeek:
-            let startOfWeek = date(year: currentYear, weekDay: 2, weekOfYear: selectedWeek)
-            let endOfWeek = calendar.date(byAdding: .day, value: 6, to: startOfWeek)!
-            return "\(startOfWeek.formatted(.dateTime.day().month(.abbreviated))) - \(endOfWeek.formatted(.dateTime.day().month(.abbreviated)))"
+            let weekStart = date(year: currentYear, weekDay: 2, weekOfYear: selectedWeek)
+            let weekEnd = calendar.date(byAdding: .day, value: 6, to: weekStart)!
+            return "\(weekStart.formatted(.dateTime.day().month(.abbreviated))) - \(weekEnd.formatted(.dateTime.day().month(.abbreviated)))"
         default: return String(localized: "Week")
         }
     }
@@ -29,7 +29,7 @@ struct StatisticsView: View {
         switch selectedMonth {
         case 0: return String(localized: "Month")
         case 1...currentMonth: return date(year: currentYear, month: selectedMonth).formatted(.dateTime.month(.wide))
-        case (currentMonth-1)...12: return date(year: currentYear-1, month: selectedMonth).formatted(.dateTime.month(.wide).year())
+        case (currentMonth+1)...12: return date(year: currentYear-1, month: selectedMonth).formatted(.dateTime.month(.wide).year())
         default: return String(localized: "Month")
         }
     }

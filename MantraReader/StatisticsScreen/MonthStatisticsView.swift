@@ -56,11 +56,12 @@ struct MonthStatisticsView: View {
                         .padding(.vertical, 4)
                         .background {
                             RoundedRectangle(cornerRadius: 6, style: .continuous)
-                                .fill(.white.shadow(.drop(color: .black.opacity(0.1), radius: 2, x: 2, y: 2)))
+                                .fill(.white.shadow(.drop(color: .black.opacity(0.04), radius: 2, x: 2, y: 2)))
                         }
                     }
                 }
             }
+            .animation(.easeInOut, value: selectedMonth)
             .padding(.top, 10)
             .chartOverlay { proxy in
                 GeometryReader { geo in

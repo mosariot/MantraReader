@@ -109,22 +109,22 @@ final class StatisticsViewModel: ObservableObject {
         switch year {
         case 0:
             for month in (currentMonth+1)...12 {
-                let monthStart = date(year: currentYear-1, month: month)
-                let monthEnd = date(year: currentYear-1, month: month).endOfMonth
+                let monthStart = monthStart(month)
+                let monthEnd = monthEnd(month)
                 let monthReadings = filtered.filter { (monthStart...monthEnd).contains($0.period) }.map { $0.readings }.reduce(0, +)
                 result.append(Reading(period: date(year: currentYear-1, month: month), readings: monthReadings))
             }
             for month in 1...currentMonth {
-                let monthStart = date(year: currentYear, month: month)
-                let monthEnd = date(year: currentYear, month: month).endOfMonth
+                let monthStart = monthStart(month)
+                let monthEnd = monthEnd(month)
                 let monthReadings = filtered.filter { (monthStart...monthEnd).contains($0.period) }.map { $0.readings }.reduce(0, +)
                 result.append(Reading(period: date(year: currentYear, month: month), readings: monthReadings))
             }
             return result
         case 2022...year:
             for month in 1...12 {
-                let monthStart = date(year: year, month: month)
-                let monthEnd = date(year: year, month: month).endOfMonth
+                let monthStart = monthStart(month)
+                let monthEnd = monthEnd(month)
                 let monthReadings = filtered.filter { (monthStart...monthEnd).contains($0.period) }.map { $0.readings }.reduce(0, +)
                 result.append(Reading(period: date(year: year, month: month), readings: monthReadings))
             }

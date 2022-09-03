@@ -10,6 +10,7 @@ import Charts
 
 struct YearStatisticsView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
     var data: [Reading]
     @State private var selectedMonth: Date?
     @Binding var selectedYear: Int
@@ -33,7 +34,7 @@ struct YearStatisticsView: View {
                 BarMark(
                     x: .value("Date", $0.period, unit: .month),
                     y: .value("Readings", $0.readings),
-                    width: horizontalSizeClass == .regular ? 32 : 16
+                    width: horizontalSizeClass == .regular || verticalSizeClass == .compact ? 32 : 16
                 )
                 .foregroundStyle(.red.gradient)
                 if let selectedMonth,
@@ -57,17 +58,18 @@ struct YearStatisticsView: View {
                         .padding(.vertical, 4)
                         .background {
                             RoundedRectangle(cornerRadius: 6, style: .continuous)
-                                .fill(.white.shadow(.drop(color: .black.opacity(0.1), radius: 2, x: 2, y: 2)))
+                                .fill(.white.shadow(.drop(color: .black.opacity(0.08), radius: 2, x: 2, y: 2)))
                         }
                     }
                 }
             }
+            .animation(.easeInOut, value: selectedYear)
             .padding(.top, 10)
             .chartXAxis {
                 AxisMarks(values: .stride(by: .month)) { _ in
                     AxisGridLine()
                     AxisTick()
-                    AxisValueLabel(format: .dateTime.month(horizontalSizeClass == .regular ? .abbreviated : .narrow), centered: true)
+                    AxisValueLabel(format: .dateTime.month(horizontalSizeClass == .regular || verticalSizeClass == .compact ? .abbreviated : .narrow), centered: true)
                 }
             }
             .chartOverlay { proxy in

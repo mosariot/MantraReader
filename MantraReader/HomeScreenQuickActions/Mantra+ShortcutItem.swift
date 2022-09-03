@@ -9,7 +9,8 @@ import UIKit
 
 extension Mantra {
     func insertShortcutItem() {
-        guard let shortcutItem else { return }
+        guard let shortcutItem, let shortcutItems = UIApplication.shared.shortcutItems,
+              !shortcutItems.map(\.localizedSubtitle).contains(title ?? "") else { return }
         UIApplication.shared.shortcutItems?.insert(shortcutItem, at: 0)
     }
     

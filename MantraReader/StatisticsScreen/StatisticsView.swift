@@ -46,13 +46,13 @@ struct StatisticsView: View {
         NavigationStack {
             List {
                 Section(weekHeader) {
-                    WeekStatisticsView(data: viewModel.weekData(selectedWeek), selectedWeek: $selectedWeek)
+                    WeekStatisticsView(data: viewModel.weekData, selectedWeek: $selectedWeek)
                 }
                 Section(monthHeader) {
-                    MonthStatisticsView(data: viewModel.monthData(selectedMonth), selectedMonth: $selectedMonth)
+                    MonthStatisticsView(data: viewModel.monthData, selectedMonth: $selectedMonth)
                 }
                 Section(yearHeader) {
-                    YearStatisticsView(data: viewModel.yearData(selectedYear), selectedYear: $selectedYear)
+                    YearStatisticsView(data: viewModel.yearData, selectedYear: $selectedYear)
                 }
             }
             .navigationTitle(viewModel.navigationTitle)
@@ -67,6 +67,20 @@ struct StatisticsView: View {
                             .foregroundColor(.gray.opacity(0.8))
                     }
                 }
+            }
+            .onAppear {
+                Task { await viewModel.getWeekData(week: selectedWeek) }
+                Task { await viewModel.getMonthData(month: selectedMonth) }
+                Task { await viewModel.getYearData(year: selectedYear) }
+            }
+            .onChange(of: selectedWeek) { newValue in
+                Task { await viewModel.getWeekData(week: newValue) }
+            }
+            .onChange(of: selectedMonth) { newValue in
+                Task { await viewModel.getMonthData(month: newValue) }
+            }
+            .onChange(of: selectedYear) { newValue in
+                Task { await viewModel.getYearData(year: newValue) }
             }
         }
     }

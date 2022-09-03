@@ -9,79 +9,94 @@ import SwiftUI
 import Charts
 
 struct MonthStatisticsView: View {
-    var data: [Reading]
+    var data: [Reading]?
     @State private var selectedDate: Date?
     @Binding var selectedMonth: Int
     private var currentMonth: Int { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
     private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
+    private var monthTotal: String {
+        guard let data else { return "-" }
+        return "\(data.map { $0.readings }.reduce(0, +))"
+    }
+    private var dailyAverage: String {
+        guard let data else { return "-" }
+        return "\(data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0)"
+    }
     
     var body: some View {
         VStack {
             HStack {
-                Text("Month Total: \(data.map { $0.readings }.reduce(0, +))")
+                Text("Month Total: \(monthTotal)")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
                 Spacer()
             }
             HStack {
-                Text("Daily average: \(data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0)")
+                Text("Daily average: \(dailyAverage)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 Spacer()
             }
-            Chart(data, id: \.period) {
-                BarMark(
-                    x: .value("Date", $0.period, unit: .day),
-                    y: .value("Readings", $0.readings)
-                )
-                .foregroundStyle(.green.gradient)
-                if let selectedDate,
-                   let readings = data.first(where: { $0.period == selectedDate })?.readings {
-                    RuleMark(
-                        x: .value("Date", Calendar(identifier: .gregorian).date(byAdding: .hour, value: 12, to: selectedDate)!),
-                        yStart: .value("Start", readings),
-                        yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
-                    )
-                    .foregroundStyle(.gray)
-                    .annotation(position: .top) {
-                        VStack {
-                            Text("\(selectedDate.formatted(date: .abbreviated, time: .omitted))")
-                                .font(.caption)
-                                .foregroundColor(.gray)
-                            Text("\(readings)")
-                                .font(.title2.bold())
-                                .foregroundColor(.black)
-                        }
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 4)
-                        .background {
-                            RoundedRectangle(cornerRadius: 6, style: .continuous)
-                                .fill(.white.shadow(.drop(color: .black.opacity(0.04), radius: 2, x: 2, y: 2)))
+            if let data {
+                Chart {
+                    ForEach(data, id: \.period) {
+                        BarMark(
+                            x: .value("Date", $0.period, unit: .day),
+                            y: .value("Readings", $0.readings)
+                        )
+                        .foregroundStyle(.green.gradient)
+                    }
+                    if let selectedDate,
+                       let readings = data.first(where: { $0.period == selectedDate })?.readings {
+                        RuleMark(
+                            x: .value("Date", Calendar(identifier: .gregorian).date(byAdding: .hour, value: 12, to: selectedDate)!),
+                            yStart: .value("Start", readings),
+                            yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
+                        )
+                        .foregroundStyle(.gray)
+                        .annotation(position: .top) {
+                            VStack {
+                                Text("\(selectedDate.formatted(date: .abbreviated, time: .omitted))")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                                Text("\(readings)")
+                                    .font(.title2.bold())
+                                    .foregroundColor(.black)
+                            }
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 4)
+                            .background {
+                                RoundedRectangle(cornerRadius: 6, style: .continuous)
+                                    .fill(.white.shadow(.drop(color: .black.opacity(0.5), radius: 2, x: 2, y: 2)))
+                            }
                         }
                     }
                 }
-            }
-            .animation(.easeInOut, value: selectedMonth)
-            .padding(.top, 10)
-            .chartOverlay { proxy in
-                GeometryReader { geo in
-                    Rectangle().fill(.clear).contentShape(Rectangle())
-                        .onTapGesture{}
-                        .gesture(
-                            DragGesture(minimumDistance: 0)
-                                .onChanged { value in
-                                    let x = value.location.x - geo[proxy.plotAreaFrame].origin.x
-                                    if let gestureDate: Date = proxy.value(atX: x) {
-                                        selectedDate = gestureDate.startOfDay
+                .animation(.easeInOut, value: data)
+                .padding(.top, 10)
+                .chartOverlay { proxy in
+                    GeometryReader { geo in
+                        Rectangle().fill(.clear).contentShape(Rectangle())
+                            .onTapGesture {}
+                            .gesture(
+                                DragGesture(minimumDistance: 0)
+                                    .onChanged { value in
+                                        let x = value.location.x - geo[proxy.plotAreaFrame].origin.x
+                                        if let gestureDate: Date = proxy.value(atX: x) {
+                                            selectedDate = gestureDate.startOfDay
+                                        }
                                     }
-                                }
-                                .onEnded { value in
-                                    selectedDate = nil
-                                }
-                        )
+                                    .onEnded { value in
+                                        selectedDate = nil
+                                    }
+                            )
+                    }
                 }
+                .frame(height: 150)
+            } else {
+                ProgressView()
+                    .frame(height: 150)
             }
-            .frame(height: 150)
             Picker("Select Month", selection: $selectedMonth) {
                 Text("Last 30 Days").tag(0)
                 ForEach((1...currentMonth).reversed(), id: \.self) {

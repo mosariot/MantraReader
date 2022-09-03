@@ -71,6 +71,7 @@
 		9F794EDE289C35E900DDF940 /* LaunchPreparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794EDD289C35E900DDF940 /* LaunchPreparer.swift */; };
 		9F794EE0289C360F00DDF940 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794EDF289C360F00DDF940 /* NetworkMonitor.swift */; };
 		9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B1AE3286AB09A007720A0 /* MantraRow.swift */; };
+		9F857B4D28C38EC100A83216 /* Mantra+Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F857B4C28C38EC100A83216 /* Mantra+Statistics.swift */; };
 		9F8E180828AFE545000BC905 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983A28AAC65B00798AD7 /* Localizable.strings */; };
 		9FA0553228AC00D3006E5798 /* MantraWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553028AC0084006E5798 /* MantraWidgets.swift */; };
 		9FA0553B28AC018E006E5798 /* StaticWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553928AC015F006E5798 /* StaticWidgetEntryView.swift */; };
@@ -207,6 +208,7 @@
 		9F794EDF289C360F00DDF940 /* NetworkMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		9F794EE2289E777600DDF940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9F7B1AE3286AB09A007720A0 /* MantraRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraRow.swift; sourceTree = "<group>"; };
+		9F857B4C28C38EC100A83216 /* Mantra+Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mantra+Statistics.swift"; sourceTree = "<group>"; };
 		9FA0553028AC0084006E5798 /* MantraWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraWidgets.swift; sourceTree = "<group>"; };
 		9FA0553528AC013E006E5798 /* StaticWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticWidgetEntry.swift; sourceTree = "<group>"; };
 		9FA0553728AC014C006E5798 /* StaticProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticProvider.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				9F6C7D6428BC76C7004CC501 /* MonthStatisticsView.swift */,
 				9F6C7D6628BD300E004CC501 /* YearStatisticsView.swift */,
 				9FABFF5228BD4009001A1D7F /* ReadingsModel.swift */,
+				9F857B4C28C38EC100A83216 /* Mantra+Statistics.swift */,
 			);
 			path = StatisticsScreen;
 			sourceTree = "<group>";
@@ -453,6 +456,15 @@
 			path = LaunchPreparing;
 			sourceTree = "<group>";
 		};
+		9F857B4B28C38E8800A83216 /* DataAndPersistence */ = {
+			isa = PBXGroup;
+			children = (
+				9FB7AE6828B557F70044C55E /* DataManager.swift */,
+				9FBEE999285F682C0070BA06 /* PersistenceController.swift */,
+			);
+			path = DataAndPersistence;
+			sourceTree = "<group>";
+		};
 		9FA0553328AC0113006E5798 /* StaticWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,8 +528,7 @@
 				9F6E65C028B39E750054F6D6 /* ReadTheMantra.xcdatamodeld */,
 				9FBEE99E285F682C0070BA06 /* ContentView.swift */,
 				9F794EDB289B84AF00DDF940 /* OnboardingView.swift */,
-				9FB7AE6828B557F70044C55E /* DataManager.swift */,
-				9FBEE999285F682C0070BA06 /* PersistenceController.swift */,
+				9F857B4B28C38E8800A83216 /* DataAndPersistence */,
 				9FB7AE6A28B558040044C55E /* HomeScreenQuickActions */,
 				9F794EE1289D57D000DDF940 /* LaunchPreparing */,
 				9F794EDA289B051900DDF940 /* MantraListScreen */,
@@ -770,6 +781,7 @@
 				9F6E65BB28B275CF0054F6D6 /* HomeScreenAction.swift in Sources */,
 				9FA8E88D2898DB7B00479F08 /* PreloadedMantra.swift in Sources */,
 				9FB7AE6728B556150044C55E /* GlobalAlertViewController.swift in Sources */,
+				9F857B4D28C38EC100A83216 /* Mantra+Statistics.swift in Sources */,
 				9FDC8DB028623D5F00BF7051 /* OrientationInfo.swift in Sources */,
 				9FDF349B2885B2E000B3007E /* CircularProgressViewModel.swift in Sources */,
 				9F794EE0289C360F00DDF940 /* NetworkMonitor.swift in Sources */,

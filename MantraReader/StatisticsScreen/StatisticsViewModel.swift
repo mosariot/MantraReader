@@ -15,20 +15,19 @@ final class StatisticsViewModel: ObservableObject {
     private var currentWeek: Int { calendar.dateComponents([.weekOfYear], from: Date()).weekOfYear! }
     private var currentMonth: Int { calendar.dateComponents([.month], from: Date()).month! }
     private var currentYear: Int { calendar.dateComponents([.year], from: Date()).year! }
-    private var data: Data {
-        if mantra != nil {
-//            return mantra.decodeStatistics()
-            return ReadingsData.last
-        } else {
-//            var readings: [Reading]()
-//            dataManager.currentMantras.forEach { readings.append($0.decodeStatistics) }
-//            return readings
-            return ReadingsData.last
-        }
-    }
+    
+    @Published var weekData: [Reading]?
+    @Published var monthData: [Reading]?
+    @Published var yearData: [Reading]?
+    
     private var readings: [Reading] {
-        guard let result = try? JSONDecoder().decode([Reading].self, from: data) else { return [] }
-        return result
+        if let mantra {
+            return mantra.decodeStatistics()
+        } else {
+            var readings = [Reading]()
+            dataManager.currentMantras.forEach { readings += $0.decodeStatistics() }
+            return readings
+        }
     }
     
     init(mantra: Mantra? = nil, dataManager: DataManager) {
@@ -57,7 +56,7 @@ final class StatisticsViewModel: ObservableObject {
         switch week {
         case 0: return calendar.date(byAdding: .day, value: -7, to: weekEnd(week))!
         case 1...currentWeek: return date(year: currentYear, weekDay: 2, weekOfYear: week)
-        default: fatalError()
+        default: return calendar.date(byAdding: .day, value: -7, to: weekEnd(week))!
         } 
     }
         
@@ -65,7 +64,7 @@ final class StatisticsViewModel: ObservableObject {
         switch week {
         case 0: return calendar.date(byAdding: .day, value: 1, to: Date())!.startOfDay
         case 1...currentWeek: return calendar.date(byAdding: .day, value: 7, to: weekStart(week))!
-        default: fatalError()
+        default: return calendar.date(byAdding: .day, value: 1, to: Date())!.startOfDay
         }
     }
     
@@ -87,7 +86,7 @@ final class StatisticsViewModel: ObservableObject {
         case 0: return calendar.date(byAdding: .day, value: -30, to: Date().startOfDay)!
         case 1...currentMonth: return date(year: currentYear, month: month)
         case (currentMonth+1)...12: return date(year: currentYear-1, month: month)
-        default: fatalError()
+        default: return calendar.date(byAdding: .day, value: -30, to: Date().startOfDay)!
         }
     }
     
@@ -96,7 +95,7 @@ final class StatisticsViewModel: ObservableObject {
         case 0: return Date().startOfDay
         case 1...currentMonth: return date(year: currentYear, month: month).endOfMonth.startOfDay
         case (currentMonth+1)...12: return date(year: currentYear-1, month: month).endOfMonth.startOfDay
-        default: fatalError()
+        default: return Date().startOfDay
         }
     }
     
@@ -138,7 +137,7 @@ final class StatisticsViewModel: ObservableObject {
         switch year {
         case 0: return date(year: currentYear-1, month: currentMonth+1)
         case 2022...currentYear: return date(year: year)
-        default: fatalError()
+        default: return date(year: currentYear-1, month: currentMonth+1)
         }
     }
     
@@ -146,7 +145,22 @@ final class StatisticsViewModel: ObservableObject {
         switch year {
         case 0: return date(year: currentYear, month: currentMonth).endOfMonth.startOfDay
         case 2022...currentYear: return date(year: year).endOfYear.startOfDay
-        default: fatalError()
+        default: return date(year: currentYear, month: currentMonth).endOfMonth.startOfDay
         }
+    }
+    
+    func getWeekData(week: Int) async -> Void {
+        async let asyncWeekData = weekData(week)
+        await weekData = asyncWeekData
+    }
+    
+    func getMonthData(month: Int) async -> Void {
+        async let asyncMonthData = monthData(month)
+        await monthData = asyncMonthData
+    }
+    
+    func getYearData(year: Int) async -> Void {
+        async let asyncYearData = yearData(year)
+        await yearData = asyncYearData
     }
 }

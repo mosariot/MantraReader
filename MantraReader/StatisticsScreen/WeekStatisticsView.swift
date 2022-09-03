@@ -15,25 +15,31 @@ struct WeekStatisticsView: View {
     @Binding var selectedWeek: Int
     private var currentWeek: Int { Calendar(identifier: .gregorian).dateComponents([.weekOfYear], from: Date()).weekOfYear! }
     private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
-    private var weekTotal: String {
-        guard let data else { return "-" }
-        return "\(data.map { $0.readings }.reduce(0, +))"
+    private var weekTotal: Int {
+        guard let data else { return 0 }
+        return data.map { $0.readings }.reduce(0, +)
     }
-    private var dailyAverage: String {
-        guard let data else { return "-" }
-        return "\(data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0)"
+    private var dailyAverage: Int {
+        guard let data else { return 0 }
+        return data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0
     }
     
     var body: some View {
         VStack {
             HStack {
-                Text("Week Total: \(weekTotal)")
+                Text("Week Total: ")
+                    .font(.title3.bold())
+                    .foregroundColor(.primary)
+                Text(data == nil ? "-" : "\(weekTotal)")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
                 Spacer()
             }
             HStack {
-                Text("Daily average: \(dailyAverage)")
+                Text("Daily average: ")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                Text(data == nil ? "-" : "\(dailyAverage)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 Spacer()

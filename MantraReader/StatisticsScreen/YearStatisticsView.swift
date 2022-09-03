@@ -15,25 +15,31 @@ struct YearStatisticsView: View {
     @State private var selectedMonth: Date?
     @Binding var selectedYear: Int
     private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
-    private var yearTotal: String {
-        guard let data else { return "-" }
-        return "\(data.map { $0.readings }.reduce(0, +))"
+    private var yearTotal: Int {
+        guard let data else { return 0 }
+        return data.map { $0.readings }.reduce(0, +)
     }
-    private var monthlyAverage: String {
-        guard let data else { return "-" }
-        return "\(data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0)"
+    private var monthlyAverage: Int {
+        guard let data else { return 0 }
+        return data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0
     }
     
     var body: some View {
         VStack {
             HStack {
-                Text("Year Total: \(yearTotal)")
+                Text("Year Total: ")
+                    .font(.title3.bold())
+                    .foregroundColor(.primary)
+                Text(data == nil ? "-" : "\(yearTotal)")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
                 Spacer()
             }
             HStack {
-                Text("Monthly average: \(monthlyAverage)")
+                Text("Monthly average: ")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                Text(data == nil ? "-" : "\(monthlyAverage)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 Spacer()

@@ -525,9 +525,9 @@
 			children = (
 				9FBEE9A2285F682D0070BA06 /* MantraReader.entitlements */,
 				9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */,
-				9F6E65C028B39E750054F6D6 /* ReadTheMantra.xcdatamodeld */,
 				9FBEE99E285F682C0070BA06 /* ContentView.swift */,
 				9F794EDB289B84AF00DDF940 /* OnboardingView.swift */,
+				9F6E65C028B39E750054F6D6 /* ReadTheMantra.xcdatamodeld */,
 				9F857B4B28C38E8800A83216 /* DataAndPersistence */,
 				9FB7AE6A28B558040044C55E /* HomeScreenQuickActions */,
 				9F794EE1289D57D000DDF940 /* LaunchPreparing */,

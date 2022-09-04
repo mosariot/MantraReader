@@ -33,6 +33,7 @@ struct YearStatisticsView: View {
                 Text(data == nil ? "-" : "\(yearTotal)")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
+                    .padding(.leading, -3)
                 Spacer()
             }
             HStack {
@@ -42,6 +43,7 @@ struct YearStatisticsView: View {
                 Text(data == nil ? "-" : "\(monthlyAverage)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
+                    .padding(.leading, -3)
                 Spacer()
             }
             if let data {

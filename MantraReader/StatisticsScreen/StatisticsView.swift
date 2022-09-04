@@ -69,9 +69,7 @@ struct StatisticsView: View {
                 }
             }
             .onAppear {
-                Task { await viewModel.getWeekData(week: selectedWeek) }
-                Task { await viewModel.getMonthData(month: selectedMonth) }
-                Task { await viewModel.getYearData(year: selectedYear) }
+                Task { await viewModel.getData(week: selectedWeek, month: selectedMonth, year: selectedYear) }
             }
             .onChange(of: selectedWeek) { newValue in
                 Task { await viewModel.getWeekData(week: newValue) }

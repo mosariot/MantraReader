@@ -52,7 +52,7 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "Search" = "Поиск";
 
 /* Adding Menu Title */
-"Add new" = "Добавить новое";
+"Add New" = "Добавить новое";
 
 /* Add New Mantra Menu Item */
 "New Mantra" = "Новая мантра";
@@ -103,7 +103,7 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "No matches found" = "Совпадений не найдено";
 
 /* Open Mantra ShortcutItem Title */
-"Open Mantra" = "Открыть мантру";
+"Recent Mantra" = "Недавняя мантра";
 
 //MARK: - READS COUNT VIEW
 
@@ -273,13 +273,13 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "Year" = "Год";
 
 /* Week Total readings */
-"Week Total: " = "Всего за неделю: ";
+"Week total: " = "Всего за неделю: ";
 
 /* Month Total readings */
-"Month Total: " = "Всего за месяц: ";
+"Month total: " = "Всего за месяц: ";
 
 /* Year Total readings */
-"Year Total: " = "Всего за год: ";
+"Year total: " = "Всего за год: ";
 
 /* Week Picker 7 days option */
 "Last 7 Days" = "последние 7 дней";

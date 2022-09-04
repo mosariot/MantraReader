@@ -20,7 +20,8 @@ final class StatisticsViewModel: ObservableObject {
     @Published var monthData: [Reading]?
     @Published var yearData: [Reading]?
     
-    private var readings: [Reading] {
+    private var readings = [Reading]()
+    private var data: [Reading] {
         if let mantra {
             return mantra.decodeStatistics()
         } else {
@@ -30,16 +31,40 @@ final class StatisticsViewModel: ObservableObject {
         }
     }
     
+    var navigationTitle: String {
+        mantra?.title ?? String(localized: "Overall Statistics")
+    }
+    
     init(mantra: Mantra? = nil, dataManager: DataManager) {
         self.mantra = mantra
         self.dataManager = dataManager
     }
     
-    var navigationTitle: String {
-        mantra?.title ?? String(localized: "Overall Statistics")
+    func getData(week: Int, month: Int, year: Int) async -> Void {
+        async let dataAsync = data
+        await readings = dataAsync
+        async let asyncWeekData = weekData(week)
+        async let asyncMonthData = monthData(month)
+        async let asyncYearData = yearData(year)
+        await (weekData, monthData, yearData) = (asyncWeekData, asyncMonthData, asyncYearData)
     }
     
-    func weekData(_ week: Int) -> [Reading] {
+    func getWeekData(week: Int) async -> Void {
+        async let asyncWeekData = weekData(week)
+        await weekData = asyncWeekData
+    }
+    
+    func getMonthData(month: Int) async -> Void {
+        async let asyncMonthData = monthData(month)
+        await monthData = asyncMonthData
+    }
+    
+    func getYearData(year: Int) async -> Void {
+        async let asyncYearData = yearData(year)
+        await yearData = asyncYearData
+    }
+    
+    private func weekData(_ week: Int) -> [Reading] {
         var result = [Reading]()
         let weekStart = weekStart(week)
         let weekEnd = weekEnd(week)
@@ -52,7 +77,7 @@ final class StatisticsViewModel: ObservableObject {
         return result
     }
     
-    func weekStart(_ week: Int) -> Date {
+    private func weekStart(_ week: Int) -> Date {
         switch week {
         case 0: return calendar.date(byAdding: .day, value: -7, to: weekEnd(week))!
         case 1...currentWeek: return date(year: currentYear, weekDay: 2, weekOfYear: week)
@@ -60,7 +85,7 @@ final class StatisticsViewModel: ObservableObject {
         } 
     }
         
-    func weekEnd(_ week: Int) -> Date {
+    private func weekEnd(_ week: Int) -> Date {
         switch week {
         case 0: return calendar.date(byAdding: .day, value: 1, to: Date())!.startOfDay
         case 1...currentWeek: return calendar.date(byAdding: .day, value: 7, to: weekStart(week))!
@@ -68,7 +93,7 @@ final class StatisticsViewModel: ObservableObject {
         }
     }
     
-    func monthData(_ month: Int) -> [Reading] {
+    private func monthData(_ month: Int) -> [Reading] {
         var result = [Reading]()
         let monthStart = monthStart(month)
         let monthEnd = calendar.date(byAdding: .day, value: 1, to: monthEnd(month))!
@@ -99,7 +124,7 @@ final class StatisticsViewModel: ObservableObject {
         }
     }
     
-    func yearData(_ year: Int) -> [Reading] {
+    private func yearData(_ year: Int) -> [Reading] {
         var result = [Reading]()
         let yearStart = yearStart(year)
         let yearEnd = yearEnd(year)
@@ -147,20 +172,5 @@ final class StatisticsViewModel: ObservableObject {
         case 2022...currentYear: return date(year: year).endOfYear.startOfDay
         default: return date(year: currentYear, month: currentMonth).endOfMonth.startOfDay
         }
-    }
-    
-    func getWeekData(week: Int) async -> Void {
-        async let asyncWeekData = weekData(week)
-        await weekData = asyncWeekData
-    }
-    
-    func getMonthData(month: Int) async -> Void {
-        async let asyncMonthData = monthData(month)
-        await monthData = asyncMonthData
-    }
-    
-    func getYearData(year: Int) async -> Void {
-        async let asyncYearData = yearData(year)
-        await yearData = asyncYearData
     }
 }

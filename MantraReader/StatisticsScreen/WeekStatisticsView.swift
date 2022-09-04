@@ -27,7 +27,7 @@ struct WeekStatisticsView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Week Total: ")
+                Text("Week total:")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
                 Text(data == nil ? "-" : "\(weekTotal)")
@@ -36,7 +36,7 @@ struct WeekStatisticsView: View {
                 Spacer()
             }
             HStack {
-                Text("Daily average: ")
+                Text("Daily average:")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 Text(data == nil ? "-" : "\(dailyAverage)")

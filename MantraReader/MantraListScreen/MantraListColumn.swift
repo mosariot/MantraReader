@@ -154,7 +154,7 @@ struct MantraListColumn: View {
                             Label("Preset Mantra", systemImage: "books.vertical")
                         }
                     } label: {
-                        Label("Add new", systemImage: "plus")
+                        Label("Add New", systemImage: "plus")
                     }
                 } label: {
                     Label("Menu", systemImage: "ellipsis.circle")

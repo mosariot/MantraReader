@@ -9,8 +9,8 @@ import UIKit
 
 extension Mantra {
     func insertShortcutItem() {
-        guard let shortcutItem, let shortcutItems = UIApplication.shared.shortcutItems,
-              !shortcutItems.map(\.localizedSubtitle).contains(title ?? "") else { return }
+        guard let shortcutItem, let shortcutItems = UIApplication.shared.shortcutItems?.prefix(2),
+              shortcutItems.map({ $0.userInfo?["MantraID"] as? String }).contains(uuid?.uuidString)  else { return }
         UIApplication.shared.shortcutItems?.insert(shortcutItem, at: 0)
     }
     
@@ -19,7 +19,7 @@ extension Mantra {
         
         return UIApplicationShortcutItem(
             type: ActionType.openMantra.rawValue,
-            localizedTitle: String(localized: "Open Mantra"),
+            localizedTitle: String(localized: "Recent Mantra"),
             localizedSubtitle: title,
             icon: .init(systemImageName: "book"),
             userInfo: [

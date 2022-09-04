@@ -273,13 +273,13 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "Year" = "Год";
 
 /* Week Total readings */
-"Week total: " = "Всего за неделю: ";
+"Week total:" = "Всего за неделю:";
 
 /* Month Total readings */
-"Month total: " = "Всего за месяц: ";
+"Month total:" = "Всего за месяц:";
 
 /* Year Total readings */
-"Year total: " = "Всего за год: ";
+"Year total:" = "Всего за год:";
 
 /* Week Picker 7 days option */
 "Last 7 Days" = "последние 7 дней";
@@ -300,10 +300,10 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "Select Year" = "Выберите год";
 
 /* Monthly average */
-"Monthly average: " = "В среднем за месяц: ";
+"Monthly average:" = "В среднем за месяц:";
 
 /* Daily average */
-"Daily average: " = "В среднем за день: ";
+"Daily average:" = "В среднем за день:";
 
 //MARK: - WIDGETS
 

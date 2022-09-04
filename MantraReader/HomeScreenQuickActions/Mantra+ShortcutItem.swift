@@ -9,11 +9,19 @@ import UIKit
 
 extension Mantra {
     func insertShortcutItem() {
-        guard let shortcutItem
-//                , let shortcutItems = UIApplication.shared.shortcutItems?.prefix(2),
-//              shortcutItems.map({ $0.userInfo?["MantraID"] as? String }).contains(uuid?.uuidString)
-        else { return }
-        UIApplication.shared.shortcutItems?.insert(shortcutItem, at: 0)
+        guard let shortcutItem else { return }
+        if let shortcutItems = UIApplication.shared.shortcutItems?.prefix(2) {
+            if !shortcutItems.map( { $0.userInfo?["MantraID"] as? String }).contains(uuid?.uuidString) {
+                UIApplication.shared.shortcutItems = Array(shortcutItems)
+                UIApplication.shared.shortcutItems?.insert(shortcutItem, at: 0)
+            } else {
+                if shortcutItems[1].userInfo?["MantraID"] as? String == uuid?.uuidString {
+                    UIApplication.shared.shortcutItems?.swapAt(0, 1)
+                }
+            }
+        } else {
+            UIApplication.shared.shortcutItems?.insert(shortcutItem, at: 0)
+        }
     }
     
     private var shortcutItem: UIApplicationShortcutItem? {

@@ -34,6 +34,7 @@ struct YearStatisticsView: View {
                     .font(.title3.bold())
                     .foregroundColor(.primary)
                     .padding(.leading, -3)
+                    .animation(.default, value: data)
                 Spacer()
             }
             HStack {
@@ -44,6 +45,7 @@ struct YearStatisticsView: View {
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                     .padding(.leading, -3)
+                    .animation(.default, value: data)
                 Spacer()
             }
             if let data {

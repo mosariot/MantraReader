@@ -17,7 +17,7 @@ enum ReadingsData {
     
     static var random: Data {
         var readings = [Reading]()
-        for _ in 1...700 {
+        for _ in 1...1000 {
             readings.append(Reading(period: date(year: Int.random(in: 2021...2022), month: Int.random(in: 1...12), day: Int.random(in: 1...31)), readings: Int.random(in: 0...56)))
         }
         let reads = Array(Set(readings))

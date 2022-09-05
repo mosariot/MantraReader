@@ -112,11 +112,43 @@ struct WeekStatisticsView: View {
                         .frame(height: 150)
                 }
             }
-            Picker("Select Week", selection: $selectedWeek) {
-                Text("Last 7 Days").tag(0)
-                ForEach((2...currentWeek).reversed(), id: \.self) {
-                    Text("\(startOfWeek($0).formatted(.dateTime.day().month(.abbreviated))) - \(endOfWeek($0).formatted(.dateTime.day().month(.abbreviated)))").tag($0)
+            HStack {
+                Button {
+                    if selectedWeek == 0 {
+                        selectedWeek = currentWeek - 1
+                    } else {
+                        selectedWeek - 1
+                    }
+                } label: {
+                    Image(systemName: "chevron.backward")
                 }
+                .buttonStyle(.borderedProminent)
+                .clipShape(Circle())
+                .tint(.gray)
+                .shadow(color: black.opacity(0.5), radius: 2, x: 2, y: 2)
+                .disabled(selectedWeek == 1)
+                Spacer()
+                Picker("", selection: $selectedWeek) {
+                    Text("Last 7 Days").tag(0)
+                    ForEach((2...currentWeek).reversed(), id: \.self) {
+                        Text("\(startOfWeek($0).formatted(.dateTime.day().month(.abbreviated))) - \(endOfWeek($0).formatted(.dateTime.day().month(.abbreviated)))").tag($0)
+                    }
+                }
+                Spacer()
+                Button {
+                    if selectedWeek == 0 {
+                        selectedWeek = currentWeek
+                    } else {
+                        selectedWeek + 1
+                    }
+                } label: {
+                    Image(systemName: "chevron.forward")
+                }
+                .buttonStyle(.borderedProminent)
+                .clipShape(Circle())
+                .tint(.gray)
+                .shadow(color: black.opacity(0.5), radius: 2, x: 2, y: 2)
+                .disabled(selectedWeek == currentWeek)
             }
             .padding(.top, 10)
         }

@@ -114,7 +114,7 @@ struct YearStatisticsView: View {
             }
             HStack {
                 Button {
-                    if selectedYear == 0 {
+                    if selectedYear == 0 && currentYear != 2022 {
                         selectedYear = currentYear - 1
                     } else {
                         selectedYear - 1

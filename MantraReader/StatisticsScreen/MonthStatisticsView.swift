@@ -121,7 +121,7 @@ struct MonthStatisticsView: View {
                 .shadow(color: black.opacity(0.5), radius: 2, x: 2, y: 2)
                 .disabled(selectedMonth == currentMonth + 1)
                 Spacer()
-                Picker("Select Month", selection: $selectedMonth) {
+                Picker("", selection: $selectedMonth) {
                     Text("Last 30 Days").tag(0)
                     ForEach((1...currentMonth).reversed(), id: \.self) {
                         Text("\(date(month: $0).formatted(.dateTime.month(.wide)))").tag($0)

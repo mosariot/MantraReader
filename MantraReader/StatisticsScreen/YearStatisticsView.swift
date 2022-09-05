@@ -112,11 +112,43 @@ struct YearStatisticsView: View {
                         .frame(height: 150)
                 }
             }
-            Picker("Select Year", selection: $selectedYear) {
-                Text("Last 12 Months").tag(0)
-                ForEach((2022...currentYear).reversed(), id: \.self) {
-                    Text("\(date(year: $0).formatted(.dateTime.year()))").tag($0)
+            HStack {
+                Button {
+                    if selectedYear == 0 {
+                        selectedYear = currentYear - 1
+                    } else {
+                        selectedYear - 1
+                    }
+                } label: {
+                    Image(systemName: "chevron.backward")
                 }
+                .buttonStyle(.borderedProminent)
+                .clipShape(Circle())
+                .tint(.gray)
+                .shadow(color: black.opacity(0.5), radius: 2, x: 2, y: 2)
+                .disabled(selectedYear == 2022)
+                Spacer()
+                Picker("", selection: $selectedYear) {
+                    Text("Last 12 Months").tag(0)
+                    ForEach((2022...currentYear).reversed(), id: \.self) {
+                        Text("\(date(year: $0).formatted(.dateTime.year()))").tag($0)
+                    }
+                }
+                Spacer()
+                Button {
+                    if selectedYear == 0 {
+                        selectedYear = currentYear
+                    } else {
+                        selectedYear + 1
+                    }
+                } label: {
+                    Image(systemName: "chevron.forward")
+                }
+                .buttonStyle(.borderedProminent)
+                .clipShape(Circle())
+                .tint(.gray)
+                .shadow(color: black.opacity(0.5), radius: 2, x: 2, y: 2)
+                .disabled(selectedYear == currentYear)
             }
             .padding(.top, 10)
         }

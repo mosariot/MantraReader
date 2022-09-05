@@ -103,14 +103,49 @@ struct MonthStatisticsView: View {
                         .frame(height: 150)
                 }
             }
-            Picker("Select Month", selection: $selectedMonth) {
-                Text("Last 30 Days").tag(0)
-                ForEach((1...currentMonth).reversed(), id: \.self) {
-                    Text("\(date(month: $0).formatted(.dateTime.month(.wide)))").tag($0)
+            HStack {
+                Button {
+                    if selectedMonth == 0 {
+                        selectedMonth = currentMonth - 1
+                    } else if selectedMonth == 1 {
+                        selectedMonth == 12
+                    } else {
+                        selectedMonth - 1
+                    }
+                } label: {
+                    Image(systemName: "chevron.backward")
                 }
-                ForEach(((currentMonth+1)...12).reversed(), id: \.self) {
-                    Text("\(date(year: currentYear-1, month: $0).formatted(.dateTime.month(.wide).year()))").tag($0)
+                .buttonStyle(.borderedProminent)
+                .clipShape(Circle())
+                .tint(.gray)
+                .shadow(color: black.opacity(0.5), radius: 2, x: 2, y: 2)
+                .disabled(selectedMonth == currentMonth + 1)
+                Spacer()
+                Picker("Select Month", selection: $selectedMonth) {
+                    Text("Last 30 Days").tag(0)
+                    ForEach((1...currentMonth).reversed(), id: \.self) {
+                        Text("\(date(month: $0).formatted(.dateTime.month(.wide)))").tag($0)
+                    }
+                    ForEach(((currentMonth+1)...12).reversed(), id: \.self) {
+                        Text("\(date(year: currentYear-1, month: $0).formatted(.dateTime.month(.wide).year()))").tag($0)
+                    }
                 }
+                Button {
+                    if selectedMonth == 0 {
+                        selectedMonth = currentMonth
+                    } else if selectedMonth == 12 {
+                        selectedMonth = 1
+                    } else {
+                        selectedMonth + 1
+                    }
+                } label: {
+                    Image(systemName: "chevron.forward")
+                }
+                .buttonStyle(.borderedProminent)
+                .clipShape(Circle())
+                .tint(.gray)
+                .shadow(color: black.opacity(0.5), radius: 2, x: 2, y: 2)
+                .disabled(selectedMonth == currentMonth)
             }
             .padding(.top, 10)
         }

@@ -23,10 +23,10 @@ final class StatisticsViewModel: ObservableObject {
     private var readings = [Reading]()
     private var data: [Reading] {
         if let mantra {
-            return mantra.decodeStatistics()
+            return mantra.decodedStatistics
         } else {
             var readings = [Reading]()
-            dataManager.currentMantras.forEach { readings += $0.decodeStatistics() }
+            dataManager.currentMantras.forEach { readings += $0.decodedStatistics }
             return readings
         }
     }

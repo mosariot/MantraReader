@@ -10,6 +10,7 @@ import Foundation
 extension Mantra {
     var decodedStatistics: [Reading] {
         guard let result = try? JSONDecoder().decode([Reading].self, from: ReadingsData.last) else { return [] }
+//        guard let result = try? JSONDecoder().decode([Reading].self, from: statistics) else { return [] }
         return result
     }
     

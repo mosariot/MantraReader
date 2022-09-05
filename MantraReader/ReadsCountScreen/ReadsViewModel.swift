@@ -165,8 +165,22 @@ final class ReadsViewModel: ObservableObject {
     }
     
     private func adjustMantraReads(with value: Int32) {
+        let currentReads = mantra.reads
         mantra.reads = value
+        handleStatistics(curentReads: currentReads, newReads: value)
         dataManager.saveData()
+    }
+    
+    private func handleStatistics(currentReads: Int32, newReads: Int32) {
+        var statistics = mantra.decodedStatistics
+        if let currentDateReading = statistics.first(where: { $0.period == Date().startOfDay }), index = statistics.firstIndex(of: currentDateReading) {
+            currentDateReading.reading += newReads - currentReads
+            statistics.remove(at: index)
+            statistics.append(currentDateReading)
+        } else {
+            statistic.append(Reading(period: Date().startOfDay, reading: newReads - currentReads))
+        }
+        mantra.encodeStatistics(statistics)
     }
     
     private func adjustMantraGoal(with value: Int32) {

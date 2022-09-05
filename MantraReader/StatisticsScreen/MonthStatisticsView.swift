@@ -108,17 +108,16 @@ struct MonthStatisticsView: View {
                     if selectedMonth == 0 {
                         selectedMonth = currentMonth - 1
                     } else if selectedMonth == 1 {
-                        selectedMonth == 12
+                        selectedMonth = 12
                     } else {
-                        selectedMonth - 1
+                        selectedMonth -= 1
                     }
                 } label: {
                     Image(systemName: "chevron.backward")
                 }
                 .buttonStyle(.borderedProminent)
                 .clipShape(Circle())
-                .tint(.gray)
-                .shadow(color: black.opacity(0.5), radius: 2, x: 2, y: 2)
+                .tint(.gray.opacity(0.7))
                 .disabled(selectedMonth == currentMonth + 1)
                 Spacer()
                 Picker("", selection: $selectedMonth) {
@@ -130,21 +129,22 @@ struct MonthStatisticsView: View {
                         Text("\(date(year: currentYear-1, month: $0).formatted(.dateTime.month(.wide).year()))").tag($0)
                     }
                 }
+                .labelsHidden()
+                Spacer()
                 Button {
                     if selectedMonth == 0 {
                         selectedMonth = currentMonth
                     } else if selectedMonth == 12 {
                         selectedMonth = 1
                     } else {
-                        selectedMonth + 1
+                        selectedMonth += 1
                     }
                 } label: {
                     Image(systemName: "chevron.forward")
                 }
                 .buttonStyle(.borderedProminent)
                 .clipShape(Circle())
-                .tint(.gray)
-                .shadow(color: black.opacity(0.5), radius: 2, x: 2, y: 2)
+                .tint(.gray.opacity(0.7))
                 .disabled(selectedMonth == currentMonth)
             }
             .padding(.top, 10)

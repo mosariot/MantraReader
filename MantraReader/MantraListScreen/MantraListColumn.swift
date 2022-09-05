@@ -204,10 +204,16 @@ struct MantraListColumn: View {
         guard let action = actionService.action else { return }
         switch action {
         case .newMantra:
+            isPresentedStatisticsSheet = false
+            selectedMantra = nil
             isPresentedNewMantraSheet = true
         case .showStatistics:
+            isPresentedNewMantraSheet = false
+            selectedMantra = nil
             isPresentedStatisticsSheet = true
         case .openMantra(let id):
+            isPresentedStatisticsSheet = false
+            isPresentedNewMantraSheet = false
             mantras.forEach { section in
                 section.forEach { mantra in
                     if mantra.uuid == UUID(uuidString: "\(id)") {

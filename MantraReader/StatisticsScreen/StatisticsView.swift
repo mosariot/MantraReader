@@ -14,46 +14,30 @@ struct StatisticsView: View {
     @State private var selectedMonth: Int = 0
     @State private var selectedYear: Int = 0
     @State private var isLoadingStatistics = false
-    private var currentWeek: Int { Calendar(identifier: .gregorian).dateComponents([.weekOfYear], from: Date()).weekOfYear! }
-    private var currentMonth: Int { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
-    private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
-    private var weekHeader: String {
-        switch selectedWeek {
-        case 0: return String(localized: "Week")
-        case 1...currentWeek:
-            let weekStart = date(year: currentYear, weekDay: 2, weekOfYear: selectedWeek)
-            let weekEnd = Calendar(identifier: .gregorian).date(byAdding: .day, value: 6, to: weekStart)!
-            return "\(weekStart.formatted(.dateTime.day().month(.abbreviated))) - \(weekEnd.formatted(.dateTime.day().month(.abbreviated)))"
-        default: return String(localized: "Week")
-        }
-    }
-    private var monthHeader: String {
-        switch selectedMonth {
-        case 0: return String(localized: "Month")
-        case 1...currentMonth: return date(year: currentYear, month: selectedMonth).formatted(.dateTime.month(.wide))
-        case (currentMonth+1)...12: return date(year: currentYear-1, month: selectedMonth).formatted(.dateTime.month(.wide).year())
-        default: return String(localized: "Month")
-        }
-    }
-    private var yearHeader: String {
-        switch selectedYear {
-        case 0: return String(localized: "Year")
-        case 2022...currentYear: return date(year: selectedYear).formatted(.dateTime.year())
-        default: return String(localized: "Year")
-        }
-    }
     
     var body: some View {
         NavigationStack {
             List {
-                Section(weekHeader) {
-                    WeekStatisticsView(data: viewModel.weekData, selectedWeek: $selectedWeek, isLoadingStatistics: isLoadingStatistics)
+                Section("Week") {
+                    WeekStatisticsView(
+                        data: viewModel.weekData,
+                        selectedWeek: $selectedWeek,
+                        isLoadingStatistics: isLoadingStatistics
+                    )
                 }
-                Section(monthHeader) {
-                    MonthStatisticsView(data: viewModel.monthData, selectedMonth: $selectedMonth, isLoadingStatistics: isLoadingStatistics)
+                Section("Month") {
+                    MonthStatisticsView(
+                        data: viewModel.monthData,
+                        selectedMonth: $selectedMonth,
+                        isLoadingStatistics: isLoadingStatistics
+                    )
                 }
-                Section(yearHeader) {
-                    YearStatisticsView(data: viewModel.yearData, selectedYear: $selectedYear, isLoadingStatistics: isLoadingStatistics)
+                Section("Year") {
+                    YearStatisticsView(
+                        data: viewModel.yearData,
+                        selectedYear: $selectedYear,
+                        isLoadingStatistics: isLoadingStatistics
+                    )
                 }
             }
             .navigationTitle(viewModel.navigationTitle)

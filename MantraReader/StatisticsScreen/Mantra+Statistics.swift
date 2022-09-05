@@ -15,6 +15,7 @@ extension Mantra {
     }
     
     func encodeStatistics(_ readings: [Reading]) {
+        guard let _ = try? JSONEncoder().encode(readings) else { return }
 //        guard let result = try? JSONEncoder().encode(readings) else { return }
 //        statistics = result
     }

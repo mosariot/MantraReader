@@ -13,6 +13,7 @@ struct StatisticsView: View {
     @State private var selectedWeek: Int = 0
     @State private var selectedMonth: Int = 0
     @State private var selectedYear: Int = 0
+    @State private var isLoadingStatistics = false
     private var currentWeek: Int { Calendar(identifier: .gregorian).dateComponents([.weekOfYear], from: Date()).weekOfYear! }
     private var currentMonth: Int { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
     private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
@@ -46,13 +47,13 @@ struct StatisticsView: View {
         NavigationStack {
             List {
                 Section(weekHeader) {
-                    WeekStatisticsView(data: viewModel.weekData, selectedWeek: $selectedWeek)
+                    WeekStatisticsView(data: viewModel.weekData, selectedWeek: $selectedWeek, isLoadingStatistics: isLoadingStatistics)
                 }
                 Section(monthHeader) {
-                    MonthStatisticsView(data: viewModel.monthData, selectedMonth: $selectedMonth)
+                    MonthStatisticsView(data: viewModel.monthData, selectedMonth: $selectedMonth, isLoadingStatistics: isLoadingStatistics)
                 }
                 Section(yearHeader) {
-                    YearStatisticsView(data: viewModel.yearData, selectedYear: $selectedYear)
+                    YearStatisticsView(data: viewModel.yearData, selectedYear: $selectedYear, isLoadingStatistics: isLoadingStatistics)
                 }
             }
             .navigationTitle(viewModel.navigationTitle)
@@ -69,7 +70,12 @@ struct StatisticsView: View {
                 }
             }
             .onAppear {
-                Task { await viewModel.getData(week: selectedWeek, month: selectedMonth, year: selectedYear) }
+                Task {
+                    isLoadingStatistics = true
+                    await viewModel.getData(week: selectedWeek, month: selectedMonth, year: selectedYear)
+                    isLoadingStatistics = false
+                }
+                viewModel.getNullData()
             }
             .onChange(of: selectedWeek) { newValue in
                 Task { await viewModel.getWeekData(week: newValue) }

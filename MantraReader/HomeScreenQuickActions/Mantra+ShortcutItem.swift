@@ -14,9 +14,12 @@ extension Mantra {
             if !shortcutItems.map( { $0.userInfo?["MantraID"] as? String }).contains(uuid?.uuidString) {
                 UIApplication.shared.shortcutItems = Array(shortcutItems)
                 UIApplication.shared.shortcutItems?.insert(shortcutItem, at: 0)
-            } else {
-                if shortcutItems[1].userInfo?["MantraID"] as? String == uuid?.uuidString {
-                    UIApplication.shared.shortcutItems?.swapAt(0, 1)
+            } else if shortcutItems.count == 1 {
+                if shortcutItems[0].userInfo?["MantraID"] as? String == uuid?.uuidString {
+                    return
+                } else {
+                    UIApplication.shared.shortcutItems?.insert(shortcutItem, at: 0)
+                    return
                 }
             }
         } else {

@@ -10,19 +10,14 @@ import Charts
 
 struct WeekStatisticsView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    var data: [Reading]?
+    var data: [Reading]
     @State private var selectedDate: Date?
     @Binding var selectedWeek: Int
+    let isLoadingStatistics: Bool
     private var currentWeek: Int { Calendar(identifier: .gregorian).dateComponents([.weekOfYear], from: Date()).weekOfYear! }
     private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
-    private var weekTotal: Int {
-        guard let data else { return 0 }
-        return data.map { $0.readings }.reduce(0, +)
-    }
-    private var dailyAverage: Int {
-        guard let data else { return 0 }
-        return data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0
-    }
+    private var weekTotal: Int { data.map { $0.readings }.reduce(0, +) }
+    private var dailyAverage: Int { data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0 }
     
     var body: some View {
         VStack {
@@ -30,25 +25,25 @@ struct WeekStatisticsView: View {
                 Text("Week total:")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
-                Text(data == nil ? "-" : "\(weekTotal)")
+                Text("\(weekTotal)")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
                     .padding(.leading, -3)
-                    .animation(.default, value: data)
+                    .animation(.easeInOut(duration: 0.15), value: data)
                 Spacer()
             }
             HStack {
                 Text("Daily average:")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-                Text(data == nil ? "-" : "\(dailyAverage)")
+                Text("\(dailyAverage)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                     .padding(.leading, -3)
-                    .animation(.default, value: data)
+                    .animation(.easeInOut(duration: 0.15), value: data)
                 Spacer()
             }
-            if let data {
+            ZStack {
                 Chart {
                     ForEach(data, id: \.period) {
                         BarMark(
@@ -84,7 +79,7 @@ struct WeekStatisticsView: View {
                         }
                     }
                 }
-                .animation(.easeInOut, value: data)
+                .animation(.easeInOut(duration: 0.15), value: data)
                 .padding(.top, 10)
                 .chartXAxis {
                     AxisMarks(values: .stride(by: .day)) { _ in
@@ -112,9 +107,10 @@ struct WeekStatisticsView: View {
                     }
                 }
                 .frame(height: 150)
-            } else {
-                ProgressView()
-                    .frame(height: 150)
+                if isLoadingStatistics {
+                    ProgressView()
+                        .frame(height: 150)
+                }
             }
             Picker("Select Week", selection: $selectedWeek) {
                 Text("Last 7 Days").tag(0)

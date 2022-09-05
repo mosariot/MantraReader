@@ -9,19 +9,14 @@ import SwiftUI
 import Charts
 
 struct MonthStatisticsView: View {
-    var data: [Reading]?
+    var data: [Reading]
     @State private var selectedDate: Date?
     @Binding var selectedMonth: Int
+    let isLoadingStatistics: Bool
     private var currentMonth: Int { Calendar(identifier: .gregorian).dateComponents([.month], from: Date()).month! }
     private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
-    private var monthTotal: Int {
-        guard let data else { return 0 }
-        return data.map { $0.readings }.reduce(0, +)
-    }
-    private var dailyAverage: Int {
-        guard let data else { return 0 }
-        return data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0
-    }
+    private var monthTotal: Int { data.map { $0.readings }.reduce(0, +) }
+    private var dailyAverage: Int { data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0 }
     
     var body: some View {
         VStack {
@@ -29,25 +24,25 @@ struct MonthStatisticsView: View {
                 Text("Month total:")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
-                Text(data == nil ? "-" : "\(monthTotal)")
+                Text("\(monthTotal)")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
                     .padding(.leading, -3)
-                    .animation(.default, value: data)
+                    .animation(.easeInOut(duration: 0.15), value: data)
                 Spacer()
             }
             HStack {
                 Text("Daily average:")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-                Text(data == nil ? "-" : "\(dailyAverage)")
+                Text("\(dailyAverage)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                     .padding(.leading, -3)
-                    .animation(.default, value: data)
+                    .animation(.easeInOut(duration: 0.15), value: data)
                 Spacer()
             }
-            if let data {
+            ZStack {
                 Chart {
                     ForEach(data, id: \.period) {
                         BarMark(
@@ -82,7 +77,7 @@ struct MonthStatisticsView: View {
                         }
                     }
                 }
-                .animation(.easeInOut, value: data)
+                .animation(.easeInOut(duration: 0.15), value: data)
                 .padding(.top, 10)
                 .chartOverlay { proxy in
                     GeometryReader { geo in
@@ -103,9 +98,10 @@ struct MonthStatisticsView: View {
                     }
                 }
                 .frame(height: 150)
-            } else {
-                ProgressView()
-                    .frame(height: 150)
+                if isLoadingStatistics {
+                    ProgressView()
+                        .frame(height: 150)
+                }
             }
             Picker("Select Month", selection: $selectedMonth) {
                 Text("Last 30 Days").tag(0)

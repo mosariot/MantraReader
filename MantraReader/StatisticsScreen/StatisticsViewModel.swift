@@ -16,9 +16,9 @@ final class StatisticsViewModel: ObservableObject {
     private var currentMonth: Int { calendar.dateComponents([.month], from: Date()).month! }
     private var currentYear: Int { calendar.dateComponents([.year], from: Date()).year! }
     
-    @Published var weekData: [Reading]?
-    @Published var monthData: [Reading]?
-    @Published var yearData: [Reading]?
+    @Published var weekData = [Reading]()
+    @Published var monthData = [Reading]()
+    @Published var yearData = [Reading]()
     
     private var readings = [Reading]()
     private var data: [Reading] {
@@ -40,31 +40,37 @@ final class StatisticsViewModel: ObservableObject {
         self.dataManager = dataManager
     }
     
+    func getNullData() {
+        weekData = weekData(0, readings: [])
+        monthData = monthData(0, readings: [])
+        yearData = yearData(0, readings: [])
+    }
+    
     func getData(week: Int, month: Int, year: Int) async -> Void {
         async let dataAsync = data
         await readings = dataAsync
-        async let asyncWeekData = weekData(week)
-        async let asyncMonthData = monthData(month)
-        async let asyncYearData = yearData(year)
+        async let asyncWeekData = weekData(week, readings: readings)
+        async let asyncMonthData = monthData(month, readings: readings)
+        async let asyncYearData = yearData(year, readings: readings)
         await (weekData, monthData, yearData) = (asyncWeekData, asyncMonthData, asyncYearData)
     }
     
     func getWeekData(week: Int) async -> Void {
-        async let asyncWeekData = weekData(week)
+        async let asyncWeekData = weekData(week, readings: readings)
         await weekData = asyncWeekData
     }
     
     func getMonthData(month: Int) async -> Void {
-        async let asyncMonthData = monthData(month)
+        async let asyncMonthData = monthData(month, readings: readings)
         await monthData = asyncMonthData
     }
     
     func getYearData(year: Int) async -> Void {
-        async let asyncYearData = yearData(year)
+        async let asyncYearData = yearData(year, readings: readings)
         await yearData = asyncYearData
     }
     
-    private func weekData(_ week: Int) -> [Reading] {
+    private func weekData(_ week: Int, readings: [Reading]) -> [Reading] {
         var result = [Reading]()
         let weekStart = weekStart(week)
         let weekEnd = weekEnd(week)
@@ -93,7 +99,7 @@ final class StatisticsViewModel: ObservableObject {
         }
     }
     
-    private func monthData(_ month: Int) -> [Reading] {
+    private func monthData(_ month: Int, readings: [Reading]) -> [Reading] {
         var result = [Reading]()
         let monthStart = monthStart(month)
         let monthEnd = calendar.date(byAdding: .day, value: 1, to: monthEnd(month))!
@@ -124,7 +130,7 @@ final class StatisticsViewModel: ObservableObject {
         }
     }
     
-    private func yearData(_ year: Int) -> [Reading] {
+    private func yearData(_ year: Int, readings: [Reading]) -> [Reading] {
         var result = [Reading]()
         let yearStart = yearStart(year)
         let yearEnd = yearEnd(year)

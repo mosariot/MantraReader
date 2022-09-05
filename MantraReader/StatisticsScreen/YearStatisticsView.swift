@@ -11,18 +11,13 @@ import Charts
 struct YearStatisticsView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.verticalSizeClass) private var verticalSizeClass
-    var data: [Reading]?
+    var data: [Reading]
     @State private var selectedMonth: Date?
     @Binding var selectedYear: Int
+    let isLoadingStatistics: Bool
     private var currentYear: Int { Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! }
-    private var yearTotal: Int {
-        guard let data else { return 0 }
-        return data.map { $0.readings }.reduce(0, +)
-    }
-    private var monthlyAverage: Int {
-        guard let data else { return 0 }
-        return data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0
-    }
+    private var yearTotal: Int { data.map { $0.readings }.reduce(0, +) }
+    private var monthlyAverage: Int { data.count != 0 ? (data.map { $0.readings }.reduce(0, +) / data.count) : 0 }
     
     var body: some View {
         VStack {
@@ -30,25 +25,25 @@ struct YearStatisticsView: View {
                 Text("Year total:")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
-                Text(data == nil ? "-" : "\(yearTotal)")
+                Text("\(yearTotal)")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
                     .padding(.leading, -3)
-                    .animation(.default, value: data)
+                    .animation(.easeInOut(duration: 0.15), value: data)
                 Spacer()
             }
             HStack {
                 Text("Monthly average:")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-                Text(data == nil ? "-" : "\(monthlyAverage)")
+                Text("\(monthlyAverage)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                     .padding(.leading, -3)
-                    .animation(.default, value: data)
+                    .animation(.easeInOut(duration: 0.15), value: data)
                 Spacer()
             }
-            if let data {
+            ZStack {
                 Chart {
                     ForEach(data, id: \.period) {
                         BarMark(
@@ -84,7 +79,7 @@ struct YearStatisticsView: View {
                         }
                     }
                 }
-                .animation(.easeInOut, value: data)
+                .animation(.easeInOut(duration: 0.15), value: data)
                 .padding(.top, 10)
                 .chartXAxis {
                     AxisMarks(values: .stride(by: .month)) { _ in
@@ -112,9 +107,10 @@ struct YearStatisticsView: View {
                     }
                 }
                 .frame(height: 150)
-            } else {
-                ProgressView()
-                    .frame(height: 150)
+                if isLoadingStatistics  {
+                    ProgressView()
+                        .frame(height: 150)
+                }
             }
             Picker("Select Year", selection: $selectedYear) {
                 Text("Last 12 Months").tag(0)

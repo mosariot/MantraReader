@@ -228,10 +228,12 @@ struct MantraListColumn: View {
     private func performActionIfNeeded() {
         guard let action = actionService.action else { return }
         isPresentedPreloadedMantraList = false
-        isPresentedMantraStatisticsSheet
+        isPresentedMantraStatisticsSheet = false
         isPresentedMantraInfoView = false
         isDeletingMantras = false
+        mantrasForDeletion = nil
         dismissSearch()
+        selectedMantra = nil
         
         afterDelay(0.5) {
             switch action {
@@ -242,6 +244,8 @@ struct MantraListColumn: View {
                 isPresentedNewMantraSheet = false
                 isPresentedStatisticsSheet = true
             case .openMantra(let id):
+                isPresentedStatisticsSheet = false
+                isPresentedNewMantraSheet = false
                 mantras.forEach { section in
                     section.forEach { mantra in
                         if mantra.uuid == UUID(uuidString: "\(id)") {

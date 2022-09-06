@@ -27,14 +27,17 @@ struct ReadsView: View {
     @State private var isPresentedInfoView = false
     @State private var isPresentedUndoAlert = false
     @State private var isPresentedMantraCounterModeAlert = false
+    @State private var isPresentedDeleteConfirmation = false
     @Binding private var isMantraCounterMode: Bool
+    @Binding private var selectedMantra: Mantra
     @State private var showBlink = false
     @State private var showHint = false
     @State private var congratulations: Int = 0
     
-    init(viewModel: ReadsViewModel, isMantraCounterMode: Binding<Bool>) {
+    init(viewModel: ReadsViewModel, isMantraCounterMode: Binding<Bool>, selectedMantra: Binding<Mantra>) {
         self.viewModel = viewModel
         self._isMantraCounterMode = isMantraCounterMode
+        self._selectedMantra = selectedMantra
         circularViewModel = CircularProgressViewModel(viewModel.mantra)
         goalButtonViewModel = GoalButtonViewModel(viewModel.mantra)
     }
@@ -249,19 +252,39 @@ struct ReadsView: View {
                         Label("Readings Statistics", systemImage: "chart.bar")
                     }
                     Button {
+                        isPresentedInfoView = true
+                    } label: {
+                        Label("Detailed Info", systemImage: "info.circle")
+                    }
+                    Button {
                         viewModel.toggleFavorite()
                     } label: {
                         Label(viewModel.favoriteBarTitle, systemImage: viewModel.favoriteBarImage)
                     }
-                    Button {
-                        isPresentedInfoView = true
+                    Button(role: .destructive) {
+                        isPresentedDeleteConfirmation = true
                     } label: {
-                        Label("Detailed Info", systemImage: "info.circle")
+                        Label("Delete", systemImage: "trash")
                     }
                 } label: {
                     Label("Menu", systemImage: "ellipsis.circle")
                 }
                 .disabled(isMantraCounterMode)
+            }
+            .confirmationDialog(
+                "Delete Mantra",
+                isPresented: $isPresentedDeleteConfirmation,
+                titleVisibility: .visible
+            ) {
+                Button("Delete", role: .destructive) {
+                    withAnimation {
+                        selectedMantra = nil
+                        dataManager.delete(viewModel.mantra)
+                    }
+                }
+                Button("Cancel", role: .cancel) { }
+            } message: {
+                Text("Are you sure you want to delete this mantra?")
             }
         }
         .alert(
@@ -305,6 +328,7 @@ struct ReadsView: View {
                 isPresentedAdjustingAlert = false
                 adjustingType = nil
                 adjustingText = ""
+                viewModel.isPresentedCongratulations = false
             default:
                 break
             }

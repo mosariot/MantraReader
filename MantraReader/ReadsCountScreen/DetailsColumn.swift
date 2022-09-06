@@ -16,7 +16,8 @@ struct DetailsColumn: View {
         if let selectedMantra {
             ReadsView(
                 viewModel: ReadsViewModel(selectedMantra, dataManager: dataManager),
-                isMantraCounterMode: $isMantraCounterMode
+                isMantraCounterMode: $isMantraCounterMode,
+                selectedMantra: $selectedMantra
             )
             .onChange(of: selectedMantra) { _ in
                 if isMantraCounterMode {

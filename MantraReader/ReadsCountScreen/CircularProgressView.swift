@@ -20,8 +20,8 @@ struct CircularProgressView: View {
                     ringWidth: 20, percent: viewModel.progress * 100,
                     backgroundColor: .red.opacity(0.2),
                     foregroundColors: [
-                        Color("progressStart"),
-                        Color("progressEnd")
+                        Color(Constants.progressStartColor),
+                        Color(Constants.progressEndColor)
                     ]
                 )
                 .animation(

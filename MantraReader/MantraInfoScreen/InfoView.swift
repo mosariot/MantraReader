@@ -366,19 +366,20 @@ struct InfoView: View {
                 }
             }
             .onChange(of: scenePhase) { newValue in
-            switch newValue {
-            case .active:
-                guard let action = actionService.action else { return }
-                isPresentedChangesAlert = false
-                isPresentedDiscardingMantraAlert = false
-                isPresentedDuplicationAlert = false
-                isPresentedSafariController = false
-                isPresentedFirstSearchOnTheInternetAlert = false
-                isPresentedImagePickerView = false
-            default:
-                break
+                switch newValue {
+                case .active:
+                    guard let action = actionService.action else { return }
+                    isPresentedChangesAlert = false
+                    isPresentedDiscardingMantraAlert = false
+                    isPresentedDuplicationAlert = false
+                    isPresentedSafariController = false
+                    isPresentedFirstSearchOnTheInternetAlert = false
+                    isPresentedImagePickerView = false
+                    isPresentedNoImageAlert = false
+                default:
+                    break
+                }
             }
-        }
             .onDisappear {
                 viewModel.updateFields()
                 if infoMode == .addNew {

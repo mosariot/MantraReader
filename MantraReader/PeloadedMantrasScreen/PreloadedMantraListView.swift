@@ -9,6 +9,8 @@ import SwiftUI
 import CoreData
 
 struct PreloadedMantraListView: View {
+    @EnvironmentObject var actionService: ActionService
+    @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject private var dataManager: DataManager
     @Binding private var isPresented: Bool
     @StateObject private var viewModel: PreloadedMantraListViewModel
@@ -70,6 +72,15 @@ struct PreloadedMantraListView: View {
                 }
             }
             .disabled(successfullyAdded)
+            .onChange(of: scenePhase) { newValue in
+                switch newValue {
+                case .active:
+                    guard let action = actionService.action else { return }
+                    viewModel.isDuplicating = false
+                default:
+                    break
+                }
+            }
         }
     }
     

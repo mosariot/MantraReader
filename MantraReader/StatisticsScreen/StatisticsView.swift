@@ -41,6 +41,7 @@ struct StatisticsView: View {
                 }
             }
             .navigationTitle(viewModel.navigationTitle)
+            .listStyle(.sidebar)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {

@@ -60,7 +60,7 @@ struct MantraReaderApp: App {
                 .onChange(of: scenePhase) { newValue in
                     switch newValue {
                     case .active:
-                        guard let action = actionService.action else { return }
+                        guard let _ = actionService.action else { return }
                         isPresentedNoInternetAlert = false
                         isOnboarding = false
                     default:

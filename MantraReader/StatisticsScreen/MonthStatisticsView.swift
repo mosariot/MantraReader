@@ -117,7 +117,7 @@ struct MonthStatisticsView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .clipShape(Circle())
-                .tint(.gray.opacity(0.7))
+                .tint(.green.opacity(0.8))
                 .disabled(selectedMonth == currentMonth + 1)
                 Spacer()
                 Picker("", selection: $selectedMonth) {
@@ -144,10 +144,11 @@ struct MonthStatisticsView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .clipShape(Circle())
-                .tint(.gray.opacity(0.7))
+                .tint(.green.opacity(0.8))
                 .disabled(selectedMonth == currentMonth)
             }
             .padding(.top, 10)
+            .disabled(isLoadingStatistics)
         }
     }
 }

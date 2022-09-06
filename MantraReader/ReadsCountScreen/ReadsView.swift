@@ -29,15 +29,15 @@ struct ReadsView: View {
     @State private var isPresentedMantraCounterModeAlert = false
     @State private var isPresentedDeleteConfirmation = false
     @Binding private var isMantraCounterMode: Bool
-    @Binding private var selectedMantra: Mantra?
+    @Binding private var isMantraDeleted: Bool
     @State private var showBlink = false
     @State private var showHint = false
     @State private var congratulations: Int = 0
     
-    init(viewModel: ReadsViewModel, isMantraCounterMode: Binding<Bool>, selectedMantra: Binding<Mantra?>) {
+    init(viewModel: ReadsViewModel, isMantraCounterMode: Binding<Bool>, isMantraDeleted: Binding<Bool>) {
         self.viewModel = viewModel
         self._isMantraCounterMode = isMantraCounterMode
-        self._selectedMantra = selectedMantra
+        self._isMantraDeleted = isMantraDeleted
         circularViewModel = CircularProgressViewModel(viewModel.mantra)
         goalButtonViewModel = GoalButtonViewModel(viewModel.mantra)
     }
@@ -223,6 +223,21 @@ struct ReadsView: View {
         .navigationTitle(verticalSizeClass == .compact ? viewModel.mantra.title ?? "" : "")
         .navigationBarTitleDisplayMode(.inline)
         .ignoresSafeArea(.keyboard)
+        .confirmationDialog(
+            "Delete Mantra",
+            isPresented: $isPresentedDeleteConfirmation,
+            titleVisibility: .visible
+        ) {
+            Button("Delete", role: .destructive) {
+                withAnimation {
+                    isMantraDeleted = true
+                    dataManager.delete(viewModel.mantra)
+                }
+            }
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("Are you sure you want to delete this mantra?")
+        }
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
@@ -271,21 +286,6 @@ struct ReadsView: View {
                 }
                 .disabled(isMantraCounterMode)
             }
-            .confirmationDialog(
-                "Delete Mantra",
-                isPresented: $isPresentedDeleteConfirmation,
-                titleVisibility: .visible
-            ) {
-                Button("Delete", role: .destructive) {
-                    withAnimation {
-                        selectedMantra = nil
-                        dataManager.delete(viewModel.mantra)
-                    }
-                }
-                Button("Cancel", role: .cancel) { }
-            } message: {
-                Text("Are you sure you want to delete this mantra?")
-            }
         }
         .alert(
             "'Mantra Counter' Mode",
@@ -319,7 +319,7 @@ struct ReadsView: View {
         .onChange(of: scenePhase) { newValue in
             switch newValue {
             case .active:
-                guard let action = actionService.action else { return }
+                guard let _ = actionService.action else { return }
                 isPresentedStatisticsSheet = false
                 isPresentedValidNumberAlert = false
                 isPresentedInfoView = false

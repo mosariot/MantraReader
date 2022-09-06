@@ -19,6 +19,7 @@ struct MantraListColumn: View {
     @State private var isPresentedNewMantraSheet = false
     @State private var isPresentedStatisticsSheet = false
     @State private var isPresentedMantraInfoView = false
+    @State private var isPresentedMantraStatisticsSheet = false
     @State private var isDeletingMantras = false
     @State private var mantrasForDeletion: [Mantra]?
     @State private var contextMantra: Mantra?
@@ -176,6 +177,7 @@ struct MantraListColumn: View {
                 }
             }
         }
+        .onChange(of: contextMantra) { _ in return }
         .onChange(of: sorting) {
             switch $0 {
             case .title: mantras.sortDescriptors = [
@@ -210,7 +212,7 @@ struct MantraListColumn: View {
         }
         .sheet(isPresented: $isPresentedMantraInfoView) {
             InfoView(
-                viewModel: InfoViewModel(contextMantra, dataManager: dataManager),
+                viewModel: InfoViewModel(contextMantra!, dataManager: dataManager),
                 infoMode: .view,
                 isPresented: $isPresentedMantraInfoView
             )
@@ -235,26 +237,24 @@ struct MantraListColumn: View {
         dismissSearch()
         selectedMantra = nil
         
-        afterDelay(0.5) {
-            switch action {
-            case .newMantra:
-                isPresentedStatisticsSheet = false
-                isPresentedNewMantraSheet = true
-            case .showStatistics:
-                isPresentedNewMantraSheet = false
-                isPresentedStatisticsSheet = true
-            case .openMantra(let id):
-                isPresentedStatisticsSheet = false
-                isPresentedNewMantraSheet = false
-                mantras.forEach { section in
-                    section.forEach { mantra in
-                        if mantra.uuid == UUID(uuidString: "\(id)") {
-                            selectedMantra = mantra
-                        }
+        switch action {
+        case .newMantra:
+            isPresentedStatisticsSheet = false
+            afterDelay(0.8) { isPresentedNewMantraSheet = true }
+        case .showStatistics:
+            isPresentedNewMantraSheet = false
+            afterDelay(0.8) { isPresentedStatisticsSheet = true }
+        case .openMantra(let id):
+            isPresentedStatisticsSheet = false
+            isPresentedNewMantraSheet = false
+            mantras.forEach { section in
+                section.forEach { mantra in
+                    if mantra.uuid == UUID(uuidString: "\(id)") {
+                        afterDelay(0.8) { selectedMantra = mantra }
                     }
                 }
             }
-            actionService.action = nil
         }
+        actionService.action = nil
     }
 }

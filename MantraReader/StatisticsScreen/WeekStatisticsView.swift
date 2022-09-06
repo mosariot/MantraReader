@@ -124,7 +124,7 @@ struct WeekStatisticsView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .clipShape(Circle())
-                .tint(.gray.opacity(0.7))
+                .tint(.blue.opacity(0.8))
                 .disabled(selectedWeek == 2)
                 Spacer()
                 Picker("", selection: $selectedWeek) {
@@ -146,10 +146,11 @@ struct WeekStatisticsView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .clipShape(Circle())
-                .tint(.gray.opacity(0.7))
+                .tint(.blue.opacity(0.8))
                 .disabled(selectedWeek == currentWeek)
             }
             .padding(.top, 10)
+            .disabled(isLoadingStatistics)
         }
     }
     

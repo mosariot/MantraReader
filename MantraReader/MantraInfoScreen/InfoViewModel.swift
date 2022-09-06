@@ -87,7 +87,6 @@ final class InfoViewModel: ObservableObject {
         imageData = nil
     }
     
-#if os(iOS)
     func handleIncomingImage(_ image: UIImage) {
         let circledImage = image.cropToCircle()
         let resizedCircledImage = circledImage?.resize(to: CGSize(width: 200, height: 200))
@@ -95,14 +94,6 @@ final class InfoViewModel: ObservableObject {
             imageData = processedImageData
         }
     }
-#elseif os(macOS)
-    func handleIncomingImage(_ image: NSImage) {
-        let resizedImage = image.resize(to: CGSize(width: 200, height: 200))
-        if let processedImageData = resizedImage?.pngData() {
-            imageData = processedImageData
-        }
-    }
-#endif
     
     func updateFields() {
         title = mantra.title ?? ""

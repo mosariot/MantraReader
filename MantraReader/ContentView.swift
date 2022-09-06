@@ -19,6 +19,7 @@ struct ContentView: View {
     
     @State private var selectedMantra: Mantra?
     @State private var search = ""
+    @State private var isMantraDeleted = false
     
     @SectionedFetchRequest(sectionIdentifier: \.isFavorite, sortDescriptors: [])
     private var mantras: SectionedFetchResults<Bool, Mantra>
@@ -89,7 +90,7 @@ struct ContentView: View {
                 }
             }
         } detail: {
-            DetailsColumn(selectedMantra: selectedMantra)
+            DetailsColumn(selectedMantra: selectedMantra, isMantraDeleted: $isMantraDeleted)
                 .navigationSplitViewColumnWidth(min: 400, ideal: 600)
         }
         .onChange(of: selectedMantra) { _ in
@@ -100,6 +101,11 @@ struct ContentView: View {
                 }
             }
             isFreshLaunch = false
+        }
+        .onChange(of: isMantraDeleted) { newValue in
+            if newValue {
+                selectedMantra = nil
+            }
         }
     }
 }

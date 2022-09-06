@@ -10,14 +10,15 @@ import SwiftUI
 struct DetailsColumn: View {
     @EnvironmentObject private var dataManager: DataManager
     var selectedMantra: Mantra?
-    @State var isMantraCounterMode: Bool = false
+    @State var isMantraCounterMode = false
+    @Binding var isMantraDeleted: Bool
     
     var body: some View {
-        if let selectedMantra {
+        if let unwrappedMantra = selectedMantra {
             ReadsView(
-                viewModel: ReadsViewModel(selectedMantra, dataManager: dataManager),
+                viewModel: ReadsViewModel(unwrappedMantra, dataManager: dataManager),
                 isMantraCounterMode: $isMantraCounterMode,
-                selectedMantra: $selectedMantra
+                isMantraDeleted: $isMantraDeleted
             )
             .onChange(of: selectedMantra) { _ in
                 if isMantraCounterMode {

@@ -107,7 +107,7 @@ struct YearStatisticsView: View {
                     }
                 }
                 .frame(height: 150)
-                if isLoadingStatistics  {
+                if isLoadingStatistics {
                     ProgressView()
                         .frame(height: 150)
                 }
@@ -124,7 +124,7 @@ struct YearStatisticsView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .clipShape(Circle())
-                .tint(.gray.opacity(0.7))
+                .tint(.red.opacity(0.8))
                 .disabled(selectedYear == 2022 || (selectedYear == 0 && currentYear == 2022))
                 Spacer()
                 Picker("", selection: $selectedYear) {
@@ -146,10 +146,11 @@ struct YearStatisticsView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .clipShape(Circle())
-                .tint(.gray.opacity(0.7))
+                .tint(.red.opacity(0.8))
                 .disabled(selectedYear == currentYear)
             }
             .padding(.top, 10)
+            .disabled(isLoadingStatistics)
         }
     }
 }

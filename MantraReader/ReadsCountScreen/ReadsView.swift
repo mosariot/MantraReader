@@ -29,12 +29,12 @@ struct ReadsView: View {
     @State private var isPresentedMantraCounterModeAlert = false
     @State private var isPresentedDeleteConfirmation = false
     @Binding private var isMantraCounterMode: Bool
-    @Binding private var selectedMantra: Mantra
+    @Binding private var selectedMantra: Mantra?
     @State private var showBlink = false
     @State private var showHint = false
     @State private var congratulations: Int = 0
     
-    init(viewModel: ReadsViewModel, isMantraCounterMode: Binding<Bool>, selectedMantra: Binding<Mantra>) {
+    init(viewModel: ReadsViewModel, isMantraCounterMode: Binding<Bool>, selectedMantra: Binding<Mantra?>) {
         self.viewModel = viewModel
         self._isMantraCounterMode = isMantraCounterMode
         self._selectedMantra = selectedMantra

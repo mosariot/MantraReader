@@ -10,6 +10,7 @@ import IQKeyboardManagerSwift
 
 @main
 struct MantraReaderApp: App {
+    @Environment(\.scenePhase) var scenePhase
     @AppStorage("isFirstLaunch") private var isFirstLaunch = true
     @AppStorage("isPreloadedMantrasDueToNoInternet") private var isPreloadedMantrasDueToNoInternet = false
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
@@ -55,6 +56,15 @@ struct MantraReaderApp: App {
                 .sheet(isPresented: $isOnboarding) {
                     OnboardingView(isPresented: $isOnboarding)
                         .interactiveDismissDisabled()
+                }
+                .onChange(of: scenePhase) { newValue in
+                    switch newValue {
+                    case .active:
+                        guard let action = actionService.action else { return }
+                        isPresentedNoInternetAlert = false
+                    default:
+                        break
+                    }
                 }
                 .onReceive(NotificationCenter.default.publisher(for: dataSaveFailedNotification)) { _ in
                     let alertController = GlobalAlertController(

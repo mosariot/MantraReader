@@ -17,8 +17,10 @@ struct MantraListColumn: View {
     @State private var isPresentedPreloadedMantraList = false
     @State private var isPresentedNewMantraSheet = false
     @State private var isPresentedStatisticsSheet = false
+    @State private var isPresentedMantraInfoView = false
     @State private var isDeletingMantras = false
     @State private var mantrasForDeletion: [Mantra]?
+    @State private var contextMantra: Mantra?
     
     var mantras: SectionedFetchResults<Bool, Mantra>
     @Binding var selectedMantra: Mantra?
@@ -33,6 +35,18 @@ struct MantraListColumn: View {
                         NavigationLink(value: mantra) {
                             MantraRow(mantra: mantra, isSelected: mantra === selectedMantra)
                                 .contextMenu {
+                                    Button {
+                                        contextMantra = mantra
+                                        isPresentedMantraStatisticsSheet = true
+                                    } label: {
+                                        Label("Readings Statistics", systemImage: "chart.bar")
+                                    }
+                                    Button {
+                                        contextMantra = mantra
+                                        isPresentedMantraInfoView = true
+                                    } label: {
+                                        Label("Detailed Info", systemImage: "info.circle")
+                                    }
                                     Button {
                                         withAnimation {
                                             mantra.isFavorite.toggle()
@@ -177,6 +191,9 @@ struct MantraListColumn: View {
         .sheet(isPresented: $isPresentedStatisticsSheet) {
             StatisticsView(viewModel: StatisticsViewModel(dataManager: dataManager))
         }
+        .sheet(isPresented: $isPresentedMantraStatisticsSheet) {
+            StatisticsView(viewModel: StatisticsViewModel(mantra: contextMantra, dataManager: dataManager))
+        }
         .sheet(isPresented: $isPresentedPreloadedMantraList) {
             PreloadedMantraListView(
                 isPresented: $isPresentedPreloadedMantraList,
@@ -188,6 +205,13 @@ struct MantraListColumn: View {
                 viewModel: InfoViewModel(Mantra(context: dataManager.viewContext), dataManager: dataManager),
                 infoMode: .addNew,
                 isPresented: $isPresentedNewMantraSheet
+            )
+        }
+        .sheet(isPresented: $isPresentedMantraInfoView) {
+            InfoView(
+                viewModel: InfoViewModel(mantraForView, dataManager: dataManager),
+                infoMode: .view,
+                isPresented: $isPresentedMantraInfoView
             )
         }
         .onChange(of: scenePhase) { newValue in
@@ -203,6 +227,8 @@ struct MantraListColumn: View {
     private func performActionIfNeeded() {
         guard let action = actionService.action else { return }
         isPresentedPreloadedMantraList = false
+        isPresentedMantraStatisticsSheet
+        isPresentedMantraInfoView = false
         isDeletingMantras = false
         
         afterDelay(0.3) {

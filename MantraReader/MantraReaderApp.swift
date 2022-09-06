@@ -62,6 +62,7 @@ struct MantraReaderApp: App {
                     case .active:
                         guard let action = actionService.action else { return }
                         isPresentedNoInternetAlert = false
+                        isOnboarding = false
                     default:
                         break
                     }

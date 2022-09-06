@@ -10,6 +10,8 @@ import SwiftUI
 struct ReadsView: View {
     @Environment(\.verticalSizeClass) private var verticalSizeClass
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @EnvironmentObject var actionService: ActionService
+    @Environment(\.scenePhase) var scenePhase
     @AppStorage("isFirstLaunchOfMantraCounterMode") private var isFirstLaunchOfMantraCounterMode = true
     @EnvironmentObject private var dataManager: DataManager
     @ObservedObject private var viewModel: ReadsViewModel
@@ -290,6 +292,22 @@ struct ReadsView: View {
         }
         .onShake {
             isPresentedUndoAlert = true
+        }
+        .onChange(of: scenePhase) { newValue in
+            switch newValue {
+            case .active:
+                guard let action = actionService.action else { return }
+                isPresentedStatisticsSheet = false
+                isPresentedValidNumberAlert = false
+                isPresentedInfoView = false
+                isPresentedUndoAlert = false
+                isPresentedMantraCounterModeAlert = false
+                isPresentedAdjustingAlert = false
+                adjustingType = nil
+                adjustingText = ""
+            default:
+                break
+            }
         }
         .onDisappear {
             if isMantraCounterMode {

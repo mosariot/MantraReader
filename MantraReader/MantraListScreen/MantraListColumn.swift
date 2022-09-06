@@ -10,6 +10,7 @@ import Combine
 
 struct MantraListColumn: View {
     @Environment(\.isSearching) private var isSearching: Bool
+    @Environment(\.dismissSearch) var dismissSearch
     @EnvironmentObject private var dataManager: DataManager
     @EnvironmentObject var actionService: ActionService
     @Environment(\.scenePhase) var scenePhase
@@ -230,8 +231,9 @@ struct MantraListColumn: View {
         isPresentedMantraStatisticsSheet
         isPresentedMantraInfoView = false
         isDeletingMantras = false
+        dismissSearch()
         
-        afterDelay(0.3) {
+        afterDelay(0.5) {
             switch action {
             case .newMantra:
                 isPresentedStatisticsSheet = false

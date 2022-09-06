@@ -210,7 +210,7 @@ struct MantraListColumn: View {
         }
         .sheet(isPresented: $isPresentedMantraInfoView) {
             InfoView(
-                viewModel: InfoViewModel(mantraForView, dataManager: dataManager),
+                viewModel: InfoViewModel(contextMantra, dataManager: dataManager),
                 infoMode: .view,
                 isPresented: $isPresentedMantraInfoView
             )

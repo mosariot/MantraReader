@@ -324,6 +324,7 @@ struct ReadsView: View {
                 isPresentedValidNumberAlert = false
                 isPresentedInfoView = false
                 isPresentedUndoAlert = false
+                isPresentedDeleteConfirmation = false
                 isPresentedMantraCounterModeAlert = false
                 isPresentedAdjustingAlert = false
                 adjustingType = nil

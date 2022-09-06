@@ -202,26 +202,27 @@ struct MantraListColumn: View {
     
     private func performActionIfNeeded() {
         guard let action = actionService.action else { return }
-        switch action {
-        case .newMantra:
-            isPresentedStatisticsSheet = false
-            selectedMantra = nil
-            isPresentedNewMantraSheet = true
-        case .showStatistics:
-            isPresentedNewMantraSheet = false
-            selectedMantra = nil
-            isPresentedStatisticsSheet = true
-        case .openMantra(let id):
-            isPresentedStatisticsSheet = false
-            isPresentedNewMantraSheet = false
-            mantras.forEach { section in
-                section.forEach { mantra in
-                    if mantra.uuid == UUID(uuidString: "\(id)") {
-                        selectedMantra = mantra
+        isPresentedPreloadedMantraList = false
+        isDeletingMantras = false
+        
+        afterDelay(0.3) {
+            switch action {
+            case .newMantra:
+                isPresentedStatisticsSheet = false
+                isPresentedNewMantraSheet = true
+            case .showStatistics:
+                isPresentedNewMantraSheet = false
+                isPresentedStatisticsSheet = true
+            case .openMantra(let id):
+                mantras.forEach { section in
+                    section.forEach { mantra in
+                        if mantra.uuid == UUID(uuidString: "\(id)") {
+                            selectedMantra = mantra
+                        }
                     }
                 }
             }
+            actionService.action = nil
         }
-        actionService.action = nil
     }
 }

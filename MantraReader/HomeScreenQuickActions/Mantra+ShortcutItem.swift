@@ -21,6 +21,9 @@ extension Mantra {
                     UIApplication.shared.shortcutItems?.insert(shortcutItem, at: 0)
                     return
                 }
+            } else if let secondItem = shortcutItems[1], let uuid, secondItem.userInfo?["MantraID"] as? String == uuid.uuidString {
+                UIApplication.shared.shortcutItems?.swap(at: 0, 1)
+                return
             }
         } else {
             UIApplication.shared.shortcutItems?.insert(shortcutItem, at: 0)

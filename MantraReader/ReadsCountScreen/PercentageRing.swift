@@ -86,7 +86,7 @@ struct PercentageRing: View {
         self.ringWidth = ringWidth
         self.percent = percent
         self.backgroundColor = backgroundColor
-        self.foregroundColors = percent >= 3 ? foregroundColors : [Color(Constants.progressStartColor)]
+        self.foregroundColors = foregroundColors
     }
     
     var body: some View {

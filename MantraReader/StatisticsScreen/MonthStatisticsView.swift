@@ -122,7 +122,7 @@ struct MonthStatisticsView: View {
                 .tint(.green.opacity(0.8))
                 .disabled(selectedMonth == currentMonth + 1)
                 Spacer()
-                    .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 40 : nil)
+                    .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 60 : nil)
                 Picker("", selection: $selectedMonth) {
                     Text("Last 30 Days").tag(0)
                     ForEach((1...currentMonth).reversed(), id: \.self) {
@@ -135,7 +135,7 @@ struct MonthStatisticsView: View {
                 .layoutPriority(1)
                 .labelsHidden()
                 Spacer()
-                    .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 40 : nil)
+                    .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 60 : nil)
                 Button {
                     if selectedMonth == 0 {
                         selectedMonth = currentMonth

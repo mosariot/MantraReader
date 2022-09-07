@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct AdaptiveListStyle: ViewModifier {
-    @Environment(\.verticalSizeClass) private var verticalSizeClass
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     func body(content: Content) -> some View {
-        if horizontalSizeClass == .regular && verticalSizeClass == .regular {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             content.listStyle(.insetGrouped)
         } else {
             content.listStyle(.sidebar)

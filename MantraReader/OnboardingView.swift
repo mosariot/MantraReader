@@ -8,13 +8,10 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    @Environment(\.verticalSizeClass) private var verticalSizeClass
-    
     @Binding var isPresented: Bool
     
     private var textFont: Font {
-        if horizontalSizeClass == .regular && verticalSizeClass == .regular {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             return .title2
         } else {
             return .body

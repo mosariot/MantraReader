@@ -128,7 +128,7 @@ struct WeekStatisticsView: View {
                 .tint(.blue.opacity(0.8))
                 .disabled(selectedWeek == 2)
                 Spacer()
-                    .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 40 : nil)
+                    .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 60 : nil)
                 Picker("", selection: $selectedWeek) {
                     Text("Last 7 Days").tag(0)
                     ForEach((2...currentWeek).reversed(), id: \.self) {
@@ -138,7 +138,7 @@ struct WeekStatisticsView: View {
                 .layoutPriority(1)
                 .labelsHidden()
                 Spacer()
-                    .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 40 : nil)
+                    .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 60 : nil)
                 Button {
                     if selectedWeek == 0 {
                         selectedWeek = currentWeek

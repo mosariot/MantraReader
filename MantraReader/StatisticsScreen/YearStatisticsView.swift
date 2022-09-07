@@ -127,14 +127,17 @@ struct YearStatisticsView: View {
                 .tint(.red.opacity(0.8))
                 .disabled(selectedYear == 2022 || (selectedYear == 0 && currentYear == 2022))
                 Spacer()
+                    .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 40 : nil)
                 Picker("", selection: $selectedYear) {
                     Text("Last 12 Months").tag(0)
                     ForEach((2022...currentYear).reversed(), id: \.self) {
                         Text("\(date(year: $0).formatted(.dateTime.year()))").tag($0)
                     }
                 }
+                .layoutPriority(1)
                 .labelsHidden()
                 Spacer()
+                    .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 40 : nil)
                 Button {
                     if selectedYear == 0 {
                         selectedYear = currentYear

@@ -10,6 +10,7 @@ import Charts
 
 struct WeekStatisticsView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
     var data: [Reading]
     @State private var selectedDate: Date?
     @Binding var selectedWeek: Int
@@ -127,14 +128,17 @@ struct WeekStatisticsView: View {
                 .tint(.blue.opacity(0.8))
                 .disabled(selectedWeek == 2)
                 Spacer()
+                    .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 40 : nil)
                 Picker("", selection: $selectedWeek) {
                     Text("Last 7 Days").tag(0)
                     ForEach((2...currentWeek).reversed(), id: \.self) {
                         Text("\(startOfWeek($0).formatted(.dateTime.day().month(.abbreviated))) - \(endOfWeek($0).formatted(.dateTime.day().month(.abbreviated)))").tag($0)
                     }
                 }
+                .layoutPriority(1)
                 .labelsHidden()
                 Spacer()
+                    .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 40 : nil)
                 Button {
                     if selectedWeek == 0 {
                         selectedWeek = currentWeek

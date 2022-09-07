@@ -9,6 +9,8 @@ import SwiftUI
 import Charts
 
 struct MonthStatisticsView: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
     var data: [Reading]
     @State private var selectedDate: Date?
     @Binding var selectedMonth: Int
@@ -120,6 +122,7 @@ struct MonthStatisticsView: View {
                 .tint(.green.opacity(0.8))
                 .disabled(selectedMonth == currentMonth + 1)
                 Spacer()
+                    .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 40 : nil)
                 Picker("", selection: $selectedMonth) {
                     Text("Last 30 Days").tag(0)
                     ForEach((1...currentMonth).reversed(), id: \.self) {
@@ -129,8 +132,10 @@ struct MonthStatisticsView: View {
                         Text("\(date(year: currentYear-1, month: $0).formatted(.dateTime.month(.wide).year()))").tag($0)
                     }
                 }
+                .layoutPriority(1)
                 .labelsHidden()
                 Spacer()
+                    .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 40 : nil)
                 Button {
                     if selectedMonth == 0 {
                         selectedMonth = currentMonth

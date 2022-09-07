@@ -16,8 +16,6 @@ struct InfoView: View {
     }
     
     @AppStorage("isFirstSearchOnTheInternet") private var isFirstSearchOnTheInternet = true
-    @EnvironmentObject var actionService: ActionService
-    @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject private var dataManager: DataManager
     @StateObject private var viewModel: InfoViewModel
     @State private var infoMode: InfoMode
@@ -363,21 +361,6 @@ struct InfoView: View {
             .onAppear {
                 if infoMode == .addNew {
                     focus = .title
-                }
-            }
-            .onChange(of: scenePhase) { newValue in
-                switch newValue {
-                case .active:
-                    guard let _ = actionService.action else { return }
-                    isPresentedChangesAlert = false
-                    isPresentedDiscardingMantraAlert = false
-                    isPresentedDuplicationAlert = false
-                    isPresentedSafariController = false
-                    isPresentedFirstSearchOnTheInternetAlert = false
-                    isPresentedImagePickerView = false
-                    isPresentedNoImageAlert = false
-                default:
-                    break
                 }
             }
             .onDisappear {

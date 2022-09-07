@@ -229,24 +229,38 @@ struct MantraListColumn: View {
     
     private func performActionIfNeeded() {
         guard let action = actionService.action else { return }
-        isPresentedPreloadedMantraList = false
-        isPresentedMantraStatisticsSheet = false
-        isPresentedMantraInfoView = false
-        isDeletingMantras = false
         mantrasForDeletion = nil
         dismissSearch()
-        selectedMantra = nil
+        let rootViewController = UIApplication.shared.connectedScenes
+            .filter { $0.activationState == .foregroundActive }
+            .map { $0 as? UIWindowScene }
+            .compactMap { $0 }
+            .first?.windows
+            .filter({ $0.isKeyWindow }).first?.rootViewController
+        rootViewController?.dismiss(animated: true) {
+            switch action {
+            case .newMantra:
+                isPresentedNewMantraSheet = true
+            case .showStatistics:
+                isPresentedStatisticsSheet = true
+            case .openMantra(let id):
+                mantras.forEach { section in
+                    section.forEach { mantra in
+                        if mantra.uuid == UUID(uuidString: "\(id)") {
+                            selectedMantra = mantra
+                        }
+                    }
+                }
+            }
+            actionService.action = nil
+        }
         
         switch action {
         case .newMantra:
-            isPresentedStatisticsSheet = false
             afterDelay(0.8) { isPresentedNewMantraSheet = true }
         case .showStatistics:
-            isPresentedNewMantraSheet = false
             afterDelay(0.8) { isPresentedStatisticsSheet = true }
         case .openMantra(let id):
-            isPresentedStatisticsSheet = false
-            isPresentedNewMantraSheet = false
             mantras.forEach { section in
                 section.forEach { mantra in
                     if mantra.uuid == UUID(uuidString: "\(id)") {

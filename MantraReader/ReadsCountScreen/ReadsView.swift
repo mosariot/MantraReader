@@ -320,16 +320,8 @@ struct ReadsView: View {
             switch newValue {
             case .active:
                 guard let _ = actionService.action else { return }
-                isPresentedStatisticsSheet = false
-                isPresentedValidNumberAlert = false
-                isPresentedInfoView = false
-                isPresentedUndoAlert = false
-                isPresentedDeleteConfirmation = false
-                isPresentedMantraCounterModeAlert = false
-                isPresentedAdjustingAlert = false
                 adjustingType = nil
                 adjustingText = ""
-                viewModel.isPresentedCongratulations = false
             default:
                 break
             }

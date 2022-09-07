@@ -259,30 +259,35 @@ struct ReadsView: View {
                     Text("Are you sure you want to undo the last change?")
                 }
             }
-            ToolbarItem(placement: .primaryAction) {
-                Menu {
-                    Button {
-                        isPresentedStatisticsSheet = true
-                    } label: {
-                        Label("Readings Statistics", systemImage: "chart.bar")
-                    }
-                    Button {
-                        isPresentedInfoView = true
-                    } label: {
-                        Label("Detailed Info", systemImage: "info.circle")
-                    }
-                    Button {
-                        viewModel.toggleFavorite()
-                    } label: {
-                        Label(viewModel.favoriteBarTitle, systemImage: viewModel.favoriteBarImage)
-                    }
-                    Button(role: .destructive) {
-                        isPresentedDeleteConfirmation = true
-                    } label: {
-                        Label("Delete", systemImage: "trash")
-                    }
+            ToolbarItem(placement: .secondaryAction) {
+                Button {
+                    isPresentedStatisticsSheet = true
                 } label: {
-                    Label("Menu", systemImage: "ellipsis.circle")
+                    Label("Readings Statistics", systemImage: "chart.bar")
+                }
+                .disabled(isMantraCounterMode || viewModel.isAboutToShowCongratulations)
+            }
+            ToolbarItem(placement: .secondaryAction) {
+                Button {
+                    isPresentedInfoView = true
+                } label: {
+                    Label("Detailed Info", systemImage: "info.circle")
+                }
+                .disabled(isMantraCounterMode || viewModel.isAboutToShowCongratulations)
+            }
+            ToolbarItem(placement: .secondaryAction) {
+                Button {
+                    viewModel.toggleFavorite()
+                } label: {
+                    Label(viewModel.favoriteBarTitle, systemImage: viewModel.favoriteBarImage)
+                }
+                .disabled(isMantraCounterMode || viewModel.isAboutToShowCongratulations)
+            }
+            ToolbarItem(placement: .secondaryAction) {
+                Button(role: .destructive) {
+                    isPresentedDeleteConfirmation = true
+                } label: {
+                    Label("Delete", systemImage: "trash")
                 }
                 .disabled(isMantraCounterMode || viewModel.isAboutToShowCongratulations)
             }

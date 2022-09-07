@@ -143,37 +143,37 @@ struct MantraListColumn: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 EditButton()
             }
-            ToolbarItem(placement: .primaryAction) {
+            ToolbarItem(placement: .secondaryAction) {
+                Button {
+                    isPresentedStatisticsSheet = true
+                } label: {
+                    Label("Readings Statistics", systemImage: "chart.bar")
+                }
+            }
+            ToolbarItem(placement: .secondaryAction) {
                 Menu {
-                    Button {
-                        isPresentedStatisticsSheet = true
-                    } label: {
-                        Label("Readings Statistics", systemImage: "chart.bar")
-                    }
-                    Menu {
-                        Picker("Sorting", selection: $sorting) {
-                            Label("Alphabetically", systemImage: "textformat").tag(Sorting.title)
-                            Label("By readings count", systemImage: "textformat.123").tag(Sorting.reads)
-                        }
-                    } label: {
-                        Label("Sorting", systemImage: "line.horizontal.3.decrease.circle")
-                    }
-                    Menu {
-                        Button {
-                            isPresentedNewMantraSheet = true
-                        } label: {
-                            Label("New Mantra", systemImage: "square.and.pencil")
-                        }
-                        Button {
-                            isPresentedPreloadedMantraList = true
-                        } label: {
-                            Label("Preset Mantra", systemImage: "books.vertical")
-                        }
-                    } label: {
-                        Label("Add New", systemImage: "plus")
+                    Picker("Sorting", selection: $sorting) {
+                        Label("Alphabetically", systemImage: "textformat").tag(Sorting.title)
+                        Label("By readings count", systemImage: "textformat.123").tag(Sorting.reads)
                     }
                 } label: {
-                    Label("Menu", systemImage: "ellipsis.circle")
+                    Label("Sorting", systemImage: "line.horizontal.3.decrease.circle")
+                }
+            }
+            ToolbarItem(placement: .secondaryAction) {
+                Menu {
+                    Button {
+                        isPresentedNewMantraSheet = true
+                    } label: {
+                        Label("New Mantra", systemImage: "square.and.pencil")
+                    }
+                    Button {
+                        isPresentedPreloadedMantraList = true
+                    } label: {
+                        Label("Preset Mantra", systemImage: "books.vertical")
+                    }
+                } label: {
+                    Label("Add New", systemImage: "plus")
                 }
             }
         }

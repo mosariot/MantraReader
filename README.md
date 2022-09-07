@@ -8,9 +8,10 @@ Recite mantras and keep track of your level.
 In this app:
 - Use preloaded mantras or create and set up your own.
 - Add most actual mantras to Favorites.
+- Track your readings statistics over time.
 - Enjoy the user-friendly interface and beautiful design on both your iPhone and iPad with support for light and dark appearance.
-- Take advantage of data sync across all your devices via iCloud (works automatically for signed-in users). All data is saved in iCloud and will not be lost even if the application is deleted.
-- Use widgets with the necessary data both on the side and home screen.
+- Take advantage of data sync across all your devices via iCloud (works automatically for signed-in users). All data is saved in iCloud and won't be lost even if the application is deleted.
+- Use all kinds of widgets with the necessary data on homescreen and lockscreen.
 
 Important information:
 Recitation of mantras is a sacrament.
@@ -30,9 +31,10 @@ We wish you deep awarenesses and spiritual growth!
 В этом приложении:
 - Используйте предустановленные мантры или создавайте и настраивайте свои собственные.
 - Добавляйте наиболее актуальные мантры в Избранное.
+- Отслеживайте статистику начиток с течением времени.
 - Получайте удовольствие от удобного интерфейса и прекрасного дизайна как на вашем iPhone, так и на iPad с поддержкой светлой и темной тем.
 - Используйте преимущества синхронизации данных между всеми вашими устройствами через iCloud (работает автоматически для пользователей iCloud). Все данные сохраняются в облаке и не потеряются даже в случае удаления приложения.
-- Используйте виджеты с необходимыми данными как на боковом, так и на домашнем экране.
+- Используйте все виды виджетов с необходимыми данными на домашнем экране и экране блокировки.
 
 Важная информация:
 Чтение мантр - это таинство. Подойдите к данному вопросу со всей своей осознанностью.

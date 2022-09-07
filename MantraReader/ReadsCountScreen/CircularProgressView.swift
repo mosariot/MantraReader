@@ -19,10 +19,9 @@ struct CircularProgressView: View {
                 PercentageRing(
                     ringWidth: 20, percent: viewModel.progress * 100,
                     backgroundColor: .red.opacity(0.2),
-                    foregroundColors: [
-                        Color(Constants.progressStartColor),
-                        Color(Constants.progressEndColor)
-                    ]
+                    foregroundColors: viewModel.progress >= 0.03 ?
+                    [Color(Constants.progressStartColor), Color(Constants.progressEndColor)] :
+                    [Color(Constants.progressStartColor), Color(Constants.progressStartColor)]
                 )
                 .animation(
                     viewModel.isAnimated ?

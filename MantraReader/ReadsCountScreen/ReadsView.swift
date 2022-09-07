@@ -92,7 +92,7 @@ struct ReadsView: View {
                                 adjustingType: $adjustingType,
                                 isPresentedAdjustingAlert: $isPresentedAdjustingAlert
                             )
-                            .disabled(isMantraCounterMode)
+                            .disabled(isMantraCounterMode || viewModel.isAboutToShowCongratulations)
                         }
                         Spacer()
                     }

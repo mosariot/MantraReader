@@ -163,7 +163,7 @@ final class ReadsViewModel: ObservableObject {
             afterDelay(Constants.animationTime + 0.3) {
                 self.congratulations = .half
                 self.isPresentedCongratulations = true
-                isAboutToShowCongratulations = false
+                self.isAboutToShowCongratulations = false
             }
         }
         lightHapticGenerator.impactOccurred()

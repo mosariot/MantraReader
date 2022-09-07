@@ -109,7 +109,7 @@ struct ReadsView: View {
                                 .symbolVariant(.circle.fill)
                                 .foregroundStyle(Color.accentColor.gradient)
                         }
-                        .disabled(isMantraCounterMode)
+                        .disabled(isMantraCounterMode || viewModel.isAboutToShowCongratulations)
                         .padding(.horizontal)
                         Button {
                             adjustingType = .rounds
@@ -120,7 +120,7 @@ struct ReadsView: View {
                                 .symbolVariant(.circle.fill)
                                 .foregroundStyle(Color.accentColor.gradient)
                         }
-                        .disabled(isMantraCounterMode)
+                        .disabled(isMantraCounterMode || viewModel.isAboutToShowCongratulations)
                         .padding(.horizontal)
                         Button {
                             adjustingType = .value
@@ -131,7 +131,7 @@ struct ReadsView: View {
                                 .symbolVariant(.fill)
                                 .foregroundStyle(Color.accentColor.gradient)
                         }
-                        .disabled(isMantraCounterMode)
+                        .disabled(isMantraCounterMode || viewModel.isAboutToShowCongratulations)
                         .padding(.horizontal)
                         .alert("Please enter a valid number", isPresented: $isPresentedValidNumberAlert) {
                             Button("OK") {
@@ -246,7 +246,7 @@ struct ReadsView: View {
                     Image(systemName: "arrow.uturn.backward")
                         .symbolVariant(.circle)
                 }
-                .disabled(viewModel.undoHistory.isEmpty || isMantraCounterMode)
+                .disabled(viewModel.undoHistory.isEmpty || isMantraCounterMode || viewModel.isAboutToShowCongratulations)
                 .alert(
                     "Undo Changes",
                     isPresented: $isPresentedUndoAlert
@@ -284,7 +284,7 @@ struct ReadsView: View {
                 } label: {
                     Label("Menu", systemImage: "ellipsis.circle")
                 }
-                .disabled(isMantraCounterMode)
+                .disabled(isMantraCounterMode || viewModel.isAboutToShowCongratulations)
             }
         }
         .alert(

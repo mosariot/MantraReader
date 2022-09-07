@@ -16,6 +16,7 @@ final class ReadsViewModel: ObservableObject {
     @Published var undoHistory: [(value: Int32, type: UndoType)] = []
     @Published var congratulations: Congratulations?
     @Published var isPresentedCongratulations = false
+    @Published var isAboutToShowCongratulations = false
     @Published var confettiTrigger: Int = 0
     private let congratulationsGenerator = UINotificationFeedbackGenerator()
     private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
@@ -149,16 +150,20 @@ final class ReadsViewModel: ObservableObject {
             congratulationsGenerator.notificationOccurred(.success)
             confettiTrigger += 1
             Self.confettiTrigger += 1
+            isAboutToShowCongratulations = true
             afterDelay(Constants.animationTime + 1.8) {
                 self.congratulations = .full
                 self.isPresentedCongratulations = true
+                self.isAboutToShowCongratulations = false
             }
             return
         }
         if mantra.reads < mantra.readsGoal/2 && mantra.readsGoal/2..<mantra.readsGoal ~= value {
+            isAboutToShowCongratulations = true
             afterDelay(Constants.animationTime + 0.3) {
                 self.congratulations = .half
                 self.isPresentedCongratulations = true
+                isAboutToShowCongratulations = false
             }
         }
         lightHapticGenerator.impactOccurred()

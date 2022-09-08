@@ -44,7 +44,7 @@ struct PreloadedMantraListView: View {
                                 .foregroundColor(.gray.opacity(0.8))
                         }
                     }
-                    ToolbarItem(placement: .navigationBarTrailing) {
+                    ToolbarItem(placement: .primaryAction) {
                         Button("Add") {
                             viewModel.checkForDuplication()
                             if !viewModel.isDuplicating {

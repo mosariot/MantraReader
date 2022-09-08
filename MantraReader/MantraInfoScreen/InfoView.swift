@@ -306,7 +306,7 @@ struct InfoView: View {
                         }
                     }
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .primaryAction) {
                     if infoMode == .edit {
                         Button {
                             withAnimation {

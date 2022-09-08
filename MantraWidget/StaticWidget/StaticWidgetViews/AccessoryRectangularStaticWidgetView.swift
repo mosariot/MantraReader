@@ -21,6 +21,7 @@ struct AccessoryRectangularStaticWidgetView: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.9)
                 Text("\(widgetModel.mantras.map { $0.reads }.reduce(0,+))")
+                    .bold()
                     .privacySensitive()
             }
             Spacer()

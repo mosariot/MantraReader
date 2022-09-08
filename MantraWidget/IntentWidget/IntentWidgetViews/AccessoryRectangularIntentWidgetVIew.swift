@@ -20,10 +20,10 @@ struct AccessoryRectangularIntentWidgetVIew: View {
             Text((selectedMantra?.title ?? firstMantra?.title) ?? "Your mantra")
         } currentValueLabel: {
             Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
-                .font(.body)
+                .bold()
                 .privacySensitive()
         }
-        .gaugeStyle(.accessoryLinearCapacity)
+        .gaugeStyle(.linearCapacity)
         .tint(Color(Constants.progressStartColor))
         .redacted(reason: reasons)
         .widgetURL(URL(string: (selectedMantra?.id.uuidString ?? firstMantra?.id.uuidString) ?? ""))

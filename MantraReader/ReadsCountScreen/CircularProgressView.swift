@@ -17,7 +17,7 @@ struct CircularProgressView: View {
         VStack {
             ZStack {
                 PercentageRing(
-                    ringWidth: 20, percent: viewModel.percent,
+                    ringWidth: 25, percent: viewModel.percent,
                     backgroundColor: .red.opacity(0.2),
                     foregroundColors: viewModel.progress >= 0.03 ?
                     [Color(Constants.progressStartColor), Color(Constants.progressEndColor)] :

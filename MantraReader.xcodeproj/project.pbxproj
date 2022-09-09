@@ -186,6 +186,7 @@
 		9F54232028AD4E2400F15040 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		9F54232228AD4E2400F15040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F54232B28AD55CD00F15040 /* MantraIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MantraIntent.entitlements; sourceTree = "<group>"; };
+		9F5C7F5C28CBAB6400ED3E29 /* ReadTheMantraStat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReadTheMantraStat.xcdatamodel; sourceTree = "<group>"; };
 		9F605142288EE75E005EC6F5 /* BlinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkView.swift; sourceTree = "<group>"; };
 		9F6C7D6228BBE379004CC501 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		9F6C7D6428BC76C7004CC501 /* MonthStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthStatisticsView.swift; sourceTree = "<group>"; };
@@ -1226,9 +1227,10 @@
 		9F6E65C028B39E750054F6D6 /* ReadTheMantra.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				9F5C7F5C28CBAB6400ED3E29 /* ReadTheMantraStat.xcdatamodel */,
 				9F6E65C128B39E750054F6D6 /* ReadTheMantra.xcdatamodel */,
 			);
-			currentVersion = 9F6E65C128B39E750054F6D6 /* ReadTheMantra.xcdatamodel */;
+			currentVersion = 9F5C7F5C28CBAB6400ED3E29 /* ReadTheMantraStat.xcdatamodel */;
 			path = ReadTheMantra.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

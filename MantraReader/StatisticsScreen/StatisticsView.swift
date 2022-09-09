@@ -9,8 +9,6 @@ import SwiftUI
 
 struct StatisticsView: View {
     @Environment(\.dismiss) var dismiss
-    @Environment(\.verticalSizeClass) private var verticalSizeClass
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @StateObject var viewModel: StatisticsViewModel
     @State private var selectedWeek: Int = 0
     @State private var selectedMonth: Int = 0

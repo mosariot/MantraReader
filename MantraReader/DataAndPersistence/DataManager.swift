@@ -42,7 +42,7 @@ final class DataManager: ObservableObject {
         PreloadedMantras.data.forEach { data in
             let mantra = Mantra(context: viewContext)
             mantra.uuid = UUID()
-            mantra.reads = Int32.random(in: 0...200_000)
+//            mantra.reads = Int32.random(in: 0...200_000)
 //            mantra.statistics = ReadingsData.random
             mantra.isFavorite = Bool.random()
             data.forEach { key, value in

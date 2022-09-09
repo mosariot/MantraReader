@@ -18,9 +18,9 @@ final class CircularProgressViewModel: ObservableObject {
     private var readsGoal: Int32
     var percent: Double {
         var result: Double
-        let threeDigitsAfterComma = Int(progress * 1000) % Int(progress)
         if progress > 10 {
-            result = 100 + Double(threeDigitsAfterComma) / 10
+            let threeDigitsAfterComma = Double(round(1000*progress)/1000) - progress.rounded(.down)
+            result = 100 + threeDigitsAfterComma * 100
         } else {
             result = progress * 100
         }

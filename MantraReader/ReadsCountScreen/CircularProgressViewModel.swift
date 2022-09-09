@@ -16,6 +16,16 @@ final class CircularProgressViewModel: ObservableObject {
     @Published var progress: Double
     @Published var isAnimated: Bool = false
     private var readsGoal: Int32
+    var percent: Double {
+        var result: Double
+        let threeDigitsAfterComma = Int(progress * 1000) % Int(progress)
+        if progress > 10 {
+            result = 100 + Double(threeDigitsAfterComma / 1000)
+        } else {
+            result = progress * 100
+        }
+        return result
+    }
     
     private var timerSubscription: Cancellable?
     

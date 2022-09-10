@@ -83,6 +83,7 @@
 		9FABFF5328BD4009001A1D7F /* ReadingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABFF5228BD4009001A1D7F /* ReadingsModel.swift */; };
 		9FABFF5528BE9E52001A1D7F /* Date+StartEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABFF5428BE9E52001A1D7F /* Date+StartEnd.swift */; };
 		9FABFF5728BFB4D0001A1D7F /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABFF5628BFB4D0001A1D7F /* StatisticsViewModel.swift */; };
+		9FAE4B9A28CD165C00CE9D9B /* GoalButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4B9928CD165C00CE9D9B /* GoalButtonViewModel.swift */; };
 		9FB279E428902F1B0029ED3B /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB279E328902F1B0029ED3B /* HintView.swift */; };
 		9FB32B1128A7D48C000A910E /* ShakeSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB32B1028A7D48C000A910E /* ShakeSupport.swift */; };
 		9FB32B1428A7D8F2000A910E /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9FB32B1328A7D8F2000A910E /* IQKeyboardManagerSwift */; };
@@ -110,7 +111,6 @@
 		9FDC8DB028623D5F00BF7051 /* OrientationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DAF28623D5F00BF7051 /* OrientationInfo.swift */; };
 		9FDF34992884859D00B3007E /* AdjustingAndUndoTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF34982884859D00B3007E /* AdjustingAndUndoTypes.swift */; };
 		9FDF349B2885B2E000B3007E /* CircularProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF349A2885B2E000B3007E /* CircularProgressViewModel.swift */; };
-		9FDF349D2885E83B00B3007E /* GoalButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF349C2885E83B00B3007E /* GoalButtonViewModel.swift */; };
 		9FDF349F2885E86200B3007E /* GoalButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF349E2885E86200B3007E /* GoalButtonView.swift */; };
 		9FF7C3952864C16200DA5F51 /* PreloadedMantras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */; };
 /* End PBXBuildFile section */
@@ -221,6 +221,7 @@
 		9FABFF5228BD4009001A1D7F /* ReadingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingsModel.swift; sourceTree = "<group>"; };
 		9FABFF5428BE9E52001A1D7F /* Date+StartEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StartEnd.swift"; sourceTree = "<group>"; };
 		9FABFF5628BFB4D0001A1D7F /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
+		9FAE4B9928CD165C00CE9D9B /* GoalButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalButtonViewModel.swift; sourceTree = "<group>"; };
 		9FB279E328902F1B0029ED3B /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		9FB32B1028A7D48C000A910E /* ShakeSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeSupport.swift; sourceTree = "<group>"; };
 		9FB4022D28C84ABE0073D386 /* AdaptiveListStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveListStyle.swift; sourceTree = "<group>"; };
@@ -250,7 +251,6 @@
 		9FDC8DAF28623D5F00BF7051 /* OrientationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationInfo.swift; sourceTree = "<group>"; };
 		9FDF34982884859D00B3007E /* AdjustingAndUndoTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustingAndUndoTypes.swift; sourceTree = "<group>"; };
 		9FDF349A2885B2E000B3007E /* CircularProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressViewModel.swift; sourceTree = "<group>"; };
-		9FDF349C2885E83B00B3007E /* GoalButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalButtonViewModel.swift; sourceTree = "<group>"; };
 		9FDF349E2885E86200B3007E /* GoalButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalButtonView.swift; sourceTree = "<group>"; };
 		9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadedMantras.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -387,7 +387,7 @@
 				9FDF349A2885B2E000B3007E /* CircularProgressViewModel.swift */,
 				9F786289288844970058AAD0 /* PercentageRing.swift */,
 				9FDF349E2885E86200B3007E /* GoalButtonView.swift */,
-				9FDF349C2885E83B00B3007E /* GoalButtonViewModel.swift */,
+				9FAE4B9928CD165C00CE9D9B /* GoalButtonViewModel.swift */,
 				9F31E1592891ACE6006F0521 /* MantraCounterModeOverlayView.swift */,
 				9F605142288EE75E005EC6F5 /* BlinkView.swift */,
 				9FB279E328902F1B0029ED3B /* HintView.swift */,
@@ -765,7 +765,6 @@
 				9F78728E2865FDA400F52335 /* UIImage+Resize.swift in Sources */,
 				9FB7AE6928B557F70044C55E /* DataManager.swift in Sources */,
 				9FD61DCA289391BC004936E6 /* PreloadedMantraListViewModel.swift in Sources */,
-				9FDF349D2885E83B00B3007E /* GoalButtonViewModel.swift in Sources */,
 				9F6E65BF28B3970B0054F6D6 /* Mantra+ShortcutItem.swift in Sources */,
 				9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */,
 				9FC9A691287DA4FE00D05FBD /* AdjustingAlertView.swift in Sources */,
@@ -800,6 +799,7 @@
 				9F605143288EE75E005EC6F5 /* BlinkView.swift in Sources */,
 				9FD61DC8289391A4004936E6 /* PreloadedMantraRow.swift in Sources */,
 				9F338B5E2899A64200E393E2 /* SlimRectangle.swift in Sources */,
+				9FAE4B9A28CD165C00CE9D9B /* GoalButtonViewModel.swift in Sources */,
 				9F53A56F28A967900070D2B3 /* SafariView.swift in Sources */,
 				9F78628A288844970058AAD0 /* PercentageRing.swift in Sources */,
 				9F6E65BD28B276080054F6D6 /* AppDelegate.swift in Sources */,

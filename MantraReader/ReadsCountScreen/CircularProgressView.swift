@@ -29,7 +29,13 @@ struct CircularProgressView: View {
                         Animation.linear(duration: 0.01),
                     value: viewModel.progress
                 )
-                Text("\(viewModel.displayedReads, specifier: "%.0f")")
+                Text("Reads")
+                    .numberAnimation(viewModel.mantra.reads)
+                    .animation(
+                        viewModel.isAnimated ?
+                            Animation.easeInOut(duration: Constants.animationTime) :
+                            Animation.linear(duration: 0.01),
+                        value: viewModel.mantra.reads)
                     .font(
                         .system(
                             verticalSizeClass == .compact ? .title : .largeTitle,
@@ -40,7 +46,13 @@ struct CircularProgressView: View {
                     .bold()
                     .dynamicTypeSize(.xLarge)
                     .offset(x: 0, y: isMantraCounterMode ? -(frame ?? 0) / 6 : 0)
-                Text("\(viewModel.currentDisplayedReads, specifier: "%.0f")")
+                Text("Current Reads")
+                    .numberAnimation(Int32(viewModel.currentReads))
+                    .animation(
+                        viewModel.isAnimated ?
+                            Animation.easeInOut(duration: Constants.animationTime) :
+                            Animation.linear(duration: 0.01),
+                        value: viewModel.mantra.reads)
                     .font(
                         .system(
                             verticalSizeClass == .compact ? .title : .largeTitle,
@@ -60,5 +72,24 @@ struct CircularProgressView: View {
                 viewModel.updateForMantraChanges()
             }
         }
+    }
+}
+
+struct NumberAnimation: Animatable, ViewModifier {
+    var number: Int32
+
+    var animatableData: CGFloat {
+        get { CGFloat(number) }
+        set { number = Int32(newValue) }
+    }
+
+    func body(content: Content) -> some View {
+        Text("\(number)")
+    }
+}
+
+extension View {
+    func numberAnimation(_ number: Int32) -> some View {
+        modifier(NumberAnimation(number: number))
     }
 }

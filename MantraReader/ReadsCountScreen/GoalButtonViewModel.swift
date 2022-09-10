@@ -11,33 +11,19 @@ import Combine
 @MainActor
 final class GoalButtonViewModel: ObservableObject {
     @Published var mantra: Mantra
-    @Published var displayedGoal: Double
-    
-    private var timerSubscription: Cancellable?
+    @Published var previousGoal: Int32
+    @Published var isAnimated: Bool = false
     
     init(_ mantra: Mantra) {
         self.mantra = mantra
-        self.displayedGoal = Double(mantra.readsGoal)
+        self.previousGoal = mantra.readsGoal
     }
     
     func updateForMantraChanges() {
-        if Int32(displayedGoal) != mantra.readsGoal {
-            animateChanges()
+        if previousGoal != mantra.readsGoal {
+            previousGoal = mantra.readsGoal
+            isAnimated = true
+            afterDelay(Constants.animationTime) { self.isAnimated = false }
         }
-    }
-    
-    private func animateChanges() {
-        let deltaGoal = Double(mantra.readsGoal) - displayedGoal
-        timerSubscription = Timer.publish(every: Constants.animationTime / 100, on: .main, in: .common)
-            .autoconnect()
-            .scan(0) { elapsedTime, _ in elapsedTime + Constants.animationTime / 100 }
-            .sink { elapsedTime in
-                if elapsedTime < Constants.animationTime {
-                    self.displayedGoal += deltaGoal / 100.0
-                } else {
-                    self.displayedGoal = Double(self.mantra.readsGoal)
-                    self.timerSubscription?.cancel()
-                }
-            }
     }
 }

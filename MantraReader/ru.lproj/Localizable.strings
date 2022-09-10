@@ -114,7 +114,7 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "Detailed Info" = "Детальная информация";
 
 /* Goal Button Title */
-"Goal: %.0f" = "Цель: %.0f";
+"Goal:" = "Цель:";
 
 /* New Readings Goal Alert Title */
 "Set a New Readings Goal" = "Установите новую цель";

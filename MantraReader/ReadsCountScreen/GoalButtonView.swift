@@ -13,9 +13,22 @@ struct GoalButtonView: View {
     @Binding var isPresentedAdjustingAlert: Bool
     
     var body: some View {
-        Button("Goal: \(viewModel.displayedGoal, specifier: "%.0f")") {
+        Button {
             adjustingType = .goal
             isPresentedAdjustingAlert = true
+        } label: {
+            HStack {
+                Text("Goal:")
+                Text("Reads Goal")
+                    .numberAnimation(viewModel.mantra.readsGoal)
+                    .animation(
+                        viewModel.isAnimated ?
+                            Animation.easeInOut(duration: Constants.animationTime) :
+                            Animation.linear(duration: 0.01),
+                        value: viewModel.mantra.readsGoal)
+                    .padding(.leading, -3)
+                
+            }
         }
         .font(.subheadline)
         .onReceive(viewModel.mantra.objectWillChange) { _ in

@@ -31,6 +31,7 @@ struct MantraRow: View {
             }
         }
     }
+    
     private func image(for mantra: Mantra) -> UIImage {
         if let data = mantra.imageForTableView, let image = UIImage(data: data) {
             return image

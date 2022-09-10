@@ -12,7 +12,6 @@ struct ContentView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.verticalSizeClass) private var verticalSizeClass
     @EnvironmentObject private var dataManager: DataManager
-    @EnvironmentObject var orientationInfo: OrientationInfo
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("isInitalDataLoading") private var isInitalDataLoading = true
     @AppStorage("sorting") private var sorting: Sorting = .title
@@ -24,6 +23,7 @@ struct ContentView: View {
     @SectionedFetchRequest(sectionIdentifier: \.isFavorite, sortDescriptors: [])
     private var mantras: SectionedFetchResults<Bool, Mantra>
     
+    @State private var orientationInfo = OrientationInfo()
     @State private var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
     private var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
     private var isPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }

@@ -56,9 +56,7 @@ class KMBFormatter: Formatter {
     }
     
     private func divide(_ number: Double, by unitSize: [Unit: Double], for unit: Unit) -> String {
-        guard let numberSizeUnit = unitSize[unit] else {
-            fatalError("Cannot find value \(unit)")
-        }
+        guard let numberSizeUnit = unitSize[unit] else { return "" }
         let result = number/numberSizeUnit
         return formatNumberFor(number: result, unit: unit)
     }

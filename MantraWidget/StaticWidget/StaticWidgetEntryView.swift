@@ -26,7 +26,7 @@ struct StaticWidgetEntryView: View {
         case .accessoryRectangular:
             AccessoryRectangularStaticWidgetView(widgetModel: entry.widgetModel)
         default:
-            fatalError("Not implemented")
+            EmptyView()
         }
     }
 }

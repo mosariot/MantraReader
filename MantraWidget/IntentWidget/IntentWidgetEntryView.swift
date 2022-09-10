@@ -25,7 +25,7 @@ struct IntentWidgetEntryView : View {
         case .accessoryRectangular:
             AccessoryRectangularIntentWidgetVIew(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
         default:
-            fatalError("Not implemented")
+            EmptyView()
         }
     }
 }

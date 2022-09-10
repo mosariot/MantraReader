@@ -18,7 +18,6 @@ struct MantraReaderApp: App {
     @State private var isPresentedNoInternetAlert = false
     private let dataManager = DataManager(viewContext: PersistenceController.shared.container.viewContext)
     private let actionService = ActionService.shared
-    private let orientationInfo = OrientationInfo()
     
     var body: some Scene {
         WindowGroup {
@@ -26,7 +25,6 @@ struct MantraReaderApp: App {
                 .environment(\.managedObjectContext, dataManager.viewContext)
                 .environmentObject(dataManager)
                 .environmentObject(actionService)
-                .environmentObject(orientationInfo)
                 .onAppear {
                     if isFirstLaunch {
                         isFirstLaunch = false

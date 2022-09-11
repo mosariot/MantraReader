@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 @MainActor
 final class CircularProgressViewModel: ObservableObject {

@@ -49,8 +49,8 @@ struct RingShape: Shape {
 }
 
 struct PercentageRing: View {
-    private static let ShadowColor: Color = Color.black.opacity(0.4)
-    private static let ShadowRadius: CGFloat = 4
+    private static let ShadowColor: Color = Color.black.opacity(0.5)
+    private static let ShadowRadius: CGFloat = 3
     private static let ShadowOffsetMultiplier: CGFloat = ShadowRadius + 2
     
     private let ringWidth: CGFloat
@@ -78,7 +78,7 @@ struct PercentageRing: View {
             gradient: Gradient(colors: foregroundColors),
             center: .center,
             startAngle: Angle(degrees: gradientStartAngle),
-            endAngle: Angle(degrees: relativePercentageAngle)
+            endAngle: Angle(degrees: percent > 25 ? relativePercentageAngle : 0)
         )
     }
     
@@ -94,7 +94,7 @@ struct PercentageRing: View {
             ZStack {
                 RingShape()
                     .stroke(style: StrokeStyle(lineWidth: ringWidth))
-                    .fill(self.backgroundColor)
+                    .fill(backgroundColor)
                 RingShape(percent: percent, startAngle: startAngle)
                     .stroke(style: StrokeStyle(lineWidth: ringWidth, lineCap: .round))
                     .fill(ringGradient)
@@ -120,7 +120,7 @@ struct PercentageRing: View {
     }
     
     private func getEndCircleShadowOffset() -> (x: CGFloat, y: CGFloat) {
-        let angleForOffset = absolutePercentageAngle + (self.startAngle + 90)
+        let angleForOffset = absolutePercentageAngle + (startAngle + 90)
         let angleForOffsetInRadians = angleForOffset.radians
         let relativeXOffset = cos(angleForOffsetInRadians)
         let relativeYOffset = sin(angleForOffsetInRadians)

@@ -26,8 +26,8 @@ struct MantraListColumn: View {
     @State private var contextMantra: Mantra?
     
     var mantras: SectionedFetchResults<Bool, Mantra>
+    var sorting: Sorting
     @Binding var selectedMantra: Mantra?
-    @Binding var sorting: Sorting
     @Binding var searchText: String
     
     var body: some View {
@@ -144,7 +144,7 @@ struct MantraListColumn: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 EditButton()
             }
-            ToolbarItem(placement: .secondaryAction) {
+            ToolbarItem(placement: .primaryAction) {
                 Button {
                     isPresentedStatisticsSheet = true
                 } label: {
@@ -171,7 +171,7 @@ struct MantraListColumn: View {
                 Button {
                     isPresentedSettingsSheet = true
                 } label: {
-                    Label("Settings", systemImage: "gearshape")
+                    Label("Settings", systemImage: "slider.horizontal.3")
                 }
             }
         }

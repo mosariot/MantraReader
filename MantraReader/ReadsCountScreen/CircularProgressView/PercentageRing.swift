@@ -68,10 +68,10 @@ struct PercentageRing: View {
         absolutePercentageAngle + startAngle
     }
     private var firstGradientColor: Color {
-        foregroundColors.first ?? .pink
+        foregroundColors.first ?? .red
     }
     private var lastGradientColor: Color {
-        foregroundColors.last ?? .pink
+        foregroundColors.last ?? .red
     }
     private var ringGradient: AngularGradient {
         AngularGradient(

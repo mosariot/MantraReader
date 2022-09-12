@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CircularProgressView: View {
     @Environment(\.verticalSizeClass) private var verticalSizeClass
+    @AppStorage("ringColor") private var ringColor: RingColor = .red
     @ObservedObject var viewModel: CircularProgressViewModel
     var isMantraCounterMode: Bool
     var frame: CGFloat?
@@ -18,8 +19,8 @@ struct CircularProgressView: View {
             ZStack {
                 PercentageRing(
                     ringWidth: 25, percent: viewModel.percent,
-                    backgroundColor: .red.opacity(0.2),
-                    foregroundColors: [Color(Constants.progressStartColor), Color(Constants.progressEndColor)]
+                    backgroundColor: ringColor.backgroundColor,
+                    foregroundColors: ringColor.colors
                 )
                 .animation(
                     viewModel.isAnimated ?

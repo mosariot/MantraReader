@@ -54,7 +54,7 @@ struct ContentView: View {
                 MantraListColumn(
                     mantras: mantras,
                     selectedMantra: $selectedMantra,
-                    sorting: $sorting,
+                    sorting: sorting,
                     searchText: $search
                 )
                 .searchable(text: $search)

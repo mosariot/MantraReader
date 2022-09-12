@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @AppStorage("sorting") private var sorting: Sorting = .title
+    
     var body: some View {
         NavigationStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            Form {
+                Picker("Mantras sorting", selection: $sorting) {
+                    Text("Alphabetically").tag(Sorting.title)
+                    Text("By readings count").tag(Sorting.reads)
+                }
+            }
+            .navigationTitle("Settings")
         }
     }
 }

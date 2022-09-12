@@ -32,12 +32,12 @@ enum RingColor: String, Hashable {
 }
 
 extension Color {
-    static let progressRedStart = Color("progressStart")
-    static let progressRedEnd = Color("progressEnd")
-    static let progressBlueStart = Color("progressBlueStart")
-    static let progressBlueEnd = Color("progressBlueEnd")
-    static let progressGreenStart = Color("progressGreenStart")
-    static let progressGreenEnd = Color("progressGreenEnd")
+    static let progressRedStart = Color((#colorLiteral(red: 0.882, green: 0.000, blue: 0.086, alpha: 1))
+    static let progressRedEnd = Color((#colorLiteral(red: 1.000, green: 0.196, blue: 0.533, alpha: 1))
+    static let progressGreenStart = Color((#colorLiteral(red: 0.216, green: 0.863, blue: 0.000, alpha: 1))
+    static let progressGreenEnd = Color((#colorLiteral(red: 0.714, green: 1.000, blue: 0.000, alpha: 1))
+    static let progressBlueStart = Color((#colorLiteral(red: 0.000, green: 0.733, blue: 0.890, alpha: 1))
+    static let progressBlueEnd = Color((#colorLiteral(red: 0.000, green: 0.984, blue: 0.816, alpha: 1))
 }
 
 struct CornerRadiusShape: Shape {
@@ -92,21 +92,46 @@ struct SettingsView: View {
                         .frame(maxWidth: 200)
                         .tag(RingColor.red)
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(.green)
+                        .fill(
+                            LinearGradient(
+                                gradient: Gradient(colors: RingColor.green.colors],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
                         .frame(maxWidth: 200)
                         .tag(RingColor.green)
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(.blue)
+                        .fill(
+                            LinearGradient(
+                                gradient: Gradient(colors: RingColor.blue.colors],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
                         .frame(maxWidth: 200)
                         .tag(RingColor.blue)
                     HStack {
                         Rectangle()
-                            .fill(.blue)
+                            .fill(
+                            LinearGradient(
+                                gradient: Gradient(colors: RingColor.blue.colors],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
                             .cornerRadius(radius: 10.0, corners: [.topLeft, .bottomLeft])
                         Rectangle()
-                            .fill(.green)
+                            .fill(
+                            LinearGradient(
+                                gradient: Gradient(colors: RingColor.green.colors],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
                         Rectangle()
-                            .fill(.red)
+                            .fill(
+                            LinearGradient(
+                                gradient: Gradient(colors: RingColor.red.colors],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
                             .cornerRadius(radius: 10.0, corners: [.topRight, .bottomRight])
                     }
                     .frame(maxWidth: 200)

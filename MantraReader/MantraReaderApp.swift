@@ -8,16 +8,30 @@
 import SwiftUI
 import IQKeyboardManagerSwift
 
+enum ColorScheme {
+    case system
+    case light
+    case dark
+}
+
 @main
 struct MantraReaderApp: App {
     @AppStorage("isFirstLaunch") private var isFirstLaunch = true
     @AppStorage("isPreloadedMantrasDueToNoInternet") private var isPreloadedMantrasDueToNoInternet = false
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("isOnboarding") private var isOnboarding = true
+    @AppStorage("colorScheme") private var colorScheme: ColorScheme = .system
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State private var isPresentedNoInternetAlert = false
     private let dataManager = DataManager(viewContext: PersistenceController.shared.container.viewContext)
     private let actionService = ActionService.shared
+    private var preferredColorScheme: ColorScheme? {
+        switch colorScheme {
+        case .system: return nil
+        case .light: return .light
+        case .dark: return .dark
+        }
+    }
     
     var body: some Scene {
         WindowGroup {
@@ -25,6 +39,7 @@ struct MantraReaderApp: App {
                 .environment(\.managedObjectContext, dataManager.viewContext)
                 .environmentObject(dataManager)
                 .environmentObject(actionService)
+                .preferredColorScheme(preferredColorScheme)
                 .onAppear {
                     if isFirstLaunch {
                         isFirstLaunch = false

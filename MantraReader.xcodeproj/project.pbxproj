@@ -86,6 +86,9 @@
 		9FAE4B9A28CD165C00CE9D9B /* GoalButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4B9928CD165C00CE9D9B /* GoalButtonViewModel.swift */; };
 		9FAE4B9C28CDB52500CE9D9B /* NumberAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4B9B28CDB52500CE9D9B /* NumberAnimation.swift */; };
 		9FAE4B9F28CE4BDB00CE9D9B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4B9E28CE4BDB00CE9D9B /* SettingsView.swift */; };
+		9FAE4BA128CF9C2000CE9D9B /* RingColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA028CF9C2000CE9D9B /* RingColor.swift */; };
+		9FAE4BA328CF9C4D00CE9D9B /* MantraColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA228CF9C4D00CE9D9B /* MantraColorScheme.swift */; };
+		9FAE4BA528CF9CC100CE9D9B /* CornerRadiusShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA428CF9CC100CE9D9B /* CornerRadiusShape.swift */; };
 		9FB279E428902F1B0029ED3B /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB279E328902F1B0029ED3B /* HintView.swift */; };
 		9FB32B1128A7D48C000A910E /* ShakeSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB32B1028A7D48C000A910E /* ShakeSupport.swift */; };
 		9FB32B1428A7D8F2000A910E /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9FB32B1328A7D8F2000A910E /* IQKeyboardManagerSwift */; };
@@ -226,6 +229,9 @@
 		9FAE4B9928CD165C00CE9D9B /* GoalButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalButtonViewModel.swift; sourceTree = "<group>"; };
 		9FAE4B9B28CDB52500CE9D9B /* NumberAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberAnimation.swift; sourceTree = "<group>"; };
 		9FAE4B9E28CE4BDB00CE9D9B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9FAE4BA028CF9C2000CE9D9B /* RingColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingColor.swift; sourceTree = "<group>"; };
+		9FAE4BA228CF9C4D00CE9D9B /* MantraColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraColorScheme.swift; sourceTree = "<group>"; };
+		9FAE4BA428CF9CC100CE9D9B /* CornerRadiusShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusShape.swift; sourceTree = "<group>"; };
 		9FB279E328902F1B0029ED3B /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		9FB32B1028A7D48C000A910E /* ShakeSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeSupport.swift; sourceTree = "<group>"; };
 		9FB4022D28C84ABE0073D386 /* AdaptiveListStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveListStyle.swift; sourceTree = "<group>"; };
@@ -384,12 +390,10 @@
 			isa = PBXGroup;
 			children = (
 				9F338B552899A62A00E393E2 /* ConfettiView */,
+				9FAE4BA628CF9EBF00CE9D9B /* CircularProgressView */,
 				9FDC8DAB28622AEC00BF7051 /* DetailsColumn.swift */,
 				9FBEE9AB285F68CE0070BA06 /* ReadsView.swift */,
 				9FDC8DA9286222C700BF7051 /* ReadsViewModel.swift */,
-				9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */,
-				9FDF349A2885B2E000B3007E /* CircularProgressViewModel.swift */,
-				9F786289288844970058AAD0 /* PercentageRing.swift */,
 				9FDF349E2885E86200B3007E /* GoalButtonView.swift */,
 				9FAE4B9928CD165C00CE9D9B /* GoalButtonViewModel.swift */,
 				9F31E1592891ACE6006F0521 /* MantraCounterModeOverlayView.swift */,
@@ -421,6 +425,7 @@
 			children = (
 				9F348D3F28A404810070F157 /* Bool+Comparable.swift */,
 				9FDC8DAD28622D5900BF7051 /* Constants.swift */,
+				9FAE4BA428CF9CC100CE9D9B /* CornerRadiusShape.swift */,
 				9FABFF5428BE9E52001A1D7F /* Date+StartEnd.swift */,
 				9FB7AE6628B556150044C55E /* GlobalAlertViewController.swift */,
 				9F4DE925286E3B990064ADCB /* Functions.swift */,
@@ -451,7 +456,6 @@
 			children = (
 				9F03F4952870B8FE00432002 /* MantraListColumn.swift */,
 				9F7B1AE3286AB09A007720A0 /* MantraRow.swift */,
-				9F794ED2289B026F00DDF940 /* Sorting.swift */,
 			);
 			path = MantraListScreen;
 			sourceTree = "<group>";
@@ -501,8 +505,21 @@
 			isa = PBXGroup;
 			children = (
 				9FAE4B9E28CE4BDB00CE9D9B /* SettingsView.swift */,
+				9FAE4BA228CF9C4D00CE9D9B /* MantraColorScheme.swift */,
+				9FAE4BA028CF9C2000CE9D9B /* RingColor.swift */,
+				9F794ED2289B026F00DDF940 /* Sorting.swift */,
 			);
 			path = SettingsScreen;
+			sourceTree = "<group>";
+		};
+		9FAE4BA628CF9EBF00CE9D9B /* CircularProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */,
+				9FDF349A2885B2E000B3007E /* CircularProgressViewModel.swift */,
+				9F786289288844970058AAD0 /* PercentageRing.swift */,
+			);
+			path = CircularProgressView;
 			sourceTree = "<group>";
 		};
 		9FB7AE6A28B558040044C55E /* HomeScreenQuickActions */ = {
@@ -769,6 +786,7 @@
 				9FDC8DAA286222C700BF7051 /* ReadsViewModel.swift in Sources */,
 				9F1AB3EB28A18EEF001FF7DE /* MantraWidgetManager.swift in Sources */,
 				9FF7C3952864C16200DA5F51 /* PreloadedMantras.swift in Sources */,
+				9FAE4BA128CF9C2000CE9D9B /* RingColor.swift in Sources */,
 				9F4DE924286E3B670064ADCB /* UIImage+CropToCircle.swift in Sources */,
 				9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */,
 				9F338B5D2899A64200E393E2 /* Triangle.swift in Sources */,
@@ -777,12 +795,14 @@
 				9FAE4B9F28CE4BDB00CE9D9B /* SettingsView.swift in Sources */,
 				9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */,
 				9F6C7D6328BBE379004CC501 /* StatisticsView.swift in Sources */,
+				9FAE4BA528CF9CC100CE9D9B /* CornerRadiusShape.swift in Sources */,
 				9F78728E2865FDA400F52335 /* UIImage+Resize.swift in Sources */,
 				9FB7AE6928B557F70044C55E /* DataManager.swift in Sources */,
 				9FD61DCA289391BC004936E6 /* PreloadedMantraListViewModel.swift in Sources */,
 				9FAE4B9C28CDB52500CE9D9B /* NumberAnimation.swift in Sources */,
 				9F6E65BF28B3970B0054F6D6 /* Mantra+ShortcutItem.swift in Sources */,
 				9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */,
+				9FAE4BA328CF9C4D00CE9D9B /* MantraColorScheme.swift in Sources */,
 				9FC9A691287DA4FE00D05FBD /* AdjustingAlertView.swift in Sources */,
 				9FB4022E28C84ABE0073D386 /* AdaptiveListStyle.swift in Sources */,
 				9F6C7D6928BD3015004CC501 /* WeekStatisticsView.swift in Sources */,

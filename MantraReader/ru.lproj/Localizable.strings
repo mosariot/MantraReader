@@ -9,6 +9,29 @@
 /* App name */
 "Mantra Reader" = "Начитай!";
 
+//MARK: - SETTINGS
+
+/* SettingsView Title */
+"Settings" = "Настройки";
+
+/* Sorting Picker Title */
+"Mantras sorting" = "Сортировка";
+
+/* Sorting Picker Title */
+"Progress ring color" = "Цвет кольца прогресса";
+
+/* Appearance Picker Title */
+"Appearance" = "Тема экрана";
+
+/* System appearance */
+"System" = "Системная";
+
+/* Light appearance */
+"Light" = "Светлая";
+
+/* Dark appearance */
+"Dark" = "Темная";
+
 //MARK: - ONBOARDING
 
 /* Onboarding Alert Title */

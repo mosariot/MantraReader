@@ -14,6 +14,7 @@ struct MantraListColumn: View {
     @EnvironmentObject private var dataManager: DataManager
     @EnvironmentObject var actionService: ActionService
     @Environment(\.scenePhase) var scenePhase
+    @AppStorage("sorting") private var sorting: Sorting = .title
     
     @State private var isPresentedPreloadedMantraList = false
     @State private var isPresentedNewMantraSheet = false
@@ -26,7 +27,6 @@ struct MantraListColumn: View {
     @State private var contextMantra: Mantra?
     
     var mantras: SectionedFetchResults<Bool, Mantra>
-    var sorting: Sorting
     @Binding var selectedMantra: Mantra?
     @Binding var searchText: String
     
@@ -146,12 +146,19 @@ struct MantraListColumn: View {
             }
             ToolbarItem(placement: .primaryAction) {
                 Button {
+                    isPresentedSettingsSheet = true
+                } label: {
+                    Label("Settings", systemImage: "slider.horizontal.3")
+                }
+            }
+            ToolbarItem(placement: .secondaryAction) {
+                Button {
                     isPresentedStatisticsSheet = true
                 } label: {
                     Label("Readings Statistics", systemImage: "chart.bar")
                 }
             }
-            ToolbarItem(placement: .primaryAction) {
+            ToolbarItem(placement: .secondaryAction) {
                 Menu {
                     Button {
                         isPresentedNewMantraSheet = true
@@ -165,13 +172,6 @@ struct MantraListColumn: View {
                     }
                 } label: {
                     Label("Add New", systemImage: "plus")
-                }
-            }
-            ToolbarItem(placement: .primaryAction) {
-                Button {
-                    isPresentedSettingsSheet = true
-                } label: {
-                    Label("Settings", systemImage: "slider.horizontal.3")
                 }
             }
         }

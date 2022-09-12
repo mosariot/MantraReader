@@ -34,9 +34,7 @@ struct MantraReaderApp: App {
                 .environmentObject(dataManager)
                 .environmentObject(actionService)
                 .onAppear {
-                    let scenes = UIApplication.shared.connectedScenes
-                    guard let scene = scenes.first as? UIWindowScene else { return }
-                    scene.keyWindow?.overrideUserInterfaceStyle = preferredColorScheme
+                    setPreferredColorScheme()
                     if isFirstLaunch {
                         isFirstLaunch = false
                         let launchPreparer = LaunchPreparer(dataManager: dataManager)
@@ -54,9 +52,7 @@ struct MantraReaderApp: App {
                     }
                 }
                 .onChange(of: colorScheme) { _ in
-                    let scenes = UIApplication.shared.connectedScenes
-                    guard let scene = scenes.first as? UIWindowScene else { return }
-                    scene.keyWindow?.overrideUserInterfaceStyle = preferredColorScheme
+                    setPreferredColorScheme()
                 }
                 .alert(
                     "No Internet Connection",
@@ -89,5 +85,11 @@ struct MantraReaderApp: App {
                     alertController.presentGlobally(animated: true, completion: nil)
                 }
         }
+    }
+    
+    private func setPreferredColorScheme() {
+        let scenes = UIApplication.shared.connectedScenes
+        guard let scene = scenes.first as? UIWindowScene else { return }
+        scene.keyWindow?.overrideUserInterfaceStyle = preferredColorScheme
     }
 }

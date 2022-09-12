@@ -7,65 +7,6 @@
 
 import SwiftUI
 
-enum MantraColorScheme: String, Hashable, CaseIterable, Identifiable {
-    case system
-    case light
-    case dark
-    
-    var id: String { self.rawValue }
-}
-
-enum RingColor: String, Hashable {
-    case red
-    case green
-    case blue
-    case dynamic
-    
-    var colors: [Color] {
-        switch self {
-        case .red: return [.progressRedStart, .progressRedEnd]
-        case .green: return [.progressGreenStart, .progressGreenEnd]
-        case .blue: return [.progressBlueStart, .progressBlueEnd]
-        default: return [.red]
-        }
-    }
-}
-
-extension Color {
-    static let progressRedStart = Color(#colorLiteral(red: 0.882, green: 0.000, blue: 0.086, alpha: 1))
-    static let progressRedEnd = Color(#colorLiteral(red: 1.000, green: 0.196, blue: 0.533, alpha: 1))
-    static let progressGreenStart = Color(#colorLiteral(red: 0.216, green: 0.863, blue: 0.000, alpha: 1))
-    static let progressGreenEnd = Color(#colorLiteral(red: 0.714, green: 1.000, blue: 0.000, alpha: 1))
-    static let progressBlueStart = Color(#colorLiteral(red: 0.000, green: 0.733, blue: 0.890, alpha: 1))
-    static let progressBlueEnd = Color(#colorLiteral(red: 0.000, green: 0.984, blue: 0.816, alpha: 1))
-}
-
-struct CornerRadiusShape: Shape {
-    var radius = CGFloat.infinity
-    var corners = UIRectCorner.allCorners
-    
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        return Path(path.cgPath)
-    }
-}
-
-struct CornerRadiusStyle: ViewModifier {
-    var radius: CGFloat
-    var corners: UIRectCorner
-    
-    func body(content: Content) -> some View {
-        content
-            .clipShape(CornerRadiusShape(radius: radius, corners: corners))
-    }
-}
-
-extension View {
-    func cornerRadius(radius: CGFloat, corners: UIRectCorner) -> some View {
-        ModifiedContent(content: self, modifier: CornerRadiusStyle(radius: radius, corners: corners))
-    }
-}
-
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
     @AppStorage("sorting") private var sorting: Sorting = .title
@@ -82,12 +23,14 @@ struct SettingsView: View {
                         .tag(Sorting.reads)
                 }
                 Picker("Appearance", selection: $colorScheme) {
-                    ForEach(MantraColorScheme.allCases) { scheme in
-                        Text(scheme.rawValue.capitalized)
-                            .tag(scheme)
-                    }
+                    Text("System")
+                        .tag(MantraColorScheme.system)
+                    Text("Light")
+                        .tag(MantraColorScheme.light)
+                    Text("Dark")
+                        .tag(MantraColorScheme.dark)
                 }
-                Picker("Ring color", selection: $ringColor) {
+                Picker("Progress ring color", selection: $ringColor) {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(
                             LinearGradient(
@@ -164,6 +107,7 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

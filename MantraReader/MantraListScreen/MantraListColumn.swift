@@ -20,6 +20,7 @@ struct MantraListColumn: View {
     @State private var isPresentedStatisticsSheet = false
     @State private var isPresentedMantraInfoView = false
     @State private var isPresentedMantraStatisticsSheet = false
+    @State private var isPresentedMantraSettingsSheet = false
     @State private var isDeletingMantras = false
     @State private var mantrasForDeletion: [Mantra]?
     @State private var contextMantra: Mantra?
@@ -150,17 +151,7 @@ struct MantraListColumn: View {
                     Label("Readings Statistics", systemImage: "chart.bar")
                 }
             }
-            ToolbarItem(placement: .secondaryAction) {
-                Menu {
-                    Picker("Sorting", selection: $sorting) {
-                        Label("Alphabetically", systemImage: "textformat").tag(Sorting.title)
-                        Label("By readings count", systemImage: "textformat.123").tag(Sorting.reads)
-                    }
-                } label: {
-                    Label("Sorting", systemImage: "line.horizontal.3.decrease.circle")
-                }
-            }
-            ToolbarItem(placement: .secondaryAction) {
+            ToolbarItem(placement: .primaryAction) {
                 Menu {
                     Button {
                         isPresentedNewMantraSheet = true
@@ -174,6 +165,13 @@ struct MantraListColumn: View {
                     }
                 } label: {
                     Label("Add New", systemImage: "plus")
+                }
+            }
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    isPresentedSettingsSheet = true
+                } label: {
+                    Label("Settings", systemImage: "gearshape")
                 }
             }
         }
@@ -216,6 +214,10 @@ struct MantraListColumn: View {
                 infoMode: .view,
                 isPresented: $isPresentedMantraInfoView
             )
+        }
+        .sheet(isPresented: $isPresentedMantraSettingsSheet) {
+           SettingsView()
+               .presentationDetents([.medium])
         }
         .onChange(of: scenePhase) { newValue in
             switch newValue {

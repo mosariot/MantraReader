@@ -8,12 +8,6 @@
 import SwiftUI
 import IQKeyboardManagerSwift
 
-enum ColorScheme {
-    case system
-    case light
-    case dark
-}
-
 @main
 struct MantraReaderApp: App {
     @AppStorage("isFirstLaunch") private var isFirstLaunch = true

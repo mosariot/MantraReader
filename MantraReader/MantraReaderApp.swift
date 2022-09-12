@@ -14,14 +14,14 @@ struct MantraReaderApp: App {
     @AppStorage("isPreloadedMantrasDueToNoInternet") private var isPreloadedMantrasDueToNoInternet = false
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("isOnboarding") private var isOnboarding = true
-    @AppStorage("colorScheme") private var colorScheme: ColorScheme = .system
+    @AppStorage("colorScheme") private var colorScheme: MantraColorScheme = .system
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State private var isPresentedNoInternetAlert = false
     private let dataManager = DataManager(viewContext: PersistenceController.shared.container.viewContext)
     private let actionService = ActionService.shared
-    private var preferredColorScheme: ColorScheme? {
+    private var preferredColorScheme: UIUserInterfaceStyle {
         switch colorScheme {
-        case .system: return nil
+        case .system: return .unspecified
         case .light: return .light
         case .dark: return .dark
         }
@@ -33,8 +33,10 @@ struct MantraReaderApp: App {
                 .environment(\.managedObjectContext, dataManager.viewContext)
                 .environmentObject(dataManager)
                 .environmentObject(actionService)
-                .preferredColorScheme(preferredColorScheme)
                 .onAppear {
+                    let scenes = UIApplication.shared.connectedScenes
+                    guard let scene = scenes.first as? UIWindowScene else { return }
+                    scene.keyWindow?.overrideUserInterfaceStyle = preferredColorScheme
                     if isFirstLaunch {
                         isFirstLaunch = false
                         let launchPreparer = LaunchPreparer(dataManager: dataManager)
@@ -50,6 +52,11 @@ struct MantraReaderApp: App {
                             isPresentedNoInternetAlert = true
                         }
                     }
+                }
+                .onChange(of: colorScheme) { _ in
+                    let scenes = UIApplication.shared.connectedScenes
+                    guard let scene = scenes.first as? UIWindowScene else { return }
+                    scene.keyWindow?.overrideUserInterfaceStyle = preferredColorScheme
                 }
                 .alert(
                     "No Internet Connection",

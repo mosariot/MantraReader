@@ -53,8 +53,8 @@ struct ContentView: View {
             ZStack {
                 MantraListColumn(
                     mantras: mantras,
-                    selectedMantra: $selectedMantra,
                     sorting: sorting,
+                    selectedMantra: $selectedMantra,
                     searchText: $search
                 )
                 .searchable(text: $search)

@@ -20,7 +20,7 @@ struct MantraListColumn: View {
     @State private var isPresentedStatisticsSheet = false
     @State private var isPresentedMantraInfoView = false
     @State private var isPresentedMantraStatisticsSheet = false
-    @State private var isPresentedMantraSettingsSheet = false
+    @State private var isPresentedSettingsSheet = false
     @State private var isDeletingMantras = false
     @State private var mantrasForDeletion: [Mantra]?
     @State private var contextMantra: Mantra?
@@ -215,7 +215,7 @@ struct MantraListColumn: View {
                 isPresented: $isPresentedMantraInfoView
             )
         }
-        .sheet(isPresented: $isPresentedMantraSettingsSheet) {
+        .sheet(isPresented: $isPresentedSettingsSheet) {
            SettingsView()
                .presentationDetents([.medium])
         }

@@ -265,10 +265,7 @@ struct InfoView: View {
                                 isPresented = false
                             }
                         } label: {
-                            Image(systemName: "xmark")
-                                .font(.headline)
-                                .symbolVariant(.circle.fill)
-                                .foregroundColor(.gray.opacity(0.8))
+                            CloseButtonImage()
                         }
                         .confirmationDialog(
                             "There were some changes",

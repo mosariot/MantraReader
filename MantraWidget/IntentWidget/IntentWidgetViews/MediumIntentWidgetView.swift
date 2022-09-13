@@ -34,12 +34,7 @@ struct MediumIntentWidgetView: View {
                     ZStack {
                         PercentageRing(
                             ringWidth: 10,
-                            percent: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000) * 100,
-                            backgroundColor: .red.opacity(0.2),
-                            foregroundColors: [
-                                Color(Constants.progressStartColor),
-                                Color(Constants.progressEndColor)
-                            ]
+                            percent: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000) * 100
                         )
                         Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
                             .font(.system(.headline, weight: .bold))

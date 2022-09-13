@@ -17,17 +17,21 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 Picker("Mantras sorting", selection: $sorting) {
-                    Text("Alphabetically")
+                    Label("Alphabetically", systemImage: "abc")
                         .tag(Sorting.title)
-                    Text("By readings count")
+                    Label("By readings count", systemImage: "text.book.closed")
                         .tag(Sorting.reads)
                 }
                 Picker("Appearance", selection: $colorScheme) {
-                    Text("System")
-                        .tag(MantraColorScheme.system)
-                    Text("Light")
+                    Label {
+                        Text("System")
+                    } icon: {
+                        Text("\(Image(systemName: "lightbulb"))/\(Image(systemName: "lightbulb.slash"))")
+                    }
+                    .tag(MantraColorScheme.system)
+                    Label("Light", systemImage: "lightbulb")
                         .tag(MantraColorScheme.light)
-                    Text("Dark")
+                    Label("Dark", systemImage: "lightbulb.slash")
                         .tag(MantraColorScheme.dark)
                 }
                 Picker("Progress ring color", selection: $ringColor) {

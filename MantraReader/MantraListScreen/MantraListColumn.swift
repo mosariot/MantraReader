@@ -42,7 +42,7 @@ struct MantraListColumn: View {
                                         contextMantra = mantra
                                         isPresentedMantraStatisticsSheet = true
                                     } label: {
-                                        Label("Readings Statistics", systemImage: "chart.bar")
+                                        Label("Reading Statistics", systemImage: "chart.bar")
                                     }
                                     Button {
                                         contextMantra = mantra
@@ -153,11 +153,6 @@ struct MantraListColumn: View {
             }
             ToolbarItem(placement: .primaryAction) {
                 Menu {
-                    Button {
-                        isPresentedStatisticsSheet = true
-                    } label: {
-                        Label("Readings Statistics", systemImage: "chart.bar")
-                    }
                     Menu {
                         Button {
                             isPresentedNewMantraSheet = true
@@ -171,6 +166,11 @@ struct MantraListColumn: View {
                         }
                     } label: {
                         Label("Add New", systemImage: "plus")
+                    }
+                    Button {
+                        isPresentedStatisticsSheet = true
+                    } label: {
+                        Label("Reading Statistics", systemImage: "chart.bar")
                     }
                     Button {
                         

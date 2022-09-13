@@ -89,6 +89,9 @@
 		9FAE4BA128CF9C2000CE9D9B /* RingColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA028CF9C2000CE9D9B /* RingColor.swift */; };
 		9FAE4BA328CF9C4D00CE9D9B /* MantraColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA228CF9C4D00CE9D9B /* MantraColorScheme.swift */; };
 		9FAE4BA528CF9CC100CE9D9B /* CornerRadiusShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA428CF9CC100CE9D9B /* CornerRadiusShape.swift */; };
+		9FAE4BA828D033DC00CE9D9B /* RingShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA728D033DC00CE9D9B /* RingShape.swift */; };
+		9FAE4BA928D0345700CE9D9B /* RingShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA728D033DC00CE9D9B /* RingShape.swift */; };
+		9FAE4BAA28D0349200CE9D9B /* RingColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA028CF9C2000CE9D9B /* RingColor.swift */; };
 		9FB279E428902F1B0029ED3B /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB279E328902F1B0029ED3B /* HintView.swift */; };
 		9FB32B1128A7D48C000A910E /* ShakeSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB32B1028A7D48C000A910E /* ShakeSupport.swift */; };
 		9FB32B1428A7D8F2000A910E /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9FB32B1328A7D8F2000A910E /* IQKeyboardManagerSwift */; };
@@ -232,6 +235,7 @@
 		9FAE4BA028CF9C2000CE9D9B /* RingColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingColor.swift; sourceTree = "<group>"; };
 		9FAE4BA228CF9C4D00CE9D9B /* MantraColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraColorScheme.swift; sourceTree = "<group>"; };
 		9FAE4BA428CF9CC100CE9D9B /* CornerRadiusShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusShape.swift; sourceTree = "<group>"; };
+		9FAE4BA728D033DC00CE9D9B /* RingShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingShape.swift; sourceTree = "<group>"; };
 		9FB279E328902F1B0029ED3B /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		9FB32B1028A7D48C000A910E /* ShakeSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeSupport.swift; sourceTree = "<group>"; };
 		9FB4022D28C84ABE0073D386 /* AdaptiveListStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveListStyle.swift; sourceTree = "<group>"; };
@@ -518,6 +522,7 @@
 				9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */,
 				9FDF349A2885B2E000B3007E /* CircularProgressViewModel.swift */,
 				9F786289288844970058AAD0 /* PercentageRing.swift */,
+				9FAE4BA728D033DC00CE9D9B /* RingShape.swift */,
 			);
 			path = CircularProgressView;
 			sourceTree = "<group>";
@@ -736,6 +741,7 @@
 				9F1AB3D228A18E57001FF7DE /* StaticWidget.swift in Sources */,
 				9F5422F328ACA2B000F15040 /* IntentWidgetEntry.swift in Sources */,
 				9F54232A28AD507000F15040 /* IntentHandler.swift in Sources */,
+				9FAE4BAA28D0349200CE9D9B /* RingColor.swift in Sources */,
 				9FA0553F28AC021D006E5798 /* AccessoryRectangularStaticWidgetView.swift in Sources */,
 				9F5422EF28ACA29400F15040 /* IntentWidgetEntryView.swift in Sources */,
 				9F5422ED28ACA24100F15040 /* IntentWidget.swift in Sources */,
@@ -752,6 +758,7 @@
 				9F5422F128ACA29E00F15040 /* IntentProvider.swift in Sources */,
 				9FA0553B28AC018E006E5798 /* StaticWidgetEntryView.swift in Sources */,
 				9F5422F528ACA2D700F15040 /* MediumIntentWidgetView.swift in Sources */,
+				9FAE4BA928D0345700CE9D9B /* RingShape.swift in Sources */,
 				9FA0553C28AC018E006E5798 /* StaticProvider.swift in Sources */,
 				9F19E32228AE91E30008FBD4 /* PercentageRing.swift in Sources */,
 				9FA0553228AC00D3006E5798 /* MantraWidgets.swift in Sources */,
@@ -802,6 +809,7 @@
 				9FAE4B9C28CDB52500CE9D9B /* NumberAnimation.swift in Sources */,
 				9F6E65BF28B3970B0054F6D6 /* Mantra+ShortcutItem.swift in Sources */,
 				9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */,
+				9FAE4BA828D033DC00CE9D9B /* RingShape.swift in Sources */,
 				9FAE4BA328CF9C4D00CE9D9B /* MantraColorScheme.swift in Sources */,
 				9FC9A691287DA4FE00D05FBD /* AdjustingAlertView.swift in Sources */,
 				9FB4022E28C84ABE0073D386 /* AdaptiveListStyle.swift in Sources */,

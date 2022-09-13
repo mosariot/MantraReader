@@ -7,48 +7,8 @@
 
 import SwiftUI
 
-extension Double {
-    var radians: Double { self * Double.pi / 180 }
-}
-
-struct RingShape: Shape {
-    static func percentToAngle(percent: Double, startAngle: Double) -> Double {
-        (percent / 100 * 360) + startAngle
-    }
-    private var percent: Double
-    private var startAngle: Double
-    private let drawnClockwise: Bool
-    
-    var animatableData: Double {
-        get { percent }
-        set { percent = newValue }
-    }
-    
-    init(percent: Double = 100, startAngle: Double = -90, drawnClockwise: Bool = false) {
-        self.percent = percent
-        self.startAngle = startAngle
-        self.drawnClockwise = drawnClockwise
-    }
-    
-    func path(in rect: CGRect) -> Path {
-        let width = rect.width
-        let height = rect.height
-        let radius = min(width, height) / 2
-        let center = CGPoint(x: width / 2, y: height / 2)
-        let endAngle = Angle(degrees: RingShape.percentToAngle(percent: percent, startAngle: startAngle))
-        return Path { path in
-            path.addArc(
-                center: center,
-                radius: radius,
-                startAngle: Angle(degrees: startAngle),
-                endAngle: endAngle,
-                clockwise: drawnClockwise
-            )
-        }
-    }
-}
-
 struct PercentageRing: View {
+    @AppStorage("ringColor") private var ringColor: RingColor = .red
     private static let ShadowColor: Color = Color.black.opacity(0.3)
     private static let ShadowRadius: CGFloat = 4
     private static let ShadowOffsetMultiplier: CGFloat = ShadowRadius + 2
@@ -71,11 +31,23 @@ struct PercentageRing: View {
         foregroundColors.first ?? .red
     }
     private var lastGradientColor: Color {
-        foregroundColors.last ?? .red
+        switch ringColor {
+        case .red, .yellow, .green: return foregroundColors.last ?? .red
+        case .dynamic:
+            if percent < 50 {
+                return foregroundColors[5]
+            } else if percent >= 50 && percent < 100 {
+                return foregroundColors[3]
+            } else if percent >= 100 {
+                return foregroundColors[1]
+            } else {
+                return .red
+            }
+        }
     }
-    private var ringGradient: AngularGradient {
+    private func ringGradient(colors: [Color]) -> AngularGradient {
         AngularGradient(
-            gradient: Gradient(colors: foregroundColors),
+            gradient: Gradient(colors: colors),
             center: .center,
             startAngle: Angle(degrees: gradientStartAngle),
             endAngle: Angle(degrees: percent > 25 ? relativePercentageAngle : 0)
@@ -95,9 +67,25 @@ struct PercentageRing: View {
                 RingShape()
                     .stroke(style: StrokeStyle(lineWidth: ringWidth))
                     .fill(backgroundColor)
-                RingShape(percent: percent, startAngle: startAngle)
-                    .stroke(style: StrokeStyle(lineWidth: ringWidth, lineCap: .round))
-                    .fill(ringGradient)
+                switch ringColor {
+                case .red, .yellow, .green:
+                    RingShape(percent: percent, startAngle: startAngle)
+                        .stroke(style: StrokeStyle(lineWidth: ringWidth, lineCap: .round))
+                        .fill(ringGradient(colors: foregroundColors))
+                case .dynamic:
+                        RingShape(percent: percent, startAngle: startAngle)
+                            .stroke(style: StrokeStyle(lineWidth: ringWidth, lineCap: .round))
+                            .fill(ringGradient(colors: [foregroundColors[4], foregroundColors[5]]))
+                            .opacity(percent < 50 ? 1 : 0)
+                        RingShape(percent: percent, startAngle: startAngle)
+                            .stroke(style: StrokeStyle(lineWidth: ringWidth, lineCap: .round))
+                            .fill(ringGradient(colors: [foregroundColors[2], foregroundColors[3]]))
+                            .opacity(percent >= 50 && percent < 100 ? 1 : 0)
+                        RingShape(percent: percent, startAngle: startAngle)
+                            .stroke(style: StrokeStyle(lineWidth: ringWidth, lineCap: .round))
+                            .fill(ringGradient(colors: [foregroundColors[0], foregroundColors[1]]))
+                            .opacity(percent >= 100 ? 1 : 0)
+                }
                 if getShowShadow(frame: geometry.size) {
                     Circle()
                         .fill(lastGradientColor)

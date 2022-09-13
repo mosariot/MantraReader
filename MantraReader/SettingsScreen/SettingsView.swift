@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
     @AppStorage("sorting") private var sorting: Sorting = .title
-    @AppStorage("ringColor") private var ringColor: RingColor = .red
+    @AppStorage("ringColor", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter")) private var ringColor: RingColor = .red
     @AppStorage("colorScheme") private var colorScheme: MantraColorScheme = .system
     
     var body: some View {

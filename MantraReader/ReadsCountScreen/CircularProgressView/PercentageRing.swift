@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PercentageRing: View {
-    @AppStorage("ringColor") private var ringColor: RingColor = .red
+    @AppStorage("ringColor", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter")) private var ringColor: RingColor = .red
     private static let ShadowColor: Color = Color.black.opacity(0.3)
     private static let ShadowRadius: CGFloat = 4
     private static let ShadowOffsetMultiplier: CGFloat = ShadowRadius + 2
@@ -28,20 +28,20 @@ struct PercentageRing: View {
         absolutePercentageAngle + startAngle
     }
     private var firstGradientColor: Color {
-        foregroundColors.first ?? .red
+        foregroundColors.first ?? .progressRedStart
     }
     private var lastGradientColor: Color {
         switch ringColor {
-        case .red, .yellow, .green: return foregroundColors.last ?? .red
+        case .red, .yellow, .green: return foregroundColors.last ?? .progressRedStart
         case .dynamic:
             if percent < 50 {
-                return foregroundColors[5]
+                return Color.firstProgressTier.last ?? .progressGreenStart
             } else if percent >= 50 && percent < 100 {
-                return foregroundColors[3]
+                return Color.secondProgressTier.last ?? .progressYellosStart
             } else if percent >= 100 {
-                return foregroundColors[1]
+                return Color.thirdProgressTier.last ?? .progressRedStart
             } else {
-                return .red
+                return .progressRedStart
             }
         }
     }
@@ -54,11 +54,11 @@ struct PercentageRing: View {
         )
     }
     
-    init(ringWidth: CGFloat, percent: Double, backgroundColor: Color, foregroundColors: [Color]) {
+    init(ringWidth: CGFloat, percent: Double) {
         self.ringWidth = ringWidth
         self.percent = percent
-        self.backgroundColor = backgroundColor
-        self.foregroundColors = foregroundColors
+        self.backgroundColor = ringColor.backgroundColor
+        self.foregroundColors = ringColor.colors
     }
     
     var body: some View {
@@ -75,15 +75,15 @@ struct PercentageRing: View {
                 case .dynamic:
                         RingShape(percent: percent, startAngle: startAngle)
                             .stroke(style: StrokeStyle(lineWidth: ringWidth, lineCap: .round))
-                            .fill(ringGradient(colors: [foregroundColors[4], foregroundColors[5]]))
+                            .fill(ringGradient(colors: Color.firstProgressTier))
                             .opacity(percent < 50 ? 1 : 0)
                         RingShape(percent: percent, startAngle: startAngle)
                             .stroke(style: StrokeStyle(lineWidth: ringWidth, lineCap: .round))
-                            .fill(ringGradient(colors: [foregroundColors[2], foregroundColors[3]]))
+                            .fill(ringGradient(colors: Color.secondProgressTier))
                             .opacity(percent >= 50 && percent < 100 ? 1 : 0)
                         RingShape(percent: percent, startAngle: startAngle)
                             .stroke(style: StrokeStyle(lineWidth: ringWidth, lineCap: .round))
-                            .fill(ringGradient(colors: [foregroundColors[0], foregroundColors[1]]))
+                            .fill(ringGradient(colors: Color.thirdProgressTier))
                             .opacity(percent >= 100 ? 1 : 0)
                 }
                 if getShowShadow(frame: geometry.size) {

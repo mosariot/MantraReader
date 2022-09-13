@@ -12,7 +12,5 @@ enum Constants {
     static let rowHeight = 55
     static let initialReadsGoal = 100_000
     static let animationTime: Double = 1.0
-    static let progressStartColor = "progressStart"
-    static let progressEndColor = "progressEnd"
     static let accentColor = UIColor(named: "AccentColor")
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum RingColor: String, Hashable {
+enum RingColor: String, Hashable, Codable {
     case red
     case yellow
     case green
@@ -18,7 +18,7 @@ enum RingColor: String, Hashable {
         case .red: return [.progressRedStart, .progressRedEnd]
         case .yellow: return [.progressYellowStart, .progressYellowEnd]
         case .green: return [.progressGreenStart, .progressGreenEnd]
-        case .dynamic: return [.progressRedStart, .progressRedEnd, .progressYellowStart, .progressYellowEnd, .progressGreenStart, .progressGreenEnd]
+        case .dynamic: return [.progressRedStart]
         }
     }
     
@@ -39,4 +39,8 @@ extension Color {
     static let progressYellowEnd = Color(#colorLiteral(red: 1, green: 0.815, blue: 0.169, alpha: 1))
     static let progressGreenStart = Color(#colorLiteral(red: 0.216, green: 0.863, blue: 0.000, alpha: 1))
     static let progressGreenEnd = Color(#colorLiteral(red: 0.569, green: 0.961, blue: 0, alpha: 1))
+    
+    static let firstCircleTier = [.progressGreenStart, .progressGreenEnd]
+    static let secondCircleTier = [.progressYellowStart, .progressYellowEnd]
+    static let thirdCircleTier = [.progressRedStart, .progressRedEnd]
 }

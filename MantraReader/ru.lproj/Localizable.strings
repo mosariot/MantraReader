@@ -21,16 +21,16 @@
 "Progress ring color" = "Цвет кольца прогресса";
 
 /* Appearance Picker Title */
-"Appearance" = "Тема экрана";
+"Appearance" = "Оформление";
 
 /* System appearance */
-"System" = "Системная";
+"System" = "Системное";
 
 /* Light appearance */
-"Light" = "Светлая";
+"Light" = "Светлое";
 
 /* Dark appearance */
-"Dark" = "Темная";
+"Dark" = "Темное";
 
 //MARK: - ONBOARDING
 

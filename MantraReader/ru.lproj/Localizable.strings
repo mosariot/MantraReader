@@ -17,6 +17,12 @@
 /* Sorting Picker Title */
 "Mantras sorting" = "Сортировка";
 
+/* Alphabetical Sorting Menu Item */
+"Alphabetically" = "По алфавиту";
+
+/* Readings Count Sorting Menu Item */
+"By readings count" = "По числу начиток";
+
 /* Sorting Picker Title */
 "Progress ring color" = "Цвет кольца прогресса";
 
@@ -74,7 +80,10 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 /* Search Placeholder */
 "Search" = "Поиск";
 
-/* Adding Menu Title */
+/* Menu Title */
+"Menu" = "Меню";
+
+/* Adding Option Title */
 "Add New" = "Добавить новое";
 
 /* Add New Mantra Menu Item */
@@ -83,14 +92,8 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 /* Add Preset Mantra Menu Item */
 "Preset Mantra" = "Из предустановленных";
 
-/* Sorting Picker Menu Title */
-"Sorting" = "Сортировка";
-
-/* Alphabetical Sorting Menu Item */
-"Alphabetically" = "По алфавиту";
-
-/* Readings Count Sorting Menu Item */
-"By readings count" = "По числу начиток";
+/* Feedback Option Title */
+"Feedback" = "Обратная связь";
 
 /* Duplication Alert Title */
 "Duplicating Mantra" = "Повторяющаяся мантра";

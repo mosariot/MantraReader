@@ -263,7 +263,7 @@ struct ReadsView: View {
                 Button {
                     isPresentedStatisticsSheet = true
                 } label: {
-                    Label("Readings Statistics", systemImage: "chart.bar")
+                    Label("Reading Statistics", systemImage: "chart.bar")
                 }
                 .disabled(isMantraCounterMode || viewModel.isAboutToShowCongratulations)
             }

@@ -38,10 +38,7 @@ struct PreloadedMantraListView: View {
                         Button {
                             isPresented = false
                         } label: {
-                            Image(systemName: "xmark")
-                                .font(.headline)
-                                .symbolVariant(.circle.fill)
-                                .foregroundColor(.gray.opacity(0.8))
+                            CloseButtonImage()
                         }
                     }
                     ToolbarItem(placement: .primaryAction) {

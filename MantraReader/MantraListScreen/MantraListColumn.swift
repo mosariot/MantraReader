@@ -224,7 +224,6 @@ struct MantraListColumn: View {
         }
         .sheet(isPresented: $isPresentedSettingsSheet) {
            SettingsView()
-               .presentationDetents([.medium])
         }
         .onChange(of: scenePhase) { newValue in
             switch newValue {

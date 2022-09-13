@@ -109,7 +109,7 @@ struct SettingsView: View {
     }
 }
 
-stuct CloseButtonImage: View {
+struct CloseButtonImage: View {
     var body: some View {
         Image(systemName: "xmark")
             .symbolVariant(.circle.fill)

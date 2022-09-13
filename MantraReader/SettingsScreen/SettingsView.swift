@@ -95,7 +95,7 @@ struct SettingsView: View {
                 .pickerStyle(.inline)
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .primaryAction) {
                     Button {
                         dismiss()
                     } label: {

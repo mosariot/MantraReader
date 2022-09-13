@@ -99,15 +99,21 @@ struct SettingsView: View {
                     Button {
                         dismiss()
                     } label: {
-                        Image(systemName: "xmark")
-                            .font(.headline)
-                            .symbolVariant(.circle.fill)
-                            .foregroundColor(.gray.opacity(0.8))
+                        CloseButtonImage()
                     }
                 }
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
         }
+    }
+}
+
+stuct CloseButtonImage: View {
+    var body: some View {
+        Image(systemName: "xmark")
+            .symbolVariant(.circle.fill)
+            .foregroundColor(.gray.opacity(0.6))
+            .scaleEffect(1.2)
     }
 }

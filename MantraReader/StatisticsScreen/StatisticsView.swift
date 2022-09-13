@@ -47,10 +47,7 @@ struct StatisticsView: View {
                     Button {
                         dismiss()
                     } label: {
-                        Image(systemName: "xmark")
-                            .font(.headline)
-                            .symbolVariant(.circle.fill)
-                            .foregroundColor(.gray.opacity(0.8))
+                        CloseButtonImage()
                     }
                 }
             }

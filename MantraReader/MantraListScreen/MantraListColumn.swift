@@ -151,27 +151,34 @@ struct MantraListColumn: View {
                     Label("Settings", systemImage: "slider.horizontal.3")
                 }
             }
-            ToolbarItem(placement: .secondaryAction) {
-                Button {
-                    isPresentedStatisticsSheet = true
-                } label: {
-                    Label("Readings Statistics", systemImage: "chart.bar")
-                }
-            }
-            ToolbarItem(placement: .secondaryAction) {
+            ToolbarItem(placement: .primaryAction) {
                 Menu {
                     Button {
-                        isPresentedNewMantraSheet = true
+                        isPresentedStatisticsSheet = true
                     } label: {
-                        Label("New Mantra", systemImage: "square.and.pencil")
+                        Label("Readings Statistics", systemImage: "chart.bar")
+                    }
+                    Menu {
+                        Button {
+                            isPresentedNewMantraSheet = true
+                        } label: {
+                            Label("New Mantra", systemImage: "square.and.pencil")
+                        }
+                        Button {
+                            isPresentedPreloadedMantraList = true
+                        } label: {
+                            Label("Preset Mantra", systemImage: "books.vertical")
+                        }
+                    } label: {
+                        Label("Add New", systemImage: "plus")
                     }
                     Button {
-                        isPresentedPreloadedMantraList = true
+                        
                     } label: {
-                        Label("Preset Mantra", systemImage: "books.vertical")
+                        Label("Feedback", systemImage: "ellipsis.bubble")
                     }
                 } label: {
-                    Label("Add New", systemImage: "plus")
+                    Label("Menu", systemImage: "ellipsis.circle")
                 }
             }
         }

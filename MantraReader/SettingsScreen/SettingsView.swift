@@ -22,6 +22,7 @@ struct SettingsView: View {
                     Label("By readings count", systemImage: "text.book.closed")
                         .tag(Sorting.reads)
                 }
+                .pickerStyle(.inline)
                 Picker("Appearance", selection: $colorScheme) {
                     Label {
                         Text("System")
@@ -34,6 +35,7 @@ struct SettingsView: View {
                     Label("Dark", systemImage: "lightbulb.slash")
                         .tag(MantraColorScheme.dark)
                 }
+                .pickerStyle(.inline)
                 Picker("Progress ring color", selection: $ringColor) {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(
@@ -108,7 +110,6 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

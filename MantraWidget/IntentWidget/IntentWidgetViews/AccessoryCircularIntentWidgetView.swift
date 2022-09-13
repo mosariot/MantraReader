@@ -24,7 +24,6 @@ struct AccessoryCircularIntentWidgetView: View {
                 .privacySensitive()
         }
         .gaugeStyle(.accessoryCircularCapacity)
-        .tint(Color(Constants.progressStartColor))
         .redacted(reason: reasons)
         .widgetURL(URL(string: (selectedMantra?.id.uuidString ?? firstMantra?.id.uuidString) ?? ""))
     }

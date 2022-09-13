@@ -15,8 +15,8 @@ struct PercentageRing: View {
     
     private let ringWidth: CGFloat
     private let percent: Double
-    private let backgroundColor: Color
-    private let foregroundColors: [Color]
+    private var backgroundColor: Color { ringColor.backgroundColor }
+    private var foregroundColors: [Color] { ringColor.colors }
     private let startAngle: Double = -90
     private var gradientStartAngle: Double {
         percent >= 100 ? relativePercentageAngle - 360 : startAngle
@@ -37,7 +37,7 @@ struct PercentageRing: View {
             if percent < 50 {
                 return Color.firstProgressTier.last ?? .progressGreenStart
             } else if percent >= 50 && percent < 100 {
-                return Color.secondProgressTier.last ?? .progressYellosStart
+                return Color.secondProgressTier.last ?? .progressYellowStart
             } else if percent >= 100 {
                 return Color.thirdProgressTier.last ?? .progressRedStart
             } else {
@@ -57,8 +57,6 @@ struct PercentageRing: View {
     init(ringWidth: CGFloat, percent: Double) {
         self.ringWidth = ringWidth
         self.percent = percent
-        self.backgroundColor = ringColor.backgroundColor
-        self.foregroundColors = ringColor.colors
     }
     
     var body: some View {

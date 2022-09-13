@@ -40,7 +40,7 @@ extension Color {
     static let progressGreenStart = Color(#colorLiteral(red: 0.216, green: 0.863, blue: 0.000, alpha: 1))
     static let progressGreenEnd = Color(#colorLiteral(red: 0.569, green: 0.961, blue: 0, alpha: 1))
     
-    static let firstProgressTier = [.progressGreenStart, .progressGreenEnd]
-    static let secondProgressTier = [.progressYellowStart, .progressYellowEnd]
-    static let thirdProgressTier = [.progressRedStart, .progressRedEnd]
+    static let firstProgressTier: [Color] = [.progressGreenStart, .progressGreenEnd]
+    static let secondProgressTier: [Color] = [.progressYellowStart, .progressYellowEnd]
+    static let thirdProgressTier: [Color] = [.progressRedStart, .progressRedEnd]
 }

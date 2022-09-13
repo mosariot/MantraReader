@@ -43,7 +43,7 @@ struct StatisticsView: View {
             .navigationTitle(viewModel.navigationTitle)
             .adaptiveListStyle()
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .primaryAction) {
                     Button {
                         dismiss()
                     } label: {

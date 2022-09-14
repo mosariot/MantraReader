@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
     @AppStorage("sorting") private var sorting: Sorting = .title
-    @AppStorage("ringColor", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter")) private var ringColor: RingColor = .red
-    @AppStorage("colorScheme") private var colorScheme: MantraColorScheme = .system
+    @AppStorage("ringColor", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
+    private var ringColor: RingColor = .red
+    @AppStorage("colorScheme", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
+    private var colorScheme: MantraColorScheme = .system
     
     var body: some View {
         NavigationStack {
@@ -157,6 +160,9 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
+            .onChange(of: colorScheme) { newValue in
+                WidgetCenter.shared.reloadAllTimelines()
+            }
         }
     }
 }

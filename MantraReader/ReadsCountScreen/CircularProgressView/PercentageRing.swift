@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct PercentageRing: View {
-    @AppStorage("ringColor", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter")) private var ringColor: RingColor = .red
+    @AppStorage("ringColor", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
+    private var ringColor: RingColor = .red
     private static let ShadowColor: Color = Color.black.opacity(0.3)
     private static let ShadowRadius: CGFloat = 4
     private static let ShadowOffsetMultiplier: CGFloat = ShadowRadius + 2

@@ -10,7 +10,8 @@ import CoreData
 import WidgetKit
 
 struct MantraWidgetManager {
-    @AppStorage("widgetItem", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter")) private var widgetItemData: Data = Data()
+    @AppStorage("widgetItem", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
+    private var widgetItemData: Data = Data()
     @AppStorage("sorting") private var sorting: Sorting = .title
     
     func updateWidgetData(with currentMantras: [Mantra]) {

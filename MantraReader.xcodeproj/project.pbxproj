@@ -92,6 +92,7 @@
 		9FAE4BA828D033DC00CE9D9B /* RingShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA728D033DC00CE9D9B /* RingShape.swift */; };
 		9FAE4BA928D0345700CE9D9B /* RingShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA728D033DC00CE9D9B /* RingShape.swift */; };
 		9FAE4BAA28D0349200CE9D9B /* RingColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA028CF9C2000CE9D9B /* RingColor.swift */; };
+		9FAE4BAB28D180C300CE9D9B /* MantraColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA228CF9C4D00CE9D9B /* MantraColorScheme.swift */; };
 		9FB279E428902F1B0029ED3B /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB279E328902F1B0029ED3B /* HintView.swift */; };
 		9FB32B1128A7D48C000A910E /* ShakeSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB32B1028A7D48C000A910E /* ShakeSupport.swift */; };
 		9FB32B1428A7D8F2000A910E /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9FB32B1328A7D8F2000A910E /* IQKeyboardManagerSwift */; };
@@ -757,6 +758,7 @@
 				9F1AB3ED28A18F17001FF7DE /* Constants.swift in Sources */,
 				9F5422F128ACA29E00F15040 /* IntentProvider.swift in Sources */,
 				9FA0553B28AC018E006E5798 /* StaticWidgetEntryView.swift in Sources */,
+				9FAE4BAB28D180C300CE9D9B /* MantraColorScheme.swift in Sources */,
 				9F5422F528ACA2D700F15040 /* MediumIntentWidgetView.swift in Sources */,
 				9FAE4BA928D0345700CE9D9B /* RingShape.swift in Sources */,
 				9FA0553C28AC018E006E5798 /* StaticProvider.swift in Sources */,

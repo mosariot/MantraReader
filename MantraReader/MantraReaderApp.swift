@@ -10,13 +10,17 @@ import IQKeyboardManagerSwift
 
 @main
 struct MantraReaderApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @AppStorage("isFirstLaunch") private var isFirstLaunch = true
     @AppStorage("isPreloadedMantrasDueToNoInternet") private var isPreloadedMantrasDueToNoInternet = false
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("isOnboarding") private var isOnboarding = true
-    @AppStorage("colorScheme") private var colorScheme: MantraColorScheme = .system
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @AppStorage("colorScheme", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
+    private var colorScheme: MantraColorScheme = .system
+    
+   
     @State private var isPresentedNoInternetAlert = false
+    
     private let dataManager = DataManager(viewContext: PersistenceController.shared.container.viewContext)
     private let actionService = ActionService.shared
     private var preferredColorScheme: UIUserInterfaceStyle {

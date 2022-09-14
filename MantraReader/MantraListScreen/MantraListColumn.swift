@@ -155,6 +155,11 @@ struct MantraListColumn: View {
             }
             ToolbarItem(placement: .primaryAction) {
                 Menu {
+                    Button {
+                        isPresentedStatisticsSheet = true
+                    } label: {
+                        Label("Reading Statistics", systemImage: "chart.bar")
+                    }
                     Menu {
                         Button {
                             isPresentedNewMantraSheet = true
@@ -169,17 +174,22 @@ struct MantraListColumn: View {
                     } label: {
                         Label("Add New", systemImage: "plus")
                     }
-                    Button {
-                        isPresentedStatisticsSheet = true
-                    } label: {
-                        Label("Reading Statistics", systemImage: "chart.bar")
-                    }
-                    Button {
-                        isPresentedFeedbackView = true
+                    Menu {
+                        Button {
+                            isPresentedFeedbackView = true
+                        } label: {
+                            Label("Mail feedback", systemImage: "envelope")
+                        }
+                        .disabled(!MFMailComposeViewController.canSendMail())
+                        Button {
+                            guard let writeReviewURL = URL(string: "https://apps.apple.com/app/id1557599095?action=write-review") else { return }
+                            UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
+                        } label: {
+                            Label("App Store review", systemImage: "highlighter")
+                        }
                     } label: {
                         Label("Feedback", systemImage: "ellipsis.bubble")
                     }
-                    .disabled(!MFMailComposeViewController.canSendMail())
                 } label: {
                     Label("Menu", systemImage: "ellipsis.circle")
                 }

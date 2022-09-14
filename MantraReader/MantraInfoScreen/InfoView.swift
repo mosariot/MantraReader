@@ -62,6 +62,7 @@ struct InfoView: View {
                                 Menu {
 // Old PHPicker code -start-
                                     Button {
+                                        focus = nil
                                         isPresentedImagePickerView = true
                                     } label: {
                                         Label("Photo Library", systemImage: "photo.on.rectangle.angled")
@@ -94,6 +95,7 @@ struct InfoView: View {
 //                                    }
 // Native PhotoPicker code -end-
                                     Button {
+                                        focus = nil
                                         withAnimation {
                                             viewModel.setDefaultImage()
                                         }
@@ -101,6 +103,7 @@ struct InfoView: View {
                                         Label("Default Image", systemImage: "photo")
                                     }
                                     Button {
+                                        focus = nil
                                         if isFirstSearchOnTheInternet {
                                             isPresentedFirstSearchOnTheInternetAlert = true
                                         } else {

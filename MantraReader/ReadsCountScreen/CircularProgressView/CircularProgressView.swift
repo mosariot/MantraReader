@@ -33,11 +33,11 @@ struct CircularProgressView: View {
                     .font(
                         .system(
                             verticalSizeClass == .compact ? .title : .largeTitle,
-                            design: .rounded
+                            design: .rounded,
+                            weight: .bold
                         )
                     )
                     .textSelection(.enabled)
-                    .bold()
                     .dynamicTypeSize(.xLarge)
                     .offset(x: 0, y: isMantraCounterMode ? -(frame ?? 0) / 6 : 0)
                 Text("Current Reads")
@@ -50,11 +50,11 @@ struct CircularProgressView: View {
                     .font(
                         .system(
                             verticalSizeClass == .compact ? .title : .largeTitle,
-                            design: .rounded
+                            design: .rounded,
+                            weight: .bold
                         )
                     )
                     .textSelection(.enabled)
-                    .bold()
                     .foregroundColor(.accentColor)
                     .dynamicTypeSize(.xLarge)
                     .opacity(isMantraCounterMode ? 1 : 0)

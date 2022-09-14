@@ -150,7 +150,9 @@ struct ReadsView: View {
                         isPresented: $isPresentedAdjustingAlert,
                         presenting: adjustingType
                     ) { _ in
-                        TextField("Enter number", text: $adjustingText)
+                        TextField("", text: $adjustingText)
+                            .multilineTextAlignment(.center)
+                            .font(.system(.title, design: .rounded, weight: .bold))
                             .onSubmit {
                                 validateAndHandleAdjusting()
                             }

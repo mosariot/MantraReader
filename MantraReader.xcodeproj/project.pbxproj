@@ -48,6 +48,11 @@
 		9F54232528AD4E2400F15040 /* MantraIntent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9F54231C28AD4E2400F15040 /* MantraIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9F54232A28AD507000F15040 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F54232028AD4E2400F15040 /* IntentHandler.swift */; };
 		9F54232D28AD56A200F15040 /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E728A18EEF001FF7DE /* WidgetModel.swift */; };
+		9F5788DE28D2252A00AADD63 /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5788DD28D2252A00AADD63 /* DemoView.swift */; };
+		9F5788E028D2257000AADD63 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5788DF28D2257000AADD63 /* CustomAlert.swift */; };
+		9F5788E228D2258900AADD63 /* CustomAlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5788E128D2258900AADD63 /* CustomAlertButton.swift */; };
+		9F5788E428D225A500AADD63 /* CustomAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5788E328D225A500AADD63 /* CustomAlertModifier.swift */; };
+		9F5788E628D225C400AADD63 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5788E528D225C400AADD63 /* ViewExtension.swift */; };
 		9F605143288EE75E005EC6F5 /* BlinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F605142288EE75E005EC6F5 /* BlinkView.swift */; };
 		9F6C7D0628B67072004CC501 /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F780037287FF7D200516A0F /* RandomColor.swift */; };
 		9F6C7D6328BBE379004CC501 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C7D6228BBE379004CC501 /* StatisticsView.swift */; };
@@ -196,6 +201,11 @@
 		9F54232028AD4E2400F15040 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		9F54232228AD4E2400F15040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F54232B28AD55CD00F15040 /* MantraIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MantraIntent.entitlements; sourceTree = "<group>"; };
+		9F5788DD28D2252A00AADD63 /* DemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
+		9F5788DF28D2257000AADD63 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		9F5788E128D2258900AADD63 /* CustomAlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertButton.swift; sourceTree = "<group>"; };
+		9F5788E328D225A500AADD63 /* CustomAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertModifier.swift; sourceTree = "<group>"; };
+		9F5788E528D225C400AADD63 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		9F5C7F5C28CBAB6400ED3E29 /* ReadTheMantraStat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReadTheMantraStat.xcdatamodel; sourceTree = "<group>"; };
 		9F605142288EE75E005EC6F5 /* BlinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkView.swift; sourceTree = "<group>"; };
 		9F6C7D6228BBE379004CC501 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
@@ -378,6 +388,18 @@
 			path = MantraIntent;
 			sourceTree = "<group>";
 		};
+		9F5788DC28D2250800AADD63 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				9F5788DD28D2252A00AADD63 /* DemoView.swift */,
+				9F5788DF28D2257000AADD63 /* CustomAlert.swift */,
+				9F5788E128D2258900AADD63 /* CustomAlertButton.swift */,
+				9F5788E328D225A500AADD63 /* CustomAlertModifier.swift */,
+				9F5788E528D225C400AADD63 /* ViewExtension.swift */,
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
 		9F6C7D6128BBE35F004CC501 /* StatisticsScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,6 +418,7 @@
 		9F794ED6289B03CA00DDF940 /* ReadsCountScreen */ = {
 			isa = PBXGroup;
 			children = (
+				9F5788DC28D2250800AADD63 /* AlertView */,
 				9F338B552899A62A00E393E2 /* ConfettiView */,
 				9FAE4BA628CF9EBF00CE9D9B /* CircularProgressView */,
 				9FDC8DAB28622AEC00BF7051 /* DetailsColumn.swift */,
@@ -815,7 +838,10 @@
 				9F1AB3EB28A18EEF001FF7DE /* MantraWidgetManager.swift in Sources */,
 				9FF7C3952864C16200DA5F51 /* PreloadedMantras.swift in Sources */,
 				9FAE4BA128CF9C2000CE9D9B /* RingColor.swift in Sources */,
+				9F5788E428D225A500AADD63 /* CustomAlertModifier.swift in Sources */,
+				9F5788E228D2258900AADD63 /* CustomAlertButton.swift in Sources */,
 				9F4DE924286E3B670064ADCB /* UIImage+CropToCircle.swift in Sources */,
+				9F5788E628D225C400AADD63 /* ViewExtension.swift in Sources */,
 				9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */,
 				9F338B5D2899A64200E393E2 /* Triangle.swift in Sources */,
 				9FABFF5528BE9E52001A1D7F /* Date+StartEnd.swift in Sources */,
@@ -828,6 +854,7 @@
 				9FB7AE6928B557F70044C55E /* DataManager.swift in Sources */,
 				9FD61DCA289391BC004936E6 /* PreloadedMantraListViewModel.swift in Sources */,
 				9FAE4B9C28CDB52500CE9D9B /* NumberAnimation.swift in Sources */,
+				9F5788DE28D2252A00AADD63 /* DemoView.swift in Sources */,
 				9F6E65BF28B3970B0054F6D6 /* Mantra+ShortcutItem.swift in Sources */,
 				9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */,
 				9FAE4BAE28D185B700CE9D9B /* FeedbackView.swift in Sources */,
@@ -843,6 +870,7 @@
 				9F4DE926286E3B990064ADCB /* Functions.swift in Sources */,
 				9F6E65C228B39E750054F6D6 /* ReadTheMantra.xcdatamodeld in Sources */,
 				9F348D4228A430F70070F157 /* InfoMode.swift in Sources */,
+				9F5788E028D2257000AADD63 /* CustomAlert.swift in Sources */,
 				9FBEE9B0285F68CE0070BA06 /* CircularProgressView.swift in Sources */,
 				9F794EDE289C35E900DDF940 /* LaunchPreparer.swift in Sources */,
 				9F6C7D6528BC76C7004CC501 /* MonthStatisticsView.swift in Sources */,

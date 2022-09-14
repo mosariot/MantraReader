@@ -97,8 +97,14 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 /* Add Preset Mantra Menu Item */
 "Preset Mantra" = "Из предустановленных";
 
-/* Feedback Option Title */
+/* Feedback Menu Title */
 "Feedback" = "Обратная связь";
+
+/* Mail Feedback option */
+"Mail Feedback" = "Написать письмо";
+
+/* Mail Feedback option */
+"App Store Review" = "Отзыв в App Store";
 
 /* Duplication Alert Title */
 "Duplicating Mantra" = "Повторяющаяся мантра";

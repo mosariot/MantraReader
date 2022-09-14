@@ -178,14 +178,14 @@ struct MantraListColumn: View {
                         Button {
                             isPresentedFeedbackView = true
                         } label: {
-                            Label("Mail feedback", systemImage: "envelope")
+                            Label("Mail Feedback", systemImage: "envelope")
                         }
                         .disabled(!MFMailComposeViewController.canSendMail())
                         Button {
                             guard let writeReviewURL = URL(string: "https://apps.apple.com/app/id1557599095?action=write-review") else { return }
                             UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
                         } label: {
-                            Label("App Store review", systemImage: "highlighter")
+                            Label("App Store Review", systemImage: "highlighter")
                         }
                     } label: {
                         Label("Feedback", systemImage: "ellipsis.bubble")
@@ -220,7 +220,7 @@ struct MantraListColumn: View {
                 isPresented: $isPresentedPreloadedMantraList,
                 dataManager: dataManager
             )
-            .presentationDetents([.medium, .large])
+            .presentationDetents([.medium])
         }
         .sheet(isPresented: $isPresentedNewMantraSheet) {
             InfoView(

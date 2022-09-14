@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import MessageUI
 
 struct MantraListColumn: View {
     @Environment(\.isSearching) private var isSearching: Bool
@@ -22,6 +23,7 @@ struct MantraListColumn: View {
     @State private var isPresentedMantraInfoView = false
     @State private var isPresentedMantraStatisticsSheet = false
     @State private var isPresentedSettingsSheet = false
+    @State private var isPresentedFeedbackView = false
     @State private var isDeletingMantras = false
     @State private var mantrasForDeletion: [Mantra]?
     @State private var contextMantra: Mantra?
@@ -173,10 +175,11 @@ struct MantraListColumn: View {
                         Label("Reading Statistics", systemImage: "chart.bar")
                     }
                     Button {
-                        
+                        isPresentedFeedbackView = true
                     } label: {
                         Label("Feedback", systemImage: "ellipsis.bubble")
                     }
+                    .disabled(!MFMailComposeViewController.canSendMail())
                 } label: {
                     Label("Menu", systemImage: "ellipsis.circle")
                 }
@@ -224,6 +227,9 @@ struct MantraListColumn: View {
         }
         .sheet(isPresented: $isPresentedSettingsSheet) {
            SettingsView()
+        }
+        .sheet(isPresented: $isPresentedFeedbackView) {
+            FeedbackView(to: "mosariot@gmail.com", subject: "Mantra Reader Feedback")
         }
         .onChange(of: scenePhase) { newValue in
             switch newValue {

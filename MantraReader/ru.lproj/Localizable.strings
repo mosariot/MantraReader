@@ -63,6 +63,11 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 /* Onboarding Alert Button */
 "UNDERSTAND!" = "ПОНЯТНО!";
 
+//MARK: - FEEDBACK
+
+/* Feedback Subject */
+"Mantra Reader Feedback" = "Обратная связь по Начитай!";
+
 //MARK: - MANTRA LIST
 
 /* Loading from iCloud */

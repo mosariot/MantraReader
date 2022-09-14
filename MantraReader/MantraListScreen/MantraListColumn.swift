@@ -220,6 +220,7 @@ struct MantraListColumn: View {
                 isPresented: $isPresentedPreloadedMantraList,
                 dataManager: dataManager
             )
+            .presentationDetents([.medium, .large])
         }
         .sheet(isPresented: $isPresentedNewMantraSheet) {
             InfoView(

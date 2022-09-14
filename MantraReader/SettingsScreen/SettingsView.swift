@@ -17,23 +17,70 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 Picker("Mantras sorting", selection: $sorting) {
-                    Label("Alphabetically", systemImage: "abc")
-                        .tag(Sorting.title)
-                    Label("By readings count", systemImage: "text.book.closed")
-                        .tag(Sorting.reads)
+                    Label {
+                        Text("Alphabetically")
+                    } icon: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 7)
+                                .fill(.blue.gradient)
+                                .frame(width: 30, height: 30)
+                            Image(systemName: "abc")
+                                .foregroundColor(.white)
+                                .imageScale(.small)
+                        }
+                    }
+                    .tag(Sorting.title)
+                    Label {
+                        Text("By readings count")
+                    } icon: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 7)
+                                .fill(.pink.gradient)
+                                .frame(width: 30, height: 30)
+                            Image(systemName: "text.book.closed")
+                                .foregroundColor(.white)
+                        }
+                    }
+                    .tag(Sorting.reads)
                 }
                 .pickerStyle(.inline)
                 Picker("Appearance", selection: $colorScheme) {
                     Label {
                         Text("System")
                     } icon: {
-                        Text("\(Image(systemName: "lightbulb"))/\(Image(systemName: "lightbulb.slash"))")
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 7)
+                                .fill(.green.gradient)
+                                .frame(width: 30, height: 30)
+                            Image(systemName: "lightbulb.2")
+                                .foregroundColor(.white)
+                        }
                     }
                     .tag(MantraColorScheme.system)
-                    Label("Light", systemImage: "lightbulb")
-                        .tag(MantraColorScheme.light)
-                    Label("Dark", systemImage: "lightbulb.slash")
-                        .tag(MantraColorScheme.dark)
+                    Label {
+                        Text("Light")
+                    } icon: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 7)
+                                .fill(.yellow.gradient)
+                                .frame(width: 30, height: 30)
+                            Image(systemName: "lightbulb")
+                                .foregroundColor(.white)
+                        }
+                    }
+                    .tag(MantraColorScheme.light)
+                    Label {
+                        Text("Dark")
+                    } icon: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 7)
+                                .fill(.gray.gradient)
+                                .frame(width: 30, height: 30)
+                            Image(systemName: "lightbulb.slash")
+                                .foregroundColor(.white)
+                        }
+                    }
+                    .tag(MantraColorScheme.dark)
                 }
                 .pickerStyle(.inline)
                 Picker("Progress ring color", selection: $ringColor) {

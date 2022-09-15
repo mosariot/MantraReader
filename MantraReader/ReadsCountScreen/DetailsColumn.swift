@@ -20,12 +20,15 @@ struct DetailsColumn: View {
                 isMantraCounterMode: $isMantraCounterMode,
                 isMantraDeleted: $isMantraDeleted
             )
-            .onChange(of: selectedMantra) { _ in
+            .onChange(of: selectedMantra) { newValue in
                 if isMantraCounterMode {
                     withAnimation {
                         isMantraCounterMode = false
                     }
                     UIApplication.shared.isIdleTimerDisabled = false
+                }
+                if newValue == nil {
+                    isMantraDeleted = true
                 }
             }
         } else {

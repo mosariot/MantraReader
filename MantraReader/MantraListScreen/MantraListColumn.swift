@@ -147,18 +147,16 @@ struct MantraListColumn: View {
                 EditButton()
             }
             ToolbarItem(placement: .primaryAction) {
-                Button {
-                    isPresentedSettingsSheet = true
-                } label: {
-                    Label("Settings", systemImage: "slider.horizontal.3")
-                }
-            }
-            ToolbarItem(placement: .primaryAction) {
                 Menu {
                     Button {
                         isPresentedStatisticsSheet = true
                     } label: {
                         Label("Reading Statistics", systemImage: "chart.bar")
+                    }
+                    Button {
+                        isPresentedSettingsSheet = true
+                       } label: {
+                        Label("Settings", systemImage: "slider.horizontal.3")
                     }
                     Menu {
                         Button {

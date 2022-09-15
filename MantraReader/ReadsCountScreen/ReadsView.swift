@@ -214,8 +214,8 @@ struct ReadsView: View {
                 }
             } label: {
                 Image(systemName: "sun.max")
-                    .imageScale(.large)
                     .symbolVariant(isMantraCounterMode ? .circle.fill : .none)
+                    .scaleEffect(isMantraCounterMode ? 1.4 : 1.2)
                     .padding(.trailing, 20)
                     .padding(.top, 20)
                     .padding(.leading, 25)

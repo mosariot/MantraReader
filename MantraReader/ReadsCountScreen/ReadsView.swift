@@ -15,9 +15,6 @@ struct ReadsView: View {
     @AppStorage("isFirstLaunchOfMantraCounterMode") private var isFirstLaunchOfMantraCounterMode = true
     @EnvironmentObject private var dataManager: DataManager
     @ObservedObject private var viewModel: ReadsViewModel
-    private var circularViewModel: CircularProgressViewModel
-    private var goalButtonViewModel: GoalButtonViewModel
-    private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
     @State private var isPresentedStatisticsSheet = false
     @State private var isPresentedAdjustingAlert = false
@@ -28,11 +25,16 @@ struct ReadsView: View {
     @State private var isPresentedUndoAlert = false
     @State private var isPresentedMantraCounterModeAlert = false
     @State private var isPresentedDeleteConfirmation = false
-    @Binding private var isMantraCounterMode: Bool
-    @Binding private var isMantraDeleted: Bool
     @State private var showBlink = false
     @State private var showHint = false
     @State private var congratulations: Int = 0
+    
+    @Binding private var isMantraCounterMode: Bool
+    @Binding private var isMantraDeleted: Bool
+    
+    private var circularViewModel: CircularProgressViewModel
+    private var goalButtonViewModel: GoalButtonViewModel
+    private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
     init(viewModel: ReadsViewModel, isMantraCounterMode: Binding<Bool>, isMantraDeleted: Binding<Bool>) {
         self.viewModel = viewModel

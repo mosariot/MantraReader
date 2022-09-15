@@ -12,7 +12,7 @@ struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
     @AppStorage("sorting") private var sorting: Sorting = .title
     @AppStorage("ringColor", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
-    private var ringColor: RingColor = .red
+    private var ringColor: RingColor = .dynamic
     @AppStorage("colorScheme", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
     private var colorScheme: MantraColorScheme = .system
     

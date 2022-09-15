@@ -193,6 +193,7 @@ struct MantraListColumn: View {
                 }
             }
         }
+// Workaround to force a row to see contextMantra
         .onChange(of: contextMantra) { _ in return }
         .onChange(of: sorting) {
             switch $0 {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PercentageRing: View {
     @AppStorage("ringColor", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
-    private var ringColor: RingColor = .red
+    private var ringColor: RingColor = .dynamic
     @State private var updater = false
     private static let ShadowColor: Color = .black.opacity(0.3)
     private static let ShadowRadius: CGFloat = 4
@@ -98,6 +98,7 @@ struct PercentageRing: View {
                                 y: getEndCircleShadowOffset().y)
                 }
             }
+// Workaround to force update the view on changing AppStorage attribute
             .onChange(of: ringColor) {
                 updater.toggle()
             }

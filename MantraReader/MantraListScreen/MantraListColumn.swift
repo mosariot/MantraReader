@@ -255,6 +255,7 @@ struct MantraListColumn: View {
     private func performActionIfNeeded() {
         guard let action = actionService.action else { return }
         mantrasForDeletion = nil
+        let wasSearchActive = isSearching
         dismissSearch()
         let rootViewController = UIApplication.shared.connectedScenes
             .filter { $0.activationState == .foregroundActive }
@@ -272,7 +273,9 @@ struct MantraListColumn: View {
                 mantras.forEach { section in
                     section.forEach { mantra in
                         if mantra.uuid == UUID(uuidString: "\(id)") {
-                            selectedMantra = mantra
+                            afterDelay(wasSearchActive ? 1 : 0) {
+                                selectedMantra = mantra
+                            }
                         }
                     }
                 }

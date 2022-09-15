@@ -87,6 +87,17 @@ struct ContentView: View {
                 if isInitalDataLoading && count > 0 {
                     isInitalDataLoading = false
                 }
+                var isMantraExist = false
+                mantras.forEach { section in
+                    section.forEach { mantra in
+                        if mantra == selectedMantra {
+                            isMantraExist = true
+                        }
+                    }
+                }
+                if !isMantraExist {
+                    selectedMantra = nil
+                }
             }
         } detail: {
             DetailsColumn(selectedMantra: selectedMantra, isMantraDeleted: $isMantraDeleted)

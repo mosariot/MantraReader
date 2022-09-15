@@ -10,7 +10,7 @@ import Combine
 import MessageUI
 
 struct MantraListColumn: View {
-    @Environment(\.isSearching) private var isSearching: Bool
+    @Environment(\.isSearching) var isSearching
     @Environment(\.dismissSearch) var dismissSearch
     @EnvironmentObject private var dataManager: DataManager
     @EnvironmentObject var actionService: ActionService
@@ -242,20 +242,21 @@ struct MantraListColumn: View {
             FeedbackView(to: "mosariot@gmail.com", subject: "Mantra Reader Feedback")
         }
         .onChange(of: scenePhase) { newValue in
+            guard let action = actionService.action else { return }
+            if isSearching, case .openMantra(id: _) = action {
+                dismissSearch()
+            }
             switch newValue {
             case .active:
-                performActionIfNeeded()
+                performActionIfNeeded(for: action)
             default:
                 break
             }
         }
     }
     
-    private func performActionIfNeeded() {
-        guard let action = actionService.action else { return }
+    private func performActionIfNeeded(for action: Action) {
         mantrasForDeletion = nil
-        let wasSearchActive = isSearching
-        dismissSearch()
         let rootViewController = UIApplication.shared.connectedScenes
             .filter { $0.activationState == .foregroundActive }
             .map { $0 as? UIWindowScene }
@@ -272,30 +273,12 @@ struct MantraListColumn: View {
                 mantras.forEach { section in
                     section.forEach { mantra in
                         if mantra.uuid == UUID(uuidString: "\(id)") {
-                            afterDelay(wasSearchActive ? 1 : 0) {
-                                selectedMantra = mantra
-                            }
+                            selectedMantra = mantra
                         }
                     }
                 }
             }
             actionService.action = nil
         }
-        
-        switch action {
-        case .newMantra:
-            afterDelay(0.8) { isPresentedNewMantraSheet = true }
-        case .showStatistics:
-            afterDelay(0.8) { isPresentedStatisticsSheet = true }
-        case .openMantra(let id):
-            mantras.forEach { section in
-                section.forEach { mantra in
-                    if mantra.uuid == UUID(uuidString: "\(id)") {
-                        afterDelay(0.8) { selectedMantra = mantra }
-                    }
-                }
-            }
-        }
-        actionService.action = nil
     }
 }

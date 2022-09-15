@@ -26,7 +26,6 @@ final class CircularProgressViewModel: ObservableObject {
         return result
     }
     
-    
     init(_ mantra: Mantra) {
         self.mantra = mantra
         self.previousReads = mantra.reads

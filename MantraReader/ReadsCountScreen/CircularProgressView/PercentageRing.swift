@@ -98,10 +98,6 @@ struct PercentageRing: View {
                                 y: getEndCircleShadowOffset().y)
                 }
             }
-// Workaround to force update the view on changing AppStorage attribute
-            .onChange(of: ringColor) {
-                updater.toggle()
-            }
         }
     }
     

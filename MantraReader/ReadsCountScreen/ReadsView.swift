@@ -81,6 +81,7 @@ struct ReadsView: View {
                                 height: circularProgressViewSize(with: geometry.size)
                             )
                             .padding(.bottom, 15)
+                            .padding(.top, 20)
                             .confettiCannon(
                                 counter: $viewModel.confettiTrigger,
                                 num: 200,
@@ -154,10 +155,6 @@ struct ReadsView: View {
                         TextField("", text: $adjustingText)
                             .multilineTextAlignment(.center)
                             .font(.system(.title, design: .rounded, weight: .bold))
-                            .onSubmit {
-                                isPresentedAdjustingAlert = false
-                                validateAndHandleAdjusting()
-                            }
                             .keyboardType(.numberPad)
                         Button(viewModel.adjustingAlertActionTitle(for: adjustingType)) {
                             validateAndHandleAdjusting()
@@ -214,8 +211,8 @@ struct ReadsView: View {
                 }
             } label: {
                 Image(systemName: "sun.max")
+                    .scaleEffect(1.4)
                     .symbolVariant(isMantraCounterMode ? .circle.fill : .none)
-                    .scaleEffect(isMantraCounterMode ? 1.4 : 1.2)
                     .padding(.trailing, 20)
                     .padding(.top, 20)
                     .padding(.leading, 25)

@@ -27,9 +27,6 @@ struct DetailsColumn: View {
                     }
                     UIApplication.shared.isIdleTimerDisabled = false
                 }
-                if newValue == nil {
-                    isMantraDeleted = true
-                }
             }
         } else {
             Text("Select a mantra")

@@ -135,7 +135,6 @@ struct ReadsView: View {
                         .padding(.horizontal)
                         .alert("Please enter a valid number", isPresented: $isPresentedValidNumberAlert) {
                             Button("OK") {
-                                adjustingText = ""
                                 isPresentedAdjustingAlert = true
                             }
                         }
@@ -154,6 +153,7 @@ struct ReadsView: View {
                             .multilineTextAlignment(.center)
                             .font(.system(.title, design: .rounded, weight: .bold))
                             .onSubmit {
+                                isPresentedAdjustingAlert = false
                                 validateAndHandleAdjusting()
                             }
                             .keyboardType(.numberPad)
@@ -350,6 +350,7 @@ struct ReadsView: View {
             adjustingType = nil
             adjustingText = ""
         } else {
+            adjustingText = ""
             isPresentedValidNumberAlert = true
         }
     }

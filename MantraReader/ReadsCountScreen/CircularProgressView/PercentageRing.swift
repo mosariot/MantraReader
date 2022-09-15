@@ -10,7 +10,8 @@ import SwiftUI
 struct PercentageRing: View {
     @AppStorage("ringColor", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
     private var ringColor: RingColor = .red
-    private static let ShadowColor: Color = Color.black.opacity(0.3)
+    @State private var updater = false
+    private static let ShadowColor: Color = .black.opacity(0.3)
     private static let ShadowRadius: CGFloat = 4
     private static let ShadowOffsetMultiplier: CGFloat = ShadowRadius + 2
     
@@ -36,11 +37,11 @@ struct PercentageRing: View {
         case .red, .yellow, .green: return foregroundColors.last ?? .progressRedStart
         case .dynamic:
             if percent < 50 {
-                return Color.firstProgressTier.last ?? .progressGreenStart
+                return .firstProgressTier.last ?? .progressGreenStart
             } else if percent >= 50 && percent < 100 {
-                return Color.secondProgressTier.last ?? .progressYellowStart
+                return .secondProgressTier.last ?? .progressYellowStart
             } else if percent >= 100 {
-                return Color.thirdProgressTier.last ?? .progressRedStart
+                return .thirdProgressTier.last ?? .progressRedStart
             } else {
                 return .progressRedStart
             }
@@ -96,6 +97,9 @@ struct PercentageRing: View {
                                 x: getEndCircleShadowOffset().x,
                                 y: getEndCircleShadowOffset().y)
                 }
+            }
+            .onChange(of: ringColor) {
+                updater.toggle()
             }
         }
     }

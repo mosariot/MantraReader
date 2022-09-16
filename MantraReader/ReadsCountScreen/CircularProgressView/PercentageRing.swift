@@ -8,17 +8,15 @@
 import SwiftUI
 
 struct PercentageRing: View {
-    @AppStorage("ringColor", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
-    private var ringColor: RingColor = .dynamic
-//    @Preference(\.ringColor) var ringColor
+    @EnvironmentObject private var settings: Settings
     private static let ShadowColor: Color = .black.opacity(0.2)
     private static let ShadowRadius: CGFloat = 5
     private static let ShadowOffsetMultiplier: CGFloat = ShadowRadius + 2
     
     private let ringWidth: CGFloat
     private let percent: Double
-    private var backgroundColor: Color { ringColor.backgroundColor }
-    private var foregroundColors: [Color] { ringColor.colors }
+    private var backgroundColor: Color { settings.ringColor.backgroundColor }
+    private var foregroundColors: [Color] { settings.ringColor.colors }
     private let startAngle: Double = -90
     private var gradientStartAngle: Double {
         percent >= 100 ? relativePercentageAngle - 360 : startAngle
@@ -33,7 +31,7 @@ struct PercentageRing: View {
         foregroundColors.first ?? .progressRedStart
     }
     private var lastGradientColor: Color {
-        switch ringColor {
+        switch settings.ringColor {
         case .red, .yellow, .green: return foregroundColors.last ?? .progressRedStart
         case .dynamic:
             if percent < 50 {
@@ -67,7 +65,7 @@ struct PercentageRing: View {
                 RingShape()
                     .stroke(style: StrokeStyle(lineWidth: ringWidth))
                     .fill(backgroundColor)
-                switch ringColor {
+                switch settings.ringColor {
                 case .red, .yellow, .green:
                     RingShape(percent: percent, startAngle: startAngle)
                         .stroke(style: StrokeStyle(lineWidth: ringWidth, lineCap: .round))

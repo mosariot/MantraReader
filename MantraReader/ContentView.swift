@@ -12,9 +12,9 @@ struct ContentView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.verticalSizeClass) private var verticalSizeClass
     @EnvironmentObject private var dataManager: DataManager
+    @EnvironmentObject private var settings: Settings
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("isInitalDataLoading") private var isInitalDataLoading = true
-    @AppStorage("sorting") private var sorting: Sorting = .title
     
     @State private var selectedMantra: Mantra?
     @State private var search = ""
@@ -32,7 +32,7 @@ struct ContentView: View {
     
     init() {
         var currentSortDescriptor: SortDescriptor<Mantra>
-        switch sorting {
+        switch settings.sorting {
         case .title: currentSortDescriptor = SortDescriptor(\.title, order: .forward)
         case .reads: currentSortDescriptor = SortDescriptor(\.reads, order: .reverse)
         }

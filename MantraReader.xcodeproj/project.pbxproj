@@ -538,9 +538,9 @@
 			children = (
 				9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */,
 				9FDF349A2885B2E000B3007E /* CircularProgressViewModel.swift */,
+				9FC0F5CD28D4BC0200A00681 /* ProgressRing.swift */,
 				9F786289288844970058AAD0 /* PercentageRing.swift */,
 				9FAE4BA728D033DC00CE9D9B /* RingShape.swift */,
-				9FC0F5CD28D4BC0200A00681 /* ProgressRing.swift */,
 			);
 			path = CircularProgressView;
 			sourceTree = "<group>";

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProgressRingOptions {
     var thickness: Double = 25
-    var tipShadowColor: Color = .black.opacity(0.3)
+    var tipShadowColor: Color = .black.opacity(0.25)
     var outlineColor: Color = .clear
     var outlineThickness: Double = 1
     
@@ -21,12 +21,10 @@ struct ProgressRing: View {
     
     let progress: Double
     let radius: Double
-    let options = ProgressRingOptions()
-    
-    init(progress: Double, radius: Double) {
-        self.progress = progress
-        self.radius = radius
-    }
+    var thickness: Double = 25
+    var tipShadowColor: Color = .black.opacity(0.25)
+    var outlineColor: Color = .clear
+    var outlineThickness: Double = 1
     
     private var backgroundColor: Color { settings.ringColor.backgroundColor }
     private var foregroundColors: [Color] { settings.ringColor.colors }
@@ -63,16 +61,16 @@ struct ProgressRing: View {
         ZStack {
             if backgroundColor != .clear {
                 Circle()
-                    .stroke(backgroundColor, lineWidth: options.thickness)
+                    .stroke(backgroundColor, lineWidth: thickness)
                     .frame(width: radius * 2.0)
             }
-            if options.outlineColor != .clear {
+            if outlineColor != .clear {
                 Circle()
-                    .stroke(options.outlineColor, lineWidth: options.outlineThickness)
-                    .frame(width:(radius * 2.0) + options.thickness - options.outlineThickness)
+                    .stroke(outlineColor, lineWidth: outlineThickness)
+                    .frame(width:(radius * 2.0) + thickness - outlineThickness)
                 Circle()
-                    .stroke(options.outlineColor, lineWidth: options.outlineThickness)
-                    .frame(width:(radius * 2.0) - options.thickness + options.outlineThickness)
+                    .stroke(outlineColor, lineWidth: outlineThickness)
+                    .frame(width:(radius * 2.0) - thickness + outlineThickness)
             }
             switch settings.ringColor {
             case .red, .yellow, .green:
@@ -80,20 +78,20 @@ struct ProgressRing: View {
                     .trim(from: 0, to: self.progress)
                     .stroke(
                         progressAngularGradient(colors: foregroundColors),
-                        style: StrokeStyle(lineWidth: options.thickness, lineCap: .round))
+                        style: StrokeStyle(lineWidth: thickness, lineCap: .round))
                     .rotationEffect(Angle(degrees: -90))
                     .frame(width: radius * 2.0)
                 RingCap(progress: progress,
                         ringRadius: radius)
                 .fill(lastGradientColor, strokeBorder: lastGradientColor, lineWidth: 1)
-                .frame(width: options.thickness, height: options.thickness)
-                .shadow(color: options.tipShadowColor,
+                .frame(width: thickness, height: thickness)
+                .shadow(color: tipShadowColor,
                         radius: 2.5,
                         x: ringTipShadowOffset.x,
                         y: ringTipShadowOffset.y
                 )
                 .clipShape(
-                    RingClipShape(radius: radius, thickness: options.thickness)
+                    RingClipShape(radius: radius, thickness: thickness)
                 )
                 .opacity(tipOpacity)
             case .dynamic:
@@ -101,7 +99,7 @@ struct ProgressRing: View {
                     .trim(from: 0, to: self.progress)
                     .stroke(
                         progressAngularGradient(colors: [.progressGreenStart, .progressGreenEnd]),
-                        style: StrokeStyle(lineWidth: options.thickness, lineCap: .round))
+                        style: StrokeStyle(lineWidth: thickness, lineCap: .round))
                     .rotationEffect(Angle(degrees: -90))
                     .frame(width: radius * 2.0)
                     .opacity(progress < 0.5 ? 1 : 0)
@@ -109,7 +107,7 @@ struct ProgressRing: View {
                     .trim(from: 0, to: self.progress)
                     .stroke(
                         progressAngularGradient(colors: [.progressYellowStart, .progressYellowEnd]),
-                        style: StrokeStyle(lineWidth: options.thickness, lineCap: .round))
+                        style: StrokeStyle(lineWidth: thickness, lineCap: .round))
                     .rotationEffect(Angle(degrees: -90))
                     .frame(width: radius * 2.0)
                     .opacity(progress >= 0.5 && progress < 1.0 ? 1 : 0)
@@ -117,7 +115,7 @@ struct ProgressRing: View {
                     .trim(from: 0, to: self.progress)
                     .stroke(
                         progressAngularGradient(colors: [.progressRedStart, .progressRedEnd]),
-                        style: StrokeStyle(lineWidth: options.thickness, lineCap: .round))
+                        style: StrokeStyle(lineWidth: thickness, lineCap: .round))
                     .rotationEffect(Angle(degrees: -90))
                     .frame(width: radius * 2.0)
                     .opacity(progress >= 1.0 ? 1 : 0)
@@ -126,14 +124,14 @@ struct ProgressRing: View {
                 .fill(progress < 1.0 ? Color.progressYellowEnd : Color.progressRedEnd,
                       strokeBorder: progress < 1.0 ? Color.progressYellowEnd : Color.progressRedEnd,
                       lineWidth: 1)
-                .frame(width: options.thickness, height: options.thickness)
-                .shadow(color: options.tipShadowColor,
+                .frame(width: thickness, height: thickness)
+                .shadow(color: tipShadowColor,
                         radius: 2.5,
                         x: ringTipShadowOffset.x,
                         y: ringTipShadowOffset.y
                 )
                 .clipShape(
-                    RingClipShape(radius: radius, thickness: options.thickness)
+                    RingClipShape(radius: radius, thickness: thickness)
                 )
                 .opacity(tipOpacity)
             }
@@ -143,7 +141,7 @@ struct ProgressRing: View {
     }
     
     private var size: Double {
-        return radius * 2 + options.thickness
+        return radius * 2 + thickness
     }
     
     private var tipOpacity: Double {

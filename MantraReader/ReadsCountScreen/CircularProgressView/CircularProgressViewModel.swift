@@ -19,9 +19,9 @@ final class CircularProgressViewModel: ObservableObject {
         var result: Double
         if progress > 10 {
             let threeDigitsAfterComma = Double(round(1000*progress)/1000) - progress.rounded(.down)
-            result = 100 + threeDigitsAfterComma * 100
+            result = 1 + threeDigitsAfterComma
         } else {
-            result = progress * 100
+            result = progress
         }
         return result
     }

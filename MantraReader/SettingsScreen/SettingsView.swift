@@ -91,36 +91,6 @@ struct SettingsView: View {
                 }
                 .pickerStyle(.inline)
                 Picker("Progress ring color", selection: $settings.ringColor) {
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(
-                            LinearGradient(
-                                gradient: Gradient(colors: RingColor.red.colors),
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
-                        )
-                        .frame(height: 25)
-                        .tag(RingColor.red)
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(
-                            LinearGradient(
-                                gradient: Gradient(colors: RingColor.yellow.colors),
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
-                        )
-                        .frame(height: 25)
-                        .tag(RingColor.yellow)
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(
-                            LinearGradient(
-                                gradient: Gradient(colors: RingColor.green.colors),
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
-                        )
-                        .frame(height: 25)
-                        .tag(RingColor.green)
                     HStack(spacing: 0) {
                         Rectangle()
                             .fill(
@@ -151,6 +121,36 @@ struct SettingsView: View {
                     }
                     .frame(height: 25)
                     .tag(RingColor.dynamic)
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(
+                            LinearGradient(
+                                gradient: Gradient(colors: RingColor.red.colors),
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .frame(height: 25)
+                        .tag(RingColor.red)
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(
+                            LinearGradient(
+                                gradient: Gradient(colors: RingColor.yellow.colors),
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .frame(height: 25)
+                        .tag(RingColor.yellow)
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(
+                            LinearGradient(
+                                gradient: Gradient(colors: RingColor.green.colors),
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .frame(height: 25)
+                        .tag(RingColor.green)
                 }
                 .pickerStyle(.inline)
             }

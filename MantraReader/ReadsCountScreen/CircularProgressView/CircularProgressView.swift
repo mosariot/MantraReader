@@ -16,7 +16,7 @@ struct CircularProgressView: View {
     var body: some View {
         VStack {
             ZStack {
-                ProgressRing(progress: viewModel.percent/100, radius: Double(frame ?? 100)/2)
+                ProgressRing(progress: viewModel.percent, radius: Double(frame ?? 100)/2)
                 .animation(
                     viewModel.isAnimated ?
                         Animation.easeOut(duration: Constants.animationTime) :

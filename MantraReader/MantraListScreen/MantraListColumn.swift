@@ -10,12 +10,12 @@ import Combine
 import MessageUI
 
 struct MantraListColumn: View {
-    @Environment(\.isSearching) var isSearching
-    @Environment(\.dismissSearch) var dismissSearch
+    @Environment(\.isSearching) private var isSearching
+    @Environment(\.dismissSearch) private var dismissSearch
+    @Environment(\.scenePhase) private var scenePhase
     @EnvironmentObject private var dataManager: DataManager
-    @EnvironmentObject var actionService: ActionService
-    @Environment(\.scenePhase) var scenePhase
-    @AppStorage("sorting") private var sorting: Sorting = .title
+    @EnvironmentObject private var actionService: ActionService
+    @EnvironmentObject private var settings: Settings
     
     @State private var isPresentedPreloadedMantraList = false
     @State private var isPresentedNewMantraSheet = false
@@ -136,7 +136,7 @@ struct MantraListColumn: View {
             Text("Are you sure you want to delete this mantra?")
         }
         .navigationTitle("Mantra Reader")
-        .animation(.default, value: sorting)
+        .animation(.default, value: settings.sorting)
         .animation(.default, value: searchText)
         .listStyle(.sidebar)
         .refreshable {
@@ -195,7 +195,7 @@ struct MantraListColumn: View {
         }
 // Workaround to force a row to see contextMantra
         .onChange(of: contextMantra) { _ in return }
-        .onChange(of: sorting) {
+        .onChange(of: settings.sorting) {
             switch $0 {
             case .title: mantras.sortDescriptors = [
                 SortDescriptor(\.isFavorite, order: .reverse),

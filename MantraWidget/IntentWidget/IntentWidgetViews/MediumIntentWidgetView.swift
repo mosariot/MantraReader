@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MediumIntentWidgetView: View {
     @Environment(\.redactionReasons) private var reasons
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) private var colorScheme
+    @EnvironmentObject private var settings: Settings
     var selectedMantra: WidgetModel.WidgetMantra?
     var firstMantra: WidgetModel.WidgetMantra?
     

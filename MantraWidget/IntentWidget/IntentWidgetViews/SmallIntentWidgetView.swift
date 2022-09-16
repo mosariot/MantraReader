@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SmallIntentWidgetView: View {
     @Environment(\.redactionReasons) private var reasons
+    @EnvironmentObject private var settings: Settings
     var selectedMantra: WidgetModel.WidgetMantra?
     var firstMantra: WidgetModel.WidgetMantra?
     

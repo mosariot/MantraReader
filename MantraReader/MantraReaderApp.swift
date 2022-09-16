@@ -37,7 +37,7 @@ struct MantraReaderApp: App {
                 .environment(\.managedObjectContext, dataManager.viewContext)
                 .environmentObject(dataManager)
                 .environmentObject(actionService)
-            .environmentObject(
+                .environmentObject(settings)
                 .onAppear {
                     setPreferredColorScheme()
                     if isFirstLaunch {
@@ -102,13 +102,13 @@ struct MantraReaderApp: App {
 
 final class Settings: ObservableObject {
     @AppStorage("sorting")
-    private var sorting: Sorting = .title
+    var sorting: Sorting = .title
     
     @AppStorage("ringColor", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
-    private var ringColor: RingColor = .dynamic
+    var ringColor: RingColor = .dynamic
     
     @AppStorage("colorScheme", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
-    private var colorScheme: MantraColorScheme = .system
+    var colorScheme: MantraColorScheme = .system
     
     static let shared = Settings()
     private init() { }

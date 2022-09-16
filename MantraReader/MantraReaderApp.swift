@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 import IQKeyboardManagerSwift
 
 @main
@@ -15,14 +16,13 @@ struct MantraReaderApp: App {
     @AppStorage("isPreloadedMantrasDueToNoInternet") private var isPreloadedMantrasDueToNoInternet = false
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("isOnboarding") private var isOnboarding = true
-    @AppStorage("colorScheme", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
-    private var colorScheme: MantraColorScheme = .system
     
-   
     @State private var isPresentedNoInternetAlert = false
     
     private let dataManager = DataManager(viewContext: PersistenceController.shared.container.viewContext)
     private let actionService = ActionService.shared
+    private let settings = Settings.shared
+    
     private var preferredColorScheme: UIUserInterfaceStyle {
         switch colorScheme {
         case .system: return .unspecified
@@ -37,6 +37,7 @@ struct MantraReaderApp: App {
                 .environment(\.managedObjectContext, dataManager.viewContext)
                 .environmentObject(dataManager)
                 .environmentObject(actionService)
+            .environmentObject(
                 .onAppear {
                     setPreferredColorScheme()
                     if isFirstLaunch {
@@ -55,8 +56,9 @@ struct MantraReaderApp: App {
                         }
                     }
                 }
-                .onChange(of: colorScheme) { _ in
+                .onChange(of: settings.colorScheme) { _ in
                     setPreferredColorScheme()
+                    WidgetCenter.shared.reloadAllTimelines()
                 }
                 .alert(
                     "No Internet Connection",
@@ -96,4 +98,18 @@ struct MantraReaderApp: App {
         guard let scene = scenes.first as? UIWindowScene else { return }
         scene.keyWindow?.overrideUserInterfaceStyle = preferredColorScheme
     }
+}
+
+final class Settings: ObservableObject {
+    @AppStorage("sorting")
+    private var sorting: Sorting = .title
+    
+    @AppStorage("ringColor", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
+    private var ringColor: RingColor = .dynamic
+    
+    @AppStorage("colorScheme", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
+    private var colorScheme: MantraColorScheme = .system
+    
+    static let shared = Settings()
+    private init() { }
 }

@@ -6,10 +6,19 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var settings: Settings
+    
+    private var preferredColorScheme: UIUserInterfaceStyle {
+        switch settings.colorScheme {
+        case .system: return .unspecified
+        case .light: return .light
+        case .dark: return .dark
+        }
+    }
     
     var body: some View {
         NavigationStack {
@@ -154,7 +163,17 @@ struct SettingsView: View {
                     }
                 }
             }
+            .onChange(of: settings.colorScheme) { _ in
+                setPreferredColorScheme()
+                WidgetCenter.shared.reloadAllTimelines()
+            }
             .navigationTitle("Settings")
         }
+    }
+    
+    private func setPreferredColorScheme() {
+        let scenes = UIApplication.shared.connectedScenes
+        guard let scene = scenes.first as? UIWindowScene else { return }
+        scene.keyWindow?.overrideUserInterfaceStyle = preferredColorScheme
     }
 }

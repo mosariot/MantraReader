@@ -24,7 +24,7 @@ struct MantraReaderApp: App {
     private let settings = Settings.shared
     
     private var preferredColorScheme: UIUserInterfaceStyle {
-        switch colorScheme {
+        switch settings.colorScheme {
         case .system: return .unspecified
         case .light: return .light
         case .dark: return .dark
@@ -55,10 +55,6 @@ struct MantraReaderApp: App {
                             isPresentedNoInternetAlert = true
                         }
                     }
-                }
-                .onChange(of: settings.colorScheme) { _ in
-                    setPreferredColorScheme()
-                    WidgetCenter.shared.reloadAllTimelines()
                 }
                 .alert(
                     "No Internet Connection",
@@ -98,18 +94,4 @@ struct MantraReaderApp: App {
         guard let scene = scenes.first as? UIWindowScene else { return }
         scene.keyWindow?.overrideUserInterfaceStyle = preferredColorScheme
     }
-}
-
-final class Settings: ObservableObject {
-    @AppStorage("sorting")
-    var sorting: Sorting = .title
-    
-    @AppStorage("ringColor", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
-    var ringColor: RingColor = .dynamic
-    
-    @AppStorage("colorScheme", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
-    var colorScheme: MantraColorScheme = .system
-    
-    static let shared = Settings()
-    private init() { }
 }

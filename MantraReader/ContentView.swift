@@ -12,6 +12,7 @@ struct ContentView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.verticalSizeClass) private var verticalSizeClass
     @EnvironmentObject private var dataManager: DataManager
+    @AppStorage("sorting") private var sorting: Sorting = .title
     @EnvironmentObject private var settings: Settings
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("isInitalDataLoading") private var isInitalDataLoading = true
@@ -32,7 +33,7 @@ struct ContentView: View {
     
     init() {
         var currentSortDescriptor: SortDescriptor<Mantra>
-        switch settings.sorting {
+        switch sorting {
         case .title: currentSortDescriptor = SortDescriptor(\.title, order: .forward)
         case .reads: currentSortDescriptor = SortDescriptor(\.reads, order: .reverse)
         }
@@ -59,6 +60,19 @@ struct ContentView: View {
                 .searchable(text: $search)
                 .onChange(of: search) {
                     mantras.nsPredicate = $0.isEmpty ? nil : NSPredicate(format: "title contains[cd] %@", $0)
+                }
+                .onChange(of: settings.sorting) {
+                    switch $0 {
+                    case .title: mantras.sortDescriptors = [
+                        SortDescriptor(\.isFavorite, order: .reverse),
+                        SortDescriptor(\.title, order: .forward)
+                    ]
+                    case .reads: mantras.sortDescriptors = [
+                        SortDescriptor(\.isFavorite, order: .reverse),
+                        SortDescriptor(\.reads, order: .reverse)
+                    ]
+                    }
+                    dataManager.saveData()
                 }
                 if isInitalDataLoading {
                     ProgressView("Syncing...")

@@ -193,21 +193,8 @@ struct MantraListColumn: View {
                 }
             }
         }
-// Workaround to force a row to see contextMantra
+        // Workaround to force a row to see contextMantra
         .onChange(of: contextMantra) { _ in return }
-        .onChange(of: settings.sorting) {
-            switch $0 {
-            case .title: mantras.sortDescriptors = [
-                SortDescriptor(\.isFavorite, order: .reverse),
-                SortDescriptor(\.title, order: .forward)
-            ]
-            case .reads: mantras.sortDescriptors = [
-                SortDescriptor(\.isFavorite, order: .reverse),
-                SortDescriptor(\.reads, order: .reverse)
-            ]
-            }
-            dataManager.saveData()
-        }
         .sheet(isPresented: $isPresentedStatisticsSheet) {
             StatisticsView(viewModel: StatisticsViewModel(dataManager: dataManager))
         }

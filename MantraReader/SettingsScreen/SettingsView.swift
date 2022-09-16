@@ -6,21 +6,15 @@
 //
 
 import SwiftUI
-import WidgetKit
 
 struct SettingsView: View {
-    @Environment(\.dismiss) var dismiss
-    @AppStorage("sorting") private var sorting: Sorting = .title
-    @AppStorage("ringColor", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
-    private var ringColor: RingColor = .dynamic
-//    @Preference(\.ringColor) var ringColor
-    @AppStorage("colorScheme", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
-    private var colorScheme: MantraColorScheme = .system
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var settings: Settings
     
     var body: some View {
         NavigationStack {
             Form {
-                Picker("Mantras sorting", selection: $sorting) {
+                Picker("Mantras sorting", selection: $settings.sorting) {
                     Label {
                         Text("Alphabetically")
                     } icon: {
@@ -48,7 +42,7 @@ struct SettingsView: View {
                     .tag(Sorting.reads)
                 }
                 .pickerStyle(.inline)
-                Picker("Appearance", selection: $colorScheme) {
+                Picker("Appearance", selection: $settings.colorScheme) {
                     Label {
                         Text("System")
                     } icon: {
@@ -87,7 +81,7 @@ struct SettingsView: View {
                     .tag(MantraColorScheme.dark)
                 }
                 .pickerStyle(.inline)
-                Picker("Progress ring color", selection: $ringColor) {
+                Picker("Progress ring color", selection: $settings.ringColor) {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(
                             LinearGradient(
@@ -161,9 +155,6 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
-            .onChange(of: colorScheme) { newValue in
-                WidgetCenter.shared.reloadAllTimelines()
-            }
         }
     }
 }

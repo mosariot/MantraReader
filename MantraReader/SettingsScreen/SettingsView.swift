@@ -13,6 +13,7 @@ struct SettingsView: View {
     @AppStorage("sorting") private var sorting: Sorting = .title
     @AppStorage("ringColor", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
     private var ringColor: RingColor = .dynamic
+//    @Preference(\.ringColor) var ringColor
     @AppStorage("colorScheme", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
     private var colorScheme: MantraColorScheme = .system
     
@@ -164,14 +165,5 @@ struct SettingsView: View {
                 WidgetCenter.shared.reloadAllTimelines()
             }
         }
-    }
-}
-
-struct CloseButtonImage: View {
-    var body: some View {
-        Image(systemName: "xmark")
-            .symbolVariant(.circle.fill)
-            .foregroundColor(.gray.opacity(0.6))
-            .scaleEffect(1.2)
     }
 }

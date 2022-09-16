@@ -10,9 +10,9 @@ import SwiftUI
 struct PercentageRing: View {
     @AppStorage("ringColor", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
     private var ringColor: RingColor = .dynamic
-    @State private var updater = false
-    private static let ShadowColor: Color = .black.opacity(0.3)
-    private static let ShadowRadius: CGFloat = 4
+//    @Preference(\.ringColor) var ringColor
+    private static let ShadowColor: Color = .black.opacity(0.2)
+    private static let ShadowRadius: CGFloat = 5
     private static let ShadowOffsetMultiplier: CGFloat = ShadowRadius + 2
     
     private let ringWidth: CGFloat

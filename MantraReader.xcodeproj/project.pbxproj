@@ -109,6 +109,9 @@
 		9FBEE9A1285F682D0070BA06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEE9A0285F682D0070BA06 /* Assets.xcassets */; };
 		9FBEE9A5285F682D0070BA06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEE9A4285F682D0070BA06 /* Preview Assets.xcassets */; };
 		9FBEE9B0285F68CE0070BA06 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */; };
+		9FC0F5C428D425F100A00681 /* CloseButtonImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5C328D425F100A00681 /* CloseButtonImage.swift */; };
+		9FC0F5C628D4264500A00681 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5C528D4264500A00681 /* Preferences.swift */; };
+		9FC0F5C728D427F700A00681 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5C528D4264500A00681 /* Preferences.swift */; };
 		9FC9A691287DA4FE00D05FBD /* AdjustingAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9A690287DA4FE00D05FBD /* AdjustingAlertView.swift */; };
 		9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC52893915B004936E6 /* PreloadedMantraListView.swift */; };
 		9FD61DC8289391A4004936E6 /* PreloadedMantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC7289391A4004936E6 /* PreloadedMantraRow.swift */; };
@@ -256,6 +259,8 @@
 		9FBEE9A4285F682D0070BA06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9FBEE9AB285F68CE0070BA06 /* ReadsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadsView.swift; sourceTree = "<group>"; };
 		9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		9FC0F5C328D425F100A00681 /* CloseButtonImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButtonImage.swift; sourceTree = "<group>"; };
+		9FC0F5C528D4264500A00681 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		9FC9A690287DA4FE00D05FBD /* AdjustingAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustingAlertView.swift; sourceTree = "<group>"; };
 		9FD61DC52893915B004936E6 /* PreloadedMantraListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraListView.swift; sourceTree = "<group>"; };
 		9FD61DC7289391A4004936E6 /* PreloadedMantraRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraRow.swift; sourceTree = "<group>"; };
@@ -431,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				9F348D3F28A404810070F157 /* Bool+Comparable.swift */,
+				9FC0F5C328D425F100A00681 /* CloseButtonImage.swift */,
 				9FDC8DAD28622D5900BF7051 /* Constants.swift */,
 				9FAE4BA428CF9CC100CE9D9B /* CornerRadiusShape.swift */,
 				9FABFF5428BE9E52001A1D7F /* Date+StartEnd.swift */,
@@ -442,6 +448,7 @@
 				9FB32B1028A7D48C000A910E /* ShakeSupport.swift */,
 				9F4DE923286E3B670064ADCB /* UIImage+CropToCircle.swift */,
 				9F78728D2865FDA400F52335 /* UIImage+Resize.swift */,
+				9FC0F5C528D4264500A00681 /* Preferences.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -778,6 +785,7 @@
 				9F5422F128ACA29E00F15040 /* IntentProvider.swift in Sources */,
 				9FA0553B28AC018E006E5798 /* StaticWidgetEntryView.swift in Sources */,
 				9FAE4BAB28D180C300CE9D9B /* MantraColorScheme.swift in Sources */,
+				9FC0F5C728D427F700A00681 /* Preferences.swift in Sources */,
 				9F5422F528ACA2D700F15040 /* MediumIntentWidgetView.swift in Sources */,
 				9FAE4BA928D0345700CE9D9B /* RingShape.swift in Sources */,
 				9FA0553C28AC018E006E5798 /* StaticProvider.swift in Sources */,
@@ -814,6 +822,7 @@
 				9FDC8DAA286222C700BF7051 /* ReadsViewModel.swift in Sources */,
 				9F1AB3EB28A18EEF001FF7DE /* MantraWidgetManager.swift in Sources */,
 				9FF7C3952864C16200DA5F51 /* PreloadedMantras.swift in Sources */,
+				9FC0F5C428D425F100A00681 /* CloseButtonImage.swift in Sources */,
 				9FAE4BA128CF9C2000CE9D9B /* RingColor.swift in Sources */,
 				9F4DE924286E3B670064ADCB /* UIImage+CropToCircle.swift in Sources */,
 				9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */,
@@ -830,6 +839,7 @@
 				9FAE4B9C28CDB52500CE9D9B /* NumberAnimation.swift in Sources */,
 				9F6E65BF28B3970B0054F6D6 /* Mantra+ShortcutItem.swift in Sources */,
 				9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */,
+				9FC0F5C628D4264500A00681 /* Preferences.swift in Sources */,
 				9FAE4BAE28D185B700CE9D9B /* FeedbackView.swift in Sources */,
 				9FAE4BA828D033DC00CE9D9B /* RingShape.swift in Sources */,
 				9FAE4BA328CF9C4D00CE9D9B /* MantraColorScheme.swift in Sources */,

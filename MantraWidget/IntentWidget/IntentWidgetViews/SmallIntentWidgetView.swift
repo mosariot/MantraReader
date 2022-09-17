@@ -19,9 +19,10 @@ struct SmallIntentWidgetView: View {
                 .ignoresSafeArea()
             VStack {
                 ZStack {
-                    PercentageRing(
-                        ringWidth: 10,
-                        percent: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000) * 100
+                    ProgressRing(
+                        progress: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000),
+                        radius: 45,
+                        width: 12
                     )
                     Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
                         .font(.system(.headline, weight: .bold))

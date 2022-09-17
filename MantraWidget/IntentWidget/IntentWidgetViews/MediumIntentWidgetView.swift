@@ -18,30 +18,28 @@ struct MediumIntentWidgetView: View {
         ZStack {
             Color(colorScheme == .dark ? UIColor.systemGroupedBackground : UIColor.white)
                 .ignoresSafeArea()
-            GeometryReader { geo in
-                HStack(alignment: .bottom) {
-                    VStack {
-                        Image(uiImage: image)
+            HStack {
+                VStack {
+                    Image(uiImage: image)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: 100, maxHeight: 100, alignment: .center)
-                        Text((selectedMantra?.title ?? firstMantra?.title) ?? String(localized: "Your mantra"))
-                            .font(.system(.subheadline, weight: .bold))
-                            .multilineTextAlignment(.center)
-                            .lineLimit(2)
-                            .layoutPriority(1)
-                    }
-                    Spacer()
-                    ZStack {
-                        PercentageRing(
-                            ringWidth: 10,
-                            percent: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000) * 100
-                        )
-                        Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
-                            .font(.system(.headline, weight: .bold))
-                            .privacySensitive()
-                    }
-                    .frame(maxWidth: geo.size.height)
+                    Text((selectedMantra?.title ?? firstMantra?.title) ?? String(localized: "Your mantra"))
+                        .font(.system(.subheadline, weight: .bold))
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                        .layoutPriority(1)
+                }
+                Spacer()
+                ZStack {
+                    ProgressRing(
+                        progress: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000),
+                        radius: 55,
+                        width: 12
+                    )
+                    Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
+                        .font(.system(.headline, weight: .bold))
+                        .privacySensitive()
                 }
             }
             .padding(.vertical)

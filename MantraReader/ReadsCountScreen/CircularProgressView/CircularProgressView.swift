@@ -16,13 +16,13 @@ struct CircularProgressView: View {
     var body: some View {
         VStack {
             ZStack {
-                ProgressRing(progress: viewModel.percent, radius: Double(frame ?? 100)/2, width: 25)
-                .animation(
-                    viewModel.isAnimated ?
+                ProgressRing(progress: viewModel.percent, thickness: 25)
+                    .animation(
+                        viewModel.isAnimated ?
                         Animation.easeOut(duration: Constants.animationTime) :
-                        Animation.linear(duration: 0.01),
-                    value: viewModel.progress
-                )
+                            Animation.linear(duration: 0.01),
+                        value: viewModel.progress
+                    )
                 Text("Reads")
                     .numberAnimation(viewModel.mantra.reads)
                     .animation(

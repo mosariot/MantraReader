@@ -34,16 +34,16 @@ struct MediumIntentWidgetView: View {
                 ZStack {
                     ProgressRing(
                         progress: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000),
-                        radius: 55,
-                        width: 12
+                        thickness: 12
                     )
                     Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
                         .font(.system(.headline, weight: .bold))
                         .privacySensitive()
                 }
+                .padding(6)
             }
-            .padding(.vertical)
-            .padding(.horizontal, 30)
+            .padding(.vertical, 10)
+            .padding(.horizontal)
             .redacted(reason: reasons)
         }
         .widgetURL(URL(string: (selectedMantra?.id.uuidString ?? firstMantra?.id.uuidString) ?? ""))

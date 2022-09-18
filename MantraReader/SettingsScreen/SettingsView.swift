@@ -167,6 +167,9 @@ struct SettingsView: View {
                 setPreferredColorScheme()
                 WidgetCenter.shared.reloadAllTimelines()
             }
+            .onChange(of: settings.ringColor) { _ in
+                WidgetCenter.shared.reloadAllTimelines()
+            }
             .navigationTitle("Settings")
         }
     }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MantraCounterModeOverlayView: View {
     @Binding var showBlink: Bool
+    @Binding var isMantraCounterMode: Bool
     let viewModel: ReadsViewModel
     
     var body: some View {
@@ -29,6 +30,12 @@ struct MantraCounterModeOverlayView: View {
                                 viewModel.handleAdjusting(for: .reads, with: 1)
                             }
                     )
+            )
+            .simultaneousGesture(
+                LongPressGesture(minimumDuration: 1)
+                    .onEnded { _ in
+                        isMantraCounterMode = false
+                    }
             )
     }
 }

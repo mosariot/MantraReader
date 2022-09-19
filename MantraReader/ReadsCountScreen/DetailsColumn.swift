@@ -10,7 +10,7 @@ import SwiftUI
 struct DetailsColumn: View {
     @EnvironmentObject private var dataManager: DataManager
     var selectedMantra: Mantra?
-    @State var isMantraCounterMode = false
+    @State private var isMantraCounterMode = false
     @Binding var isMantraDeleted: Bool
     
     var body: some View {

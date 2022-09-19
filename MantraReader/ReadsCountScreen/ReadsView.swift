@@ -10,8 +10,8 @@ import SwiftUI
 struct ReadsView: View {
     @Environment(\.verticalSizeClass) private var verticalSizeClass
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    @EnvironmentObject var actionService: ActionService
-    @Environment(\.scenePhase) var scenePhase
+    @EnvironmentObject private var actionService: ActionService
+    @Environment(\.scenePhase) private var scenePhase
     @AppStorage("isFirstLaunchOfMantraCounterMode") private var isFirstLaunchOfMantraCounterMode = true
     @EnvironmentObject private var dataManager: DataManager
     @ObservedObject private var viewModel: ReadsViewModel

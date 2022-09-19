@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct IntentWidgetEntryView : View {
-    @Environment(\.widgetFamily) var family
-    @Environment(\.colorScheme) var systemColorScheme
+    @Environment(\.widgetFamily) private var family
+    @Environment(\.colorScheme) private var systemColorScheme
     @ObservedObject private var settings = Settings.shared
     var entry: IntentProvider.Entry
     private var preferredColorScheme: ColorScheme? {

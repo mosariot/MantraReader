@@ -9,6 +9,9 @@ import SwiftUI
 
 @MainActor
 final class Settings: ObservableObject {
+    static let shared = Settings()
+    private init() { }
+    
     @AppStorage("sorting")
     var sorting: Sorting = .title
     
@@ -17,7 +20,4 @@ final class Settings: ObservableObject {
     
     @AppStorage("colorScheme", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
     var colorScheme: MantraColorScheme = .system
-    
-    static let shared = Settings()
-    private init() { }
 }

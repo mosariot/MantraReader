@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StatisticsView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     @AppStorage("isFirstAppearOfStatistics") private var isFirstAppearOfStatistics = true
     @StateObject var viewModel: StatisticsViewModel
     @State private var selectedWeek: Int = 0
@@ -44,7 +44,7 @@ struct StatisticsView: View {
             .alert("", isPresented: $isFirstAppearOfStatistics) {
                 Button("OK") { }
             } message: {
-                Text("This is your reading statistics over time. To view the exact values, hold the bar and move in time.")
+                Text("This is your reading statistics. To view the exact values hold the bar and move in time.")
             }
             .navigationTitle(viewModel.navigationTitle)
             .adaptiveListStyle()

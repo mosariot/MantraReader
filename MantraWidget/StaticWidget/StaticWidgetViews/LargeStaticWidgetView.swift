@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LargeStaticWidgetView: View {
     @Environment(\.redactionReasons) private var reasons
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) private var colorScheme
     var widgetModel: WidgetModel
     
     var body: some View {

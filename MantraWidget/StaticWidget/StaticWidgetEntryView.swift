@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct StaticWidgetEntryView: View {
-    @Environment(\.widgetFamily) var family
-    @Environment(\.colorScheme) var systemColorScheme
+    @Environment(\.widgetFamily) private var family
+    @Environment(\.colorScheme) private var systemColorScheme
     @AppStorage("colorScheme", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
     private var colorScheme: MantraColorScheme = .system
     var entry: StaticProvider.Entry

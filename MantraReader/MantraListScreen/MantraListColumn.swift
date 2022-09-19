@@ -158,7 +158,7 @@ struct MantraListColumn: View {
                        } label: {
                         Label("Settings", systemImage: "slider.horizontal.3")
                     }
-                    Menu {
+                    Section {
                         Button {
                             isPresentedNewMantraSheet = true
                         } label: {
@@ -169,10 +169,10 @@ struct MantraListColumn: View {
                         } label: {
                             Label("Preset Mantra", systemImage: "books.vertical")
                         }
-                    } label: {
+                    } header: {
                         Label("Add New", systemImage: "plus")
                     }
-                    Menu {
+                    Section {
                         Button {
                             isPresentedFeedbackView = true
                         } label: {
@@ -185,7 +185,7 @@ struct MantraListColumn: View {
                         } label: {
                             Label("App Store Review", systemImage: "highlighter")
                         }
-                    } label: {
+                    } header: {
                         Label("Feedback", systemImage: "ellipsis.bubble")
                     }
                 } label: {

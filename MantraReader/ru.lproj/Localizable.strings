@@ -204,6 +204,9 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 /* No mantra selected */
 "Select a mantra" = "Выберите мантру";
 
+/* Mantra Counter mode indicator menu */
+"'Mantra Counter' mode indicator. Please use long press on main screen to enter the mode." = "Индикатор режима 'Счетчик мантр'. Используйте долгое нажатие на основном экране для входа в режим.";
+
 /* First switch display mode Alert Title */
 "'Mantra Counter' Mode" = "Режим 'Счетчик мантр'";
 
@@ -296,6 +299,9 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 
 /* Overall statistics Title */
 "Overall Statistics" = "Общая статистика";
+
+/* First appear of StatisticsView message */
+"This is your reading statistics over time. To view the exact values, hold the column and move in time." = "Это ваша статистика начитки во времени. Для просмотра точных значений зажмите столбец и двигайтесь по времени.";
 
 /* Week Statistics Title */
 "Week" = "Неделя";

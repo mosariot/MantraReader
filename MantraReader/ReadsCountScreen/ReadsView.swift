@@ -191,6 +191,14 @@ struct ReadsView: View {
                     showBlink: $showBlink,
                     viewModel: viewModel
                 )
+                .simultaneousGesture(
+                    LongPressGesture(minimumDuration: 1)
+                        .onEnded { _ in
+                            withAnimation {
+                                toggleMantraCounterMode()
+                            }
+                        }
+                )
             }
             if showBlink {
                 BlinkView()

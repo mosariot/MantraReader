@@ -200,25 +200,15 @@ struct ReadsView: View {
             }
         }
         .overlay(alignment: .topTrailing) {
-            Button {
-                if isFirstLaunchOfMantraCounterMode {
-                    isPresentedMantraCounterModeAlert = true
-                } else {
-                    withAnimation {
-                        toggleMantraCounterMode()
-                    }
-                }
+            Menu {
+                Text("'Mantra Counter' mode indicator. Please use long press on main screen to enter the mode")
+                    .font(.caption)
             } label: {
                 Image(systemName: "sun.max")
-                    .scaleEffect(1.4)
                     .symbolVariant(isMantraCounterMode ? .circle.fill : .none)
                     .padding(.trailing, 20)
                     .padding(.top, 20)
-                    .padding(.leading, 25)
-                    .padding(.bottom, 25)
             }
-            .controlSize(.large)
-            .contentShape(Rectangle())
         }
         .navigationTitle(verticalSizeClass == .compact ? viewModel.mantra.title ?? "" : "")
         .navigationBarTitleDisplayMode(.inline)
@@ -237,6 +227,15 @@ struct ReadsView: View {
             Button("Cancel", role: .cancel) { }
         } message: {
             Text("Are you sure you want to delete this mantra?")
+        }
+        .onLongPressGesture(minimumDuration: 1) {
+            if isFirstLaunchOfMantraCounterMode {
+                    isPresentedMantraCounterModeAlert = true
+            } else {
+                withAnimation {
+                    toggleMantraCounterMode()
+                }
+            }
         }
         .toolbar {
             ToolbarItem(placement: .primaryAction) {

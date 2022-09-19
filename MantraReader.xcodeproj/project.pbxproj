@@ -21,6 +21,8 @@
 		9F1AB3EA28A18EEF001FF7DE /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E728A18EEF001FF7DE /* WidgetModel.swift */; };
 		9F1AB3EB28A18EEF001FF7DE /* MantraWidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E828A18EEF001FF7DE /* MantraWidgetManager.swift */; };
 		9F1AB3ED28A18F17001FF7DE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DAD28622D5900BF7051 /* Constants.swift */; };
+		9F2ED2A028D81F0A0031D40A /* ProgressArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2ED29F28D81F0A0031D40A /* ProgressArc.swift */; };
+		9F2ED2A128D81F2A0031D40A /* ProgressArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2ED29F28D81F0A0031D40A /* ProgressArc.swift */; };
 		9F31E15A2891ACE6006F0521 /* MantraCounterModeOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31E1592891ACE6006F0521 /* MantraCounterModeOverlayView.swift */; };
 		9F338B5C2899A64200E393E2 /* RoundedCross.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F338B572899A64100E393E2 /* RoundedCross.swift */; };
 		9F338B5D2899A64200E393E2 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F338B582899A64100E393E2 /* Triangle.swift */; };
@@ -177,6 +179,7 @@
 		9F1AB3E728A18EEF001FF7DE /* WidgetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetModel.swift; sourceTree = "<group>"; };
 		9F1AB3E828A18EEF001FF7DE /* MantraWidgetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MantraWidgetManager.swift; sourceTree = "<group>"; };
 		9F1AB3EE28A1924A001FF7DE /* MantraWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MantraWidgetExtension.entitlements; sourceTree = "<group>"; };
+		9F2ED29F28D81F0A0031D40A /* ProgressArc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressArc.swift; sourceTree = "<group>"; };
 		9F31E1592891ACE6006F0521 /* MantraCounterModeOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraCounterModeOverlayView.swift; sourceTree = "<group>"; };
 		9F338B572899A64100E393E2 /* RoundedCross.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCross.swift; sourceTree = "<group>"; };
 		9F338B582899A64100E393E2 /* Triangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
@@ -536,6 +539,7 @@
 				9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */,
 				9FDF349A2885B2E000B3007E /* CircularProgressViewModel.swift */,
 				9FC0F5CD28D4BC0200A00681 /* ProgressRing.swift */,
+				9F2ED29F28D81F0A0031D40A /* ProgressArc.swift */,
 				9FAE4BA728D033DC00CE9D9B /* RingCap.swift */,
 			);
 			path = CircularProgressView;
@@ -791,6 +795,7 @@
 				9F5422F128ACA29E00F15040 /* IntentProvider.swift in Sources */,
 				9FA0553B28AC018E006E5798 /* StaticWidgetEntryView.swift in Sources */,
 				9FAE4BAB28D180C300CE9D9B /* MantraColorScheme.swift in Sources */,
+				9F2ED2A128D81F2A0031D40A /* ProgressArc.swift in Sources */,
 				9FC0F5CB28D4B3A100A00681 /* Sorting.swift in Sources */,
 				9FC0F5C728D427F700A00681 /* Preferences.swift in Sources */,
 				9F5422F528ACA2D700F15040 /* MediumIntentWidgetView.swift in Sources */,
@@ -859,6 +864,7 @@
 				9F78628D2889A5830058AAD0 /* ReadsView.swift in Sources */,
 				9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */,
 				9F4DE926286E3B990064ADCB /* Functions.swift in Sources */,
+				9F2ED2A028D81F0A0031D40A /* ProgressArc.swift in Sources */,
 				9F6E65C228B39E750054F6D6 /* ReadTheMantra.xcdatamodeld in Sources */,
 				9F348D4228A430F70070F157 /* InfoMode.swift in Sources */,
 				9FBEE9B0285F68CE0070BA06 /* CircularProgressView.swift in Sources */,

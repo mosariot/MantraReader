@@ -80,8 +80,7 @@ struct ReadsView: View {
                                 width: circularProgressViewSize(with: geometry.size),
                                 height: circularProgressViewSize(with: geometry.size)
                             )
-                            .padding(.bottom, 15)
-                            .padding(.top, 20)
+                            .padding(.vertical)
                             .confettiCannon(
                                 counter: $viewModel.confettiTrigger,
                                 num: 200,

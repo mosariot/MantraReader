@@ -145,6 +145,7 @@ struct InfoView: View {
                                 }
                                 .opacity(infoMode == .edit || infoMode == .addNew ? 0.8 : 0)
                             }
+                            .padding(.top, 10)
                         if isProcessingImage {
                             ProgressView()
                         }

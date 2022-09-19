@@ -18,32 +18,35 @@ struct MediumIntentWidgetView: View {
         ZStack {
             Color(colorScheme == .dark ? UIColor.systemGroupedBackground : UIColor.white)
                 .ignoresSafeArea()
-            HStack {
-                VStack {
-                    Image(uiImage: image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 100, maxHeight: 100, alignment: .center)
-                    Text((selectedMantra?.title ?? firstMantra?.title) ?? String(localized: "Your mantra"))
-                        .font(.system(.subheadline, weight: .bold))
-                        .multilineTextAlignment(.center)
-                        .lineLimit(2)
-                        .layoutPriority(1)
+            GeometryReader { geo in
+                HStack {
+                    VStack {
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 100, maxHeight: 100, alignment: .center)
+                        Text((selectedMantra?.title ?? firstMantra?.title) ?? String(localized: "Your mantra"))
+                            .font(.system(.subheadline, weight: .bold))
+                            .multilineTextAlignment(.center)
+                            .lineLimit(2)
+                            .layoutPriority(1)
+                    }
+                    Spacer()
+                    ZStack {
+                        ProgressRing(
+                            progress: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000),
+                            thickness: 12
+                        )
+                        .frame(maxWidth: geo.size.height)
+                        Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
+                            .font(.system(.headline, weight: .bold))
+                            .privacySensitive()
+                    }
+                    .padding(.vertical, 6)
                 }
-                Spacer()
-                ZStack {
-                    ProgressRing(
-                        progress: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000),
-                        thickness: 12
-                    )
-                    Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
-                        .font(.system(.headline, weight: .bold))
-                        .privacySensitive()
-                }
-                .padding(6)
             }
             .padding(.vertical, 10)
-            .padding(.horizontal)
+            .padding(.horizontal, 25)
             .redacted(reason: reasons)
         }
         .widgetURL(URL(string: (selectedMantra?.id.uuidString ?? firstMantra?.id.uuidString) ?? ""))

@@ -91,7 +91,7 @@ struct SettingsView: View {
                 }
                 .pickerStyle(.inline)
                 Picker("Progress ring color", selection: $settings.ringColor) {
-                    HStack(spacing: 0) {
+                    HStack(spacing: 5) {
                         Rectangle()
                             .fill(
                                 LinearGradient(

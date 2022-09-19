@@ -36,14 +36,6 @@ struct ProgressRing: View {
         }
     }
     
-    private func progressAngularGradient(colors: [Color]) -> AngularGradient {
-        AngularGradient(
-            gradient: Gradient(colors: colors),
-            center: .center,
-            startAngle: .degrees(0),
-            endAngle: progress > 0.25 ? .degrees(360.0 * progress) : .degrees(90))
-    }
-    
     public var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -55,16 +47,12 @@ struct ProgressRing: View {
                     )
                 switch settings.ringColor {
                 case .red, .yellow, .green:
-                    Circle()
-                        .trim(from: 0, to: progress)
-                        .stroke(
-                            progressAngularGradient(colors: foregroundColors),
-                            style: StrokeStyle(lineWidth: thickness, lineCap: .round))
-                        .rotationEffect(Angle(degrees: -90))
-                        .frame(
-                            width: min(geo.size.width, geo.size.height),
-                            height: min(geo.size.width, geo.size.height)
-                        )
+                    ProgressArc(
+                        progress: progress,
+                        colors: foregroundColors,
+                        thickness: thickness,
+                        frame: geo.size
+                    )
                     RingCap(progress: progress,
                             ringRadius: min(geo.size.width, geo.size.height) / 2)
                     .fill(lastGradientColor, strokeBorder: lastGradientColor, lineWidth: 0.5)
@@ -82,39 +70,27 @@ struct ProgressRing: View {
                     )
                     .opacity(tipOpacity)
                 case .dynamic:
-                    Circle()
-                        .trim(from: 0, to: progress)
-                        .stroke(
-                            progressAngularGradient(colors: [.progressGreenStart, .progressGreenEnd]),
-                            style: StrokeStyle(lineWidth: thickness, lineCap: .round))
-                        .rotationEffect(Angle(degrees: -90))
-                        .opacity(progress < 0.5 ? 1 : 0)
-                        .frame(
-                            width: min(geo.size.width, geo.size.height),
-                            height: min(geo.size.width, geo.size.height)
-                        )
-                    Circle()
-                        .trim(from: 0, to: progress)
-                        .stroke(
-                            progressAngularGradient(colors: [.progressYellowStart, .progressYellowEnd]),
-                            style: StrokeStyle(lineWidth: thickness, lineCap: .round))
-                        .rotationEffect(Angle(degrees: -90))
-                        .opacity(progress >= 0.5 && progress < 1.0 ? 1 : 0)
-                        .frame(
-                            width: min(geo.size.width, geo.size.height),
-                            height: min(geo.size.width, geo.size.height)
-                        )
-                    Circle()
-                        .trim(from: 0, to: progress)
-                        .stroke(
-                            progressAngularGradient(colors: [.progressRedStart, .progressRedEnd]),
-                            style: StrokeStyle(lineWidth: thickness, lineCap: .round))
-                        .rotationEffect(Angle(degrees: -90))
-                        .opacity(progress >= 1.0 ? 1 : 0)
-                        .frame(
-                            width: min(geo.size.width, geo.size.height),
-                            height: min(geo.size.width, geo.size.height)
-                        )
+                    ProgressArc(
+                        progress: progress,
+                        colors: Color.firstProgressTier,
+                        thickness: thickness,
+                        frame: geo.size
+                    )
+                    .opacity(progress < 0.5 ? 1 : 0)
+                    ProgressArc(
+                        progress: progress,
+                        colors: Color.secondProgressTier,
+                        thickness: thickness,
+                        frame: geo.size
+                    )
+                    .opacity(progress >= 0.5 && progress < 1.0 ? 1 : 0)
+                    ProgressArc(
+                        progress: progress,
+                        colors: Color.thirdProgressTier,
+                        thickness: thickness,
+                        frame: geo.size
+                    )
+                    .opacity(progress >= 1.0 ? 1 : 0)
                     RingCap(progress: progress,
                             ringRadius: min(geo.size.width, geo.size.height) / 2)
                     .fill(progress < 1.0 ? Color.progressYellowEnd : Color.progressRedEnd,
@@ -135,7 +111,7 @@ struct ProgressRing: View {
                     .opacity(tipOpacity)
                 }
             }
-            .frame(width: geo.size.width > geo.size.height ? geo.size.width : geo.size.height, height: geo.size.width > geo.size.height ? geo.size.height : geo.size.width)
+            .frame(width: geo.size.width, height: geo.size.height)
         }
     }
     

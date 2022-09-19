@@ -2,7 +2,7 @@
 //  RingCap.swift
 //  MantraReader
 //
-//  Created by Alex Vorobiev on 13.09.2022.
+//  Created by Alex Vorobiev on 16.09.2022.
 //
 
 import SwiftUI

@@ -46,8 +46,21 @@ struct ReadsView: View {
     
     var body: some View {
         let layout = verticalSizeClass == .compact ? AnyLayout(HStackLayout()) : AnyLayout(VStackLayout())
+        let longPressGesture = LongPressGesture(minimumDuration: 1)
+            .onEnded { _ in
+                if isFirstLaunchOfMantraCounterMode {
+                    isPresentedMantraCounterModeAlert = true
+                } else {
+                    withAnimation {
+                        toggleMantraCounterMode()
+                    }
+                }
+            }
         
         ZStack {
+            Color.white
+                .opacity(0.01)
+                .gesture(longPressGesture)
             GeometryReader { geometry in
                 VStack {
                     layout {
@@ -191,14 +204,6 @@ struct ReadsView: View {
                     showBlink: $showBlink,
                     viewModel: viewModel
                 )
-                .simultaneousGesture(
-                    LongPressGesture(minimumDuration: 1)
-                        .onEnded { _ in
-                            withAnimation {
-                                toggleMantraCounterMode()
-                            }
-                        }
-                )
             }
             if showBlink {
                 BlinkView()
@@ -209,15 +214,16 @@ struct ReadsView: View {
         }
         .overlay(alignment: .topTrailing) {
             Menu {
-                Text("'Mantra Counter' mode indicator. Please use long press on main screen to enter the mode.")
-                    .font(.caption)
+                Text("'Mantra Counter' mode - use long press on screen")
             } label: {
                 Image(systemName: "sun.max")
                     .symbolVariant(isMantraCounterMode ? .circle.fill : .none)
+                    .imageScale(.large)
                     .padding(.trailing, 20)
                     .padding(.top, 20)
             }
         }
+        .gesture(longPressGesture)
         .navigationTitle(verticalSizeClass == .compact ? viewModel.mantra.title ?? "" : "")
         .navigationBarTitleDisplayMode(.inline)
         .ignoresSafeArea(.keyboard)
@@ -235,15 +241,6 @@ struct ReadsView: View {
             Button("Cancel", role: .cancel) { }
         } message: {
             Text("Are you sure you want to delete this mantra?")
-        }
-        .onLongPressGesture(minimumDuration: 1) {
-            if isFirstLaunchOfMantraCounterMode {
-                    isPresentedMantraCounterModeAlert = true
-            } else {
-                withAnimation {
-                    toggleMantraCounterMode()
-                }
-            }
         }
         .toolbar {
             ToolbarItem(placement: .primaryAction) {

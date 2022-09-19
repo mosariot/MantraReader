@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StatisticsView: View {
     @Environment(\.dismiss) var dismiss
-    @AppStorage("isFirstAppearOfStatistics) private var isFirstAppearOfStatistics = true
+    @AppStorage("isFirstAppearOfStatistics") private var isFirstAppearOfStatistics = true
     @StateObject var viewModel: StatisticsViewModel
     @State private var selectedWeek: Int = 0
     @State private var selectedMonth: Int = 0

@@ -53,31 +53,32 @@ struct YearStatisticsView: View {
                         )
                         .foregroundStyle(.red.gradient)
                     }
-                    if let selectedMonth,
-                       let readings = data.first(where: { $0.period == selectedMonth })?.readings {
-                        RuleMark(
-                            x: .value("Date", Calendar(identifier: .gregorian).date(byAdding: .day, value: 15, to: selectedMonth)!),
-                            yStart: .value("Start", readings),
-                            yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
-                        )
-                        .foregroundStyle(.gray)
-                        .annotation(position: .top) {
-                            VStack {
-                                Text("\(selectedMonth.formatted(.dateTime.month().year()))")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                                Text("\(readings)")
-                                    .font(.title2.bold())
-                                    .foregroundColor(.black)
-                            }
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 4)
-                            .background {
-                                RoundedRectangle(cornerRadius: 6, style: .continuous)
-                                    .fill(.white.shadow(.drop(color: .black.opacity(0.5), radius: 2, x: 2, y: 2)))
-                            }
-                        }
-                    }
+                    /// iOS 16.0 RuleMark with annotation implementation
+//                    if let selectedMonth,
+//                       let readings = data.first(where: { $0.period == selectedMonth })?.readings {
+//                        RuleMark(
+//                            x: .value("Date", Calendar(identifier: .gregorian).date(byAdding: .day, value: 15, to: selectedMonth) ?? Date()),
+//                            yStart: .value("Start", readings),
+//                            yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
+//                        )
+//                        .foregroundStyle(.gray)
+//                        .annotation(position: .top) {
+//                            VStack {
+//                                Text("\(selectedMonth.formatted(.dateTime.month().year()))")
+//                                    .font(.caption)
+//                                    .foregroundColor(.gray)
+//                                Text("\(readings)")
+//                                    .font(.title2.bold())
+//                                    .foregroundColor(.black)
+//                            }
+//                            .padding(.horizontal, 10)
+//                            .padding(.vertical, 4)
+//                            .background {
+//                                RoundedRectangle(cornerRadius: 6, style: .continuous)
+//                                    .fill(.white.shadow(.drop(color: .black.opacity(0.5), radius: 2, x: 2, y: 2)))
+//                            }
+//                        }
+//                    }
                 }
                 .animation(.easeInOut(duration: 0.15), value: data)
                 .padding(.top, 10)
@@ -104,6 +105,39 @@ struct YearStatisticsView: View {
                                         selectedMonth = nil
                                     }
                             )
+                    }
+                }
+                .chartOverlay { proxy in
+                    ZStack(alignment: .topLeading) {
+                        GeometryReader { geo in
+                            if let selectedMonth,
+                               let readings = data.first(where: { $0.period == selectedMonth })?.readings {
+                                let startPositionX1 = proxy.position(forX: Calendar(identifier: .gregorian).date(byAdding: .day, value: 15, to: selectedMonth) ?? Date()) ?? 0
+                                let lineX = startPositionX1 + geo[proxy.plotAreaFrame].origin.x
+                                let lineHeight = geo[proxy.plotAreaFrame].maxY
+                                let boxWidth: CGFloat = 100
+                                let boxOffset = max(0, min(geo.size.width - boxWidth, lineX - boxWidth / 2))
+                                Rectangle()
+                                    .fill(.gray.opacity(0.5))
+                                    .frame(width: 3, height: lineHeight)
+                                    .position(x: lineX, y: lineHeight / 2)
+                                VStack {
+                                    Text("\(selectedMonth.formatted(.dateTime.month().year()))")
+                                        .font(.caption)
+                                        .foregroundColor(.gray)
+                                    Text("\(readings)")
+                                        .font(.title2.bold())
+                                        .foregroundColor(.black)
+                                }
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 4)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 6, style: .continuous)
+                                        .fill(.white.shadow(.drop(color: .black.opacity(0.5), radius: 2, x: 2, y: 2)))
+                                }
+                                .offset(x: boxOffset, y: -25)
+                            }
+                        }
                     }
                 }
                 .frame(height: 150)

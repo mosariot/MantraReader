@@ -53,31 +53,32 @@ struct MonthStatisticsView: View {
                         )
                         .foregroundStyle(.green.gradient)
                     }
-                    if let selectedDate,
-                       let readings = data.first(where: { $0.period == selectedDate })?.readings {
-                        RuleMark(
-                            x: .value("Date", Calendar(identifier: .gregorian).date(byAdding: .hour, value: 12, to: selectedDate)!),
-                            yStart: .value("Start", readings),
-                            yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
-                        )
-                        .foregroundStyle(.gray)
-                        .annotation(position: .top) {
-                            VStack {
-                                Text("\(selectedDate.formatted(date: .abbreviated, time: .omitted))")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                                Text("\(readings)")
-                                    .font(.title2.bold())
-                                    .foregroundColor(.black)
-                            }
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 4)
-                            .background {
-                                RoundedRectangle(cornerRadius: 6, style: .continuous)
-                                    .fill(.white.shadow(.drop(color: .black.opacity(0.5), radius: 2, x: 2, y: 2)))
-                            }
-                        }
-                    }
+                    /// iOS 16.0 RuleMark with annotation implementation
+//                    if let selectedDate,
+//                       let readings = data.first(where: { $0.period == selectedDate })?.readings {
+//                        RuleMark(
+//                            x: .value("Date", Calendar(identifier: .gregorian).date(byAdding: .hour, value: 12, to: selectedDate) ?? Date()),
+//                            yStart: .value("Start", readings),
+//                            yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
+//                        )
+//                        .foregroundStyle(.gray)
+//                        .annotation(position: .top) {
+//                            VStack {
+//                                Text("\(selectedDate.formatted(date: .abbreviated, time: .omitted))")
+//                                    .font(.caption)
+//                                    .foregroundColor(.gray)
+//                                Text("\(readings)")
+//                                    .font(.title2.bold())
+//                                    .foregroundColor(.black)
+//                            }
+//                            .padding(.horizontal, 10)
+//                            .padding(.vertical, 4)
+//                            .background {
+//                                RoundedRectangle(cornerRadius: 6, style: .continuous)
+//                                    .fill(.white.shadow(.drop(color: .black.opacity(0.5), radius: 2, x: 2, y: 2)))
+//                            }
+//                        }
+//                    }
                 }
                 .animation(.easeInOut(duration: 0.15), value: data)
                 .padding(.top, 10)
@@ -97,6 +98,40 @@ struct MonthStatisticsView: View {
                                         selectedDate = nil
                                     }
                             )
+                    }
+                }
+                .chartOverlay { proxy in
+                    ZStack(alignment: .topLeading) {
+                        GeometryReader { geo in
+                            if let selectedDate,
+                               let readings = data.first(where: { $0.period == selectedDate })?.readings {
+                                let startPositionX1 = proxy.position(forX: Calendar(identifier: .gregorian)
+                                    .date(byAdding: .hour, value: 12, to: selectedDate) ?? Date()) ?? 0
+                                let lineX = startPositionX1 + geo[proxy.plotAreaFrame].origin.x
+                                let lineHeight = geo[proxy.plotAreaFrame].maxY
+                                let boxWidth: CGFloat = 100
+                                let boxOffset = max(0, min(geo.size.width - boxWidth, lineX - boxWidth / 2))
+                                Rectangle()
+                                    .fill(.gray.opacity(0.5))
+                                    .frame(width: 3, height: lineHeight)
+                                    .position(x: lineX, y: lineHeight / 2)
+                                VStack {
+                                    Text("\(selectedDate.formatted(date: .abbreviated, time: .omitted))")
+                                        .font(.caption)
+                                        .foregroundColor(.gray)
+                                    Text("\(readings)")
+                                        .font(.title2.bold())
+                                        .foregroundColor(.black)
+                                }
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 4)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 6, style: .continuous)
+                                        .fill(.white.shadow(.drop(color: .black.opacity(0.5), radius: 2, x: 2, y: 2)))
+                                }
+                                .offset(x: boxOffset, y: -25)
+                            }
+                        }
                     }
                 }
                 .frame(height: 150)

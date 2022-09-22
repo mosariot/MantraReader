@@ -117,7 +117,7 @@ struct WeekStatisticsView: View {
                                     .date(byAdding: .hour, value: 12, to: selectedDate) ?? Date()) ?? 0
                                 let lineX = startPositionX1 + geo[proxy.plotAreaFrame].origin.x
                                 let lineHeight = geo[proxy.plotAreaFrame].maxY
-                                let boxWidth: CGFloat = 100
+                                let boxWidth: CGFloat = 110
                                 let boxOffset = max(0, min(geo.size.width - boxWidth, lineX - boxWidth / 2))
                                 Rectangle()
                                     .fill(.gray.opacity(0.5))
@@ -131,8 +131,9 @@ struct WeekStatisticsView: View {
                                         .font(.title2.bold())
                                         .foregroundColor(.black)
                                 }
-                                .padding(.horizontal, 10)
+                                .padding(.horizontal, 5)
                                 .padding(.vertical, 4)
+                                .frame(width: boxWidth, alignment: .center)
                                 .background {
                                     RoundedRectangle(cornerRadius: 6, style: .continuous)
                                         .fill(.white.shadow(.drop(color: .black.opacity(0.5), radius: 2, x: 2, y: 2)))

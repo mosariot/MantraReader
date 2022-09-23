@@ -10,16 +10,9 @@ import SwiftUI
 struct OnboardingView: View {
     @Binding var isPresented: Bool
     
-    private var textFont: Font {
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            return .title2
-        } else {
-            return .body
-        }
-    }
-    
     var body: some View {
         VStack {
+            Spacer()
             Text("Welcome to the path of Enlightenment!")
                 .font(.title)
                 .bold()
@@ -29,7 +22,7 @@ struct OnboardingView: View {
             Image(Constants.defaultImage)
                 .resizable()
                 .scaledToFit()
-                .frame(maxHeight: 150)
+                .frame(maxHeight: UIDevice.current.userInterfaceIdiom == .pad ? 200 : 150)
             ScrollView {
                 Text(
     """
@@ -40,7 +33,7 @@ struct OnboardingView: View {
     We wish you deep awarenesses and spiritual growth!
     """
                 )
-                .font(textFont)
+                .font(UIDevice.current.userInterfaceIdiom == .pad ? .title2 : .body)
                 .padding()
             }
             Button {
@@ -55,5 +48,11 @@ struct OnboardingView: View {
             .buttonStyle(.borderedProminent)
             .padding(.bottom)
         }
+    }
+}
+
+struct OnboardingView_Previews: PreviewProvider {
+    static var previews: some View {
+        OnboardingView(isPresented: .constant(true))
     }
 }

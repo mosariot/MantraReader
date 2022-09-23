@@ -89,6 +89,9 @@
 		9FABFF5328BD4009001A1D7F /* ReadingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABFF5228BD4009001A1D7F /* ReadingsModel.swift */; };
 		9FABFF5528BE9E52001A1D7F /* Date+StartEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABFF5428BE9E52001A1D7F /* Date+StartEnd.swift */; };
 		9FABFF5728BFB4D0001A1D7F /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABFF5628BFB4D0001A1D7F /* StatisticsViewModel.swift */; };
+		9FADFD1C28DDED1200644184 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFD1B28DDED1200644184 /* PersistenceController.swift */; };
+		9FADFD1E28DDEE5100644184 /* MantraListColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFD1D28DDEE5100644184 /* MantraListColumn.swift */; };
+		9FADFD2028DDEE6000644184 /* ReadsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFD1F28DDEE5F00644184 /* ReadsCountView.swift */; };
 		9FAE4B9A28CD165C00CE9D9B /* GoalButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4B9928CD165C00CE9D9B /* GoalButtonViewModel.swift */; };
 		9FAE4B9C28CDB52500CE9D9B /* NumberAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4B9B28CDB52500CE9D9B /* NumberAnimation.swift */; };
 		9FAE4B9F28CE4BDB00CE9D9B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4B9E28CE4BDB00CE9D9B /* SettingsView.swift */; };
@@ -283,6 +286,9 @@
 		9FABFF5228BD4009001A1D7F /* ReadingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingsModel.swift; sourceTree = "<group>"; };
 		9FABFF5428BE9E52001A1D7F /* Date+StartEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StartEnd.swift"; sourceTree = "<group>"; };
 		9FABFF5628BFB4D0001A1D7F /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
+		9FADFD1B28DDED1200644184 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		9FADFD1D28DDEE5100644184 /* MantraListColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraListColumn.swift; sourceTree = "<group>"; };
+		9FADFD1F28DDEE5F00644184 /* ReadsCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadsCountView.swift; sourceTree = "<group>"; };
 		9FAE4B9928CD165C00CE9D9B /* GoalButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalButtonViewModel.swift; sourceTree = "<group>"; };
 		9FAE4B9B28CDB52500CE9D9B /* NumberAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberAnimation.swift; sourceTree = "<group>"; };
 		9FAE4B9E28CE4BDB00CE9D9B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -414,6 +420,9 @@
 				9F11C6E828DA5BFA00A1BEF2 /* MantraReaderWatch Watch App.entitlements */,
 				9F39E55228DA46790075534B /* MantraReaderWatchApp.swift */,
 				9F39E55428DA46790075534B /* ContentView.swift */,
+				9FADFD1B28DDED1200644184 /* PersistenceController.swift */,
+				9FADFD1D28DDEE5100644184 /* MantraListColumn.swift */,
+				9FADFD1F28DDEE5F00644184 /* ReadsCountView.swift */,
 				9F39E55628DA467A0075534B /* Assets.xcassets */,
 				9F39E55828DA467A0075534B /* Preview Content */,
 			);
@@ -951,7 +960,10 @@
 				9FEBE46128DA54D800E5CF47 /* Settings.swift in Sources */,
 				9FEBE45D28DA547700E5CF47 /* ProgressRing.swift in Sources */,
 				9FEBE46228DA54E400E5CF47 /* Sorting.swift in Sources */,
+				9FADFD1E28DDEE5100644184 /* MantraListColumn.swift in Sources */,
 				9FEBE46028DA54CB00E5CF47 /* RingColor.swift in Sources */,
+				9FADFD2028DDEE6000644184 /* ReadsCountView.swift in Sources */,
+				9FADFD1C28DDED1200644184 /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

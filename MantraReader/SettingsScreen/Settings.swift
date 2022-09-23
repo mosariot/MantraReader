@@ -12,7 +12,7 @@ final class Settings: ObservableObject {
     static let shared = Settings()
     private init() { }
     
-    @AppStorage("sorting")
+    @AppStorage("sorting", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
     var sorting: Sorting = .title
     
     @AppStorage("ringColor", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))

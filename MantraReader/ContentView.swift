@@ -14,6 +14,7 @@ struct ContentView: View {
     @EnvironmentObject private var dataManager: DataManager
     @EnvironmentObject private var settings: Settings
     @AppStorage("sorting", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
+    var sorting: Sorting = .title
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("isInitalDataLoading") private var isInitalDataLoading = true
     

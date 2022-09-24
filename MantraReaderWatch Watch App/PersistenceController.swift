@@ -2,7 +2,7 @@
 //  PersistenceController.swift
 //  MantraReaderWatch Watch App
 //
-//  Created by Alex Vorobiev on 23.09.2022.
+//  Created by Alex Vorobiev on 24.09.2022.
 //
 
 import CoreData

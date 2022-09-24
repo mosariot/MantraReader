@@ -7,7 +7,7 @@
 		<key>MantraIntent.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<key>MantraReader.xcscheme_^#shared#^_</key>
 		<dict>
@@ -17,7 +17,7 @@
 		<key>MantraReaderWatch Watch App.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<key>MantraWidgetExtension.xcscheme_^#shared#^_</key>
 		<dict>
@@ -28,6 +28,21 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>9F1AB3C928A18E57001FF7DE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9F39E54728DA46790075534B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9F39E54C28DA46790075534B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9F54231B28AD4E2400F15040</key>
 		<dict>
 			<key>primary</key>
 			<true/>

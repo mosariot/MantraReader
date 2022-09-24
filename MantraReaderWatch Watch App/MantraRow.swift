@@ -14,8 +14,9 @@ struct MantraRow: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(mantra.title ?? "")
+                    .font(.system(.body, design: .rounded, weight: .bold))
                 Text("\(mantra.reads)")
-                    .font(.caption)
+                    .font(.system(.caption, design: .rounded))
                     .opacity(0.5)
             }
             Spacer()

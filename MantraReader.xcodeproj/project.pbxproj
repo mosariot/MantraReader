@@ -31,6 +31,8 @@
 		9F338B602899A64200E393E2 /* ConfettiSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F338B5B2899A64100E393E2 /* ConfettiSwiftUI.swift */; };
 		9F348D4028A404810070F157 /* Bool+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F348D3F28A404810070F157 /* Bool+Comparable.swift */; };
 		9F348D4228A430F70070F157 /* InfoMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F348D4128A430F70070F157 /* InfoMode.swift */; };
+		9F38FA1228DF623D000825C3 /* MantraColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA228CF9C4D00CE9D9B /* MantraColorScheme.swift */; };
+		9F38FA1328DF63D4000825C3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983A28AAC65B00798AD7 /* Localizable.strings */; };
 		9F39E54E28DA46790075534B /* MantraReader.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9F39E54D28DA46790075534B /* MantraReader.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9F39E55328DA46790075534B /* MantraReaderWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F39E55228DA46790075534B /* MantraReaderWatchApp.swift */; };
 		9F39E55528DA46790075534B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F39E55428DA46790075534B /* ContentView.swift */; };
@@ -94,8 +96,6 @@
 		9FABFF5328BD4009001A1D7F /* ReadingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABFF5228BD4009001A1D7F /* ReadingsModel.swift */; };
 		9FABFF5528BE9E52001A1D7F /* Date+StartEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABFF5428BE9E52001A1D7F /* Date+StartEnd.swift */; };
 		9FABFF5728BFB4D0001A1D7F /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABFF5628BFB4D0001A1D7F /* StatisticsViewModel.swift */; };
-		9FADFD1C28DDED1200644184 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFD1B28DDED1200644184 /* PersistenceController.swift */; };
-		9FADFD1E28DDEE5100644184 /* MantraListColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFD1D28DDEE5100644184 /* MantraListColumn.swift */; };
 		9FADFD2028DDEE6000644184 /* ReadsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFD1F28DDEE5F00644184 /* ReadsCountView.swift */; };
 		9FADFD2528DDF5F700644184 /* MantraReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFD2328DDF5F700644184 /* MantraReader.xcdatamodeld */; };
 		9FADFD2728DDFA9C00644184 /* MantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFD2628DDFA9C00644184 /* MantraRow.swift */; };
@@ -122,6 +122,10 @@
 		9FB7AE6928B557F70044C55E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB7AE6828B557F70044C55E /* DataManager.swift */; };
 		9FB9801D28DEE8C700F04E84 /* PreloadedMantras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */; };
 		9FB9802028DEE99100F04E84 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9801F28DEE99100F04E84 /* DataManager.swift */; };
+		9FB9802528DF4E8900F04E84 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9802428DF4E8900F04E84 /* PersistenceController.swift */; };
+		9FB9802728DF4EE500F04E84 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9802628DF4EE500F04E84 /* SettingsView.swift */; };
+		9FB9802828DF507400F04E84 /* CornerRadiusShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA428CF9CC100CE9D9B /* CornerRadiusShape.swift */; };
+		9FB9802928DF54C600F04E84 /* CloseButtonImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5C328D425F100A00681 /* CloseButtonImage.swift */; };
 		9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */; };
 		9FBEE99A285F682C0070BA06 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE999285F682C0070BA06 /* PersistenceController.swift */; };
 		9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE99E285F682C0070BA06 /* ContentView.swift */; };
@@ -153,7 +157,6 @@
 		9FEBE46028DA54CB00E5CF47 /* RingColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA028CF9C2000CE9D9B /* RingColor.swift */; };
 		9FEBE46128DA54D800E5CF47 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5C828D4B36100A00681 /* Settings.swift */; };
 		9FEBE46228DA54E400E5CF47 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794ED2289B026F00DDF940 /* Sorting.swift */; };
-		9FEBE46328DA54EB00E5CF47 /* MantraColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA228CF9C4D00CE9D9B /* MantraColorScheme.swift */; };
 		9FF7C3952864C16200DA5F51 /* PreloadedMantras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */; };
 /* End PBXBuildFile section */
 
@@ -296,8 +299,6 @@
 		9FABFF5228BD4009001A1D7F /* ReadingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingsModel.swift; sourceTree = "<group>"; };
 		9FABFF5428BE9E52001A1D7F /* Date+StartEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StartEnd.swift"; sourceTree = "<group>"; };
 		9FABFF5628BFB4D0001A1D7F /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
-		9FADFD1B28DDED1200644184 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
-		9FADFD1D28DDEE5100644184 /* MantraListColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraListColumn.swift; sourceTree = "<group>"; };
 		9FADFD1F28DDEE5F00644184 /* ReadsCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadsCountView.swift; sourceTree = "<group>"; };
 		9FADFD2428DDF5F700644184 /* MantraReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MantraReader.xcdatamodel; sourceTree = "<group>"; };
 		9FADFD2628DDFA9C00644184 /* MantraRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraRow.swift; sourceTree = "<group>"; };
@@ -318,6 +319,8 @@
 		9FB7AE6628B556150044C55E /* GlobalAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalAlertViewController.swift; sourceTree = "<group>"; };
 		9FB7AE6828B557F70044C55E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		9FB9801F28DEE99100F04E84 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		9FB9802428DF4E8900F04E84 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		9FB9802628DF4EE500F04E84 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		9FBEE994285F682C0070BA06 /* MantraReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MantraReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraReaderApp.swift; sourceTree = "<group>"; };
 		9FBEE999285F682C0070BA06 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
@@ -433,10 +436,10 @@
 				9F11C6E828DA5BFA00A1BEF2 /* MantraReaderWatch Watch App.entitlements */,
 				9F39E55228DA46790075534B /* MantraReaderWatchApp.swift */,
 				9FADFD2328DDF5F700644184 /* MantraReader.xcdatamodeld */,
-				9F39E55428DA46790075534B /* ContentView.swift */,
-				9FADFD1B28DDED1200644184 /* PersistenceController.swift */,
+				9FB9802428DF4E8900F04E84 /* PersistenceController.swift */,
 				9FB9801F28DEE99100F04E84 /* DataManager.swift */,
-				9FADFD1D28DDEE5100644184 /* MantraListColumn.swift */,
+				9FB9802628DF4EE500F04E84 /* SettingsView.swift */,
+				9F39E55428DA46790075534B /* ContentView.swift */,
 				9FADFD2628DDFA9C00644184 /* MantraRow.swift */,
 				9FADFD1F28DDEE5F00644184 /* ReadsCountView.swift */,
 				9F39E55628DA467A0075534B /* Assets.xcassets */,
@@ -899,6 +902,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F39E55A28DA467A0075534B /* Preview Assets.xcassets in Resources */,
+				9F38FA1328DF63D4000825C3 /* Localizable.strings in Resources */,
 				9F39E55728DA467A0075534B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -969,27 +973,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FEBE45E28DA547700E5CF47 /* RingCap.swift in Sources */,
+				9FB9802728DF4EE500F04E84 /* SettingsView.swift in Sources */,
+				9FB9802528DF4E8900F04E84 /* PersistenceController.swift in Sources */,
 				9F99ADD928DEE74100175408 /* Bool+Comparable.swift in Sources */,
 				9FADFD2728DDFA9C00644184 /* MantraRow.swift in Sources */,
 				9FB9801D28DEE8C700F04E84 /* PreloadedMantras.swift in Sources */,
-				9FEBE46328DA54EB00E5CF47 /* MantraColorScheme.swift in Sources */,
 				9FADFD2528DDF5F700644184 /* MantraReader.xcdatamodeld in Sources */,
 				9F39E55528DA46790075534B /* ContentView.swift in Sources */,
 				9FADFD2828DDFB0400644184 /* Constants.swift in Sources */,
+				9FB9802928DF54C600F04E84 /* CloseButtonImage.swift in Sources */,
 				9F39E55328DA46790075534B /* MantraReaderWatchApp.swift in Sources */,
 				9FEBE45F28DA547700E5CF47 /* ProgressArc.swift in Sources */,
+				9F38FA1228DF623D000825C3 /* MantraColorScheme.swift in Sources */,
 				9FEBE46128DA54D800E5CF47 /* Settings.swift in Sources */,
 				9FEBE45D28DA547700E5CF47 /* ProgressRing.swift in Sources */,
 				9F99ADD628DEE72000175408 /* Functions.swift in Sources */,
 				9F99ADD828DEE72C00175408 /* WidgetModel.swift in Sources */,
 				9F99ADD728DEE72A00175408 /* MantraWidgetManager.swift in Sources */,
 				9FEBE46228DA54E400E5CF47 /* Sorting.swift in Sources */,
-				9FADFD1E28DDEE5100644184 /* MantraListColumn.swift in Sources */,
 				9FEBE46028DA54CB00E5CF47 /* RingColor.swift in Sources */,
+				9FB9802828DF507400F04E84 /* CornerRadiusShape.swift in Sources */,
 				9FADFD2028DDEE6000644184 /* ReadsCountView.swift in Sources */,
 				9FB9802028DEE99100F04E84 /* DataManager.swift in Sources */,
 				9F99ADDB28DEE7C500175408 /* ReadingsModel.swift in Sources */,
-				9FADFD1C28DDED1200644184 /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1251,6 +1257,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MantraReaderWatch-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Mantra Reader";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1283,6 +1290,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MantraReaderWatch-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Mantra Reader";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (

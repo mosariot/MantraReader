@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @EnvironmentObject private var settings: Settings
     @EnvironmentObject private var dataManager: DataManager
     @AppStorage("sorting", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
     var sorting: Sorting = .title
@@ -100,6 +99,9 @@ struct ContentView: View {
             .refreshable {
                 dataManager.refresh()
             }
+            .sheet(isPresented: $isPresentedSettingsSheet) {
+                SettingsView(mantras: mantras)
+            }
             .toolbar {
                 ToolbarItemGroup {
                     HStack {
@@ -130,6 +132,15 @@ struct ContentView: View {
                 }
                 if !isMantraExist {
                     selectedMantra = []
+                }
+            }
+            .onOpenURL { url in
+                mantras.forEach { section in
+                    section.forEach { mantra in
+                        if mantra.uuid == UUID(uuidString: "\(url)") {
+                            selectedMantra = [mantra]
+                        }
+                    }
                 }
             }
         }

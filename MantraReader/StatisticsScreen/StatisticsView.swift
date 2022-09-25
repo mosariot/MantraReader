@@ -18,6 +18,10 @@ struct StatisticsView: View {
     
     var body: some View {
         NavigationStack {
+//            Text(viewModel.navigationTitle)
+//                .font(.headline)
+//                .multilineTextAlignment(.leading)
+//                .foregroundColor(.accentColor)
             List {
                 Section("Week") {
                     WeekStatisticsView(
@@ -41,12 +45,13 @@ struct StatisticsView: View {
                     )
                 }
             }
+            .navigationTitle(viewModel.navigationTitle)
+#if os(iOS)
             .alert("", isPresented: $isFirstAppearOfStatistics) {
                 Button("OK") { }
             } message: {
                 Text("This is your reading statistics. To view the exact values hold the bar and move in time.")
             }
-            .navigationTitle(viewModel.navigationTitle)
             .adaptiveListStyle()
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
@@ -57,6 +62,17 @@ struct StatisticsView: View {
                     }
                 }
             }
+#elseif os(watchOS)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        CloseButtonImage()
+                    }
+                }
+            }
+#endif
             .onAppear {
                 Task {
                     isLoadingStatistics = true

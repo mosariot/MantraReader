@@ -102,6 +102,9 @@ struct ContentView: View {
             .sheet(isPresented: $isPresentedSettingsSheet) {
                 SettingsView(mantras: mantras)
             }
+            .sheet(isPresented: $isPresentedStatisticsSheet) {
+                StatisticsView(viewModel: StatisticsViewModel(dataManager: dataManager))
+            }
             .toolbar {
                 ToolbarItemGroup {
                     HStack {

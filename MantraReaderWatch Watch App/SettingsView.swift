@@ -112,6 +112,7 @@ struct SettingsView: View {
                 }
                 .pickerStyle(.inline)
             }
+            .navigationTitle("Settings")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button {

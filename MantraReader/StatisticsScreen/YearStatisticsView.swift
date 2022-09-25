@@ -9,8 +9,10 @@ import SwiftUI
 import Charts
 
 struct YearStatisticsView: View {
+#if os(iOS)
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.verticalSizeClass) private var verticalSizeClass
+#endif
     var data: [Reading]
     @State private var selectedMonth: Date?
     @Binding var selectedYear: Int
@@ -22,9 +24,15 @@ struct YearStatisticsView: View {
     var body: some View {
         VStack {
             HStack {
+#if os(iOS)
                 Text("Year total:")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
+#elseif os(watchOS)
+                Text("Total:")
+                    .font(.title3.bold())
+                    .foregroundColor(.primary)
+#endif
                 Text("\(yearTotal)")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
@@ -33,9 +41,15 @@ struct YearStatisticsView: View {
                 Spacer()
             }
             HStack {
+#if os(iOS)
                 Text("Monthly average:")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
+#elseif os(watchOS)
+                Text("Average:")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+#endif
                 Text("\(monthlyAverage)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
@@ -46,39 +60,21 @@ struct YearStatisticsView: View {
             ZStack {
                 Chart {
                     ForEach(data, id: \.period) {
+#if os(iOS)
                         BarMark(
                             x: .value("Date", $0.period, unit: .month),
                             y: .value("Readings", $0.readings),
                             width: horizontalSizeClass == .regular || verticalSizeClass == .compact ? 32 : 16
                         )
                         .foregroundStyle(.red.gradient)
+#elseif os(watchOS)
+                        BarMark(
+                            x: .value("Date", $0.period, unit: .month),
+                            y: .value("Readings", $0.readings)
+                        )
+                        .foregroundStyle(.red.gradient)
+#endif
                     }
-                    /// iOS 16.0 RuleMark with annotation implementation
-//                    if let selectedMonth,
-//                       let readings = data.first(where: { $0.period == selectedMonth })?.readings {
-//                        RuleMark(
-//                            x: .value("Date", Calendar(identifier: .gregorian).date(byAdding: .day, value: 15, to: selectedMonth) ?? Date()),
-//                            yStart: .value("Start", readings),
-//                            yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
-//                        )
-//                        .foregroundStyle(.gray)
-//                        .annotation(position: .top) {
-//                            VStack {
-//                                Text("\(selectedMonth.formatted(.dateTime.month().year()))")
-//                                    .font(.caption)
-//                                    .foregroundColor(.gray)
-//                                Text("\(readings)")
-//                                    .font(.title2.bold())
-//                                    .foregroundColor(.black)
-//                            }
-//                            .padding(.horizontal, 10)
-//                            .padding(.vertical, 4)
-//                            .background {
-//                                RoundedRectangle(cornerRadius: 6, style: .continuous)
-//                                    .fill(.white.shadow(.drop(color: .black.opacity(0.5), radius: 2, x: 2, y: 2)))
-//                            }
-//                        }
-//                    }
                 }
                 .animation(.easeInOut(duration: 0.15), value: data)
                 .padding(.top, 10)
@@ -86,9 +82,14 @@ struct YearStatisticsView: View {
                     AxisMarks(values: .stride(by: .month)) { _ in
                         AxisGridLine()
                         AxisTick()
+#if os(iOS)
                         AxisValueLabel(format: .dateTime.month(horizontalSizeClass == .regular || verticalSizeClass == .compact ? .abbreviated : .narrow), centered: true)
+#elseif os(watchOS)
+                        AxisValueLabel(format: .dateTime.month(.narrow), centered: true)
+#endif
                     }
                 }
+#if os(iOS)
                 .chartOverlay { proxy in
                     GeometryReader { geo in
                         Rectangle().fill(.clear).contentShape(Rectangle())
@@ -142,6 +143,9 @@ struct YearStatisticsView: View {
                     }
                 }
                 .frame(height: 150)
+#elseif os(watchOS)
+                .frame(height: 70)
+#endif
                 if isLoadingStatistics {
                     ProgressView()
                         .frame(height: 150)
@@ -161,10 +165,20 @@ struct YearStatisticsView: View {
                 .clipShape(Circle())
                 .tint(.red.opacity(0.8))
                 .disabled(selectedYear == 2022 || (selectedYear == 0 && currentYear == 2022))
+#if os(watchOS)
+                .controlSize(.mini)
+                .scaleEffect(0.5)
+#endif
                 Spacer()
+#if os(iOS)
                     .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 60 : nil)
+#endif
                 Picker("", selection: $selectedYear) {
+#if os(iOS)
                     Text("Last 12 Months").tag(0)
+#elseif os(watchOS)
+                    Text("12 Months").tag(0)
+#endif
                     ForEach((2022...currentYear).reversed(), id: \.self) {
                         Text("\(date(year: $0).formatted(.dateTime.year()))").tag($0)
                     }
@@ -172,7 +186,9 @@ struct YearStatisticsView: View {
                 .layoutPriority(1)
                 .labelsHidden()
                 Spacer()
+#if os(iOS)
                     .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 60 : nil)
+#endif
                 Button {
                     if selectedYear == 0 {
                         selectedYear = currentYear
@@ -181,13 +197,22 @@ struct YearStatisticsView: View {
                     }
                 } label: {
                     Image(systemName: "chevron.forward")
+
                 }
                 .buttonStyle(.borderedProminent)
                 .clipShape(Circle())
                 .tint(.red.opacity(0.8))
                 .disabled(selectedYear == currentYear)
+#if os(watchOS)
+                .controlSize(.mini)
+                .scaleEffect(0.5)
+#endif
             }
+#if os(iOS)
             .padding(.top, 10)
+#elseif os(watchOS)
+            .padding(0)
+#endif
             .disabled(isLoadingStatistics)
         }
     }

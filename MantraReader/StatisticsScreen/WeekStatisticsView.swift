@@ -9,8 +9,10 @@ import SwiftUI
 import Charts
 
 struct WeekStatisticsView: View {
+#if os(iOS)
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.verticalSizeClass) private var verticalSizeClass
+#endif
     var data: [Reading]
     @State private var selectedDate: Date?
     @Binding var selectedWeek: Int
@@ -23,9 +25,15 @@ struct WeekStatisticsView: View {
     var body: some View {
         VStack {
             HStack {
+#if os(iOS)
                 Text("Week total:")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
+#elseif os(watchOS)
+                Text("Total:")
+                    .font(.title3.bold())
+                    .foregroundColor(.primary)
+#endif
                 Text("\(weekTotal)")
                     .font(.title3.bold())
                     .foregroundColor(.primary)
@@ -34,9 +42,15 @@ struct WeekStatisticsView: View {
                 Spacer()
             }
             HStack {
+#if os(iOS)
                 Text("Daily average:")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
+#elseif os(watchOS)
+                Text("Average:")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+#endif
                 Text("\(dailyAverage)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
@@ -47,39 +61,21 @@ struct WeekStatisticsView: View {
             ZStack {
                 Chart {
                     ForEach(data, id: \.period) {
+#if os(iOS)
                         BarMark(
                             x: .value("Date", $0.period, unit: .weekday),
                             y: .value("Readings", $0.readings),
                             width: 30
                         )
                         .foregroundStyle(.blue.gradient)
+#elseif os(watchOS)
+                        BarMark(
+                            x: .value("Date", $0.period, unit: .weekday),
+                            y: .value("Readings", $0.readings)
+                        )
+                        .foregroundStyle(.blue.gradient)
+#endif
                     }
-                    /// iOS 16.0 RuleMark with annotation implementation
-//                    if let selectedDate,
-//                       let readings = data.first(where: { $0.period == selectedDate })?.readings {
-//                        RuleMark(
-//                            x: .value("Date", Calendar(identifier: .gregorian).date(byAdding: .hour, value: 12, to: selectedDate) ?? Date()),
-//                            yStart: .value("Start", readings),
-//                            yEnd: .value("End", data.map { $0.readings }.max() ?? 0)
-//                        )
-//                        .foregroundStyle(.gray)
-//                        .annotation(position: .top) {
-//                            VStack {
-//                                Text("\(selectedDate.formatted(date: .abbreviated, time: .omitted))")
-//                                    .font(.caption)
-//                                    .foregroundColor(.gray)
-//                                Text("\(readings)")
-//                                    .font(.title2.bold())
-//                                    .foregroundColor(.black)
-//                            }
-//                            .padding(.horizontal, 10)
-//                            .padding(.vertical, 4)
-//                            .background {
-//                                RoundedRectangle(cornerRadius: 6, style: .continuous)
-//                                    .fill(.white.shadow(.drop(color: .black.opacity(0.5), radius: 2, x: 2, y: 2)))
-//                            }
-//                        }
-//                    }
                 }
                 .animation(.easeInOut(duration: 0.15), value: data)
                 .padding(.top, 10)
@@ -87,9 +83,14 @@ struct WeekStatisticsView: View {
                     AxisMarks(values: .stride(by: .day)) { _ in
                         AxisGridLine()
                         AxisTick()
+#if os(iOS)
                         AxisValueLabel(format: .dateTime.weekday(horizontalSizeClass == .regular ? .wide : .abbreviated), centered: true)
+#elseif os(watchOS)
+                        AxisValueLabel(format: .dateTime.weekday(.abbreviated), centered: true)
+#endif
                     }
                 }
+#if os(iOS)
                 .chartOverlay { proxy in
                     GeometryReader { geo in
                         Rectangle().fill(.clear).contentShape(Rectangle())
@@ -144,6 +145,9 @@ struct WeekStatisticsView: View {
                     }
                 }
                 .frame(height: 150)
+#elseif os(watchOS)
+                .frame(height: 70)
+#endif
                 if isLoadingStatistics {
                     ProgressView()
                         .frame(height: 150)
@@ -163,10 +167,20 @@ struct WeekStatisticsView: View {
                 .clipShape(Circle())
                 .tint(.blue.opacity(0.8))
                 .disabled(selectedWeek == 2)
+#if os(watchOS)
+                .controlSize(.mini)
+                .scaleEffect(0.5)
+#endif
                 Spacer()
+#if os(iOS)
                     .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 60 : nil)
+#endif
                 Picker("", selection: $selectedWeek) {
+#if os(iOS)
                     Text("Last 7 Days").tag(0)
+#elseif os(watchOS)
+                    Text("7 Days").tag(0)
+#endif
                     ForEach((2...currentWeek).reversed(), id: \.self) {
                         Text("\(startOfWeek($0).formatted(.dateTime.day().month(.abbreviated))) - \(endOfWeek($0).formatted(.dateTime.day().month(.abbreviated)))").tag($0)
                     }
@@ -174,7 +188,9 @@ struct WeekStatisticsView: View {
                 .layoutPriority(1)
                 .labelsHidden()
                 Spacer()
+#if os(iOS)
                     .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 60 : nil)
+#endif
                 Button {
                     if selectedWeek == 0 {
                         selectedWeek = currentWeek
@@ -188,8 +204,16 @@ struct WeekStatisticsView: View {
                 .clipShape(Circle())
                 .tint(.blue.opacity(0.8))
                 .disabled(selectedWeek == currentWeek)
+#if os(watchOS)
+                .controlSize(.mini)
+                .scaleEffect(0.5)
+#endif
             }
+#if os(iOS)
             .padding(.top, 10)
+#elseif os(watchOS)
+            .padding(0)
+#endif
             .disabled(isLoadingStatistics)
         }
     }

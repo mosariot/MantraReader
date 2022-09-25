@@ -321,20 +321,35 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 /* Year Total readings */
 "Year total:" = "Всего за год:";
 
+/* Total readings */
+"Total:" = "Всего:";
+
 /* Week Picker 7 days option */
 "Last 7 Days" = "последние 7 дней";
+
+/* Week Picker 7 days option WatchOS */
+"7 Days" = "7 дней";
 
 /* Month Picker 30 days option */
 "Last 30 Days" = "последние 30 дней";
 
+/* Month Picker 30 days option WatchOS */
+"30 Days" = "30 дней";
+
 /* Year Picker 12 months option */
 "Last 12 Months" = "последние 12 месяцев";
+
+/* Year Picker 12 months option WatchOS*/
+"12 Months" = "12 месяцев";
 
 /* Monthly average */
 "Monthly average:" = "В среднем за месяц:";
 
 /* Daily average */
 "Daily average:" = "В среднем за день:";
+
+/* Average */
+"Average:" = "В среднем:";
 
 //MARK: - WIDGETS
 

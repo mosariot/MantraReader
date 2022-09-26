@@ -38,6 +38,7 @@ final class DataManager: ObservableObject {
         return mantras
     }
     
+#if os(iOS)
     func preloadData() {
         PreloadedMantras.data.forEach { data in
             let mantra = Mantra(context: viewContext)
@@ -82,6 +83,7 @@ final class DataManager: ObservableObject {
         }
         saveData()
     }
+#endif
     
     func delete(_ mantra: Mantra, withSaving: Bool = true) {
         viewContext.delete(mantra)

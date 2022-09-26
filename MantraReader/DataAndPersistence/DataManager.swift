@@ -83,6 +83,10 @@ final class DataManager: ObservableObject {
         }
         saveData()
     }
+    
+    func refresh() {
+        viewContext.refreshAllObjects()
+    }
 #endif
     
     func delete(_ mantra: Mantra, withSaving: Bool = true) {
@@ -104,10 +108,6 @@ final class DataManager: ObservableObject {
             .filter { $0.title == "" }
             .forEach { mantra in delete(mantra, withSaving: false) }
         saveData()
-    }
-    
-    func refresh() {
-        viewContext.refreshAllObjects()
     }
     
     func saveData() {

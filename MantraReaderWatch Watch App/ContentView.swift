@@ -105,9 +105,6 @@ struct ContentView: View {
                 Text("Are you sure you want to delete this mantra?")
             }
             .navigationTitle("Mantra Reader")
-            .refreshable {
-                dataManager.refresh()
-            }
             .sheet(isPresented: $isPresentedSettingsSheet) {
                 SettingsView(mantras: mantras)
             }

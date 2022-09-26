@@ -16,25 +16,25 @@ struct StatisticsView: View {
     @State private var selectedYear: Int = 0
     @State private var isLoadingStatistics = false
     private var weekHeader: String {
-        #if os(iOS)
+#if os(iOS)
         return String(localized: "Week")
-        #elseif os(watchOS)
+#elseif os(watchOS)
         return String(localized: "Last 7 Days")
-        #endif
+#endif
     }
     private var monthHeader: String {
-        #if os(iOS)
+#if os(iOS)
         return String(localized: "Month")
-        #elseif os(watchOS)
+#elseif os(watchOS)
         return String(localized: "Last 30 Days")
-        #endif
+#endif
     }
     private var yearHeader: String {
-        #if os(iOS)
+#if os(iOS)
         return String(localized: "Year")
-        #elseif os(watchOS)
+#elseif os(watchOS)
         return String(localized: "Last 12 Months")
-        #endif
+#endif
     }
     
     var body: some View {

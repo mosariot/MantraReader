@@ -223,7 +223,7 @@ struct MantraListColumn: View {
             )
         }
         .sheet(isPresented: $isPresentedSettingsSheet) {
-           SettingsView()
+            SettingsView()
         }
         .sheet(isPresented: $isPresentedFeedbackView) {
             FeedbackView(to: "mosariot@gmail.com", subject: "Mantra Reader Feedback")

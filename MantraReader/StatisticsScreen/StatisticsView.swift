@@ -15,29 +15,46 @@ struct StatisticsView: View {
     @State private var selectedMonth: Int = 0
     @State private var selectedYear: Int = 0
     @State private var isLoadingStatistics = false
+    private var weekHeader: String {
+        #if os(iOS)
+        return String(localized: "Week")
+        #elseif os(watchOS)
+        return String(localized: "Last 7 Days")
+        #endif
+    }
+    private var monthHeader: String {
+        #if os(iOS)
+        return String(localized: "Month")
+        #elseif os(watchOS)
+        return String(localized: "Last 30 Days")
+        #endif
+    }
+    private var yearHeader: String {
+        #if os(iOS)
+        return String(localized: "Year")
+        #elseif os(watchOS)
+        return String(localized: "Last 12 Months")
+        #endif
+    }
     
     var body: some View {
         NavigationStack {
-//            Text(viewModel.navigationTitle)
-//                .font(.headline)
-//                .multilineTextAlignment(.leading)
-//                .foregroundColor(.accentColor)
             List {
-                Section("Week") {
+                Section(weekHeader) {
                     WeekStatisticsView(
                         data: viewModel.weekData,
                         selectedWeek: $selectedWeek,
                         isLoadingStatistics: isLoadingStatistics
                     )
                 }
-                Section("Month") {
+                Section(monthHeader) {
                     MonthStatisticsView(
                         data: viewModel.monthData,
                         selectedMonth: $selectedMonth,
                         isLoadingStatistics: isLoadingStatistics
                     )
                 }
-                Section("Year") {
+                Section(yearHeader) {
                     YearStatisticsView(
                         data: viewModel.yearData,
                         selectedYear: $selectedYear,

@@ -146,13 +146,14 @@ struct WeekStatisticsView: View {
                 }
                 .frame(height: 150)
 #elseif os(watchOS)
-                .frame(height: 70)
+                .frame(height: 100)
 #endif
                 if isLoadingStatistics {
                     ProgressView()
                         .frame(height: 150)
                 }
             }
+#if os(iOS)
             HStack {
                 Button {
                     if selectedWeek == 0 {
@@ -167,20 +168,10 @@ struct WeekStatisticsView: View {
                 .clipShape(Circle())
                 .tint(.blue.opacity(0.8))
                 .disabled(selectedWeek == 2)
-#if os(watchOS)
-                .controlSize(.mini)
-                .scaleEffect(0.5)
-#endif
                 Spacer()
-#if os(iOS)
                     .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 60 : nil)
-#endif
                 Picker("", selection: $selectedWeek) {
-#if os(iOS)
                     Text("Last 7 Days").tag(0)
-#elseif os(watchOS)
-                    Text("7 Days").tag(0)
-#endif
                     ForEach((2...currentWeek).reversed(), id: \.self) {
                         Text("\(startOfWeek($0).formatted(.dateTime.day().month(.abbreviated))) - \(endOfWeek($0).formatted(.dateTime.day().month(.abbreviated)))").tag($0)
                     }
@@ -188,9 +179,7 @@ struct WeekStatisticsView: View {
                 .layoutPriority(1)
                 .labelsHidden()
                 Spacer()
-#if os(iOS)
                     .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 60 : nil)
-#endif
                 Button {
                     if selectedWeek == 0 {
                         selectedWeek = currentWeek
@@ -204,17 +193,10 @@ struct WeekStatisticsView: View {
                 .clipShape(Circle())
                 .tint(.blue.opacity(0.8))
                 .disabled(selectedWeek == currentWeek)
-#if os(watchOS)
-                .controlSize(.mini)
-                .scaleEffect(0.5)
-#endif
             }
-#if os(iOS)
             .padding(.top, 10)
-#elseif os(watchOS)
-            .padding(0)
-#endif
             .disabled(isLoadingStatistics)
+#endif
         }
     }
     

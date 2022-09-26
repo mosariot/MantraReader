@@ -144,13 +144,14 @@ struct YearStatisticsView: View {
                 }
                 .frame(height: 150)
 #elseif os(watchOS)
-                .frame(height: 70)
+                .frame(height: 100)
 #endif
                 if isLoadingStatistics {
                     ProgressView()
                         .frame(height: 150)
                 }
             }
+#if os(iOS)
             HStack {
                 Button {
                     if selectedYear == 0 {
@@ -165,20 +166,10 @@ struct YearStatisticsView: View {
                 .clipShape(Circle())
                 .tint(.red.opacity(0.8))
                 .disabled(selectedYear == 2022 || (selectedYear == 0 && currentYear == 2022))
-#if os(watchOS)
-                .controlSize(.mini)
-                .scaleEffect(0.5)
-#endif
                 Spacer()
-#if os(iOS)
                     .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 60 : nil)
-#endif
                 Picker("", selection: $selectedYear) {
-#if os(iOS)
                     Text("Last 12 Months").tag(0)
-#elseif os(watchOS)
-                    Text("12 Months").tag(0)
-#endif
                     ForEach((2022...currentYear).reversed(), id: \.self) {
                         Text("\(date(year: $0).formatted(.dateTime.year()))").tag($0)
                     }
@@ -186,9 +177,7 @@ struct YearStatisticsView: View {
                 .layoutPriority(1)
                 .labelsHidden()
                 Spacer()
-#if os(iOS)
                     .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 60 : nil)
-#endif
                 Button {
                     if selectedYear == 0 {
                         selectedYear = currentYear
@@ -203,17 +192,10 @@ struct YearStatisticsView: View {
                 .clipShape(Circle())
                 .tint(.red.opacity(0.8))
                 .disabled(selectedYear == currentYear)
-#if os(watchOS)
-                .controlSize(.mini)
-                .scaleEffect(0.5)
-#endif
             }
-#if os(iOS)
             .padding(.top, 10)
-#elseif os(watchOS)
-            .padding(0)
-#endif
             .disabled(isLoadingStatistics)
+#endif
         }
     }
 }

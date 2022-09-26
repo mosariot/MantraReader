@@ -9,7 +9,9 @@ import SwiftUI
 import CloudKit
 
 struct LaunchPreparer {
+#if os(iOS)
     @AppStorage("isPreloadedMantrasDueToNoInternet") private var isPreloadedMantrasDueToNoInternet = false
+#endif
     @AppStorage("isInitalDataLoading") private var isInitalDataLoading = true
     let dataManager: DataManager
     
@@ -18,8 +20,10 @@ struct LaunchPreparer {
         networkMonitor.startMonitoring()
         DispatchQueue.main.async {
             if !(networkMonitor.isReachable) {
+#if os(iOS)
                 dataManager.preloadData()
                 isPreloadedMantrasDueToNoInternet = true
+#endif
                 isInitalDataLoading = false
             } else {
                 checkForiCloudRecords()
@@ -47,14 +51,18 @@ struct LaunchPreparer {
                 case .success(_):
                     if !areThereAnyRecords {
                         // no records in iCloud
+#if os(iOS)
                         dataManager.preloadData()
+#endif
                         isInitalDataLoading = false
                     } else {
                         // CloudKit automatically handles loading records from iCloud
                     }
                 case .failure(_):
                     // for example, user is not logged-in iCloud (type of error doesn't matter)
+#if os(iOS)
                     dataManager.preloadData()
+#endif
                     isInitalDataLoading = false
                 }
             }

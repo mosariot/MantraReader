@@ -327,20 +327,11 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 /* Week Picker 7 days option */
 "Last 7 Days" = "последние 7 дней";
 
-/* Week Picker 7 days option WatchOS */
-"7 Days" = "7 дней";
-
 /* Month Picker 30 days option */
 "Last 30 Days" = "последние 30 дней";
 
-/* Month Picker 30 days option WatchOS */
-"30 Days" = "30 дней";
-
 /* Year Picker 12 months option */
 "Last 12 Months" = "последние 12 месяцев";
-
-/* Year Picker 12 months option WatchOS*/
-"12 Months" = "12 месяцев";
 
 /* Monthly average */
 "Monthly average:" = "В среднем за месяц:";
@@ -379,6 +370,11 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 
 /* Placeholder in intent widget */
 "Your mantra" = "Ваша мантра";
+
+//MARK: - WATCHOS
+
+/* No mantras placeholder */
+"Please add some mantras on your iPhone or iPad" = "Пожалуйста, добавьте мантры на вашем iPhone или iPad";
 
 //MARK: - MISC
 

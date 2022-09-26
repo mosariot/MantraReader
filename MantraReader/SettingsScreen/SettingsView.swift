@@ -11,7 +11,11 @@ import WidgetKit
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var settings: Settings
+#if os(watchOS)
+    var mantras: SectionedFetchResults<Bool, Mantra>
+#endif
     
+#if os(iOS)
     private var preferredColorScheme: UIUserInterfaceStyle {
         switch settings.colorScheme {
         case .system: return .unspecified
@@ -19,6 +23,7 @@ struct SettingsView: View {
         case .dark: return .dark
         }
     }
+#endif
     
     var body: some View {
         NavigationStack {
@@ -26,6 +31,9 @@ struct SettingsView: View {
                 Picker("Mantras sorting", selection: $settings.sorting) {
                     Label {
                         Text("Alphabetically")
+#if os(watchOS)
+                            .lineLimit(1)
+#endif
                     } icon: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 7)
@@ -35,10 +43,16 @@ struct SettingsView: View {
                                 .foregroundColor(.white)
                                 .imageScale(.small)
                         }
+#if os(watchOS)
+                        .padding(.trailing, 5)
+#endif
                     }
                     .tag(Sorting.title)
                     Label {
                         Text("By readings count")
+#if os(watchOS)
+                            .lineLimit(1)
+#endif
                     } icon: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 7)
@@ -47,10 +61,14 @@ struct SettingsView: View {
                             Image(systemName: "text.book.closed")
                                 .foregroundColor(.white)
                         }
+#if os(watchOS)
+                        .padding(.trailing, 5)
+#endif
                     }
                     .tag(Sorting.reads)
                 }
                 .pickerStyle(.inline)
+#if os(iOS)
                 Picker("Appearance", selection: $settings.colorScheme) {
                     Label {
                         Text("System")
@@ -90,6 +108,7 @@ struct SettingsView: View {
                     .tag(MantraColorScheme.dark)
                 }
                 .pickerStyle(.inline)
+#endif
                 Picker("Progress ring color", selection: $settings.ringColor) {
                     HStack(spacing: 5) {
                         Rectangle()
@@ -154,7 +173,9 @@ struct SettingsView: View {
                 }
                 .pickerStyle(.inline)
             }
+            .navigationTitle("Settings")
             .toolbar {
+#if os(iOS)
                 ToolbarItem(placement: .primaryAction) {
                     Button {
                         dismiss()
@@ -162,7 +183,30 @@ struct SettingsView: View {
                         CloseButtonImage()
                     }
                 }
+#elseif os(watchOS)
+                ToolbarItem(placement: .cancellationAction) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        CloseButtonImage()
+                    }
+                }
+#endif
             }
+#if os(watchOS)
+            .onChange(of: settings.sorting) {
+                switch $0 {
+                case .title: mantras.sortDescriptors = [
+                    SortDescriptor(\.isFavorite, order: .reverse),
+                    SortDescriptor(\.title, order: .forward)
+                ]
+                case .reads: mantras.sortDescriptors = [
+                    SortDescriptor(\.isFavorite, order: .reverse),
+                    SortDescriptor(\.reads, order: .reverse)
+                ]
+                }
+            }
+#elseif os(iOS)
             .onChange(of: settings.colorScheme) { _ in
                 setPreferredColorScheme()
                 WidgetCenter.shared.reloadAllTimelines()
@@ -170,13 +214,15 @@ struct SettingsView: View {
             .onChange(of: settings.ringColor) { _ in
                 WidgetCenter.shared.reloadAllTimelines()
             }
-            .navigationTitle("Settings")
+#endif
         }
     }
     
+#if os(iOS)
     private func setPreferredColorScheme() {
         let scenes = UIApplication.shared.connectedScenes
         guard let scene = scenes.first as? UIWindowScene else { return }
         scene.keyWindow?.overrideUserInterfaceStyle = preferredColorScheme
     }
+#endif
 }

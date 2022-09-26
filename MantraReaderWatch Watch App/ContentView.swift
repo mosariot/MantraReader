@@ -43,38 +43,47 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack(path: $selectedMantra) {
-            List(mantras) { section in
-                Section(section.id ? "Favorites" : "Mantras") {
-                    ForEach(section) { mantra in
-                        NavigationLink(value: mantra) {
-                            MantraRow(mantra: mantra)
-                        }
-                        .swipeActions(allowsFullSwipe: false) {
-                            Button {
-                                mantrasForDeletion = [mantra]
-                                isDeletingMantras = true
-                            } label: {
-                                Label("Delete", systemImage: "trash")
+            ZStack {
+                List(mantras) { section in
+                    Section(section.id ? "Favorites" : "Mantras") {
+                        ForEach(section) { mantra in
+                            NavigationLink(value: mantra) {
+                                MantraRow(mantra: mantra)
                             }
-                            .tint(.red)
-                            Button {
-                                withAnimation {
-                                    mantra.isFavorite.toggle()
+                            .swipeActions(allowsFullSwipe: false) {
+                                Button {
+                                    mantrasForDeletion = [mantra]
+                                    isDeletingMantras = true
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
                                 }
-                                dataManager.saveData()
-                            } label: {
-                                Label(
-                                    mantra.isFavorite ? "Unfavorite" : "Favorite",
-                                    systemImage: mantra.isFavorite ? "star.slash" : "star"
-                                )
+                                .tint(.red)
+                                Button {
+                                    withAnimation {
+                                        mantra.isFavorite.toggle()
+                                    }
+                                    dataManager.saveData()
+                                } label: {
+                                    Label(
+                                        mantra.isFavorite ? "Unfavorite" : "Favorite",
+                                        systemImage: mantra.isFavorite ? "star.slash" : "star"
+                                    )
+                                }
+                                .tint(.indigo)
                             }
-                            .tint(.indigo)
                         }
                     }
                 }
+                if isInitalDataLoading {
+                    ProgressView("Syncing...")
+                }
+                if !isInitalDataLoading && mantras.count == 0 {
+                    Text("Please add some mantras on your iPhone or iPad")
+                        .foregroundColor(.secondary)
+                }
             }
             .navigationDestination(for: Mantra.self) { mantra in
-                Text(mantra.title!)
+                ReadsCountView(mantra: mantra)
             }
             .confirmationDialog(
                 "Delete Mantra",

@@ -102,6 +102,11 @@ struct ReadsView: View {
                 }
                 .padding(.horizontal)
             }
+            .alert("Mantra Counter mode", isPresented: $isPresentedMantraCounterModeInfo) {
+                Button("OK") { }
+            } message: {
+                Text("Use long press on the screen to enter and quit the mode")
+            }
             if isMantraCounterMode {
                  MantraCounterModeOverlayView(
                     showBlink: $showBlink,
@@ -113,11 +118,6 @@ struct ReadsView: View {
             }
             if showHint {
                 HintView()
-            }
-            .alert("Mantra Counter mode", isPresented: $isPresentedMantraCounterModeInfo) {
-                Button("OK") { }
-            } message: {
-                Text("Use long press on the screen to enter and quit the mode")
             }
         }
         .gesture(longPressGesture)
@@ -135,7 +135,7 @@ struct ReadsView: View {
             Text("You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. Use extended Wake Duration in your Watch Settings to prevent screen dimming.")
         }
         .sheet(isPresented: $isPresentedInfoSheet) {
-            InfoView(mantra: mantra)
+            InfoView(mantra: viewModel.mantra)
         }
         .sheet(isPresented: $isPresentedStatisticsSheet) {
             StatisticsView(
@@ -164,7 +164,7 @@ struct ReadsView: View {
             isMantraCounterMode.toggle()
         }
         if isMantraCounterMode {
-            WKInterfaceDevice.currentDevice().playHaptic(.start)
+            WKInterfaceDevice.current().play(.start)
             showHint = true
             afterDelay(1.5) { showHint = false }
         }

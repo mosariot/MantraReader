@@ -152,6 +152,10 @@
 		9FC6AE2828E152C200D1361C /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794EDF289C360F00DDF940 /* NetworkMonitor.swift */; };
 		9FC6AE2928E1552A00D1361C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4B9E28CE4BDB00CE9D9B /* SettingsView.swift */; };
 		9FC9A691287DA4FE00D05FBD /* AdjustingAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9A690287DA4FE00D05FBD /* AdjustingAlertView.swift */; };
+		9FCAA8B728E36C8500568464 /* AdjustingAndUndoTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF34982884859D00B3007E /* AdjustingAndUndoTypes.swift */; };
+		9FCAA8B828E36C8E00568464 /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB279E328902F1B0029ED3B /* HintView.swift */; };
+		9FCAA8B928E36C9300568464 /* BlinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F605142288EE75E005EC6F5 /* BlinkView.swift */; };
+		9FCAA8BA28E36C9600568464 /* MantraCounterModeOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31E1592891ACE6006F0521 /* MantraCounterModeOverlayView.swift */; };
 		9FCD19B428E219D300543D8A /* NumberAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4B9B28CDB52500CE9D9B /* NumberAnimation.swift */; };
 		9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC52893915B004936E6 /* PreloadedMantraListView.swift */; };
 		9FD61DC8289391A4004936E6 /* PreloadedMantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC7289391A4004936E6 /* PreloadedMantraRow.swift */; };
@@ -982,12 +986,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FEBE45E28DA547700E5CF47 /* RingCap.swift in Sources */,
+				9FCAA8B728E36C8500568464 /* AdjustingAndUndoTypes.swift in Sources */,
 				9FAA454528DF648200503FB2 /* Mantra+Statistics.swift in Sources */,
 				9FC6AE2728E152BF00D1361C /* LaunchPreparer.swift in Sources */,
 				9F99ADD928DEE74100175408 /* Bool+Comparable.swift in Sources */,
 				9FC6AE2928E1552A00D1361C /* SettingsView.swift in Sources */,
 				9F172FA628E2047C00463818 /* MantraRow.swift in Sources */,
 				9FB052B528E221FF00FEFB1D /* AdjustingView.swift in Sources */,
+				9FCAA8BA28E36C9600568464 /* MantraCounterModeOverlayView.swift in Sources */,
 				9F8915DC28E07212009AE06F /* StatisticsView.swift in Sources */,
 				9FB9801D28DEE8C700F04E84 /* PreloadedMantras.swift in Sources */,
 				9F8915E028E0721F009AE06F /* YearStatisticsView.swift in Sources */,
@@ -996,6 +1002,7 @@
 				9FB9802928DF54C600F04E84 /* CloseButtonImage.swift in Sources */,
 				9F39E55328DA46790075534B /* MantraReaderWatchApp.swift in Sources */,
 				9F8915DE28E0721A009AE06F /* WeekStatisticsView.swift in Sources */,
+				9FCAA8B828E36C8E00568464 /* HintView.swift in Sources */,
 				9FEBE45F28DA547700E5CF47 /* ProgressArc.swift in Sources */,
 				9F8915E128E07274009AE06F /* Date+StartEnd.swift in Sources */,
 				9FB052B328E221EE00FEFB1D /* ReadsCountViewModel.swift in Sources */,
@@ -1016,6 +1023,7 @@
 				9F8915E228E0727D009AE06F /* KMBFormatter.swift in Sources */,
 				9FADFD2028DDEE6000644184 /* ReadsCountView.swift in Sources */,
 				9F99ADDB28DEE7C500175408 /* ReadingsModel.swift in Sources */,
+				9FCAA8B928E36C9300568464 /* BlinkView.swift in Sources */,
 				9F8915DD28E07215009AE06F /* StatisticsViewModel.swift in Sources */,
 				9F172FA428E2046A00463818 /* PersistenceController.swift in Sources */,
 			);

@@ -45,8 +45,25 @@ struct ReadsView: View {
                         .animation(.easeInOut(duration: Constants.animationTime), value: viewModel.progress)
                     Text("Reads")
                         .numberAnimation(viewModel.mantra.reads)
-                        .animation(.easeInOut(duration: Constants.animationTime), value: viewModel.mantra.reads)
-                        .font(.system(.title3, design: .rounded, weight: .bold))
+                        .animation(
+                            viewModel.isAnimated ?
+                                Animation.easeInOut(duration: Constants.animationTime) :
+                                Animation.linear(duration: 0.01),
+                            value: viewModel.mantra.reads)
+                        .font(.system(.title2, design: .rounded, weight: .bold))
+                        .dynamicTypeSize(.xLarge)
+                        .opacity(isMantraCounterMode ? 0 : 1)
+                    Text("Current Reads")
+                        .numberAnimation(Int32(viewModel.currentReads))
+                        .animation(
+                            viewModel.isAnimated ?
+                                Animation.easeInOut(duration: Constants.animationTime) :
+                                Animation.linear(duration: 0.01),
+                            value: viewModel.mantra.reads)
+                        .font(.system(.title2, design: .rounded, weight: .bold))
+                        .foregroundColor(.accentColor)
+                        .dynamicTypeSize(.xLarge)
+                        .opacity(isMantraCounterMode ? 1 : 0)
                 }
                 .padding(.bottom, -25)
                 HStack {

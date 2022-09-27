@@ -9,7 +9,9 @@ import SwiftUI
 
 struct MantraRow: View {
     @ObservedObject var mantra: Mantra
+#if os(iOS)
     let isSelected: Bool
+#endif
     
     var body: some View {
         HStack {
@@ -24,11 +26,12 @@ struct MantraRow: View {
 #if os(watchOS)
                     .font(.system(.body, design: .rounded, weight: .bold))
 #endif
-                Text("Current readings: \(mantra.reads)")
 #if os(iOS)
+                Text("Current readings: \(mantra.reads)")
                     .font(.caption)
                     .opacity(isSelected && UIDevice.current.userInterfaceIdiom == .pad ? 1 : 0.5)
 #elseif os(watchOS)
+                Text("\(mantra.reads)")
                     .font(.system(.caption, design: .rounded))
                     .opacity(0.5)
 #endif

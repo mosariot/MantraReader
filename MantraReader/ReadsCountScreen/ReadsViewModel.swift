@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 import CoreData
 
 @MainActor
@@ -33,9 +32,6 @@ final class ReadsViewModel: ObservableObject {
     var favoriteBarTitle: String { mantra.isFavorite ? String(localized: "Unfavorite") : String(localized: "Favorite") }
     
     private var dataManager: DataManager
-    
-    private var timerReadsSubscription: Cancellable?
-    private var timerGoalSubscription: Cancellable?
     
     init(_ mantra: Mantra, dataManager: DataManager) {
         self.mantra = mantra

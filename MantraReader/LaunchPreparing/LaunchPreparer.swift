@@ -16,20 +16,22 @@ struct LaunchPreparer {
     let dataManager: DataManager
     
     func firstLaunchPreparations() {
+#if os(iOS)
         let networkMonitor = NetworkMonitor()
         networkMonitor.startMonitoring()
         DispatchQueue.main.async {
             if !(networkMonitor.isReachable) {
-#if os(iOS)
                 dataManager.preloadData()
                 isPreloadedMantrasDueToNoInternet = true
-#endif
                 isInitalDataLoading = false
             } else {
                 checkForiCloudRecords()
             }
             networkMonitor.stopMonitoring()
         }
+#elseif os(watchOS)
+        checkForiCloudRecords()
+#endif
     }
     
     private func checkForiCloudRecords() {

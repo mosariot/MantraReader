@@ -83,7 +83,7 @@ struct ContentView: View {
                 }
             }
             .navigationDestination(for: Mantra.self) { mantra in
-                ReadsCountView(viewModel: ReadsViewModel(mantra))
+                ReadsView(viewModel: ReadsViewModel(mantra))
             }
             .confirmationDialog(
                 "Delete Mantra",

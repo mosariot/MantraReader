@@ -42,13 +42,11 @@ struct ReadsView: View {
                     .padding(.bottom, 10)
                 ZStack {
                     ProgressRing(progress: viewModel.progress, thickness: 15)
-                        .animation(.easeInOut(duration: Constants.animationTime), value: viewModel.mantra.reads)
+                        .animation(.easeInOut(duration: Constants.animationTime), value: viewModel.progress)
                     Text("Reads")
                         .numberAnimation(viewModel.mantra.reads)
                         .animation(.easeInOut(duration: Constants.animationTime), value: viewModel.mantra.reads)
-                        .font(
-                            .system(.title3, design: .rounded, weight: .bold)
-                        )
+                        .font(.system(.title3, design: .rounded, weight: .bold))
                 }
                 .padding(.bottom, -25)
                 HStack {

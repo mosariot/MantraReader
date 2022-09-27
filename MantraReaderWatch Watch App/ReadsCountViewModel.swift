@@ -1,5 +1,5 @@
 //
-//  ReadsCountViewModel.swift
+//  ReadsViewModel.swift
 //  MantraReaderWatch Watch App
 //
 //  Created by Alex Vorobiev on 26.09.2022.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @MainActor
-final class ReadsCountViewModel: ObservableObject {
+final class ReadsViewModel: ObservableObject {
     @Published var mantra: Mantra
     @Published var previousReads: Int32
     @Published var currentReads: Int32
@@ -50,4 +50,6 @@ final class ReadsCountViewModel: ObservableObject {
             }
         }
     }
+    
+    func handleAdjusting(for adjust: AdjustingType?, with value: Int32) { }
 }

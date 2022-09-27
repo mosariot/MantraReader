@@ -171,6 +171,7 @@ struct ReadsView: View {
                         Button(viewModel.adjustingAlertActionTitle(for: adjustingType)) {
                             validateAndHandleAdjusting()
                         }
+                       .keyboardShortcut(.defaultAction)
                         Button("Cancel", role: .cancel) {
                             adjustingType = nil
                             adjustingText = ""

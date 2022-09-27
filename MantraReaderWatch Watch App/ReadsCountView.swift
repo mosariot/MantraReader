@@ -10,7 +10,7 @@ import SwiftUI
 struct ReadsCountView: View {
     @AppStorage("isFirstLaunchOfMantraCounterMode") private var isFirstLaunchOfMantraCounterMode = true
     @EnvironmentObject private var dataManager: DataManager
-    @ObservedObject var viewModel: ReadsCountViewModel
+    @ObservedObject var viewModel: ReadsViewModel
     
     @State private var isPresentedStatisticsSheet = false
     @State private var isPresentedInfoSheet = false
@@ -18,6 +18,8 @@ struct ReadsCountView: View {
     @State private var isPresentedMantraCounterModeInfo = false
     @State private var isPresentedMantraCounterModeAlert = false
     @State private var isMantraCounterMode = false
+    @State private var showBlink = false
+    @State private var showHint = false
     
     var body: some View {
         let longPressGesture = LongPressGesture(minimumDuration: 1)
@@ -86,7 +88,10 @@ struct ReadsCountView: View {
                 .padding(.horizontal)
             }
             if isMantraCounterMode {
-                EmptyView()
+                 MantraCounterModeOverlayView(
+                    showBlink: $showBlink,
+                    viewModel: viewModel
+                )
             }
             if showBlink {
                 BlinkView()
@@ -154,11 +159,29 @@ struct ReadsCountView: View {
 struct InfoView: View {
     @ObservedObject var mantra: Mantra
     
+    private var image: UIImage {
+        if let data = mantra.image, let image = UIImage(data: data) {
+            return image
+        } else {
+            return UIImage(named: Constants.defaultImage)!
+        }
+    }
+    
     var body: some View {
-        ScrollView {
-            Image(uiImage: UIImage(data: mantra.image)!)
+        List {
+            Image(uiImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 80)
+            Section("TITLE") {
+                Text(mantra.title ?? "")
+            }
+            Section("MANTRA TEXT") {
+                Text(mantra.text ?? "")
+            }
+            Section("DESCRIPTION") {
+                Text(mantra.details ?? "")
+            }
+        }
     }
 }

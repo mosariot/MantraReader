@@ -1,5 +1,5 @@
 //
-//  DetailsColumn.swift
+//  ReadsView.swift
 //  MantraReaderWatch Watch App
 //
 //  Created by Alex Vorobiev on 23.09.2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ReadsCountView: View {
+struct ReadsView: View {
     @AppStorage("isFirstLaunchOfMantraCounterMode") private var isFirstLaunchOfMantraCounterMode = true
     @EnvironmentObject private var dataManager: DataManager
     @ObservedObject var viewModel: ReadsViewModel

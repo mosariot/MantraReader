@@ -33,133 +33,131 @@ struct ReadsView: View {
                 }
             }
         
-        NavigationStack {
+        ZStack {
             ZStack {
-                ZStack {
-                    ProgressRing(progress: viewModel.progress, thickness: 15)
-                        .animation(.easeInOut(duration: Constants.animationTime), value: viewModel.progress)
-                    Text("Reads")
-                        .numberAnimation(viewModel.mantra.reads)
-                        .animation(
-                            viewModel.isAnimated ?
-                            Animation.easeInOut(duration: Constants.animationTime) :
-                                Animation.linear(duration: 0.01),
-                            value: viewModel.mantra.reads)
-                        .font(.system(.title2, design: .rounded, weight: .bold))
-                        .dynamicTypeSize(.xLarge)
-                        .opacity(isMantraCounterMode ? 0 : 1)
-                    Text("Current Reads")
-                        .numberAnimation(Int32(viewModel.currentReads))
-                        .animation(
-                            viewModel.isAnimated ?
-                            Animation.easeInOut(duration: Constants.animationTime) :
-                                Animation.linear(duration: 0.01),
-                            value: viewModel.mantra.reads)
-                        .font(.system(.title2, design: .rounded, weight: .bold))
-                        .foregroundColor(.accentColor)
-                        .dynamicTypeSize(.xLarge)
-                        .opacity(isMantraCounterMode ? 1 : 0)
-                }
-                .padding(.top, 10)
-                .padding(.bottom, 10)
-                VStack {
+                ProgressRing(progress: viewModel.progress, thickness: 15)
+                    .animation(.easeInOut(duration: Constants.animationTime), value: viewModel.progress)
+                Text("Reads")
+                    .numberAnimation(viewModel.mantra.reads)
+                    .animation(
+                        viewModel.isAnimated ?
+                        Animation.easeInOut(duration: Constants.animationTime) :
+                            Animation.linear(duration: 0.01),
+                        value: viewModel.mantra.reads)
+                    .font(.system(.title2, design: .rounded, weight: .bold))
+                    .dynamicTypeSize(.xLarge)
+                    .opacity(isMantraCounterMode ? 0 : 1)
+                Text("Current Reads")
+                    .numberAnimation(Int32(viewModel.currentReads))
+                    .animation(
+                        viewModel.isAnimated ?
+                        Animation.easeInOut(duration: Constants.animationTime) :
+                            Animation.linear(duration: 0.01),
+                        value: viewModel.mantra.reads)
+                    .font(.system(.title2, design: .rounded, weight: .bold))
+                    .foregroundColor(.accentColor)
+                    .dynamicTypeSize(.xLarge)
+                    .opacity(isMantraCounterMode ? 1 : 0)
+            }
+            .padding(.top, 10)
+            .padding(.bottom, 10)
+            VStack {
+                Spacer()
+                HStack {
+                    Button {
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.system(size: 37))
+                            .symbolVariant(.circle.fill)
+                            .foregroundStyle(Color.accentColor.gradient)
+                    }
+                    .controlSize(.mini)
+                    .buttonStyle(.borderless)
+                    .padding(.bottom, -20)
                     Spacer()
-                    HStack {
-                        Button {
-                        } label: {
-                            Image(systemName: "plus")
-                                .font(.system(size: 37))
-                                .symbolVariant(.circle.fill)
-                                .foregroundStyle(Color.accentColor.gradient)
-                        }
-                        .controlSize(.mini)
-                        .buttonStyle(.borderless)
-                        .padding(.bottom, -20)
-                        Spacer()
-                        Button {
-                            isPresentedInfoAlert = true
-                        } label: {
-                            Image(systemName: "ellipsis")
-                                .symbolVariant(.circle)
-                                .font(.system(size: 37))
-                                .foregroundStyle(Color.accentColor.gradient)
-                        }
-                        .controlSize(.mini)
-                        .buttonStyle(.borderless)
-                        .padding(.bottom, -20)
-                        .alert("Select an option", isPresented: $isPresentedInfoAlert) {
-                            Button("Detailed Info") {
-                                isPresentedInfoSheet = true
-                            }
-                            Button("Reading Statistics") {
-                                isPresentedStatisticsSheet = true
-                            }
-                            Button("Mantra Counter") {
-                                isPresentedMantraCounterModeInfo = true
-                            }
-                            Button("Dismiss") { }
-                        }
+                    Button {
+                        isPresentedInfoAlert = true
+                    } label: {
+                        Image(systemName: "ellipsis")
+                            .symbolVariant(.circle)
+                            .font(.system(size: 37))
+                            .foregroundStyle(Color.accentColor.gradient)
                     }
-                }
-                .padding(.horizontal)
-                .alert("'Mantra Counter' Mode", isPresented: $isPresentedMantraCounterModeInfo) {
-                    Button("OK") { }
-                } message: {
-                    Text("Use long press on the screen to enter and quit the mode.")
-                }
-                if isMantraCounterMode {
-                    MantraCounterModeOverlayView(
-                        showBlink: $showBlink,
-                        viewModel: viewModel
-                    )
-                }
-                if showBlink {
-                    BlinkView()
-                }
-                if showHint {
-                    HintView()
+                    .controlSize(.mini)
+                    .buttonStyle(.borderless)
+                    .padding(.bottom, -20)
+                    .alert("Select an option", isPresented: $isPresentedInfoAlert) {
+                        Button("Detailed Info") {
+                            isPresentedInfoSheet = true
+                        }
+                        Button("Reading Statistics") {
+                            isPresentedStatisticsSheet = true
+                        }
+                        Button("Mantra Counter") {
+                            isPresentedMantraCounterModeInfo = true
+                        }
+                        Button("Dismiss") { }
+                    }
                 }
             }
-            .gesture(longPressGesture)
-            .alert(
-                "'Mantra Counter' Mode",
-                isPresented: $isPresentedMantraCounterModeAlert
-            ) {
-                Button("OK") {
-                    isFirstLaunchOfMantraCounterMode = false
-                    withAnimation {
-                        toggleMantraCounterMode()
-                    }
-                }
+            .padding(.horizontal)
+            .alert("'Mantra Counter' Mode", isPresented: $isPresentedMantraCounterModeInfo) {
+                Button("OK") { }
             } message: {
-                Text("You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. Use extended Wake Duration in your Watch Settings to prevent screen dimming.")
+                Text("Use long press on the screen to enter and quit the mode.")
             }
-            .sheet(isPresented: $isPresentedInfoSheet) {
-                InfoView(mantra: viewModel.mantra)
-            }
-            .sheet(isPresented: $isPresentedStatisticsSheet) {
-                StatisticsView(
-                    viewModel: StatisticsViewModel(
-                        mantra: viewModel.mantra,
-                        dataManager: dataManager
-                    )
+            if isMantraCounterMode {
+                MantraCounterModeOverlayView(
+                    showBlink: $showBlink,
+                    viewModel: viewModel
                 )
             }
-            .onReceive(viewModel.mantra.objectWillChange) { _ in
-                withAnimation {
-                    viewModel.updateForMantraChanges()
-                }
+            if showBlink {
+                BlinkView()
             }
-            .onDisappear {
-                if isMantraCounterMode {
-                    withAnimation {
-                        isMantraCounterMode = false
-                    }
-                }
+            if showHint {
+                HintView()
             }
-            .navigationTitle(viewModel.mantra.title ?? "")
-            .navigationBarTitleDisplayMode(.inline)
         }
+        .gesture(longPressGesture)
+        .alert(
+            "'Mantra Counter' Mode",
+            isPresented: $isPresentedMantraCounterModeAlert
+        ) {
+            Button("OK") {
+                isFirstLaunchOfMantraCounterMode = false
+                withAnimation {
+                    toggleMantraCounterMode()
+                }
+            }
+        } message: {
+            Text("You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. Use extended Wake Duration in your Watch Settings to prevent screen dimming.")
+        }
+        .sheet(isPresented: $isPresentedInfoSheet) {
+            InfoView(mantra: viewModel.mantra)
+        }
+        .sheet(isPresented: $isPresentedStatisticsSheet) {
+            StatisticsView(
+                viewModel: StatisticsViewModel(
+                    mantra: viewModel.mantra,
+                    dataManager: dataManager
+                )
+            )
+        }
+        .onReceive(viewModel.mantra.objectWillChange) { _ in
+            withAnimation {
+                viewModel.updateForMantraChanges()
+            }
+        }
+        .onDisappear {
+            if isMantraCounterMode {
+                withAnimation {
+                    isMantraCounterMode = false
+                }
+            }
+        }
+        .navigationTitle(viewModel.mantra.title ?? "")
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     private func toggleMantraCounterMode() {

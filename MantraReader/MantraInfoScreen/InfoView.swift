@@ -158,7 +158,7 @@ struct InfoView: View {
 // Old PHPicker code -end-
                         }
                     } message: {
-                        Text("It seems like this photo is unavailable. Try to pick another one")
+                        Text("It seems like this photo is unavailable. Try to pick another one.")
                     }
                     VStack(alignment: .leading, spacing: 0) {
                         Text("TITLE")

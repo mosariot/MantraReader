@@ -270,7 +270,7 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "Unavailable Photo" = "Фото недоступно";
 
 /* Unavailable photo Alert Message */
-"It seems like this photo is unavailable. Try to pick another one" = "Похоже это фото недоступно. Попробуйте выбрать другое";
+"It seems like this photo is unavailable. Try to pick another one." = "Похоже это фото недоступно. Попробуйте выбрать другое.";
 
 /* Mantra Title Label */
 "TITLE" = "НАЗВАНИЕ";
@@ -389,7 +389,7 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "'Mantra Counter' Mode" = "Режим 'Счетчик мантр'";
 
 /* Mantra Counter mode alert message */
-"Use long press on the screen to enter and quit the mode." = "Используйте долгое нажатие по экрану для входа и выхода из режима";
+"Use long press on the screen to enter and quit the mode." = "Используйте долгое нажатие по экрану для входа и выхода из режима.";
 
 /* Mantra Counter mode alert message */
 "You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. Use extended Wake Duration in your Watch Settings to prevent screen dimming." = "Вы входите в режим 'Счетчик мантр'. Один тап по экрану добавит одну начитку, двойной тап - добавит один круг. Используйте увеличенное время подсветки экрана в настройках ваших часов, чтобы предотвратить затемнение.";

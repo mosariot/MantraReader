@@ -205,7 +205,7 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "Select a mantra" = "Выберите мантру";
 
 /* Mantra Counter mode indicator menu */
-"'Mantra Counter' mode - use long press on screen" = "Режим 'Счетчик мантр' - долгое нажатие по экрану";
+"'Mantra Counter' mode - use long press on the screen" = "Режим 'Счетчик мантр' - долгое нажатие по экрану";
 
 /* First switch display mode Alert Title */
 "'Mantra Counter' Mode" = "Режим 'Счетчик мантр'";
@@ -375,6 +375,24 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 
 /* No mantras placeholder */
 "Please add some mantras on your iPhone or iPad" = "Пожалуйста, добавьте мантры на вашем iPhone или iPad";
+
+/* Details alert title */
+"Select an option" = "Выберите опцию";
+
+/* Details alert Mantra Counter button */
+"Mantra Counter" = "Счетчик мантр";
+
+/* Details alert Dismiss button */
+"Dismiss" = "Отменить";
+
+/* Mantra Counter mode alert title */
+"'Mantra Counter' Mode" = "Режим 'Счетчик мантр'";
+
+/* Mantra Counter mode alert message */
+"Use long press on the screen to enter and quit the mode." = "Используйте долгое нажатие по экрану для входа и выхода из режима";
+
+/* Mantra Counter mode alert message */
+"You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. Use extended Wake Duration in your Watch Settings to prevent screen dimming." = "Вы входите в режим 'Счетчик мантр'. Один тап по экрану добавит одну начитку, двойной тап - добавит один круг. Используйте увеличенное время подсветки экрана в настройках ваших часов, чтобы предотвратить затемнение.";
 
 //MARK: - MISC
 

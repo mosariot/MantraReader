@@ -215,7 +215,7 @@ struct ReadsView: View {
         }
         .overlay(alignment: .topTrailing) {
             Menu {
-                Text("'Mantra Counter' mode - use long press on screen")
+                Text("'Mantra Counter' mode - use long press on the screen")
             } label: {
                 Image(systemName: "sun.max")
                     .symbolVariant(isMantraCounterMode ? .circle.fill : .none)

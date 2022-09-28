@@ -156,6 +156,7 @@
 		9FCAA8B828E36C8E00568464 /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB279E328902F1B0029ED3B /* HintView.swift */; };
 		9FCAA8B928E36C9300568464 /* BlinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F605142288EE75E005EC6F5 /* BlinkView.swift */; };
 		9FCAA8BA28E36C9600568464 /* MantraCounterModeOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31E1592891ACE6006F0521 /* MantraCounterModeOverlayView.swift */; };
+		9FCAA8BD28E36F4600568464 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCAA8BC28E36F4600568464 /* InfoView.swift */; };
 		9FCD19B428E219D300543D8A /* NumberAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4B9B28CDB52500CE9D9B /* NumberAnimation.swift */; };
 		9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC52893915B004936E6 /* PreloadedMantraListView.swift */; };
 		9FD61DC8289391A4004936E6 /* PreloadedMantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC7289391A4004936E6 /* PreloadedMantraRow.swift */; };
@@ -349,6 +350,7 @@
 		9FC0F5C828D4B36100A00681 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		9FC0F5CD28D4BC0200A00681 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		9FC9A690287DA4FE00D05FBD /* AdjustingAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustingAlertView.swift; sourceTree = "<group>"; };
+		9FCAA8BC28E36F4600568464 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		9FD61DC52893915B004936E6 /* PreloadedMantraListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraListView.swift; sourceTree = "<group>"; };
 		9FD61DC7289391A4004936E6 /* PreloadedMantraRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraRow.swift; sourceTree = "<group>"; };
 		9FD61DC9289391BC004936E6 /* PreloadedMantraListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraListViewModel.swift; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 				9FADFD1F28DDEE5F00644184 /* ReadsCountView.swift */,
 				9FB052B228E221EE00FEFB1D /* ReadsCountViewModel.swift */,
 				9FB052B428E221FF00FEFB1D /* AdjustingView.swift */,
+				9FCAA8BC28E36F4600568464 /* InfoView.swift */,
 				9F39E55628DA467A0075534B /* Assets.xcassets */,
 				9F39E55828DA467A0075534B /* Preview Content */,
 			);
@@ -1019,6 +1022,7 @@
 				9FEBE46028DA54CB00E5CF47 /* RingColor.swift in Sources */,
 				9FB9802828DF507400F04E84 /* CornerRadiusShape.swift in Sources */,
 				9FCD19B428E219D300543D8A /* NumberAnimation.swift in Sources */,
+				9FCAA8BD28E36F4600568464 /* InfoView.swift in Sources */,
 				9F8915DF28E0721C009AE06F /* MonthStatisticsView.swift in Sources */,
 				9F8915E228E0727D009AE06F /* KMBFormatter.swift in Sources */,
 				9FADFD2028DDEE6000644184 /* ReadsCountView.swift in Sources */,

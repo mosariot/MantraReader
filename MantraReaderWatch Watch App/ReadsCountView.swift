@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ReadsView: View {
-    @Environment(\.dismiss) private var dismiss
     @AppStorage("isFirstLaunchOfMantraCounterMode") private var isFirstLaunchOfMantraCounterMode = true
     @EnvironmentObject private var dataManager: DataManager
     @ObservedObject var viewModel: ReadsViewModel

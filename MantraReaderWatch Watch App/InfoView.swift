@@ -30,7 +30,7 @@ struct InfoView: View {
                     .frame(height: 100)
                 Spacer()
             }
-            .listRowBackground(Color.black)
+            .listRowBackground(Color.clear)
             Section("TITLE") {
                 Text(mantra.title ?? "")
             }

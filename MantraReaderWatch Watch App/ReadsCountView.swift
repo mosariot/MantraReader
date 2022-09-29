@@ -15,17 +15,16 @@ struct ReadsView: View {
     @State private var isPresentedStatisticsSheet = false
     @State private var isPresentedInfoSheet = false
     @State private var isPresentedInfoAlert = false
-    @State private var isPresentedMantraCounterModeInfo = false
     @State private var isPresentedMantraCounterModeAlert = false
+    @State private var isPresentedMantraCounterModeInfo = false
+    @State private var isPresentedAdjustingSheet = false
     @State private var isMantraCounterMode = false
     @State private var showBlink = false
     @State private var showHint = false
-    
-    private var circularViewModel: CircularProgressViewModel
+    @State private var currentReads: Int32 = 0
     
     init(viewModel: ReadsViewModel) {
         self.viewModel = viewModel
-        circularViewModel = CircularProgressViewModel(viewModel.mantra)
     }
     
     var body: some View {
@@ -42,8 +41,9 @@ struct ReadsView: View {
         
         ZStack {
             CircularProgressView(
-                viewModel: circularViewModel,
-                isMantraCounterMode: isMantraCounterMode
+                viewModel: CircularProgressViewModel(viewModel.mantra, currentReads: $currentReads),
+                isMantraCounterMode: isMantraCounterMode,
+                currentReads: $currentReads
             )
             .padding(.top, 10)
             .padding(.bottom, 10)
@@ -51,6 +51,7 @@ struct ReadsView: View {
                 Spacer()
                 HStack {
                     Button {
+                        isPresentedAdjustingSheet = true
                     } label: {
                         Image(systemName: "plus")
                             .font(.system(size: 37))
@@ -65,7 +66,7 @@ struct ReadsView: View {
                         isPresentedInfoAlert = true
                     } label: {
                         Image(systemName: "ellipsis")
-                            .symbolVariant(.circle)
+                            .symbolVariant(.circle.fill)
                             .font(.system(size: 37))
                             .foregroundStyle(Color.accentColor.gradient)
                     }
@@ -118,6 +119,9 @@ struct ReadsView: View {
             }
         } message: {
             Text("You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. Use extended Wake Duration in your Watch Settings to prevent screen dimming.")
+        }
+        .sheet(isPresented: $isPresentedAdjustingSheet) {
+            AdjustingView(viewModel: viewModel)
         }
         .sheet(isPresented: $isPresentedInfoSheet) {
             InfoView(mantra: viewModel.mantra)

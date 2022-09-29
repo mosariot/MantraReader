@@ -11,7 +11,11 @@ import SwiftUI
 final class CircularProgressViewModel: ObservableObject {
     @Published var mantra: Mantra
     @Published var previousReads: Int32
+#if os(iOS)
     @Published var currentReads: Int32
+#elseif os(watchOS)
+    @Binding var currentReads: Int32
+#endif
     @Published var progress: Double
     @Published var isAnimated: Bool = false
     private var readsGoal: Int32
@@ -26,6 +30,7 @@ final class CircularProgressViewModel: ObservableObject {
         return result
     }
     
+    #if os(iOS)
     init(_ mantra: Mantra) {
         self.mantra = mantra
         self.previousReads = mantra.reads
@@ -33,6 +38,15 @@ final class CircularProgressViewModel: ObservableObject {
         self.readsGoal = mantra.readsGoal
         self.progress = Double(mantra.reads) / Double(mantra.readsGoal)
     }
+#elseif os(watchOS)
+    init(_ mantra: Mantra, currentReads: Binding<Int32>) {
+        self.mantra = mantra
+        self.previousReads = mantra.reads
+        self._currentReads = currentReads
+        self.readsGoal = mantra.readsGoal
+        self.progress = Double(mantra.reads) / Double(mantra.readsGoal)
+    }
+#endif
     
     func updateForMantraChanges() {
         if previousReads != mantra.reads || readsGoal != mantra.readsGoal {
@@ -47,7 +61,6 @@ final class CircularProgressViewModel: ObservableObject {
                 readsGoal = mantra.readsGoal
                 isAnimated = true
                 afterDelay(Constants.animationTime) { self.isAnimated = false }
-                print(currentReads)
             }
         }
     }

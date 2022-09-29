@@ -14,6 +14,9 @@ struct CircularProgressView: View {
 #endif
     @ObservedObject var viewModel: CircularProgressViewModel
     var isMantraCounterMode: Bool
+#if os(watchOS)
+    @Binding var currentReads: Int32
+#endif
     private var thickness: Double {
 #if os(iOS)
         25
@@ -55,7 +58,11 @@ struct CircularProgressView: View {
 #endif
                     .dynamicTypeSize(.xLarge)
                 Text("Current Reads")
+#if os(iOS)
                     .numberAnimation(Int32(viewModel.currentReads))
+#elseif os(watchOS)
+                    .numberAnimation(Int32(currentReads))
+#endif
                     .animation(
                         viewModel.isAnimated ?
                             Animation.easeInOut(duration: Constants.animationTime) :

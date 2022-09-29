@@ -30,7 +30,7 @@ final class CircularProgressViewModel: ObservableObject {
         return result
     }
     
-    #if os(iOS)
+#if os(iOS)
     init(_ mantra: Mantra) {
         self.mantra = mantra
         self.previousReads = mantra.reads

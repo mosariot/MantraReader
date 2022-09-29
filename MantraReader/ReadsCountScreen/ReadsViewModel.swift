@@ -12,14 +12,17 @@ import CoreData
 final class ReadsViewModel: ObservableObject {
     static private var confettiTrigger: Int = 0
     @Published var mantra: Mantra
+#if os(iOS)
     @Published var undoHistory: [(value: Int32, type: UndoType)] = []
+    private let congratulationsGenerator = UINotificationFeedbackGenerator()
+    private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
+#endif
     @Published var congratulations: Congratulations?
     @Published var isPresentedCongratulations = false
     @Published var isAboutToShowCongratulations = false
     @Published var confettiTrigger: Int = 0
-    private let congratulationsGenerator = UINotificationFeedbackGenerator()
-    private let lightHapticGenerator = UIImpactFeedbackGenerator(style: .light)
     
+#if os(iOS)
     var title: String { mantra.title ?? "" }
     var image: UIImage {
         if let data = mantra.image, let image = UIImage(data: data) {
@@ -30,6 +33,7 @@ final class ReadsViewModel: ObservableObject {
     }
     var favoriteBarImage: String { mantra.isFavorite ? "star.slash" : "star" }
     var favoriteBarTitle: String { mantra.isFavorite ? String(localized: "Unfavorite") : String(localized: "Favorite") }
+#endif
     
     private var dataManager: DataManager
     
@@ -39,6 +43,7 @@ final class ReadsViewModel: ObservableObject {
         self.confettiTrigger = Self.confettiTrigger
     }
     
+#if os(iOS)
     func toggleFavorite() {
         lightHapticGenerator.impactOccurred()
         mantra.isFavorite.toggle()
@@ -94,16 +99,6 @@ final class ReadsViewModel: ObservableObject {
             return String(localized: "Set")
         }
     }
-        
-    func congratulationsAlertMessage(for congratulations: Congratulations?) -> String {
-        guard let congratulations else { return "" }
-        switch congratulations {
-        case .half:
-            return String(localized: "You're half way to your goal!")
-        case .full:
-            return String(localized: "You've reached your goal!")
-        }
-    }
     
     func handleUndo() {
         guard let lastAction = undoHistory.last else { return }
@@ -117,33 +112,60 @@ final class ReadsViewModel: ObservableObject {
             undoHistory.removeLast()
         }
     }
+#endif
+        
+    func congratulationsAlertMessage(for congratulations: Congratulations?) -> String {
+        guard let congratulations else { return "" }
+        switch congratulations {
+        case .half:
+            return String(localized: "You're half way to your goal!")
+        case .full:
+            return String(localized: "You've reached your goal!")
+        }
+    }
     
     func handleAdjusting(for adjust: AdjustingType?, with value: Int32) {
         guard let adjust else { return }
         switch adjust {
         case .reads:
+#if os(iOS)
             undoHistory.append((mantra.reads, .value))
+#endif
             checkForCongratulations(with: mantra.reads + value)
             adjustMantraReads(with: mantra.reads + value)
         case .rounds:
+#if os(iOS)
             undoHistory.append((mantra.reads, .value))
+#endif
             checkForCongratulations(with: mantra.reads + value * 108)
             adjustMantraReads(with: mantra.reads + value * 108)
         case .value:
+#if os(iOS)
             undoHistory.append((mantra.reads, .value))
+#endif
             checkForCongratulations(with: value)
             adjustMantraReads(with: value)
         case .goal:
+#if os(iOS)
             undoHistory.append((mantra.readsGoal, .goal))
             lightHapticGenerator.impactOccurred()
+#elseif os(watchOS)
+            WKInterfaceDevice.current().play(.click)
+#endif
             adjustMantraGoal(with: value)
         }
+#if os(iOS)
         mantra.insertShortcutItem()
+#endif
     }
     
     private func checkForCongratulations(with value: Int32) {
         if mantra.reads < mantra.readsGoal && value >= mantra.readsGoal {
+#if os(iOS)
             congratulationsGenerator.notificationOccurred(.success)
+#elseif os(watchOS)
+            WKInterfaceDevice.current().play(.success)
+#endif
             confettiTrigger += 1
             Self.confettiTrigger += 1
             isAboutToShowCongratulations = true
@@ -162,7 +184,11 @@ final class ReadsViewModel: ObservableObject {
                 self.isAboutToShowCongratulations = false
             }
         }
+#if os(iOS)
         lightHapticGenerator.impactOccurred()
+#elseif os(watchOS)
+        WKInterfaceDevice.current().play(.click)
+#endif
     }
     
     private func adjustMantraReads(with value: Int32) {

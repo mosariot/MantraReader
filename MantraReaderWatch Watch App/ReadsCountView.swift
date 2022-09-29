@@ -21,6 +21,13 @@ struct ReadsView: View {
     @State private var showBlink = false
     @State private var showHint = false
     
+    private var circularViewModel: CircularProgressViewModel
+    
+    init(viewModel: ReadsViewModel) {
+        self.viewModel = viewModel
+        circularViewModel = CircularProgressViewModel(viewModel.mantra)
+    }
+    
     var body: some View {
         let longPressGesture = LongPressGesture(minimumDuration: 1)
             .onEnded { _ in
@@ -34,31 +41,10 @@ struct ReadsView: View {
             }
         
         ZStack {
-            ZStack {
-                ProgressRing(progress: viewModel.progress, thickness: 15)
-                    .animation(.easeInOut(duration: Constants.animationTime), value: viewModel.progress)
-                Text("Reads")
-                    .numberAnimation(viewModel.mantra.reads)
-                    .animation(
-                        viewModel.isAnimated ?
-                        Animation.easeInOut(duration: Constants.animationTime) :
-                            Animation.linear(duration: 0.01),
-                        value: viewModel.mantra.reads)
-                    .font(.system(.title2, design: .rounded, weight: .bold))
-                    .dynamicTypeSize(.xLarge)
-                    .opacity(isMantraCounterMode ? 0 : 1)
-                Text("Current Reads")
-                    .numberAnimation(Int32(viewModel.currentReads))
-                    .animation(
-                        viewModel.isAnimated ?
-                        Animation.easeInOut(duration: Constants.animationTime) :
-                            Animation.linear(duration: 0.01),
-                        value: viewModel.mantra.reads)
-                    .font(.system(.title2, design: .rounded, weight: .bold))
-                    .foregroundColor(.accentColor)
-                    .dynamicTypeSize(.xLarge)
-                    .opacity(isMantraCounterMode ? 1 : 0)
-            }
+            CircularProgressView(
+                viewModel: circularViewModel,
+                isMantraCounterMode: isMantraCounterMode
+            )
             .padding(.top, 10)
             .padding(.bottom, 10)
             VStack {
@@ -143,11 +129,6 @@ struct ReadsView: View {
                     dataManager: dataManager
                 )
             )
-        }
-        .onReceive(viewModel.mantra.objectWillChange) { _ in
-            withAnimation {
-                viewModel.updateForMantraChanges()
-            }
         }
         .onDisappear {
             if isMantraCounterMode {

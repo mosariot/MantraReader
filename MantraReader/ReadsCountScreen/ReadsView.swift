@@ -85,9 +85,9 @@ struct ReadsView: View {
                         Spacer()
                         VStack {
                             CircularProgressView(
+                                frame: circularProgressViewSize(with: geometry.size),
                                 viewModel: circularViewModel,
-                                isMantraCounterMode: isMantraCounterMode,
-                                frame: circularProgressViewSize(with: geometry.size)
+                                isMantraCounterMode: isMantraCounterMode
                             )
                             .frame(
                                 width: circularProgressViewSize(with: geometry.size),

@@ -47,6 +47,7 @@ final class CircularProgressViewModel: ObservableObject {
                 readsGoal = mantra.readsGoal
                 isAnimated = true
                 afterDelay(Constants.animationTime) { self.isAnimated = false }
+                print(currentReads)
             }
         }
     }

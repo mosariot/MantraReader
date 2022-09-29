@@ -13,18 +13,6 @@ struct AdjustingView: View {
     @State private var adjustingType: AdjustingType = .reads
     
     var viewModel: ReadsViewModel
-    private var through: Float {
-        switch adjustingType {
-        case .reads:
-            return 1000
-//            Float(1_000_000 - viewModel.mantra.reads)
-        case .rounds:
-            return 1000
-//            Float(1_000_000 - viewModel.mantra.reads) / 108
-        default:
-            return 0
-        }
-    }
     
     var body: some View {
         VStack {
@@ -34,9 +22,9 @@ struct AdjustingView: View {
                 .digitalCrownRotation(
                     $value,
                     from: 0.0,
-                    through: through,
+                    through: 10_000,
                     by: 1,
-                    sensitivity: .low
+                    sensitivity: .medium
             )
             HStack {
                 Button {
@@ -49,7 +37,7 @@ struct AdjustingView: View {
                         .minimumScaleFactor(0.8)
                 }
                 .foregroundColor(adjustingType == .reads ? .white : .secondary)
-                .background(adjustingType == .reads ? Color.accentColor : nil)
+                .background(adjustingType == .reads ? Color.accentColor.opacity(0.9) : nil)
                 .clipShape(Capsule())
                 Button {
                     withAnimation {
@@ -61,7 +49,7 @@ struct AdjustingView: View {
                         .minimumScaleFactor(0.8)
                 }
                 .foregroundColor(adjustingType == .rounds ? .white : .secondary)
-                .background(adjustingType == .rounds ? Color.accentColor : nil)
+                .background(adjustingType == .rounds ? Color.accentColor.opacity(0.9) : nil)
                 .clipShape(Capsule())
             }
             Button("Add") {

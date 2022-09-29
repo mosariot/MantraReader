@@ -84,6 +84,11 @@
 		9F794EDE289C35E900DDF940 /* LaunchPreparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794EDD289C35E900DDF940 /* LaunchPreparer.swift */; };
 		9F794EE0289C360F00DDF940 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794EDF289C360F00DDF940 /* NetworkMonitor.swift */; };
 		9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B1AE3286AB09A007720A0 /* MantraRow.swift */; };
+		9F81E41C28E62089002E83C1 /* SlimRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F338B592899A64100E393E2 /* SlimRectangle.swift */; };
+		9F81E41D28E62089002E83C1 /* View+ConfettiCannon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F338B5A2899A64100E393E2 /* View+ConfettiCannon.swift */; };
+		9F81E41E28E62089002E83C1 /* ConfettiSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F338B5B2899A64100E393E2 /* ConfettiSwiftUI.swift */; };
+		9F81E41F28E6208A002E83C1 /* RoundedCross.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F338B572899A64100E393E2 /* RoundedCross.swift */; };
+		9F81E42028E6208A002E83C1 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F338B582899A64100E393E2 /* Triangle.swift */; };
 		9F857B4D28C38EC100A83216 /* Mantra+Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F857B4C28C38EC100A83216 /* Mantra+Statistics.swift */; };
 		9F8915DC28E07212009AE06F /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C7D6228BBE379004CC501 /* StatisticsView.swift */; };
 		9F8915DD28E07215009AE06F /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABFF5628BFB4D0001A1D7F /* StatisticsViewModel.swift */; };
@@ -1005,12 +1010,15 @@
 				9F39E55528DA46790075534B /* ContentView.swift in Sources */,
 				9FCAA8C528E60ED300568464 /* ReadsViewModel.swift in Sources */,
 				9FADFD2828DDFB0400644184 /* Constants.swift in Sources */,
+				9F81E41D28E62089002E83C1 /* View+ConfettiCannon.swift in Sources */,
+				9F81E42028E6208A002E83C1 /* Triangle.swift in Sources */,
 				9FB9802928DF54C600F04E84 /* CloseButtonImage.swift in Sources */,
 				9F39E55328DA46790075534B /* MantraReaderWatchApp.swift in Sources */,
 				9F8915DE28E0721A009AE06F /* WeekStatisticsView.swift in Sources */,
 				9FCAA8B828E36C8E00568464 /* HintView.swift in Sources */,
 				9FEBE45F28DA547700E5CF47 /* ProgressArc.swift in Sources */,
 				9F8915E128E07274009AE06F /* Date+StartEnd.swift in Sources */,
+				9F81E41E28E62089002E83C1 /* ConfettiSwiftUI.swift in Sources */,
 				9F172FA328E2046500463818 /* ReadTheMantra.xcdatamodeld in Sources */,
 				9F38FA1228DF623D000825C3 /* MantraColorScheme.swift in Sources */,
 				9FEBE46128DA54D800E5CF47 /* Settings.swift in Sources */,
@@ -1021,6 +1029,7 @@
 				9F99ADD828DEE72C00175408 /* WidgetModel.swift in Sources */,
 				9F99ADD728DEE72A00175408 /* MantraWidgetManager.swift in Sources */,
 				9FEBE46228DA54E400E5CF47 /* Sorting.swift in Sources */,
+				9F81E41F28E6208A002E83C1 /* RoundedCross.swift in Sources */,
 				9FC6AE2828E152C200D1361C /* NetworkMonitor.swift in Sources */,
 				9FEBE46028DA54CB00E5CF47 /* RingColor.swift in Sources */,
 				9FB9802828DF507400F04E84 /* CornerRadiusShape.swift in Sources */,
@@ -1033,6 +1042,7 @@
 				9FCAA8BE28E5446500568464 /* Congratulations.swift in Sources */,
 				9FCAA8B928E36C9300568464 /* BlinkView.swift in Sources */,
 				9F8915DD28E07215009AE06F /* StatisticsViewModel.swift in Sources */,
+				9F81E41C28E62089002E83C1 /* SlimRectangle.swift in Sources */,
 				9F172FA428E2046A00463818 /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -113,7 +113,7 @@ final class ReadsViewModel: ObservableObject {
         }
     }
 #endif
-        
+    
     func congratulationsAlertMessage(for congratulations: Congratulations?) -> String {
         guard let congratulations else { return "" }
         switch congratulations {
@@ -178,7 +178,7 @@ final class ReadsViewModel: ObservableObject {
         }
         if mantra.reads < mantra.readsGoal/2 && mantra.readsGoal/2..<mantra.readsGoal ~= value {
             isAboutToShowCongratulations = true
-            afterDelay(Constants.animationTime + 0.3) {
+            afterDelay(3) {
                 self.congratulations = .half
                 self.isPresentedCongratulations = true
                 self.isAboutToShowCongratulations = false

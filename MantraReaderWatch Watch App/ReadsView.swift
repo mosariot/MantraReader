@@ -47,6 +47,14 @@ struct ReadsView: View {
             )
             .padding(.top, 10)
             .padding(.bottom, 10)
+            .confettiCannon(
+                counter: $viewModel.confettiTrigger,
+                num: 200,
+                rainHeight: 300,
+                openingAngle: Angle(degrees: 30),
+                closingAngle: Angle(degrees: 180),
+                radius: 300
+            )
             VStack {
                 Spacer()
                 HStack {

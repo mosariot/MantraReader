@@ -192,14 +192,6 @@ struct ReadsView: View {
                 .ignoresSafeArea(.keyboard)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-// UIAlerController implementation for Adjusting alert
-//            if isPresentedAdjustingAlert {
-//                AdjustingAlertView(
-//                    isPresented: $isPresentedAdjustingAlert,
-//                    adjustingType: $adjustingType,
-//                    viewModel: viewModel
-//                )
-//            }
             if isMantraCounterMode {
                 MantraCounterModeOverlayView(
                     showBlink: $showBlink,

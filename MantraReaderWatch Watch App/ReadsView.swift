@@ -65,6 +65,7 @@ struct ReadsView: View {
                     }
                     .controlSize(.mini)
                     .buttonStyle(.borderless)
+                    .disabled(isMantraCounterMode || viewModel.isAboutToShowCongratulations)
                     .padding(.bottom, -20)
                     Spacer()
                     Button {
@@ -77,6 +78,7 @@ struct ReadsView: View {
                     }
                     .controlSize(.mini)
                     .buttonStyle(.borderless)
+                    .disabled(isMantraCounterMode || viewModel.isAboutToShowCongratulations)
                     .padding(.bottom, -20)
                     .alert("Select an option", isPresented: $isPresentedInfoAlert) {
                         Button("Detailed Info") {

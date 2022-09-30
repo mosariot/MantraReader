@@ -40,8 +40,9 @@ struct AdjustingView: View {
                     Text("Reads")
                         .minimumScaleFactor(0.8)
                 }
-                .foregroundColor(adjustingType == .reads ? .white : .secondary)
-                .background(adjustingType == .reads ? Color.accentColor.opacity(0.9) : nil)
+                .buttonStyle(.borderedProminent)
+                .tint(adjustingType == .reads ? nil : Color.gray.opacity(0.3))
+                .foregroundColor(adjustingType == .reads ? .nil : .secondary)
                 .clipShape(Capsule())
                 Button {
                     guard adjustingType != .rounds else { return }
@@ -53,8 +54,9 @@ struct AdjustingView: View {
                     Text("Rounds")
                         .minimumScaleFactor(0.8)
                 }
-                .foregroundColor(adjustingType == .rounds ? .white : .secondary)
-                .background(adjustingType == .rounds ? Color.accentColor.opacity(0.9) : nil)
+                .buttonStyle(.borderedProminent)
+                .tint(adjustingType == .rounds ? nil : Color.gray.opacity(0.3))
+                .foregroundColor(adjustingType == .rounds ? .nil : .secondary)
                 .clipShape(Capsule())
             }
             Button("Add") {

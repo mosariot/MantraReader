@@ -9,8 +9,10 @@ import SwiftUI
 
 struct AdjustingView: View {
     @Environment(\.dismiss) private var dismiss
+    @AppStorage("isFirstAppearOfAdjustingView") private var isFirstAppearOfAdjustingView = true
     @State private var value: Float = 0.0
     @State private var adjustingType: AdjustingType = .reads
+    @State private var isPresentedFirstAppearOfAdjustingViewAlert = false
     
     var viewModel: ReadsViewModel
     @Binding var previousReads: Int32
@@ -60,6 +62,11 @@ struct AdjustingView: View {
                 viewModel.handleAdjusting(for: adjustingType, with: Int32(value.rounded(.towardZero)))
                 dismiss()
             }
+            .alert("", isPresented: $isPresentedFirstAppearOfAdjustingViewAlert) {
+                Button("OK") { }
+            } message: {
+                Text("For change the value just spin the Digital Crown")
+            }
         }
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
@@ -67,6 +74,12 @@ struct AdjustingView: View {
                     dismiss()
                 }
                 .foregroundColor(.accentColor)
+            }
+        }
+        .onAppear {
+            if isFirstAppearOfAdjustingView {
+                isFirstAppearOfAdjustingView = false
+                isPresentedFirstAppearOfAdjustingViewAlert = true
             }
         }
     }

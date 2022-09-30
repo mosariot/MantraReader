@@ -19,6 +19,9 @@ struct MantraCounterModeOverlayView: View {
                 TapGesture(count: 2)
                     .onEnded {
                         viewModel.handleAdjusting(for: .rounds, with: 1)
+#if os(watchOS)
+                        viewModel.checkForCongratulationsOnWatch(with: 108)
+#endif
                     }
                     .exclusively(
                         before:
@@ -27,6 +30,9 @@ struct MantraCounterModeOverlayView: View {
                                 showBlink = true
                                 afterDelay(0.05) { showBlink = false }
                                 viewModel.handleAdjusting(for: .reads, with: 1)
+#if os(watchOS)
+                                viewModel.checkForCongratulationsOnWatch(with: 1)
+#endif
                             }
                     )
             )

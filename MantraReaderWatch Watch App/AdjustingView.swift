@@ -29,6 +29,7 @@ struct AdjustingView: View {
             )
             HStack {
                 Button {
+                    guard adjustingType != .reads else { return }
                     withAnimation {
                         adjustingType = .reads
                         value = 0.0
@@ -41,6 +42,7 @@ struct AdjustingView: View {
                 .background(adjustingType == .reads ? Color.accentColor.opacity(0.9) : nil)
                 .clipShape(Capsule())
                 Button {
+                    guard adjustingType != .rounds else { return }
                     withAnimation {
                         adjustingType = .rounds
                         value = 0.0

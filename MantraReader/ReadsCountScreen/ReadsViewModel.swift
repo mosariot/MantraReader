@@ -130,20 +130,20 @@ final class ReadsViewModel: ObservableObject {
         case .reads:
 #if os(iOS)
             undoHistory.append((mantra.reads, .value))
-#endif
             checkForCongratulations(with: mantra.reads + value)
+#endif
             adjustMantraReads(with: mantra.reads + value)
         case .rounds:
 #if os(iOS)
             undoHistory.append((mantra.reads, .value))
-#endif
             checkForCongratulations(with: mantra.reads + value * 108)
+#endif
             adjustMantraReads(with: mantra.reads + value * 108)
         case .value:
 #if os(iOS)
             undoHistory.append((mantra.reads, .value))
-#endif
             checkForCongratulations(with: value)
+#endif
             adjustMantraReads(with: value)
         case .goal:
 #if os(iOS)
@@ -159,13 +159,10 @@ final class ReadsViewModel: ObservableObject {
 #endif
     }
     
+#if os(iOS)
     private func checkForCongratulations(with value: Int32) {
         if mantra.reads < mantra.readsGoal && value >= mantra.readsGoal {
-#if os(iOS)
             congratulationsGenerator.notificationOccurred(.success)
-#elseif os(watchOS)
-            WKInterfaceDevice.current().play(.success)
-#endif
             confettiTrigger += 1
             Self.confettiTrigger += 1
             isAboutToShowCongratulations = true
@@ -178,18 +175,40 @@ final class ReadsViewModel: ObservableObject {
         }
         if mantra.reads < mantra.readsGoal/2 && mantra.readsGoal/2..<mantra.readsGoal ~= value {
             isAboutToShowCongratulations = true
-            afterDelay(3) {
+            afterDelay(Constants.animationTime + 0.3) {
                 self.congratulations = .half
                 self.isPresentedCongratulations = true
                 self.isAboutToShowCongratulations = false
             }
         }
-#if os(iOS)
         lightHapticGenerator.impactOccurred()
-#elseif os(watchOS)
-        WKInterfaceDevice.current().play(.click)
-#endif
     }
+#elseif os(watchOS)
+    
+    func checkForCongratulationsOnWatch(with value: Int32) {
+        if mantra.reads - value < mantra.readsGoal && mantra.reads >= mantra.readsGoal {
+            WKInterfaceDevice.current().play(.success)
+            confettiTrigger += 1
+            Self.confettiTrigger += 1
+            isAboutToShowCongratulations = true
+            afterDelay(Constants.animationTime + 1.8) {
+                self.congratulations = .full
+                self.isPresentedCongratulations = true
+                self.isAboutToShowCongratulations = false
+            }
+            return
+        }
+        if mantra.reads - value < mantra.readsGoal/2 && mantra.readsGoal/2..<mantra.readsGoal ~= mantra.reads {
+            isAboutToShowCongratulations = true
+            afterDelay(Constants.animationTime + 0.3) {
+                self.congratulations = .half
+                self.isPresentedCongratulations = true
+                self.isAboutToShowCongratulations = false
+            }
+        }
+        WKInterfaceDevice.current().play(.click)
+    }
+#endif
     
     private func adjustMantraReads(with value: Int32) {
         let currentReads = mantra.reads

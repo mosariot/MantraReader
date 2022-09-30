@@ -13,6 +13,7 @@ struct AdjustingView: View {
     @State private var adjustingType: AdjustingType = .reads
     
     var viewModel: ReadsViewModel
+    @Binding var previousReads: Int32
     
     var body: some View {
         VStack {
@@ -53,6 +54,7 @@ struct AdjustingView: View {
                 .clipShape(Capsule())
             }
             Button("Add") {
+                previousReads = viewModel.mantra.reads
                 viewModel.handleAdjusting(for: adjustingType, with: Int32(value.rounded(.towardZero)))
                 dismiss()
             }

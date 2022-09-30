@@ -22,10 +22,7 @@ struct ReadsView: View {
     @State private var showBlink = false
     @State private var showHint = false
     @State private var currentReads: Int32 = 0
-    
-    init(viewModel: ReadsViewModel) {
-        self.viewModel = viewModel
-    }
+    @State private var previousReads: Int32 = 0
     
     var body: some View {
         let longPressGesture = LongPressGesture(minimumDuration: 1)
@@ -94,6 +91,17 @@ struct ReadsView: View {
                         Button("Dismiss") { }
                     }
                 }
+                .alert(
+                    "Congratulations!",
+                    isPresented: $viewModel.isPresentedCongratulations,
+                    presenting: viewModel.congratulations
+                ) { _ in
+                    Button("OK", role: .cancel) {
+                        viewModel.congratulations = nil
+                    }
+                } message: { congratulation in
+                    Text(viewModel.congratulationsAlertMessage(for: congratulation))
+                }
             }
             .padding(.horizontal)
             .alert("'Mantra Counter' Mode", isPresented: $isPresentedMantraCounterModeInfo) {
@@ -129,7 +137,7 @@ struct ReadsView: View {
             Text("You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. Use extended Wake Duration in your Watch Settings to prevent screen dimming.")
         }
         .sheet(isPresented: $isPresentedAdjustingSheet) {
-            AdjustingView(viewModel: viewModel)
+            AdjustingView(viewModel: viewModel, previousReads: $previousReads)
         }
         .sheet(isPresented: $isPresentedInfoSheet) {
             InfoView(mantra: viewModel.mantra)
@@ -141,6 +149,10 @@ struct ReadsView: View {
                     dataManager: dataManager
                 )
             )
+        }
+        .onAppear {
+            guard previousReads != 0 else { return }
+            viewModel.checkForCongratulationsOnWatch(with: viewModel.mantra.reads - previousReads)
         }
         .onDisappear {
             if isMantraCounterMode {

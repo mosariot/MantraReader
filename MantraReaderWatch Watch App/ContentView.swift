@@ -118,11 +118,13 @@ struct ContentView: View {
                             isPresentedStatisticsSheet = true
                         } label: {
                             Image(systemName: "chart.bar")
+                                .imageScale(.medium)
                         }
                         Button {
                             isPresentedSettingsSheet = true
                         } label: {
                             Image(systemName: "slider.horizontal.3")
+                                .imageScale(.medium)
                         }
                     }
                 }

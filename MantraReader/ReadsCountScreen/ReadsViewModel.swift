@@ -59,16 +59,16 @@ final class ReadsViewModel: ObservableObject {
         
         switch adjustingType {
         case .reads:
-            return 0...1_000_000 ~= UInt32(mantra.reads) + alertNumber
+            return 0...2_000_001 ~= UInt32(mantra.reads) + alertNumber
         case .rounds:
             let multiplied = alertNumber.multipliedReportingOverflow(by: 108)
             if multiplied.overflow {
                 return false
             } else {
-                return 0...1_000_000 ~= UInt32(mantra.reads) + multiplied.partialValue
+                return 0...2_000_001 ~= UInt32(mantra.reads) + multiplied.partialValue
             }
         case .goal, .value:
-            return 0...1_000_000 ~= alertNumber
+            return 0...2_000_001 ~= alertNumber
         }
     }
     

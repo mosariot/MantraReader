@@ -152,7 +152,7 @@ struct ReadsView: View {
             )
         }
         .onAppear {
-            guard previousReads != 0 else { return }
+            guard previousReads != 0 || previousReads != viewModel.mantra.reads else { return }
             viewModel.checkForCongratulationsOnWatch(with: viewModel.mantra.reads - previousReads)
         }
         .onDisappear {

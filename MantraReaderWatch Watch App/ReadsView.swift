@@ -98,6 +98,7 @@ struct ReadsView: View {
                 ) { _ in
                     Button("OK", role: .cancel) {
                         viewModel.congratulations = nil
+                        previousReads = viewModel.mantra.reads
                     }
                 } message: { congratulation in
                     Text(viewModel.congratulationsAlertMessage(for: congratulation))

@@ -27,7 +27,6 @@ struct ReadsView: View {
     @State private var isPresentedDeleteConfirmation = false
     @State private var showBlink = false
     @State private var showHint = false
-    @State private var congratulations: Int = 0
     
     @Binding private var isMantraCounterMode: Bool
     @Binding private var isMantraDeleted: Bool

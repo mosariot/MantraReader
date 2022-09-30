@@ -383,7 +383,7 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "Mantra Counter" = "Счетчик мантр";
 
 /* Details alert Dismiss button */
-"Dismiss" = "Отменить";
+"Dismiss" = "Закрыть";
 
 /* Mantra Counter mode alert title */
 "'Mantra Counter' Mode" = "Режим 'Счетчик мантр'";
@@ -393,6 +393,9 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 
 /* Mantra Counter mode alert message */
 "You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. Use extended Wake Duration in your Watch Settings to prevent screen dimming." = "Вы входите в режим 'Счетчик мантр'. Один тап по экрану добавит одну начитку, двойной тап - добавит один круг. Используйте увеличенное время подсветки экрана в настройках ваших часов, чтобы предотвратить затемнение.";
+
+/* First appear of AdjustingView alert message */
+"For change the value just spin the Digital Crown" = "Для изменения значения просто крутите колесико";
 
 /* Reads button */
 "Reads" = "Начиток";

@@ -64,6 +64,7 @@ struct AdjustingView: View {
                 viewModel.handleAdjusting(for: adjustingType, with: Int32(value.rounded(.towardZero)))
                 dismiss()
             }
+            .disabled(Int32(value.rounded(.towardZero)) == 0)
             .alert("", isPresented: $isPresentedFirstAppearOfAdjustingViewAlert) {
                 Button("OK") { }
             } message: {

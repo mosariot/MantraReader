@@ -116,8 +116,7 @@ struct ReadsView: View {
             if isMantraCounterMode {
                 MantraCounterModeOverlayView(
                     showBlink: $showBlink,
-                    viewModel: viewModel,
-                    previousReads: $previousReads
+                    viewModel: viewModel
                 )
             }
             if showBlink {

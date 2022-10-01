@@ -183,8 +183,8 @@ final class ReadsViewModel: ObservableObject {
         }
         lightHapticGenerator.impactOccurred()
     }
-#elseif os(watchOS)
     
+#elseif os(watchOS)
     func checkForCongratulationsOnWatch(with value: Int32) {
         if mantra.reads - value < mantra.readsGoal && mantra.reads >= mantra.readsGoal {
             WKInterfaceDevice.current().play(.success)

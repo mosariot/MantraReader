@@ -10,9 +10,6 @@ import SwiftUI
 struct MantraCounterModeOverlayView: View {
     @Binding var showBlink: Bool
     let viewModel: ReadsViewModel
-    #if os(watchOS)
-    @Binding var previousReads: Int32
-    #endif
     
     var body: some View {
         Color.gray

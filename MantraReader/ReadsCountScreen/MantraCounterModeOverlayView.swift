@@ -10,6 +10,9 @@ import SwiftUI
 struct MantraCounterModeOverlayView: View {
     @Binding var showBlink: Bool
     let viewModel: ReadsViewModel
+    #if os(watchOS)
+    @Binding var previousReads: Int32
+    #endif
     
     var body: some View {
         Color.gray
@@ -18,10 +21,10 @@ struct MantraCounterModeOverlayView: View {
             .gesture(
                 TapGesture(count: 2)
                     .onEnded {
-                        viewModel.handleAdjusting(for: .rounds, with: 1)
 #if os(watchOS)
-                        viewModel.checkForCongratulationsOnWatch(with: 108)
+                        previousReads = viewModel.mantra.reads
 #endif
+                        viewModel.handleAdjusting(for: .rounds, with: 1)
                     }
                     .exclusively(
                         before:
@@ -29,10 +32,10 @@ struct MantraCounterModeOverlayView: View {
                             .onEnded {
                                 showBlink = true
                                 afterDelay(0.05) { showBlink = false }
-                                viewModel.handleAdjusting(for: .reads, with: 1)
 #if os(watchOS)
-                                viewModel.checkForCongratulationsOnWatch(with: 1)
+                                previousReads = viewModel.mantra.reads
 #endif
+                                viewModel.handleAdjusting(for: .reads, with: 1)
                             }
                     )
             )

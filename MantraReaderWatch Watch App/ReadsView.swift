@@ -115,7 +115,8 @@ struct ReadsView: View {
             if isMantraCounterMode {
                 MantraCounterModeOverlayView(
                     showBlink: $showBlink,
-                    viewModel: viewModel
+                    viewModel: viewModel,
+                    previousReads: $previousReads
                 )
             }
             if showBlink {
@@ -154,7 +155,11 @@ struct ReadsView: View {
             )
         }
         .onAppear {
-            guard previousReads != 0 || previousReads != viewModel.mantra.reads else { return }
+            guard previousReads != 0 && previousReads != viewModel.mantra.reads else { return }
+            viewModel.checkForCongratulationsOnWatch(with: viewModel.mantra.reads - previousReads)
+        }
+        .onReceive(viewModel.mantra.objectWillChange) { _ in
+            guard previousReads != 0 && previousReads != viewModel.mantra.reads else { return }
             viewModel.checkForCongratulationsOnWatch(with: viewModel.mantra.reads - previousReads)
         }
         .onDisappear {

@@ -25,7 +25,7 @@ struct AdjustingView: View {
                 .digitalCrownRotation(
                     $value,
                     from: 0.0,
-                    through: adjustinType == .reads ? 10_000.0 : Float(2_000_001 - viewModel.mantra.reads) / 108.0,
+                    through: adjustingType == .reads ? 10_000.0 : Float(2_000_001 - viewModel.mantra.reads) / 108.0,
                     by: 1,
                     sensitivity: .medium
             )
@@ -42,7 +42,7 @@ struct AdjustingView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(adjustingType == .reads ? nil : Color.gray.opacity(0.3))
-                .foregroundColor(adjustingType == .reads ? .nil : .secondary)
+                .foregroundColor(adjustingType == .reads ? nil : .secondary)
                 .clipShape(Capsule())
                 Button {
                     guard adjustingType != .rounds else { return }
@@ -56,7 +56,7 @@ struct AdjustingView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(adjustingType == .rounds ? nil : Color.gray.opacity(0.3))
-                .foregroundColor(adjustingType == .rounds ? .nil : .secondary)
+                .foregroundColor(adjustingType == .rounds ? nil : .secondary)
                 .clipShape(Capsule())
             }
             Button("Add") {

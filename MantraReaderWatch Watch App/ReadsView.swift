@@ -102,7 +102,7 @@ struct ReadsView: View {
             .confettiCannon(
                 counter: $viewModel.confettiTrigger,
                 num: 200,
-                rainHeight: 400,
+                rainHeight: 450,
                 openingAngle: Angle(degrees: 30),
                 closingAngle: Angle(degrees: 180),
                 radius: 200

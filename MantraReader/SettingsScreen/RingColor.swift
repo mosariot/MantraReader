@@ -33,7 +33,7 @@ enum RingColor: String, Hashable, Codable {
 }
 
 extension Color {
-    static let progressRedStart = Color(#colorLiteral(red: 0.882, green: 0.000, blue: 0.086, alpha: 1))
+    static let progressRedStart = Color(#colorLiteral(red: 0.882, green: 0, blue: 0.086, alpha: 1))
     static let progressRedEnd = Color(#colorLiteral(red: 1.000, green: 0.196, blue: 0.533, alpha: 1))
     static let progressYellowStart = Color(#colorLiteral(red: 0.89, green: 0.682, blue: 0.039, alpha: 1))
     static let progressYellowEnd = Color(#colorLiteral(red: 1, green: 0.815, blue: 0.169, alpha: 1))

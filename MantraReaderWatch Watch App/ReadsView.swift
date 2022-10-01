@@ -44,18 +44,11 @@ struct ReadsView: View {
             )
             .padding(.top, 10)
             .padding(.bottom, 10)
-            .confettiCannon(
-                counter: $viewModel.confettiTrigger,
-                num: 200,
-                rainHeight: 300,
-                openingAngle: Angle(degrees: 30),
-                closingAngle: Angle(degrees: 180),
-                radius: 300
-            )
             VStack {
                 Spacer()
                 HStack {
                     Button {
+                        previousReads = viewModel.mantra.reads
                         isPresentedAdjustingSheet = true
                     } label: {
                         Image(systemName: "plus")
@@ -106,6 +99,14 @@ struct ReadsView: View {
                     Text(viewModel.congratulationsAlertMessage(for: congratulation))
                 }
             }
+            .confettiCannon(
+                counter: $viewModel.confettiTrigger,
+                num: 200,
+                rainHeight: 400,
+                openingAngle: Angle(degrees: 30),
+                closingAngle: Angle(degrees: 180),
+                radius: 200
+            )
             .padding(.horizontal)
             .alert("'Mantra Counter' Mode", isPresented: $isPresentedMantraCounterModeInfo) {
                 Button("OK") { }
@@ -141,7 +142,7 @@ struct ReadsView: View {
             Text("You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. Use extended Wake Duration in your Watch Settings to prevent screen dimming.")
         }
         .sheet(isPresented: $isPresentedAdjustingSheet) {
-            AdjustingView(viewModel: viewModel, previousReads: $previousReads)
+            AdjustingView(viewModel: viewModel)
         }
         .sheet(isPresented: $isPresentedInfoSheet) {
             InfoView(mantra: viewModel.mantra)
@@ -155,10 +156,6 @@ struct ReadsView: View {
             )
         }
         .onAppear {
-            guard previousReads != 0 && previousReads != viewModel.mantra.reads else { return }
-            viewModel.checkForCongratulationsOnWatch(with: viewModel.mantra.reads - previousReads)
-        }
-        .onReceive(viewModel.mantra.objectWillChange) { _ in
             guard previousReads != 0 && previousReads != viewModel.mantra.reads else { return }
             viewModel.checkForCongratulationsOnWatch(with: viewModel.mantra.reads - previousReads)
         }
@@ -177,10 +174,14 @@ struct ReadsView: View {
         withAnimation {
             isMantraCounterMode.toggle()
         }
+        WKInterfaceDevice.current().play(.click)
         if isMantraCounterMode {
-            WKInterfaceDevice.current().play(.click)
+            previousReads = viewModel.mantra.reads
             showHint = true
             afterDelay(1.5) { showHint = false }
+        } else {
+            guard previousReads != 0 && previousReads != viewModel.mantra.reads else { return }
+            viewModel.checkForCongratulationsOnWatch(with: viewModel.mantra.reads - previousReads)
         }
     }
 }

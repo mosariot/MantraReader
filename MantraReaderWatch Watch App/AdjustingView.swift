@@ -15,7 +15,6 @@ struct AdjustingView: View {
     @State private var isPresentedFirstAppearOfAdjustingViewAlert = false
     
     var viewModel: ReadsViewModel
-    @Binding var previousReads: Int32
     
     var body: some View {
         VStack {
@@ -25,7 +24,7 @@ struct AdjustingView: View {
                 .digitalCrownRotation(
                     $value,
                     from: 0.0,
-                    through: adjustingType == .reads ? 10_000.0 : Float(2_000_001 - viewModel.mantra.reads) / 108.0,
+                    through: adjustingType == .reads ? 10_000.0 : (Float(2_000_001 - viewModel.mantra.reads) / 108.0).rounded(.down),
                     by: 1,
                     sensitivity: .medium
             )
@@ -39,10 +38,11 @@ struct AdjustingView: View {
                 } label: {
                     Text("Reads")
                         .minimumScaleFactor(0.8)
+                        .bold()
                 }
                 .buttonStyle(.borderedProminent)
-                .tint(adjustingType == .reads ? nil : Color.gray.opacity(0.3))
-                .foregroundColor(adjustingType == .reads ? nil : .secondary)
+                .tint(adjustingType == .reads ? nil : Color(#colorLiteral(red: 0.134, green: 0.134, blue: 0.139, alpha: 1)))
+                .foregroundColor(adjustingType == .reads ? .black : .secondary.opacity(0.7))
                 .clipShape(Capsule())
                 Button {
                     guard adjustingType != .rounds else { return }
@@ -53,14 +53,14 @@ struct AdjustingView: View {
                 } label: {
                     Text("Rounds")
                         .minimumScaleFactor(0.8)
+                        .bold()
                 }
                 .buttonStyle(.borderedProminent)
-                .tint(adjustingType == .rounds ? nil : Color.gray.opacity(0.3))
-                .foregroundColor(adjustingType == .rounds ? nil : .secondary)
+                .tint(adjustingType == .rounds ? nil : Color(#colorLiteral(red: 0.134, green: 0.134, blue: 0.139, alpha: 1)))
+                .foregroundColor(adjustingType == .rounds ? .black : .secondary.opacity(0.7))
                 .clipShape(Capsule())
             }
             Button("Add") {
-                previousReads = viewModel.mantra.reads
                 viewModel.handleAdjusting(for: adjustingType, with: Int32(value.rounded(.towardZero)))
                 dismiss()
             }

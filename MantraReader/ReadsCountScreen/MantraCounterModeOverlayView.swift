@@ -22,7 +22,7 @@ struct MantraCounterModeOverlayView: View {
                 TapGesture(count: 2)
                     .onEnded {
 #if os(watchOS)
-                        previousReads = viewModel.mantra.reads
+                        WKInterfaceDevice.current().play(.click)
 #endif
                         viewModel.handleAdjusting(for: .rounds, with: 1)
                     }
@@ -33,7 +33,7 @@ struct MantraCounterModeOverlayView: View {
                                 showBlink = true
                                 afterDelay(0.05) { showBlink = false }
 #if os(watchOS)
-                                previousReads = viewModel.mantra.reads
+                                WKInterfaceDevice.current().play(.click)
 #endif
                                 viewModel.handleAdjusting(for: .reads, with: 1)
                             }

@@ -20,7 +20,6 @@ struct ReadsView: View {
     @State private var isPresentedAdjustingSheet = false
     @State private var isMantraCounterMode = false
     @State private var showHint = false
-    @State private var currentReads: Int32 = 0
     @State private var previousReads: Int32 = 0
     
     var body: some View {

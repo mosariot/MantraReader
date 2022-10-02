@@ -154,6 +154,12 @@ struct ContentView: View {
                     }
                 }
             }
+            .onChange(of: selectedMantra.count) { newValue in
+                if newValue > 1 {
+                    let firstMantra = selectedMantra[0]
+                    selectedMantra = [firstMantra]
+                }
+            }
         }
     }
 }

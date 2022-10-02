@@ -37,9 +37,8 @@ struct ReadsView: View {
         
         ZStack {
             CircularProgressView(
-                viewModel: CircularProgressViewModel(viewModel.mantra, currentReads: $currentReads),
-                isMantraCounterMode: isMantraCounterMode,
-                currentReads: $currentReads
+                viewModel: CircularProgressViewModel(viewModel.mantra),
+                isMantraCounterMode: isMantraCounterMode
             )
             .padding(.top, 10)
             .padding(.bottom, 10)

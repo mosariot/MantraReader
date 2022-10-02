@@ -19,7 +19,7 @@ struct AdjustingView: View {
     var body: some View {
         VStack {
             Text("\(value, specifier: "%.0f")")
-                .font(.system(.largeTitle, design: .rounded, weight: .bold))
+                .font(.system(size: 50, weight: .bold, design: .rounded))
                 .focusable()
                 .digitalCrownRotation(
                     $value,
@@ -61,10 +61,11 @@ struct AdjustingView: View {
                 .clipShape(Capsule())
             }
             Button("Add") {
-                viewModel.handleAdjusting(for: adjustingType, with: Int32(value.rounded(.towardZero)))
+                if Int32(value.rounded(.towardZero)) > 0 {
+                    viewModel.handleAdjusting(for: adjustingType, with: Int32(value.rounded(.towardZero)))
+                }
                 dismiss()
             }
-            .disabled(Int32(value.rounded(.towardZero)) == 0)
             .alert("", isPresented: $isPresentedFirstAppearOfAdjustingViewAlert) {
                 Button("OK") { }
             } message: {

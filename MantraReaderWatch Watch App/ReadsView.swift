@@ -114,10 +114,7 @@ struct ReadsView: View {
                 Text("Use long press on the screen to enter and quit the mode.")
             }
             if isMantraCounterMode {
-                MantraCounterModeOverlayView(
-                    showBlink: $showBlink,
-                    viewModel: viewModel
-                )
+                MantraCounterModeOverlayView(viewModel: viewModel)
             }
             if showBlink {
                 BlinkView()

@@ -25,7 +25,6 @@ struct ReadsView: View {
     @State private var isPresentedUndoAlert = false
     @State private var isPresentedMantraCounterModeAlert = false
     @State private var isPresentedDeleteConfirmation = false
-    @State private var showBlink = false
     @State private var showHint = false
     
     @Binding private var isMantraCounterMode: Bool
@@ -193,12 +192,8 @@ struct ReadsView: View {
             }
             if isMantraCounterMode {
                 MantraCounterModeOverlayView(
-                    showBlink: $showBlink,
                     viewModel: viewModel
                 )
-            }
-            if showBlink {
-                BlinkView()
             }
             if showHint {
                 HintView()

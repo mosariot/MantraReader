@@ -126,6 +126,9 @@ final class ReadsViewModel: ObservableObject {
     
     func handleAdjusting(for adjust: AdjustingType?, with value: Int32) {
         guard let adjust else { return }
+#if os(watchOS)
+        WKInterfaceDevice.current().play(.click)
+#endif
         switch adjust {
         case .reads:
 #if os(iOS)
@@ -206,7 +209,6 @@ final class ReadsViewModel: ObservableObject {
                 self.isAboutToShowCongratulations = false
             }
         }
-        WKInterfaceDevice.current().play(.click)
     }
 #endif
     

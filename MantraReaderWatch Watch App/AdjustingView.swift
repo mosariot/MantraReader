@@ -18,7 +18,7 @@ struct AdjustingView: View {
     
     var body: some View {
         VStack {
-            Text("\(value, specifier: "%.0f")")
+            Text("\(Int32(value.rounded(.towardZero)))")
                 .font(.system(size: 50, weight: .bold, design: .rounded))
                 .focusable()
                 .digitalCrownRotation(

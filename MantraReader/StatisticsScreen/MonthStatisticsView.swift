@@ -126,7 +126,7 @@ struct MonthStatisticsView: View {
                 }
                 .frame(height: 150)
 #elseif os(watchOS)
-                .frame(height: 100)
+                .frame(height: 90)
 #endif
                 if isLoadingStatistics {
                     ProgressView()

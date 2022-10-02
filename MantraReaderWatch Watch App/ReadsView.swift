@@ -19,7 +19,6 @@ struct ReadsView: View {
     @State private var isPresentedMantraCounterModeInfo = false
     @State private var isPresentedAdjustingSheet = false
     @State private var isMantraCounterMode = false
-    @State private var showBlink = false
     @State private var showHint = false
     @State private var currentReads: Int32 = 0
     @State private var previousReads: Int32 = 0
@@ -116,9 +115,6 @@ struct ReadsView: View {
             if isMantraCounterMode {
                 MantraCounterModeOverlayView(viewModel: viewModel)
             }
-            if showBlink {
-                BlinkView()
-            }
             if showHint {
                 HintView()
             }
@@ -152,8 +148,9 @@ struct ReadsView: View {
             )
         }
         .onAppear {
-            guard previousReads != 0 && previousReads != viewModel.mantra.reads else { return }
+            guard !(previousReads == 0 || previousReads == viewModel.mantra.reads) else { return }
             viewModel.checkForCongratulationsOnWatch(with: viewModel.mantra.reads - previousReads)
+            previousReads = viewModel.mantra.reads
         }
         .onDisappear {
             if isMantraCounterMode {
@@ -176,7 +173,7 @@ struct ReadsView: View {
             showHint = true
             afterDelay(1.5) { showHint = false }
         } else {
-            guard previousReads != 0 && previousReads != viewModel.mantra.reads else { return }
+            guard !(previousReads == 0 || previousReads == viewModel.mantra.reads) else { return }
             viewModel.checkForCongratulationsOnWatch(with: viewModel.mantra.reads - previousReads)
         }
     }

@@ -21,9 +21,6 @@ struct MantraCounterModeOverlayView: View {
                         .onEnded {
                             showBlink = true
                             afterDelay(0.05) { showBlink = false }
-#if os(watchOS)
-                            WKInterfaceDevice.current().play(.click)
-#endif
                             viewModel.handleAdjusting(for: .rounds, with: 1)
                         }
                         .exclusively(
@@ -32,9 +29,6 @@ struct MantraCounterModeOverlayView: View {
                                 .onEnded {
                                     showBlink = true
                                     afterDelay(0.05) { showBlink = false }
-#if os(watchOS)
-                                    WKInterfaceDevice.current().play(.click)
-#endif
                                     viewModel.handleAdjusting(for: .reads, with: 1)
                                 }
                         )

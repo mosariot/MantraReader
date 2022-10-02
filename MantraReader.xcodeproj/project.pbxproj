@@ -184,6 +184,7 @@
 		9FEBE46028DA54CB00E5CF47 /* RingColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA028CF9C2000CE9D9B /* RingColor.swift */; };
 		9FEBE46128DA54D800E5CF47 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5C828D4B36100A00681 /* Settings.swift */; };
 		9FEBE46228DA54E400E5CF47 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794ED2289B026F00DDF940 /* Sorting.swift */; };
+		9FED6BA928E97DC5006FF4E6 /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F780037287FF7D200516A0F /* RandomColor.swift */; };
 		9FF7C3952864C16200DA5F51 /* PreloadedMantras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */; };
 /* End PBXBuildFile section */
 
@@ -1019,6 +1020,7 @@
 				9FEBE45F28DA547700E5CF47 /* ProgressArc.swift in Sources */,
 				9F8915E128E07274009AE06F /* Date+StartEnd.swift in Sources */,
 				9F81E41E28E62089002E83C1 /* ConfettiSwiftUI.swift in Sources */,
+				9FED6BA928E97DC5006FF4E6 /* RandomColor.swift in Sources */,
 				9F172FA328E2046500463818 /* ReadTheMantra.xcdatamodeld in Sources */,
 				9F38FA1228DF623D000825C3 /* MantraColorScheme.swift in Sources */,
 				9FEBE46128DA54D800E5CF47 /* Settings.swift in Sources */,

@@ -42,7 +42,19 @@ struct ContentView: View {
     }
     
     var body: some View {
-        NavigationStack(path: $selectedMantra) {
+        let path = Binding(
+            get: { self.selectedMantra },
+            set: {
+                if $0.count > 1 {
+                    let mantra = $0[1]
+                    self.selectedMantra = [mantra]
+                } else {
+                    self.selectedMantra = $0
+                }
+            }
+        )
+        
+        NavigationStack(path: path) {
             ZStack {
                 List(mantras) { section in
                     Section(section.id ? "Favorites" : "Mantras") {
@@ -154,12 +166,12 @@ struct ContentView: View {
                     }
                 }
             }
-            .onChange(of: selectedMantra.count) { newValue in
-                if newValue > 1 {
-                    let firstMantra = selectedMantra[0]
-                    selectedMantra = [firstMantra]
-                }
-            }
+//            .onChange(of: selectedMantra.count) { newValue in
+//                if newValue > 1 {
+//                    let firstMantra = selectedMantra[0]
+//                    selectedMantra = [firstMantra]
+//                }
+//            }
         }
     }
 }

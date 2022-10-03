@@ -25,7 +25,7 @@ final class PreloadedMantraListViewModel: ObservableObject {
                     if key == .title {
                         mantra.title = value
                     }
-                    if key == .image {
+                    if key == .image_list {
                         mantra.imageString = value
                     }
                 }

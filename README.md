@@ -9,9 +9,9 @@ In this app:
 - Use preloaded mantras or create and set up your own.
 - Add most actual mantras to Favorites.
 - Track your readings statistics over time.
-- Enjoy the user-friendly interface and beautiful design on your iPhone, iPad, Mac (with M-chip) and Apple Watch.
+- Enjoy the user-friendly interface and beautiful design on your iPhone, Apple Watch, iPad and Mac (with M-chip).
 - Take advantage of data sync across all your devices via iCloud (works automatically for signed-in users). All data is saved in iCloud and won't be lost even if the application is deleted.
-- Use all kinds of widgets with the necessary data on homescreen and lockscreen.
+- Use all kinds of widgets with the necessary data on Home Screen and Lock Screen.
 
 Important information:
 Recitation of mantras is a sacrament.
@@ -32,7 +32,7 @@ We wish you deep awarenesses and spiritual growth!
 - Используйте предустановленные мантры или создавайте и настраивайте свои собственные.
 - Добавляйте наиболее актуальные мантры в Избранное.
 - Отслеживайте статистику начиток с течением времени.
-- Получайте удовольствие от удобного интерфейса и прекрасного дизайна на ваших iPhone, iPad, Mac (с М-чипом) и Apple Watch.
+- Получайте удовольствие от удобного интерфейса и прекрасного дизайна на ваших iPhone, Apple Watch, iPad и Mac (с М-чипом).
 - Используйте преимущества синхронизации данных между всеми вашими устройствами через iCloud (работает автоматически для пользователей iCloud). Все данные сохраняются в облаке и не потеряются даже в случае удаления приложения.
 - Используйте все виды виджетов с необходимыми данными на домашнем экране и экране блокировки.
 

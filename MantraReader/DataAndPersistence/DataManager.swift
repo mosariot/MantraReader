@@ -38,7 +38,6 @@ final class DataManager: ObservableObject {
         return mantras
     }
     
-#if os(iOS)
     func preloadData() {
         PreloadedMantras.data.forEach { data in
             let mantra = Mantra(context: viewContext)
@@ -57,7 +56,10 @@ final class DataManager: ObservableObject {
                 case .image:
                     if let image = UIImage(named: value) {
                         mantra.image = image.pngData()
-                        mantra.imageForTableView = image.resize(to: CGSize(width: Constants.rowHeight, height: Constants.rowHeight)).pngData()
+                    }
+                case .image_list:
+                    if let image = UIImage(named: value) {
+                        mantra.imageForTableView = image.pngData()
                     }
                 }
             }
@@ -65,6 +67,7 @@ final class DataManager: ObservableObject {
         saveData()
     }
     
+#if os(iOS)
     func addMantras(with selectedMantrasTitles: Set<String>) {
         let selectedMantras = PreloadedMantras.data.filter {
             guard let title = $0[.title] else { return false }

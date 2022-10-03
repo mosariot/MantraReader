@@ -53,18 +53,14 @@ struct LaunchPreparer {
                 case .success(_):
                     if !areThereAnyRecords {
                         // no records in iCloud
-#if os(iOS)
                         dataManager.preloadData()
-#endif
                         isInitalDataLoading = false
                     } else {
                         // CloudKit automatically handles loading records from iCloud
                     }
                 case .failure(_):
                     // for example, user is not logged-in iCloud (type of error doesn't matter)
-#if os(iOS)
                     dataManager.preloadData()
-#endif
                     isInitalDataLoading = false
                 }
             }

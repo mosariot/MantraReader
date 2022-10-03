@@ -13,6 +13,7 @@ enum PreloadedMantras {
         case text
         case details
         case image
+        case image_list
     }
     
     static let data: [[MantraAttributes: String]] = [

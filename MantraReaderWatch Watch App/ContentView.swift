@@ -74,6 +74,9 @@ struct ContentView: View {
                         }
                     }
                 }
+                .navigationDestination(for: Mantra.self) { mantra in
+                    ReadsView(viewModel: ReadsViewModel(mantra, dataManager: dataManager))
+                }
                 if isInitalDataLoading {
                     ProgressView("Syncing...")
                 }
@@ -81,9 +84,6 @@ struct ContentView: View {
                     Text("Please add some mantras on your iPhone or iPad")
                         .foregroundColor(.secondary)
                 }
-            }
-            .navigationDestination(for: Mantra.self) { mantra in
-                ReadsView(viewModel: ReadsViewModel(mantra, dataManager: dataManager))
             }
             .confirmationDialog(
                 "Delete Mantra",

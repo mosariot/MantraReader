@@ -392,7 +392,7 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "Use long press on the screen to enter and quit the mode." = "Используйте долгое нажатие по экрану для входа и выхода из режима.";
 
 /* Mantra Counter mode alert message */
-"You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. Use extended Wake Duration in your Watch Settings to prevent screen dimming." = "Вы входите в режим 'Счетчик мантр'. Один тап по экрану добавит одну начитку, двойной тап - добавит один круг. Используйте увеличенное время подсветки экрана в настройках ваших часов, чтобы предотвратить затемнение.";
+"You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. Use extended Wake Duration and Return to Clock duration (customizable separately for Mantra Reader) in your Watch Settings to stay in app while reading your mantras." = "Вы входите в режим 'Счетчик мантр'. Один тап по экрану добавит одну начитку, двойной тап - добавит один круг. Используйте увеличенное время подсветки экрана и возврата к циферблату (можно настроить отдельно для Начитай!) в настройках ваших часов, чтобы оставаться в приложении во время начитки мантр.";
 
 /* First appear of AdjustingView alert message */
 "For change the value just spin the crown" = "Для изменения значения просто крутите колесико";

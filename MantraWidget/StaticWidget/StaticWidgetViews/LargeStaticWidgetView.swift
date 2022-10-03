@@ -59,7 +59,7 @@ struct LargeStaticWidgetView: View {
         if let data, let image = UIImage(data: data) {
             return image
         } else {
-            return UIImage(named: Constants.defaultImage)!.resize(to: CGSize(width: Constants.rowHeight, height: Constants.rowHeight))
+            return UIImage(named: Constants.defaultImageList)!
         }
     }
 }

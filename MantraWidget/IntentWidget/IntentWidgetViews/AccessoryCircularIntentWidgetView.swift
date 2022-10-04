@@ -34,14 +34,30 @@ struct AccessoryCircularIntentWidgetView: View {
         }
     }
     
+    private var value: Double {
+#if os(iOS)
+        Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)
+#elseif os(watchOS)
+        Double(selectedMantra?.reads ?? 56683)
+#endif
+    }
+    
+    private var endRange: Double {
+#if os(iOS)
+        Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000)
+#elseif os(watchOS)
+        Double(selectedMantra?.goal ?? 100000)
+#endif
+    }
+    
     var body: some View {
         Gauge(
-            value: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0),
-            in: 0...Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000)
+            value: value,
+            in: 0...endRange
         ) {
             Text("")
         } currentValueLabel: {
-            Text("\(formatter.string(fromNumber: (selectedMantra?.reads ?? firstMantra?.reads) ?? 0))")
+            Text("\(formatter.string(fromNumber: Int32(value))")
                 .privacySensitive()
         }
         .gaugeStyle(.accessoryCircularCapacity)

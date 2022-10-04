@@ -20,7 +20,7 @@ struct StaticWidget: Widget {
 #if os(iOS)
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryInline, .accessoryRectangular])
 #elseif os(watchOS)
-        .supportedFamilies([.accessoryInline, .accessoryRectangular])
+        .supportedFamilies([.accessoryInline, .accessoryRectangular, .accessoryCorner])
 #endif
     }
 }

@@ -31,6 +31,10 @@ struct IntentWidgetEntryView : View {
             MediumIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
                 .environment(\.colorScheme, preferredColorScheme ?? systemColorScheme)
                 .environmentObject(settings)
+#elseif os(watchOS)
+        case .accessoryCorner:
+            AccessoryCornerIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
+                .environmentObject(settings)
 #endif
         case .accessoryCircular:
             AccessoryCircularIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
@@ -45,10 +49,54 @@ struct IntentWidgetEntryView : View {
             }
             .widgetURL(URL(string: "\(entry.selectedMantra?.id ?? entry.firstMantra?.id ?? UUID())"))
         case .accessoryRectangular:
-            AccessoryRectangularIntentWidgetVIew(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
+            AccessoryRectangularIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
                 .environmentObject(settings)
         default:
             EmptyView()
         }
+    }
+}
+
+struct AccessoryCornerIntentWidgetView: View {
+    @Environment(\.redactionReasons) private var reasons
+    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+    @EnvironmentObject private var settings: Settings
+    var selectedMantra: WidgetModel.WidgetMantra?
+    var firstMantra: WidgetModel.WidgetMantra?
+    
+    private var lineColor: Color {
+        switch settings.ringColor {
+            case .dynamic:
+            let progress = Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000)
+            if progress < 0.5 {
+                return .progressGreenStart
+            } else if progress >= 0.5 && progress < 1.0 {
+                return .progressYellowStart
+            } else if progress >= 1.0 {
+                return .progressRedStart
+            } else {
+                return .accentColor
+            }
+            case .red: return .progressRedStart
+            case .yellow: return .progressYellowStart
+            case .green: return .progressGreenStart
+        }
+    }
+    
+    var body: some View {
+        Gauge(
+            value: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0),
+            in: 0...Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000)
+        ) {
+            Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
+                .privacySensitive()
+        } currentValueLabel: {
+            Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
+                .privacySensitive()
+        }
+        .gaugeStyle(.accessoryLinearCapacity)
+        .tint(widgetRenderingMode == .fullColor ? lineColor : nil)
+        .redacted(reason: reasons)
+        .widgetURL(URL(string: (selectedMantra?.id.uuidString ?? firstMantra?.id.uuidString) ?? ""))
     }
 }

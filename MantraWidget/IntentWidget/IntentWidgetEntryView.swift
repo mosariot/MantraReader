@@ -40,14 +40,7 @@ struct IntentWidgetEntryView : View {
             AccessoryCircularIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
                 .environmentObject(settings)
         case .accessoryInline:
-            ViewThatFits(in: .horizontal) {
-                HStack {
-                    Text("\(entry.selectedMantra?.title ?? entry.firstMantra?.title ?? "")")
-                    Text("\(entry.selectedMantra?.reads ?? entry.firstMantra?.reads ?? 0)")
-                }
-                Text("\(entry.selectedMantra?.reads ?? entry.firstMantra?.reads ?? 0)")
-            }
-            .widgetURL(URL(string: "\(entry.selectedMantra?.id ?? entry.firstMantra?.id ?? UUID())"))
+            AccessoryInlineIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
         case .accessoryRectangular:
             AccessoryRectangularIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
                 .environmentObject(settings)
@@ -98,5 +91,29 @@ struct AccessoryCornerIntentWidgetView: View {
         .tint(widgetRenderingMode == .fullColor ? lineColor : nil)
         .redacted(reason: reasons)
         .widgetURL(URL(string: (selectedMantra?.id.uuidString ?? firstMantra?.id.uuidString) ?? ""))
+    }
+}
+
+struct AccessoryInlineIntentWidgetView: View {
+    @Environment(\.redactionReasons) private var reasons
+    var selectedMantra: WidgetModel.WidgetMantra?
+    var firstMantra: WidgetModel.WidgetMantra?
+    
+    var body: some View {
+        ViewThatFits(in: .horizontal) {
+            HStack {
+#if os(iOS)
+                Text("\(entry.selectedMantra?.title ?? entry.firstMantra?.title ?? "")")
+#elseif os(watchOS)
+                Text("\(entry.selectedMantra?.title ?? "Your mantra")")
+#endif
+                Text("\(entry.selectedMantra?.reads ?? entry.firstMantra?.reads ?? 0)")
+                    .privacySensitive()
+            }
+            Text("\(entry.selectedMantra?.reads ?? entry.firstMantra?.reads ?? 0)")
+                .privacySensitive()
+        }
+        .redacted(reason: reasons)
+        .widgetURL(URL(string: "\(entry.selectedMantra?.id ?? entry.firstMantra?.id ?? UUID())"))
     }
 }

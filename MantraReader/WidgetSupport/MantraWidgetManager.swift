@@ -39,5 +39,6 @@ struct MantraWidgetManager {
         guard let data = try? JSONEncoder().encode(widgetModel) else { return }
         widgetItemData = data
         WidgetCenter.shared.reloadAllTimelines()
+        WidgetCenter.shared.invalidateConfigurationRecommendations()
     }
 }

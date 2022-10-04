@@ -36,7 +36,11 @@ struct IntentWidgetEntryView : View {
             AccessoryCircularIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
                 .environmentObject(settings)
         case .accessoryInline:
-            Text("Mantra: \(entry.selectedMantra?.reads ?? entry.firstMantra?.reads ?? 0)")
+            HStack {
+                Text("\(entry.selectedMantra?.title ?? entry.firstMantra?.title ?? "")")
+                Text("\(entry.selectedMantra?.reads ?? entry.firstMantra?.reads ?? 0)")
+                    .layoutPriority(1)
+            }
                 .widgetURL(URL(string: "\(entry.selectedMantra?.id ?? entry.firstMantra?.id ?? UUID())"))
         case .accessoryRectangular:
             AccessoryRectangularIntentWidgetVIew(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)

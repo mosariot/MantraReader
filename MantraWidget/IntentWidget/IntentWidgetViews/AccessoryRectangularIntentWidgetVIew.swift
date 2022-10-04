@@ -17,7 +17,6 @@ struct AccessoryRectangularIntentWidgetView: View {
     private var lineColor: Color {
         switch settings.ringColor {
             case .dynamic:
-            let progress = Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000)
             if progress < 0.5 {
                 return .progressGreenStart
             } else if progress >= 0.5 && progress < 1.0 {
@@ -33,7 +32,15 @@ struct AccessoryRectangularIntentWidgetView: View {
         }
     }
     
-        private var value: Double {
+    private var progress: Double {
+#if os(iOS)
+        Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000)
+#elseif os(watchOS)
+        Double(selectedMantra?.reads ?? 56683) / Double(selectedMantra?.goal ?? 100000)
+#endif
+    }
+    
+    private var value: Double {
 #if os(iOS)
         Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)
 #elseif os(watchOS)

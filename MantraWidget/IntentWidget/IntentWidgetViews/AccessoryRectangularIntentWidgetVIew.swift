@@ -1,5 +1,5 @@
 //
-//  AccessoryRectangularIntentWidgetVIew.swift
+//  AccessoryRectangularIntentWidgetView.swift
 //  MantraWidgetExtension
 //
 //  Created by Alex Vorobiev on 17.08.2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AccessoryRectangularIntentWidgetVIew: View {
+struct AccessoryRectangularIntentWidgetView: View {
     @Environment(\.redactionReasons) private var reasons
     @Environment(\.widgetRenderingMode) private var widgetRenderingMode
     @EnvironmentObject private var settings: Settings

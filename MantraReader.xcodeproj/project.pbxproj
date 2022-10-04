@@ -41,7 +41,6 @@
 		9F39E54E28DA46790075534B /* MantraReader.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9F39E54D28DA46790075534B /* MantraReader.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9F39E55328DA46790075534B /* MantraReaderWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F39E55228DA46790075534B /* MantraReaderWatchApp.swift */; };
 		9F39E55528DA46790075534B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F39E55428DA46790075534B /* ContentView.swift */; };
-		9F39E55728DA467A0075534B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F39E55628DA467A0075534B /* Assets.xcassets */; };
 		9F39E55A28DA467A0075534B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F39E55928DA467A0075534B /* Preview Assets.xcassets */; };
 		9F39E55D28DA467A0075534B /* MantraReaderWatch.app in Resources */ = {isa = PBXBuildFile; fileRef = 9F39E54828DA46790075534B /* MantraReaderWatch.app */; };
 		9F4DE924286E3B670064ADCB /* UIImage+CropToCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DE923286E3B670064ADCB /* UIImage+CropToCircle.swift */; };
@@ -103,6 +102,7 @@
 		9F99ADD828DEE72C00175408 /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E728A18EEF001FF7DE /* WidgetModel.swift */; };
 		9F99ADD928DEE74100175408 /* Bool+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F348D3F28A404810070F157 /* Bool+Comparable.swift */; };
 		9F99ADDB28DEE7C500175408 /* ReadingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABFF5228BD4009001A1D7F /* ReadingsModel.swift */; };
+		9F9E775A28EBDB2B00FE0EFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEE9A0285F682D0070BA06 /* Assets.xcassets */; };
 		9FA0553228AC00D3006E5798 /* MantraWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553028AC0084006E5798 /* MantraWidgets.swift */; };
 		9FA0553B28AC018E006E5798 /* StaticWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553928AC015F006E5798 /* StaticWidgetEntryView.swift */; };
 		9FA0553C28AC018E006E5798 /* StaticProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553728AC014C006E5798 /* StaticProvider.swift */; };
@@ -925,8 +925,8 @@
 			files = (
 				9F39E55A28DA467A0075534B /* Preview Assets.xcassets in Resources */,
 				9F172FA728E204D600463818 /* InfoPlist.strings in Resources */,
+				9F9E775A28EBDB2B00FE0EFC /* Assets.xcassets in Resources */,
 				9F38FA1328DF63D4000825C3 /* Localizable.strings in Resources */,
-				9F39E55728DA467A0075534B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,6 +25,7 @@ struct StaticWidgetEntryView: View {
     @ViewBuilder
     var body: some View {
         switch family {
+#if os(iOS)
         case .systemSmall:
             SmallStaticWidgetView(widgetModel: entry.widgetModel)
                 .environment(\.colorScheme, preferredColorScheme ?? systemColorScheme)
@@ -34,6 +35,7 @@ struct StaticWidgetEntryView: View {
         case .systemLarge:
             LargeStaticWidgetView(widgetModel: entry.widgetModel)
                 .environment(\.colorScheme, preferredColorScheme ?? systemColorScheme)
+#endif
         case .accessoryInline:
             Text("Mantras: \(entry.widgetModel.mantras.map { $0.reads }.reduce(0,+))")
                 .privacySensitive()

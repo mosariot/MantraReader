@@ -22,6 +22,7 @@ struct IntentWidgetEntryView : View {
 
     var body: some View {
         switch family {
+#if os(iOS)
         case .systemSmall:
             SmallIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
                 .environment(\.colorScheme, preferredColorScheme ?? systemColorScheme)
@@ -30,13 +31,16 @@ struct IntentWidgetEntryView : View {
             MediumIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
                 .environment(\.colorScheme, preferredColorScheme ?? systemColorScheme)
                 .environmentObject(settings)
+#endif
         case .accessoryCircular:
             AccessoryCircularIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
+                .environmentObject(settings)
         case .accessoryInline:
             Text("Mantra: \(entry.selectedMantra?.reads ?? entry.firstMantra?.reads ?? 0)")
                 .widgetURL(URL(string: "\(entry.selectedMantra?.id ?? entry.firstMantra?.id ?? UUID())"))
         case .accessoryRectangular:
             AccessoryRectangularIntentWidgetVIew(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
+                .environmentObject(settings)
         default:
             EmptyView()
         }

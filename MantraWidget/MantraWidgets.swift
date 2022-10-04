@@ -12,7 +12,12 @@ import SwiftUI
 struct MantraWidgets: WidgetBundle {
     @WidgetBundleBuilder
     var body: some Widget {
+#if os(iOS)
         IntentWidget()
         StaticWidget()
+#elseif os(watchOS)
+        StaticWidget()
+        IntentWidget()
+#endif
     }
 }

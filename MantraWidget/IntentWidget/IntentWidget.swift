@@ -17,6 +17,10 @@ struct IntentWidget: Widget {
         }
         .configurationDisplayName("Current mantra")
         .description("Track your current mantra")
+#if os(iOS)
         .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryInline, .accessoryRectangular])
+#elseif os(watchOS)
+        .supportedFamilies([.accessoryCircular, .accessoryInline, .accessoryRectangular])
+#endif
     }
 }

@@ -15,6 +15,7 @@ struct AccessoryRectangularStaticWidgetView: View {
         HStack {
             Image(systemName: "book")
                 .imageScale(.large)
+                .padding()
             VStack(alignment: .leading) {
                 Text("Total Mantras")
                     .font(.subheadline)

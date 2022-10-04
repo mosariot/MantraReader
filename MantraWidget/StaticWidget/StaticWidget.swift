@@ -17,6 +17,10 @@ struct StaticWidget: Widget {
         }
         .configurationDisplayName("Mantra Reader")
         .description("Track your mantras")
+#if os(iOS)
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryInline, .accessoryRectangular])
+#elseif os(watchOS)
+        .supportedFamilies([.accessoryInline, .accessoryRectangular])
+#endif
     }
 }

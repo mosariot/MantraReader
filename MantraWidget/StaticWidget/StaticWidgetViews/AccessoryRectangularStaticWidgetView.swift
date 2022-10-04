@@ -15,6 +15,7 @@ struct AccessoryRectangularStaticWidgetView: View {
         HStack {
             Image(systemName: "book")
                 .imageScale(.large)
+                .widgetAccentable()
 #if os(watchOS)
                 .padding()
 #endif
@@ -23,6 +24,7 @@ struct AccessoryRectangularStaticWidgetView: View {
                     .font(.subheadline)
                     .lineLimit(1)
                     .minimumScaleFactor(0.9)
+                    .widgetAccentable()
                 Text("\(widgetModel.mantras.map { $0.reads }.reduce(0,+))")
                     .bold()
                     .privacySensitive()

@@ -15,7 +15,9 @@ struct AccessoryRectangularStaticWidgetView: View {
         HStack {
             Image(systemName: "book")
                 .imageScale(.large)
+#if os(watchOS)
                 .padding()
+#endif
             VStack(alignment: .leading) {
                 Text("Total Mantras")
                     .font(.subheadline)

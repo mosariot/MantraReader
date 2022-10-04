@@ -103,7 +103,7 @@ struct AccessoryInlineIntentWidgetView: View {
         ViewThatFits(in: .horizontal) {
             HStack {
 #if os(iOS)
-                Text("\(entry.selectedMantra?.title ?? entry.firstMantra?.title ?? "")")
+                Text((entry.selectedMantra?.title ?? entry.firstMantra?.title) ?? "Your mantra")
 #elseif os(watchOS)
                 Text("\(entry.selectedMantra?.title ?? "Your mantra")")
 #endif

@@ -21,12 +21,11 @@ struct AccessoryRectangularStaticWidgetView: View {
 #endif
             VStack(alignment: .leading) {
                 Text("Total Mantras")
-                    .font(.subheadline)
+                    .font(.headline)
                     .lineLimit(1)
-                    .minimumScaleFactor(0.9)
+                    .minimumScaleFactor(0.8)
                     .widgetAccentable()
                 Text("\(widgetModel.mantras.map { $0.reads }.reduce(0,+))")
-                    .bold()
                     .privacySensitive()
             }
             Spacer()

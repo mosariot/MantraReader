@@ -38,8 +38,13 @@ struct AccessoryRectangularIntentWidgetView: View {
             value: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0),
             in: 0...Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000)
         ) {
+#if os(iOS)
             Text((selectedMantra?.title ?? firstMantra?.title) ?? "Your mantra")
                 .widgetAccentable()
+#elseif os(watchOS)
+             Text(selectedMantra?.title ?? "Your mantra")
+                 .widgetAccentable()
+#endif
         } currentValueLabel: {
             Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
                 .privacySensitive()

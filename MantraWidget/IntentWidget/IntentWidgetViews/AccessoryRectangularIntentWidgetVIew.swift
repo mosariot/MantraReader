@@ -33,20 +33,38 @@ struct AccessoryRectangularIntentWidgetView: View {
         }
     }
     
+        private var value: Double {
+#if os(iOS)
+        Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)
+#elseif os(watchOS)
+        Double(selectedMantra?.reads ?? 56683)
+#endif
+    }
+    
+    private var endRange: Double {
+#if os(iOS)
+        Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000)
+#elseif os(watchOS)
+        Double(selectedMantra?.goal ?? 100000)
+#endif
+    }
+    
+    private var title: String {
+#if os(iOS)
+        (selectedMantra?.title ?? firstMantra?.title) ?? String(localized: "Your mantra")
+#elseif os(watchOS)
+        selectedMantra?.title ?? String(localized: "Your mantra")
+#endif
+    
     var body: some View {
         Gauge(
-            value: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0),
-            in: 0...Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000)
+            value: value,
+            in: 0...endRange
         ) {
-#if os(iOS)
-            Text((selectedMantra?.title ?? firstMantra?.title) ?? "Your mantra")
+            Text(title)
                 .widgetAccentable()
-#elseif os(watchOS)
-             Text(selectedMantra?.title ?? "Your mantra")
-                 .widgetAccentable()
-#endif
         } currentValueLabel: {
-            Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
+            Text("\(Int(value))")
                 .privacySensitive()
         }
         .gaugeStyle(.accessoryLinearCapacity)

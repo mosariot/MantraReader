@@ -62,6 +62,7 @@ struct AccessoryRectangularIntentWidgetView: View {
 #elseif os(watchOS)
         selectedMantra?.title ?? String(localized: "Your mantra")
 #endif
+    }
     
     var body: some View {
         Gauge(

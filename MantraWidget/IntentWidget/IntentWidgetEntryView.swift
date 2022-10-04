@@ -60,7 +60,6 @@ struct AccessoryCornerIntentWidgetView: View {
     private var lineColor: Color {
         switch settings.ringColor {
             case .dynamic:
-            let progress = Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000)
             if progress < 0.5 {
                 return .progressGreenStart
             } else if progress >= 0.5 && progress < 1.0 {
@@ -76,15 +75,47 @@ struct AccessoryCornerIntentWidgetView: View {
         }
     }
     
+    private var progress: Double {
+#if os(iOS)
+        Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000)
+#elseif os(watchOS)
+        Double(selectedMantra?.reads ?? 56683) / Double(selectedMantra?.goal ?? 100000)
+#endif
+    }
+    
+    private var value: Double {
+#if os(iOS)
+        Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)
+#elseif os(watchOS)
+        Double(selectedMantra?.reads ?? 56683)
+#endif
+    }
+    
+    private var endRange: Double {
+#if os(iOS)
+        Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000)
+#elseif os(watchOS)
+        Double(selectedMantra?.goal ?? 100000)
+#endif
+    }
+    
+    private var title: String {
+#if os(iOS)
+        (selectedMantra?.title ?? firstMantra?.title) ?? String(localized: "Your mantra")
+#elseif os(watchOS)
+        selectedMantra?.title ?? String(localized: "Your mantra")
+#endif
+    }
+    
     var body: some View {
         Gauge(
-            value: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0),
-            in: 0...Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000)
+            value: value,
+            in: 0...endRange
         ) {
-            Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
+            Text("\(Int(value)")
                 .privacySensitive()
         } currentValueLabel: {
-            Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
+            Text("\(Int(value)")
                 .privacySensitive()
         }
         .gaugeStyle(.accessoryLinearCapacity)
@@ -104,11 +135,14 @@ struct AccessoryInlineIntentWidgetView: View {
             HStack {
 #if os(iOS)
                 Text((entry.selectedMantra?.title ?? entry.firstMantra?.title) ?? "Your mantra")
-#elseif os(watchOS)
-                Text("\(entry.selectedMantra?.title ?? "Your mantra")")
-#endif
                 Text("\(entry.selectedMantra?.reads ?? entry.firstMantra?.reads ?? 0)")
                     .privacySensitive()
+#elseif os(watchOS)
+                Text("\(entry.selectedMantra?.title ?? "Your mantra")")
+                Text("\(entry.selectedMantra?.reads ?? 56683)")
+                    .privacySensitive()
+#endif
+
             }
             Text("\(entry.selectedMantra?.reads ?? entry.firstMantra?.reads ?? 0)")
                 .privacySensitive()

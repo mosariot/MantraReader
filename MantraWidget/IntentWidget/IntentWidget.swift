@@ -20,7 +20,7 @@ struct IntentWidget: Widget {
 #if os(iOS)
         .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryInline, .accessoryRectangular])
 #elseif os(watchOS)
-        .supportedFamilies([.accessoryCircular, .accessoryInline, .accessoryRectangular])
+        .supportedFamilies([.accessoryCircular, .accessoryInline, .accessoryRectangular, .accessoryCorner])
 #endif
     }
 }

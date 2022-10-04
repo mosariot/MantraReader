@@ -43,13 +43,18 @@ struct ContentView: View {
     
     var body: some View {
         let path = Binding(
-            get: { self.selectedMantra },
-            set: {
-                if $0.count > 1 {
-                    let mantra = $0[1]
-                    self.selectedMantra = [mantra]
+            get: {
+                if let mantra = selectedMantra[0] {
+                    return [mantra]
                 } else {
-                    self.selectedMantra = $0
+                    return []
+                }
+            },
+            set: {
+                if let mantra = $0[0] {
+                    selectedMantra = [mantra]
+                } else {
+                    selectedMantra = []
                 }
             }
         )

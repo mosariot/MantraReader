@@ -67,6 +67,7 @@
 		9F6C7D6528BC76C7004CC501 /* MonthStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C7D6428BC76C7004CC501 /* MonthStatisticsView.swift */; };
 		9F6C7D6728BD300F004CC501 /* YearStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C7D6628BD300E004CC501 /* YearStatisticsView.swift */; };
 		9F6C7D6928BD3015004CC501 /* WeekStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C7D6828BD3014004CC501 /* WeekStatisticsView.swift */; };
+		9F6CB84A28ED34880063F7A5 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6CB84928ED34880063F7A5 /* ComplicationController.swift */; };
 		9F6E65AF28B273CB0054F6D6 /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B228B273CB0054F6D6 /* MantraWidget.intentdefinition */; };
 		9F6E65B028B273CB0054F6D6 /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B228B273CB0054F6D6 /* MantraWidget.intentdefinition */; };
 		9F6E65B828B2755E0054F6D6 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B728B2755D0054F6D6 /* ImagePickerView.swift */; };
@@ -350,6 +351,7 @@
 		9F6C7D6428BC76C7004CC501 /* MonthStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthStatisticsView.swift; sourceTree = "<group>"; };
 		9F6C7D6628BD300E004CC501 /* YearStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearStatisticsView.swift; sourceTree = "<group>"; };
 		9F6C7D6828BD3014004CC501 /* WeekStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekStatisticsView.swift; sourceTree = "<group>"; };
+		9F6CB84928ED34880063F7A5 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		9F6E65B128B273CB0054F6D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/MantraWidget.intentdefinition; sourceTree = "<group>"; };
 		9F6E65B428B273D30054F6D6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MantraWidget.strings; sourceTree = "<group>"; };
 		9F6E65B628B2751A0054F6D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MantraWidget.strings; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 				9FADFD1F28DDEE5F00644184 /* ReadsView.swift */,
 				9FB052B428E221FF00FEFB1D /* AdjustingView.swift */,
 				9FCAA8BC28E36F4600568464 /* InfoView.swift */,
+				9F6CB84928ED34880063F7A5 /* ComplicationController.swift */,
 				9F39E55828DA467A0075534B /* Preview Content */,
 			);
 			path = "MantraReaderWatch Watch App";
@@ -1133,6 +1136,7 @@
 				9FEBE46028DA54CB00E5CF47 /* RingColor.swift in Sources */,
 				9FB9802828DF507400F04E84 /* CornerRadiusShape.swift in Sources */,
 				9FCD19B428E219D300543D8A /* NumberAnimation.swift in Sources */,
+				9F6CB84A28ED34880063F7A5 /* ComplicationController.swift in Sources */,
 				9FCAA8BD28E36F4600568464 /* InfoView.swift in Sources */,
 				9F8915DF28E0721C009AE06F /* MonthStatisticsView.swift in Sources */,
 				9F8915E228E0727D009AE06F /* KMBFormatter.swift in Sources */,

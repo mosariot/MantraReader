@@ -6,19 +6,14 @@
 //
 
 import ClockKit
-class ComplicationController: NSObject, CLKComplicationDataSource {
-  func complicationDescriptors() async -> [CLKComplicationDescriptor] {
-    return [
-      .init(
-        identifier: "com.mosariot.MantraReader",
-        displayName: "Mantra Reader",
-        supportedFamilies: [
-          .circularSmall, .extraLarge, .graphicBezel, .graphicCircular, .graphicCorner,
-          .modularSmall, .utilitarianLarge, .utilitarianSmall, .utilitarianSmallFlat
-        ]
-      )
-    ]
-  }
 
-  func currentTimelineEntry(for complication: CLKComplication) async -> CLKComplicationTimelineEntry? { nil }
+class ComplicationController: NSObject, CLKComplicationDataSource {
+    func complicationDescriptors() async -> [CLKComplicationDescriptor] {
+        [CLKComplicationDescriptor(
+            identifier: "com.mosariot.MantraReader",
+            displayName: "Mantra Reader",
+            supportedFamilies: .allCases)]
+    }
+    
+    func currentTimelineEntry(for complication: CLKComplication) async -> CLKComplicationTimelineEntry? { nil }
 }

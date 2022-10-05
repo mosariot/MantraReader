@@ -1418,6 +1418,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraReaderWatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -1435,6 +1436,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraReaderWatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};

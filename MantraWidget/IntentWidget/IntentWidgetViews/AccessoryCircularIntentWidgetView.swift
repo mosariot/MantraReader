@@ -57,6 +57,14 @@ struct AccessoryCircularIntentWidgetView: View {
 #endif
     }
     
+    private var title: String {
+#if os(iOS)
+        (selectedMantra?.title ?? firstMantra?.title) ?? String(localized: "Your mantra")
+#elseif os(watchOS)
+        selectedMantra?.title ?? String(localized: "Your mantra")
+#endif
+    }
+    
     var body: some View {
         Gauge(
             value: value,
@@ -70,6 +78,10 @@ struct AccessoryCircularIntentWidgetView: View {
         .gaugeStyle(.accessoryCircularCapacity)
         .tint(widgetRenderingMode == .fullColor ? ringColor : nil)
         .redacted(reason: reasons)
+        .widgetLabel {
+            Text(title)
+                .redacted(reason: reasons)
+        }
         .widgetURL(URL(string: (selectedMantra?.id.uuidString ?? firstMantra?.id.uuidString) ?? ""))
     }
 }

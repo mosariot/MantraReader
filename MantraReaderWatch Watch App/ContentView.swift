@@ -43,19 +43,7 @@ struct ContentView: View {
     }
     
     var body: some View {
-        let path = Binding(
-            get: { self.selectedMantra },
-            set: {
-                if $0.count > 1 {
-                    let mantra = $0[1]
-                    self.selectedMantra = [mantra]
-                } else {
-                    self.selectedMantra = $0
-                }
-            }
-        )
-        
-        NavigationStack(path: path) {
+        NavigationStack(path: $selectedMantra) {
             ZStack {
                 List(mantras) { section in
                     Section(section.id ? "Favorites" : "Mantras") {

@@ -40,7 +40,6 @@
 		9F38FA1328DF63D4000825C3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983A28AAC65B00798AD7 /* Localizable.strings */; };
 		9F39E54E28DA46790075534B /* MantraReader.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9F39E54D28DA46790075534B /* MantraReader.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9F39E55328DA46790075534B /* MantraReaderWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F39E55228DA46790075534B /* MantraReaderWatchApp.swift */; };
-		9F39E55528DA46790075534B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F39E55428DA46790075534B /* ContentView.swift */; };
 		9F39E55A28DA467A0075534B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F39E55928DA467A0075534B /* Preview Assets.xcassets */; };
 		9F39E55D28DA467A0075534B /* MantraReaderWatch.app in Resources */ = {isa = PBXBuildFile; fileRef = 9F39E54828DA46790075534B /* MantraReaderWatch.app */; };
 		9F4DE924286E3B670064ADCB /* UIImage+CropToCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DE923286E3B670064ADCB /* UIImage+CropToCircle.swift */; };
@@ -68,6 +67,7 @@
 		9F6C7D6728BD300F004CC501 /* YearStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C7D6628BD300E004CC501 /* YearStatisticsView.swift */; };
 		9F6C7D6928BD3015004CC501 /* WeekStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C7D6828BD3014004CC501 /* WeekStatisticsView.swift */; };
 		9F6CB84A28ED34880063F7A5 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6CB84928ED34880063F7A5 /* ComplicationController.swift */; };
+		9F6CB84C28ED388E0063F7A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6CB84B28ED388E0063F7A5 /* ContentView.swift */; };
 		9F6E65AF28B273CB0054F6D6 /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B228B273CB0054F6D6 /* MantraWidget.intentdefinition */; };
 		9F6E65B028B273CB0054F6D6 /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B228B273CB0054F6D6 /* MantraWidget.intentdefinition */; };
 		9F6E65B828B2755E0054F6D6 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B728B2755D0054F6D6 /* ImagePickerView.swift */; };
@@ -326,7 +326,7 @@
 		9F39E54828DA46790075534B /* MantraReaderWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MantraReaderWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F39E54D28DA46790075534B /* MantraReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MantraReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F39E55228DA46790075534B /* MantraReaderWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraReaderWatchApp.swift; sourceTree = "<group>"; };
-		9F39E55428DA46790075534B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9F39E55428DA46790075534B /* ContentViewNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewNavView.swift; sourceTree = "<group>"; };
 		9F39E55928DA467A0075534B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9F4DE923286E3B670064ADCB /* UIImage+CropToCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CropToCircle.swift"; sourceTree = "<group>"; };
 		9F4DE925286E3B990064ADCB /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -352,6 +352,7 @@
 		9F6C7D6628BD300E004CC501 /* YearStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearStatisticsView.swift; sourceTree = "<group>"; };
 		9F6C7D6828BD3014004CC501 /* WeekStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekStatisticsView.swift; sourceTree = "<group>"; };
 		9F6CB84928ED34880063F7A5 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		9F6CB84B28ED388E0063F7A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9F6E65B128B273CB0054F6D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/MantraWidget.intentdefinition; sourceTree = "<group>"; };
 		9F6E65B428B273D30054F6D6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MantraWidget.strings; sourceTree = "<group>"; };
 		9F6E65B628B2751A0054F6D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MantraWidget.strings; sourceTree = "<group>"; };
@@ -525,11 +526,12 @@
 				9F11C6E928DA5C1E00A1BEF2 /* MantraReaderWatch-Watch-App-Info.plist */,
 				9F11C6E828DA5BFA00A1BEF2 /* MantraReaderWatch Watch App.entitlements */,
 				9F39E55228DA46790075534B /* MantraReaderWatchApp.swift */,
-				9F39E55428DA46790075534B /* ContentView.swift */,
+				9F6CB84B28ED388E0063F7A5 /* ContentView.swift */,
 				9FADFD1F28DDEE5F00644184 /* ReadsView.swift */,
 				9FB052B428E221FF00FEFB1D /* AdjustingView.swift */,
 				9FCAA8BC28E36F4600568464 /* InfoView.swift */,
 				9F6CB84928ED34880063F7A5 /* ComplicationController.swift */,
+				9F39E55428DA46790075534B /* ContentViewNavView.swift */,
 				9F39E55828DA467A0075534B /* Preview Content */,
 			);
 			path = "MantraReaderWatch Watch App";
@@ -1098,6 +1100,7 @@
 				9FEBE45E28DA547700E5CF47 /* RingCap.swift in Sources */,
 				9FCAA8B728E36C8500568464 /* AdjustingAndUndoTypes.swift in Sources */,
 				9FAA454528DF648200503FB2 /* Mantra+Statistics.swift in Sources */,
+				9F6CB84C28ED388E0063F7A5 /* ContentView.swift in Sources */,
 				9FC6AE2728E152BF00D1361C /* LaunchPreparer.swift in Sources */,
 				9F99ADD928DEE74100175408 /* Bool+Comparable.swift in Sources */,
 				9FC6AE2928E1552A00D1361C /* SettingsView.swift in Sources */,
@@ -1108,7 +1111,6 @@
 				9FCAA8C328E54D6300568464 /* CircularProgressView.swift in Sources */,
 				9FB9801D28DEE8C700F04E84 /* PreloadedMantras.swift in Sources */,
 				9F8915E028E0721F009AE06F /* YearStatisticsView.swift in Sources */,
-				9F39E55528DA46790075534B /* ContentView.swift in Sources */,
 				9FCAA8C528E60ED300568464 /* ReadsViewModel.swift in Sources */,
 				9FADFD2828DDFB0400644184 /* Constants.swift in Sources */,
 				9F81E41D28E62089002E83C1 /* View+ConfettiCannon.swift in Sources */,

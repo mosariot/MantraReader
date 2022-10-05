@@ -133,6 +133,8 @@
 		9F9E778028EBDD7400FE0EFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F1AB3D428A18E58001FF7DE /* Assets.xcassets */; };
 		9F9E778128EBDD7400FE0EFC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983A28AAC65B00798AD7 /* Localizable.strings */; };
 		9F9E778728EBDDDF00FE0EFC /* MantraWidgetExtension watch.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9F9E778528EBDD7400FE0EFC /* MantraWidgetExtension watch.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9F9E778B28ECB1E900FE0EFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983428AAC54A00798AD7 /* InfoPlist.strings */; };
+		9F9E778C28ECB1EA00FE0EFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983428AAC54A00798AD7 /* InfoPlist.strings */; };
 		9FA0553228AC00D3006E5798 /* MantraWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553028AC0084006E5798 /* MantraWidgets.swift */; };
 		9FA0553B28AC018E006E5798 /* StaticWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553928AC015F006E5798 /* StaticWidgetEntryView.swift */; };
 		9FA0553C28AC018E006E5798 /* StaticProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553728AC014C006E5798 /* StaticProvider.swift */; };
@@ -365,7 +367,7 @@
 		9F7B1AE3286AB09A007720A0 /* MantraRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraRow.swift; sourceTree = "<group>"; };
 		9F857B4C28C38EC100A83216 /* Mantra+Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mantra+Statistics.swift"; sourceTree = "<group>"; };
 		9F9E778528EBDD7400FE0EFC /* MantraWidgetExtension watch.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MantraWidgetExtension watch.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F9E778628EBDD7500FE0EFC /* MantraWidgetExtension copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MantraWidgetExtension copy-Info.plist"; path = "/Users/mosariot/Local Development/Обучение/MantraReader/MantraWidgetExtension copy-Info.plist"; sourceTree = "<absolute>"; };
+		9F9E778628EBDD7500FE0EFC /* MantraReaderWatchWidgetInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = MantraReaderWatchWidgetInfo.plist; path = "/Users/mosariot/Local Development/Обучение/MantraReader/MantraReaderWatchWidgetInfo.plist"; sourceTree = "<absolute>"; };
 		9FA0553028AC0084006E5798 /* MantraWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraWidgets.swift; sourceTree = "<group>"; };
 		9FA0553528AC013E006E5798 /* StaticWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticWidgetEntry.swift; sourceTree = "<group>"; };
 		9FA0553728AC014C006E5798 /* StaticProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticProvider.swift; sourceTree = "<group>"; };
@@ -752,14 +754,14 @@
 		9FBEE98B285F682C0070BA06 = {
 			isa = PBXGroup;
 			children = (
-				9F1AB3EE28A1924A001FF7DE /* MantraWidgetExtension.entitlements */,
 				9FBEE996285F682C0070BA06 /* MantraReader */,
 				9F1AB3D028A18E57001FF7DE /* MantraWidget */,
 				9F54231F28AD4E2400F15040 /* MantraIntent */,
 				9F39E55128DA46790075534B /* MantraReaderWatch Watch App */,
+				9F1AB3EE28A1924A001FF7DE /* MantraWidgetExtension.entitlements */,
+				9F9E778628EBDD7500FE0EFC /* MantraReaderWatchWidgetInfo.plist */,
 				9F1AB3CB28A18E57001FF7DE /* Frameworks */,
 				9FBEE995285F682C0070BA06 /* Products */,
-				9F9E778628EBDD7500FE0EFC /* MantraWidgetExtension copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -995,6 +997,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F9E778C28ECB1EA00FE0EFC /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1022,6 +1025,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F9E778028EBDD7400FE0EFC /* Assets.xcassets in Resources */,
+				9F9E778B28ECB1E900FE0EFC /* InfoPlist.strings in Resources */,
 				9F9E778128EBDD7400FE0EFC /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1422,6 +1426,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = "";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "MantraReaderWatch Watch App/MantraReaderWatch Watch App.entitlements";
@@ -1455,6 +1460,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = "";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "MantraReaderWatch Watch App/MantraReaderWatch Watch App.entitlements";
@@ -1545,6 +1551,7 @@
 		9F9E778328EBDD7400FE0EFC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = "";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1553,7 +1560,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MantraWidgetExtension copy-Info.plist";
+				INFOPLIST_FILE = MantraReaderWatchWidgetInfo.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MantraWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1568,13 +1575,14 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 4;
 			};
 			name = Debug;
 		};
 		9F9E778428EBDD7400FE0EFC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = "";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1583,7 +1591,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MantraWidgetExtension copy-Info.plist";
+				INFOPLIST_FILE = MantraReaderWatchWidgetInfo.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MantraWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1598,7 +1606,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

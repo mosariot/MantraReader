@@ -21,7 +21,6 @@ struct StaticWidgetEntryView: View {
         }
     }
 
-    
     @ViewBuilder
     var body: some View {
         switch family {
@@ -37,13 +36,8 @@ struct StaticWidgetEntryView: View {
                 .environment(\.colorScheme, preferredColorScheme ?? systemColorScheme)
 #elseif os(watchOS)
         case .accessoryCorner:
-            VStack {
-                Image(systemName: "book")
-                    .imageScale(.large)
-                    .widgetAccentable
-                Text("\(entry.widgetModel.mantras.map { $0.reads }.reduce(0,+))")
-                    .privacySensitive()
-            }
+            Text("\(entry.widgetModel.mantras.map { $0.reads }.reduce(0,+))")
+                .privacySensitive()
 #endif
         case .accessoryInline:
             Text("Mantras: \(entry.widgetModel.mantras.map { $0.reads }.reduce(0,+))")

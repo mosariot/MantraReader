@@ -64,7 +64,7 @@ struct AccessoryCircularIntentWidgetView: View {
         ) {
             Text("")
         } currentValueLabel: {
-            Text("\(formatter.string(fromNumber: Int32(value))")
+            Text("\(formatter.string(fromNumber: Int32(value)))")
                 .privacySensitive()
         }
         .gaugeStyle(.accessoryCircularCapacity)

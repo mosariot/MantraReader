@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -43,18 +44,13 @@ struct ContentView: View {
     
     var body: some View {
         let path = Binding(
-            get: {
-                if let mantra = selectedMantra[0] {
-                    return [mantra]
-                } else {
-                    return []
-                }
-            },
+            get: { self.selectedMantra },
             set: {
-                if let mantra = $0[0] {
-                    selectedMantra = [mantra]
+                if $0.count > 1 {
+                    let mantra = $0[1]
+                    self.selectedMantra = [mantra]
                 } else {
-                    selectedMantra = []
+                    self.selectedMantra = $0
                 }
             }
         )
@@ -162,7 +158,12 @@ struct ContentView: View {
                     selectedMantra = []
                 }
             }
+            .onAppear {
+                WidgetCenter.shared.reloadAllTimelines()
+                WidgetCenter.shared.invalidateConfigurationRecommendations()
+            }
             .onOpenURL { url in
+                print("\(url)")
                 mantras.forEach { section in
                     section.forEach { mantra in
                         if mantra.uuid == UUID(uuidString: "\(url)") {

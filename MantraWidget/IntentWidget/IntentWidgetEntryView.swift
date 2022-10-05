@@ -112,13 +112,12 @@ struct AccessoryCornerIntentWidgetView: View {
             value: value,
             in: 0...endRange
         ) {
-            Text("\(Int(value)")
-                .privacySensitive()
+            Text("")
         } currentValueLabel: {
-            Text("\(Int(value)")
+            Text("\(Int(value))")
                 .privacySensitive()
         }
-        .gaugeStyle(.accessoryLinearCapacity)
+        .gaugeStyle(.accessoryLinear)
         .tint(widgetRenderingMode == .fullColor ? lineColor : nil)
         .redacted(reason: reasons)
         .widgetURL(URL(string: (selectedMantra?.id.uuidString ?? firstMantra?.id.uuidString) ?? ""))
@@ -134,20 +133,20 @@ struct AccessoryInlineIntentWidgetView: View {
         ViewThatFits(in: .horizontal) {
             HStack {
 #if os(iOS)
-                Text((entry.selectedMantra?.title ?? entry.firstMantra?.title) ?? "Your mantra")
-                Text("\(entry.selectedMantra?.reads ?? entry.firstMantra?.reads ?? 0)")
+                Text((selectedMantra?.title ?? firstMantra?.title) ?? "Your mantra")
+                Text("\(selectedMantra?.reads ?? firstMantra?.reads ?? 0)")
                     .privacySensitive()
 #elseif os(watchOS)
-                Text("\(entry.selectedMantra?.title ?? "Your mantra")")
-                Text("\(entry.selectedMantra?.reads ?? 56683)")
+                Text("\(selectedMantra?.title ?? "Your mantra")")
+                Text("\(selectedMantra?.reads ?? 56683)")
                     .privacySensitive()
 #endif
 
             }
-            Text("\(entry.selectedMantra?.reads ?? entry.firstMantra?.reads ?? 0)")
+            Text("\(selectedMantra?.reads ?? firstMantra?.reads ?? 0)")
                 .privacySensitive()
         }
         .redacted(reason: reasons)
-        .widgetURL(URL(string: "\(entry.selectedMantra?.id ?? entry.firstMantra?.id ?? UUID())"))
+        .widgetURL(URL(string: "\(selectedMantra?.id ?? firstMantra?.id ?? UUID())"))
     }
 }

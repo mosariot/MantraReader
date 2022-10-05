@@ -53,7 +53,7 @@
 		9F5422F328ACA2B000F15040 /* IntentWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F228ACA2B000F15040 /* IntentWidgetEntry.swift */; };
 		9F5422F528ACA2D700F15040 /* MediumIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F428ACA2D700F15040 /* MediumIntentWidgetView.swift */; };
 		9F5422F728ACA2E800F15040 /* SmallIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F628ACA2E800F15040 /* SmallIntentWidgetView.swift */; };
-		9F5422F928ACA30300F15040 /* AccessoryRectangularIntentWidgetVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F828ACA30300F15040 /* AccessoryRectangularIntentWidgetVIew.swift */; };
+		9F5422F928ACA30300F15040 /* AccessoryRectangularIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F828ACA30300F15040 /* AccessoryRectangularIntentWidgetView.swift */; };
 		9F5422FB28ACA31700F15040 /* AccessoryCircularIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422FA28ACA31700F15040 /* AccessoryCircularIntentWidgetView.swift */; };
 		9F5422FD28ACA32E00F15040 /* KMBFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422FC28ACA32E00F15040 /* KMBFormatter.swift */; };
 		9F54231E28AD4E2400F15040 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F54231D28AD4E2400F15040 /* Intents.framework */; };
@@ -111,7 +111,7 @@
 		9F9E776328EBDD7400FE0EFC /* AccessoryRectangularStaticWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553E28AC021D006E5798 /* AccessoryRectangularStaticWidgetView.swift */; };
 		9F9E776428EBDD7400FE0EFC /* IntentWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422EE28ACA29400F15040 /* IntentWidgetEntryView.swift */; };
 		9F9E776528EBDD7400FE0EFC /* IntentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422EC28ACA24100F15040 /* IntentWidget.swift */; };
-		9F9E776628EBDD7400FE0EFC /* AccessoryRectangularIntentWidgetVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F828ACA30300F15040 /* AccessoryRectangularIntentWidgetVIew.swift */; };
+		9F9E776628EBDD7400FE0EFC /* AccessoryRectangularIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F828ACA30300F15040 /* AccessoryRectangularIntentWidgetView.swift */; };
 		9F9E776828EBDD7400FE0EFC /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E728A18EEF001FF7DE /* WidgetModel.swift */; };
 		9F9E776928EBDD7400FE0EFC /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F780037287FF7D200516A0F /* RandomColor.swift */; };
 		9F9E776C28EBDD7400FE0EFC /* StaticWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553528AC013E006E5798 /* StaticWidgetEntry.swift */; };
@@ -135,6 +135,8 @@
 		9F9E778728EBDDDF00FE0EFC /* MantraWidgetExtension watch.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9F9E778528EBDD7400FE0EFC /* MantraWidgetExtension watch.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9F9E778B28ECB1E900FE0EFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983428AAC54A00798AD7 /* InfoPlist.strings */; };
 		9F9E778C28ECB1EA00FE0EFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983428AAC54A00798AD7 /* InfoPlist.strings */; };
+		9F9E778E28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E778D28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift */; };
+		9F9E778F28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E778D28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift */; };
 		9FA0553228AC00D3006E5798 /* MantraWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553028AC0084006E5798 /* MantraWidgets.swift */; };
 		9FA0553B28AC018E006E5798 /* StaticWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553928AC015F006E5798 /* StaticWidgetEntryView.swift */; };
 		9FA0553C28AC018E006E5798 /* StaticProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553728AC014C006E5798 /* StaticProvider.swift */; };
@@ -334,7 +336,7 @@
 		9F5422F228ACA2B000F15040 /* IntentWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentWidgetEntry.swift; sourceTree = "<group>"; };
 		9F5422F428ACA2D700F15040 /* MediumIntentWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumIntentWidgetView.swift; sourceTree = "<group>"; };
 		9F5422F628ACA2E800F15040 /* SmallIntentWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallIntentWidgetView.swift; sourceTree = "<group>"; };
-		9F5422F828ACA30300F15040 /* AccessoryRectangularIntentWidgetVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryRectangularIntentWidgetVIew.swift; sourceTree = "<group>"; };
+		9F5422F828ACA30300F15040 /* AccessoryRectangularIntentWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryRectangularIntentWidgetView.swift; sourceTree = "<group>"; };
 		9F5422FA28ACA31700F15040 /* AccessoryCircularIntentWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCircularIntentWidgetView.swift; sourceTree = "<group>"; };
 		9F5422FC28ACA32E00F15040 /* KMBFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMBFormatter.swift; sourceTree = "<group>"; };
 		9F54231C28AD4E2400F15040 /* MantraIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MantraIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -368,6 +370,7 @@
 		9F857B4C28C38EC100A83216 /* Mantra+Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mantra+Statistics.swift"; sourceTree = "<group>"; };
 		9F9E778528EBDD7400FE0EFC /* MantraWidgetExtension watch.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MantraWidgetExtension watch.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9E778628EBDD7500FE0EFC /* MantraReaderWatchWidgetInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = MantraReaderWatchWidgetInfo.plist; path = "/Users/mosariot/Local Development/Обучение/MantraReader/MantraReaderWatchWidgetInfo.plist"; sourceTree = "<absolute>"; };
+		9F9E778D28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryInlineIntentWidgetView.swift; sourceTree = "<group>"; };
 		9FA0553028AC0084006E5798 /* MantraWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraWidgets.swift; sourceTree = "<group>"; };
 		9FA0553528AC013E006E5798 /* StaticWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticWidgetEntry.swift; sourceTree = "<group>"; };
 		9FA0553728AC014C006E5798 /* StaticProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticProvider.swift; sourceTree = "<group>"; };
@@ -554,8 +557,9 @@
 			children = (
 				9F5422F428ACA2D700F15040 /* MediumIntentWidgetView.swift */,
 				9F5422F628ACA2E800F15040 /* SmallIntentWidgetView.swift */,
-				9F5422F828ACA30300F15040 /* AccessoryRectangularIntentWidgetVIew.swift */,
+				9F5422F828ACA30300F15040 /* AccessoryRectangularIntentWidgetView.swift */,
 				9F5422FA28ACA31700F15040 /* AccessoryCircularIntentWidgetView.swift */,
+				9F9E778D28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift */,
 			);
 			path = IntentWidgetViews;
 			sourceTree = "<group>";
@@ -1058,7 +1062,7 @@
 				9FA0553F28AC021D006E5798 /* AccessoryRectangularStaticWidgetView.swift in Sources */,
 				9F5422EF28ACA29400F15040 /* IntentWidgetEntryView.swift in Sources */,
 				9F5422ED28ACA24100F15040 /* IntentWidget.swift in Sources */,
-				9F5422F928ACA30300F15040 /* AccessoryRectangularIntentWidgetVIew.swift in Sources */,
+				9F5422F928ACA30300F15040 /* AccessoryRectangularIntentWidgetView.swift in Sources */,
 				9F1AB3E428A18EAA001FF7DE /* LargeStaticWidgetView.swift in Sources */,
 				9F1AB3EA28A18EEF001FF7DE /* WidgetModel.swift in Sources */,
 				9F6C7D0628B67072004CC501 /* RandomColor.swift in Sources */,
@@ -1077,6 +1081,7 @@
 				9F5422F528ACA2D700F15040 /* MediumIntentWidgetView.swift in Sources */,
 				9FC0F5CA28D4B38300A00681 /* Settings.swift in Sources */,
 				9FAE4BA928D0345700CE9D9B /* RingCap.swift in Sources */,
+				9F9E778E28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift in Sources */,
 				9FA0553C28AC018E006E5798 /* StaticProvider.swift in Sources */,
 				9FA0553228AC00D3006E5798 /* MantraWidgets.swift in Sources */,
 				9F5422F728ACA2E800F15040 /* SmallIntentWidgetView.swift in Sources */,
@@ -1163,12 +1168,13 @@
 				9F9E776328EBDD7400FE0EFC /* AccessoryRectangularStaticWidgetView.swift in Sources */,
 				9F9E776428EBDD7400FE0EFC /* IntentWidgetEntryView.swift in Sources */,
 				9F9E776528EBDD7400FE0EFC /* IntentWidget.swift in Sources */,
-				9F9E776628EBDD7400FE0EFC /* AccessoryRectangularIntentWidgetVIew.swift in Sources */,
+				9F9E776628EBDD7400FE0EFC /* AccessoryRectangularIntentWidgetView.swift in Sources */,
 				9F9E776828EBDD7400FE0EFC /* WidgetModel.swift in Sources */,
 				9F9E776928EBDD7400FE0EFC /* RandomColor.swift in Sources */,
 				9F9E776C28EBDD7400FE0EFC /* StaticWidgetEntry.swift in Sources */,
 				9F9E776D28EBDD7400FE0EFC /* MantraWidget.intentdefinition in Sources */,
 				9F9E776E28EBDD7400FE0EFC /* KMBFormatter.swift in Sources */,
+				9F9E778F28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift in Sources */,
 				9F9E776F28EBDD7400FE0EFC /* ProgressRing.swift in Sources */,
 				9F9E777028EBDD7400FE0EFC /* Constants.swift in Sources */,
 				9F9E777128EBDD7400FE0EFC /* IntentProvider.swift in Sources */,

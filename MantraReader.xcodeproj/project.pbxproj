@@ -26,6 +26,8 @@
 		9F1AB3EA28A18EEF001FF7DE /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E728A18EEF001FF7DE /* WidgetModel.swift */; };
 		9F1AB3EB28A18EEF001FF7DE /* MantraWidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E828A18EEF001FF7DE /* MantraWidgetManager.swift */; };
 		9F1AB3ED28A18F17001FF7DE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DAD28622D5900BF7051 /* Constants.swift */; };
+		9F2794F528EDD5D900004E85 /* AccessoryCornerIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2794F428EDD5D900004E85 /* AccessoryCornerIntentWidgetView.swift */; };
+		9F2794F628EDD5D900004E85 /* AccessoryCornerIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2794F428EDD5D900004E85 /* AccessoryCornerIntentWidgetView.swift */; };
 		9F2ED2A028D81F0A0031D40A /* ProgressArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2ED29F28D81F0A0031D40A /* ProgressArc.swift */; };
 		9F2ED2A128D81F2A0031D40A /* ProgressArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2ED29F28D81F0A0031D40A /* ProgressArc.swift */; };
 		9F31E15A2891ACE6006F0521 /* MantraCounterModeOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31E1592891ACE6006F0521 /* MantraCounterModeOverlayView.swift */; };
@@ -314,6 +316,7 @@
 		9F1AB3E728A18EEF001FF7DE /* WidgetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetModel.swift; sourceTree = "<group>"; };
 		9F1AB3E828A18EEF001FF7DE /* MantraWidgetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MantraWidgetManager.swift; sourceTree = "<group>"; };
 		9F1AB3EE28A1924A001FF7DE /* MantraWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MantraWidgetExtension.entitlements; sourceTree = "<group>"; };
+		9F2794F428EDD5D900004E85 /* AccessoryCornerIntentWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCornerIntentWidgetView.swift; sourceTree = "<group>"; };
 		9F2ED29F28D81F0A0031D40A /* ProgressArc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressArc.swift; sourceTree = "<group>"; };
 		9F31E1592891ACE6006F0521 /* MantraCounterModeOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraCounterModeOverlayView.swift; sourceTree = "<group>"; };
 		9F338B572899A64100E393E2 /* RoundedCross.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCross.swift; sourceTree = "<group>"; };
@@ -564,6 +567,7 @@
 				9F5422F628ACA2E800F15040 /* SmallIntentWidgetView.swift */,
 				9F5422F828ACA30300F15040 /* AccessoryRectangularIntentWidgetView.swift */,
 				9F5422FA28ACA31700F15040 /* AccessoryCircularIntentWidgetView.swift */,
+				9F2794F428EDD5D900004E85 /* AccessoryCornerIntentWidgetView.swift */,
 				9F9E778D28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift */,
 			);
 			path = IntentWidgetViews;
@@ -1089,6 +1093,7 @@
 				9F9E778E28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift in Sources */,
 				9FA0553C28AC018E006E5798 /* StaticProvider.swift in Sources */,
 				9FA0553228AC00D3006E5798 /* MantraWidgets.swift in Sources */,
+				9F2794F528EDD5D900004E85 /* AccessoryCornerIntentWidgetView.swift in Sources */,
 				9F5422F728ACA2E800F15040 /* SmallIntentWidgetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1170,6 +1175,7 @@
 				9F9E775F28EBDD7400FE0EFC /* StaticWidget.swift in Sources */,
 				9F9E776028EBDD7400FE0EFC /* IntentWidgetEntry.swift in Sources */,
 				9F9E776128EBDD7400FE0EFC /* IntentHandler.swift in Sources */,
+				9F2794F628EDD5D900004E85 /* AccessoryCornerIntentWidgetView.swift in Sources */,
 				9F9E776228EBDD7400FE0EFC /* RingColor.swift in Sources */,
 				9F9E776328EBDD7400FE0EFC /* AccessoryRectangularStaticWidgetView.swift in Sources */,
 				9F9E776428EBDD7400FE0EFC /* IntentWidgetEntryView.swift in Sources */,

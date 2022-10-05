@@ -1,13 +1,13 @@
 //
-//  AccessoryCircularIntentWidgetView.swift
-//  MantraWidgetExtension
+//  AccessoryCornerIntentWidgetView.swift
+//  MantraReader
 //
-//  Created by Alex Vorobiev on 17.08.2022.
+//  Created by Alex Vorobiev on 05.10.2022.
 //
 
 import SwiftUI
 
-struct AccessoryCircularIntentWidgetView: View {
+struct AccessoryCornerIntentWidgetView: View {
     @Environment(\.redactionReasons) private var reasons
     @Environment(\.widgetRenderingMode) private var widgetRenderingMode
     @EnvironmentObject private var settings: Settings
@@ -66,22 +66,22 @@ struct AccessoryCircularIntentWidgetView: View {
     }
     
     var body: some View {
-        Gauge(
-            value: value,
-            in: 0...endRange
-        ) {
-            EmptyView()
-        } currentValueLabel: {
-            Text("\(formatter.string(fromNumber: Int32(value)))")
-                .privacySensitive()
-        }
-        .gaugeStyle(.accessoryCircularCapacity)
-        .tint(widgetRenderingMode == .fullColor ? ringColor : nil)
-        .redacted(reason: reasons)
+        EmptyView()
         .widgetLabel {
-            Text(title)
-                .redacted(reason: reasons)
+            Gauge(
+                value: value,
+                in: 0...endRange
+            ) {
+                EmptyView()
+            } currentValueLabel: {
+                Text("\(formatter.string(fromNumber: Int32(value)))")
+                    .privacySensitive()
+            }
+            .gaugeStyle(.accessoryLinearCapacity)
+            .tint(widgetRenderingMode == .fullColor ? ringColor : nil)
+            .redacted(reason: reasons)
         }
         .widgetURL(URL(string: (selectedMantra?.id.uuidString ?? firstMantra?.id.uuidString) ?? ""))
     }
 }
+

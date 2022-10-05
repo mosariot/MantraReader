@@ -12,7 +12,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         [CLKComplicationDescriptor(
             identifier: "com.mosariot.MantraReader",
             displayName: "Mantra Reader",
-            supportedFamilies: .allCases)]
+            supportedFamilies: CLKComplicationFamily.allCases)]
     }
     
     func currentTimelineEntry(for complication: CLKComplication) async -> CLKComplicationTimelineEntry? { nil }

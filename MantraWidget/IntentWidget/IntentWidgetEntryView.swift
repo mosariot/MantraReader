@@ -33,7 +33,7 @@ struct IntentWidgetEntryView : View {
                 .environmentObject(settings)
 #elseif os(watchOS)
         case .accessoryCorner:
-            AccessoryCornerIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
+            AccessoryCircularIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
                 .environmentObject(settings)
 #endif
         case .accessoryCircular:

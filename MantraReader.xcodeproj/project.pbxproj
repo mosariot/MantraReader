@@ -8,11 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9F03F4962870B8FE00432002 /* MantraListColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F03F4952870B8FE00432002 /* MantraListColumn.swift */; };
-		9F172FA328E2046500463818 /* ReadTheMantra.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65C028B39E750054F6D6 /* ReadTheMantra.xcdatamodeld */; };
-		9F172FA428E2046A00463818 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE999285F682C0070BA06 /* PersistenceController.swift */; };
-		9F172FA528E2046D00463818 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB7AE6828B557F70044C55E /* DataManager.swift */; };
-		9F172FA628E2047C00463818 /* MantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B1AE3286AB09A007720A0 /* MantraRow.swift */; };
-		9F172FA728E204D600463818 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983428AAC54A00798AD7 /* InfoPlist.strings */; };
 		9F19E32328AEA4EB0008FBD4 /* KMBFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422FC28ACA32E00F15040 /* KMBFormatter.swift */; };
 		9F1AB3CD28A18E57001FF7DE /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1AB3CC28A18E57001FF7DE /* WidgetKit.framework */; };
 		9F1AB3CF28A18E57001FF7DE /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1AB3CE28A18E57001FF7DE /* SwiftUI.framework */; };
@@ -27,7 +22,6 @@
 		9F1AB3EB28A18EEF001FF7DE /* MantraWidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E828A18EEF001FF7DE /* MantraWidgetManager.swift */; };
 		9F1AB3ED28A18F17001FF7DE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DAD28622D5900BF7051 /* Constants.swift */; };
 		9F2794F528EDD5D900004E85 /* AccessoryCornerIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2794F428EDD5D900004E85 /* AccessoryCornerIntentWidgetView.swift */; };
-		9F2794F628EDD5D900004E85 /* AccessoryCornerIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2794F428EDD5D900004E85 /* AccessoryCornerIntentWidgetView.swift */; };
 		9F2ED2A028D81F0A0031D40A /* ProgressArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2ED29F28D81F0A0031D40A /* ProgressArc.swift */; };
 		9F2ED2A128D81F2A0031D40A /* ProgressArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2ED29F28D81F0A0031D40A /* ProgressArc.swift */; };
 		9F31E15A2891ACE6006F0521 /* MantraCounterModeOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31E1592891ACE6006F0521 /* MantraCounterModeOverlayView.swift */; };
@@ -38,12 +32,9 @@
 		9F338B602899A64200E393E2 /* ConfettiSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F338B5B2899A64100E393E2 /* ConfettiSwiftUI.swift */; };
 		9F348D4028A404810070F157 /* Bool+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F348D3F28A404810070F157 /* Bool+Comparable.swift */; };
 		9F348D4228A430F70070F157 /* InfoMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F348D4128A430F70070F157 /* InfoMode.swift */; };
-		9F38FA1228DF623D000825C3 /* MantraColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA228CF9C4D00CE9D9B /* MantraColorScheme.swift */; };
-		9F38FA1328DF63D4000825C3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983A28AAC65B00798AD7 /* Localizable.strings */; };
-		9F39E54E28DA46790075534B /* MantraReader.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9F39E54D28DA46790075534B /* MantraReader.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		9F39E55328DA46790075534B /* MantraReaderWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F39E55228DA46790075534B /* MantraReaderWatchApp.swift */; };
-		9F39E55A28DA467A0075534B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F39E55928DA467A0075534B /* Preview Assets.xcassets */; };
-		9F39E55D28DA467A0075534B /* MantraReaderWatch.app in Resources */ = {isa = PBXBuildFile; fileRef = 9F39E54828DA46790075534B /* MantraReaderWatch.app */; };
+		9F38058E28EFDCDD00373AD2 /* AdjustingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F38058D28EFDCDD00373AD2 /* AdjustingView.swift */; };
+		9F38059028EFDCEB00373AD2 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F38058F28EFDCEB00373AD2 /* ComplicationController.swift */; };
+		9F38059228EFDD0B00373AD2 /* ContentViewNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F38059128EFDD0B00373AD2 /* ContentViewNavView.swift */; };
 		9F4DE924286E3B670064ADCB /* UIImage+CropToCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DE923286E3B670064ADCB /* UIImage+CropToCircle.swift */; };
 		9F4DE926286E3B990064ADCB /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DE925286E3B990064ADCB /* Functions.swift */; };
 		9F53A56F28A967900070D2B3 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F53A56E28A967900070D2B3 /* SafariView.swift */; };
@@ -68,8 +59,6 @@
 		9F6C7D6528BC76C7004CC501 /* MonthStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C7D6428BC76C7004CC501 /* MonthStatisticsView.swift */; };
 		9F6C7D6728BD300F004CC501 /* YearStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C7D6628BD300E004CC501 /* YearStatisticsView.swift */; };
 		9F6C7D6928BD3015004CC501 /* WeekStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C7D6828BD3014004CC501 /* WeekStatisticsView.swift */; };
-		9F6CB84A28ED34880063F7A5 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6CB84928ED34880063F7A5 /* ComplicationController.swift */; };
-		9F6CB84C28ED388E0063F7A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6CB84B28ED388E0063F7A5 /* ContentView.swift */; };
 		9F6E65AF28B273CB0054F6D6 /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B228B273CB0054F6D6 /* MantraWidget.intentdefinition */; };
 		9F6E65B028B273CB0054F6D6 /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B228B273CB0054F6D6 /* MantraWidget.intentdefinition */; };
 		9F6E65B828B2755E0054F6D6 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B728B2755D0054F6D6 /* ImagePickerView.swift */; };
@@ -86,60 +75,9 @@
 		9F794EDE289C35E900DDF940 /* LaunchPreparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794EDD289C35E900DDF940 /* LaunchPreparer.swift */; };
 		9F794EE0289C360F00DDF940 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794EDF289C360F00DDF940 /* NetworkMonitor.swift */; };
 		9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B1AE3286AB09A007720A0 /* MantraRow.swift */; };
-		9F81E41C28E62089002E83C1 /* SlimRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F338B592899A64100E393E2 /* SlimRectangle.swift */; };
-		9F81E41D28E62089002E83C1 /* View+ConfettiCannon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F338B5A2899A64100E393E2 /* View+ConfettiCannon.swift */; };
-		9F81E41E28E62089002E83C1 /* ConfettiSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F338B5B2899A64100E393E2 /* ConfettiSwiftUI.swift */; };
-		9F81E41F28E6208A002E83C1 /* RoundedCross.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F338B572899A64100E393E2 /* RoundedCross.swift */; };
-		9F81E42028E6208A002E83C1 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F338B582899A64100E393E2 /* Triangle.swift */; };
 		9F857B4D28C38EC100A83216 /* Mantra+Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F857B4C28C38EC100A83216 /* Mantra+Statistics.swift */; };
-		9F8915DC28E07212009AE06F /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C7D6228BBE379004CC501 /* StatisticsView.swift */; };
-		9F8915DD28E07215009AE06F /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABFF5628BFB4D0001A1D7F /* StatisticsViewModel.swift */; };
-		9F8915DE28E0721A009AE06F /* WeekStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C7D6828BD3014004CC501 /* WeekStatisticsView.swift */; };
-		9F8915DF28E0721C009AE06F /* MonthStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C7D6428BC76C7004CC501 /* MonthStatisticsView.swift */; };
-		9F8915E028E0721F009AE06F /* YearStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C7D6628BD300E004CC501 /* YearStatisticsView.swift */; };
-		9F8915E128E07274009AE06F /* Date+StartEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABFF5428BE9E52001A1D7F /* Date+StartEnd.swift */; };
-		9F8915E228E0727D009AE06F /* KMBFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422FC28ACA32E00F15040 /* KMBFormatter.swift */; };
 		9F8E180828AFE545000BC905 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983A28AAC65B00798AD7 /* Localizable.strings */; };
-		9F99ADD628DEE72000175408 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DE925286E3B990064ADCB /* Functions.swift */; };
-		9F99ADD728DEE72A00175408 /* MantraWidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E828A18EEF001FF7DE /* MantraWidgetManager.swift */; };
-		9F99ADD828DEE72C00175408 /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E728A18EEF001FF7DE /* WidgetModel.swift */; };
-		9F99ADD928DEE74100175408 /* Bool+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F348D3F28A404810070F157 /* Bool+Comparable.swift */; };
-		9F99ADDB28DEE7C500175408 /* ReadingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABFF5228BD4009001A1D7F /* ReadingsModel.swift */; };
-		9F9E775A28EBDB2B00FE0EFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEE9A0285F682D0070BA06 /* Assets.xcassets */; };
-		9F9E775D28EBDD7400FE0EFC /* AccessoryCircularIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422FA28ACA31700F15040 /* AccessoryCircularIntentWidgetView.swift */; };
-		9F9E775F28EBDD7400FE0EFC /* StaticWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3D128A18E57001FF7DE /* StaticWidget.swift */; };
-		9F9E776028EBDD7400FE0EFC /* IntentWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F228ACA2B000F15040 /* IntentWidgetEntry.swift */; };
-		9F9E776128EBDD7400FE0EFC /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F54232028AD4E2400F15040 /* IntentHandler.swift */; };
-		9F9E776228EBDD7400FE0EFC /* RingColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA028CF9C2000CE9D9B /* RingColor.swift */; };
-		9F9E776328EBDD7400FE0EFC /* AccessoryRectangularStaticWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553E28AC021D006E5798 /* AccessoryRectangularStaticWidgetView.swift */; };
-		9F9E776428EBDD7400FE0EFC /* IntentWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422EE28ACA29400F15040 /* IntentWidgetEntryView.swift */; };
-		9F9E776528EBDD7400FE0EFC /* IntentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422EC28ACA24100F15040 /* IntentWidget.swift */; };
-		9F9E776628EBDD7400FE0EFC /* AccessoryRectangularIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F828ACA30300F15040 /* AccessoryRectangularIntentWidgetView.swift */; };
-		9F9E776828EBDD7400FE0EFC /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E728A18EEF001FF7DE /* WidgetModel.swift */; };
-		9F9E776928EBDD7400FE0EFC /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F780037287FF7D200516A0F /* RandomColor.swift */; };
-		9F9E776C28EBDD7400FE0EFC /* StaticWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553528AC013E006E5798 /* StaticWidgetEntry.swift */; };
-		9F9E776D28EBDD7400FE0EFC /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B228B273CB0054F6D6 /* MantraWidget.intentdefinition */; };
-		9F9E776E28EBDD7400FE0EFC /* KMBFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422FC28ACA32E00F15040 /* KMBFormatter.swift */; };
-		9F9E776F28EBDD7400FE0EFC /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5CD28D4BC0200A00681 /* ProgressRing.swift */; };
-		9F9E777028EBDD7400FE0EFC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DAD28622D5900BF7051 /* Constants.swift */; };
-		9F9E777128EBDD7400FE0EFC /* IntentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F028ACA29E00F15040 /* IntentProvider.swift */; };
-		9F9E777228EBDD7400FE0EFC /* StaticWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553928AC015F006E5798 /* StaticWidgetEntryView.swift */; };
-		9F9E777328EBDD7400FE0EFC /* MantraColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA228CF9C4D00CE9D9B /* MantraColorScheme.swift */; };
-		9F9E777428EBDD7400FE0EFC /* ProgressArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2ED29F28D81F0A0031D40A /* ProgressArc.swift */; };
-		9F9E777528EBDD7400FE0EFC /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794ED2289B026F00DDF940 /* Sorting.swift */; };
-		9F9E777728EBDD7400FE0EFC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5C828D4B36100A00681 /* Settings.swift */; };
-		9F9E777828EBDD7400FE0EFC /* RingCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA728D033DC00CE9D9B /* RingCap.swift */; };
-		9F9E777928EBDD7400FE0EFC /* StaticProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553728AC014C006E5798 /* StaticProvider.swift */; };
-		9F9E777A28EBDD7400FE0EFC /* MantraWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553028AC0084006E5798 /* MantraWidgets.swift */; };
-		9F9E777D28EBDD7400FE0EFC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1AB3CE28A18E57001FF7DE /* SwiftUI.framework */; };
-		9F9E777E28EBDD7400FE0EFC /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1AB3CC28A18E57001FF7DE /* WidgetKit.framework */; };
-		9F9E778028EBDD7400FE0EFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F1AB3D428A18E58001FF7DE /* Assets.xcassets */; };
-		9F9E778128EBDD7400FE0EFC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983A28AAC65B00798AD7 /* Localizable.strings */; };
-		9F9E778728EBDDDF00FE0EFC /* MantraWidgetExtension watch.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9F9E778528EBDD7400FE0EFC /* MantraWidgetExtension watch.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		9F9E778B28ECB1E900FE0EFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983428AAC54A00798AD7 /* InfoPlist.strings */; };
-		9F9E778C28ECB1EA00FE0EFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983428AAC54A00798AD7 /* InfoPlist.strings */; };
 		9F9E778E28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E778D28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift */; };
-		9F9E778F28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E778D28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift */; };
 		9FA0553228AC00D3006E5798 /* MantraWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553028AC0084006E5798 /* MantraWidgets.swift */; };
 		9FA0553B28AC018E006E5798 /* StaticWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553928AC015F006E5798 /* StaticWidgetEntryView.swift */; };
 		9FA0553C28AC018E006E5798 /* StaticProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553728AC014C006E5798 /* StaticProvider.swift */; };
@@ -147,12 +85,9 @@
 		9FA0553F28AC021D006E5798 /* AccessoryRectangularStaticWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553E28AC021D006E5798 /* AccessoryRectangularStaticWidgetView.swift */; };
 		9FA8E88B28985D3100479F08 /* CheckMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA8E88A28985D3100479F08 /* CheckMarkView.swift */; };
 		9FA8E88D2898DB7B00479F08 /* PreloadedMantra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA8E88C2898DB7B00479F08 /* PreloadedMantra.swift */; };
-		9FAA454528DF648200503FB2 /* Mantra+Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F857B4C28C38EC100A83216 /* Mantra+Statistics.swift */; };
 		9FABFF5328BD4009001A1D7F /* ReadingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABFF5228BD4009001A1D7F /* ReadingsModel.swift */; };
 		9FABFF5528BE9E52001A1D7F /* Date+StartEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABFF5428BE9E52001A1D7F /* Date+StartEnd.swift */; };
 		9FABFF5728BFB4D0001A1D7F /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABFF5628BFB4D0001A1D7F /* StatisticsViewModel.swift */; };
-		9FADFD2028DDEE6000644184 /* ReadsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFD1F28DDEE5F00644184 /* ReadsView.swift */; };
-		9FADFD2828DDFB0400644184 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DAD28622D5900BF7051 /* Constants.swift */; };
 		9FAE4B9A28CD165C00CE9D9B /* GoalButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4B9928CD165C00CE9D9B /* GoalButtonViewModel.swift */; };
 		9FAE4B9C28CDB52500CE9D9B /* NumberAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4B9B28CDB52500CE9D9B /* NumberAnimation.swift */; };
 		9FAE4B9F28CE4BDB00CE9D9B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4B9E28CE4BDB00CE9D9B /* SettingsView.swift */; };
@@ -164,7 +99,6 @@
 		9FAE4BAA28D0349200CE9D9B /* RingColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA028CF9C2000CE9D9B /* RingColor.swift */; };
 		9FAE4BAB28D180C300CE9D9B /* MantraColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA228CF9C4D00CE9D9B /* MantraColorScheme.swift */; };
 		9FAE4BAE28D185B700CE9D9B /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BAD28D185B700CE9D9B /* FeedbackView.swift */; };
-		9FB052B528E221FF00FEFB1D /* AdjustingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB052B428E221FF00FEFB1D /* AdjustingView.swift */; };
 		9FB279E428902F1B0029ED3B /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB279E328902F1B0029ED3B /* HintView.swift */; };
 		9FB32B1128A7D48C000A910E /* ShakeSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB32B1028A7D48C000A910E /* ShakeSupport.swift */; };
 		9FB32B1428A7D8F2000A910E /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9FB32B1328A7D8F2000A910E /* IQKeyboardManagerSwift */; };
@@ -174,9 +108,6 @@
 		9FB5983B28AB4E7F00798AD7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983A28AAC65B00798AD7 /* Localizable.strings */; };
 		9FB7AE6728B556150044C55E /* GlobalAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB7AE6628B556150044C55E /* GlobalAlertViewController.swift */; };
 		9FB7AE6928B557F70044C55E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB7AE6828B557F70044C55E /* DataManager.swift */; };
-		9FB9801D28DEE8C700F04E84 /* PreloadedMantras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */; };
-		9FB9802828DF507400F04E84 /* CornerRadiusShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA428CF9CC100CE9D9B /* CornerRadiusShape.swift */; };
-		9FB9802928DF54C600F04E84 /* CloseButtonImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5C328D425F100A00681 /* CloseButtonImage.swift */; };
 		9FBEE998285F682C0070BA06 /* MantraReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE997285F682C0070BA06 /* MantraReaderApp.swift */; };
 		9FBEE99A285F682C0070BA06 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE999285F682C0070BA06 /* PersistenceController.swift */; };
 		9FBEE99F285F682C0070BA06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE99E285F682C0070BA06 /* ContentView.swift */; };
@@ -189,20 +120,7 @@
 		9FC0F5CB28D4B3A100A00681 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794ED2289B026F00DDF940 /* Sorting.swift */; };
 		9FC0F5CE28D4BC0200A00681 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5CD28D4BC0200A00681 /* ProgressRing.swift */; };
 		9FC0F5CF28D4BF0100A00681 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5CD28D4BC0200A00681 /* ProgressRing.swift */; };
-		9FC6AE2728E152BF00D1361C /* LaunchPreparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794EDD289C35E900DDF940 /* LaunchPreparer.swift */; };
-		9FC6AE2828E152C200D1361C /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794EDF289C360F00DDF940 /* NetworkMonitor.swift */; };
-		9FC6AE2928E1552A00D1361C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4B9E28CE4BDB00CE9D9B /* SettingsView.swift */; };
 		9FC9A691287DA4FE00D05FBD /* AdjustingAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9A690287DA4FE00D05FBD /* AdjustingAlertView.swift */; };
-		9FCAA8B728E36C8500568464 /* AdjustingAndUndoTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF34982884859D00B3007E /* AdjustingAndUndoTypes.swift */; };
-		9FCAA8B828E36C8E00568464 /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB279E328902F1B0029ED3B /* HintView.swift */; };
-		9FCAA8B928E36C9300568464 /* BlinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F605142288EE75E005EC6F5 /* BlinkView.swift */; };
-		9FCAA8BA28E36C9600568464 /* MantraCounterModeOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31E1592891ACE6006F0521 /* MantraCounterModeOverlayView.swift */; };
-		9FCAA8BD28E36F4600568464 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCAA8BC28E36F4600568464 /* InfoView.swift */; };
-		9FCAA8BE28E5446500568464 /* Congratulations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794ED4289B02A700DDF940 /* Congratulations.swift */; };
-		9FCAA8C328E54D6300568464 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE9AD285F68CE0070BA06 /* CircularProgressView.swift */; };
-		9FCAA8C428E54D6300568464 /* CircularProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF349A2885B2E000B3007E /* CircularProgressViewModel.swift */; };
-		9FCAA8C528E60ED300568464 /* ReadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DA9286222C700BF7051 /* ReadsViewModel.swift */; };
-		9FCD19B428E219D300543D8A /* NumberAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4B9B28CDB52500CE9D9B /* NumberAnimation.swift */; };
 		9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC52893915B004936E6 /* PreloadedMantraListView.swift */; };
 		9FD61DC8289391A4004936E6 /* PreloadedMantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC7289391A4004936E6 /* PreloadedMantraRow.swift */; };
 		9FD61DCA289391BC004936E6 /* PreloadedMantraListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC9289391BC004936E6 /* PreloadedMantraListViewModel.swift */; };
@@ -215,13 +133,14 @@
 		9FDF34992884859D00B3007E /* AdjustingAndUndoTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF34982884859D00B3007E /* AdjustingAndUndoTypes.swift */; };
 		9FDF349B2885B2E000B3007E /* CircularProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF349A2885B2E000B3007E /* CircularProgressViewModel.swift */; };
 		9FDF349F2885E86200B3007E /* GoalButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF349E2885E86200B3007E /* GoalButtonView.swift */; };
-		9FEBE45D28DA547700E5CF47 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5CD28D4BC0200A00681 /* ProgressRing.swift */; };
-		9FEBE45E28DA547700E5CF47 /* RingCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA728D033DC00CE9D9B /* RingCap.swift */; };
-		9FEBE45F28DA547700E5CF47 /* ProgressArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2ED29F28D81F0A0031D40A /* ProgressArc.swift */; };
-		9FEBE46028DA54CB00E5CF47 /* RingColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA028CF9C2000CE9D9B /* RingColor.swift */; };
-		9FEBE46128DA54D800E5CF47 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5C828D4B36100A00681 /* Settings.swift */; };
-		9FEBE46228DA54E400E5CF47 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794ED2289B026F00DDF940 /* Sorting.swift */; };
-		9FED6BA928E97DC5006FF4E6 /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F780037287FF7D200516A0F /* RandomColor.swift */; };
+		9FE2E9C928EFD74100BA8240 /* MantraReaderWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2E9C828EFD74100BA8240 /* MantraReaderWatchApp.swift */; };
+		9FE2E9CB28EFD74100BA8240 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2E9CA28EFD74100BA8240 /* ContentView.swift */; };
+		9FE2E9CD28EFD74200BA8240 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FE2E9CC28EFD74200BA8240 /* Assets.xcassets */; };
+		9FE2E9D028EFD74200BA8240 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FE2E9CF28EFD74200BA8240 /* Preview Assets.xcassets */; };
+		9FE2E9D428EFD77200BA8240 /* MantraReaderWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9FE2E9C628EFD74100BA8240 /* MantraReaderWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9FE2E9DB28EFD89100BA8240 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FE2E9D828EFD88500BA8240 /* InfoPlist.strings */; };
+		9FE2E9E028EFDB9000BA8240 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2E9DF28EFDB9000BA8240 /* InfoView.swift */; };
+		9FE2E9E428EFDC4800BA8240 /* ReadsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2E9E328EFDC4800BA8240 /* ReadsView.swift */; };
 		9FF7C3952864C16200DA5F51 /* PreloadedMantras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */; };
 /* End PBXBuildFile section */
 
@@ -233,20 +152,6 @@
 			remoteGlobalIDString = 9F1AB3C928A18E57001FF7DE;
 			remoteInfo = MantraWidgetExtension;
 		};
-		9F39E54F28DA46790075534B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9FBEE98C285F682C0070BA06 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9F39E54C28DA46790075534B;
-			remoteInfo = "MantraReaderWatch Watch App";
-		};
-		9F39E55B28DA467A0075534B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9FBEE98C285F682C0070BA06 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9F39E54728DA46790075534B;
-			remoteInfo = MantraReaderWatch;
-		};
 		9F54232328AD4E2400F15040 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9FBEE98C285F682C0070BA06 /* Project object */;
@@ -254,12 +159,12 @@
 			remoteGlobalIDString = 9F54231B28AD4E2400F15040;
 			remoteInfo = MantraIntent;
 		};
-		9F9E778828EBDDDF00FE0EFC /* PBXContainerItemProxy */ = {
+		9FE2E9D528EFD77200BA8240 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9FBEE98C285F682C0070BA06 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9F9E775B28EBDD7400FE0EFC;
-			remoteInfo = "MantraWidgetExtension watch";
+			remoteGlobalIDString = 9FE2E9C528EFD74100BA8240;
+			remoteInfo = "MantraReaderWatch Watch App";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -276,34 +181,21 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9F39E56028DA467A0075534B /* Embed Watch Content */ = {
+		9FE2E9D728EFD77200BA8240 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				9F39E54E28DA46790075534B /* MantraReader.app in Embed Watch Content */,
+				9FE2E9D428EFD77200BA8240 /* MantraReaderWatch Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9F9E778A28EBDDDF00FE0EFC /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				9F9E778728EBDDDF00FE0EFC /* MantraWidgetExtension watch.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9F03F4952870B8FE00432002 /* MantraListColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraListColumn.swift; sourceTree = "<group>"; };
-		9F11C6E828DA5BFA00A1BEF2 /* MantraReaderWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MantraReaderWatch Watch App.entitlements"; sourceTree = "<group>"; };
-		9F11C6E928DA5C1E00A1BEF2 /* MantraReaderWatch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MantraReaderWatch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		9F1AB3CA28A18E57001FF7DE /* MantraWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MantraWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F1AB3CC28A18E57001FF7DE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		9F1AB3CE28A18E57001FF7DE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -326,11 +218,9 @@
 		9F338B5B2899A64100E393E2 /* ConfettiSwiftUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfettiSwiftUI.swift; sourceTree = "<group>"; };
 		9F348D3F28A404810070F157 /* Bool+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Comparable.swift"; sourceTree = "<group>"; };
 		9F348D4128A430F70070F157 /* InfoMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMode.swift; sourceTree = "<group>"; };
-		9F39E54828DA46790075534B /* MantraReaderWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MantraReaderWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F39E54D28DA46790075534B /* MantraReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MantraReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F39E55228DA46790075534B /* MantraReaderWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraReaderWatchApp.swift; sourceTree = "<group>"; };
-		9F39E55428DA46790075534B /* ContentViewNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewNavView.swift; sourceTree = "<group>"; };
-		9F39E55928DA467A0075534B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9F38058D28EFDCDD00373AD2 /* AdjustingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustingView.swift; sourceTree = "<group>"; };
+		9F38058F28EFDCEB00373AD2 /* ComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		9F38059128EFDD0B00373AD2 /* ContentViewNavView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewNavView.swift; sourceTree = "<group>"; };
 		9F4DE923286E3B670064ADCB /* UIImage+CropToCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CropToCircle.swift"; sourceTree = "<group>"; };
 		9F4DE925286E3B990064ADCB /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		9F53A56E28A967900070D2B3 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
@@ -354,8 +244,6 @@
 		9F6C7D6428BC76C7004CC501 /* MonthStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthStatisticsView.swift; sourceTree = "<group>"; };
 		9F6C7D6628BD300E004CC501 /* YearStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearStatisticsView.swift; sourceTree = "<group>"; };
 		9F6C7D6828BD3014004CC501 /* WeekStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekStatisticsView.swift; sourceTree = "<group>"; };
-		9F6CB84928ED34880063F7A5 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
-		9F6CB84B28ED388E0063F7A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9F6E65B128B273CB0054F6D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/MantraWidget.intentdefinition; sourceTree = "<group>"; };
 		9F6E65B428B273D30054F6D6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MantraWidget.strings; sourceTree = "<group>"; };
 		9F6E65B628B2751A0054F6D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MantraWidget.strings; sourceTree = "<group>"; };
@@ -374,8 +262,6 @@
 		9F794EE2289E777600DDF940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9F7B1AE3286AB09A007720A0 /* MantraRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraRow.swift; sourceTree = "<group>"; };
 		9F857B4C28C38EC100A83216 /* Mantra+Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mantra+Statistics.swift"; sourceTree = "<group>"; };
-		9F9E778528EBDD7400FE0EFC /* MantraWidgetExtension watch.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MantraWidgetExtension watch.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F9E778628EBDD7500FE0EFC /* MantraReaderWatchWidgetInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = MantraReaderWatchWidgetInfo.plist; path = "/Users/mosariot/Local Development/Обучение/MantraReader/MantraReaderWatchWidgetInfo.plist"; sourceTree = "<absolute>"; };
 		9F9E778D28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryInlineIntentWidgetView.swift; sourceTree = "<group>"; };
 		9FA0553028AC0084006E5798 /* MantraWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraWidgets.swift; sourceTree = "<group>"; };
 		9FA0553528AC013E006E5798 /* StaticWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticWidgetEntry.swift; sourceTree = "<group>"; };
@@ -387,7 +273,6 @@
 		9FABFF5228BD4009001A1D7F /* ReadingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingsModel.swift; sourceTree = "<group>"; };
 		9FABFF5428BE9E52001A1D7F /* Date+StartEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StartEnd.swift"; sourceTree = "<group>"; };
 		9FABFF5628BFB4D0001A1D7F /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
-		9FADFD1F28DDEE5F00644184 /* ReadsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadsView.swift; sourceTree = "<group>"; };
 		9FAE4B9928CD165C00CE9D9B /* GoalButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalButtonViewModel.swift; sourceTree = "<group>"; };
 		9FAE4B9B28CDB52500CE9D9B /* NumberAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberAnimation.swift; sourceTree = "<group>"; };
 		9FAE4B9E28CE4BDB00CE9D9B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -396,7 +281,6 @@
 		9FAE4BA428CF9CC100CE9D9B /* CornerRadiusShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusShape.swift; sourceTree = "<group>"; };
 		9FAE4BA728D033DC00CE9D9B /* RingCap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingCap.swift; sourceTree = "<group>"; };
 		9FAE4BAD28D185B700CE9D9B /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
-		9FB052B428E221FF00FEFB1D /* AdjustingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustingView.swift; sourceTree = "<group>"; };
 		9FB279E328902F1B0029ED3B /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		9FB32B1028A7D48C000A910E /* ShakeSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeSupport.swift; sourceTree = "<group>"; };
 		9FB4022D28C84ABE0073D386 /* AdaptiveListStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveListStyle.swift; sourceTree = "<group>"; };
@@ -418,7 +302,6 @@
 		9FC0F5C828D4B36100A00681 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		9FC0F5CD28D4BC0200A00681 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		9FC9A690287DA4FE00D05FBD /* AdjustingAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustingAlertView.swift; sourceTree = "<group>"; };
-		9FCAA8BC28E36F4600568464 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		9FD61DC52893915B004936E6 /* PreloadedMantraListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraListView.swift; sourceTree = "<group>"; };
 		9FD61DC7289391A4004936E6 /* PreloadedMantraRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraRow.swift; sourceTree = "<group>"; };
 		9FD61DC9289391BC004936E6 /* PreloadedMantraListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraListViewModel.swift; sourceTree = "<group>"; };
@@ -431,6 +314,16 @@
 		9FDF34982884859D00B3007E /* AdjustingAndUndoTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustingAndUndoTypes.swift; sourceTree = "<group>"; };
 		9FDF349A2885B2E000B3007E /* CircularProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressViewModel.swift; sourceTree = "<group>"; };
 		9FDF349E2885E86200B3007E /* GoalButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalButtonView.swift; sourceTree = "<group>"; };
+		9FE2E9C628EFD74100BA8240 /* MantraReaderWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MantraReaderWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FE2E9C828EFD74100BA8240 /* MantraReaderWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraReaderWatchApp.swift; sourceTree = "<group>"; };
+		9FE2E9CA28EFD74100BA8240 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9FE2E9CC28EFD74200BA8240 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9FE2E9CF28EFD74200BA8240 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9FE2E9D928EFD88600BA8240 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9FE2E9DA28EFD88600BA8240 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9FE2E9DC28EFD97900BA8240 /* MantraReaderWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MantraReaderWatch Watch App.entitlements"; sourceTree = "<group>"; };
+		9FE2E9DF28EFDB9000BA8240 /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		9FE2E9E328EFDC4800BA8240 /* ReadsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadsView.swift; sourceTree = "<group>"; };
 		9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadedMantras.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -444,13 +337,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9F39E54A28DA46790075534B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9F54231928AD4E2400F15040 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -459,20 +345,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9F9E777C28EBDD7400FE0EFC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9F9E777D28EBDD7400FE0EFC /* SwiftUI.framework in Frameworks */,
-				9F9E777E28EBDD7400FE0EFC /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9FBEE991285F682C0070BA06 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9FB32B1428A7D8F2000A910E /* IQKeyboardManagerSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FE2E9C328EFD74100BA8240 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,31 +405,6 @@
 				9F338B592899A64100E393E2 /* SlimRectangle.swift */,
 			);
 			path = ConfettiView;
-			sourceTree = "<group>";
-		};
-		9F39E55128DA46790075534B /* MantraReaderWatch Watch App */ = {
-			isa = PBXGroup;
-			children = (
-				9F11C6E928DA5C1E00A1BEF2 /* MantraReaderWatch-Watch-App-Info.plist */,
-				9F11C6E828DA5BFA00A1BEF2 /* MantraReaderWatch Watch App.entitlements */,
-				9F39E55228DA46790075534B /* MantraReaderWatchApp.swift */,
-				9F6CB84B28ED388E0063F7A5 /* ContentView.swift */,
-				9FADFD1F28DDEE5F00644184 /* ReadsView.swift */,
-				9FB052B428E221FF00FEFB1D /* AdjustingView.swift */,
-				9FCAA8BC28E36F4600568464 /* InfoView.swift */,
-				9F6CB84928ED34880063F7A5 /* ComplicationController.swift */,
-				9F39E55428DA46790075534B /* ContentViewNavView.swift */,
-				9F39E55828DA467A0075534B /* Preview Content */,
-			);
-			path = "MantraReaderWatch Watch App";
-			sourceTree = "<group>";
-		};
-		9F39E55828DA467A0075534B /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				9F39E55928DA467A0075534B /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		9F5422EA28ACA21400F15040 /* IntentWidget */ = {
@@ -770,9 +629,8 @@
 				9FBEE996285F682C0070BA06 /* MantraReader */,
 				9F1AB3D028A18E57001FF7DE /* MantraWidget */,
 				9F54231F28AD4E2400F15040 /* MantraIntent */,
-				9F39E55128DA46790075534B /* MantraReaderWatch Watch App */,
 				9F1AB3EE28A1924A001FF7DE /* MantraWidgetExtension.entitlements */,
-				9F9E778628EBDD7500FE0EFC /* MantraReaderWatchWidgetInfo.plist */,
+				9FE2E9C728EFD74100BA8240 /* MantraReaderWatch Watch App */,
 				9F1AB3CB28A18E57001FF7DE /* Frameworks */,
 				9FBEE995285F682C0070BA06 /* Products */,
 			);
@@ -784,9 +642,7 @@
 				9FBEE994285F682C0070BA06 /* MantraReader.app */,
 				9F1AB3CA28A18E57001FF7DE /* MantraWidgetExtension.appex */,
 				9F54231C28AD4E2400F15040 /* MantraIntent.appex */,
-				9F39E54828DA46790075534B /* MantraReaderWatch.app */,
-				9F39E54D28DA46790075534B /* MantraReader.app */,
-				9F9E778528EBDD7400FE0EFC /* MantraWidgetExtension watch.appex */,
+				9FE2E9C628EFD74100BA8240 /* MantraReaderWatch Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -828,6 +684,32 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		9FE2E9C728EFD74100BA8240 /* MantraReaderWatch Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				9FE2E9DC28EFD97900BA8240 /* MantraReaderWatch Watch App.entitlements */,
+				9FE2E9C828EFD74100BA8240 /* MantraReaderWatchApp.swift */,
+				9FE2E9CA28EFD74100BA8240 /* ContentView.swift */,
+				9FE2E9E328EFDC4800BA8240 /* ReadsView.swift */,
+				9F38058D28EFDCDD00373AD2 /* AdjustingView.swift */,
+				9FE2E9DF28EFDB9000BA8240 /* InfoView.swift */,
+				9F38059128EFDD0B00373AD2 /* ContentViewNavView.swift */,
+				9F38058F28EFDCEB00373AD2 /* ComplicationController.swift */,
+				9FE2E9D828EFD88500BA8240 /* InfoPlist.strings */,
+				9FE2E9CC28EFD74200BA8240 /* Assets.xcassets */,
+				9FE2E9CE28EFD74200BA8240 /* Preview Content */,
+			);
+			path = "MantraReaderWatch Watch App";
+			sourceTree = "<group>";
+		};
+		9FE2E9CE28EFD74200BA8240 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				9FE2E9CF28EFD74200BA8240 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -848,42 +730,6 @@
 			productReference = 9F1AB3CA28A18E57001FF7DE /* MantraWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		9F39E54728DA46790075534B /* MantraReaderWatch */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9F39E56428DA467A0075534B /* Build configuration list for PBXNativeTarget "MantraReaderWatch" */;
-			buildPhases = (
-				9F39E54628DA46790075534B /* Resources */,
-				9F39E56028DA467A0075534B /* Embed Watch Content */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9F39E55028DA46790075534B /* PBXTargetDependency */,
-			);
-			name = MantraReaderWatch;
-			productName = MantraReaderWatch;
-			productReference = 9F39E54828DA46790075534B /* MantraReaderWatch.app */;
-			productType = "com.apple.product-type.application.watchapp2-container";
-		};
-		9F39E54C28DA46790075534B /* MantraReaderWatch Watch App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9F39E56328DA467A0075534B /* Build configuration list for PBXNativeTarget "MantraReaderWatch Watch App" */;
-			buildPhases = (
-				9F39E54928DA46790075534B /* Sources */,
-				9F39E54A28DA46790075534B /* Frameworks */,
-				9F39E54B28DA46790075534B /* Resources */,
-				9F9E778A28EBDDDF00FE0EFC /* Embed Foundation Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9F9E778928EBDDDF00FE0EFC /* PBXTargetDependency */,
-			);
-			name = "MantraReaderWatch Watch App";
-			productName = "MantraReaderWatch Watch App";
-			productReference = 9F39E54D28DA46790075534B /* MantraReader.app */;
-			productType = "com.apple.product-type.application";
-		};
 		9F54231B28AD4E2400F15040 /* MantraIntent */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F54232628AD4E2400F15040 /* Build configuration list for PBXNativeTarget "MantraIntent" */;
@@ -901,23 +747,6 @@
 			productReference = 9F54231C28AD4E2400F15040 /* MantraIntent.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		9F9E775B28EBDD7400FE0EFC /* MantraWidgetExtension watch */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9F9E778228EBDD7400FE0EFC /* Build configuration list for PBXNativeTarget "MantraWidgetExtension watch" */;
-			buildPhases = (
-				9F9E775C28EBDD7400FE0EFC /* Sources */,
-				9F9E777C28EBDD7400FE0EFC /* Frameworks */,
-				9F9E777F28EBDD7400FE0EFC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "MantraWidgetExtension watch";
-			productName = MantraWidgetExtension;
-			productReference = 9F9E778528EBDD7400FE0EFC /* MantraWidgetExtension watch.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		9FBEE993285F682C0070BA06 /* MantraReader */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FBEE9A8285F682D0070BA06 /* Build configuration list for PBXNativeTarget "MantraReader" */;
@@ -926,13 +755,14 @@
 				9FBEE991285F682C0070BA06 /* Frameworks */,
 				9FBEE992285F682C0070BA06 /* Resources */,
 				9F1AB3DC28A18E58001FF7DE /* Embed Foundation Extensions */,
+				9FE2E9D728EFD77200BA8240 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				9F1AB3DA28A18E58001FF7DE /* PBXTargetDependency */,
 				9F54232428AD4E2400F15040 /* PBXTargetDependency */,
-				9F39E55C28DA467A0075534B /* PBXTargetDependency */,
+				9FE2E9D628EFD77200BA8240 /* PBXTargetDependency */,
 			);
 			name = MantraReader;
 			packageProductDependencies = (
@@ -942,6 +772,23 @@
 			productReference = 9FBEE994285F682C0070BA06 /* MantraReader.app */;
 			productType = "com.apple.product-type.application";
 		};
+		9FE2E9C528EFD74100BA8240 /* MantraReaderWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FE2E9D128EFD74200BA8240 /* Build configuration list for PBXNativeTarget "MantraReaderWatch Watch App" */;
+			buildPhases = (
+				9FE2E9C228EFD74100BA8240 /* Sources */,
+				9FE2E9C328EFD74100BA8240 /* Frameworks */,
+				9FE2E9C428EFD74100BA8240 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MantraReaderWatch Watch App";
+			productName = "MantraReaderWatch Watch App";
+			productReference = 9FE2E9C628EFD74100BA8240 /* MantraReaderWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -949,16 +796,10 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					9F1AB3C928A18E57001FF7DE = {
-						CreatedOnToolsVersion = 14.0;
-					};
-					9F39E54728DA46790075534B = {
-						CreatedOnToolsVersion = 14.0;
-					};
-					9F39E54C28DA46790075534B = {
 						CreatedOnToolsVersion = 14.0;
 					};
 					9F54231B28AD4E2400F15040 = {
@@ -966,6 +807,9 @@
 					};
 					9FBEE993285F682C0070BA06 = {
 						CreatedOnToolsVersion = 14.0;
+					};
+					9FE2E9C528EFD74100BA8240 = {
+						CreatedOnToolsVersion = 14.1;
 					};
 				};
 			};
@@ -989,9 +833,7 @@
 				9FBEE993285F682C0070BA06 /* MantraReader */,
 				9F1AB3C928A18E57001FF7DE /* MantraWidgetExtension */,
 				9F54231B28AD4E2400F15040 /* MantraIntent */,
-				9F39E54728DA46790075534B /* MantraReaderWatch */,
-				9F39E54C28DA46790075534B /* MantraReaderWatch Watch App */,
-				9F9E775B28EBDD7400FE0EFC /* MantraWidgetExtension watch */,
+				9FE2E9C528EFD74100BA8240 /* MantraReaderWatch Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -1006,25 +848,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9F39E54628DA46790075534B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9F9E778C28ECB1EA00FE0EFC /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9F39E54B28DA46790075534B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9F39E55A28DA467A0075534B /* Preview Assets.xcassets in Resources */,
-				9F172FA728E204D600463818 /* InfoPlist.strings in Resources */,
-				9F9E775A28EBDB2B00FE0EFC /* Assets.xcassets in Resources */,
-				9F38FA1328DF63D4000825C3 /* Localizable.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9F54231A28AD4E2400F15040 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1033,25 +856,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9F9E777F28EBDD7400FE0EFC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9F9E778028EBDD7400FE0EFC /* Assets.xcassets in Resources */,
-				9F9E778B28ECB1E900FE0EFC /* InfoPlist.strings in Resources */,
-				9F9E778128EBDD7400FE0EFC /* Localizable.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9FBEE992285F682C0070BA06 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F39E55D28DA467A0075534B /* MantraReaderWatch.app in Resources */,
 				9FBEE9A5285F682D0070BA06 /* Preview Assets.xcassets in Resources */,
 				9FB5983828AAC65B00798AD7 /* Localizable.strings in Resources */,
 				9FB5983228AAC54A00798AD7 /* InfoPlist.strings in Resources */,
 				9FBEE9A1285F682D0070BA06 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FE2E9C428EFD74100BA8240 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FE2E9D028EFD74200BA8240 /* Preview Assets.xcassets in Resources */,
+				9FE2E9DB28EFD89100BA8240 /* InfoPlist.strings in Resources */,
+				9FE2E9CD28EFD74200BA8240 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1098,65 +920,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9F39E54928DA46790075534B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9FEBE45E28DA547700E5CF47 /* RingCap.swift in Sources */,
-				9FCAA8B728E36C8500568464 /* AdjustingAndUndoTypes.swift in Sources */,
-				9FAA454528DF648200503FB2 /* Mantra+Statistics.swift in Sources */,
-				9F6CB84C28ED388E0063F7A5 /* ContentView.swift in Sources */,
-				9FC6AE2728E152BF00D1361C /* LaunchPreparer.swift in Sources */,
-				9F99ADD928DEE74100175408 /* Bool+Comparable.swift in Sources */,
-				9FC6AE2928E1552A00D1361C /* SettingsView.swift in Sources */,
-				9F172FA628E2047C00463818 /* MantraRow.swift in Sources */,
-				9FB052B528E221FF00FEFB1D /* AdjustingView.swift in Sources */,
-				9FCAA8BA28E36C9600568464 /* MantraCounterModeOverlayView.swift in Sources */,
-				9F8915DC28E07212009AE06F /* StatisticsView.swift in Sources */,
-				9FCAA8C328E54D6300568464 /* CircularProgressView.swift in Sources */,
-				9FB9801D28DEE8C700F04E84 /* PreloadedMantras.swift in Sources */,
-				9F8915E028E0721F009AE06F /* YearStatisticsView.swift in Sources */,
-				9FCAA8C528E60ED300568464 /* ReadsViewModel.swift in Sources */,
-				9FADFD2828DDFB0400644184 /* Constants.swift in Sources */,
-				9F81E41D28E62089002E83C1 /* View+ConfettiCannon.swift in Sources */,
-				9F81E42028E6208A002E83C1 /* Triangle.swift in Sources */,
-				9FB9802928DF54C600F04E84 /* CloseButtonImage.swift in Sources */,
-				9F39E55328DA46790075534B /* MantraReaderWatchApp.swift in Sources */,
-				9F8915DE28E0721A009AE06F /* WeekStatisticsView.swift in Sources */,
-				9FCAA8B828E36C8E00568464 /* HintView.swift in Sources */,
-				9FEBE45F28DA547700E5CF47 /* ProgressArc.swift in Sources */,
-				9F8915E128E07274009AE06F /* Date+StartEnd.swift in Sources */,
-				9F81E41E28E62089002E83C1 /* ConfettiSwiftUI.swift in Sources */,
-				9FED6BA928E97DC5006FF4E6 /* RandomColor.swift in Sources */,
-				9F172FA328E2046500463818 /* ReadTheMantra.xcdatamodeld in Sources */,
-				9F38FA1228DF623D000825C3 /* MantraColorScheme.swift in Sources */,
-				9FEBE46128DA54D800E5CF47 /* Settings.swift in Sources */,
-				9FEBE45D28DA547700E5CF47 /* ProgressRing.swift in Sources */,
-				9F172FA528E2046D00463818 /* DataManager.swift in Sources */,
-				9F99ADD628DEE72000175408 /* Functions.swift in Sources */,
-				9FCAA8C428E54D6300568464 /* CircularProgressViewModel.swift in Sources */,
-				9F99ADD828DEE72C00175408 /* WidgetModel.swift in Sources */,
-				9F99ADD728DEE72A00175408 /* MantraWidgetManager.swift in Sources */,
-				9FEBE46228DA54E400E5CF47 /* Sorting.swift in Sources */,
-				9F81E41F28E6208A002E83C1 /* RoundedCross.swift in Sources */,
-				9FC6AE2828E152C200D1361C /* NetworkMonitor.swift in Sources */,
-				9FEBE46028DA54CB00E5CF47 /* RingColor.swift in Sources */,
-				9FB9802828DF507400F04E84 /* CornerRadiusShape.swift in Sources */,
-				9FCD19B428E219D300543D8A /* NumberAnimation.swift in Sources */,
-				9F6CB84A28ED34880063F7A5 /* ComplicationController.swift in Sources */,
-				9FCAA8BD28E36F4600568464 /* InfoView.swift in Sources */,
-				9F8915DF28E0721C009AE06F /* MonthStatisticsView.swift in Sources */,
-				9F8915E228E0727D009AE06F /* KMBFormatter.swift in Sources */,
-				9FADFD2028DDEE6000644184 /* ReadsView.swift in Sources */,
-				9F99ADDB28DEE7C500175408 /* ReadingsModel.swift in Sources */,
-				9FCAA8BE28E5446500568464 /* Congratulations.swift in Sources */,
-				9FCAA8B928E36C9300568464 /* BlinkView.swift in Sources */,
-				9F8915DD28E07215009AE06F /* StatisticsViewModel.swift in Sources */,
-				9F81E41C28E62089002E83C1 /* SlimRectangle.swift in Sources */,
-				9F172FA428E2046A00463818 /* PersistenceController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9F54231828AD4E2400F15040 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1164,40 +927,6 @@
 				9F54232D28AD56A200F15040 /* WidgetModel.swift in Sources */,
 				9F54232128AD4E2400F15040 /* IntentHandler.swift in Sources */,
 				9F6E65B028B273CB0054F6D6 /* MantraWidget.intentdefinition in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9F9E775C28EBDD7400FE0EFC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9F9E775D28EBDD7400FE0EFC /* AccessoryCircularIntentWidgetView.swift in Sources */,
-				9F9E775F28EBDD7400FE0EFC /* StaticWidget.swift in Sources */,
-				9F9E776028EBDD7400FE0EFC /* IntentWidgetEntry.swift in Sources */,
-				9F9E776128EBDD7400FE0EFC /* IntentHandler.swift in Sources */,
-				9F2794F628EDD5D900004E85 /* AccessoryCornerIntentWidgetView.swift in Sources */,
-				9F9E776228EBDD7400FE0EFC /* RingColor.swift in Sources */,
-				9F9E776328EBDD7400FE0EFC /* AccessoryRectangularStaticWidgetView.swift in Sources */,
-				9F9E776428EBDD7400FE0EFC /* IntentWidgetEntryView.swift in Sources */,
-				9F9E776528EBDD7400FE0EFC /* IntentWidget.swift in Sources */,
-				9F9E776628EBDD7400FE0EFC /* AccessoryRectangularIntentWidgetView.swift in Sources */,
-				9F9E776828EBDD7400FE0EFC /* WidgetModel.swift in Sources */,
-				9F9E776928EBDD7400FE0EFC /* RandomColor.swift in Sources */,
-				9F9E776C28EBDD7400FE0EFC /* StaticWidgetEntry.swift in Sources */,
-				9F9E776D28EBDD7400FE0EFC /* MantraWidget.intentdefinition in Sources */,
-				9F9E776E28EBDD7400FE0EFC /* KMBFormatter.swift in Sources */,
-				9F9E778F28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift in Sources */,
-				9F9E776F28EBDD7400FE0EFC /* ProgressRing.swift in Sources */,
-				9F9E777028EBDD7400FE0EFC /* Constants.swift in Sources */,
-				9F9E777128EBDD7400FE0EFC /* IntentProvider.swift in Sources */,
-				9F9E777228EBDD7400FE0EFC /* StaticWidgetEntryView.swift in Sources */,
-				9F9E777328EBDD7400FE0EFC /* MantraColorScheme.swift in Sources */,
-				9F9E777428EBDD7400FE0EFC /* ProgressArc.swift in Sources */,
-				9F9E777528EBDD7400FE0EFC /* Sorting.swift in Sources */,
-				9F9E777728EBDD7400FE0EFC /* Settings.swift in Sources */,
-				9F9E777828EBDD7400FE0EFC /* RingCap.swift in Sources */,
-				9F9E777928EBDD7400FE0EFC /* StaticProvider.swift in Sources */,
-				9F9E777A28EBDD7400FE0EFC /* MantraWidgets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1283,6 +1012,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9FE2E9C228EFD74100BA8240 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FE2E9E428EFDC4800BA8240 /* ReadsView.swift in Sources */,
+				9FE2E9E028EFDB9000BA8240 /* InfoView.swift in Sources */,
+				9F38058E28EFDCDD00373AD2 /* AdjustingView.swift in Sources */,
+				9F38059228EFDD0B00373AD2 /* ContentViewNavView.swift in Sources */,
+				9FE2E9CB28EFD74100BA8240 /* ContentView.swift in Sources */,
+				9FE2E9C928EFD74100BA8240 /* MantraReaderWatchApp.swift in Sources */,
+				9F38059028EFDCEB00373AD2 /* ComplicationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1291,25 +1034,15 @@
 			target = 9F1AB3C928A18E57001FF7DE /* MantraWidgetExtension */;
 			targetProxy = 9F1AB3D928A18E58001FF7DE /* PBXContainerItemProxy */;
 		};
-		9F39E55028DA46790075534B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9F39E54C28DA46790075534B /* MantraReaderWatch Watch App */;
-			targetProxy = 9F39E54F28DA46790075534B /* PBXContainerItemProxy */;
-		};
-		9F39E55C28DA467A0075534B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9F39E54728DA46790075534B /* MantraReaderWatch */;
-			targetProxy = 9F39E55B28DA467A0075534B /* PBXContainerItemProxy */;
-		};
 		9F54232428AD4E2400F15040 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9F54231B28AD4E2400F15040 /* MantraIntent */;
 			targetProxy = 9F54232328AD4E2400F15040 /* PBXContainerItemProxy */;
 		};
-		9F9E778928EBDDDF00FE0EFC /* PBXTargetDependency */ = {
+		9FE2E9D628EFD77200BA8240 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9F9E775B28EBDD7400FE0EFC /* MantraWidgetExtension watch */;
-			targetProxy = 9F9E778828EBDDDF00FE0EFC /* PBXContainerItemProxy */;
+			target = 9FE2E9C528EFD74100BA8240 /* MantraReaderWatch Watch App */;
+			targetProxy = 9FE2E9D528EFD77200BA8240 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1341,6 +1074,15 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		9FE2E9D828EFD88500BA8240 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FE2E9D928EFD88600BA8240 /* en */,
+				9FE2E9DA28EFD88600BA8240 /* ru */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1352,7 +1094,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MantraWidget/Info.plist;
@@ -1382,7 +1124,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MantraWidget/Info.plist;
@@ -1405,119 +1147,13 @@
 			};
 			name = Release;
 		};
-		9F39E55E28DA467A0075534B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R89YUVSKU6;
-				INFOPLIST_KEY_CFBundleDisplayName = MantraReaderWatch;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraReaderWatch;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		9F39E55F28DA467A0075534B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R89YUVSKU6;
-				INFOPLIST_KEY_CFBundleDisplayName = MantraReaderWatch;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraReaderWatch;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		9F39E56128DA467A0075534B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = "";
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "MantraReaderWatch Watch App/MantraReaderWatch Watch App.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MantraReaderWatch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = R89YUVSKU6;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MantraReaderWatch-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Mantra Reader";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKWatchOnly = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraReaderWatch.watchkitapp;
-				PRODUCT_NAME = MantraReader;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		9F39E56228DA467A0075534B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = "";
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "MantraReaderWatch Watch App/MantraReaderWatch Watch App.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MantraReaderWatch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = R89YUVSKU6;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MantraReaderWatch-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Mantra Reader";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKWatchOnly = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraReaderWatch.watchkitapp;
-				PRODUCT_NAME = MantraReader;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Release;
-		};
 		9F54232728AD4E2400F15040 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraIntent/MantraIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MantraIntent/Info.plist;
@@ -1545,7 +1181,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraIntent/MantraIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MantraIntent/Info.plist;
@@ -1564,69 +1200,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		9F9E778328EBDD7400FE0EFC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = "";
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = MantraWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R89YUVSKU6;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MantraReaderWatchWidgetInfo.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MantraWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraReaderWatch.watchkitapp.MantraWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-			};
-			name = Debug;
-		};
-		9F9E778428EBDD7400FE0EFC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = "";
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = MantraWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R89YUVSKU6;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MantraReaderWatchWidgetInfo.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MantraWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraReaderWatch.watchkitapp.MantraWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1760,7 +1333,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReader/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
@@ -1801,7 +1374,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReader/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
@@ -1832,6 +1405,73 @@
 			};
 			name = Release;
 		};
+		9FE2E9D228EFD74200BA8240 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = "MantraReaderWatch Watch App/MantraReaderWatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_ASSET_PATHS = "\"MantraReaderWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = R89YUVSKU6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MantraReaderWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mosariot.MantraCounter;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraCounter.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		9FE2E9D328EFD74200BA8240 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = "MantraReaderWatch Watch App/MantraReaderWatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_ASSET_PATHS = "\"MantraReaderWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = R89YUVSKU6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MantraReaderWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mosariot.MantraCounter;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraCounter.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1844,38 +1484,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9F39E56328DA467A0075534B /* Build configuration list for PBXNativeTarget "MantraReaderWatch Watch App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9F39E56128DA467A0075534B /* Debug */,
-				9F39E56228DA467A0075534B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9F39E56428DA467A0075534B /* Build configuration list for PBXNativeTarget "MantraReaderWatch" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9F39E55E28DA467A0075534B /* Debug */,
-				9F39E55F28DA467A0075534B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		9F54232628AD4E2400F15040 /* Build configuration list for PBXNativeTarget "MantraIntent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9F54232728AD4E2400F15040 /* Debug */,
 				9F54232828AD4E2400F15040 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9F9E778228EBDD7400FE0EFC /* Build configuration list for PBXNativeTarget "MantraWidgetExtension watch" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9F9E778328EBDD7400FE0EFC /* Debug */,
-				9F9E778428EBDD7400FE0EFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1894,6 +1507,15 @@
 			buildConfigurations = (
 				9FBEE9A9285F682D0070BA06 /* Debug */,
 				9FBEE9AA285F682D0070BA06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FE2E9D128EFD74200BA8240 /* Build configuration list for PBXNativeTarget "MantraReaderWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FE2E9D228EFD74200BA8240 /* Debug */,
+				9FE2E9D328EFD74200BA8240 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

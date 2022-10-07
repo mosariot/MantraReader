@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  MantraReader
+
+  Created by Alex Vorobiev on 15.08.2022.
+  
+*/
+
+CFBundleDisplayName = "Mantra Reader";

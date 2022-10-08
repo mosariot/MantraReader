@@ -78,10 +78,6 @@ struct AccessoryCircularIntentWidgetView: View {
         .gaugeStyle(.accessoryCircularCapacity)
         .tint(widgetRenderingMode == .fullColor ? ringColor : nil)
         .redacted(reason: reasons)
-        .widgetLabel {
-            Text(title)
-                .redacted(reason: reasons)
-        }
         .widgetURL(URL(string: (selectedMantra?.id.uuidString ?? firstMantra?.id.uuidString) ?? ""))
     }
 }

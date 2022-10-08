@@ -163,6 +163,38 @@
 		9FC0F5CE28D4BC0200A00681 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5CD28D4BC0200A00681 /* ProgressRing.swift */; };
 		9FC0F5CF28D4BF0100A00681 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5CD28D4BC0200A00681 /* ProgressRing.swift */; };
 		9FD080E628F1635700D7E556 /* CornerRadiusShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA428CF9CC100CE9D9B /* CornerRadiusShape.swift */; };
+		9FD080EA28F1C06E00D7E556 /* AccessoryCircularIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422FA28ACA31700F15040 /* AccessoryCircularIntentWidgetView.swift */; };
+		9FD080EC28F1C06E00D7E556 /* StaticWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3D128A18E57001FF7DE /* StaticWidget.swift */; };
+		9FD080ED28F1C06E00D7E556 /* IntentWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F228ACA2B000F15040 /* IntentWidgetEntry.swift */; };
+		9FD080EE28F1C06E00D7E556 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F54232028AD4E2400F15040 /* IntentHandler.swift */; };
+		9FD080EF28F1C06E00D7E556 /* RingColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA028CF9C2000CE9D9B /* RingColor.swift */; };
+		9FD080F028F1C06E00D7E556 /* AccessoryRectangularStaticWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553E28AC021D006E5798 /* AccessoryRectangularStaticWidgetView.swift */; };
+		9FD080F128F1C06E00D7E556 /* IntentWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422EE28ACA29400F15040 /* IntentWidgetEntryView.swift */; };
+		9FD080F228F1C06E00D7E556 /* IntentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422EC28ACA24100F15040 /* IntentWidget.swift */; };
+		9FD080F328F1C06E00D7E556 /* AccessoryRectangularIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F828ACA30300F15040 /* AccessoryRectangularIntentWidgetView.swift */; };
+		9FD080F528F1C06E00D7E556 /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E728A18EEF001FF7DE /* WidgetModel.swift */; };
+		9FD080F628F1C06E00D7E556 /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F780037287FF7D200516A0F /* RandomColor.swift */; };
+		9FD080F928F1C06E00D7E556 /* StaticWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553528AC013E006E5798 /* StaticWidgetEntry.swift */; };
+		9FD080FA28F1C06E00D7E556 /* MantraWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9F6E65B228B273CB0054F6D6 /* MantraWidget.intentdefinition */; };
+		9FD080FB28F1C06E00D7E556 /* KMBFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422FC28ACA32E00F15040 /* KMBFormatter.swift */; };
+		9FD080FC28F1C06E00D7E556 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5CD28D4BC0200A00681 /* ProgressRing.swift */; };
+		9FD080FD28F1C06E00D7E556 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC8DAD28622D5900BF7051 /* Constants.swift */; };
+		9FD080FE28F1C06E00D7E556 /* IntentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422F028ACA29E00F15040 /* IntentProvider.swift */; };
+		9FD080FF28F1C06E00D7E556 /* StaticWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553928AC015F006E5798 /* StaticWidgetEntryView.swift */; };
+		9FD0810028F1C06E00D7E556 /* MantraColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA228CF9C4D00CE9D9B /* MantraColorScheme.swift */; };
+		9FD0810128F1C06E00D7E556 /* ProgressArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2ED29F28D81F0A0031D40A /* ProgressArc.swift */; };
+		9FD0810228F1C06E00D7E556 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794ED2289B026F00DDF940 /* Sorting.swift */; };
+		9FD0810428F1C06E00D7E556 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5C828D4B36100A00681 /* Settings.swift */; };
+		9FD0810528F1C06E00D7E556 /* RingCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE4BA728D033DC00CE9D9B /* RingCap.swift */; };
+		9FD0810628F1C06E00D7E556 /* AccessoryInlineIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E778D28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift */; };
+		9FD0810728F1C06E00D7E556 /* StaticProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553728AC014C006E5798 /* StaticProvider.swift */; };
+		9FD0810828F1C06E00D7E556 /* MantraWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553028AC0084006E5798 /* MantraWidgets.swift */; };
+		9FD0810928F1C06E00D7E556 /* AccessoryCornerIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2794F428EDD5D900004E85 /* AccessoryCornerIntentWidgetView.swift */; };
+		9FD0810C28F1C06E00D7E556 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1AB3CE28A18E57001FF7DE /* SwiftUI.framework */; };
+		9FD0810D28F1C06E00D7E556 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1AB3CC28A18E57001FF7DE /* WidgetKit.framework */; };
+		9FD0810F28F1C06E00D7E556 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F1AB3D428A18E58001FF7DE /* Assets.xcassets */; };
+		9FD0811028F1C06E00D7E556 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983A28AAC65B00798AD7 /* Localizable.strings */; };
+		9FD0811628F1C0D000D7E556 /* MantraWidgetExtension watch.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9FD0811428F1C06E00D7E556 /* MantraWidgetExtension watch.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9FD61DC62893915B004936E6 /* PreloadedMantraListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC52893915B004936E6 /* PreloadedMantraListView.swift */; };
 		9FD61DC8289391A4004936E6 /* PreloadedMantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC7289391A4004936E6 /* PreloadedMantraRow.swift */; };
 		9FD61DCA289391BC004936E6 /* PreloadedMantraListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD61DC9289391BC004936E6 /* PreloadedMantraListViewModel.swift */; };
@@ -201,6 +233,13 @@
 			remoteGlobalIDString = 9F54231B28AD4E2400F15040;
 			remoteInfo = MantraIntent;
 		};
+		9FD0811728F1C0D000D7E556 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9FBEE98C285F682C0070BA06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FD080E828F1C06E00D7E556;
+			remoteInfo = "MantraWidgetExtension watch";
+		};
 		9FE2E9D528EFD77200BA8240 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9FBEE98C285F682C0070BA06 /* Project object */;
@@ -219,6 +258,17 @@
 			files = (
 				9F1AB3DB28A18E58001FF7DE /* MantraWidgetExtension.appex in Embed Foundation Extensions */,
 				9F54232528AD4E2400F15040 /* MantraIntent.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FD0811928F1C0D000D7E556 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				9FD0811628F1C0D000D7E556 /* MantraWidgetExtension watch.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,6 +393,8 @@
 		9FC0F5C828D4B36100A00681 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		9FC0F5CD28D4BC0200A00681 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		9FD080E728F17D6200D7E556 /* MantraReaderWatch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MantraReaderWatch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		9FD0811428F1C06E00D7E556 /* MantraWidgetExtension watch.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MantraWidgetExtension watch.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FD0811528F1C06E00D7E556 /* MantraWidgetExtension-Watch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MantraWidgetExtension-Watch-Info.plist"; path = "/Users/mosariot/Local Development/Обучение/MantraReader/MantraWidgetExtension-Watch-Info.plist"; sourceTree = "<absolute>"; };
 		9FD61DC52893915B004936E6 /* PreloadedMantraListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraListView.swift; sourceTree = "<group>"; };
 		9FD61DC7289391A4004936E6 /* PreloadedMantraRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraRow.swift; sourceTree = "<group>"; };
 		9FD61DC9289391BC004936E6 /* PreloadedMantraListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedMantraListViewModel.swift; sourceTree = "<group>"; };
@@ -391,6 +443,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FB32B1428A7D8F2000A910E /* IQKeyboardManagerSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FD0810B28F1C06E00D7E556 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FD0810C28F1C06E00D7E556 /* SwiftUI.framework in Frameworks */,
+				9FD0810D28F1C06E00D7E556 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,6 +734,7 @@
 				9FE2E9C728EFD74100BA8240 /* MantraReaderWatch Watch App */,
 				9F1AB3CB28A18E57001FF7DE /* Frameworks */,
 				9FBEE995285F682C0070BA06 /* Products */,
+				9FD0811528F1C06E00D7E556 /* MantraWidgetExtension-Watch-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -683,6 +745,7 @@
 				9F1AB3CA28A18E57001FF7DE /* MantraWidgetExtension.appex */,
 				9F54231C28AD4E2400F15040 /* MantraIntent.appex */,
 				9FE2E9C628EFD74100BA8240 /* MantraReaderWatch Watch App.app */,
+				9FD0811428F1C06E00D7E556 /* MantraWidgetExtension watch.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -812,6 +875,23 @@
 			productReference = 9FBEE994285F682C0070BA06 /* MantraReader.app */;
 			productType = "com.apple.product-type.application";
 		};
+		9FD080E828F1C06E00D7E556 /* MantraWidgetExtension watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FD0811128F1C06E00D7E556 /* Build configuration list for PBXNativeTarget "MantraWidgetExtension watch" */;
+			buildPhases = (
+				9FD080E928F1C06E00D7E556 /* Sources */,
+				9FD0810B28F1C06E00D7E556 /* Frameworks */,
+				9FD0810E28F1C06E00D7E556 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MantraWidgetExtension watch";
+			productName = MantraWidgetExtension;
+			productReference = 9FD0811428F1C06E00D7E556 /* MantraWidgetExtension watch.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		9FE2E9C528EFD74100BA8240 /* MantraReaderWatch Watch App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FE2E9D128EFD74200BA8240 /* Build configuration list for PBXNativeTarget "MantraReaderWatch Watch App" */;
@@ -819,10 +899,12 @@
 				9FE2E9C228EFD74100BA8240 /* Sources */,
 				9FE2E9C328EFD74100BA8240 /* Frameworks */,
 				9FE2E9C428EFD74100BA8240 /* Resources */,
+				9FD0811928F1C0D000D7E556 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9FD0811828F1C0D000D7E556 /* PBXTargetDependency */,
 			);
 			name = "MantraReaderWatch Watch App";
 			productName = "MantraReaderWatch Watch App";
@@ -874,6 +956,7 @@
 				9F1AB3C928A18E57001FF7DE /* MantraWidgetExtension */,
 				9F54231B28AD4E2400F15040 /* MantraIntent */,
 				9FE2E9C528EFD74100BA8240 /* MantraReaderWatch Watch App */,
+				9FD080E828F1C06E00D7E556 /* MantraWidgetExtension watch */,
 			);
 		};
 /* End PBXProject section */
@@ -904,6 +987,15 @@
 				9FB5983828AAC65B00798AD7 /* Localizable.strings in Resources */,
 				9FB5983228AAC54A00798AD7 /* InfoPlist.strings in Resources */,
 				9FBEE9A1285F682D0070BA06 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FD0810E28F1C06E00D7E556 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FD0810F28F1C06E00D7E556 /* Assets.xcassets in Resources */,
+				9FD0811028F1C06E00D7E556 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1051,6 +1143,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9FD080E928F1C06E00D7E556 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FD080EA28F1C06E00D7E556 /* AccessoryCircularIntentWidgetView.swift in Sources */,
+				9FD080EC28F1C06E00D7E556 /* StaticWidget.swift in Sources */,
+				9FD080ED28F1C06E00D7E556 /* IntentWidgetEntry.swift in Sources */,
+				9FD080EE28F1C06E00D7E556 /* IntentHandler.swift in Sources */,
+				9FD080EF28F1C06E00D7E556 /* RingColor.swift in Sources */,
+				9FD080F028F1C06E00D7E556 /* AccessoryRectangularStaticWidgetView.swift in Sources */,
+				9FD080F128F1C06E00D7E556 /* IntentWidgetEntryView.swift in Sources */,
+				9FD080F228F1C06E00D7E556 /* IntentWidget.swift in Sources */,
+				9FD080F328F1C06E00D7E556 /* AccessoryRectangularIntentWidgetView.swift in Sources */,
+				9FD080F528F1C06E00D7E556 /* WidgetModel.swift in Sources */,
+				9FD080F628F1C06E00D7E556 /* RandomColor.swift in Sources */,
+				9FD080F928F1C06E00D7E556 /* StaticWidgetEntry.swift in Sources */,
+				9FD080FA28F1C06E00D7E556 /* MantraWidget.intentdefinition in Sources */,
+				9FD080FB28F1C06E00D7E556 /* KMBFormatter.swift in Sources */,
+				9FD080FC28F1C06E00D7E556 /* ProgressRing.swift in Sources */,
+				9FD080FD28F1C06E00D7E556 /* Constants.swift in Sources */,
+				9FD080FE28F1C06E00D7E556 /* IntentProvider.swift in Sources */,
+				9FD080FF28F1C06E00D7E556 /* StaticWidgetEntryView.swift in Sources */,
+				9FD0810028F1C06E00D7E556 /* MantraColorScheme.swift in Sources */,
+				9FD0810128F1C06E00D7E556 /* ProgressArc.swift in Sources */,
+				9FD0810228F1C06E00D7E556 /* Sorting.swift in Sources */,
+				9FD0810428F1C06E00D7E556 /* Settings.swift in Sources */,
+				9FD0810528F1C06E00D7E556 /* RingCap.swift in Sources */,
+				9FD0810628F1C06E00D7E556 /* AccessoryInlineIntentWidgetView.swift in Sources */,
+				9FD0810728F1C06E00D7E556 /* StaticProvider.swift in Sources */,
+				9FD0810828F1C06E00D7E556 /* MantraWidgets.swift in Sources */,
+				9FD0810928F1C06E00D7E556 /* AccessoryCornerIntentWidgetView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FE2E9C228EFD74100BA8240 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1121,6 +1247,11 @@
 			target = 9F54231B28AD4E2400F15040 /* MantraIntent */;
 			targetProxy = 9F54232328AD4E2400F15040 /* PBXContainerItemProxy */;
 		};
+		9FD0811828F1C0D000D7E556 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9FD080E828F1C06E00D7E556 /* MantraWidgetExtension watch */;
+			targetProxy = 9FD0811728F1C0D000D7E556 /* PBXContainerItemProxy */;
+		};
 		9FE2E9D628EFD77200BA8240 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9FE2E9C528EFD74100BA8240 /* MantraReaderWatch Watch App */;
@@ -1176,7 +1307,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MantraWidget/Info.plist;
@@ -1206,7 +1337,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MantraWidget/Info.plist;
@@ -1235,7 +1366,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraIntent/MantraIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MantraIntent/Info.plist;
@@ -1263,7 +1394,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraIntent/MantraIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MantraIntent/Info.plist;
@@ -1415,7 +1546,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReader/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
@@ -1456,7 +1587,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReader/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
@@ -1487,6 +1618,69 @@
 			};
 			name = Release;
 		};
+		9FD0811228F1C06E00D7E556 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = MantraWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = R89YUVSKU6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MantraWidgetExtension-Watch-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = MantraWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraCounter.watchkitapp.MantraWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		9FD0811328F1C06E00D7E556 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = MantraWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = R89YUVSKU6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MantraWidgetExtension-Watch-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = MantraWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mosariot.MantraCounter.watchkitapp.MantraWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
 		9FE2E9D228EFD74200BA8240 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1495,7 +1689,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "MantraReaderWatch Watch App/MantraReaderWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReaderWatch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				ENABLE_PREVIEWS = YES;
@@ -1530,7 +1724,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "MantraReaderWatch Watch App/MantraReaderWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReaderWatch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				ENABLE_PREVIEWS = YES;
@@ -1593,6 +1787,15 @@
 			buildConfigurations = (
 				9FBEE9A9285F682D0070BA06 /* Debug */,
 				9FBEE9AA285F682D0070BA06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FD0811128F1C06E00D7E556 /* Build configuration list for PBXNativeTarget "MantraWidgetExtension watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FD0811228F1C06E00D7E556 /* Debug */,
+				9FD0811328F1C06E00D7E556 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreData
 import WidgetKit
+import ClockKit
 
 struct MantraWidgetManager {
     @AppStorage("widgetItem", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
@@ -40,5 +41,8 @@ struct MantraWidgetManager {
         widgetItemData = data
         WidgetCenter.shared.reloadAllTimelines()
         WidgetCenter.shared.invalidateConfigurationRecommendations()
+#if os(watchOS)
+        CLKComplicationServer.sharedInstance().reloadComplicationDescriptors()
+#endif
     }
 }

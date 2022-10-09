@@ -147,8 +147,7 @@ struct ContentView: View {
                 }
             }
             .onAppear {
-                WidgetCenter.shared.reloadAllTimelines()
-                WidgetCenter.shared.invalidateConfigurationRecommendations()
+                dataManager.deleteEmptyMantrasIfNeeded()
             }
             .onOpenURL { url in
                 print("\(url)")

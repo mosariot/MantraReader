@@ -116,7 +116,6 @@ struct ContentView: View {
             }
         } detail: {
             DetailsColumn(selectedMantra: selectedMantra, isMantraDeleted: $isMantraDeleted)
-                .navigationSplitViewColumnWidth(min: 400, ideal: 600)
         }
         .onChange(of: selectedMantra) { _ in
             if !isFreshLaunch {

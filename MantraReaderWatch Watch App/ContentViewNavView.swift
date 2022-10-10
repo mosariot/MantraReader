@@ -15,16 +15,16 @@ struct ContentView: View {
     var sorting: Sorting = .title
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
     @AppStorage("isInitalDataLoading") private var isInitalDataLoading = true
-    
-    @State private var selectedMantra: [Mantra] = []
+
+    @State private var activeMantra: Mantra?
     @State private var isPresentedStatisticsSheet = false
     @State private var isPresentedSettingsSheet = false
     @State private var isDeletingMantras = false
     @State private var mantrasForDeletion: [Mantra]?
-    
+
     @SectionedFetchRequest(sectionIdentifier: \.isFavorite, sortDescriptors: [])
     private var mantras: SectionedFetchResults<Bool, Mantra>
-    
+
     init() {
         var currentSortDescriptor: SortDescriptor<Mantra>
         switch sorting {
@@ -41,16 +41,24 @@ struct ContentView: View {
             animation: .default
         )
     }
-    
+
     var body: some View {
-        NavigationStack(path: $selectedMantra) {
+
+        NavigationView {
             ZStack {
                 List(mantras) { section in
                     Section(section.id ? "Favorites" : "Mantras") {
                         ForEach(section) { mantra in
-                            NavigationLink(value: mantra) {
-                                MantraRow(mantra: mantra)
-                            }
+                            NavigationLink(
+                                tag: mantra,
+                                selection: $activeMantra,
+                                destination: {
+                                    ReadsView(viewModel: ReadsViewModel(mantra, dataManager: dataManager))
+                                },
+                                label: {
+                                    MantraRow(mantra: mantra)
+                                }
+                            )
                             .swipeActions(allowsFullSwipe: false) {
                                 Button {
                                     mantrasForDeletion = [mantra]
@@ -74,9 +82,6 @@ struct ContentView: View {
                             }
                         }
                     }
-                }
-                .navigationDestination(for: Mantra.self) { mantra in
-                    ReadsView(viewModel: ReadsViewModel(mantra, dataManager: dataManager))
                 }
                 if isInitalDataLoading {
                     ProgressView("Syncing...")
@@ -137,13 +142,13 @@ struct ContentView: View {
                 var isMantraExist = false
                 mantras.forEach { section in
                     section.forEach { mantra in
-                        if selectedMantra.count > 0, mantra == selectedMantra[0] {
+                        if let activeMantra, mantra == activeMantra {
                             isMantraExist = true
                         }
                     }
                 }
                 if !isMantraExist {
-                    selectedMantra = []
+                    activeMantra = nil
                 }
             }
             .onAppear {
@@ -153,7 +158,7 @@ struct ContentView: View {
                 mantras.forEach { section in
                     section.forEach { mantra in
                         if mantra.uuid == UUID(uuidString: "\(url)") {
-                            selectedMantra = [mantra]
+                            activeMantra = mantra
                         }
                     }
                 }

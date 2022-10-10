@@ -150,7 +150,6 @@ struct ContentView: View {
                 dataManager.deleteEmptyMantrasIfNeeded()
             }
             .onOpenURL { url in
-                print("\(url)")
                 mantras.forEach { section in
                     section.forEach { mantra in
                         if mantra.uuid == UUID(uuidString: "\(url)") {

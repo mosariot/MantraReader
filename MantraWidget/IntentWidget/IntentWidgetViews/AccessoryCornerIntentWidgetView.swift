@@ -50,7 +50,7 @@ struct AccessoryCornerIntentWidgetView: View {
             ) {
                 EmptyView()
             } currentValueLabel: {
-                Text("\(formatter.string(fromNumber: Int32(value)))")
+                Text("\(formatter.string(fromNumber: (selectedMantra?.reads ?? firstMantra?.reads) ?? 0))")
                     .privacySensitive()
             }
             .gaugeStyle(.accessoryLinearCapacity)

@@ -69,7 +69,7 @@ struct AdjustingView: View {
             .alert("", isPresented: $isPresentedFirstAppearOfAdjustingViewAlert) {
                 Button("OK") { }
             } message: {
-                Text("For change the value just spin the crown")
+                Text("For change the value just spin the crown.")
             }
         }
         .toolbar {

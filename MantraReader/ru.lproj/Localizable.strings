@@ -354,7 +354,7 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "Mantras: %d" = "Мантры: %d";
 
 /* Accessory Rectangular static widget title */
-"Total mantras" = "Общая начитка";
+"Total Mantras" = "Общая начитка";
 
 /* Static Widget subtitle for readings */
 "Current readings: " = "Текущая начитка: ";
@@ -395,7 +395,7 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 "You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. Use extended Wake Duration and Return to Clock duration (customizable separately for Mantra Reader) in your Watch Settings to stay in app while reading your mantras." = "Вы входите в режим 'Счетчик мантр'. Один тап по экрану добавит одну начитку, двойной тап - добавит один круг. Используйте увеличенное время подсветки экрана и возврата к циферблату (можно настроить отдельно для Начитай!) в настройках ваших часов, чтобы оставаться в приложении во время начитки мантр.";
 
 /* First appear of AdjustingView alert message */
-"For change the value just spin the crown" = "Для изменения значения просто крутите колесико";
+"For change the value just spin the crown." = "Для изменения значения просто крутите колесико.";
 
 /* Reads button */
 "Reads" = "Начиток";

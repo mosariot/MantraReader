@@ -41,36 +41,12 @@ struct AccessoryCornerIntentWidgetView: View {
 #endif
     }
     
-    private var value: Double {
-#if os(iOS)
-        Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)
-#elseif os(watchOS)
-        Double(selectedMantra?.reads ?? 56683)
-#endif
-    }
-    
-    private var endRange: Double {
-#if os(iOS)
-        Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000)
-#elseif os(watchOS)
-        Double(selectedMantra?.goal ?? 100000)
-#endif
-    }
-    
-    private var title: String {
-#if os(iOS)
-        (selectedMantra?.title ?? firstMantra?.title) ?? String(localized: "Your mantra")
-#elseif os(watchOS)
-        selectedMantra?.title ?? String(localized: "Your mantra")
-#endif
-    }
-    
     var body: some View {
         EmptyView()
         .widgetLabel {
             Gauge(
-                value: value,
-                in: 0...endRange
+                value: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0),
+                in: 0...Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000)
             ) {
                 EmptyView()
             } currentValueLabel: {

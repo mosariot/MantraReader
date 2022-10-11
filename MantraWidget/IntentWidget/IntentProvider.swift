@@ -12,7 +12,6 @@ struct IntentProvider: IntentTimelineProvider {
     @AppStorage("widgetItem", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
     private var widgetItemData: Data = Data()
     
-#if os(watchOS)
     func recommendations() -> [IntentRecommendation<SelectMantraIntent>] {
         guard let widgetItem = try? JSONDecoder().decode(WidgetModel.self, from: widgetItemData) else {
             let intent = SelectMantraIntent()
@@ -27,7 +26,6 @@ struct IntentProvider: IntentTimelineProvider {
                 return IntentRecommendation(intent: intent, description: Text(mantra.title))
             }
     }
-#endif
     
     func placeholder(in context: Context) -> IntentWidgetEntry {
         let placeholderMantra = WidgetModel.WidgetMantra(id: UUID(), title: "Your mantra", reads: 0, goal: 100000, image: nil)

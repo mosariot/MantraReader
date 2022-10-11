@@ -31,7 +31,7 @@ struct MantraWidgetManager {
         }
         let mantras = allMantras.sorted(using: sort)
         let mantrasItems = mantras
-            .map { WidgetModel.WidgetMantra(id: $0.uuid ?? UUID(), title: $0.title ?? "", reads: $0.reads, goal: $0.readsGoal, image: $0.imageForTableView) }
+            .map { WidgetModel.WidgetMantra(id: $0.uuid ?? UUID(), title: $0.title ?? "", reads: $0.reads, goal: $0.readsGoal, image: imageData(for: $0)) }
         let widgetModel = WidgetModel(mantras: mantrasItems)
         return widgetModel
     }
@@ -43,6 +43,14 @@ struct MantraWidgetManager {
         WidgetCenter.shared.invalidateConfigurationRecommendations()
 #if os(watchOS)
         CLKComplicationServer.sharedInstance().reloadComplicationDescriptors()
+#endif
+    }
+    
+    private func imageData(for mantra: Mantra) {
+#if os(iOS)
+        mantra.imageForTableView
+#elseif os(watchOS)
+        nil 
 #endif
     }
 }

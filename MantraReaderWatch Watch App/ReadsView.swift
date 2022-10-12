@@ -10,7 +10,7 @@ import SwiftUI
 struct ReadsView: View {
     @AppStorage("isFirstLaunchOfMantraCounterMode") private var isFirstLaunchOfMantraCounterMode = true
     @EnvironmentObject private var dataManager: DataManager
-    @StateObject var viewModel: ReadsViewModel
+    @ObservedObject var viewModel: ReadsViewModel
     
     @State private var isPresentedStatisticsSheet = false
     @State private var isPresentedInfoSheet = false

@@ -172,7 +172,7 @@ struct ReadsView: View {
             afterDelay(1.5) { showHint = false }
         } else {
             guard !(previousReads == 0 || previousReads == viewModel.mantra.reads) else { return }
-            viewModel.checkForCongratulationsOnWatch(with: viewModel.mantra.reads - previousReads)
+            viewModel.checkForCongratulationsOnWatch(with: viewModel.mantra.reads - previousReads, noDelay: true)
         }
     }
 }

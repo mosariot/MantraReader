@@ -188,7 +188,7 @@ final class ReadsViewModel: ObservableObject {
     }
     
 #elseif os(watchOS)
-    func checkForCongratulationsOnWatch(with value: Int32) {
+    func checkForCongratulationsOnWatch(with value: Int32, noDelay: Bool = false) {
         if mantra.reads - value < mantra.readsGoal && mantra.reads >= mantra.readsGoal {
             WKInterfaceDevice.current().play(.success)
             confettiTrigger += 1
@@ -203,7 +203,7 @@ final class ReadsViewModel: ObservableObject {
         }
         if mantra.reads - value < mantra.readsGoal/2 && mantra.readsGoal/2..<mantra.readsGoal ~= mantra.reads {
             isAboutToShowCongratulations = true
-            afterDelay(Constants.animationTime + 0.3) {
+            afterDelay(noDelay ? 0.3 : Constants.animationTime + 0.3) {
                 self.congratulations = .half
                 self.isPresentedCongratulations = true
                 self.isAboutToShowCongratulations = false

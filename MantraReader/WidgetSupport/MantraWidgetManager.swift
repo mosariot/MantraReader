@@ -46,7 +46,7 @@ struct MantraWidgetManager {
 #endif
     }
     
-    private func imageData(for mantra: Mantra) {
+    private func imageData(for mantra: Mantra) -> Data? {
 #if os(iOS)
         mantra.imageForTableView
 #elseif os(watchOS)

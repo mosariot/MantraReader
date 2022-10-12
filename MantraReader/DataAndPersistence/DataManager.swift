@@ -42,10 +42,10 @@ final class DataManager: ObservableObject {
         PreloadedMantras.data.forEach { data in
             let mantra = Mantra(context: viewContext)
             mantra.uuid = UUID()
-// Test implementation - not for production
+// Test preloading data - not for production
 //            mantra.reads = Int32.random(in: 0...200_000)
 //            mantra.statistics = ReadingsData.random
-            mantra.isFavorite = Bool.random()
+//            mantra.isFavorite = Bool.random()
             data.forEach { key, value in
                 switch key {
                 case .title:

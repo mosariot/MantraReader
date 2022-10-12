@@ -52,7 +52,6 @@
 		9F54232528AD4E2400F15040 /* MantraIntent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9F54231C28AD4E2400F15040 /* MantraIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9F54232A28AD507000F15040 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F54232028AD4E2400F15040 /* IntentHandler.swift */; };
 		9F54232D28AD56A200F15040 /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E728A18EEF001FF7DE /* WidgetModel.swift */; };
-		9F5AE6B028F46F2D009A4E19 /* ContentViewNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5AE6AF28F46F2D009A4E19 /* ContentViewNavView.swift */; };
 		9F605143288EE75E005EC6F5 /* BlinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F605142288EE75E005EC6F5 /* BlinkView.swift */; };
 		9F68146728F1615000FDEDDE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB7AE6828B557F70044C55E /* DataManager.swift */; };
 		9F68146828F1615300FDEDDE /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE999285F682C0070BA06 /* PersistenceController.swift */; };
@@ -212,7 +211,7 @@
 		9FDF349B2885B2E000B3007E /* CircularProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF349A2885B2E000B3007E /* CircularProgressViewModel.swift */; };
 		9FDF349F2885E86200B3007E /* GoalButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF349E2885E86200B3007E /* GoalButtonView.swift */; };
 		9FE2E9C928EFD74100BA8240 /* MantraReaderWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2E9C828EFD74100BA8240 /* MantraReaderWatchApp.swift */; };
-		9FE2E9CB28EFD74100BA8240 /* ContentViewNavStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2E9CA28EFD74100BA8240 /* ContentViewNavStack.swift */; };
+		9FE2E9CB28EFD74100BA8240 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2E9CA28EFD74100BA8240 /* ContentView.swift */; };
 		9FE2E9D028EFD74200BA8240 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FE2E9CF28EFD74200BA8240 /* Preview Assets.xcassets */; };
 		9FE2E9D428EFD77200BA8240 /* MantraReaderWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9FE2E9C628EFD74100BA8240 /* MantraReaderWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9FE2E9E028EFDB9000BA8240 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2E9DF28EFDB9000BA8240 /* InfoView.swift */; };
@@ -331,7 +330,6 @@
 		9F54232028AD4E2400F15040 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		9F54232228AD4E2400F15040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F54232B28AD55CD00F15040 /* MantraIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MantraIntent.entitlements; sourceTree = "<group>"; };
-		9F5AE6AF28F46F2D009A4E19 /* ContentViewNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewNavView.swift; sourceTree = "<group>"; };
 		9F5C7F5C28CBAB6400ED3E29 /* ReadTheMantraStat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReadTheMantraStat.xcdatamodel; sourceTree = "<group>"; };
 		9F605142288EE75E005EC6F5 /* BlinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkView.swift; sourceTree = "<group>"; };
 		9F6C7D6228BBE379004CC501 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
@@ -412,7 +410,7 @@
 		9FDF349E2885E86200B3007E /* GoalButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalButtonView.swift; sourceTree = "<group>"; };
 		9FE2E9C628EFD74100BA8240 /* MantraReaderWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MantraReaderWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FE2E9C828EFD74100BA8240 /* MantraReaderWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraReaderWatchApp.swift; sourceTree = "<group>"; };
-		9FE2E9CA28EFD74100BA8240 /* ContentViewNavStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewNavStack.swift; sourceTree = "<group>"; };
+		9FE2E9CA28EFD74100BA8240 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9FE2E9CF28EFD74200BA8240 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9FE2E9DC28EFD97900BA8240 /* MantraReaderWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MantraReaderWatch Watch App.entitlements"; sourceTree = "<group>"; };
 		9FE2E9DF28EFDB9000BA8240 /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
@@ -793,8 +791,7 @@
 				9FD080E728F17D6200D7E556 /* MantraReaderWatch-Watch-App-Info.plist */,
 				9FE2E9DC28EFD97900BA8240 /* MantraReaderWatch Watch App.entitlements */,
 				9FE2E9C828EFD74100BA8240 /* MantraReaderWatchApp.swift */,
-				9FE2E9CA28EFD74100BA8240 /* ContentViewNavStack.swift */,
-				9F5AE6AF28F46F2D009A4E19 /* ContentViewNavView.swift */,
+				9FE2E9CA28EFD74100BA8240 /* ContentView.swift */,
 				9FE2E9E328EFDC4800BA8240 /* ReadsView.swift */,
 				9F38058D28EFDCDD00373AD2 /* AdjustingView.swift */,
 				9FE2E9DF28EFDB9000BA8240 /* InfoView.swift */,
@@ -1188,7 +1185,6 @@
 				9F68147C28F161DA00FDEDDE /* BlinkView.swift in Sources */,
 				9FE2E9E428EFDC4800BA8240 /* ReadsView.swift in Sources */,
 				9F68147B28F161D700FDEDDE /* MantraCounterModeOverlayView.swift in Sources */,
-				9F5AE6B028F46F2D009A4E19 /* ContentViewNavView.swift in Sources */,
 				9F68146728F1615000FDEDDE /* DataManager.swift in Sources */,
 				9F68147D28F161DD00FDEDDE /* HintView.swift in Sources */,
 				9F68147928F161A100FDEDDE /* ProgressArc.swift in Sources */,
@@ -1227,7 +1223,7 @@
 				9F68147828F161A100FDEDDE /* CircularProgressViewModel.swift in Sources */,
 				9F68148028F161EC00FDEDDE /* NumberAnimation.swift in Sources */,
 				9F68146A28F1616F00FDEDDE /* MantraColorScheme.swift in Sources */,
-				9FE2E9CB28EFD74100BA8240 /* ContentViewNavStack.swift in Sources */,
+				9FE2E9CB28EFD74100BA8240 /* ContentView.swift in Sources */,
 				9FE2E9C928EFD74100BA8240 /* MantraReaderWatchApp.swift in Sources */,
 				9F38059028EFDCEB00373AD2 /* ComplicationController.swift in Sources */,
 				9F68147628F161A100FDEDDE /* ProgressRing.swift in Sources */,
@@ -1299,7 +1295,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MantraWidget/Info.plist;
@@ -1329,7 +1325,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MantraWidget/Info.plist;
@@ -1358,7 +1354,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraIntent/MantraIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MantraIntent/Info.plist;
@@ -1386,7 +1382,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraIntent/MantraIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MantraIntent/Info.plist;
@@ -1538,7 +1534,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReader/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
@@ -1579,7 +1575,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReader/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
@@ -1618,7 +1614,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MantraWidgetExtension-Watch-Info.plist";
@@ -1649,7 +1645,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MantraWidgetExtension-Watch-Info.plist";
@@ -1681,7 +1677,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "MantraReaderWatch Watch App/MantraReaderWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReaderWatch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				ENABLE_PREVIEWS = YES;
@@ -1716,7 +1712,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "MantraReaderWatch Watch App/MantraReaderWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReaderWatch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				ENABLE_PREVIEWS = YES;

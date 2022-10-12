@@ -13,7 +13,6 @@ struct MantraReaderWatch_Watch_AppApp: App {
     @AppStorage("isOnboarding") private var isOnboarding = true
     
     private let dataManager = DataManager(viewContext: PersistenceController.shared.container.viewContext)
-    private let persistenceController = PersistenceController.shared
     private let settings = Settings.shared
     
     var body: some Scene {

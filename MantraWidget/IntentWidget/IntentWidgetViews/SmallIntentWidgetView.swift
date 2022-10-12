@@ -9,13 +9,14 @@ import SwiftUI
 
 struct SmallIntentWidgetView: View {
     @Environment(\.redactionReasons) private var reasons
+    @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject private var settings: Settings
     var selectedMantra: WidgetModel.WidgetMantra?
     var firstMantra: WidgetModel.WidgetMantra?
     
     var body: some View {
         ZStack {
-            Color(UIColor.systemGroupedBackground)
+            Color(colorScheme == .dark ? UIColor.systemGroupedBackground : UIColor.white)
                 .ignoresSafeArea()
             VStack(alignment: .center) {
                 ZStack {

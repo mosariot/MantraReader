@@ -46,6 +46,7 @@ final class DataManager: ObservableObject {
 //            mantra.reads = Int32.random(in: 0...200_000)
 //            mantra.statistics = ReadingsData.random
 //            mantra.isFavorite = Bool.random()
+// End of test preloading data
             data.forEach { key, value in
                 switch key {
                 case .title:

@@ -41,7 +41,6 @@ struct MantraReaderApp: App {
                 .onAppear {
                     setPreferredColorScheme()
                     if isFirstLaunch {
-                        isFirstLaunch = false
                         let launchPreparer = LaunchPreparer(dataManager: dataManager)
                         launchPreparer.firstLaunchPreparations()
                     }

@@ -23,7 +23,6 @@ struct MantraReaderWatch_Watch_AppApp: App {
                 .environmentObject(settings)
                 .onAppear {
                     if isFirstLaunch {
-                        isFirstLaunch = false
                         let launchPreparer = LaunchPreparer(dataManager: dataManager)
                         launchPreparer.firstLaunchPreparations()
                     }

@@ -112,7 +112,7 @@ enum PreloadedMantras {
             .title: String(localized: "Maytreya", comment: "Maytreya"),
             .details: String(localized: "Maitreya symbolizes the loving kindness of the Buddha as well as the aspect of vision, the sense of sight. He embodies the future Buddha, who will be reborn and appear before people. If the practitioner doesn’t succeed in achieving full enlightenment in this incarnation, the Maitreya mantra will bring him closer to the highest good in subsequent reincarnations.", comment: "Maytreya Description"),
             .image: "Maytreya",
-            .image_list: "Buddha_Shakyamuni_list"
+            .image_list: "Maytreya_list"
         ],
         [
             .title: String(localized: "Vajrakilaya", comment: "Vajrakilaya"),

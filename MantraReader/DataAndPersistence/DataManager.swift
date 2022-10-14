@@ -81,10 +81,8 @@ final class DataManager: ObservableObject {
             mantra.title = selectedMantra[.title]
             mantra.text = selectedMantra[.text]
             mantra.details = selectedMantra[.details]
-            mantra.image = UIImage(named: selectedMantra[.image] ?? Constants.defaultImage)?.pngData()
-            mantra.imageForTableView = UIImage(named: selectedMantra[.image] ?? Constants.defaultImage)?
-                .resize(to: CGSize(width: Constants.rowHeight,
-                                   height: Constants.rowHeight)).pngData()
+            mantra.image = UIImage(named: selectedMantra[.image] ?? Constants.defaultImageList)?.pngData()
+            mantra.imageForTableView = UIImage(named: selectedMantra[.image_list] ?? Constants.defaultImage)?.pngData()
         }
         saveData()
     }

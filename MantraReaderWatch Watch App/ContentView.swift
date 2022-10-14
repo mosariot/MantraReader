@@ -14,7 +14,6 @@ struct ContentView: View {
     @AppStorage("sorting", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
     var sorting: Sorting = .title
     @AppStorage("isFirstLaunch") private var isFirstLaunch = true
-    @AppStorage("isFirstLaunch") private var isFirstLaunch = true
     
     @State private var selectedMantra: [Mantra] = []
     @State private var isPresentedStatisticsSheet = false

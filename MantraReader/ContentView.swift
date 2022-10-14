@@ -16,7 +16,7 @@ struct ContentView: View {
     @AppStorage("sorting", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
     var sorting: Sorting = .title
     @AppStorage("isFreshLaunch") private var isFreshLaunch = true
-    @AppStorage("isInitalDataLoading") private var isInitalDataLoading = true
+    @AppStorage("isFirstLaunch") private var isFirstLaunch = true
     
     @State private var selectedMantra: Mantra?
     @State private var search = ""
@@ -75,7 +75,7 @@ struct ContentView: View {
                     }
                     dataManager.saveData()
                 }
-                if isInitalDataLoading {
+                if isFirstLaunch {
                     ProgressView("Syncing...")
                 }
             }
@@ -99,8 +99,7 @@ struct ContentView: View {
                 }
             }
             .onReceive(mantras.publisher.count()) { count in
-                if isInitalDataLoading && count > 0 {
-                    isInitalDataLoading = false
+                if isFirstLaunch && count > 0 {
                     isFirstLaunch = false
                 }
                 var isMantraExist = false

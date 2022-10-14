@@ -11,6 +11,8 @@ import CloudKit
 struct LaunchPreparer {
 #if os(iOS)
     @AppStorage("isPreloadedMantrasDueToNoInternet") private var isPreloadedMantrasDueToNoInternet = false
+#elseif os(watchOS)
+    @AppStorage("isFirstLaunch") private var isFirstLaunch = true
 #endif
     @AppStorage("isInitalDataLoading") private var isInitalDataLoading = true
     let dataManager: DataManager
@@ -55,6 +57,9 @@ struct LaunchPreparer {
                         // no records in iCloud
                         dataManager.preloadData()
                         isInitalDataLoading = false
+#if os(watchOS)
+                        isFirstLaunch = false
+#endif
                     } else {
                         // CloudKit automatically handles loading records from iCloud
                     }
@@ -62,6 +67,9 @@ struct LaunchPreparer {
                     // for example, user is not logged-in iCloud (type of error doesn't matter)
                     dataManager.preloadData()
                     isInitalDataLoading = false
+#if os(watchOS)
+                    isFirstLaunch = false
+#endif
                 }
             }
         }

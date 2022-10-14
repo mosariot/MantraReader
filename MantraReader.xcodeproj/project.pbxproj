@@ -53,6 +53,7 @@
 		9F54232A28AD507000F15040 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F54232028AD4E2400F15040 /* IntentHandler.swift */; };
 		9F54232D28AD56A200F15040 /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AB3E728A18EEF001FF7DE /* WidgetModel.swift */; };
 		9F605143288EE75E005EC6F5 /* BlinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F605142288EE75E005EC6F5 /* BlinkView.swift */; };
+		9F66461428F9104B0004B98E /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F794EDF289C360F00DDF940 /* NetworkMonitor.swift */; };
 		9F68146728F1615000FDEDDE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB7AE6828B557F70044C55E /* DataManager.swift */; };
 		9F68146828F1615300FDEDDE /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEE999285F682C0070BA06 /* PersistenceController.swift */; };
 		9F68146928F1615E00FDEDDE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0F5C828D4B36100A00681 /* Settings.swift */; };
@@ -1203,6 +1204,7 @@
 				9F68146C28F1617500FDEDDE /* Sorting.swift in Sources */,
 				9F68147728F161A100FDEDDE /* RingCap.swift in Sources */,
 				9F68146928F1615E00FDEDDE /* Settings.swift in Sources */,
+				9F66461428F9104B0004B98E /* NetworkMonitor.swift in Sources */,
 				9F68146F28F1618D00FDEDDE /* MantraRow.swift in Sources */,
 				9F68148F28F1625100FDEDDE /* KMBFormatter.swift in Sources */,
 				9F68148C28F1623600FDEDDE /* Constants.swift in Sources */,
@@ -1295,7 +1297,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MantraWidget/Info.plist;
@@ -1325,7 +1327,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MantraWidget/Info.plist;
@@ -1354,7 +1356,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraIntent/MantraIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MantraIntent/Info.plist;
@@ -1382,7 +1384,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraIntent/MantraIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MantraIntent/Info.plist;
@@ -1534,7 +1536,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReader/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
@@ -1575,7 +1577,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReader/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
@@ -1614,7 +1616,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MantraWidgetExtension-Watch-Info.plist";
@@ -1645,7 +1647,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MantraWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MantraWidgetExtension-Watch-Info.plist";
@@ -1677,7 +1679,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "MantraReaderWatch Watch App/MantraReaderWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReaderWatch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				ENABLE_PREVIEWS = YES;
@@ -1712,7 +1714,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "MantraReaderWatch Watch App/MantraReaderWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReaderWatch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				ENABLE_PREVIEWS = YES;

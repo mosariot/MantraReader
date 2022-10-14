@@ -13,7 +13,7 @@ struct ContentView: View {
     @EnvironmentObject private var dataManager: DataManager
     @AppStorage("sorting", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
     var sorting: Sorting = .title
-    @AppStorage("isFreshLaunch") private var isFreshLaunch = true
+    @AppStorage("isFirstLaunch") private var isFirstLaunch = true
     @AppStorage("isInitalDataLoading") private var isInitalDataLoading = true
     
     @State private var selectedMantra: [Mantra] = []
@@ -133,6 +133,7 @@ struct ContentView: View {
             .onReceive(mantras.publisher.count()) { count in
                 if isInitalDataLoading && count > 0 {
                     isInitalDataLoading = false
+                    isFirstLaunch = false
                 }
                 var isMantraExist = false
                 mantras.forEach { section in

@@ -14,7 +14,7 @@ struct ContentView: View {
     @AppStorage("sorting", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
     var sorting: Sorting = .title
     @AppStorage("isFirstLaunch") private var isFirstLaunch = true
-    @AppStorage("isInitalDataLoading") private var isInitalDataLoading = true
+    @AppStorage("isFirstLaunch") private var isFirstLaunch = true
     
     @State private var selectedMantra: [Mantra] = []
     @State private var isPresentedStatisticsSheet = false
@@ -78,10 +78,10 @@ struct ContentView: View {
                 .navigationDestination(for: Mantra.self) { mantra in
                     ReadsView(viewModel: ReadsViewModel(mantra, dataManager: dataManager))
                 }
-                if isInitalDataLoading {
+                if isFirstLaunch {
                     ProgressView("Syncing...")
                 }
-                if !isInitalDataLoading && mantras.count == 0 {
+                if !isFirstLaunch && mantras.count == 0 {
                     Text("Please add some mantras on your iPhone or iPad")
                         .foregroundColor(.secondary)
                 }
@@ -131,8 +131,7 @@ struct ContentView: View {
                 }
             }
             .onReceive(mantras.publisher.count()) { count in
-                if isInitalDataLoading && count > 0 {
-                    isInitalDataLoading = false
+                if isFirstLaunch && count > 0 {
                     isFirstLaunch = false
                 }
                 var isMantraExist = false

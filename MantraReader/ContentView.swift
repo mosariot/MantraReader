@@ -101,6 +101,7 @@ struct ContentView: View {
             .onReceive(mantras.publisher.count()) { count in
                 if isInitalDataLoading && count > 0 {
                     isInitalDataLoading = false
+                    isFirstLaunch = false
                 }
                 var isMantraExist = false
                 mantras.forEach { section in

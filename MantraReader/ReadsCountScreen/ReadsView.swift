@@ -196,7 +196,7 @@ struct ReadsView: View {
                 )
             }
             if showHint {
-                HintView()
+                HintView(showHint: $showHint)
             }
         }
         .overlay(alignment: .topTrailing) {
@@ -352,7 +352,6 @@ struct ReadsView: View {
             lightHapticGenerator.impactOccurred()
             UIApplication.shared.isIdleTimerDisabled = true
             showHint = true
-            afterDelay(1.5) { showHint = false }
         } else {
             UIApplication.shared.isIdleTimerDisabled = false
         }

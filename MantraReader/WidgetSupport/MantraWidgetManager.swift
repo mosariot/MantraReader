@@ -39,11 +39,11 @@ struct MantraWidgetManager {
     private func storeWidgetItem(widgetModel: WidgetModel) {
         guard let data = try? JSONEncoder().encode(widgetModel) else { return }
         widgetItemData = data
-        WidgetCenter.shared.reloadAllTimelines()
         WidgetCenter.shared.invalidateConfigurationRecommendations()
-#if os(watchOS)
-        CLKComplicationServer.sharedInstance().reloadComplicationDescriptors()
-#endif
+        WidgetCenter.shared.reloadAllTimelines()
+//#if os(watchOS)
+//        CLKComplicationServer.sharedInstance().reloadComplicationDescriptors()
+//#endif
     }
     
     private func imageData(for mantra: Mantra) -> Data? {

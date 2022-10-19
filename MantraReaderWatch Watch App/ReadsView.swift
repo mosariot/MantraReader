@@ -129,7 +129,7 @@ struct ReadsView: View {
                 }
             }
         } message: {
-            Text("You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. Use extended Wake Duration and Return to Clock duration (customizable separately for Mantra Reader) in your Watch Settings to stay in app while reading your mantras.")
+            Text("You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. Use 'Always On' mode or extended Wake Duration (if you don't have 'Always On' mode) in your Watch Settings to stay in app while reading your mantras.")
         }
         .sheet(isPresented: $isPresentedAdjustingSheet) {
             AdjustingView(viewModel: viewModel)

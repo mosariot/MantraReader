@@ -10,6 +10,7 @@ import WidgetKit
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.scenePhase) private var scenePhase
     @EnvironmentObject private var dataManager: DataManager
     @AppStorage("sorting", store: UserDefaults(suiteName: "group.com.mosariot.MantraCounter"))
     var sorting: Sorting = .title
@@ -155,6 +156,11 @@ struct ContentView: View {
                             selectedMantra = [mantra]
                         }
                     }
+                }
+            }
+            .onChange(of: scenePhase) { newValue in
+                if newValue == .active {
+                    dataManager.saveData()
                 }
             }
         }

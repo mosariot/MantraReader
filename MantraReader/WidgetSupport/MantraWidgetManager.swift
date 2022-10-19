@@ -41,9 +41,9 @@ struct MantraWidgetManager {
         widgetItemData = data
         WidgetCenter.shared.invalidateConfigurationRecommendations()
         WidgetCenter.shared.reloadAllTimelines()
-//#if os(watchOS)
-//        CLKComplicationServer.sharedInstance().reloadComplicationDescriptors()
-//#endif
+#if os(watchOS)
+        CLKComplicationServer.sharedInstance().reloadComplicationDescriptors()
+#endif
     }
     
     private func imageData(for mantra: Mantra) -> Data? {

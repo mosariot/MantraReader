@@ -10,7 +10,7 @@ import SwiftUI
 struct ReadsView: View {
     @AppStorage("isFirstLaunchOfMantraCounterMode") private var isFirstLaunchOfMantraCounterMode = true
     @EnvironmentObject private var dataManager: DataManager
-    @ObservedObject var viewModel: ReadsViewModel
+    @StateObject var viewModel: ReadsViewModel
     
     @State private var isPresentedStatisticsSheet = false
     @State private var isPresentedInfoSheet = false
@@ -114,7 +114,7 @@ struct ReadsView: View {
                 MantraCounterModeOverlayView(viewModel: viewModel)
             }
             if showHint {
-                HintView()
+                HintView(showHint: $showHint)
             }
         }
         .gesture(longPressGesture)
@@ -171,7 +171,6 @@ struct ReadsView: View {
             viewModel.startMantraCounterSession()
             previousReads = viewModel.mantra.reads
             showHint = true
-            afterDelay(1.5) { showHint = false }
         } else {
             viewModel.endMantraCounterSession()
             guard !(previousReads == 0 || previousReads == viewModel.mantra.reads) else { return }

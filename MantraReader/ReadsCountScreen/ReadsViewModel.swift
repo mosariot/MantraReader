@@ -240,7 +240,7 @@ final class ReadsViewModel: ObservableObject {
         dataManager.saveData()
     }
     
-    #if os(watchOS)
+#if os(watchOS)
     func startMantraCounterSession() {
         session = WKExtendedRuntimeSession()
         session.start()
@@ -249,5 +249,5 @@ final class ReadsViewModel: ObservableObject {
     func endMantraCounterSession() {
         session.invalidate()
     }
-    #endif
+#endif
 }

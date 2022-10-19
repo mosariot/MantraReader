@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HintView: View {
+    @Binding var showHint: Bool
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -28,6 +30,9 @@ struct HintView: View {
         }
         .opacity(0.9)
         .frame(width: 100, height: 100)
+        .onAppear {
+            afterDelay(1.5) { showHint = false }
+        }
 #if os(iOS)
         .offset(y: -100)
 #endif

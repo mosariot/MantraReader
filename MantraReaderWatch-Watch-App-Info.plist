@@ -8,5 +8,9 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
+	<key>WKBackgroundModes</key>
+	<array>
+		<string>mindfulness</string>
+	</array>
 </dict>
 </plist>

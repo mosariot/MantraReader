@@ -35,6 +35,10 @@ final class ReadsViewModel: ObservableObject {
     var favoriteBarTitle: String { mantra.isFavorite ? String(localized: "Unfavorite") : String(localized: "Favorite") }
 #endif
     
+#if os(watchOS)
+    private var session: WKExtendedRuntimeSession!
+#endif
+    
     private var dataManager: DataManager
     
     init(_ mantra: Mantra, dataManager: DataManager) {
@@ -235,4 +239,15 @@ final class ReadsViewModel: ObservableObject {
         mantra.readsGoal = value
         dataManager.saveData()
     }
+    
+    #if os(watchOS)
+    func startMantraCounterSession() {
+        session = WKExtendedRuntimeSession()
+        session.start()
+    }
+    
+    func endMantraCounterSession() {
+        session.invalidate()
+    }
+    #endif
 }

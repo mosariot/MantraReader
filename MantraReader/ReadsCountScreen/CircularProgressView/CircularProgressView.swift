@@ -16,6 +16,7 @@ struct CircularProgressView: View {
     @ObservedObject var viewModel: CircularProgressViewModel
 #elseif os(watchOS)
     @StateObject var viewModel: CircularProgressViewModel
+    @State private var date = Date.now
 #endif
     var isMantraCounterMode: Bool
     private var thickness: Double {
@@ -81,6 +82,11 @@ struct CircularProgressView: View {
                     .foregroundColor(.accentColor)
                     .dynamicTypeSize(.xLarge)
                     .opacity(isMantraCounterMode ? 1 : 0)
+#if os(watchOS)
+                Text("\(date, style: .timer)")
+                    .offset(x: 0, y: (frame ?? 0) / 4 : 0)
+                    .opacity(isMantraCounterMode ? 1 : 0)
+#endif
             }
         }
         .onReceive(viewModel.mantra.objectWillChange) { _ in
@@ -88,5 +94,10 @@ struct CircularProgressView: View {
                 viewModel.updateForMantraChanges()
             }
         }
+#if os(watchOS)
+        .onChange(of: isMantraCounterMode) {
+            date = Date.now
+        }
+#endif
     }
 }

@@ -84,20 +84,24 @@ struct CircularProgressView: View {
                     .opacity(isMantraCounterMode ? 1 : 0)
 #if os(watchOS)
                 Text("\(date, style: .timer)")
-                    .offset(x: 0, y: (frame ?? 0) / 4 : 0)
+                    .font(.system(.body, design: .rounded))
+                    .foregroundColor(.gray)
+                    .offset(x: 0, y: 35)
                     .opacity(isMantraCounterMode ? 1 : 0)
 #endif
             }
         }
+#if os(watchOS)
+        .onChange(of: isMantraCounterMode) { newValue in
+            if newValue {
+                date = Date.now
+            }
+        }
+#endif
         .onReceive(viewModel.mantra.objectWillChange) { _ in
             withAnimation {
                 viewModel.updateForMantraChanges()
             }
         }
-#if os(watchOS)
-        .onChange(of: isMantraCounterMode) {
-            date = Date.now
-        }
-#endif
     }
 }

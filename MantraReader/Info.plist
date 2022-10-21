@@ -4,28 +4,28 @@
 <dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>SelectMantraIntent</string>
+	</array>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>
 			<key>UIApplicationShortcutItemIconSymbolName</key>
 			<string>chart.bar</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>ShowStatistics</string>
 			<key>UIApplicationShortcutItemTitle</key>
+			<string>ShowStatistics</string>
+			<key>UIApplicationShortcutItemType</key>
 			<string>ShowStatistics</string>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconSymbolName</key>
 			<string>square.and.pencil</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>NewMantra</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>NewMantra</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>NewMantra</string>
 		</dict>
-	</array>
-	<key>NSUserActivityTypes</key>
-	<array>
-		<string>SelectMantraIntent</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

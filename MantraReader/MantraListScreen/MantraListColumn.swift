@@ -155,7 +155,7 @@ struct MantraListColumn: View {
                     }
                     Button {
                         isPresentedSettingsSheet = true
-                       } label: {
+                    } label: {
                         Label("Settings", systemImage: "slider.horizontal.3")
                     }
                     Section {

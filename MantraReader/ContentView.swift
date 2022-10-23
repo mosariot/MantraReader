@@ -90,30 +90,6 @@ struct ContentView: View {
                 }
                 dataManager.deleteEmptyMantrasIfNeeded()
             }
-            .onOpenURL { url in
-                Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-                    UIApplication.shared.connectedScenes.forEach { scene in
-                        if scene.activationState == .foregroundActive {
-                            let rootViewController = UIApplication.shared.connectedScenes
-                                .filter { $0.activationState == .foregroundActive }
-                                .map { $0 as? UIWindowScene }
-                                .compactMap { $0 }
-                                .first?.windows
-                                .filter({ $0.isKeyWindow }).first?.rootViewController
-                            rootViewController?.dismiss(animated: true) {
-                                mantras.forEach { section in
-                                    section.forEach { mantra in
-                                        if mantra.uuid == UUID(uuidString: "\(url)") {
-                                            selectedMantra = mantra
-                                        }
-                                    }
-                                }
-                            }
-                            timer.invalidate()
-                        }
-                    }
-                }
-            }
             .onReceive(mantras.publisher.count()) { count in
                 if isFirstLaunch && count > 0 {
                     isFirstLaunch = false

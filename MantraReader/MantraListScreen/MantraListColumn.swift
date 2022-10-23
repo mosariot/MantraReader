@@ -27,10 +27,20 @@ struct MantraListColumn: View {
     @State private var isDeletingMantras = false
     @State private var mantrasForDeletion: [Mantra]?
     @State private var contextMantra: Mantra?
+    @State private var url: URL?
     
     var mantras: SectionedFetchResults<Bool, Mantra>
     @Binding var selectedMantra: Mantra?
     @Binding var searchText: String
+    
+    private var rootViewController: UIViewController? {
+        UIApplication.shared.connectedScenes
+            .filter { $0.activationState == .foregroundActive }
+            .map { $0 as? UIWindowScene }
+            .compactMap { $0 }
+            .first?.windows
+            .filter({ $0.isKeyWindow }).first?.rootViewController
+    }
     
     var body: some View {
         ZStack {
@@ -231,6 +241,7 @@ struct MantraListColumn: View {
         .onChange(of: scenePhase) { newValue in
             guard let action = actionService.action else { return }
             if isSearching, case .openMantra(id: _) = action {
+                print("\(mantras.count)")
                 dismissSearch()
             }
             switch newValue {
@@ -240,16 +251,34 @@ struct MantraListColumn: View {
                 break
             }
         }
+        .onOpenURL { openedUrl in
+            var search = isSearching
+            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+                UIApplication.shared.connectedScenes.forEach { scene in
+                    if scene.activationState == .foregroundActive {
+                        if search {
+                            search = false
+                            dismissSearch()
+                        } else {
+                            url = openedUrl
+                            timer.invalidate()
+                        }
+                    }
+                }
+            }
+        }
+        .onChange(of: url) { newValue in
+            guard let newValue else { return }
+            mantrasForDeletion = nil
+            rootViewController?.dismiss(animated: true) {
+                selectMantra(with: newValue.absoluteString)
+            }
+            url = nil
+        }
     }
     
     private func performActionIfNeeded(for action: Action) {
         mantrasForDeletion = nil
-        let rootViewController = UIApplication.shared.connectedScenes
-            .filter { $0.activationState == .foregroundActive }
-            .map { $0 as? UIWindowScene }
-            .compactMap { $0 }
-            .first?.windows
-            .filter({ $0.isKeyWindow }).first?.rootViewController
         rootViewController?.dismiss(animated: true) {
             switch action {
             case .newMantra:
@@ -257,15 +286,19 @@ struct MantraListColumn: View {
             case .showStatistics:
                 isPresentedStatisticsSheet = true
             case .openMantra(let id):
-                mantras.forEach { section in
-                    section.forEach { mantra in
-                        if mantra.uuid == UUID(uuidString: "\(id)") {
-                            selectedMantra = mantra
-                        }
-                    }
-                }
+                selectMantra(with: id)
             }
             actionService.action = nil
+        }
+    }
+    
+    private func selectMantra(with id: String) {
+        mantras.forEach { section in
+            section.forEach { mantra in
+                if mantra.uuid == UUID(uuidString: "\(id)") {
+                    selectedMantra = mantra
+                }
+            }
         }
     }
 }

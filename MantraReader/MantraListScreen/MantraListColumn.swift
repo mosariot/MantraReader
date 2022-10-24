@@ -27,7 +27,8 @@ struct MantraListColumn: View {
     @State private var isDeletingMantras = false
     @State private var mantrasForDeletion: [Mantra]?
     @State private var contextMantra: Mantra?
-    @State private var url: URL?
+    @State private var mantraUrl: URL?
+    @State private var mantraAction: Action?
     
     var mantras: SectionedFetchResults<Bool, Mantra>
     @Binding var selectedMantra: Mantra?
@@ -241,39 +242,46 @@ struct MantraListColumn: View {
         .onChange(of: scenePhase) { newValue in
             guard let action = actionService.action else { return }
             if isSearching, case .openMantra(id: _) = action {
-                print("\(mantras.count)")
                 dismissSearch()
             }
             switch newValue {
             case .active:
-                performActionIfNeeded(for: action)
+                mantraAction = action
             default:
                 break
             }
         }
-        .onOpenURL { openedUrl in
+        .onChange(of: mantraAction) { newValue in
+            guard let newValue else { return }
+            performActionIfNeeded(for: newValue)
+        }
+        .onOpenURL { url in
             var search = isSearching
-            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            var elapsedTime = 0.0
+            Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { timer in
+                if elapsedTime >= 2.0 {
+                    timer.invalidate()
+                }
                 UIApplication.shared.connectedScenes.forEach { scene in
                     if scene.activationState == .foregroundActive {
                         if search {
                             search = false
                             dismissSearch()
                         } else {
-                            url = openedUrl
+                            mantraUrl = url
                             timer.invalidate()
                         }
                     }
                 }
             }
         }
-        .onChange(of: url) { newValue in
+        .onChange(of: mantraUrl) { newValue in
             guard let newValue else { return }
             mantrasForDeletion = nil
             rootViewController?.dismiss(animated: true) {
                 selectMantra(with: newValue.absoluteString)
             }
-            url = nil
+            mantraUrl = nil
         }
     }
     
@@ -289,6 +297,7 @@ struct MantraListColumn: View {
                 selectMantra(with: id)
             }
             actionService.action = nil
+            mantraAction = nil
         }
     }
     

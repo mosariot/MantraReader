@@ -259,6 +259,7 @@ struct MantraListColumn: View {
             var search = isSearching
             var elapsedTime = 0.0
             Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { timer in
+                elapsedTime += 0.2
                 if elapsedTime >= 2.0 {
                     timer.invalidate()
                 }

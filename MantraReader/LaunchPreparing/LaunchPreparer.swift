@@ -13,6 +13,7 @@ struct LaunchPreparer {
     @AppStorage("isPreloadedMantrasDueToNoInternet") private var isPreloadedMantrasDueToNoInternet = false
 #endif
     @AppStorage("isFirstLaunch") private var isFirstLaunch = true
+    @AppStorage("isPreloadedMantras") private var isPreloadedMantras = false
     let dataManager: DataManager
     
     func firstLaunchPreparations() {
@@ -21,8 +22,11 @@ struct LaunchPreparer {
         networkMonitor.startMonitoring()
         DispatchQueue.main.async {
             if !(networkMonitor.isReachable) {
-                dataManager.preloadData()
-                isPreloadedMantrasDueToNoInternet = true
+                if !isPreloadedMantras {
+                    dataManager.preloadData()
+                    isPreloadedMantras = true
+                    isPreloadedMantrasDueToNoInternet = true
+                }
                 isFirstLaunch = false
             } else {
                 checkForiCloudRecords()
@@ -53,14 +57,21 @@ struct LaunchPreparer {
                 case .success(_):
                     if !areThereAnyRecords {
                         // no records in iCloud
-                        dataManager.preloadData()
+                        if !isPreloadedMantras {
+                            dataManager.preloadData()
+                            isPreloadedMantras = true
+                        }
                         isFirstLaunch = false
                     } else {
                         // CloudKit automatically handles loading records from iCloud
+                        isPreloadedMantras = true
                     }
                 case .failure(_):
                     // for example, user is not logged-in iCloud (type of error doesn't matter)
-                    dataManager.preloadData()
+                    if !isPreloadedMantras {
+                        dataManager.preloadData()
+                        isPreloadedMantras = true
+                    }
                     isFirstLaunch = false
                 }
             }

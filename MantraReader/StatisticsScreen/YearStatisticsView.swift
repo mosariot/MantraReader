@@ -80,9 +80,9 @@ struct YearStatisticsView: View {
                 .padding(.top, 10)
                 .chartXAxis {
                     AxisMarks(values: .stride(by: .month)) { _ in
+#if os(iOS)
                         AxisGridLine()
                         AxisTick()
-#if os(iOS)
                         AxisValueLabel(format: .dateTime.month(horizontalSizeClass == .regular || verticalSizeClass == .compact ? .abbreviated : .narrow), centered: true)
 #elseif os(watchOS)
                         AxisValueLabel(format: .dateTime.month(.narrow), centered: true)

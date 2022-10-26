@@ -63,14 +63,16 @@ struct ReadsView: View {
                 VStack {
                     layout {
                         Spacer()
-                        Image(uiImage: viewModel.image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .accessibilityIgnoresInvertColors()
-                            .frame(
-                                width: imageSize(with: geometry.size),
-                                height: imageSize(with: geometry.size)
-                            )
+                        if UIDevice.current.userInterfaceIdiom == .pad && geometry.size.height > 550 {
+                            Image(uiImage: viewModel.image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .accessibilityIgnoresInvertColors()
+                                .frame(
+                                    width: imageSize(with: geometry.size),
+                                    height: imageSize(with: geometry.size)
+                                )
+                        }
                         if verticalSizeClass == .regular {
                             Spacer()
                             Text(viewModel.title)
@@ -358,6 +360,13 @@ struct ReadsView: View {
     }
     
     private func imageSize(with frame: CGSize) -> CGFloat? {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            if frame.height / frame.width < 3 {
+                return CGFloat(0.25 * frame.height)
+            } else {
+                return CGFloat(0.20 * frame.height)
+            }
+        }
         switch (horizontalSizeClass, verticalSizeClass) {
         case (.compact, .regular): return CGFloat(0.40 * frame.width)
         case (.compact, .compact): return CGFloat(0.50 * frame.height)
@@ -368,6 +377,13 @@ struct ReadsView: View {
     }
     
     private func circularProgressViewSize(with frame: CGSize) -> CGFloat? {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            if frame.height / frame.width < 3 {
+                return CGFloat(0.37 * frame.height)
+            } else {
+                return CGFloat(0.25 * frame.height)
+            }
+        }
         switch (horizontalSizeClass, verticalSizeClass) {
         case (.compact, .regular): return CGFloat(0.62 * frame.width)
         case (.compact, .compact): return CGFloat(0.55 * frame.height)

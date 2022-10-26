@@ -41,13 +41,14 @@ struct CircularProgressView: View {
                     .numberAnimation(viewModel.mantra.reads)
                     .animation(
                         viewModel.isAnimated ?
-                            Animation.easeInOut(duration: Constants.animationTime) :
+                        Animation.easeInOut(duration: Constants.animationTime) :
                             Animation.linear(duration: 0.01),
                         value: viewModel.mantra.reads)
 #if os(iOS)
                     .font(
                         .system(
-                            verticalSizeClass == .compact ? .title : .largeTitle,
+                            (UIDevice.current.userInterfaceIdiom == .pad && (frame ?? 0 < 200)) ? .title :
+                                verticalSizeClass == .compact ? .title : .largeTitle,
                             design: .rounded,
                             weight: .bold
                         )
@@ -63,7 +64,7 @@ struct CircularProgressView: View {
                     .numberAnimation(Int32(viewModel.currentReads))
                     .animation(
                         viewModel.isAnimated ?
-                            Animation.easeInOut(duration: Constants.animationTime) :
+                        Animation.easeInOut(duration: Constants.animationTime) :
                             Animation.linear(duration: 0.01),
                         value: viewModel.mantra.reads)
 #if os(iOS)

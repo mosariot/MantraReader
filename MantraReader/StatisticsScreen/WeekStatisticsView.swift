@@ -81,9 +81,9 @@ struct WeekStatisticsView: View {
                 .padding(.top, 10)
                 .chartXAxis {
                     AxisMarks(values: .stride(by: .day)) { _ in
+#if os(iOS)
                         AxisGridLine()
                         AxisTick()
-#if os(iOS)
                         AxisValueLabel(format: .dateTime.weekday(horizontalSizeClass == .regular ? .wide : .abbreviated), centered: true)
 #elseif os(watchOS)
                         AxisValueLabel(format: .dateTime.weekday(.abbreviated), centered: true)

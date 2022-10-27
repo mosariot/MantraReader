@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="22A380" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Mantra" representedClassName="Mantra" syncable="YES" codeGenerationType="class">
         <attribute name="details" attributeType="String" defaultValueString=""/>
         <attribute name="image" optional="YES" attributeType="Binary"/>
@@ -7,6 +7,7 @@
         <attribute name="isFavorite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="reads" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="readsGoal" attributeType="Integer 32" defaultValueString="100000" usesScalarValueType="YES"/>
+        <attribute name="round" attributeType="Integer 32" defaultValueString="108" usesScalarValueType="YES"/>
         <attribute name="statistics" optional="YES" attributeType="Binary"/>
         <attribute name="text" optional="YES" attributeType="String"/>
         <attribute name="title" attributeType="String" defaultValueString=""/>

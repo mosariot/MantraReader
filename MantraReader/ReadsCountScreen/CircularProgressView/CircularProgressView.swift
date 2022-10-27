@@ -47,7 +47,8 @@ struct CircularProgressView: View {
 #if os(iOS)
                     .font(
                         .system(
-                            (UIDevice.current.userInterfaceIdiom == .pad && (frame ?? 0 < 200)) ? .title :
+                            (UIDevice.current.userInterfaceIdiom == .pad && (frame ?? 0 < 150)) ? .headline :
+                                (UIDevice.current.userInterfaceIdiom == .pad && (frame ?? 0 < 200)) ? .title :
                                 verticalSizeClass == .compact ? .title : .largeTitle,
                             design: .rounded,
                             weight: .bold

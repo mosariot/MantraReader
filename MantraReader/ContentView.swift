@@ -110,14 +110,14 @@ struct ContentView: View {
             DetailsColumn(selectedMantra: selectedMantra, isMantraDeleted: $isMantraDeleted)
         }
         .onChange(of: selectedMantra) { _ in
-#if !targetEnvironment(macCatalyst)
-            if !isFreshLaunch {
-                if ((isPad && isPortrait) || (isPhone && isLandscape))
-                    && selectedMantra != nil {
-                    columnVisibility = .detailOnly
+            if !ProcessInfo.processInfo.isiOSAppOnMac {
+                if !isFreshLaunch {
+                    if ((isPad && isPortrait) || (isPhone && isLandscape))
+                        && selectedMantra != nil {
+                        columnVisibility = .detailOnly
+                    }
                 }
             }
-#endif
             isFreshLaunch = false
         }
         .onChange(of: isMantraDeleted) { newValue in

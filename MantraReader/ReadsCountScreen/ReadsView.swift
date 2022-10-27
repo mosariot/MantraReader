@@ -63,7 +63,8 @@ struct ReadsView: View {
                 VStack {
                     layout {
                         Spacer()
-                        if UIDevice.current.userInterfaceIdiom == .pad && geometry.size.height > 550 {
+                        if UIDevice.current.userInterfaceIdiom == .phone ||
+                            (UIDevice.current.userInterfaceIdiom == .pad && geometry.size.height > 550) {
                             Image(uiImage: viewModel.image)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -361,7 +362,7 @@ struct ReadsView: View {
     
     private func imageSize(with frame: CGSize) -> CGFloat? {
         if UIDevice.current.userInterfaceIdiom == .pad {
-            if frame.height / frame.width < 3 {
+            if frame.height / frame.width < 2.5 {
                 return CGFloat(0.25 * frame.height)
             } else {
                 return CGFloat(0.20 * frame.height)
@@ -378,8 +379,8 @@ struct ReadsView: View {
     
     private func circularProgressViewSize(with frame: CGSize) -> CGFloat? {
         if UIDevice.current.userInterfaceIdiom == .pad {
-            if frame.height / frame.width < 3 {
-                return CGFloat(0.37 * frame.height)
+            if frame.height / frame.width < 2.5 {
+                return CGFloat(0.36 * frame.height)
             } else {
                 return CGFloat(0.25 * frame.height)
             }
@@ -388,7 +389,7 @@ struct ReadsView: View {
         case (.compact, .regular): return CGFloat(0.62 * frame.width)
         case (.compact, .compact): return CGFloat(0.55 * frame.height)
         case (.regular, .compact): return CGFloat(0.55 * frame.height)
-        case (.regular, .regular): return CGFloat(0.40 * frame.height)
+        case (.regular, .regular): return CGFloat(0.36 * frame.height)
         default: return nil
         }
     }

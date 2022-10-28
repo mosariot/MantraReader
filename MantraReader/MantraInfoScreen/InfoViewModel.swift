@@ -13,6 +13,7 @@ final class InfoViewModel: ObservableObject {
     @Published var mantra: Mantra
     @Published var title: String
     @Published var text: String
+    @Published var round: String
     @Published var description: String
     @Published var imageData: Data?
     
@@ -56,6 +57,7 @@ final class InfoViewModel: ObservableObject {
         self.mantra = mantra
         self.title = mantra.title ?? ""
         self.text = mantra.text ?? ""
+        self.round = "\(mantra.round)"
         self.description = mantra.details ?? ""
         self.imageData = mantra.image
         self.dataManager = dataManager
@@ -67,6 +69,7 @@ final class InfoViewModel: ObservableObject {
     func saveMantraIfNeeded(withCleanUp: Bool = false) {
         if mantra.title != title { mantra.title = title }
         if mantra.text != text { mantra.text = text }
+        if mantra.round != Int32(round) { mantra.round = Int32(round) ?? mantra.round }
         if mantra.details != description { mantra.details = description }
         if mantra.image != imageData {
             mantra.image = imageData
@@ -98,6 +101,7 @@ final class InfoViewModel: ObservableObject {
     func updateFields() {
         title = mantra.title ?? ""
         text = mantra.text ?? ""
+        round = "\(mantra.round)"
         description = mantra.details ?? ""
         imageData = mantra.image
     }

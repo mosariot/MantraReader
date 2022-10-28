@@ -278,6 +278,9 @@ We wish you deep awarenesses and spiritual growth!" = "Чтение мантр -
 /* Mantra Text Label */
 "MANTRA TEXT" = "ТЕКСТ МАНТРЫ";
 
+/* Mantra Round Label */
+"READINGS IN ROUND" = "НАЧИТОК В КРУГЕ";
+
 /* Mantra Description Label */
 "DESCRIPTION" = "ОПИСАНИЕ";
 

@@ -19,6 +19,7 @@ struct InfoView: View {
             return UIImage(named: Constants.defaultImage)!
         }
     }
+    private var round: String { "\(mantra.round)" }
     
     var body: some View {
         List {
@@ -36,6 +37,9 @@ struct InfoView: View {
             }
             Section("MANTRA TEXT") {
                 Text(mantra.text ?? "")
+            }
+            Section("READINGS IN ROUND") {
+                Text(round)
             }
             Section("DESCRIPTION") {
                 Text(mantra.details ?? "")

@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import Combine
 import PhotosUI
 
 struct InfoView: View {
     private enum FocusableField: Hashable {
         case title
         case text
+        case round
         case description
     }
     
@@ -173,13 +175,11 @@ struct InfoView: View {
                             .focused($focus, equals: .title)
                             .padding()
                             .disabled(infoMode == .view)
-                            .onSubmit {
-                                focus = .text
-                            }
+                            .onSubmit { focus = .text }
                     }
                     .background(Color(UIColor.secondarySystemGroupedBackground))
                     .cornerRadius(15)
-                    .padding()
+                    .padding(.horizontal)
                     VStack(alignment: .leading, spacing: 0) {
                         Text("MANTRA TEXT")
                             .font(.headline)
@@ -194,9 +194,32 @@ struct InfoView: View {
                             .textInputAutocapitalization(.characters)
                             .padding()
                             .disabled(infoMode == .view)
-                            .onSubmit {
-                                focus = .description
+                            .onSubmit { focus = .round }
+                    }
+                    .background(Color(UIColor.secondarySystemGroupedBackground))
+                    .cornerRadius(15)
+                    .padding()
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("READINGS IN ROUND")
+                            .font(.headline)
+                            .bold()
+                            .foregroundColor(.secondary)
+                            .padding(.horizontal, 15)
+                            .padding(.top, 15)
+                        TextField("Enter number", text: $viewModel.round)
+                            .font(.title2)
+                            .autocorrectionDisabled()
+                            .keyboardType(.numberPad)
+                            .onReceive(Just(viewModel.round)) { newValue in
+                                let filtered = newValue.filter { "0123456789".contains($0) }
+                                if filtered != newValue {
+                                    viewModel.round = filtered
+                                }
                             }
+                            .focused($focus, equals: .round)
+                            .padding()
+                            .disabled(infoMode == .view)
+                            .onSubmit { focus = .description }
                     }
                     .background(Color(UIColor.secondarySystemGroupedBackground))
                     .cornerRadius(15)
@@ -213,9 +236,7 @@ struct InfoView: View {
                             .focused($focus, equals: .description)
                             .padding()
                             .disabled(infoMode == .view)
-                            .onSubmit {
-                                focus = nil
-                            }
+                            .onSubmit { focus = nil }
                     }
                     .background(Color(UIColor.secondarySystemGroupedBackground))
                     .cornerRadius(15)

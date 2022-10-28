@@ -336,7 +336,11 @@ struct ReadsView: View {
     }
     
     private func validateAndHandleAdjusting() {
-        if viewModel.isValidUpdatingNumber(for: adjustingText, adjustingType: adjustingType) {
+        if viewModel.isValidUpdatingNumber(
+            for: adjustingText,
+            adjustingType: adjustingType,
+            round: viewModel.mantra.round
+        ) {
             guard let alertNumber = Int32(adjustingText) else { return }
             viewModel.handleAdjusting(for: adjustingType, with: alertNumber)
             adjustingType = nil

@@ -54,7 +54,7 @@ final class ReadsViewModel: ObservableObject {
         dataManager.saveData()
     }
     
-    func isValidUpdatingNumber(for text: String?, adjustingType: AdjustingType?) -> Bool {
+    func isValidUpdatingNumber(for text: String?, adjustingType: AdjustingType?, round: Int32) -> Bool {
         guard
             let alertText = text,
             let alertNumber = UInt32(alertText),
@@ -65,7 +65,7 @@ final class ReadsViewModel: ObservableObject {
         case .reads:
             return 0...2_000_001 ~= UInt32(mantra.reads) + alertNumber
         case .rounds:
-            let multiplied = alertNumber.multipliedReportingOverflow(by: 108)
+            let multiplied = alertNumber.multipliedReportingOverflow(by: UInt32(round))
             if multiplied.overflow {
                 return false
             } else {
@@ -143,9 +143,9 @@ final class ReadsViewModel: ObservableObject {
         case .rounds:
 #if os(iOS)
             undoHistory.append((mantra.reads, .value))
-            checkForCongratulations(with: mantra.reads + value * 108)
+            checkForCongratulations(with: mantra.reads + value * mantra.round)
 #endif
-            adjustMantraReads(with: mantra.reads + value * 108)
+            adjustMantraReads(with: mantra.reads + value * mantra.round)
         case .value:
 #if os(iOS)
             undoHistory.append((mantra.reads, .value))

@@ -70,6 +70,14 @@ struct MonthStatisticsView: View {
                 }
                 .animation(.easeInOut(duration: 0.15), value: data)
                 .padding(.top, 10)
+#if os(watchOS)
+                .chartXAxis {
+                    AxisMarks() { _ in
+                        AxisTick()
+                        AxisValueLabel()
+                    }
+                }
+#endif
 #if os(iOS)
                 .chartOverlay { proxy in
                     GeometryReader { geo in

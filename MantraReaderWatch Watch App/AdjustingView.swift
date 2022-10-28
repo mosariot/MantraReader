@@ -24,7 +24,7 @@ struct AdjustingView: View {
                 .digitalCrownRotation(
                     $value,
                     from: 0.0,
-                    through: adjustingType == .reads ? 10_000.0 : (Float(2_000_001 - viewModel.mantra.reads) / 108.0).rounded(.down),
+                    through: adjustingType == .reads ? 10_000.0 : (Float(2_000_001 - viewModel.mantra.reads) / Float(viewModel.mantra.round)).rounded(.down),
                     by: 1,
                     sensitivity: .medium
             )

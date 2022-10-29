@@ -22,7 +22,7 @@ final class DataManager: ObservableObject {
         do {
             try currentMantras = viewContext.fetch(request)
         } catch {
-            print("Error getting data. \(error.localizedDescription)")
+            return []
         }
         return currentMantras.compactMap { $0.title }
     }
@@ -33,7 +33,7 @@ final class DataManager: ObservableObject {
         do {
             try mantras = viewContext.fetch(request)
         } catch {
-            print("Error getting data. \(error.localizedDescription)")
+            return []
         }
         return mantras
     }
@@ -105,7 +105,7 @@ final class DataManager: ObservableObject {
         do {
             try mantras = viewContext.fetch(request)
         } catch {
-            print("Error getting data. \(error.localizedDescription)")
+            mantras = []
         }
         mantras
             .filter { $0.title == "" }

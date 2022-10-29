@@ -17,6 +17,5 @@ func date(year: Int? = nil, month: Int? = nil, day: Int? = nil, weekDay: Int? = 
 
 let dataSaveFailedNotification = Notification.Name("DataSaveFailedNotification")
 func fatalCoreDataError(_ error: Error) {
-    print("*** Fatal error \(error)")
     NotificationCenter.default.post(name: dataSaveFailedNotification, object: nil)
 }

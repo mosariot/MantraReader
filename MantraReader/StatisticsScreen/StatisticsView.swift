@@ -14,7 +14,8 @@ struct StatisticsView: View {
     @State private var selectedWeek: Int = 0
     @State private var selectedMonth: Int = 0
     @State private var selectedYear: Int = 0
-    @State private var isLoadingStatistics = false
+    @State private var isShowingLoadingStatistics = false
+    @State private var isLoadingStatistics = true
     private var weekHeader: String {
 #if os(iOS)
         String(localized: "Week")
@@ -44,21 +45,21 @@ struct StatisticsView: View {
                     WeekStatisticsView(
                         data: viewModel.weekData,
                         selectedWeek: $selectedWeek,
-                        isLoadingStatistics: isLoadingStatistics
+                        isLoadingStatistics: isShowingLoadingStatistics
                     )
                 }
                 Section(monthHeader) {
                     MonthStatisticsView(
                         data: viewModel.monthData,
                         selectedMonth: $selectedMonth,
-                        isLoadingStatistics: isLoadingStatistics
+                        isLoadingStatistics: isShowingLoadingStatistics
                     )
                 }
                 Section(yearHeader) {
                     YearStatisticsView(
                         data: viewModel.yearData,
                         selectedYear: $selectedYear,
-                        isLoadingStatistics: isLoadingStatistics
+                        isLoadingStatistics: isShowingLoadingStatistics
                     )
                 }
             }
@@ -92,9 +93,15 @@ struct StatisticsView: View {
 #endif
             .onAppear {
                 Task {
-                    isLoadingStatistics = true
+                    try await Task.sleep(nanoseconds: 250000000)
+                    if isLoadingStatistics {
+                        isShowingLoadingStatistics = true
+                    }
+                }
+                Task {
                     await viewModel.getData(week: selectedWeek, month: selectedMonth, year: selectedYear)
                     isLoadingStatistics = false
+                    isShowingLoadingStatistics = false
                 }
                 viewModel.getNullData()
             }

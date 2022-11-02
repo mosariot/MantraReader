@@ -194,7 +194,6 @@ struct YearStatisticsView: View {
                 .disabled(selectedYear == currentYear)
             }
             .padding(.top, 10)
-            .disabled(isLoadingStatistics)
 #endif
         }
     }

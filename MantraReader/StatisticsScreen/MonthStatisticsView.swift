@@ -190,7 +190,6 @@ struct MonthStatisticsView: View {
                 .disabled(selectedMonth == currentMonth)
             }
             .padding(.top, 10)
-            .disabled(isLoadingStatistics)
 #endif
         }
     }

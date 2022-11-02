@@ -195,7 +195,6 @@ struct WeekStatisticsView: View {
                 .disabled(selectedWeek == currentWeek)
             }
             .padding(.top, 10)
-            .disabled(isLoadingStatistics)
 #endif
         }
     }

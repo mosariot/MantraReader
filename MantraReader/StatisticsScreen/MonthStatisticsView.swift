@@ -145,7 +145,11 @@ struct MonthStatisticsView: View {
             HStack {
                 Button {
                     if selectedMonth == 0 {
-                        selectedMonth = currentMonth - 1
+                        if currentMonth == 1 {
+                            selectedMonth = 12
+                        } else {
+                            selectedMonth = currentMonth - 1
+                        }
                     } else if selectedMonth == 1 {
                         selectedMonth = 12
                     } else {

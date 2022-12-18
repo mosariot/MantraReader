@@ -167,13 +167,15 @@ struct WeekStatisticsView: View {
                 .buttonStyle(.borderedProminent)
                 .clipShape(Circle())
                 .tint(.blue.opacity(0.8))
-                .disabled(selectedWeek == 2)
+                .disabled(selectedWeek == 2 || currentWeek == 1 || currentWeek == 2)
                 Spacer()
                     .frame(minWidth: 0, maxWidth: !(horizontalSizeClass == .compact && verticalSizeClass == .regular) ? 60 : nil)
                 Picker("", selection: $selectedWeek) {
                     Text("Last 7 Days").tag(0)
-                    ForEach((2...currentWeek).reversed(), id: \.self) {
-                        Text("\(startOfWeek($0).formatted(.dateTime.day().month(.abbreviated))) - \(endOfWeek($0).formatted(.dateTime.day().month(.abbreviated)))").tag($0)
+                    if currentWeek != 1 {
+                        ForEach((2...currentWeek).reversed(), id: \.self) {
+                            Text("\(startOfWeek($0).formatted(.dateTime.day().month(.abbreviated))) - \(endOfWeek($0).formatted(.dateTime.day().month(.abbreviated)))").tag($0)
+                        }
                     }
                 }
                 .layoutPriority(1)
@@ -192,7 +194,7 @@ struct WeekStatisticsView: View {
                 .buttonStyle(.borderedProminent)
                 .clipShape(Circle())
                 .tint(.blue.opacity(0.8))
-                .disabled(selectedWeek == currentWeek)
+                .disabled(selectedWeek == currentWeek || currentWeek == 1)
             }
             .padding(.top, 10)
 #endif

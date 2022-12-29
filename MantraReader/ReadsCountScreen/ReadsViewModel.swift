@@ -71,8 +71,10 @@ final class ReadsViewModel: ObservableObject {
             } else {
                 return 0...99_999_999 ~= UInt32(mantra.reads) + multiplied.partialValue
             }
-        case .goal, .value:
+        case .value:
             return 0...99_999_999 ~= alertNumber
+        case .goal:
+            return 0...10_000_000 ~= alertNumber
         }
     }
     

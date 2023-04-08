@@ -16,7 +16,7 @@ struct AccessoryCircularIntentWidgetView: View {
     
     private var ringColor: Color {
         switch settings.ringColor {
-            case .dynamic:
+        case .dynamic:
             if progress < 0.5 {
                 return .progressGreenStart
             } else if progress >= 0.5 && progress < 1.0 {
@@ -26,9 +26,19 @@ struct AccessoryCircularIntentWidgetView: View {
             } else {
                 return .accentColor
             }
-            case .red: return .progressRedStart
-            case .yellow: return .progressYellowStart
-            case .green: return .progressGreenStart
+        case .dynamicReverse:
+            if progress < 0.5 {
+                return .progressRedStart
+            } else if progress >= 0.5 && progress < 1.0 {
+                return .progressYellowStart
+            } else if progress >= 1.0 {
+                return .progressGreenStart
+            } else {
+                return .accentColor
+            }
+        case .red: return .progressRedStart
+        case .yellow: return .progressYellowStart
+        case .green: return .progressGreenStart
         }
     }
     

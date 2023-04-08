@@ -12,6 +12,7 @@ enum RingColor: String, Hashable, Codable {
     case yellow
     case green
     case dynamic
+    case dynamicReverse
     
     var colors: [Color] {
         switch self {
@@ -19,6 +20,7 @@ enum RingColor: String, Hashable, Codable {
         case .yellow: return [.progressYellowStart, .progressYellowEnd]
         case .green: return [.progressGreenStart, .progressGreenEnd]
         case .dynamic: return [.progressRedStart]
+        case .dynamicReverse: return [.progressGreenStart]
         }
     }
     
@@ -28,6 +30,7 @@ enum RingColor: String, Hashable, Codable {
         case .yellow: return .progressYellowStart.opacity(0.2)
         case .green: return .progressGreenStart.opacity(0.2)
         case .dynamic: return .gray.opacity(0.2)
+        case .dynamicReverse: return .gray.opacity(0.2)
         }
     }
 }

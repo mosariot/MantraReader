@@ -140,6 +140,36 @@ struct SettingsView: View {
                     }
                     .frame(height: 25)
                     .tag(RingColor.dynamic)
+                    HStack(spacing: 5) {
+                        Rectangle()
+                            .fill(
+                                LinearGradient(
+                                    gradient: Gradient(colors: RingColor.red.colors),
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                            .cornerRadius(radius: 10.0, corners: [.topLeft, .bottomLeft])
+                        Rectangle()
+                            .fill(
+                                LinearGradient(
+                                    gradient: Gradient(colors: RingColor.yellow.colors),
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                        Rectangle()
+                            .fill(
+                                LinearGradient(
+                                    gradient: Gradient(colors: RingColor.green.colors),
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                            .cornerRadius(radius: 10.0, corners: [.topRight, .bottomRight])
+                    }
+                    .frame(height: 25)
+                    .tag(RingColor.dynamicReverse)
                     RoundedRectangle(cornerRadius: 10)
                         .fill(
                             LinearGradient(

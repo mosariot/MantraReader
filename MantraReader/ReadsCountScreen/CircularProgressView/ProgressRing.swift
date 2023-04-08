@@ -33,6 +33,16 @@ struct ProgressRing: View {
             } else {
                 return .accentColor
             }
+        case .dynamicReverse:
+            if progress < 0.5 {
+                return .thirdProgressTier.last ?? .progressRedStart
+            } else if progress >= 0.5 && progress < 1.0 {
+                return .secondProgressTier.last ?? .progressYellowStart
+            } else if progress >= 1.0 {
+                return .firstProgressTier.last ?? .progressGreenStart
+            } else {
+                return .accentColor
+            }
         }
     }
     
@@ -95,6 +105,46 @@ struct ProgressRing: View {
                             ringRadius: min(geo.size.width, geo.size.height) / 2)
                     .fill(progress < 1.0 ? Color.progressYellowEnd : Color.progressRedEnd,
                           strokeBorder: progress < 1.0 ? Color.progressYellowEnd : Color.progressRedEnd,
+                          lineWidth: 0.5)
+                    .frame(width: thickness, height: thickness)
+                    .shadow(color: .black.opacity(0.3),
+                            radius: 2.5,
+                            x: ringTipShadowOffset(radius: min(geo.size.width, geo.size.height) / 2).x,
+                            y: ringTipShadowOffset(radius: min(geo.size.width, geo.size.height) / 2).y
+                    )
+                    .clipShape(
+                        RingClipShape(
+                            radius: min(geo.size.width, geo.size.height) / 2,
+                            thickness: thickness
+                        )
+                    )
+                    .opacity(tipOpacity)
+                case .dynamicReverse:
+                    ProgressArc(
+                        progress: progress,
+                        colors: Color.thirdProgressTier,
+                        thickness: thickness,
+                        frame: geo.size
+                    )
+                    .opacity(progress < 0.5 ? 1 : 0)
+                    ProgressArc(
+                        progress: progress,
+                        colors: Color.secondProgressTier,
+                        thickness: thickness,
+                        frame: geo.size
+                    )
+                    .opacity(progress >= 0.5 && progress < 1.0 ? 1 : 0)
+                    ProgressArc(
+                        progress: progress,
+                        colors: Color.firstProgressTier,
+                        thickness: thickness,
+                        frame: geo.size
+                    )
+                    .opacity(progress >= 1.0 ? 1 : 0)
+                    RingCap(progress: progress,
+                            ringRadius: min(geo.size.width, geo.size.height) / 2)
+                    .fill(progress < 1.0 ? Color.progressYellowEnd : Color.progressGreenEnd,
+                          strokeBorder: progress < 1.0 ? Color.progressYellowEnd : Color.progressGreenEnd,
                           lineWidth: 0.5)
                     .frame(width: thickness, height: thickness)
                     .shadow(color: .black.opacity(0.3),

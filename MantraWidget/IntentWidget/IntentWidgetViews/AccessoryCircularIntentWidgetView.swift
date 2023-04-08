@@ -13,7 +13,6 @@ struct AccessoryCircularIntentWidgetView: View {
     @EnvironmentObject private var settings: Settings
     var selectedMantra: WidgetModel.WidgetMantra?
     var firstMantra: WidgetModel.WidgetMantra?
-    let formatter = KMBFormatter()
     
     private var ringColor: Color {
         switch settings.ringColor {
@@ -56,7 +55,7 @@ struct AccessoryCircularIntentWidgetView: View {
         ) {
             EmptyView()
         } currentValueLabel: {
-            Text("\(formatter.string(fromNumber: Int32(value)))")
+            Text("\(value.formatted(.number.precision(.significantDigits(3)).notation(.compactName)))")
                 .privacySensitive()
         }
         .gaugeStyle(.accessoryCircularCapacity)

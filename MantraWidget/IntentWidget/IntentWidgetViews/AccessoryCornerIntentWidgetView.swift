@@ -67,7 +67,7 @@ struct AccessoryCornerIntentWidgetView: View {
             ) {
                 EmptyView()
             } currentValueLabel: {
-                Text("\(value.formatted(.number.precision(.significantDigits(3)).notation(.compactName)))")
+                Text(value == 0 ? "0" : "\(value.formatted(.number.precision(.significantDigits(3)).notation(.compactName)))")
                     .privacySensitive()
             }
             .gaugeStyle(.accessoryLinearCapacity)

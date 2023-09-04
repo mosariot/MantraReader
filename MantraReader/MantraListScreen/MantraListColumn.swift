@@ -217,7 +217,9 @@ struct MantraListColumn: View {
                 isPresented: $isPresentedPreloadedMantraList,
                 dataManager: dataManager
             )
-            .presentationDetents([.medium])
+            .presentationDetents([.medium, .large])
+            .presentationContentInteraction(.scrolls)
+            .ignoresSafeArea(.all)
         }
         .sheet(isPresented: $isPresentedNewMantraSheet) {
             InfoView(

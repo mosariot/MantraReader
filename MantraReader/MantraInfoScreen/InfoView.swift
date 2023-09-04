@@ -262,6 +262,8 @@ struct InfoView: View {
                         .addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!
                 )
                 .presentationDetents([.medium, .large])
+                .presentationContentInteraction(.scrolls)
+                .ignoresSafeArea()
             }
 // Old PHPicker code -start-
             .sheet(isPresented: $isPresentedImagePickerView) {
@@ -271,6 +273,8 @@ struct InfoView: View {
                     isPresentedNoImageAlert: $isPresentedNoImageAlert
                 )
                 .presentationDetents([.medium, .large])
+                .presentationContentInteraction(.scrolls)
+                .ignoresSafeArea()
             }
             .onChange(of: selectedPhoto) { image in
                 guard let image else { return }

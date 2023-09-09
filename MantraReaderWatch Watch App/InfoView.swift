@@ -50,7 +50,12 @@ struct InfoView: View {
                 Button {
                     dismiss()
                 } label: {
-                    CloseButtonImage()
+                    if #available(watchOS 10, *) {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.gray.opacity(0.6))
+                    } else {
+                        CloseButtonImage()
+                    }
                 }
             }
         }

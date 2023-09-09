@@ -74,10 +74,17 @@ struct AdjustingView: View {
         }
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") {
+                Button {
                     dismiss()
+                } label: {
+                    if #available(watchOS 10, *) {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.gray.opacity(0.6))
+                    } else {
+                        Text("Cancel")
+                            .foregroundColor(.accentColor)
+                    }
                 }
-                .foregroundColor(.accentColor)
             }
         }
         .onAppear {

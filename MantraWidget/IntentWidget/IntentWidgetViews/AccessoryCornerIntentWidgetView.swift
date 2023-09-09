@@ -59,22 +59,30 @@ struct AccessoryCornerIntentWidgetView: View {
     }
     
     var body: some View {
-        EmptyView()
-        .widgetLabel {
-            Gauge(
-                value: value,
-                in: 0...endRange
-            ) {
-                EmptyView()
-            } currentValueLabel: {
-                Text(value == 0 ? "0" : "\(value.formatted(.number.precision(.significantDigits(3)).notation(.compactName)))")
-                    .privacySensitive()
-            }
-            .gaugeStyle(.accessoryLinearCapacity)
-            .tint(widgetRenderingMode == .fullColor ? ringColor : nil)
-            .redacted(reason: reasons)
+        if #available(iOS 17, *), #available(watchOS 10, *) {
+            Text("\(selectedMantra?.reads ?? 56683)")
+                .widgetCurvesContent()
+                .widgetLabel("\(selectedMantra?.title ?? "Your mantra")")
+                .privacySensitive()
+                .widgetURL(URL(string: (selectedMantra?.id.uuidString ?? firstMantra?.id.uuidString) ?? ""))
+        } else {
+            EmptyView()
+                .widgetLabel {
+                    Gauge(
+                        value: value,
+                        in: 0...endRange
+                    ) {
+                        EmptyView()
+                    } currentValueLabel: {
+                        Text(value == 0 ? "0" : "\(value.formatted(.number.precision(.significantDigits(3)).notation(.compactName)))")
+                            .privacySensitive()
+                    }
+                    .gaugeStyle(.accessoryLinearCapacity)
+                    .tint(widgetRenderingMode == .fullColor ? ringColor : nil)
+                    .redacted(reason: reasons)
+                }
+                .widgetURL(URL(string: (selectedMantra?.id.uuidString ?? firstMantra?.id.uuidString) ?? ""))
         }
-        .widgetURL(URL(string: (selectedMantra?.id.uuidString ?? firstMantra?.id.uuidString) ?? ""))
     }
 }
 

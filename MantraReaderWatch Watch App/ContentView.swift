@@ -76,8 +76,11 @@ struct ContentView: View {
                     }
                 }
                 .navigationDestination(for: Mantra.self) { mantra in
-                    ReadsView(viewModel: ReadsViewModel(mantra, dataManager: dataManager))
-                }
+                    if #available(watchOS 10, *) {
+                        ReadsViewWatch10(viewModel: ReadsViewModel(mantra, dataManager: dataManager))
+                    } else {
+                        ReadsView(viewModel: ReadsViewModel(mantra, dataManager: dataManager))
+                    }                }
                 if isFirstLaunch {
                     ProgressView("Syncing...")
                 }
@@ -110,7 +113,11 @@ struct ContentView: View {
                 SettingsView(mantras: mantras)
             }
             .sheet(isPresented: $isPresentedStatisticsSheet) {
-                StatisticsView(viewModel: StatisticsViewModel(dataManager: dataManager))
+                if #available(watchOS 10, *) {
+                    StatisticsViewWatch10(viewModel: StatisticsViewModel(dataManager: dataManager))
+                } else {
+                    StatisticsView(viewModel: StatisticsViewModel(dataManager: dataManager))
+                }
             }
             .toolbar {
                 ToolbarItemGroup {

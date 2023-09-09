@@ -213,6 +213,8 @@
 		9FE2E9D428EFD77200BA8240 /* MantraReaderWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9FE2E9C628EFD74100BA8240 /* MantraReaderWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9FE2E9E028EFDB9000BA8240 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2E9DF28EFDB9000BA8240 /* InfoView.swift */; };
 		9FE2E9E428EFDC4800BA8240 /* ReadsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2E9E328EFDC4800BA8240 /* ReadsView.swift */; };
+		9FEE9CEF2AA6343600E0456F /* ReadsViewWatch10.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEE9CEE2AA6343600E0456F /* ReadsViewWatch10.swift */; };
+		9FEE9CF12AA6345000E0456F /* StatisticsViewWatch10.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEE9CF02AA6345000E0456F /* StatisticsViewWatch10.swift */; };
 		9FF7C3952864C16200DA5F51 /* PreloadedMantras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */; };
 /* End PBXBuildFile section */
 
@@ -411,6 +413,8 @@
 		9FE2E9DC28EFD97900BA8240 /* MantraReaderWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MantraReaderWatch Watch App.entitlements"; sourceTree = "<group>"; };
 		9FE2E9DF28EFDB9000BA8240 /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		9FE2E9E328EFDC4800BA8240 /* ReadsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadsView.swift; sourceTree = "<group>"; };
+		9FEE9CEE2AA6343600E0456F /* ReadsViewWatch10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadsViewWatch10.swift; sourceTree = "<group>"; };
+		9FEE9CF02AA6345000E0456F /* StatisticsViewWatch10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewWatch10.swift; sourceTree = "<group>"; };
 		9FF7C3942864C16200DA5F51 /* PreloadedMantras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadedMantras.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -787,9 +791,11 @@
 				9FE2E9DC28EFD97900BA8240 /* MantraReaderWatch Watch App.entitlements */,
 				9FE2E9C828EFD74100BA8240 /* MantraReaderWatchApp.swift */,
 				9FE2E9CA28EFD74100BA8240 /* ContentView.swift */,
+				9FEE9CEE2AA6343600E0456F /* ReadsViewWatch10.swift */,
 				9FE2E9E328EFDC4800BA8240 /* ReadsView.swift */,
 				9F38058D28EFDCDD00373AD2 /* AdjustingView.swift */,
 				9FE2E9DF28EFDB9000BA8240 /* InfoView.swift */,
+				9FEE9CF02AA6345000E0456F /* StatisticsViewWatch10.swift */,
 				9F38058F28EFDCEB00373AD2 /* ComplicationController.swift */,
 				9FE2E9CE28EFD74200BA8240 /* Preview Content */,
 			);
@@ -1206,12 +1212,14 @@
 				9F68148928F1621F00FDEDDE /* MantraWidgetManager.swift in Sources */,
 				9F68147228F1619A00FDEDDE /* View+ConfettiCannon.swift in Sources */,
 				9F68148328F1620A00FDEDDE /* MonthStatisticsView.swift in Sources */,
+				9FEE9CF12AA6345000E0456F /* StatisticsViewWatch10.swift in Sources */,
 				9F68147028F1619A00FDEDDE /* RoundedCross.swift in Sources */,
 				9F68148528F1620A00FDEDDE /* WeekStatisticsView.swift in Sources */,
 				9F38058E28EFDCDD00373AD2 /* AdjustingView.swift in Sources */,
 				9F68147F28F161E900FDEDDE /* Congratulations.swift in Sources */,
 				9F68148E28F1624900FDEDDE /* Functions.swift in Sources */,
 				9F68148D28F1624400FDEDDE /* Date+StartEnd.swift in Sources */,
+				9FEE9CEF2AA6343600E0456F /* ReadsViewWatch10.swift in Sources */,
 				9F68147828F161A100FDEDDE /* CircularProgressViewModel.swift in Sources */,
 				9F68148028F161EC00FDEDDE /* NumberAnimation.swift in Sources */,
 				9F68146A28F1616F00FDEDDE /* MantraColorScheme.swift in Sources */,

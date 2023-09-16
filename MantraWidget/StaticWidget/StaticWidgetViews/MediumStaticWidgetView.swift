@@ -22,41 +22,13 @@ struct MediumStaticWidgetView: View {
                     .resizable()
                     .frame(width: 100, height: 100, alignment: .center)
             } else {
-                HStack {
-                    ForEach(mantraArray, id: \.self) { mantra in
-                        Link(destination: URL(string: "\(mantra.id)")!) {
-                            VStack {
-                                Image(uiImage: image(data: mantra.image))
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 55, height: 55, alignment: .center)
-                                Text(mantra.title)
-                                    .multilineTextAlignment(.center)
-                                    .lineLimit(2)
-                                    .frame(height: 33)
-                                    .bold()
-                                    .font(.footnote)
-                                Text("\(mantra.reads)")
-                                    .bold()
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                                    .privacySensitive()
-                            }
-                            .frame(maxWidth: .infinity)
-                        }
-                    }
-                    .redacted(reason: reasons)
+                if #available(iOS 17, *) {
+                    MediumStaticWidgetList(mantraArray: mantraArray)
+                } else {
+                    MediumStaticWidgetList(mantraArray: mantraArray)
+                        .padding()
                 }
-                .padding()
             }
-        }
-    }
-    
-    func image(data: Data?) -> UIImage {
-        if let data, let image = UIImage(data: data) {
-            return image
-        } else {
-            return UIImage(named: Constants.defaultImageList)!
         }
     }
 }

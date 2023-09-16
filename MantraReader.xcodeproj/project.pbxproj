@@ -35,6 +35,8 @@
 		9F38059028EFDCEB00373AD2 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F38058F28EFDCEB00373AD2 /* ComplicationController.swift */; };
 		9F4DE924286E3B670064ADCB /* UIImage+CropToCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DE923286E3B670064ADCB /* UIImage+CropToCircle.swift */; };
 		9F4DE926286E3B990064ADCB /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DE925286E3B990064ADCB /* Functions.swift */; };
+		9F4E256D2AB629A00053A119 /* LargeStaticWidgetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4E256A2AB629670053A119 /* LargeStaticWidgetList.swift */; };
+		9F4E256F2AB62A7C0053A119 /* MediumStaticWidgetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4E256E2AB62A7C0053A119 /* MediumStaticWidgetList.swift */; };
 		9F53A56F28A967900070D2B3 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F53A56E28A967900070D2B3 /* SafariView.swift */; };
 		9F5422E928ACA0CC00F15040 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F78728D2865FDA400F52335 /* UIImage+Resize.swift */; };
 		9F5422ED28ACA24100F15040 /* IntentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5422EC28ACA24100F15040 /* IntentWidget.swift */; };
@@ -117,6 +119,7 @@
 		9F7B1AE4286AB09A007720A0 /* MantraRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B1AE3286AB09A007720A0 /* MantraRow.swift */; };
 		9F857B4D28C38EC100A83216 /* Mantra+Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F857B4C28C38EC100A83216 /* Mantra+Statistics.swift */; };
 		9F8E180828AFE545000BC905 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5983A28AAC65B00798AD7 /* Localizable.strings */; };
+		9F9BA0982AB62D4E0079E583 /* SmallStaticWidgetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9BA0962AB62CA50079E583 /* SmallStaticWidgetList.swift */; };
 		9F9E778E28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E778D28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift */; };
 		9FA0553228AC00D3006E5798 /* MantraWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553028AC0084006E5798 /* MantraWidgets.swift */; };
 		9FA0553B28AC018E006E5798 /* StaticWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0553928AC015F006E5798 /* StaticWidgetEntryView.swift */; };
@@ -314,6 +317,8 @@
 		9F38058F28EFDCEB00373AD2 /* ComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		9F4DE923286E3B670064ADCB /* UIImage+CropToCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CropToCircle.swift"; sourceTree = "<group>"; };
 		9F4DE925286E3B990064ADCB /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		9F4E256A2AB629670053A119 /* LargeStaticWidgetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeStaticWidgetList.swift; sourceTree = "<group>"; };
+		9F4E256E2AB62A7C0053A119 /* MediumStaticWidgetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumStaticWidgetList.swift; sourceTree = "<group>"; };
 		9F53A56E28A967900070D2B3 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		9F5422EC28ACA24100F15040 /* IntentWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentWidget.swift; sourceTree = "<group>"; };
 		9F5422EE28ACA29400F15040 /* IntentWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentWidgetEntryView.swift; sourceTree = "<group>"; };
@@ -352,6 +357,7 @@
 		9F794EE2289E777600DDF940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9F7B1AE3286AB09A007720A0 /* MantraRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraRow.swift; sourceTree = "<group>"; };
 		9F857B4C28C38EC100A83216 /* Mantra+Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mantra+Statistics.swift"; sourceTree = "<group>"; };
+		9F9BA0962AB62CA50079E583 /* SmallStaticWidgetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallStaticWidgetList.swift; sourceTree = "<group>"; };
 		9F9E778D28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryInlineIntentWidgetView.swift; sourceTree = "<group>"; };
 		9FA0553028AC0084006E5798 /* MantraWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MantraWidgets.swift; sourceTree = "<group>"; };
 		9FA0553528AC013E006E5798 /* StaticWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticWidgetEntry.swift; sourceTree = "<group>"; };
@@ -664,8 +670,11 @@
 			isa = PBXGroup;
 			children = (
 				9F1AB3E128A18EAA001FF7DE /* LargeStaticWidgetView.swift */,
+				9F4E256A2AB629670053A119 /* LargeStaticWidgetList.swift */,
 				9F1AB3E028A18EAA001FF7DE /* MediumStaticWidgetView.swift */,
+				9F4E256E2AB62A7C0053A119 /* MediumStaticWidgetList.swift */,
 				9F1AB3E228A18EAA001FF7DE /* SmallStaticWidgetView.swift */,
+				9F9BA0962AB62CA50079E583 /* SmallStaticWidgetList.swift */,
 				9FA0553E28AC021D006E5798 /* AccessoryRectangularStaticWidgetView.swift */,
 			);
 			path = StaticWidgetViews;
@@ -916,7 +925,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1410;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					9F1AB3C928A18E57001FF7DE = {
 						CreatedOnToolsVersion = 14.0;
@@ -1036,14 +1045,17 @@
 				9F5422F128ACA29E00F15040 /* IntentProvider.swift in Sources */,
 				9FA0553B28AC018E006E5798 /* StaticWidgetEntryView.swift in Sources */,
 				9FAE4BAB28D180C300CE9D9B /* MantraColorScheme.swift in Sources */,
+				9F4E256D2AB629A00053A119 /* LargeStaticWidgetList.swift in Sources */,
 				9F2ED2A128D81F2A0031D40A /* ProgressArc.swift in Sources */,
 				9FC0F5CB28D4B3A100A00681 /* Sorting.swift in Sources */,
 				9F5422F528ACA2D700F15040 /* MediumIntentWidgetView.swift in Sources */,
 				9FC0F5CA28D4B38300A00681 /* Settings.swift in Sources */,
 				9FAE4BA928D0345700CE9D9B /* RingCap.swift in Sources */,
+				9F4E256F2AB62A7C0053A119 /* MediumStaticWidgetList.swift in Sources */,
 				9F9E778E28ED2EF900FE0EFC /* AccessoryInlineIntentWidgetView.swift in Sources */,
 				9FA0553C28AC018E006E5798 /* StaticProvider.swift in Sources */,
 				9FA0553228AC00D3006E5798 /* MantraWidgets.swift in Sources */,
+				9F9BA0982AB62D4E0079E583 /* SmallStaticWidgetList.swift in Sources */,
 				9F2794F528EDD5D900004E85 /* AccessoryCornerIntentWidgetView.swift in Sources */,
 				9F5422F728ACA2E800F15040 /* SmallIntentWidgetView.swift in Sources */,
 			);
@@ -1443,6 +1455,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1506,6 +1519,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1534,7 +1548,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReader/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
@@ -1575,7 +1589,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReader/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
@@ -1677,7 +1691,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "MantraReaderWatch Watch App/MantraReaderWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReaderWatch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				ENABLE_PREVIEWS = YES;
@@ -1712,7 +1726,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "MantraReaderWatch Watch App/MantraReaderWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"MantraReaderWatch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = R89YUVSKU6;
 				ENABLE_PREVIEWS = YES;

@@ -33,7 +33,8 @@ struct SmallStaticWidgetView: View {
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 43, height: 43, alignment: .center)
                                         Text("\(mantraArray[2 * row + column].reads)")
-                                            .font(.system(.caption2, weight: .bold))
+                                            .bold()
+                                            .font(.caption2)
                                             .foregroundColor(.secondary)
                                             .privacySensitive()
                                     }

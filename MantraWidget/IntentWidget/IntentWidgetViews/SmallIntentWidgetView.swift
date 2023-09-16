@@ -25,13 +25,15 @@ struct SmallIntentWidgetView: View {
                         thickness: 12
                     )
                     Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
-                        .font(.system(.headline, weight: .bold))
+                        .bold()
+                        .font(.headline)
                         .privacySensitive()
                 }
                 .padding(6)
                 .padding(.bottom, 1)
                 Text((selectedMantra?.title ?? firstMantra?.title) ?? String(localized: "Your mantra"))
-                    .font(.system(.footnote, weight: .bold))
+                    .bold()
+                    .font(.footnote)
                     .multilineTextAlignment(.center)
                     .lineLimit(1)
                     .padding(.top, 1)

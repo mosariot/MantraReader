@@ -27,14 +27,17 @@ struct LargeStaticWidgetView: View {
                                 HStack {
                                     VStack(alignment: .leading, spacing: 3) {
                                         Text(mantra.title)
-                                            .font(.system(.footnote, weight: .semibold))
+                                            .bold()
+                                            .font(.footnote)
                                             .lineLimit(1)
                                         HStack(spacing: 0) {
                                             Text("Current readings: ")
-                                                .font(.system(.footnote, weight: .semibold))
+                                                .bold()
+                                                .font(.footnote)
                                                 .foregroundColor(.secondary)
                                             Text("\(mantra.reads)")
-                                                .font(.system(.footnote, weight: .semibold))
+                                                .bold()
+                                                .font(.footnote)
                                                 .foregroundColor(.secondary)
                                                 .privacySensitive()
                                         }

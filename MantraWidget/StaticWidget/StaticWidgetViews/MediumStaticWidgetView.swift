@@ -34,9 +34,11 @@ struct MediumStaticWidgetView: View {
                                     .multilineTextAlignment(.center)
                                     .lineLimit(2)
                                     .frame(height: 33)
-                                    .font(.system(.footnote, weight: .semibold))
+                                    .bold()
+                                    .font(.footnote)
                                 Text("\(mantra.reads)")
-                                    .font(.system(.caption, weight: .semibold))
+                                    .bold()
+                                    .font(.caption)
                                     .foregroundColor(.secondary)
                                     .privacySensitive()
                             }

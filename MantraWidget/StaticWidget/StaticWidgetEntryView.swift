@@ -26,14 +26,41 @@ struct StaticWidgetEntryView: View {
         switch family {
 #if os(iOS)
         case .systemSmall:
-            SmallStaticWidgetView(widgetModel: entry.widgetModel)
-                .environment(\.colorScheme, preferredColorScheme ?? systemColorScheme)
+            if #available(iOS 17, *) {
+                SmallStaticWidgetView(widgetModel: entry.widgetModel)
+                    .containerBackground(for: .widget) {
+                        systemColorScheme == .dark ? Color(UIColor.systemGroupedBackground) : Color(UIColor.white)
+                    }
+            } else {
+                ZStack {
+                    Color(systemColorScheme == .dark ? UIColor.systemGroupedBackground : UIColor.white)
+                    SmallStaticWidgetView(widgetModel: entry.widgetModel)
+                }
+            }
         case .systemMedium:
-            MediumStaticWidgetView(widgetModel: entry.widgetModel)
-                .environment(\.colorScheme, preferredColorScheme ?? systemColorScheme)
+            if #available(iOS 17, *) {
+                MediumStaticWidgetView(widgetModel: entry.widgetModel)
+                    .containerBackground(for: .widget) {
+                        systemColorScheme == .dark ? Color(UIColor.systemGroupedBackground) : Color(UIColor.white)
+                    }
+            } else {
+                ZStack {
+                    Color(systemColorScheme == .dark ? UIColor.systemGroupedBackground : UIColor.white)
+                    MediumStaticWidgetView(widgetModel: entry.widgetModel)
+                }
+            }
         case .systemLarge:
-            LargeStaticWidgetView(widgetModel: entry.widgetModel)
-                .environment(\.colorScheme, preferredColorScheme ?? systemColorScheme)
+            if #available(iOS 17, *) {
+                LargeStaticWidgetView(widgetModel: entry.widgetModel)
+                    .containerBackground(for: .widget) {
+                        systemColorScheme == .dark ? Color(UIColor.systemGroupedBackground) : Color(UIColor.white)
+                    }
+            } else {
+                ZStack {
+                    Color(systemColorScheme == .dark ? UIColor.systemGroupedBackground : UIColor.white)
+                    LargeStaticWidgetView(widgetModel: entry.widgetModel)
+                }
+            }
 #elseif os(watchOS)
         case .accessoryCorner:
             Text("\(entry.widgetModel.mantras.map { $0.reads }.reduce(0,+))")

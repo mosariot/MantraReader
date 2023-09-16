@@ -9,38 +9,32 @@ import SwiftUI
 
 struct SmallIntentWidgetView: View {
     @Environment(\.redactionReasons) private var reasons
-    @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject private var settings: Settings
     var selectedMantra: WidgetModel.WidgetMantra?
     var firstMantra: WidgetModel.WidgetMantra?
     
     var body: some View {
-        ZStack {
-            Color(colorScheme == .dark ? UIColor.systemGroupedBackground : UIColor.white)
-                .ignoresSafeArea()
-            VStack(alignment: .center) {
-                ZStack {
-                    ProgressRing(
-                        progress: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000),
-                        thickness: 12
-                    )
-                    Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
-                        .bold()
-                        .font(.headline)
-                        .privacySensitive()
-                }
-                .padding(6)
-                .padding(.bottom, 1)
-                Text((selectedMantra?.title ?? firstMantra?.title) ?? String(localized: "Your mantra"))
+        VStack(alignment: .center) {
+            ZStack {
+                ProgressRing(
+                    progress: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000),
+                    thickness: 12
+                )
+                Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
                     .bold()
-                    .font(.footnote)
-                    .multilineTextAlignment(.center)
-                    .lineLimit(1)
-                    .padding(.top, 1)
+                    .font(.headline)
+                    .privacySensitive()
             }
-            .padding(10)
-            .redacted(reason: reasons)
+            .padding(6)
+            .padding(.bottom, 1)
+            Text((selectedMantra?.title ?? firstMantra?.title) ?? String(localized: "Your mantra"))
+                .bold()
+                .font(.footnote)
+                .multilineTextAlignment(.center)
+                .lineLimit(1)
+                .padding(.top, 1)
         }
+        .redacted(reason: reasons)
         .widgetURL(URL(string: (selectedMantra?.id.uuidString ?? firstMantra?.id.uuidString ) ?? ""))
     }
 }

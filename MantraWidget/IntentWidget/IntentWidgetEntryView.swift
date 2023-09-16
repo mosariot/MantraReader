@@ -24,13 +24,31 @@ struct IntentWidgetEntryView : View {
         switch family {
 #if os(iOS)
         case .systemSmall:
-            SmallIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
-                .environment(\.colorScheme, preferredColorScheme ?? systemColorScheme)
-                .environmentObject(settings)
+            if #available(iOS 17, *) {
+                SmallIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
+                    .environmentObject(settings)
+                    .containerBackground(for: .widget) {
+                        systemColorScheme == .dark ? Color(UIColor.systemGroupedBackground) : Color(UIColor.white)
+                    }
+            } else {
+                SmallIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
+                    .environmentObject(settings)
+                    .padding(10)
+                    .background(systemColorScheme == .dark ? Color(UIColor.systemGroupedBackground) : Color(UIColor.white))
+            }
         case .systemMedium:
-            MediumIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
-                .environment(\.colorScheme, preferredColorScheme ?? systemColorScheme)
-                .environmentObject(settings)
+            if #available(iOS 17, *) {
+                MediumIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
+                    .environmentObject(settings)
+                    .containerBackground(for: .widget) {
+                        systemColorScheme == .dark ? Color(UIColor.systemGroupedBackground) : Color(UIColor.white)
+                    }
+            } else {
+                MediumIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)
+                    .environmentObject(settings)
+                    .padding(.vertical, 10)
+                    .background(systemColorScheme == .dark ? Color(UIColor.systemGroupedBackground) : Color(UIColor.white))
+            }
 #elseif os(watchOS)
         case .accessoryCorner:
             AccessoryCornerIntentWidgetView(selectedMantra: entry.selectedMantra, firstMantra: entry.firstMantra)

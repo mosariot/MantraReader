@@ -9,48 +9,42 @@ import SwiftUI
 
 struct MediumIntentWidgetView: View {
     @Environment(\.redactionReasons) private var reasons
-    @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject private var settings: Settings
     var selectedMantra: WidgetModel.WidgetMantra?
     var firstMantra: WidgetModel.WidgetMantra?
     
     var body: some View {
-        ZStack {
-            Color(colorScheme == .dark ? UIColor.systemGroupedBackground : UIColor.white)
-                .ignoresSafeArea()
-            GeometryReader { geo in
-                HStack {
-                    VStack {
-                        Image(uiImage: image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(maxWidth: 100, maxHeight: 100, alignment: .center)
-                        Text((selectedMantra?.title ?? firstMantra?.title) ?? String(localized: "Your mantra"))
-                            .bold()
-                            .font(.subheadline)
-                            .multilineTextAlignment(.center)
-                            .lineLimit(2)
-                            .layoutPriority(1)
-                    }
-                    Spacer()
-                    ZStack {
-                        ProgressRing(
-                            progress: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000),
-                            thickness: 12
-                        )
-                        .frame(maxWidth: geo.size.height)
-                        Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
-                            .bold()
-                            .font(.headline)
-                            .privacySensitive()
-                    }
-                    .padding(.vertical, 6)
+        GeometryReader { geo in
+            HStack {
+                VStack {
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: 100, maxHeight: 100, alignment: .center)
+                    Text((selectedMantra?.title ?? firstMantra?.title) ?? String(localized: "Your mantra"))
+                        .bold()
+                        .font(.subheadline)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                        .layoutPriority(1)
                 }
+                Spacer()
+                ZStack {
+                    ProgressRing(
+                        progress: Double((selectedMantra?.reads ?? firstMantra?.reads) ?? 0) / Double((selectedMantra?.goal ?? firstMantra?.goal) ?? 100000),
+                        thickness: 12
+                    )
+                    .frame(maxWidth: geo.size.height)
+                    Text("\((selectedMantra?.reads ?? firstMantra?.reads) ?? 0)")
+                        .bold()
+                        .font(.headline)
+                        .privacySensitive()
+                }
+                .padding(.vertical, 6)
             }
-            .padding(.vertical, 10)
-            .padding(.horizontal, 25)
-            .redacted(reason: reasons)
         }
+        .padding(.horizontal, 25)
+        .redacted(reason: reasons)
         .widgetURL(URL(string: (selectedMantra?.id.uuidString ?? firstMantra?.id.uuidString) ?? ""))
     }
     

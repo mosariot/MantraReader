@@ -1,0 +1,1966 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "'Mantra Counter' Mode" : {
+      "comment" : "First switch display mode Alert TitleMantra Counter mode alert title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Режим 'Счетчик мантр'"
+          }
+        }
+      }
+    },
+    "'Mantra Counter' mode - use long press on the screen" : {
+      "comment" : "Mantra Counter mode indicator menu",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Режим 'Счетчик мантр' - долгое нажатие по экрану"
+          }
+        }
+      }
+    },
+    "%@" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
+    },
+    "%@ - %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - %2$@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ - %2$@"
+          }
+        }
+      }
+    },
+    "%@ %@ = %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@ = %3$@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$@ = %3$@"
+          }
+        }
+      }
+    },
+    "%@ = %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ = %2$@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ = %2$@"
+          }
+        }
+      }
+    },
+    "%@: %d" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@: %2$d"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@: %2$d"
+          }
+        }
+      }
+    },
+    "%d" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d"
+          }
+        }
+      }
+    },
+    "%lld" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "0" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0"
+          }
+        }
+      }
+    },
+    "Add" : {
+      "comment" : "Add Alert ButtonAdd Bar Button",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить"
+          }
+        }
+      }
+    },
+    "Add New" : {
+      "comment" : "Adding Option Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить новое"
+          }
+        }
+      }
+    },
+    "Added" : {
+      "comment" : "Checkmark Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавлено"
+          }
+        }
+      }
+    },
+    "Alphabetically" : {
+      "comment" : "Alphabetical Sorting Menu Item",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "По алфавиту"
+          }
+        }
+      }
+    },
+    "App Store Review" : {
+      "comment" : "Mail Feedback option",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отзыв в App Store"
+          }
+        }
+      }
+    },
+    "Appearance" : {
+      "comment" : "Appearance Picker Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оформление"
+          }
+        }
+      }
+    },
+    "Are you sure you want to delete this mantra?" : {
+      "comment" : "Delete Mantra Alert Message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы уверены, что хотите удалить эту мантру?"
+          }
+        }
+      }
+    },
+    "Are you sure you want to discard changes?" : {
+      "comment" : "Discard Changes Alert Message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы уверены, что хотите отменить все изменения?"
+          }
+        }
+      }
+    },
+    "Are you sure you want to discard this Mantra?" : {
+      "comment" : "Discard Mantra Alert Message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы уверены, что хотите отменить создание этой мантры?"
+          }
+        }
+      }
+    },
+    "Are you sure you want to undo the last change?" : {
+      "comment" : "Undo Action Alert Message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы уверены, что хотите отменить последнее изменение?"
+          }
+        }
+      }
+    },
+    "Avalokitesvara" : {
+      "comment" : "Avalokitesvara",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ченрезиг"
+          }
+        }
+      }
+    },
+    "Average:" : {
+      "comment" : "Average",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В среднем:"
+          }
+        }
+      }
+    },
+    "Buddha Amitabha" : {
+      "comment" : "Buddha Amitabha",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Будда Амитабха"
+          }
+        }
+      }
+    },
+    "Buddha Amitayus" : {
+      "comment" : "Buddha Amitayus",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Будда Амитаюс"
+          }
+        }
+      }
+    },
+    "Buddha Medicine" : {
+      "comment" : "Buddha Medicine",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Будда Медицины"
+          }
+        }
+      }
+    },
+    "Buddha Shakyamuni" : {
+      "comment" : "Buddha Shakyamuni",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Будда Шакьямуни"
+          }
+        }
+      }
+    },
+    "By readings count" : {
+      "comment" : "Readings Count Sorting Menu Item",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "По числу начиток"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "comment" : "Cancel Alert ButtonCancel Alert Button",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить"
+          }
+        }
+      }
+    },
+    "Congratulations!" : {
+      "comment" : "Congratulations Alert Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поздравляем!"
+          }
+        }
+      }
+    },
+    "Current mantra" : {
+      "comment" : "Intent Widget Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Актуальная мантра"
+          }
+        }
+      }
+    },
+    "Current readings:" : {
+
+    },
+    "Current readings: " : {
+      "comment" : "Static Widget subtitle for readings",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Текущая начитка: "
+          }
+        }
+      }
+    },
+    "Current readings: %d" : {
+      "comment" : "Current readings count",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Текущая начитка: %d"
+          }
+        }
+      }
+    },
+    "Current Reads" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Reads"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Текущая начитка"
+          }
+        }
+      }
+    },
+    "Daily average:" : {
+      "comment" : "Daily average",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В среднем за день:"
+          }
+        }
+      }
+    },
+    "Dark" : {
+      "comment" : "Dark appearance",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Темное"
+          }
+        }
+      }
+    },
+    "Date" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дата"
+          }
+        }
+      }
+    },
+    "Default Image" : {
+      "comment" : "Default Image Menu Item",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "По умолчанию"
+          }
+        }
+      }
+    },
+    "Delete" : {
+      "comment" : "Delete Menu Action",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить"
+          }
+        }
+      }
+    },
+    "Delete Mantra" : {
+      "comment" : "Delete Mantra Alert Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить мантру"
+          }
+        }
+      }
+    },
+    "DESCRIPTION" : {
+      "comment" : "Mantra Description Label",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОПИСАНИЕ"
+          }
+        }
+      }
+    },
+    "Detailed Info" : {
+      "comment" : "Mantra Info Menu title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Детальная информация"
+          }
+        }
+      }
+    },
+    "Discard Changes" : {
+      "comment" : "Discard Changes Alert Button",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сбросить изменения"
+          }
+        }
+      }
+    },
+    "Discard Mantra" : {
+      "comment" : "Discard Mantra Alert Button",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить создание мантры"
+          }
+        }
+      }
+    },
+    "Discarding Mantra" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отмена создания мантры"
+          }
+        }
+      }
+    },
+    "Dismiss" : {
+      "comment" : "Details alert Dismiss button",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Закрыть"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "comment" : "Done Alert Button",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Готово"
+          }
+        }
+      }
+    },
+    "Duplicating Mantra" : {
+      "comment" : "Duplication Alert Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторяющаяся мантра"
+          }
+        }
+      }
+    },
+    "Duplicating Mantras" : {
+      "comment" : "Duplication Alert Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторяющиеся мантры"
+          }
+        }
+      }
+    },
+    "Edit" : {
+      "comment" : "Edit Bar Button",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Править"
+          }
+        }
+      }
+    },
+    "EDIT" : {
+      "comment" : "Edit mark label",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПРАВИТЬ"
+          }
+        }
+      }
+    },
+    "Enter mantra description" : {
+      "comment" : "Mantra description placeholder",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите описание мантры"
+          }
+        }
+      }
+    },
+    "Enter mantra text" : {
+      "comment" : "Mantra text placeholder",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите текст мантры"
+          }
+        }
+      }
+    },
+    "Enter mantra title" : {
+      "comment" : "Mantra title placeholder",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите название мантры"
+          }
+        }
+      }
+    },
+    "Enter number" : {
+      "comment" : "Adjusting Alert Placehonder",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите число"
+          }
+        }
+      }
+    },
+    "Enter Readings Number" : {
+      "comment" : "Readings Number Alert Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите число начиток"
+          }
+        }
+      }
+    },
+    "Enter Rounds Number" : {
+      "comment" : "Rounds Number Alert Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите число кругов"
+          }
+        }
+      }
+    },
+    "Favorite" : {
+      "comment" : "Favorite Menu Action",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В избранное"
+          }
+        }
+      }
+    },
+    "Favorites" : {
+      "comment" : "Favorites section title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Избранное"
+          }
+        }
+      }
+    },
+    "Feedback" : {
+      "comment" : "Feedback Menu Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обратная связь"
+          }
+        }
+      }
+    },
+    "For change the value just spin the crown." : {
+      "comment" : "First appear of AdjustingView alert message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для изменения значения просто крутите колесико."
+          }
+        }
+      }
+    },
+    "Goal:" : {
+      "comment" : "Goal Button Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цель:"
+          }
+        }
+      }
+    },
+    "Green Tara" : {
+      "comment" : "Green Tara",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зеленая тара"
+          }
+        }
+      }
+    },
+    "Green Tara is addressed as the embodiment of all enlightened ones, as a comforter, as a protector who quickly responds to a request for help, as a patronizing deity who shows compassion and love to all beings, comparable to a mother's care for her children." : {
+      "comment" : "Green Tara Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "К Зелёной Таре обращаются как к воплощению всех просветлённых, как к утешительнице, как к защитнице, быстро отзывающейся на просьбу о помощи, как к покровительствующему божеству, проявляющему ко всем существам сострадание и любовь, сравнимые с заботой матери о своих детях."
+          }
+        }
+      }
+    },
+    "Guru Padmasambhava" : {
+      "comment" : "Guru Padmasambhava",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гуру Падмасамбхава"
+          }
+        }
+      }
+    },
+    "Guru Padmasambhava himself eloquently and extensively described the benefits of reciting this mantra: 'The essential Vajra Guru mantra, if it’s recited with unlimited aspiration as much as possible - one hundred, one thousand, ten thousand, one hundred thousand, ten million, one hundred million, and so on, will bring unimaginable benefits and strengths. Countries everywhere are protected from all epidemics, hunger, wars, armed violence, crop failure, bad omens and evil spells. The rains will come in due season, the harvests and livestock will be excellent, and the lands will prosper. In this life, in future lives, successful practitioners will meet me again and again - the best in reality, or in visions, the lowest in dreams'." : {
+      "comment" : "Guru Padmasambhava Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сам Гуру Падмасамбхава красноречиво и подробно описал блага от чтения этой мантры: 'Сущностная Ваджра Гуру мантра, если её начитывают с безграничным устремлением столько, сколько возможно - сто, тысячу, десять тысяч, сто тысяч, десять миллионов, сто миллионов и так далее - принесёт невообразимые блага и силы. Страны везде защищены от всех эпидемий, голода, войн, вооружённого насилия, неурожая, плохих знамений и злых заклинаний. Дожди будут идти в своё время, урожаи и скот будут отличными, а земли будут процветать. В этой жизни, в будущих жизнях удачливые практикующие будут встречать меня снова и снова - лучшие в реальности, или же в видениях, низшие - во снах'."
+          }
+        }
+      }
+    },
+    "Hayagriva" : {
+      "comment" : "Hayagriva",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хаягрива"
+          }
+        }
+      }
+    },
+    "Hayagriva's mantra prevents suicide, murder, protects against the action of harmful spirits and evil demons, promotes peace and tranquility in the soul. The mantra of the protector protects not only from spirits and evil demons, but also from backbiting and slander." : {
+      "comment" : "Hayagriva Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мантра Хаягривы предотвращает от самоубийств, убийства, защищает от действия вредоносных духов и злых демонов, способствует миру и спокойствию в душе. Мантра защитника оберегает не только от духов и злобных демонов, но и от злословия и наветов."
+          }
+        }
+      }
+    },
+    "Information" : {
+      "comment" : "Information Bar Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Информация"
+          }
+        }
+      }
+    },
+    "Internal Error" : {
+      "comment" : "Internal Error",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Внутренняя ошибка"
+          }
+        }
+      }
+    },
+    "It seems like there is no internet connection right now. New set of mantras was preloaded. If you were using 'Mantra Reader' previously with enabled iCloud account, your recordings will be added to the list automatically when internet connection will be available (you may need to relaunch the app)." : {
+      "comment" : "Alert Message for preloading mantras due to no internet connection",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Похоже, что сейчас нет подключения к Интернету. Был предварительно загружен новый набор мантр. Если вы ранее использовали 'Начитай!' с включенной учетной записью iCloud, ваши данные будут добавлены в список автоматически, когда станет доступно подключение к Интернету (возможно, необходимо будет перезапустить приложение)."
+          }
+        }
+      }
+    },
+    "It seems like this photo is unavailable. Try to pick another one." : {
+      "comment" : "Unavailable photo Alert Message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Похоже это фото недоступно. Попробуйте выбрать другое."
+          }
+        }
+      }
+    },
+    "It's already in your mantra list. Add another one?" : {
+      "comment" : "Duplication Alert Message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Уже есть в Вашем списке. Добавить еще одну?"
+          }
+        }
+      }
+    },
+    "Last 7 Days" : {
+      "comment" : "Week Picker 7 days option",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "последние 7 дней"
+          }
+        }
+      }
+    },
+    "Last 12 Months" : {
+      "comment" : "Year Picker 12 months option",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "последние 12 месяцев"
+          }
+        }
+      }
+    },
+    "Last 30 Days" : {
+      "comment" : "Month Picker 30 days option",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "последние 30 дней"
+          }
+        }
+      }
+    },
+    "Light" : {
+      "comment" : "Light appearance",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Светлое"
+          }
+        }
+      }
+    },
+    "Mail Feedback" : {
+      "comment" : "Mail Feedback option",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Написать письмо"
+          }
+        }
+      }
+    },
+    "Maitreya symbolizes the loving kindness of the Buddha as well as the aspect of vision, the sense of sight. He embodies the future Buddha, who will be reborn and appear before people. If the practitioner doesn’t succeed in achieving full enlightenment in this incarnation, the Maitreya mantra will bring him closer to the highest good in subsequent reincarnations." : {
+      "comment" : "Maytreya Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Майтрейя символизирует любящую доброту Будды, а также аспект видения, чувство зрения. Он воплощает собой будущего Будду, который возродится и предстанет перед людьми. Если у практикующего не получается достигнуть полного просвещения в этой инкарнации, мантра Майтрейи приблизит к высшему благу в последующих перевоплощениях."
+          }
+        }
+      }
+    },
+    "Manjusri" : {
+      "comment" : "Manjusri",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Манджушри"
+          }
+        }
+      }
+    },
+    "Mantra Counter" : {
+      "comment" : "Details alert Mantra Counter button",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Счетчик мантр"
+          }
+        }
+      }
+    },
+    "Mantra Reader" : {
+      "comment" : "App nameStatic Widget Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Начитай!"
+          }
+        }
+      }
+    },
+    "Mantra Reader Feedback" : {
+      "comment" : "Feedback Subject",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обратная связь по Начитай!"
+          }
+        }
+      }
+    },
+    "MANTRA TEXT" : {
+      "comment" : "Mantra Text Label",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ТЕКСТ МАНТРЫ"
+          }
+        }
+      }
+    },
+    "Mantra: %d" : {
+      "comment" : "Accessory Inline intent widget title",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мантра: %d"
+          }
+        }
+      }
+    },
+    "Mantras" : {
+      "comment" : "Main section title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мантры"
+          }
+        }
+      }
+    },
+    "Mantras Choice" : {
+      "comment" : "Mantras Choice Bar Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбор мантр"
+          }
+        }
+      }
+    },
+    "Mantras sorting" : {
+      "comment" : "Sorting Picker Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сортировка мантр"
+          }
+        }
+      }
+    },
+    "Mantras: %d" : {
+      "comment" : "Accessory Inline static widget title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мантры: %d"
+          }
+        }
+      }
+    },
+    "Maytreya" : {
+      "comment" : "Maytreya",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Майтрейя"
+          }
+        }
+      }
+    },
+    "Meditation on Parnashavari and the practice of her mantra strengthens immunity and resistance to infectious diseases. Parnashavari's call declares that she prevents all epidemics, diseases and suffering." : {
+      "comment" : "Parnashavari Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Медитация на Парнашавари и практика ее мантры укрепляют иммунитет и сопротивляемость к заразным болезням. Призыв Парнашавари заявляет, что она предотвращает все эпидемии, болезни и страдания."
+          }
+        }
+      }
+    },
+    "Menu" : {
+      "comment" : "Menu Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Меню"
+          }
+        }
+      }
+    },
+    "Month" : {
+      "comment" : "Month Statistics Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Месяц"
+          }
+        }
+      }
+    },
+    "Month total:" : {
+      "comment" : "Month Total readings",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Всего за месяц:"
+          }
+        }
+      }
+    },
+    "Monthly average:" : {
+      "comment" : "Monthly average",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В среднем за месяц:"
+          }
+        }
+      }
+    },
+    "New Mantra" : {
+      "comment" : "Add New Mantra Menu Item",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новая мантра"
+          }
+        }
+      }
+    },
+    "New Matra" : {
+      "comment" : "Add new mantra bar title",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новая мантра"
+          }
+        }
+      }
+    },
+    "No" : {
+      "comment" : "No Alert Button",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет"
+          }
+        }
+      }
+    },
+    "No Internet Connection" : {
+      "comment" : "Alert Title for preloading mantras due to no internet connection",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет подключения к интернету"
+          }
+        }
+      }
+    },
+    "No matches found" : {
+      "comment" : "No matches found while perforimng search",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Совпадений не найдено"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "comment" : "OK Alert Button",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "OM BENZA SATO SAMAYA MANUPALAYA BENZA SATO TENOPA TITA DRI DO MEBHAWA SUTO KAYO MEBHAWA SUPO KAYO MEBHAWA ANURAKTO MEBHAWA SARWA SIDDHI MEMTRAYATSA SARWA KARMA SUTSA METSI TAM SHRI YA KURU HUNG HA HA HA HA HO BHAGAWAN SARWA TATHAGATA BENZA MA ME MUNTSA BENZRI BHAWA MAHA SAMAYA SATO AH" : {
+      "comment" : "Vajrasattva Text",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОМ БЕНДЗА САТО САМАЯ МАНУПАЛАЯ БЕНДЗА САТО ТЭНОПА ТИТХА ДРИ ДХО МЕБХАВА СУТО КХАЁ МЕБАВА СУПО КХАЁ МЕБХАВА АНУРАГТО МЕБАВА САРВА СИДДХИ МЕМТАЯЦА САРВА КАРМА СУЦА МЕЦИ ТАМ ШРИ Я КУРУ ХУНГ ХА ХА ХА ХА ХО БХАГАВАН САРВА ТАТХАГАТА БЕНДЗА МА МЕ МЮНЦА БЕНДЗИ БХАВА МАХА САМАЯ САТО АХ"
+          }
+        }
+      }
+    },
+    "One of the selected mantras is already in your mantra list. Add anyway?" : {
+      "comment" : "Duplication Alert Message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Одна из выбранных мантр уже есть в вашем списке. Все равно добавить?"
+          }
+        }
+      }
+    },
+    "Overall Statistics" : {
+      "comment" : "Overall statistics Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Общая статистика"
+          }
+        }
+      }
+    },
+    "Parnashavari" : {
+      "comment" : "Parnashavari",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Парнашавари"
+          }
+        }
+      }
+    },
+    "Photo Library" : {
+      "comment" : "Photo Library Menu Item",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фототека"
+          }
+        }
+      }
+    },
+    "Pick Photo" : {
+      "comment" : "First search on the Internet Alert Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите фото"
+          }
+        }
+      }
+    },
+    "Please add some mantras on your iPhone or iPad" : {
+      "comment" : "No mantras placeholder",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожалуйста, добавьте мантры на вашем iPhone или iPad"
+          }
+        }
+      }
+    },
+    "Please enter a valid number" : {
+      "comment" : "Non-valid number Alert Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожалуйста, введите верное значение"
+          }
+        }
+      }
+    },
+    "Prajnaparamita" : {
+      "comment" : "Prajnaparamita",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Праджняпарамита"
+          }
+        }
+      }
+    },
+    "Prajnaparamita mantra means complete deliverance from illusion and welcomes complete and final awakening, perfect wisdom." : {
+      "comment" : "Prajnaparamita Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мантра Праджняпарамиты означает полное избавление от иллюзий и приветствует полное и окончательное пробуждение, совершенную мудрость."
+          }
+        }
+      }
+    },
+    "Preset Mantra" : {
+      "comment" : "Add Preset Mantra Menu Item",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Из предустановленных"
+          }
+        }
+      }
+    },
+    "Progress ring color" : {
+      "comment" : "Sorting Picker Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цвет кольца прогресса"
+          }
+        }
+      }
+    },
+    "Reading Statistics" : {
+      "comment" : "Mantra Statistics Menu Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Статистика начитки"
+          }
+        }
+      }
+    },
+    "Reading the mantra bestows piously acquired wealth and also ensures that spiritual wisdom is accompanied by favorable circumstances - a high standard of living, longevity, and happiness." : {
+      "comment" : "Vasundhara Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чтение мантры дарует благочестиво приобретенное богатство, а также обеспечивает, чтобы духовной мудрости сопутствовали благоприятные обстоятельства - высокий уровень жизни, долголетие и счастье."
+          }
+        }
+      }
+    },
+    "Reading the mantra creates a special vibration that affects energy channels, expands and purifies the aura, enhances vital energy. Including the mantra helps to transform negative emotions and obscurations." : {
+      "comment" : "Buddha Medicine Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чтение мантры создает особую вибрацию, воздействующую на энергетические каналы, расширяет и очищает ауру, усиливает жизненную энергию. В том числе мантра помогает преобразовать отрицательные эмоции и омрачения."
+          }
+        }
+      }
+    },
+    "Reading the mantra dispels the roots of ignorance and defilement, develops wisdom, intelligence, assimilation of knowledge, strengthens memory, develops eloquence, allows you to control the mind and contributes to comprehending the true nature of all things." : {
+      "comment" : "Manjusri Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чтение мантры рассеивает корни неведения и омрачения, развивает мудрость, сообразительность, усвоение знаний, укрепляет память, развивает красноречие, позволяет контролировать ум и способствует постижению истинной природы всех вещей."
+          }
+        }
+      }
+    },
+    "Reading the mantra personifies the discriminating mind and bestows the yogic power of knowing each thing separately as well as all things in unity." : {
+      "comment" : "Buddha Amitabha Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чтение мантры персонифицирует различающий разум и дарует йогическую силу познания каждой вещи в отдельности, а также всех вещей в единстве."
+          }
+        }
+      }
+    },
+    "Readings" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Начиток"
+          }
+        }
+      }
+    },
+    "READINGS IN ROUND" : {
+      "comment" : "Mantra Round Label",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "НАЧИТОК В КРУГЕ"
+          }
+        }
+      }
+    },
+    "Reads" : {
+      "comment" : "Reads button",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Начиток"
+          }
+        }
+      }
+    },
+    "Reads Goal" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цель"
+          }
+        }
+      }
+    },
+    "Recent Mantra" : {
+      "comment" : "Open Mantra ShortcutItem Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Недавняя мантра"
+          }
+        }
+      }
+    },
+    "Recitation of mantras is a sacrament.\nApproach this issue with all your awareness.\nIn order for the practice of reciting the mantra to be correct, one must receive the transmission of the mantra from the teacher. Transmission is essential to maintain the strength of the original source of the mantra. It’s not enough just to read it in a book or on the Internet.\nFor this reason, at start application doesn't include the mantra texts themselves (except Vajrasattva). They must be given to you by your spiritual mentor and can be added manually later.\nWe wish you deep awarenesses and spiritual growth!" : {
+      "comment" : "Onboarding Alert Message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чтение мантр - это таинство.\nПодойдите к данному вопросу со всей своей осознанностью.\nДля того чтобы практика чтения мантры была верной, нужно получить передачу мантры от учителя. Передача важна, чтобы сохранить силу первоисточника мантры. Недостаточно просто прочитать ее в книге или в интернете.\nПо этой причине первоначально в приложении не представлены сами тексты мантр (кроме Стослоговой мантры). Они должны быть даны Вам Вашим духовным наставником и могут быть добавлены вручную.\nЖелаем глубоких осознований и духовного роста!"
+          }
+        }
+      }
+    },
+    "Recitation of the Yellow Dzambala mantra with full concentration increases well-being, wisdom, tolerance, vigilance and spiritual achievement, gives protection from difficulties and all negative things, helps to develop altruistic motivations." : {
+      "comment" : "Yellow Dzambhala Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторение мантры Золотого Дзамбалы с полным сосредоточением увеличивает благополучие, мудрость, терпимость, бдительность и духовные достижения, дарует защиту от трудностей и всего негативного, помогает развить альтруистические мотивации."
+          }
+        }
+      }
+    },
+    "Reciting the mantra of the Bodhisattva Vajrapani with sincere good intentions helps to overcome various ailments, delusions, brings self-confidence, firm support in any endeavors, determination, purposefulness, increases the strength and capabilities of a person." : {
+      "comment" : "Vajrapani Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Начитывание мантры бодхисаттвы Ваджрапани с искренними благими намерениями способствует преодолению различных недомоганий, заблуждений, приносит уверенность в своих силах, твёрдую поддержку в любых начинаниях, решительность, целеустремленность, увеличивает силы и возможности человека."
+          }
+        }
+      }
+    },
+    "Repetition of the mantra in concentration clears negative karma, affects all levels of the subconscious, reveals hidden talents, allows you to accumulate vast merits, develop compassion and kind-heartedness towards all living beings." : {
+      "comment" : "Avalokitesvara Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторение мантры в сосредоточении очищает негативную карму, воздействует на все уровни подсознания, раскрывает скрытые таланты, позволяет накопить обширные заслуги, развить сострадание и добросердечность по отношению ко всем живым существам."
+          }
+        }
+      }
+    },
+    "Rounds" : {
+      "comment" : "Rounds button",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кругов"
+          }
+        }
+      }
+    },
+    "Search" : {
+      "comment" : "Search Placeholder",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск"
+          }
+        }
+      }
+    },
+    "Search for image in the next window. Then just longpress on the one you liked, choose 'Copy' in contextual menu and confirm it by 'Done'" : {
+      "comment" : "First search on the Internet Alert Message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Найдите изображение в следующем окне. Затем просто удерживайте палец на понравившемся, выберите 'Скопировать' в контекстном меню и нажмите 'Готово'"
+          }
+        }
+      }
+    },
+    "Search on the Internet" : {
+      "comment" : "Search on the Internet Menu Item",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Искать в Интернете"
+          }
+        }
+      }
+    },
+    "Select a mantra" : {
+      "comment" : "No mantra selected",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите мантру"
+          }
+        }
+      }
+    },
+    "Select an option" : {
+      "comment" : "Details alert title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите опцию"
+          }
+        }
+      }
+    },
+    "Set" : {
+      "comment" : "Set Alert Button",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установить"
+          }
+        }
+      }
+    },
+    "Set a New Readings Count" : {
+      "comment" : "New Readings Count Alert Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установите новое число начиток"
+          }
+        }
+      }
+    },
+    "Set a New Readings Goal" : {
+      "comment" : "New Readings Goal Alert Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установите новую цель"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "comment" : "SettingsView Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки"
+          }
+        }
+      }
+    },
+    "Syncing..." : {
+      "comment" : "Loading from iCloud",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загрузка..."
+          }
+        }
+      }
+    },
+    "System" : {
+      "comment" : "System appearance",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Системное"
+          }
+        }
+      }
+    },
+    "Thanks to the repetition of this mantra all obscurations and hindrances go away, a person approaches the state of Enlightenment, receives inspiration, blessings, rapid progress on the path of perfection, and a connection is established with Buddha Shakyamuni." : {
+      "comment" : "Buddha Shakyamuni Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Благодаря повторению этой мантры уходят все омрачения, помехи, человек приближается к состоянию Просветления, получает воодушевление, благословение, быстрый прогресс на пути совершенствования, происходит установление связи с Буддой Шакьямуни."
+          }
+        }
+      }
+    },
+    "The Compassion Buddha, the embodiment of the universal compassion of all enlightened beings. By relying on Thousand Armed Avalokitesvara we naturally increase our own compassion." : {
+      "comment" : "Thousand Armed Avalokitesvara Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Будда Сострадания, воплощение всеобщего сострадания ко всем просветленным существам. Полагаясь на Тысячерукого Ченрзезига, мы естественным образом усиливаем собственное сострадание."
+          }
+        }
+      }
+    },
+    "The mantra of White Tara is a request for longevity, and the use of this longevity for the benefit of all living beings as well (in other words, an increase in wisdom and, as a result, merit generated by good deeds)." : {
+      "comment" : "White Tara Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мантра Белой Тары - это просьба о долголетии, и применение этого долголетия во благо также всех живых существ (иными словами, об увеличении мудрости и, как следствие, заслуг, порожденных благими поступками)."
+          }
+        }
+      }
+    },
+    "The practice of the Buddha Amitayus mantra helps to prolong life and improve health." : {
+      "comment" : "Buddha Amitayus Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Практика мантры Будды Амитаюса способствует продлению жизни и укреплению здоровья."
+          }
+        }
+      }
+    },
+    "The practice of the Vajrasattva mantra has the ability to purify the karma of not only this incarnation, but also many others, bring peace, alleviate the suffering of the reader or listener, remove spiritual obstacles and cause enlightenment in general." : {
+      "comment" : "Vajrasattva Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Практика мантры Ваджрасаттвы имеет способность очищать карму не только этого воплощения, но и многих других, нести умиротворение, облегчать страдания читающего или слушающего её, устранять духовные препятствия и стать причиной просветления в целом."
+          }
+        }
+      }
+    },
+    "The Vajrakilaya mantra protects from any evil, removes obstacles, destroys hostile forces, relieves fear, jealousy, anger." : {
+      "comment" : "Vajrakilaya Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мантра Ваджракилайи защищает от любого зла, удаляет препятствия, уничтожает враждебные силы, избавляет от страхов, ревности, злости."
+          }
+        }
+      }
+    },
+    "There was a fatal error in the app and it cannot continue. Press OK to terminate the app. Sorry for inconvenience." : {
+      "comment" : "Core Data Fatal Error Message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Произошла критическая ошибка в приложении, работа не может быть продолжена. Нажмите ОК для закрытия приложения. Просим прощения за неудобства."
+          }
+        }
+      }
+    },
+    "There were some changes" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Произошли некоторые изменения"
+          }
+        }
+      }
+    },
+    "This is your reading statistics. To view the exact values hold the bar and move in time." : {
+      "comment" : "First appear of StatisticsView message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это ваша статистика начитки. Для просмотра точных значений зажмите столбец и двигайтесь по времени."
+          }
+        }
+      }
+    },
+    "Thousand Armed Avalokitesvara" : {
+      "comment" : "Thousand Armed Avalokitesvara",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тысячерукий Ченрезиг"
+          }
+        }
+      }
+    },
+    "TITLE" : {
+      "comment" : "Mantra Title Label",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "НАЗВАНИЕ"
+          }
+        }
+      }
+    },
+    "Total Mantras" : {
+      "comment" : "Accessory Rectangular static widget title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Общая начитка"
+          }
+        }
+      }
+    },
+    "Total:" : {
+      "comment" : "Total readings",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Всего:"
+          }
+        }
+      }
+    },
+    "Track your current mantra" : {
+      "comment" : "Intent Widget Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Следите за актуальной мантрой"
+          }
+        }
+      }
+    },
+    "Track your mantras" : {
+      "comment" : "Static Widget Description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Следите за своими мантрами"
+          }
+        }
+      }
+    },
+    "Unavailable Photo" : {
+      "comment" : "Unavailable photo Alert Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фото недоступно"
+          }
+        }
+      }
+    },
+    "UNDERSTAND!" : {
+      "comment" : "Onboarding Alert Button",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПОНЯТНО!"
+          }
+        }
+      }
+    },
+    "Undo Changes" : {
+      "comment" : "Undo Action Alert Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отмена изменений"
+          }
+        }
+      }
+    },
+    "Unfavorite" : {
+      "comment" : "Unfavorite Menu Action",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить из избранного"
+          }
+        }
+      }
+    },
+    "Use long press on the screen to enter and quit the mode." : {
+      "comment" : "Mantra Counter mode alert message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Используйте долгое нажатие по экрану для входа и выхода из режима."
+          }
+        }
+      }
+    },
+    "Vajrakilaya" : {
+      "comment" : "Vajrakilaya",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваджракилайя"
+          }
+        }
+      }
+    },
+    "Vajrapani" : {
+      "comment" : "Vajrapani",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваджрапани"
+          }
+        }
+      }
+    },
+    "Vajrasattva" : {
+      "comment" : "Vajrasattva",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стослоговая мантра"
+          }
+        }
+      }
+    },
+    "Vasundhara" : {
+      "comment" : "Vasundhara",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Золотая тара"
+          }
+        }
+      }
+    },
+    "Week" : {
+      "comment" : "Week Statistics Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неделя"
+          }
+        }
+      }
+    },
+    "Week total:" : {
+      "comment" : "Week Total readings",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Всего за неделю:"
+          }
+        }
+      }
+    },
+    "Welcome to the path of Enlightenment!" : {
+      "comment" : "Onboarding Alert Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добро пожаловать на путь Просветления!"
+          }
+        }
+      }
+    },
+    "White Tara" : {
+      "comment" : "White Tara",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Белая Тара"
+          }
+        }
+      }
+    },
+    "Year" : {
+      "comment" : "Year Statistics Title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Год"
+          }
+        }
+      }
+    },
+    "Year total:" : {
+      "comment" : "Year Total readings",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Всего за год:"
+          }
+        }
+      }
+    },
+    "Yellow Dzambhala" : {
+      "comment" : "Yellow Dzambhala",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Золотой Дзамбала"
+          }
+        }
+      }
+    },
+    "Yes" : {
+      "comment" : "Yes Alert Button",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Да"
+          }
+        }
+      }
+    },
+    "You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. The screen won’t dim. The edit buttons at the bottom are disabled." : {
+      "comment" : "First switch display mode Alert Message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы входите в режим 'Счетчик мантр'. Один тап по экрану добавит одну начитку, двойной тап - добавит один круг. Экран не будет затемняться. Кнопки редактирования внизу отключены."
+          }
+        }
+      }
+    },
+    "You are entering the 'Mantra Counter' mode. Single tap on the screen will add one reading, double tap will add one round. Use 'Always On' mode (or extended Wake Duration if you don't have Always On mode) in your Watch Settings to stay in app while reading your mantras." : {
+      "comment" : "Mantra Counter mode alert message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы входите в режим 'Счетчик мантр'. Один тап по экрану добавит одну начитку, двойной тап - добавит один круг. Используйте режим 'Всегда вкл.' (или увеличенное время подсветки экрана, если у вас нет режима 'Всегда вкл.') в настройках ваших часов, чтобы оставаться в приложении во время начитки мантр."
+          }
+        }
+      }
+    },
+    "You're half way to your goal!" : {
+      "comment" : "Half way to goal Alert Message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы на половине пути к цели!"
+          }
+        }
+      }
+    },
+    "You've reached your goal!" : {
+      "comment" : "Congratulations Alert Message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы достигли поставленной цели!"
+          }
+        }
+      }
+    },
+    "Your mantra" : {
+      "comment" : "Placeholder in intent widget",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваша мантра"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

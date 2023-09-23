@@ -61,7 +61,7 @@ struct CircularProgressView: View {
                     .opacity(isMantraCounterMode ? 0 : 1)
 #endif
                     .dynamicTypeSize(.xLarge)
-                Text("Current Reads")
+                Text("Current readings:")
                     .numberAnimation(Int32(viewModel.currentReads))
                     .animation(
                         viewModel.isAnimated ?

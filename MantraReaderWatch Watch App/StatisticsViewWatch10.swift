@@ -35,18 +35,21 @@ struct StatisticsViewWatch10: View {
                 isLoadingStatistics: isShowingLoadingStatistics
             )
             .navigationTitle(weekHeader)
+            .containerBackground(Color.blue.gradient, for: .tabView)
             MonthStatisticsView(
                 data: viewModel.monthData,
                 selectedMonth: $selectedMonth,
                 isLoadingStatistics: isShowingLoadingStatistics
             )
             .navigationTitle(monthHeader)
+            .containerBackground(Color.green.gradient, for: .tabView)
             YearStatisticsView(
                 data: viewModel.yearData,
                 selectedYear: $selectedYear,
                 isLoadingStatistics: isShowingLoadingStatistics
             )
             .navigationTitle(yearHeader)
+            .containerBackground(Color.red.gradient, for: .tabView)
         }
         .tabViewStyle(.verticalPage)
         .toolbar {

@@ -252,4 +252,33 @@ final class ReadsViewModel: ObservableObject {
         session?.invalidate()
     }
 #endif
+    
+#if os(watchOS)
+    func backgroundColor(ringColor: RingColor) -> Color {
+        let progress = Double(mantra.reads) / Double(mantra.readsGoal)
+        switch ringColor {
+        case .red, .yellow, .green: return ringColor.colors.first ?? .accentColor
+        case .dynamic:
+            if progress < 0.5 {
+                return .firstProgressTier.first ?? .progressGreenStart
+            } else if progress >= 0.5 && progress < 1.0 {
+                return .secondProgressTier.first ?? .progressYellowStart
+            } else if progress >= 1.0 {
+                return .thirdProgressTier.first ?? .progressRedStart
+            } else {
+                return .accentColor
+            }
+        case .dynamicReverse:
+            if progress < 0.5 {
+                return .thirdProgressTier.first ?? .progressRedStart
+            } else if progress >= 0.5 && progress < 1.0 {
+                return .secondProgressTier.first ?? .progressYellowStart
+            } else if progress >= 1.0 {
+                return .firstProgressTier.first ?? .progressGreenStart
+            } else {
+                return .accentColor
+            }
+        }
+    }
+#endif
 }

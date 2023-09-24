@@ -80,7 +80,8 @@ struct ContentView: View {
                         ReadsViewWatch10(viewModel: ReadsViewModel(mantra, dataManager: dataManager))
                     } else {
                         ReadsView(viewModel: ReadsViewModel(mantra, dataManager: dataManager))
-                    }                }
+                    }
+                }
                 if isFirstLaunch {
                     ProgressView("Syncing...")
                 }

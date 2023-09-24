@@ -11,6 +11,7 @@ import SwiftUI
 struct ReadsViewWatch10: View {
     @AppStorage("isFirstLaunchOfMantraCounterMode") private var isFirstLaunchOfMantraCounterMode = true
     @EnvironmentObject private var dataManager: DataManager
+    @EnvironmentObject private var settings: Settings
     @StateObject var viewModel: ReadsViewModel
     
     @State private var isPresentedStatisticsSheet = false
@@ -162,6 +163,7 @@ struct ReadsViewWatch10: View {
         }
         .navigationTitle(viewModel.mantra.title ?? "")
         .navigationBarTitleDisplayMode(.inline)
+        .containerBackground(viewModel.backgroundColor(ringColor: settings.ringColor).gradient, for: .navigation)
     }
     
     private func toggleMantraCounterMode() {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Bool: Comparable {
+extension Bool: @retroactive Comparable {
     static public func < (lhs: Bool, rhs: Bool) -> Bool {
         return lhs.description < rhs.description
     }

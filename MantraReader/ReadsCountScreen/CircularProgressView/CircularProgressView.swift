@@ -44,6 +44,7 @@ struct CircularProgressView: View {
                         Animation.easeInOut(duration: Constants.animationTime) :
                             Animation.linear(duration: 0.01),
                         value: viewModel.mantra.reads)
+                    .widgetAccentable()
 #if os(iOS)
                     .font(
                         .system(

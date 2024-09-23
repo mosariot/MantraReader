@@ -13,7 +13,12 @@ struct LargeStaticWidgetView: View {
     var body: some View {
         let mantraArray = widgetModel.mantras.prefix(6)
         if mantraArray.count == 0 {
-            Image(Constants.defaultImage)
+            if #available(iOS 18, *) {
+                Image(Constants.defaultImage)
+                    .widgetAccentedRenderingMode(.accentedDesaturated)
+            } else {
+                Image(Constants.defaultImage)
+            }
         } else {
             if #available(iOS 17, *) {
                 LargeStaticWidgetList(mantraArray: mantraArray)

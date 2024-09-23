@@ -16,21 +16,31 @@ struct MediumStaticWidgetList: View {
             ForEach(mantraArray, id: \.self) { mantra in
                 Link(destination: URL(string: "\(mantra.id)")!) {
                     VStack {
-                        Image(uiImage: image(data: mantra.image))
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 55, height: 55, alignment: .center)
+                        if #available(iOS 18, *) {
+                            Image(uiImage: image(data: mantra.image))
+                                .resizable()
+                                .widgetAccentedRenderingMode(.accentedDesaturated)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 55, height: 55, alignment: .center)
+                        } else {
+                            Image(uiImage: image(data: mantra.image))
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 55, height: 55, alignment: .center)
+                        }
                         Text(mantra.title)
                             .multilineTextAlignment(.center)
                             .lineLimit(2)
                             .frame(height: 33)
                             .bold()
                             .font(.footnote)
+                            .widgetAccentable()
                         Text("\(mantra.reads)")
                             .bold()
                             .font(.caption)
                             .foregroundColor(.secondary)
                             .privacySensitive()
+                            .widgetAccentable()
                     }
                     .frame(maxWidth: .infinity)
                 }

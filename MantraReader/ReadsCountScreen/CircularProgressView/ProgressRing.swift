@@ -162,6 +162,7 @@ struct ProgressRing: View {
                 }
             }
             .frame(width: geo.size.width, height: geo.size.height)
+            .widgetAccentable()
         }
     }
     

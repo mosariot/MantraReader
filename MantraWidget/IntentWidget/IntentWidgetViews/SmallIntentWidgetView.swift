@@ -24,6 +24,7 @@ struct SmallIntentWidgetView: View {
                     .bold()
                     .font(.headline)
                     .privacySensitive()
+                    .widgetAccentable()
             }
             .padding(6)
             .padding(.bottom, 1)
@@ -33,6 +34,7 @@ struct SmallIntentWidgetView: View {
                 .multilineTextAlignment(.center)
                 .lineLimit(1)
                 .padding(.top, 1)
+                .widgetAccentable()
         }
         .redacted(reason: reasons)
         .widgetURL(URL(string: (selectedMantra?.id.uuidString ?? firstMantra?.id.uuidString ) ?? ""))

@@ -17,16 +17,25 @@ struct MediumIntentWidgetView: View {
         GeometryReader { geo in
             HStack {
                 VStack {
-                    Image(uiImage: image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 100, maxHeight: 100, alignment: .center)
+                    if #available(iOS 18, *) {
+                        Image(uiImage: image)
+                            .resizable()
+                            .widgetAccentedRenderingMode(.accentedDesaturated)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 100, maxHeight: 100, alignment: .center)
+                    } else {
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 100, maxHeight: 100, alignment: .center)
+                    }
                     Text((selectedMantra?.title ?? firstMantra?.title) ?? String(localized: "Your mantra"))
                         .bold()
                         .font(.subheadline)
                         .multilineTextAlignment(.center)
                         .lineLimit(2)
                         .layoutPriority(1)
+                        .widgetAccentable()
                 }
                 Spacer()
                 ZStack {
@@ -39,6 +48,7 @@ struct MediumIntentWidgetView: View {
                         .bold()
                         .font(.headline)
                         .privacySensitive()
+                        .widgetAccentable()
                 }
                 .padding(.vertical, 6)
             }

@@ -18,15 +18,24 @@ struct SmallStaticWidgetList: View {
                     ForEach(0 ..< 2, id: \.self) { column in
                         VStack {
                             if (2 * row + column) < mantraArray.count {
-                                Image(uiImage: image(mantra: mantraArray[2 * row + column]))
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 43, height: 43, alignment: .center)
+                                if #available(iOS 18, *) {
+                                    Image(uiImage: image(mantra: mantraArray[2 * row + column]))
+                                        .resizable()
+                                        .widgetAccentedRenderingMode(.accentedDesaturated)
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 43, height: 43, alignment: .center)
+                                } else {
+                                    Image(uiImage: image(mantra: mantraArray[2 * row + column]))
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 43, height: 43, alignment: .center)
+                                }
                                 Text("\(mantraArray[2 * row + column].reads)")
                                     .bold()
                                     .font(.caption2)
                                     .foregroundColor(.secondary)
                                     .privacySensitive()
+                                    .widgetAccentable()
                             }
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)

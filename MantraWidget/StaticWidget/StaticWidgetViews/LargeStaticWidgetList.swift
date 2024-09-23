@@ -22,6 +22,7 @@ struct LargeStaticWidgetList: View {
                                     .bold()
                                     .font(.footnote)
                                     .lineLimit(1)
+                                    .widgetAccentable()
                                 HStack(spacing: 0) {
                                     Text("Current readings: ")
                                         .bold()
@@ -32,13 +33,22 @@ struct LargeStaticWidgetList: View {
                                         .font(.footnote)
                                         .foregroundColor(.secondary)
                                         .privacySensitive()
+                                        .widgetAccentable()
                                 }
                             }
                             Spacer()
-                            Image(uiImage: image(data: mantra.image))
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 41, height: 41, alignment: .center)
+                            if #available(iOS 18, *) {
+                                Image(uiImage: image(data: mantra.image))
+                                    .resizable()
+                                    .widgetAccentedRenderingMode(.accentedDesaturated)
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 41, height: 41, alignment: .center)
+                            } else {
+                                Image(uiImage: image(data: mantra.image))
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 41, height: 41, alignment: .center)
+                            }
                         }
                     }
                 }
